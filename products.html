@@ -105,7 +105,11 @@ function displayProducts(products) {
         ${dropdownOptions}
       </select>
       <div class="price-display mt-3 text-sm text-gray-700"></div>
-      <button class="mt-auto bg-brand text-white py-2 px-3 rounded-lg hover:bg-blue-700 transition mt-3">Add to Cart</button>
+      <button 
+  onclick="addToCart(${JSON.stringify(p)}, this.previousElementSibling.previousElementSibling.selectedIndex - 1)"
+  class="mt-auto bg-brand text-white py-2 px-3 rounded-lg hover:bg-blue-700 transition mt-3">
+  Add to Cart
+</button>
     `;
 
     const select = card.querySelector('select');
@@ -142,6 +146,28 @@ categoryFilter.addEventListener('change', (e) => {
 
 loadProducts();
 </script>
+  <script>
+// === CART SYSTEM === //
+function addToCart(product, variantIndex) {
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const selectedVariant = product.variants[variantIndex];
+  
+  const item = {
+    name: product.name,
+    brand: product.brand,
+    pack: selectedVariant.pack,
+    price_usd: selectedVariant.price_usd,
+    price_inr: selectedVariant.price_inr,
+    image: product.image,
+    quantity: 1
+  };
+
+  cart.push(item);
+  localStorage.setItem('cart', JSON.stringify(cart));
+  alert(`${product.name} (${selectedVariant.pack}) added to your cart 🛒`);
+}
+</script>
 </body>
 </html>
+
 
