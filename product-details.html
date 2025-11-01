@@ -6,10 +6,14 @@
   <title>Medicine Details – Vital Elixir Globalist</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { brand: '#0284c7' } } } };
+  </script>
 </head>
 
 <body class="bg-gray-50 text-gray-800">
 
+  <!-- Header Placeholder -->
   <div id="header-placeholder"></div>
 
   <!-- Product Details Section -->
@@ -25,22 +29,29 @@
       <p id="product-brand" class="text-gray-600 mb-2"></p>
       <p id="product-composition" class="text-gray-600 mb-2"></p>
       <p id="product-description" class="text-gray-700 mb-6"></p>
-
-      <p class="text-2xl font-semibold text-[#0284c7] mb-6">€<span id="product-price"></span></p>
+      <p class="text-2xl font-semibold text-brand mb-6">€<span id="product-price"></span></p>
 
       <div class="flex gap-4">
-        <button onclick="addToCart()" class="px-6 py-3 bg-[#0284c7] text-white rounded-xl hover:bg-blue-700">
+        <button onclick="addToCart()" class="px-6 py-3 bg-brand text-white rounded-xl hover:bg-blue-700">
           Add to Cart
         </button>
-        <button onclick="buyNow()" class="px-6 py-3 border border-[#0284c7] rounded-xl hover:bg-blue-50">
+        <button onclick="buyNow()" class="px-6 py-3 border border-brand rounded-xl hover:bg-blue-50">
           Buy Now
         </button>
       </div>
     </div>
   </section>
 
+  <!-- Footer -->
+  <footer class="py-10 bg-white border-t text-center text-gray-600 text-sm">
+    © <span id="year"></span> Vital Elixir Globalist. All rights reserved.
+  </footer>
+
   <script>
-    // ✅ Product data (same structure used in products.html)
+    // Footer Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Product Data
     const products = [
       {
         id: "ivermectin12",
@@ -80,12 +91,12 @@
       }
     ];
 
-    // ✅ Extract product ID from URL (like ?id=ivermectin12)
+    // Extract Product from URL
     const urlParams = new URLSearchParams(window.location.search);
     const productId = urlParams.get("id");
     const product = products.find(p => p.id === productId);
 
-    // ✅ Populate data dynamically
+    // Display Product Info
     if (product) {
       document.getElementById("product-image").src = product.image;
       document.getElementById("product-name").textContent = product.name;
@@ -97,7 +108,7 @@
       document.body.innerHTML = "<div class='text-center mt-20 text-gray-600 text-xl'>Product not found.</div>";
     }
 
-    // ✅ Add to Cart
+    // Add to Cart
     function addToCart() {
       let cart = JSON.parse(localStorage.getItem("cart")) || [];
       cart.push(product);
@@ -105,32 +116,59 @@
       alert(product.name + " added to cart!");
     }
 
-    // ✅ Razorpay Integration
+    // Razorpay Integration
     function buyNow() {
       var options = {
-        "key": "rzp_test_yourKeyHere", // Replace with your Razorpay Key
-        "amount": product.price * 100, // convert euros to cents
+        "key": "rzp_test_yourKeyHere", // Replace with your actual Razorpay key
+        "amount": product.price * 100, 
         "currency": "EUR",
         "name": "Vital Elixir Globalist",
         "description": product.name,
         "handler": function (response) {
-          alert("Payment Successful! ID: " + response.razorpay_payment_id);
+          alert("Payment Successful! Payment ID: " + response.razorpay_payment_id);
         },
         "theme": { "color": "#0284c7" }
       };
       var rzp = new Razorpay(options);
       rzp.open();
     }
+
+    // Load Header + Initialize Menu
+    async function loadHeader() {
+      const header = await fetch("header.html");
+      document.getElementById("header-placeholder").innerHTML = await header.text();
+
+      // ✅ Initialize menu after header loads
+      const menuBtn = document.getElementById("menu-btn");
+      const closeBtn = document.getElementById("close-menu");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const sidebar = document.getElementById("sidebar");
+
+      if (!menuBtn || !sidebar || !mobileMenu) return;
+
+      // Open sidebar
+      menuBtn.addEventListener("click", () => {
+        mobileMenu.classList.remove("hidden");
+        setTimeout(() => sidebar.classList.remove("translate-x-full"), 10);
+      });
+
+      // Close sidebar
+      closeBtn.addEventListener("click", () => {
+        sidebar.classList.add("translate-x-full");
+        setTimeout(() => mobileMenu.classList.add("hidden"), 300);
+      });
+
+      // Close when clicking outside
+      mobileMenu.addEventListener("click", (e) => {
+        if (e.target === mobileMenu) {
+          sidebar.classList.add("translate-x-full");
+          setTimeout(() => mobileMenu.classList.add("hidden"), 300);
+        }
+      });
+    }
+
+    loadHeader();
   </script>
-  <script>
-  async function loadHeader() {
-    const header = await fetch('header.html');
-    document.getElementById('header-placeholder').innerHTML = await header.text();
-  }
-  loadHeader();
-</script>
+
 </body>
 </html>
-
-
-
