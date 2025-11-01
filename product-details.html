@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medicine Details – Vital Elixir Globalist</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-white shadow sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto flex justify-between items-center px-4 py-3">
+      <div class="text-2xl font-bold text-[#0284c7]">Vital Elixir Globalist</div>
+      <nav class="hidden md:flex gap-6 text-sm font-medium">
+        <a href="index.html" class="hover:text-[#0284c7]">Home</a>
+        <a href="products.html" class="hover:text-[#0284c7]">Medicines</a>
+        <a href="#contact" class="hover:text-[#0284c7]">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Product Details Section -->
+  <section class="max-w-5xl mx-auto py-16 px-6 grid md:grid-cols-2 gap-10">
+    <!-- Product Image -->
+    <div>
+      <img id="product-image" src="" alt="Medicine Image" class="rounded-2xl shadow-lg w-full">
+    </div>
+
+    <!-- Product Info -->
+    <div>
+      <h1 id="product-name" class="text-3xl font-bold text-gray-900 mb-2"></h1>
+      <p id="product-brand" class="text-gray-600 mb-2"></p>
+      <p id="product-composition" class="text-gray-600 mb-2"></p>
+      <p id="product-description" class="text-gray-700 mb-6"></p>
+
+      <p class="text-2xl font-semibold text-[#0284c7] mb-6">€<span id="product-price"></span></p>
+
+      <div class="flex gap-4">
+        <button onclick="addToCart()" class="px-6 py-3 bg-[#0284c7] text-white rounded-xl hover:bg-blue-700">
+          Add to Cart
+        </button>
+        <button onclick="buyNow()" class="px-6 py-3 border border-[#0284c7] rounded-xl hover:bg-blue-50">
+          Buy Now
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // ✅ Product data (same structure used in products.html)
+    const products = [
+      {
+        id: "ivermectin12",
+        name: "Ivermectin 12mg Tablets",
+        brand: "Sun Pharma",
+        composition: "Ivermectin 12mg",
+        price: 13.75,
+        description: "Used for parasitic infections and certain skin conditions.",
+        image: "images/ivermectin12.jpg"
+      },
+      {
+        id: "semaglutide7",
+        name: "Semaglutide Tablets 7mg",
+        brand: "Novo Nordisk",
+        composition: "Semaglutide 7mg",
+        price: 25.00,
+        description: "Helps control blood sugar and assists in weight management.",
+        image: "images/semaglutide7.jpg"
+      },
+      {
+        id: "semaglutide14",
+        name: "Semaglutide Tablets 14mg",
+        brand: "Novo Nordisk",
+        composition: "Semaglutide 14mg",
+        price: 32.00,
+        description: "Higher-strength version for effective glucose control and weight management.",
+        image: "images/semaglutide14.jpg"
+      },
+      {
+        id: "atarax10",
+        name: "Atarax 10mg Tablets",
+        brand: "UCB",
+        composition: "Hydroxyzine Hydrochloride 10mg",
+        price: 12.50,
+        description: "Used to treat anxiety, itching, and allergies.",
+        image: "images/atarax10.jpg"
+      }
+    ];
+
+    // ✅ Extract product ID from URL (like ?id=ivermectin12)
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get("id");
+    const product = products.find(p => p.id === productId);
+
+    // ✅ Populate data dynamically
+    if (product) {
+      document.getElementById("product-image").src = product.image;
+      document.getElementById("product-name").textContent = product.name;
+      document.getElementById("product-brand").textContent = "Brand: " + product.brand;
+      document.getElementById("product-composition").textContent = "Composition: " + product.composition;
+      document.getElementById("product-description").textContent = product.description;
+      document.getElementById("product-price").textContent = product.price.toFixed(2);
+    } else {
+      document.body.innerHTML = "<div class='text-center mt-20 text-gray-600 text-xl'>Product not found.</div>";
+    }
+
+    // ✅ Add to Cart
+    function addToCart() {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.push(product);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert(product.name + " added to cart!");
+    }
+
+    // ✅ Razorpay Integration
+    function buyNow() {
+      var options = {
+        "key": "rzp_test_yourKeyHere", // Replace with your Razorpay Key
+        "amount": product.price * 100, // convert euros to cents
+        "currency": "EUR",
+        "name": "Vital Elixir Globalist",
+        "description": product.name,
+        "handler": function (response) {
+          alert("Payment Successful! ID: " + response.razorpay_payment_id);
+        },
+        "theme": { "color": "#0284c7" }
+      };
+      var rzp = new Razorpay(options);
+      rzp.open();
+    }
+  </script>
+</body>
+</html>
