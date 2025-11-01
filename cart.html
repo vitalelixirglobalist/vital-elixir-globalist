@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cart – Vital Elixir Globalist</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-white shadow sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto flex justify-between items-center px-4 py-3">
+      <div class="text-2xl font-bold text-[#0284c7]">Vital Elixir Globalist</div>
+      <nav class="hidden md:flex gap-6 text-sm font-medium">
+        <a href="index.html" class="hover:text-[#0284c7]">Home</a>
+        <a href="products.html" class="hover:text-[#0284c7]">Medicines</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Cart Section -->
+  <section class="max-w-5xl mx-auto py-16 px-6">
+    <h1 class="text-3xl font-bold mb-8 text-center text-gray-900">Your Shopping Cart</h1>
+
+    <div id="cart-items" class="space-y-4"></div>
+
+    <div id="cart-summary" class="mt-10 text-right">
+      <p class="text-xl font-semibold text-gray-700">Total: €<span id="total-amount">0.00</span></p>
+      <button onclick="checkout()" class="mt-4 px-8 py-3 bg-[#0284c7] text-white rounded-xl hover:bg-blue-700">
+        Proceed to Payment
+      </button>
+    </div>
+  </section>
+
+  <script>
+    // ✅ Load cart data from localStorage
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const cartContainer = document.getElementById("cart-items");
+    const totalAmountElement = document.getElementById("total-amount");
+    let total = 0;
+
+    if (cart.length === 0) {
+      cartContainer.innerHTML = `
+        <div class="text-center text-gray-600 text-lg">
+          Your cart is empty.<br>
+          <a href="products.html" class="text-[#0284c7] underline">Browse medicines</a>
+        </div>`;
+      document.getElementById("cart-summary").style.display = "none";
+    } else {
+      cart.forEach((item, index) => {
+        total += item.price;
+        cartContainer.innerHTML += `
+          <div class="flex justify-between items-center bg-white p-4 rounded-xl shadow-sm border">
+            <div>
+              <h3 class="font-semibold text-lg">${item.name}</h3>
+              <p class="text-sm text-gray-500">${item.composition}</p>
+              <p class="text-sm text-gray-500">Brand: ${item.brand}</p>
+            </div>
+            <div class="text-right">
+              <p class="text-lg font-semibold text-[#0284c7]">€${item.price.toFixed(2)}</p>
+              <button onclick="removeItem(${index})" class="text-red-500 text-sm mt-2">Remove</button>
+            </div>
+          </div>`;
+      });
+      totalAmountElement.textContent = total.toFixed(2);
+    }
+
+    // ✅ Remove item from cart
+    function removeItem(index) {
+      cart.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      location.reload();
+    }
+
+    // ✅ Razorpay Checkout
+    function checkout() {
+      if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+      }
+
+      var options = {
+        "key": "rzp_test_yourKeyHere", // Replace with your Razorpay Key
+        "amount": total * 100, // convert to cents
+        "currency": "EUR",
+        "name": "Vital Elixir Globalist",
+        "description": "Medicine Purchase",
+        "handler": function (response) {
+          alert("Payment Successful! ID: " + response.razorpay_payment_id);
+          localStorage.removeItem("cart");
+          window.location.href = "index.html";
+        },
+        "theme": { "color": "#0284c7" }
+      };
+      var rzp = new Razorpay(options);
+      rzp.open();
+    }
+  </script>
+
+</body>
+</html>
