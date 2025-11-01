@@ -65,72 +65,83 @@
   </footer>
 
   <!-- Script -->
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+ <script>
+document.getElementById('year').textContent = new Date().getFullYear();
 
-    const productGrid = document.getElementById('productGrid');
-    const searchBar = document.getElementById('searchBar');
-    const categoryFilter = document.getElementById('categoryFilter');
-    let allProducts = [];
+let allProducts = [];
+const productGrid = document.getElementById('productGrid');
+const searchBar = document.getElementById('searchBar');
+const categoryFilter = document.getElementById('categoryFilter');
 
-    // Load Products
-    async function loadProducts() {
-      try {
-        const res = await fetch('./products-data.json');
-        allProducts = await res.json();
-        displayProducts(allProducts);
-      } catch (err) {
-        console.error('Error loading product data:', err);
-        productGrid.innerHTML = `<p class='text-red-600 col-span-full text-center'>⚠️ Unable to load products. Please check your JSON file.</p>`;
-      }
-    }
+async function loadProducts() {
+  const res = await fetch('products-data.json');
+  allProducts = await res.json();
+  displayProducts(allProducts);
+}
 
-    // Display Products
-    function displayProducts(products) {
-      productGrid.innerHTML = '';
-      if (products.length === 0) {
-        productGrid.innerHTML = `<p class='text-gray-500 text-center col-span-full'>No products found.</p>`;
-        return;
-      }
+function displayProducts(products) {
+  productGrid.innerHTML = '';
 
-      products.forEach((p) => {
-        const card = document.createElement('div');
-        card.className = 'bg-white border rounded-xl p-4 shadow-sm hover:shadow-lg transition flex flex-col';
-        card.innerHTML = `
-          <img src="${p.image}" alt="${p.name}" class="w-full h-40 object-cover rounded-lg mb-4">
-          <h3 class="font-semibold text-lg">${p.name}</h3>
-          <p class="text-sm text-gray-600">${p.composition}</p>
-          <p class="text-xs text-gray-500">${p.use}</p>
-          <div class="mt-2 text-sm font-medium text-gray-800">
-            💵 Export: $${p.usd} USD<br>
-            🇮🇳 Domestic: ₹${p.inr} INR
-          </div>
-          <button class="mt-4 bg-brand text-white px-4 py-2 rounded-lg hover:bg-sky-700 w-full">Add to Cart</button>
-        `;
-        productGrid.appendChild(card);
-      });
-    }
+  products.forEach((p) => {
+    const card = document.createElement('div');
+    card.className =
+      'bg-white border rounded-xl p-4 shadow-sm hover:shadow-lg transition flex flex-col';
 
-    // Filter Function
-    function filterProducts() {
-      const query = searchBar.value.toLowerCase();
-      const category = categoryFilter.value;
-      const filtered = allProducts.filter((p) => {
-        const matchesSearch =
-          p.name.toLowerCase().includes(query) ||
-          p.composition.toLowerCase().includes(query);
-        const matchesCategory = category === 'all' || p.category === category;
-        return matchesSearch && matchesCategory;
-      });
-      displayProducts(filtered);
-    }
+    const dropdownOptions = p.variants
+      .map(
+        (v, i) =>
+          `<option value="${i}">${v.pack}</option>`
+      )
+      .join('');
 
-    // Event Listeners
-    searchBar.addEventListener('input', filterProducts);
-    categoryFilter.addEventListener('change', filterProducts);
+    card.innerHTML = `
+      <img src="${p.image}" alt="${p.name}" class="w-full h-40 object-contain mb-3 rounded">
+      <h2 class="font-semibold text-lg text-brand">${p.name}</h2>
+      <p class="text-sm text-gray-600">${p.brand}</p>
+      <p class="text-sm text-gray-500 mb-2">${p.composition}</p>
+      <p class="text-sm text-gray-600 mb-1"><strong>Use:</strong> ${p.use}</p>
+      <select class="border mt-2 p-2 rounded w-full text-sm focus:ring-2 focus:ring-brand">
+        <option disabled selected>Order Quantity</option>
+        ${dropdownOptions}
+      </select>
+      <div class="price-display mt-3 text-sm text-gray-700"></div>
+      <button class="mt-auto bg-brand text-white py-2 px-3 rounded-lg hover:bg-blue-700 transition mt-3">Add to Cart</button>
+    `;
 
-    // Initialize
-    loadProducts();
-  </script>
+    const select = card.querySelector('select');
+    const priceDiv = card.querySelector('.price-display');
+
+    select.addEventListener('change', () => {
+      const variant = p.variants[select.value];
+      priceDiv.innerHTML = `
+        💵 <b>Export:</b> $${variant.price_usd} USD<br>
+        🇮🇳 <b>Domestic:</b> ₹${variant.price_inr} INR
+      `;
+    });
+
+    productGrid.appendChild(card);
+  });
+}
+
+searchBar.addEventListener('input', (e) => {
+  const searchText = e.target.value.toLowerCase();
+  const filtered = allProducts.filter((p) =>
+    p.name.toLowerCase().includes(searchText)
+  );
+  displayProducts(filtered);
+});
+
+categoryFilter.addEventListener('change', (e) => {
+  const cat = e.target.value;
+  if (cat === 'all') displayProducts(allProducts);
+  else {
+    const filtered = allProducts.filter((p) => p.category === cat);
+    displayProducts(filtered);
+  }
+});
+
+loadProducts();
+</script>
 </body>
 </html>
+
