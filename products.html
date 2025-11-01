@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medicines – Vital Elixir Globalist</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-white shadow sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto flex justify-between items-center px-4 py-3">
+      <div class="text-2xl font-bold text-[#0284c7]">Vital Elixir Globalist</div>
+      <nav class="hidden md:flex gap-6 text-sm font-medium">
+        <a href="index.html" class="hover:text-[#0284c7]">Home</a>
+        <a href="products.html" class="hover:text-[#0284c7]">Medicines</a>
+        <a href="cart.html" class="hover:text-[#0284c7]">Cart</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Products Section -->
+  <section class="max-w-6xl mx-auto py-16 px-6">
+    <h1 class="text-3xl font-bold mb-8 text-center text-gray-900">Available Medicines</h1>
+
+    <div id="product-grid" class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"></div>
+  </section>
+
+  <script>
+    // ✅ Medicine data (You can add as many as you want here)
+    const products = [
+      {
+        id: "ivermectin12",
+        name: "Ivermectin 12mg Tablets",
+        brand: "Sun Pharma",
+        composition: "Ivermectin 12mg",
+        price: 13.75,
+        image: "images/ivermectin12.jpg",
+        shortDesc: "Trusted anti-parasitic medication."
+      },
+      {
+        id: "semaglutide7",
+        name: "Semaglutide Tablets 7mg",
+        brand: "Novo Nordisk",
+        composition: "Semaglutide 7mg",
+        price: 25.00,
+        image: "images/semaglutide7.jpg",
+        shortDesc: "Controls blood sugar and supports weight loss."
+      },
+      {
+        id: "semaglutide14",
+        name: "Semaglutide Tablets 14mg",
+        brand: "Novo Nordisk",
+        composition: "Semaglutide 14mg",
+        price: 32.00,
+        image: "images/semaglutide14.jpg",
+        shortDesc: "Higher-dose Semaglutide for advanced control."
+      },
+      {
+        id: "atarax10",
+        name: "Atarax 10mg Tablets",
+        brand: "UCB",
+        composition: "Hydroxyzine Hydrochloride 10mg",
+        price: 12.50,
+        image: "images/atarax10.jpg",
+        shortDesc: "For anxiety, itching, and allergies."
+      },
+      {
+        id: "clobetasolGentamicin",
+        name: "Clobetasol Propionate + Gentamicin Cream",
+        brand: "Glenmark",
+        composition: "Clobetasol Propionate + Gentamicin",
+        price: 14.25,
+        image: "images/clobetasolGentamicin.jpg",
+        shortDesc: "Used for bacterial and skin infections."
+      }
+    ];
+
+    // ✅ Display all products dynamically
+    const productGrid = document.getElementById("product-grid");
+    products.forEach(product => {
+      productGrid.innerHTML += `
+        <div class="bg-white rounded-2xl shadow hover:shadow-lg transition p-4 text-center border">
+          <img src="${product.image}" alt="${product.name}" class="w-full h-40 object-contain mb-4 rounded-lg">
+          <h3 class="font-semibold text-lg text-gray-900">${product.name}</h3>
+          <p class="text-sm text-gray-600 mt-1">${product.shortDesc}</p>
+          <p class="text-[#0284c7] font-semibold mt-2">€${product.price.toFixed(2)}</p>
+          <button onclick="viewDetails('${product.id}')" class="mt-4 px-6 py-2 bg-[#0284c7] text-white rounded-lg hover:bg-blue-700">
+            View Details
+          </button>
+        </div>`;
+    });
+
+    // ✅ Navigate to product detail page
+    function viewDetails(id) {
+      window.location.href = `product-details.html?id=${id}`;
+    }
+  </script>
+
+</body>
+</html>
