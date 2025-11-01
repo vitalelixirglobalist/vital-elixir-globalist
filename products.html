@@ -1,103 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Medicines – Vital Elixir Globalist</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products – Vital Elixir Globalist</title>
+  <meta name="description" content="Explore genuine medicines by category – Tablets, Creams, Drops, Sprays, and Injections." />
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: { colors: { brand: '#0284c7' } }
+      }
+    }
+  </script>
 </head>
 
-<body class="bg-gray-50 text-gray-800">
-
+<body class="text-gray-800 bg-gray-50">
   <!-- Header -->
   <header class="bg-white shadow sticky top-0 z-50">
     <div class="max-w-6xl mx-auto flex justify-between items-center px-4 py-3">
-      <div class="text-2xl font-bold text-[#0284c7]">Vital Elixir Globalist</div>
+      <div class="text-2xl font-bold text-brand">Vital Elixir Globalist</div>
       <nav class="hidden md:flex gap-6 text-sm font-medium">
-        <a href="index.html" class="hover:text-[#0284c7]">Home</a>
-        <a href="products.html" class="hover:text-[#0284c7]">Medicines</a>
-        <a href="cart.html" class="hover:text-[#0284c7]">Cart</a>
+        <a href="index.html" class="hover:text-brand">Home</a>
+        <a href="products.html" class="text-brand font-semibold">Products</a>
+        <a href="cart.html" class="hover:text-brand">Cart</a>
+        <a href="index.html#contact" class="hover:text-brand">Contact</a>
       </nav>
     </div>
   </header>
 
-  <!-- Products Section -->
-  <section class="max-w-6xl mx-auto py-16 px-6">
-    <h1 class="text-3xl font-bold mb-8 text-center text-gray-900">Available Medicines</h1>
-
-    <div id="product-grid" class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"></div>
+  <!-- Page Title -->
+  <section class="text-center py-10 bg-gradient-to-b from-blue-50 to-white">
+    <h1 class="text-4xl font-extrabold text-gray-900">Our Medicines</h1>
+    <p class="text-gray-600 mt-2">Explore by category and add to your cart for quick checkout</p>
   </section>
 
+  <!-- Search & Category Filter -->
+  <div class="max-w-6xl mx-auto px-4 mb-8 flex flex-col md:flex-row md:justify-between md:items-center gap-4">
+    <input
+      id="searchBar"
+      type="text"
+      placeholder="Search medicines..."
+      class="w-full md:w-1/2 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand"
+    />
+    <select
+      id="categoryFilter"
+      class="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand"
+    >
+      <option value="all">All Categories</option>
+      <option value="Tablets & Capsules">Tablets & Capsules</option>
+      <option value="Creams & Ointments">Creams & Ointments</option>
+      <option value="Drops">Drops</option>
+      <option value="Sprays">Sprays</option>
+      <option value="Injections & Vials">Injections & Vials</option>
+    </select>
+  </div>
+
+  <!-- Product Grid -->
+  <div id="productGrid" class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 pb-16"></div>
+
+  <!-- Footer -->
+  <footer class="py-8 bg-white border-t text-center text-gray-600 text-sm">
+    © <span id="year"></span> Vital Elixir Globalist. All rights reserved.
+  </footer>
+
+  <!-- Script -->
   <script>
-    // ✅ Medicine data (You can add as many as you want here)
-    const products = [
-      {
-        id: "ivermectin12",
-        name: "Ivermectin 12mg Tablets",
-        brand: "Sun Pharma",
-        composition: "Ivermectin 12mg",
-        price: 13.75,
-        image: "images/ivermectin12.jpg",
-        shortDesc: "Trusted anti-parasitic medication."
-      },
-      {
-        id: "semaglutide7",
-        name: "Semaglutide Tablets 7mg",
-        brand: "Novo Nordisk",
-        composition: "Semaglutide 7mg",
-        price: 25.00,
-        image: "images/semaglutide7.jpg",
-        shortDesc: "Controls blood sugar and supports weight loss."
-      },
-      {
-        id: "semaglutide14",
-        name: "Semaglutide Tablets 14mg",
-        brand: "Novo Nordisk",
-        composition: "Semaglutide 14mg",
-        price: 32.00,
-        image: "images/semaglutide14.jpg",
-        shortDesc: "Higher-dose Semaglutide for advanced control."
-      },
-      {
-        id: "atarax10",
-        name: "Atarax 10mg Tablets",
-        brand: "UCB",
-        composition: "Hydroxyzine Hydrochloride 10mg",
-        price: 12.50,
-        image: "images/atarax10.jpg",
-        shortDesc: "For anxiety, itching, and allergies."
-      },
-      {
-        id: "clobetasolGentamicin",
-        name: "Clobetasol Propionate + Gentamicin Cream",
-        brand: "Glenmark",
-        composition: "Clobetasol Propionate + Gentamicin",
-        price: 14.25,
-        image: "images/clobetasolGentamicin.jpg",
-        shortDesc: "Used for bacterial and skin infections."
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const productGrid = document.getElementById('productGrid');
+    const searchBar = document.getElementById('searchBar');
+    const categoryFilter = document.getElementById('categoryFilter');
+    let allProducts = [];
+
+    // Load Products
+    async function loadProducts() {
+      try {
+        const res = await fetch('./products-data.json');
+        allProducts = await res.json();
+        displayProducts(allProducts);
+      } catch (err) {
+        console.error('Error loading product data:', err);
+        productGrid.innerHTML = `<p class='text-red-600 col-span-full text-center'>⚠️ Unable to load products. Please check your JSON file.</p>`;
       }
-    ];
-
-    // ✅ Display all products dynamically
-    const productGrid = document.getElementById("product-grid");
-    products.forEach(product => {
-      productGrid.innerHTML += `
-        <div class="bg-white rounded-2xl shadow hover:shadow-lg transition p-4 text-center border">
-          <img src="${product.image}" alt="${product.name}" class="w-full h-40 object-contain mb-4 rounded-lg">
-          <h3 class="font-semibold text-lg text-gray-900">${product.name}</h3>
-          <p class="text-sm text-gray-600 mt-1">${product.shortDesc}</p>
-          <p class="text-[#0284c7] font-semibold mt-2">€${product.price.toFixed(2)}</p>
-          <button onclick="viewDetails('${product.id}')" class="mt-4 px-6 py-2 bg-[#0284c7] text-white rounded-lg hover:bg-blue-700">
-            View Details
-          </button>
-        </div>`;
-    });
-
-    // ✅ Navigate to product detail page
-    function viewDetails(id) {
-      window.location.href = `product-details.html?id=${id}`;
     }
-  </script>
 
+    // Display Products
+    function displayProducts(products) {
+      productGrid.innerHTML = '';
+      if (products.length === 0) {
+        productGrid.innerHTML = `<p class='text-gray-500 text-center col-span-full'>No products found.</p>`;
+        return;
+      }
+
+      products.forEach((p) => {
+        const card = document.createElement('div');
+        card.className = 'bg-white border rounded-xl p-4 shadow-sm hover:shadow-lg transition flex flex-col';
+        card.innerHTML = `
+          <img src="${p.image}" alt="${p.name}" class="w-full h-40 object-cover rounded-lg mb-4">
+          <h3 class="font-semibold text-lg">${p.name}</h3>
+          <p class="text-sm text-gray-600">${p.composition}</p>
+          <p class="text-xs text-gray-500">${p.use}</p>
+          <div class="mt-2 text-sm font-medium text-gray-800">
+            💵 Export: $${p.usd} USD<br>
+            🇮🇳 Domestic: ₹${p.inr} INR
+          </div>
+          <button class="mt-4 bg-brand text-white px-4 py-2 rounded-lg hover:bg-sky-700 w-full">Add to Cart</button>
+        `;
+        productGrid.appendChild(card);
+      });
+    }
+
+    // Filter Function
+    function filterProducts() {
+      const query = searchBar.value.toLowerCase();
+      const category = categoryFilter.value;
+      const filtered = allProducts.filter((p) => {
+        const matchesSearch =
+          p.name.toLowerCase().includes(query) ||
+          p.composition.toLowerCase().includes(query);
+        const matchesCategory = category === 'all' || p.category === category;
+        return matchesSearch && matchesCategory;
+      });
+      displayProducts(filtered);
+    }
+
+    // Event Listeners
+    searchBar.addEventListener('input', filterProducts);
+    categoryFilter.addEventListener('change', filterProducts);
+
+    // Initialize
+    loadProducts();
+  </script>
 </body>
 </html>
