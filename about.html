@@ -108,5 +108,12 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+  <script>
+  async function loadHeader() {
+    const header = await fetch('header.html');
+    document.getElementById('header-placeholder').innerHTML = await header.text();
+  }
+  loadHeader();
+</script>
 </body>
 </html>
