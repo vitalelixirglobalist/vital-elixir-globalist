@@ -16,7 +16,53 @@
 
 <body class="bg-gray-50 text-gray-800">
 
- <div id="header-placeholder"></div>
+  <!-- Header with Mobile Menu -->
+  <header class="bg-white shadow sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto flex justify-between items-center px-4 py-3">
+      <!-- Logo -->
+      <div class="text-2xl font-bold text-brand">Vital Elixir Globalist</div>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex gap-6 text-sm font-medium">
+        <a href="index.html" class="hover:text-brand">Home</a>
+        <a href="products.html" class="hover:text-brand">Products</a>
+        <a href="cart.html" class="hover:text-brand">Cart</a>
+        <a href="about.html" class="text-brand font-semibold">About Us</a>
+        <a href="index.html#contact" class="hover:text-brand">Contact</a>
+      </nav>
+
+      <!-- Hamburger Button (Mobile View) -->
+      <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Sidebar (Mobile Menu) -->
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-gray-800 bg-opacity-70 z-40">
+      <div id="sidebar"
+           class="w-64 bg-white h-full p-6 shadow-lg transform transition-transform duration-300 translate-x-full right-0 absolute">
+        <!-- Close Button -->
+        <button id="close-menu" class="text-gray-600 hover:text-brand mb-6">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+
+        <!-- Navigation Links -->
+        <nav class="flex flex-col gap-4 text-gray-700 text-lg font-medium">
+          <a href="index.html" class="hover:text-brand">🏠 Home</a>
+          <a href="products.html" class="hover:text-brand">💊 Medicines</a>
+          <a href="cart.html" class="hover:text-brand">🛒 Cart</a>
+          <a href="about.html" class="hover:text-brand">👥 About Us</a>
+          <a href="index.html#contact" class="hover:text-brand">📞 Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
 
   <!-- Page Title -->
   <section class="text-center py-12 bg-gradient-to-b from-blue-50 to-white">
@@ -40,7 +86,7 @@
           <h3 class="text-lg font-semibold">Kashyak L Sahu</h3>
           <p class="text-sm mb-2">CEO, Strategic Leader</p>
           <p class="text-sm">✉️ <a href="mailto:Kashyaksahu@VitalElixirglobalist.com" class="underline hover:text-gray-100">Kashyaksahu@VitalElixirglobalist.com</a></p>
-          <p class="text-sm">📞 +91 827-559-5850</p>
+          <p class="text-sm">📞 +91 82755-95850</p>
         </div>
       </div>
 
@@ -51,7 +97,7 @@
           <h3 class="text-lg font-semibold">Yash L Sahu</h3>
           <p class="text-sm mb-2">Chief Data Technical</p>
           <p class="text-sm">✉️ <a href="mailto:Yashsahu@VitalElixirglobalist.com" class="underline hover:text-gray-100">Yashsahu@VitalElixirglobalist.com</a></p>
-          <p class="text-sm">📞 +91 866-858-4305</p>
+          <p class="text-sm">📞 +91 866858-4305</p>
         </div>
       </div>
 
@@ -62,7 +108,7 @@
           <h3 class="text-lg font-semibold">Kunal Parate</h3>
           <p class="text-sm mb-2">Marketing & Sales Head</p>
           <p class="text-sm">✉️ <a href="mailto:Kunal.medsexport@vitalelixirglobalist.com" class="underline hover:text-gray-100">Kunal.medsexport@vitalelixirglobalist.com</a></p>
-          <p class="text-sm">📞 +91 965-786-2462</p>
+          <p class="text-sm">📞 +91 965786-2462</p>
         </div>
       </div>
 
@@ -73,7 +119,7 @@
           <h3 class="text-lg font-semibold">Pragati Jaiswal</h3>
           <p class="text-sm mb-2">Customer Relationship Manager</p>
           <p class="text-sm">✉️ <a href="mailto:Pragati.meds.help@VitalElixirglobalist.com" class="underline hover:text-gray-100">Pragati.meds.help@VitalElixirglobalist.com</a></p>
-          <p class="text-sm">📞 +91 965-786-1804</p>
+          <p class="text-sm">📞 +91 965786-1804</p>
         </div>
       </div>
 
@@ -89,9 +135,9 @@
 
       <!-- Member 6 -->
       <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition">
-        <img src="images/asfi.jpg" alt="Dr.Asfi Shirin" class="w-full h-64 object-cover">
+        <img src="images/asfi.jpg" alt="Dr. Asfi Shirin" class="w-full h-64 object-cover">
         <div class="bg-brand text-white p-5">
-          <h3 class="text-lg font-semibold">Dr.Asfi Shirin</h3>
+          <h3 class="text-lg font-semibold">Dr. Asfi Shirin</h3>
           <p class="text-sm mb-2">Consultant, Practitioner Doctor</p>
           <p class="text-sm">✉️ <a href="mailto:AsfiShirin@VitalElixirglobalist.com" class="underline hover:text-gray-100">AsfiShirin@VitalElixirglobalist.com</a></p>
         </div>
@@ -106,14 +152,39 @@
   </footer>
 
   <script>
+    // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Hamburger Menu Script
+    document.addEventListener("DOMContentLoaded", () => {
+      const menuBtn = document.getElementById("menu-btn");
+      const closeBtn = document.getElementById("close-menu");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const sidebar = document.getElementById("sidebar");
+
+      if (!menuBtn || !sidebar || !mobileMenu) return;
+
+      // Open sidebar
+      menuBtn.addEventListener("click", () => {
+        mobileMenu.classList.remove("hidden");
+        setTimeout(() => sidebar.classList.remove("translate-x-full"), 10);
+      });
+
+      // Close sidebar
+      closeBtn.addEventListener("click", () => {
+        sidebar.classList.add("translate-x-full");
+        setTimeout(() => mobileMenu.classList.add("hidden"), 300);
+      });
+
+      // Close when clicking outside
+      mobileMenu.addEventListener("click", (e) => {
+        if (e.target === mobileMenu) {
+          sidebar.classList.add("translate-x-full");
+          setTimeout(() => mobileMenu.classList.add("hidden"), 300);
+        }
+      });
+    });
   </script>
-  <script>
-  async function loadHeader() {
-    const header = await fetch('header.html');
-    document.getElementById('header-placeholder').innerHTML = await header.text();
-  }
-  loadHeader();
-</script>
+
 </body>
 </html>
