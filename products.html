@@ -16,8 +16,7 @@
 </head>
 
 <body class="text-gray-800 bg-gray-50">
- <div id="header-placeholder"></div>
-
+  <div id="header-placeholder"></div>
 
   <!-- Page Title -->
   <section class="text-center py-10 bg-gradient-to-b from-blue-50 to-white">
@@ -55,119 +54,121 @@
   </footer>
 
   <!-- Script -->
- <script>
-document.getElementById('year').textContent = new Date().getFullYear();
-
-let allProducts = [];
-const productGrid = document.getElementById('productGrid');
-const searchBar = document.getElementById('searchBar');
-const categoryFilter = document.getElementById('categoryFilter');
-
-async function loadProducts() {
-  const res = await fetch('products-data.json');
-  allProducts = await res.json();
-  displayProducts(allProducts);
-}
-
-function displayProducts(products) {
-  productGrid.innerHTML = '';
-
-  products.forEach((p) => {
-    const card = document.createElement('div');
-    card.className =
-      'bg-white border rounded-xl p-4 shadow-sm hover:shadow-lg transition flex flex-col';
-
-    const dropdownOptions = p.variants
-      .map(
-        (v, i) =>
-          `<option value="${i}">${v.pack}</option>`
-      )
-      .join('');
-
-    card.innerHTML = `
-      <img src="${p.image}" alt="${p.name}" class="w-full h-40 object-contain mb-3 rounded">
-      <h2 class="font-semibold text-lg text-brand">${p.name}</h2>
-      <p class="text-sm text-gray-600">${p.brand}</p>
-      <p class="text-sm text-gray-500 mb-2">${p.composition}</p>
-      <p class="text-sm text-gray-600 mb-1"><strong>Use:</strong> ${p.use}</p>
-      <select class="border mt-2 p-2 rounded w-full text-sm focus:ring-2 focus:ring-brand">
-        <option disabled selected>Order Quantity</option>
-        ${dropdownOptions}
-      </select>
-      <div class="price-display mt-3 text-sm text-gray-700"></div>
-      <button 
-  onclick="addToCart(${JSON.stringify(p)}, this.previousElementSibling.previousElementSibling.selectedIndex - 1)"
-  class="mt-auto bg-brand text-white py-2 px-3 rounded-lg hover:bg-blue-700 transition mt-3">
-  Add to Cart
-</button>
-    `;
-
-    const select = card.querySelector('select');
-    const priceDiv = card.querySelector('.price-display');
-
-    select.addEventListener('change', () => {
-      const variant = p.variants[select.value];
-      priceDiv.innerHTML = `
-        💵 <b>Export:</b> $${variant.price_usd} USD<br>
-        🇮🇳 <b>Domestic:</b> ₹${variant.price_inr} INR
-      `;
-    });
-
-    productGrid.appendChild(card);
-  });
-}
-
-searchBar.addEventListener('input', (e) => {
-  const searchText = e.target.value.toLowerCase();
-  const filtered = allProducts.filter((p) =>
-    p.name.toLowerCase().includes(searchText)
-  );
-  displayProducts(filtered);
-});
-
-categoryFilter.addEventListener('change', (e) => {
-  const cat = e.target.value;
-  if (cat === 'all') displayProducts(allProducts);
-  else {
-    const filtered = allProducts.filter((p) => p.category === cat);
-    displayProducts(filtered);
-  }
-});
-
-loadProducts();
-</script>
   <script>
-// === CART SYSTEM === //
-function addToCart(product, variantIndex) {
-  const cart = JSON.parse(localStorage.getItem('cart')) || [];
-  const selectedVariant = product.variants[variantIndex];
-  
-  const item = {
-    name: product.name,
-    brand: product.brand,
-    pack: selectedVariant.pack,
-    price_usd: selectedVariant.price_usd,
-    price_inr: selectedVariant.price_inr,
-    image: product.image,
-    quantity: 1
-  };
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-  cart.push(item);
-  localStorage.setItem('cart', JSON.stringify(cart));
-  alert(`${product.name} (${selectedVariant.pack}) added to your cart 🛒`);
-}
-</script>
-  <script>
-  async function loadHeader() {
-    const header = await fetch('header.html');
-    document.getElementById('header-placeholder').innerHTML = await header.text();
-  }
-  loadHeader();
-</script>
+    let allProducts = [];
+    const productGrid = document.getElementById('productGrid');
+    const searchBar = document.getElementById('searchBar');
+    const categoryFilter = document.getElementById('categoryFilter');
+
+    async function loadProducts() {
+      const res = await fetch('products-data.json');
+      allProducts = await res.json();
+      displayProducts(allProducts);
+    }
+
+    function displayProducts(products) {
+      productGrid.innerHTML = '';
+      products.forEach((p) => {
+        const card = document.createElement('div');
+        card.className = 'bg-white border rounded-xl p-4 shadow-sm hover:shadow-lg transition flex flex-col';
+
+        const dropdownOptions = p.variants
+          .map((v, i) => `<option value="${i}">${v.pack}</option>`)
+          .join('');
+
+        card.innerHTML = `
+          <img src="${p.image}" alt="${p.name}" class="w-full h-40 object-contain mb-3 rounded">
+          <h2 class="font-semibold text-lg text-brand">${p.name}</h2>
+          <p class="text-sm text-gray-600">${p.brand}</p>
+          <p class="text-sm text-gray-500 mb-2">${p.composition}</p>
+          <p class="text-sm text-gray-600 mb-1"><strong>Use:</strong> ${p.use}</p>
+          <select class="border mt-2 p-2 rounded w-full text-sm focus:ring-2 focus:ring-brand">
+            <option disabled selected>Order Quantity</option>
+            ${dropdownOptions}
+          </select>
+          <div class="price-display mt-3 text-sm text-gray-700"></div>
+          <button 
+            onclick="addToCart(${JSON.stringify(p)}, this.previousElementSibling.previousElementSibling.selectedIndex - 1)"
+            class="mt-auto bg-brand text-white py-2 px-3 rounded-lg hover:bg-blue-700 transition mt-3">
+            Add to Cart
+          </button>
+        `;
+        productGrid.appendChild(card);
+      });
+    }
+
+    function addToCart(product, variantIndex) {
+      if (variantIndex < 0) {
+        alert('Please select a quantity before adding to cart.');
+        return;
+      }
+
+      const selectedVariant = product.variants[variantIndex];
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.push({
+        name: product.name,
+        brand: product.brand,
+        pack: selectedVariant.pack,
+        price_usd: selectedVariant.price_usd,
+        price_inr: selectedVariant.price_inr,
+        image: product.image
+      });
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(`${product.name} (${selectedVariant.pack}) added to cart!`);
+    }
+
+    // Search + Filter Logic
+    searchBar.addEventListener('input', () => filterProducts());
+    categoryFilter.addEventListener('change', () => filterProducts());
+
+    function filterProducts() {
+      const query = searchBar.value.toLowerCase();
+      const category = categoryFilter.value;
+      const filtered = allProducts.filter(p =>
+        (category === 'all' || p.category === category) &&
+        (p.name.toLowerCase().includes(query) || p.brand.toLowerCase().includes(query))
+      );
+      displayProducts(filtered);
+    }
+
+    loadProducts();
+
+    // ✅ Load header and initialize hamburger menu
+    async function loadHeader() {
+      const header = await fetch('header.html');
+      document.getElementById('header-placeholder').innerHTML = await header.text();
+
+      const menuBtn = document.getElementById('menu-btn');
+      const closeBtn = document.getElementById('close-menu');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const sidebar = document.getElementById('sidebar');
+
+      if (!menuBtn || !sidebar || !mobileMenu) return;
+
+      // Open sidebar
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.remove('hidden');
+        setTimeout(() => sidebar.classList.remove('translate-x-full'), 10);
+      });
+
+      // Close sidebar
+      closeBtn.addEventListener('click', () => {
+        sidebar.classList.add('translate-x-full');
+        setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+      });
+
+      // Click outside to close
+      mobileMenu.addEventListener('click', (e) => {
+        if (e.target === mobileMenu) {
+          sidebar.classList.add('translate-x-full');
+          setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+        }
+      });
+    }
+
+    loadHeader();
+  </script>
 </body>
 </html>
-
-
-
-
-
