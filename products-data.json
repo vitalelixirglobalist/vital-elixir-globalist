@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Ivermectin 12mg Tablets",
+    "composition": "Ivermectin 12mg",
+    "use": "Used for treating parasitic infections and scabies",
+    "category": "Tablets & Capsules",
+    "usd": 15,
+    "inr": 4000,
+    "image": "images/ivermectin.jpg"
+  },
+  {
+    "name": "Semaglutide 7mg Tablets",
+    "composition": "Semaglutide 7mg",
+    "use": "Used for Type 2 diabetes and weight control",
+    "category": "Tablets & Capsules",
+    "usd": 18,
+    "inr": 5200,
+    "image": "images/semaglutide.jpg"
+  },
+  {
+    "name": "Tretinoin Cream 0.1%",
+    "composition": "Tretinoin 0.1%",
+    "use": "Used for acne treatment and skin rejuvenation",
+    "category": "Creams & Ointments",
+    "usd": 10,
+    "inr": 3200,
+    "image": "images/tretinoin.jpg"
+  },
+  {
+    "name": "Minoxidil Solution 5%",
+    "composition": "Minoxidil Topical 5%",
+    "use": "Used for hair regrowth and hair loss treatment",
+    "category": "Drops",
+    "usd": 12,
+    "inr": 3600,
+    "image": "images/minoxidil.jpg"
+  },
+  {
+    "name": "Millennium Stud 5000 Spray",
+    "composition": "Lidocaine Topical 10%",
+    "use": "Used to delay premature ejaculation",
+    "category": "Sprays",
+    "usd": 8,
+    "inr": 2800,
+    "image": "images/millennium.jpg"
+  }
+]
