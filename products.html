@@ -157,8 +157,16 @@ function addToCart(product, variantIndex) {
   alert(`${product.name} (${selectedVariant.pack}) added to your cart 🛒`);
 }
 </script>
+  <script>
+  async function loadHeader() {
+    const header = await fetch('header.html');
+    document.getElementById('header-placeholder').innerHTML = await header.text();
+  }
+  loadHeader();
+</script>
 </body>
 </html>
+
 
 
 
