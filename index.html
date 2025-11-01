@@ -10,15 +10,14 @@
     tailwind.config = { theme: { extend: { colors: { brand: '#0284c7' } } } }
   </script>
   <style>
-  html {
-    scroll-behavior: smooth;
-  }
-</style>
+    html { scroll-behavior: smooth; }
+  </style>
 </head>
 
-<body class="text-gray-800">
-  <div id="header-placeholder"></div>
+<body class="text-gray-800 bg-gray-50">
 
+  <!-- Header Placeholder -->
+  <div id="header-placeholder"></div>
 
   <!-- Hero -->
   <section class="bg-gradient-to-b from-blue-50 to-white py-16 md:py-24 text-center">
@@ -48,12 +47,10 @@
           <h3 class="font-semibold text-xl text-brand">Sourcing & Verification</h3>
           <p class="mt-2 text-sm text-gray-600">Genuine suppliers, batch verification, and expiry validation.</p>
         </div>
-
         <div class="p-6 border rounded-2xl shadow-sm hover:shadow-lg transition">
           <h3 class="font-semibold text-xl text-brand">Documentation</h3>
           <p class="mt-2 text-sm text-gray-600">Proforma invoices, COA (if applicable), export paperwork.</p>
         </div>
-
         <div class="p-6 border rounded-2xl shadow-sm hover:shadow-lg transition">
           <h3 class="font-semibold text-xl text-brand">Packaging & Delivery</h3>
           <p class="mt-2 text-sm text-gray-600">Gift-box dispatch, customs clearance, and insured shipping.</p>
@@ -117,7 +114,8 @@
         <p class="mt-2 text-gray-600">
           Email: Kashyaksahu@vitalelixirglobalist.com<br />
           Phone: +91-8275595850<br />
-          Address: House  no-15A,Godhani Rly, Maa Jagdamba nagri, collector colony, near Prasad Vihar, Godhani-440023
+          Address: House no-15A, Godhani Rly, Maa Jagdamba nagri, collector colony,<br />
+          near Prasad Vihar, Godhani-440023
         </p>
       </div>
       <div>
@@ -130,45 +128,45 @@
     </div>
   </footer>
 
-  <script> document.getElementById('year').textContent = new Date().getFullYear(); </script>
-  
-</footer>
   <script>
-  const menuBtn = document.getElementById('menu-btn');
-  const closeBtn = document.getElementById('close-menu');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const sidebar = document.getElementById('sidebar');
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Open sidebar
-  menuBtn.addEventListener('click', () => {
-    mobileMenu.classList.remove('hidden');
-    setTimeout(() => sidebar.classList.remove('-translate-x-full'), 10);
-  });
+    // Load Header and Initialize Menu
+    async function loadHeader() {
+      const header = await fetch('header.html');
+      document.getElementById('header-placeholder').innerHTML = await header.text();
 
-  // Close sidebar
-  closeBtn.addEventListener('click', () => {
-    sidebar.classList.add('-translate-x-full');
-    setTimeout(() => mobileMenu.classList.add('hidden'), 300);
-  });
+      // Initialize menu only after header loads
+      const menuBtn = document.getElementById('menu-btn');
+      const closeBtn = document.getElementById('close-menu');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const sidebar = document.getElementById('sidebar');
 
-  // Click outside to close
-  mobileMenu.addEventListener('click', (e) => {
-    if (e.target === mobileMenu) {
-      sidebar.classList.add('-translate-x-full');
-      setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+      if (!menuBtn || !sidebar || !mobileMenu) return;
+
+      // Open sidebar
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.remove('hidden');
+        setTimeout(() => sidebar.classList.remove('translate-x-full'), 10);
+      });
+
+      // Close sidebar
+      closeBtn.addEventListener('click', () => {
+        sidebar.classList.add('translate-x-full');
+        setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+      });
+
+      // Click outside to close
+      mobileMenu.addEventListener('click', (e) => {
+        if (e.target === mobileMenu) {
+          sidebar.classList.add('translate-x-full');
+          setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+        }
+      });
     }
-  });
-</script>
-  <script>
-  async function loadHeader() {
-    const header = await fetch('header.html');
-    document.getElementById('header-placeholder').innerHTML = await header.text();
-  }
-  loadHeader();
-</script>
+
+    loadHeader();
+  </script>
 </body>
 </html>
-
-
-
-
