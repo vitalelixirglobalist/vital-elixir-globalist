@@ -70,6 +70,7 @@
 
     function displayProducts(products) {
       productGrid.innerHTML = '';
+
       products.forEach((p) => {
         const card = document.createElement('div');
         card.className = 'bg-white border rounded-xl p-4 shadow-sm hover:shadow-lg transition flex flex-col';
@@ -84,7 +85,7 @@
           <p class="text-sm text-gray-600">${p.brand}</p>
           <p class="text-sm text-gray-500 mb-2">${p.composition}</p>
           <p class="text-sm text-gray-600 mb-1"><strong>Use:</strong> ${p.use}</p>
-          <select class="border mt-2 p-2 rounded w-full text-sm focus:ring-2 focus:ring-brand">
+          <select class="variantSelect border mt-2 p-2 rounded w-full text-sm focus:ring-2 focus:ring-brand">
             <option disabled selected>Order Quantity</option>
             ${dropdownOptions}
           </select>
@@ -95,6 +96,21 @@
             Add to Cart
           </button>
         `;
+
+        const select = card.querySelector('.variantSelect');
+        const priceDisplay = card.querySelector('.price-display');
+
+        // ✅ Show price when variant selected
+        select.addEventListener('change', (e) => {
+          const variant = p.variants[e.target.value];
+          priceDisplay.innerHTML = `
+            <div class="mt-2 p-2 border border-blue-100 rounded-lg bg-blue-50 text-sm">
+              💵 <span class="font-medium text-brand">USD ${variant.price_usd}</span> 
+              | 🇮🇳 <span class="font-medium text-brand">INR ${variant.price_inr}</span>
+            </div>
+          `;
+        });
+
         productGrid.appendChild(card);
       });
     }
@@ -119,7 +135,7 @@
       alert(`${product.name} (${selectedVariant.pack}) added to cart!`);
     }
 
-    // Search + Filter Logic
+    // 🔍 Search + Filter
     searchBar.addEventListener('input', () => filterProducts());
     categoryFilter.addEventListener('change', () => filterProducts());
 
@@ -135,7 +151,7 @@
 
     loadProducts();
 
-    // ✅ Load header and initialize hamburger menu
+    // ✅ Load header + mobile menu functionality
     async function loadHeader() {
       const header = await fetch('header.html');
       document.getElementById('header-placeholder').innerHTML = await header.text();
@@ -147,19 +163,16 @@
 
       if (!menuBtn || !sidebar || !mobileMenu) return;
 
-      // Open sidebar
       menuBtn.addEventListener('click', () => {
         mobileMenu.classList.remove('hidden');
         setTimeout(() => sidebar.classList.remove('translate-x-full'), 10);
       });
 
-      // Close sidebar
       closeBtn.addEventListener('click', () => {
         sidebar.classList.add('translate-x-full');
         setTimeout(() => mobileMenu.classList.add('hidden'), 300);
       });
 
-      // Click outside to close
       mobileMenu.addEventListener('click', (e) => {
         if (e.target === mobileMenu) {
           sidebar.classList.add('translate-x-full');
