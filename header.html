@@ -17,20 +17,20 @@
     <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
       <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M4 6h16M4 12h16m-7 6h7" />
+              d="M4 6h16M4 12h16m-7 6h7" />
       </svg>
     </button>
   </div>
 
   <!-- Sidebar Menu (Mobile View, slides from right) -->
   <div id="mobile-menu" class="hidden fixed inset-0 bg-gray-800 bg-opacity-70 z-50">
-    <div class="w-64 bg-white h-full p-6 shadow-lg transform transition-transform duration-300 translate-x-full right-0 absolute"
-         id="sidebar">
+    <div id="sidebar"
+         class="w-64 bg-white h-full p-6 shadow-lg transform transition-transform duration-300 translate-x-full right-0 absolute">
       <!-- Close Button -->
       <button id="close-menu" class="text-gray-600 hover:text-brand mb-6">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M6 18L18 6M6 6l12 12"/>
+                d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
 
@@ -46,29 +46,34 @@
   </div>
 </header>
 
+<!-- JS for Hamburger Menu -->
 <script>
-  const menuBtn = document.getElementById('menu-btn');
-  const closeBtn = document.getElementById('close-menu');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const sidebar = document.getElementById('sidebar');
+  document.addEventListener("DOMContentLoaded", () => {
+    const menuBtn = document.getElementById('menu-btn');
+    const closeBtn = document.getElementById('close-menu');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const sidebar = document.getElementById('sidebar');
 
-  // Open sidebar
-  menuBtn?.addEventListener('click', () => {
-    mobileMenu.classList.remove('hidden');
-    setTimeout(() => sidebar.classList.remove('translate-x-full'), 10);
-  });
+    if (!menuBtn || !sidebar || !mobileMenu) return;
 
-  // Close sidebar
-  closeBtn?.addEventListener('click', () => {
-    sidebar.classList.add('translate-x-full');
-    setTimeout(() => mobileMenu.classList.add('hidden'), 300);
-  });
+    // Open sidebar
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.remove('hidden');
+      setTimeout(() => sidebar.classList.remove('translate-x-full'), 10);
+    });
 
-  // Click outside to close
-  mobileMenu?.addEventListener('click', (e) => {
-    if (e.target === mobileMenu) {
+    // Close sidebar
+    closeBtn.addEventListener('click', () => {
       sidebar.classList.add('translate-x-full');
       setTimeout(() => mobileMenu.classList.add('hidden'), 300);
-    }
+    });
+
+    // Close when clicking outside
+    mobileMenu.addEventListener('click', (e) => {
+      if (e.target === mobileMenu) {
+        sidebar.classList.add('translate-x-full');
+        setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+      }
+    });
   });
 </script>
