@@ -3,135 +3,118 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Cart – Vital Elixir Globalist</title>
+  <title>Cart – Vital Elixir Globalist</title>
+  <meta name="description" content="Review your selected medicines and proceed to checkout." />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    tailwind.config = { theme: { extend: { colors: { brand: '#0284c7' } } } };
+    tailwind.config = {
+      theme: {
+        extend: { colors: { brand: '#0284c7' } }
+      }
+    }
   </script>
+  <style>
+    html { scroll-behavior: smooth; }
+  </style>
 </head>
 
-<body class="bg-gray-50 text-gray-800">
+<body class="text-gray-800 bg-gray-50">
+  <!-- Header Placeholder -->
+  <div id="header-placeholder"></div>
 
-  <!-- Header with Mobile Menu -->
-  <header class="bg-white shadow sticky top-0 z-50">
-    <div class="max-w-6xl mx-auto flex justify-between items-center px-4 py-3">
-      <!-- Logo -->
-      <div class="text-2xl font-bold text-brand">Vital Elixir Globalist</div>
+  <section class="max-w-6xl mx-auto px-4 py-10">
+    <h1 class="text-3xl font-bold mb-6">Your Cart</h1>
+    <div id="cartItems" class="space-y-4"></div>
+    <div id="cartSummary" class="mt-8 text-lg font-medium"></div>
 
-      <!-- Desktop Navigation -->
-      <nav class="hidden md:flex gap-6 text-sm font-medium">
-        <a href="index.html" class="hover:text-brand">Home</a>
-        <a href="products.html" class="hover:text-brand">Products</a>
-        <a href="cart.html" class="text-brand font-semibold">Cart</a>
-        <a href="about.html" class="hover:text-brand">About Us</a>
-        <a href="index.html#contact" class="hover:text-brand">Contact</a>
-      </nav>
-
-      <!-- Hamburger Button (Mobile View) -->
-      <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
-        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M4 6h16M4 12h16m-7 6h7" />
-        </svg>
-      </button>
+    <!-- Customer Details -->
+    <div class="mt-10 bg-white p-6 rounded-xl shadow">
+      <h2 class="text-2xl font-semibold mb-4">Customer Details</h2>
+      <form id="checkoutForm" class="grid md:grid-cols-2 gap-4">
+        <input type="text" id="customerName" placeholder="Full Name" required class="border rounded-lg px-3 py-2" />
+        <input type="email" id="customerEmail" placeholder="Email" required class="border rounded-lg px-3 py-2" />
+        <input type="text" id="customerPhone" placeholder="Phone / WhatsApp" class="border rounded-lg px-3 py-2" />
+        <input type="text" id="customerCountry" placeholder="Country" class="border rounded-lg px-3 py-2" />
+        <textarea id="customerAddress" rows="3" placeholder="Address" class="md:col-span-2 border rounded-lg px-3 py-2"></textarea>
+        <button type="button" id="payButton" class="md:col-span-2 mt-4 bg-brand text-white px-6 py-3 rounded-xl hover:bg-blue-700">Proceed to Payment</button>
+      </form>
     </div>
-
-    <!-- Sidebar (Mobile Menu) -->
-    <div id="mobile-menu" class="hidden fixed inset-0 bg-gray-800 bg-opacity-70 z-40">
-      <div id="sidebar"
-           class="w-64 bg-white h-full p-6 shadow-lg transform transition-transform duration-300 translate-x-full right-0 absolute">
-        <!-- Close Button -->
-        <button id="close-menu" class="text-gray-600 hover:text-brand mb-6">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-
-        <!-- Navigation Links -->
-        <nav class="flex flex-col gap-4 text-gray-700 text-lg font-medium">
-          <a href="index.html" class="hover:text-brand">🏠 Home</a>
-          <a href="products.html" class="hover:text-brand">💊 Medicines</a>
-          <a href="cart.html" class="hover:text-brand">🛒 Cart</a>
-          <a href="about.html" class="hover:text-brand">👥 About Us</a>
-          <a href="index.html#contact" class="hover:text-brand">📞 Contact</a>
-        </nav>
-      </div>
-    </div>
-  </header>
-
-  <!-- Page Title -->
-  <section class="text-center py-10 bg-gradient-to-b from-blue-50 to-white">
-    <h1 class="text-4xl font-extrabold text-gray-900">Your Shopping Cart</h1>
-    <p class="text-gray-600 mt-2">Review your selected medicines and proceed to checkout</p>
   </section>
 
-  <!-- Cart Section -->
-  <main class="max-w-6xl mx-auto px-4 pb-20">
-    <div id="cartItems" class="space-y-6 mt-8"></div>
+  <!-- Razorpay script -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
-    <!-- Total Section -->
-    <div id="cartTotal" class="mt-10 text-right border-t pt-6 text-lg font-semibold text-gray-700 hidden">
-      Total: <span id="totalUSD" class="text-brand"></span> 💵 | <span id="totalINR" class="text-brand"></span> 🇮🇳
-    </div>
-
-    <div id="emptyCartMsg" class="text-center text-gray-600 mt-20 hidden">
-      <p>Your cart is empty 🛍️</p>
-      <a href="products.html" class="text-brand hover:underline mt-4 inline-block">Browse Medicines</a>
-    </div>
-  </main>
-
-  <!-- Footer -->
-  <footer class="py-8 bg-white border-t text-center text-gray-600 text-sm">
-    © <span id="year"></span> Vital Elixir Globalist. All rights reserved.
-  </footer>
-
-  <!-- Scripts -->
   <script>
-    // Footer year
-    document.getElementById('year').textContent = new Date().getFullYear();
+    // Load header and menu functionality
+    async function loadHeader() {
+      const header = await fetch('header.html');
+      document.getElementById('header-placeholder').innerHTML = await header.text();
 
-    // Cart Logic
+      const menuBtn = document.getElementById('menu-btn');
+      const closeBtn = document.getElementById('close-menu');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const sidebar = document.getElementById('sidebar');
+
+      if (!menuBtn || !sidebar || !mobileMenu) return;
+
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.remove('hidden');
+        setTimeout(() => sidebar.classList.remove('translate-x-full'), 10);
+      });
+      closeBtn.addEventListener('click', () => {
+        sidebar.classList.add('translate-x-full');
+        setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+      });
+      mobileMenu.addEventListener('click', (e) => {
+        if (e.target === mobileMenu) {
+          sidebar.classList.add('translate-x-full');
+          setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+        }
+      });
+    }
+    loadHeader();
+
+    // Display cart items from localStorage
     function renderCart() {
       const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      const cartItems = document.getElementById('cartItems');
-      const totalSection = document.getElementById('cartTotal');
-      const emptyMsg = document.getElementById('emptyCartMsg');
-      let totalUSD = 0;
+      const cartContainer = document.getElementById('cartItems');
+      const summary = document.getElementById('cartSummary');
+      cartContainer.innerHTML = '';
       let totalINR = 0;
+      let totalUSD = 0;
 
       if (cart.length === 0) {
-        cartItems.innerHTML = '';
-        totalSection.classList.add('hidden');
-        emptyMsg.classList.remove('hidden');
+        cartContainer.innerHTML = '<p>Your cart is empty.</p>';
+        summary.innerHTML = '';
         return;
       }
 
-      emptyMsg.classList.add('hidden');
-      totalSection.classList.remove('hidden');
-
-      cartItems.innerHTML = cart.map((item, i) => {
-        totalUSD += item.price_usd;
+      cart.forEach((item, index) => {
         totalINR += item.price_inr;
-
-        return `
-          <div class="bg-white shadow rounded-xl p-4 flex items-center gap-4">
-            <img src="${item.image}" alt="${item.name}" class="w-20 h-20 object-contain rounded">
-            <div class="flex-1">
-              <h2 class="font-semibold text-lg text-brand">${item.name}</h2>
-              <p class="text-sm text-gray-600">${item.brand} – ${item.pack}</p>
-              <p class="text-sm text-gray-500 mt-1">💵 $${item.price_usd} USD | 🇮🇳 ₹${item.price_inr} INR</p>
+        totalUSD += item.price_usd;
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'flex items-center p-4 bg-white rounded-lg shadow justify-between';
+        itemDiv.innerHTML = `
+          <div class="flex items-center gap-4">
+            <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-contain rounded" />
+            <div>
+              <h3 class="font-semibold">${item.name}</h3>
+              <p class="text-sm text-gray-500">${item.pack}</p>
             </div>
-            <button onclick="removeFromCart(${i})" class="text-red-500 hover:underline text-sm">Remove</button>
+          </div>
+          <div class="text-sm text-right">
+            <p>USD ${item.price_usd}</p>
+            <p>INR ${item.price_inr}</p>
+            <button class="mt-1 text-red-500 text-xs" onclick="removeItem(${index})">Remove</button>
           </div>
         `;
-      }).join('');
-
-      document.getElementById('totalUSD').textContent = '$' + totalUSD.toFixed(2);
-      document.getElementById('totalINR').textContent = '₹' + totalINR.toFixed(0);
+        cartContainer.appendChild(itemDiv);
+      });
+      summary.innerHTML = `Total: <span class="font-bold">USD ${totalUSD.toFixed(2)}</span> | <span class="font-bold">INR ${totalINR.toFixed(2)}</span>`;
     }
 
-    function removeFromCart(index) {
+    // Remove item from cart
+    function removeItem(index) {
       const cart = JSON.parse(localStorage.getItem('cart')) || [];
       cart.splice(index, 1);
       localStorage.setItem('cart', JSON.stringify(cart));
@@ -140,34 +123,62 @@
 
     renderCart();
 
-    // Hamburger Menu Script
-    document.addEventListener("DOMContentLoaded", () => {
-      const menuBtn = document.getElementById("menu-btn");
-      const closeBtn = document.getElementById("close-menu");
-      const mobileMenu = document.getElementById("mobile-menu");
-      const sidebar = document.getElementById("sidebar");
+    // Payment integration
+    document.getElementById('payButton').addEventListener('click', async () => {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      if (cart.length === 0) {
+        alert('Your cart is empty. Please add products before checkout.');
+        return;
+      }
+      // Validate user details
+      const name = document.getElementById('customerName').value.trim();
+      const email = document.getElementById('customerEmail').value.trim();
+      const phone = document.getElementById('customerPhone').value.trim();
+      const country = document.getElementById('customerCountry').value.trim();
+      const address = document.getElementById('customerAddress').value.trim();
+      if (!name || !email) {
+        alert('Please provide your name and email.');
+        return;
+      }
 
-      if (!menuBtn || !sidebar || !mobileMenu) return;
+      // Calculate total amount in INR (paisa)
+      let totalINR = 0;
+      cart.forEach(item => { totalINR += item.price_inr; });
+      const amountPaise = totalINR * 100; // convert to paise
 
-      // Open sidebar
-      menuBtn.addEventListener("click", () => {
-        mobileMenu.classList.remove("hidden");
-        setTimeout(() => sidebar.classList.remove("translate-x-full"), 10);
-      });
+      // Here you would typically create an order on your server and get an order_id
+      // For demo purposes, we skip server call and proceed directly to payment
 
-      // Close sidebar
-      closeBtn.addEventListener("click", () => {
-        sidebar.classList.add("translate-x-full");
-        setTimeout(() => mobileMenu.classList.add("hidden"), 300);
-      });
-
-      // Close when clicking outside
-      mobileMenu.addEventListener("click", (e) => {
-        if (e.target === mobileMenu) {
-          sidebar.classList.add("translate-x-full");
-          setTimeout(() => mobileMenu.classList.add("hidden"), 300);
+      const options = {
+        key: 'RAZORPAY_KEY_ID', // TODO: Replace with your Razorpay key
+        amount: amountPaise,
+        currency: 'INR',
+        name: 'Vital Elixir Globalist',
+        description: 'Purchase of Medicines',
+        image: '',
+        handler: function (response) {
+          // Payment was successful
+          // In a real app, verify payment and send order details to backend
+          alert('Payment successful! ID: ' + response.razorpay_payment_id);
+          // Clear cart
+          localStorage.removeItem('cart');
+          window.location.href = 'thankyou.html';
+        },
+        prefill: {
+          name: name,
+          email: email,
+          contact: phone
+        },
+        notes: {
+          address: address,
+          country: country
+        },
+        theme: {
+          color: '#0284c7'
         }
-      });
+      };
+      const rzp = new Razorpay(options);
+      rzp.open();
     });
   </script>
 </body>
