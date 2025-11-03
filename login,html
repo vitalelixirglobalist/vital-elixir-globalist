@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login – Vital Elixir Globalist</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: { colors: { brand: '#0284c7' } }
+      }
+    }
+  </script>
+</head>
+
+<body class="text-gray-800 bg-gray-50">
+  <div id="header-placeholder"></div>
+  <section class="flex flex-col items-center justify-center min-h-screen px-4">
+    <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
+      <h1 class="text-2xl font-bold mb-4 text-center">Login</h1>
+      <p class="text-sm text-gray-600 mb-6 text-center">Enter your email to access your cart and order history.</p>
+      <form id="loginForm" class="space-y-4">
+        <input type="email" id="loginEmail" placeholder="Email address" required class="w-full border rounded-lg px-3 py-2" />
+        <button type="submit" class="w-full bg-brand text-white px-4 py-2 rounded-lg hover:bg-blue-700">Continue</button>
+      </form>
+    </div>
+  </section>
+
+  <script>
+    // Load header
+    async function loadHeader() {
+      const header = await fetch('header.html');
+      document.getElementById('header-placeholder').innerHTML = await header.text();
+    }
+    loadHeader();
+
+    document.getElementById('loginForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value.trim();
+      if (!email) {
+        alert('Please enter a valid email.');
+        return;
+      }
+      localStorage.setItem('userEmail', email);
+      // Redirect to account page
+      window.location.href = 'my-account.html';
+    });
+  </script>
+</body>
+</html>
