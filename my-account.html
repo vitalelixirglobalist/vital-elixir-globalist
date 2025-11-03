@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Account – Vital Elixir Globalist</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: { colors: { brand: '#0284c7' } }
+      }
+    }
+  </script>
+</head>
+
+<body class="text-gray-800 bg-gray-50">
+  <div id="header-placeholder"></div>
+  <section class="max-w-6xl mx-auto px-4 py-10">
+    <h1 class="text-3xl font-bold mb-6">My Account</h1>
+    <div id="accountInfo" class="mb-8"></div>
+    <h2 class="text-2xl font-semibold mb-4">Order History</h2>
+    <div id="ordersList" class="space-y-4"></div>
+    <button id="logoutBtn" class="mt-8 bg-red-500 text-white px-6 py-2 rounded-lg hover:bg-red-600">Log Out</button>
+  </section>
+
+  <script>
+    // Load header
+    async function loadHeader() {
+      const header = await fetch('header.html');
+      document.getElementById('header-placeholder').innerHTML = await header.text();
+    }
+    loadHeader();
+
+    const userEmail = localStorage.getItem('userEmail');
+    const accountInfoDiv = document.getElementById('accountInfo');
+    const ordersListDiv = document.getElementById('ordersList');
+    if (!userEmail) {
+      // redirect to login if not logged in
+      window.location.href = 'login.html';
+    } else {
+      accountInfoDiv.innerHTML = `<p class="text-lg">Signed in as <span class="font-medium">${userEmail}</span></p>`;
+    }
+
+    function renderOrders() {
+      const ordersData = JSON.parse(localStorage.getItem('orders')) || {};
+      const userOrders = ordersData[userEmail] || [];
+      ordersListDiv.innerHTML = '';
+      if (userOrders.length === 0) {
+        ordersListDiv.innerHTML = '<p>You have no past orders.</p>';
+        return;
+      }
+      userOrders.forEach((order, index) => {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'bg-white p-4 rounded-lg shadow';
+        const itemList = order.items.map(item => `${item.name} (${item.pack})`).join(', ');
+        wrapper.innerHTML = `
+          <p class="font-medium">Order #${index + 1} – <span class="capitalize">${order.status}</span></p>
+          <p class="text-sm text-gray-600">Date: ${new Date(order.date).toLocaleString()}</p>
+          <p class="text-sm text-gray-600">Items: ${itemList}</p>
+          <p class="text-sm text-gray-600">Transaction ID: ${order.orderId || 'N/A'}</p>
+          <p class="text-sm text-gray-600">Tracking ID: ${order.trackingId || 'Not assigned'}</p>
+        `;
+        ordersListDiv.appendChild(wrapper);
+      });
+    }
+
+    renderOrders();
+
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      localStorage.removeItem('userEmail');
+      window.location.href = 'login.html';
+    });
+  </script>
+</body>
+</html>
