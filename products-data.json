@@ -376,5 +376,219 @@
       { "pack": "10 Tablets", "price_usd": 35, "price_inr": 1470 },
       { "pack": "40 Tablets", "price_usd": 119, "price_inr": 5000 }
     ]
+ },
+  {
+    "name": "Oclacitinib Tablets 16 mg",
+    "brand": "Zoetis",
+    "composition": "Oclacitinib Maleate 16 mg",
+    "category": "Veterinary / Other Uses",
+    "use": "Used to treat allergic dermatitis and control itching in dogs.",
+    "image": "images/oclacitinib.jpg",
+    "variants": [
+      { "pack": "10 Tablets", "price_usd": 35, "price_inr": 2975 },
+      { "pack": "40 Tablets", "price_usd": 119, "price_inr": 10115 }
+    ]
+  },
+  {
+    "name": "Leveteracitam 500 mg (Keppra Generic)",
+    "brand": "Cipla",
+    "composition": "Levetiracetam 500 mg",
+    "category": "Neurology",
+    "use": "Used to treat seizures and epilepsy in adults and children.",
+    "image": "images/leveteracitam.jpg",
+    "variants": [
+      { "pack": "100 Tablets", "price_usd": 95, "price_inr": 8075 },
+      { "pack": "300 Tablets", "price_usd": 149, "price_inr": 12665 },
+      { "pack": "500 Tablets", "price_usd": 195, "price_inr": 16575 }
+    ]
+  },
+  {
+    "name": "Propylthiouracil 50 mg",
+    "brand": "Sun Pharma",
+    "composition": "Propylthiouracil 50 mg",
+    "category": "Thyroid Treatment",
+    "use": "Used to treat hyperthyroidism and Graves’ disease.",
+    "image": "images/propylthiouracil.jpg",
+    "variants": [
+      { "pack": "100 Tablets", "price_usd": 95, "price_inr": 8075 },
+      { "pack": "300 Tablets", "price_usd": 135, "price_inr": 11475 }
+    ]
+  },
+  {
+    "name": "Hydroxyzine 10 mg",
+    "brand": "Intas",
+    "composition": "Hydroxyzine Hydrochloride 10 mg",
+    "category": "Allergy / Anxiety",
+    "use": "Used to relieve itching, anxiety, and allergic reactions.",
+    "image": "images/hydroxyzine10.jpg",
+    "variants": [
+      { "pack": "100 Tablets", "price_usd": 90, "price_inr": 7650 },
+      { "pack": "300 Tablets", "price_usd": 160, "price_inr": 13600 }
+    ]
+  },
+  {
+    "name": "Hydroxyzine 25 mg",
+    "brand": "Intas",
+    "composition": "Hydroxyzine Hydrochloride 25 mg",
+    "category": "Allergy / Anxiety",
+    "use": "Used for anxiety and to relieve itching caused by allergies.",
+    "image": "images/hydroxyzine25.jpg",
+    "variants": [
+      { "pack": "100 Tablets", "price_usd": 110, "price_inr": 9350 },
+      { "pack": "300 Tablets", "price_usd": 199, "price_inr": 16915 }
+    ]
+  },
+  {
+    "name": "Hydroxychloroquine 200 mg",
+    "brand": "Ipca",
+    "composition": "Hydroxychloroquine Sulfate 200 mg",
+    "category": "Anti-Malarial / Autoimmune",
+    "use": "Used to treat malaria, lupus, and rheumatoid arthritis.",
+    "image": "images/hydroxychloroquine200.jpg",
+    "variants": [
+      { "pack": "100 Tablets", "price_usd": 115, "price_inr": 9775 },
+      { "pack": "300 Tablets", "price_usd": 135, "price_inr": 11475 },
+      { "pack": "500 Tablets", "price_usd": 159, "price_inr": 13515 },
+      { "pack": "1000 Tablets", "price_usd": 239, "price_inr": 20315 }
+    ]
+  },
+  {
+    "name": "Hydroxychloroquine 400 mg",
+    "brand": "Ipca",
+    "composition": "Hydroxychloroquine Sulfate 400 mg",
+    "category": "Anti-Malarial / Autoimmune",
+    "use": "Used to treat autoimmune diseases such as lupus and rheumatoid arthritis.",
+    "image": "images/hydroxychloroquine400.jpg",
+    "variants": [
+      { "pack": "100 Tablets", "price_usd": 125, "price_inr": 10625 },
+      { "pack": "300 Tablets", "price_usd": 145, "price_inr": 12325 },
+      { "pack": "500 Tablets", "price_usd": 175, "price_inr": 14875 },
+      { "pack": "1000 Tablets", "price_usd": 255, "price_inr": 21675 }
+    ]
+  },
+  {
+    "name": "Tretinoin Cream 0.05%",
+    "brand": "Ret Grow-A",
+    "composition": "Tretinoin 0.05%",
+    "category": "Dermatology",
+    "use": "Used for acne treatment and reducing fine wrinkles.",
+    "image": "images/tretinoin.jpg",
+    "variants": [
+      { "pack": "1 Tube", "price_usd": 79, "price_inr": 6715 },
+      { "pack": "3 Tubes", "price_usd": 94, "price_inr": 7990 },
+      { "pack": "5 Tubes", "price_usd": 99, "price_inr": 8415 }
+    ]
+  },
+  {
+    "name": "Naltrexone 50 mg",
+    "brand": "Intas",
+    "composition": "Naltrexone Hydrochloride 50 mg",
+    "category": "Addiction Treatment",
+    "use": "Used to manage alcohol and opioid dependence.",
+    "image": "images/naltrexone50.jpg",
+    "variants": [
+      { "pack": "100 Tablets", "price_usd": 199, "price_inr": 16915 }
+    ]
+  },
+  {
+    "name": "Triclabendazole 250 mg",
+    "brand": "Novartis",
+    "composition": "Triclabendazole 250 mg",
+    "category": "Anthelmintic / Veterinary",
+    "use": "Used to treat liver fluke infections in animals and humans.",
+    "image": "images/triclabendazole.jpg",
+    "variants": [
+      { "pack": "100 Tablets", "price_usd": 110, "price_inr": 9350 },
+      { "pack": "300 Tablets", "price_usd": 189, "price_inr": 16065 }
+    ]
+  },
+  {
+    "name": "Cenforce 100 mg",
+    "brand": "Centurion Labs",
+    "composition": "Sildenafil Citrate 100 mg",
+    "category": "Erectile Dysfunction",
+    "use": "Used to treat erectile dysfunction in men.",
+    "image": "images/cenforce100.jpg",
+    "variants": [
+      { "pack": "100 Tablets", "price_usd": 85, "price_inr": 7225 },
+      { "pack": "300 Tablets", "price_usd": 108, "price_inr": 9180 },
+      { "pack": "500 Tablets", "price_usd": 130, "price_inr": 11050 },
+      { "pack": "1000 Tablets", "price_usd": 185, "price_inr": 15725 }
+    ]
+  },
+  {
+    "name": "Rivaroxaban 20 mg (Rivabax-20)",
+    "brand": "Macleods",
+    "composition": "Rivaroxaban 20 mg",
+    "category": "Anticoagulant",
+    "use": "Used to prevent blood clots and treat deep vein thrombosis.",
+    "image": "images/rivaroxaban.jpg",
+    "variants": [
+      { "pack": "50 Tablets", "price_usd": 85, "price_inr": 7225 },
+      { "pack": "100 Tablets", "price_usd": 99, "price_inr": 8415 },
+      { "pack": "300 Tablets", "price_usd": 159, "price_inr": 13515 }
+    ]
+  },
+  {
+    "name": "Fenbendazole 222 mg",
+    "brand": "Safegard",
+    "composition": "Fenbendazole 222 mg",
+    "category": "Veterinary / Antiparasitic",
+    "use": "Used for the treatment of parasitic infections in animals and humans (research use).",
+    "image": "images/fenbendazole222.jpg",
+    "variants": [
+      { "pack": "100 Tablets", "price_usd": 95, "price_inr": 8075 },
+      { "pack": "500 Tablets", "price_usd": 149, "price_inr": 12665 }
+    ]
+  },
+  {
+    "name": "Fenbendazole 1000 mg",
+    "brand": "Safegard",
+    "composition": "Fenbendazole 1g",
+    "category": "Veterinary / Antiparasitic",
+    "use": "Used to treat intestinal parasites; also studied for potential anti-cancer properties.",
+    "image": "images/fenbendazole1000.jpg",
+    "variants": [
+      { "pack": "100 Tablets", "price_usd": 110, "price_inr": 9350 },
+      { "pack": "300 Tablets", "price_usd": 149, "price_inr": 12665 },
+      { "pack": "500 Tablets", "price_usd": 199, "price_inr": 16915 }
+    ]
+  },
+  {
+    "name": "Mesterolone 25 mg (Mesteronum)",
+    "brand": "Bayer",
+    "composition": "Mesterolone 25 mg",
+    "category": "Hormone Therapy",
+    "use": "Used to treat male hypogonadism and fertility disorders.",
+    "image": "images/mesterolone.jpg",
+    "variants": [
+      { "pack": "100 Tablets", "price_usd": 139, "price_inr": 11815 },
+      { "pack": "300 Tablets", "price_usd": 289, "price_inr": 24565 }
+    ]
+  },
+  {
+    "name": "L-Carnitine 500 mg (Carnimac)",
+    "brand": "Macleods",
+    "composition": "L-Carnitine 500 mg",
+    "category": "Supplement",
+    "use": "Supports energy production and fat metabolism.",
+    "image": "images/lcarnitine.jpg",
+    "variants": [
+      { "pack": "100 Tablets", "price_usd": 135, "price_inr": 11475 },
+      { "pack": "300 Tablets", "price_usd": 249, "price_inr": 21165 }
+    ]
+  },
+  {
+    "name": "Asthafen 1 mg",
+    "brand": "Torrent",
+    "composition": "Ketotifen Fumarate 1 mg",
+    "category": "Allergy / Asthma",
+    "use": "Used for allergic rhinitis, asthma prevention, and chronic urticaria.",
+    "image": "images/asthafen.jpg",
+    "variants": [
+      { "pack": "100 Tablets", "price_usd": 85, "price_inr": 7225 },
+      { "pack": "300 Tablets", "price_usd": 119, "price_inr": 10115 },
+      { "pack": "500 Tablets", "price_usd": 145, "price_inr": 12325 }
+    ]
   }
 ]
