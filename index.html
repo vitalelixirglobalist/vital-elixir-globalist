@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vital Elixir Globalist – Global Medicine Export Specialists</title>
-  <meta name="description" content="Vital Elixir Globalist exports genuine medicines worldwide — trusted by clients in Australia, UK, Europe, and the USA." />
+  <meta name="description" content="Vital Elixir Globalist exports genuine medicines worldwide — trusted by clients in major global markets." />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = { theme: { extend: { colors: { brand: '#0284c7' } } } }
@@ -15,7 +15,6 @@
 </head>
 
 <body class="text-gray-800 bg-gray-50">
-
   <!-- Header Placeholder -->
   <div id="header-placeholder"></div>
 
@@ -27,11 +26,23 @@
       </h1>
       <p class="mt-4 text-gray-600 text-lg">
         Genuine medicines · Secure packaging · Smooth worldwide delivery.<br />
-        Focus regions: Australia, United Kingdom, Europe, USA.
+        Focus regions: United States, United Kingdom, European Union, UAE & more.
       </p>
       <div class="mt-6 flex justify-center gap-4">
         <a href="#contact" class="px-6 py-3 bg-brand text-white rounded-xl hover:bg-blue-700">Request a Quote</a>
         <a href="https://wa.me/+918275595850" class="px-6 py-3 border border-brand rounded-xl hover:bg-blue-50">WhatsApp Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Products Preview -->
+  <section id="featured" class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold">Featured Products</h2>
+      <p class="text-gray-600 mt-2">A glimpse of our best-selling medicines</p>
+      <div id="previewGrid" class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-6"></div>
+      <div class="mt-6">
+        <a href="products.html" class="text-brand font-medium hover:underline">See all products →</a>
       </div>
     </div>
   </section>
@@ -41,7 +52,6 @@
     <div class="max-w-6xl mx-auto px-4 text-center">
       <h2 class="text-3xl font-bold">Our Core Services</h2>
       <p class="mt-2 text-gray-600">Delivering authentic medicines with documentation and reliability.</p>
-
       <div class="mt-10 grid md:grid-cols-3 gap-6">
         <div class="p-6 border rounded-2xl shadow-sm hover:shadow-lg transition">
           <h3 class="font-semibold text-xl text-brand">Sourcing & Verification</h3>
@@ -76,11 +86,13 @@
   <section id="markets" class="py-16 bg-white">
     <div class="max-w-6xl mx-auto px-4 text-center">
       <h2 class="text-3xl font-bold">Our Global Markets</h2>
-      <div class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4 text-sm font-medium">
-        <div class="border p-4 rounded-xl">Australia</div>
+      <div class="mt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 text-sm font-medium">
+        <div class="border p-4 rounded-xl">United States</div>
         <div class="border p-4 rounded-xl">United Kingdom</div>
         <div class="border p-4 rounded-xl">European Union</div>
-        <div class="border p-4 rounded-xl">United States</div>
+        <div class="border p-4 rounded-xl">United Arab Emirates</div>
+        <div class="border p-4 rounded-xl">Canada</div>
+        <div class="border p-4 rounded-xl">And many more</div>
       </div>
     </div>
   </section>
@@ -90,7 +102,6 @@
     <div class="max-w-4xl mx-auto px-4">
       <h2 class="text-3xl font-bold text-center">Request a Quote</h2>
       <p class="text-center text-gray-600 mt-2">Tell us what medicine you need and your destination country.</p>
-
       <form action="https://formspree.io/f/mrboojbv" method="POST" class="mt-8 grid md:grid-cols-2 gap-4 bg-white p-6 rounded-2xl shadow">
         <input type="text" name="name" placeholder="Full Name" required class="border rounded-lg px-3 py-2" />
         <input type="email" name="email" placeholder="Email" required class="border rounded-lg px-3 py-2" />
@@ -107,7 +118,7 @@
     <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-6 text-sm">
       <div>
         <h3 class="font-semibold text-brand">Vital Elixir Globalist</h3>
-        <p class="mt-2 text-gray-600">Medicine exporters serving Australia, UK, EU, and USA.</p>
+        <p class="mt-2 text-gray-600">Medicine exporters serving customers worldwide.</p>
       </div>
       <div>
         <h3 class="font-semibold text-brand">Contact</h3>
@@ -131,33 +142,24 @@
   <script>
     // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
-
     // Load Header and Initialize Menu
     async function loadHeader() {
       const header = await fetch('header.html');
       document.getElementById('header-placeholder').innerHTML = await header.text();
-
-      // Initialize menu only after header loads
+      // Initialize menu after header loads
       const menuBtn = document.getElementById('menu-btn');
       const closeBtn = document.getElementById('close-menu');
       const mobileMenu = document.getElementById('mobile-menu');
       const sidebar = document.getElementById('sidebar');
-
       if (!menuBtn || !sidebar || !mobileMenu) return;
-
-      // Open sidebar
       menuBtn.addEventListener('click', () => {
         mobileMenu.classList.remove('hidden');
         setTimeout(() => sidebar.classList.remove('translate-x-full'), 10);
       });
-
-      // Close sidebar
       closeBtn.addEventListener('click', () => {
         sidebar.classList.add('translate-x-full');
         setTimeout(() => mobileMenu.classList.add('hidden'), 300);
       });
-
-      // Click outside to close
       mobileMenu.addEventListener('click', (e) => {
         if (e.target === mobileMenu) {
           sidebar.classList.add('translate-x-full');
@@ -165,8 +167,31 @@
         }
       });
     }
-
     loadHeader();
+
+    // Load featured products preview
+    async function loadPreview() {
+      try {
+        const res = await fetch('products-data.json');
+        const products = await res.json();
+        // Pick first 4 products (or random) to display
+        const preview = products.slice(0, 4);
+        const previewGrid = document.getElementById('previewGrid');
+        preview.forEach((p) => {
+          const div = document.createElement('div');
+          div.className = 'bg-white border rounded-xl p-4 shadow-sm hover:shadow-lg transition flex flex-col items-center';
+          div.innerHTML = `
+            <img src="${p.image}" alt="${p.name}" class="w-full h-32 object-contain mb-3 rounded" />
+            <h3 class="font-semibold text-brand">${p.name}</h3>
+            <p class="text-sm text-gray-500">${p.brand}</p>
+          `;
+          previewGrid.appendChild(div);
+        });
+      } catch (err) {
+        console.error('Failed to load preview products', err);
+      }
+    }
+    loadPreview();
   </script>
 </body>
 </html>
