@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live Track Parcel – Vital Elixir Globalist</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: { colors: { brand: '#0284c7' } }
+      }
+    }
+  </script>
+</head>
+
+<body class="text-gray-800 bg-gray-50">
+  <div id="header-placeholder"></div>
+  <section class="max-w-xl mx-auto px-4 py-16 text-center">
+    <h1 class="text-3xl font-bold mb-4">Live Track Your Parcel</h1>
+    <p class="text-gray-600 mb-8">Enter your tracking ID to view real-time delivery status.</p>
+    <form id="trackForm" class="flex flex-col items-center space-y-4">
+      <input type="text" id="trackingId" placeholder="Tracking ID" required class="w-full border rounded-lg px-4 py-2" />
+      <button type="submit" class="bg-brand text-white px-6 py-3 rounded-xl hover:bg-blue-700">Track Parcel</button>
+    </form>
+  </section>
+
+  <script>
+    // Load header
+    async function loadHeader() {
+      const header = await fetch('header.html');
+      document.getElementById('header-placeholder').innerHTML = await header.text();
+    }
+    loadHeader();
+
+    document.getElementById('trackForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const id = document.getElementById('trackingId').value.trim();
+      if (!id) {
+        alert('Please enter a tracking ID.');
+        return;
+      }
+      const url = `https://parcelsapp.com/en/tracking/${encodeURIComponent(id)}`;
+      window.open(url, '_blank');
+    });
+  </script>
+</body>
+</html>
