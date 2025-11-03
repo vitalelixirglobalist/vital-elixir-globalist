@@ -76,6 +76,12 @@
 
     // Display cart items from localStorage
     function renderCart() {
+      // Redirect to login if user email not set
+      const userEmail = localStorage.getItem('userEmail');
+      if (!userEmail) {
+        window.location.href = 'login.html';
+        return;
+      }
       const cart = JSON.parse(localStorage.getItem('cart')) || [];
       const cartContainer = document.getElementById('cartItems');
       const summary = document.getElementById('cartSummary');
@@ -160,6 +166,18 @@
           // Payment was successful
           // In a real app, verify payment and send order details to backend
           alert('Payment successful! ID: ' + response.razorpay_payment_id);
+          // Store order details locally for user
+          const userEmail = localStorage.getItem('userEmail');
+          const orders = JSON.parse(localStorage.getItem('orders')) || {};
+          if (!orders[userEmail]) orders[userEmail] = [];
+          orders[userEmail].push({
+            items: cart,
+            date: new Date().toISOString(),
+            status: 'success',
+            orderId: response.razorpay_payment_id,
+            trackingId: ''
+          });
+          localStorage.setItem('orders', JSON.stringify(orders));
           // Clear cart
           localStorage.removeItem('cart');
           window.location.href = 'thankyou.html';
