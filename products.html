@@ -42,6 +42,14 @@
       <option value="Drops">Drops</option>
       <option value="Sprays">Sprays</option>
       <option value="Injections & Vials">Injections & Vials</option>
+      <option value="Men’s Health">Men’s Health</option>
+      <option value="Diabetes & Metabolic Care">Diabetes & Metabolic Care</option>
+      <option value="Dermatology & Skin Care">Dermatology & Skin Care</option>
+      <option value="Eye & Allergy Care">Eye & Allergy Care</option>
+      <option value="Hormonal & Thyroid Care">Hormonal & Thyroid Care</option>
+      <option value="Infection & Antiparasitic Treatments">Infection & Antiparasitic Treatments</option>
+      <option value="Hormonal / Performance Enhancement">Hormonal / Performance Enhancement</option>
+      <option value="Veterinary / Other Uses">Veterinary / Other Uses</option>
     </select>
   </div>
 
@@ -55,6 +63,7 @@
 
   <!-- Script -->
   <script>
+    // Set footer year
     document.getElementById('year').textContent = new Date().getFullYear();
 
     let allProducts = [];
@@ -70,17 +79,14 @@
 
     function displayProducts(products) {
       productGrid.innerHTML = '';
-
       products.forEach((p) => {
         const card = document.createElement('div');
         card.className = 'bg-white border rounded-xl p-4 shadow-sm hover:shadow-lg transition flex flex-col';
-
         const dropdownOptions = p.variants
-          .map((v, i) => `<option value="${i}">${v.pack}</option>`)
+          .map((v) => `<option value="${p.variants.indexOf(v)}">${v.pack}</option>`)
           .join('');
-
         card.innerHTML = `
-          <img src="${p.image}" alt="${p.name}" class="w-full h-40 object-contain mb-3 rounded">
+          <img src="${p.image}" alt="${p.name}" class="w-full h-40 object-contain mb-3 rounded" />
           <h2 class="font-semibold text-lg text-brand">${p.name}</h2>
           <p class="text-sm text-gray-600">${p.brand}</p>
           <p class="text-sm text-gray-500 mb-2">${p.composition}</p>
@@ -90,27 +96,28 @@
             ${dropdownOptions}
           </select>
           <div class="price-display mt-3 text-sm text-gray-700"></div>
-          <button 
-            onclick="addToCart(${JSON.stringify(p)}, this.previousElementSibling.previousElementSibling.selectedIndex - 1)"
-            class="mt-auto bg-brand text-white py-2 px-3 rounded-lg hover:bg-blue-700 transition mt-3">
-            Add to Cart
-          </button>
+          <button class="add-to-cart-btn mt-auto bg-brand text-white py-2 px-3 rounded-lg hover:bg-blue-700 transition mt-3">Add to Cart</button>
         `;
-
         const select = card.querySelector('.variantSelect');
         const priceDisplay = card.querySelector('.price-display');
-
-        // ✅ Show price when variant selected
+        const addBtn = card.querySelector('.add-to-cart-btn');
         select.addEventListener('change', (e) => {
           const variant = p.variants[e.target.value];
           priceDisplay.innerHTML = `
             <div class="mt-2 p-2 border border-blue-100 rounded-lg bg-blue-50 text-sm">
-              💵 <span class="font-medium text-brand">USD ${variant.price_usd}</span> 
+              💵 <span class="font-medium text-brand">USD ${variant.price_usd}</span>
               | 🇮🇳 <span class="font-medium text-brand">INR ${variant.price_inr}</span>
             </div>
           `;
         });
-
+        addBtn.addEventListener('click', () => {
+          const variantIndex = select.selectedIndex - 1;
+          if (variantIndex < 0) {
+            alert('Please select a quantity before adding to cart.');
+            return;
+          }
+          addToCart(p, variantIndex);
+        });
         productGrid.appendChild(card);
       });
     }
@@ -120,7 +127,6 @@
         alert('Please select a quantity before adding to cart.');
         return;
       }
-
       const selectedVariant = product.variants[variantIndex];
       const cart = JSON.parse(localStorage.getItem('cart')) || [];
       cart.push({
@@ -155,24 +161,19 @@
     async function loadHeader() {
       const header = await fetch('header.html');
       document.getElementById('header-placeholder').innerHTML = await header.text();
-
       const menuBtn = document.getElementById('menu-btn');
       const closeBtn = document.getElementById('close-menu');
       const mobileMenu = document.getElementById('mobile-menu');
       const sidebar = document.getElementById('sidebar');
-
       if (!menuBtn || !sidebar || !mobileMenu) return;
-
       menuBtn.addEventListener('click', () => {
         mobileMenu.classList.remove('hidden');
         setTimeout(() => sidebar.classList.remove('translate-x-full'), 10);
       });
-
       closeBtn.addEventListener('click', () => {
         sidebar.classList.add('translate-x-full');
         setTimeout(() => mobileMenu.classList.add('hidden'), 300);
       });
-
       mobileMenu.addEventListener('click', (e) => {
         if (e.target === mobileMenu) {
           sidebar.classList.add('translate-x-full');
@@ -180,7 +181,6 @@
         }
       });
     }
-
     loadHeader();
   </script>
 </body>
