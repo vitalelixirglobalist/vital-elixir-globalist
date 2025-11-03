@@ -127,6 +127,16 @@
         alert('Please select a quantity before adding to cart.');
         return;
       }
+      // Ensure user email is captured
+      let userEmail = localStorage.getItem('userEmail');
+      if (!userEmail) {
+        userEmail = prompt('Please enter your email to continue');
+        if (!userEmail) {
+          alert('Email is required to add items to cart.');
+          return;
+        }
+        localStorage.setItem('userEmail', userEmail.trim());
+      }
       const selectedVariant = product.variants[variantIndex];
       const cart = JSON.parse(localStorage.getItem('cart')) || [];
       cart.push({
