@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank You – Vital Elixir Globalist</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: { colors: { brand: '#0284c7' } }
+      }
+    }
+  </script>
+</head>
+
+<body class="text-gray-800 bg-gray-50">
+  <div id="header-placeholder"></div>
+  <section class="flex flex-col items-center justify-center min-h-screen text-center">
+    <h1 class="text-4xl font-extrabold text-brand mb-4">Thank you for your purchase!</h1>
+    <p class="text-gray-600 mb-6">Your order is being processed. We will contact you shortly with the shipment details.</p>
+    <a href="index.html" class="px-6 py-3 bg-brand text-white rounded-xl hover:bg-blue-700">Return Home</a>
+  </section>
+
+  <script>
+    // Load header
+    async function loadHeader() {
+      const header = await fetch('header.html');
+      document.getElementById('header-placeholder').innerHTML = await header.text();
+    }
+    loadHeader();
+  </script>
+</body>
+</html>
