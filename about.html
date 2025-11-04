@@ -4,194 +4,86 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About Us – Vital Elixir Globalist</title>
+  <meta name="description" content="Learn more about Vital Elixir Globalist – our mission, values and team." />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    tailwind.config = {
-      theme: {
-        extend: { colors: { brand: '#0284c7' } }
-      }
-    };
+    tailwind.config = { theme: { extend: { colors: { brand: '#0284c7' } } } };
   </script>
 </head>
-
-<body class="bg-gray-50 text-gray-800">
-
-  <!-- Header with Mobile Menu -->
-  <header class="bg-white shadow sticky top-0 z-50">
-    <div class="max-w-6xl mx-auto flex justify-between items-center px-4 py-3">
-      <!-- Logo -->
-      <div class="text-2xl font-bold text-brand">Vital Elixir Globalist</div>
-
-      <!-- Desktop Navigation -->
-      <nav class="hidden md:flex gap-6 text-sm font-medium">
-        <a href="index.html" class="hover:text-brand">Home</a>
-        <a href="products.html" class="hover:text-brand">Products</a>
-        <a href="cart.html" class="hover:text-brand">Cart</a>
-        <a href="about.html" class="text-brand font-semibold">About Us</a>
-        <a href="index.html#contact" class="hover:text-brand">Contact</a>
-      </nav>
-
-      <!-- Hamburger Button (Mobile View) -->
-      <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
-        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M4 6h16M4 12h16m-7 6h7" />
-        </svg>
-      </button>
-    </div>
-
-    <!-- Sidebar (Mobile Menu) -->
-    <div id="mobile-menu" class="hidden fixed inset-0 bg-gray-800 bg-opacity-70 z-40">
-      <div id="sidebar"
-           class="w-64 bg-white h-full p-6 shadow-lg transform transition-transform duration-300 translate-x-full right-0 absolute">
-        <!-- Close Button -->
-        <button id="close-menu" class="text-gray-600 hover:text-brand mb-6">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-
-        <!-- Navigation Links -->
-        <nav class="flex flex-col gap-4 text-gray-700 text-lg font-medium">
-          <a href="index.html" class="hover:text-brand">🏠 Home</a>
-          <a href="products.html" class="hover:text-brand">💊 Medicines</a>
-          <a href="cart.html" class="hover:text-brand">🛒 Cart</a>
-          <a href="about.html" class="hover:text-brand">👥 About Us</a>
-          <a href="index.html#contact" class="hover:text-brand">📞 Contact</a>
-        </nav>
+<body class="text-gray-800 bg-gray-50">
+  <!-- Header placeholder -->
+  <div id="header-placeholder"></div>
+  <section class="max-w-5xl mx-auto px-4 py-16">
+    <h1 class="text-4xl font-extrabold text-center mb-6">About Us</h1>
+    <p class="text-gray-700 mb-6 text-center max-w-3xl mx-auto">Vital Elixir Globalist is a trusted exporter of genuine medicines across the globe. We partner with licensed manufacturers and suppliers to provide our customers with high‑quality products at competitive prices. Our business is built on trust, transparency and a commitment to customer satisfaction.</p>
+    <div class="grid md:grid-cols-2 gap-8 mt-10">
+      <div>
+        <h2 class="text-2xl font-semibold mb-3">Our Mission</h2>
+        <p class="text-gray-600">To ensure access to safe and effective medicines for everyone, everywhere. We strive to be the bridge between trusted pharmaceutical manufacturers and individuals seeking reliable healthcare solutions.</p>
+      </div>
+      <div>
+        <h2 class="text-2xl font-semibold mb-3">Our Values</h2>
+        <ul class="list-disc list-inside text-gray-600">
+          <li><strong>Integrity:</strong> Delivering only genuine, sealed products.</li>
+          <li><strong>Transparency:</strong> Clear communication of product information and pricing.</li>
+          <li><strong>Reliability:</strong> On‑time delivery and responsive customer support.</li>
+          <li><strong>Compliance:</strong> Adherence to international export regulations.</li>
+        </ul>
       </div>
     </div>
-  </header>
-
-  <!-- Page Title -->
-  <section class="text-center py-12 bg-gradient-to-b from-blue-50 to-white">
-    <h1 class="text-4xl font-extrabold text-gray-900">About Us</h1>
-    <p class="text-gray-600 mt-3 max-w-2xl mx-auto">
-      Vital Elixir Globalist is a trusted international exporter of high-quality medicines, 
-      delivering care and confidence worldwide.
-    </p>
-  </section>
-
-  <!-- Team Section -->
-  <section class="max-w-6xl mx-auto px-6 py-10">
-    <h2 class="text-3xl font-bold text-center text-gray-900 mb-10">Meet Our Team</h2>
-
-    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8 text-center">
-
-      <!-- Member 1 -->
-      <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition">
-        <img src="images/kashyak.jpg" alt="Kashyak L Sahu" class="w-full h-64 object-cover">
-        <div class="bg-brand text-white p-5">
-          <h3 class="text-lg font-semibold">Kashyak L Sahu</h3>
-          <p class="text-sm mb-2">CEO, Strategic Leader</p>
-          <p class="text-sm">✉️ <a href="mailto:Kashyaksahu@VitalElixirglobalist.com" class="underline hover:text-gray-100">Kashyaksahu@VitalElixirglobalist.com</a></p>
-          <p class="text-sm">📞 +91 82755-95850</p>
+    <div class="mt-12">
+      <h2 class="text-2xl font-semibold mb-4 text-center">Our Team</h2>
+      <div class="grid md:grid-cols-3 gap-8 text-center">
+        <div class="bg-white p-4 rounded-xl shadow">
+          <div class="w-24 h-24 rounded-full bg-blue-100 mx-auto mb-3"></div>
+          <h3 class="font-semibold text-brand">Kashyap Sahu</h3>
+          <p class="text-sm text-gray-600">Founder & Director</p>
+        </div>
+        <div class="bg-white p-4 rounded-xl shadow">
+          <div class="w-24 h-24 rounded-full bg-blue-100 mx-auto mb-3"></div>
+          <h3 class="font-semibold text-brand">Rahul Sharma</h3>
+          <p class="text-sm text-gray-600">Operations Manager</p>
+        </div>
+        <div class="bg-white p-4 rounded-xl shadow">
+          <div class="w-24 h-24 rounded-full bg-blue-100 mx-auto mb-3"></div>
+          <h3 class="font-semibold text-brand">Priya Gupta</h3>
+          <p class="text-sm text-gray-600">Quality Assurance</p>
         </div>
       </div>
-
-      <!-- Member 2 -->
-      <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition">
-        <img src="images/yash.jpg" alt="Yash L Sahu" class="w-full h-64 object-cover">
-        <div class="bg-brand text-white p-5">
-          <h3 class="text-lg font-semibold">Yash L Sahu</h3>
-          <p class="text-sm mb-2">Chief Data Technical</p>
-          <p class="text-sm">✉️ <a href="mailto:Yashsahu@VitalElixirglobalist.com" class="underline hover:text-gray-100">Yashsahu@VitalElixirglobalist.com</a></p>
-          <p class="text-sm">📞 +91 866858-4305</p>
-        </div>
-      </div>
-
-    <!-- Member 3 -->
-<div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition">
-  <img src="images/kunal.jpg" alt="Kunal Parate" class="w-full h-64 object-cover">
-  <div class="bg-brand text-white p-5">
-    <h3 class="text-lg font-semibold">Kunal Parate</h3>
-    <p class="text-sm font-bold mb-1">(PHARMACIST – Consultation)</p>
-    <p class="text-sm mb-2">Marketing & Sales Head</p>
-    <p class="text-sm">
-      ✉️ 
-      <a href="mailto:Kunal.medsexport@vitalelixirglobalist.com" 
-         class="underline hover:text-gray-100">
-         Kunal.medsexport@vitalelixirglobalist.com
-      </a>
-    </p>
-    <p class="text-sm">📞 +91 965786-2462</p>
-  </div>
-</div>
-
-      <!-- Member 4 -->
-      <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition">
-        <img src="images/pragati.jpg" alt="Pragati Jaiswal" class="w-full h-64 object-cover">
-        <div class="bg-brand text-white p-5">
-          <h3 class="text-lg font-semibold">Pragati Jaiswal</h3>
-          <p class="text-sm mb-2">Customer Relationship Manager</p>
-          <p class="text-sm">✉️ <a href="mailto:Pragati.meds.help@VitalElixirglobalist.com" class="underline hover:text-gray-100">Pragati.meds.help@VitalElixirglobalist.com</a></p>
-          <p class="text-sm">📞 +91 965786-1804</p>
-        </div>
-      </div>
-
-      <!-- Member 5 -->
-      <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition">
-        <img src="images/tarun.jpg" alt="Tarun Dhurve" class="w-full h-64 object-cover">
-        <div class="bg-brand text-white p-5">
-          <h3 class="text-lg font-semibold">Tarun Dhurve</h3>
-          <p class="text-sm mb-2">Packaging & Documentation Head</p>
-          <p class="text-sm">✉️ <a href="mailto:Tarundhurwe@VitalElixirglobalist.com" class="underline hover:text-gray-100">Tarundhurwe@VitalElixirglobalist.com</a></p>
-        </div>
-      </div>
-
-      <!-- Member 6 -->
-      <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition">
-        <img src="images/asfi.jpg" alt="Dr. Asfi Shirin" class="w-full h-64 object-cover">
-        <div class="bg-brand text-white p-5">
-          <h3 class="text-lg font-semibold">Dr. Asfi Shirin</h3>
-          <p class="text-sm mb-2">Consultant, Practitioner Doctor</p>
-          <p class="text-sm">✉️ <a href="mailto:AsfiShirin@VitalElixirglobalist.com" class="underline hover:text-gray-100">AsfiShirin@VitalElixirglobalist.com</a></p>
-        </div>
-      </div>
-
     </div>
   </section>
-
   <!-- Footer -->
   <footer class="py-8 bg-white border-t text-center text-gray-600 text-sm">
     © <span id="year"></span> Vital Elixir Globalist. All rights reserved.
   </footer>
-
   <script>
-    // Footer year
+    // Set year and load header
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Hamburger Menu Script
-    document.addEventListener("DOMContentLoaded", () => {
-      const menuBtn = document.getElementById("menu-btn");
-      const closeBtn = document.getElementById("close-menu");
-      const mobileMenu = document.getElementById("mobile-menu");
-      const sidebar = document.getElementById("sidebar");
-
-      if (!menuBtn || !sidebar || !mobileMenu) return;
-
-      // Open sidebar
-      menuBtn.addEventListener("click", () => {
-        mobileMenu.classList.remove("hidden");
-        setTimeout(() => sidebar.classList.remove("translate-x-full"), 10);
-      });
-
-      // Close sidebar
-      closeBtn.addEventListener("click", () => {
-        sidebar.classList.add("translate-x-full");
-        setTimeout(() => mobileMenu.classList.add("hidden"), 300);
-      });
-
-      // Close when clicking outside
-      mobileMenu.addEventListener("click", (e) => {
-        if (e.target === mobileMenu) {
-          sidebar.classList.add("translate-x-full");
-          setTimeout(() => mobileMenu.classList.add("hidden"), 300);
-        }
-      });
-    });
+    async function loadHeader() {
+      const header = await fetch('header.html');
+      document.getElementById('header-placeholder').innerHTML = await header.text();
+      const menuBtn = document.getElementById('menu-btn');
+      const closeBtn = document.getElementById('close-menu');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const sidebar = document.getElementById('sidebar');
+      if (menuBtn && sidebar && mobileMenu) {
+        menuBtn.addEventListener('click', () => {
+          mobileMenu.classList.remove('hidden');
+          setTimeout(() => sidebar.classList.remove('translate-x-full'), 10);
+        });
+        closeBtn.addEventListener('click', () => {
+          sidebar.classList.add('translate-x-full');
+          setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+        });
+        mobileMenu.addEventListener('click', (e) => {
+          if (e.target === mobileMenu) {
+            sidebar.classList.add('translate-x-full');
+            setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+          }
+        });
+      }
+    }
+    loadHeader();
   </script>
-
 </body>
 </html>
