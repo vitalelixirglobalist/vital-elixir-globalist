@@ -4,71 +4,155 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login – Vital Elixir Globalist</title>
+  <meta name="description" content="Login or register to manage your orders and cart on Vital Elixir Globalist." />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: { colors: { brand: '#0284c7' } }
       }
-    }
+    };
   </script>
+  <style>
+    html { scroll-behavior: smooth; }
+  </style>
 </head>
 
 <body class="text-gray-800 bg-gray-50">
+  <!-- Header Placeholder -->
   <div id="header-placeholder"></div>
-  <section class="flex flex-col items-center justify-center min-h-screen px-4">
-    <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
-      <h1 class="text-2xl font-bold mb-4 text-center">Login</h1>
-      <p class="text-sm text-gray-600 mb-6 text-center">Enter your email to access your cart and order history.</p>
-      <form id="loginForm" class="space-y-4">
-        <input type="email" id="loginEmail" placeholder="Email address" required class="w-full border rounded-lg px-3 py-2" />
-        <button type="submit" class="w-full bg-brand text-white px-4 py-2 rounded-lg hover:bg-blue-700">Continue</button>
-      </form>
+  
+  <!-- Authentication Forms -->
+  <section class="max-w-lg mx-auto px-4 py-12">
+    <h1 class="text-3xl font-bold text-center mb-6">Account Access</h1>
+    <div id="authMessage" class="text-center text-red-500 mb-4"></div>
+    <div class="flex justify-center gap-4 mb-6">
+      <button id="showLogin" class="px-4 py-2 rounded-lg font-medium text-white bg-brand">Login</button>
+      <button id="showRegister" class="px-4 py-2 rounded-lg font-medium text-brand bg-gray-200">Register</button>
     </div>
+    <form id="loginForm" class="space-y-4">
+      <input type="email" id="loginEmail" placeholder="Email" required class="w-full border rounded-lg px-3 py-2" />
+      <input type="password" id="loginPassword" placeholder="Password" required class="w-full border rounded-lg px-3 py-2" />
+      <button type="submit" class="w-full bg-brand text-white py-2 rounded-lg hover:bg-blue-700">Login</button>
+    </form>
+    <form id="registerForm" class="space-y-4 hidden">
+      <input type="text" id="regName" placeholder="Full Name" required class="w-full border rounded-lg px-3 py-2" />
+      <input type="email" id="regEmail" placeholder="Email" required class="w-full border rounded-lg px-3 py-2" />
+      <input type="password" id="regPassword" placeholder="Password (min 6 characters)" required class="w-full border rounded-lg px-3 py-2" />
+      <input type="text" id="regPhone" placeholder="Phone Number (optional)" class="w-full border rounded-lg px-3 py-2" />
+      <button type="submit" class="w-full bg-brand text-white py-2 rounded-lg hover:bg-blue-700">Register</button>
+    </form>
   </section>
 
   <script>
     // Load header
     async function loadHeader() {
-      const header = await fetch('header.html');
-      document.getElementById('header-placeholder').innerHTML = await header.text();
+      const resp = await fetch('header.html');
+      document.getElementById('header-placeholder').innerHTML = await resp.text();
     }
     loadHeader();
 
-    document.getElementById('loginForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const email = document.getElementById('loginEmail').value.trim();
-      if (!email) {
-        alert('Please enter a valid email.');
-        return;
-      }
-      localStorage.setItem('userEmail', email);
-      // Redirect to account page
-      window.location.href = 'my-account.html';
+    // Toggle between login and register forms
+    const showLoginBtn = document.getElementById('showLogin');
+    const showRegisterBtn = document.getElementById('showRegister');
+    const loginForm = document.getElementById('loginForm');
+    const registerForm = document.getElementById('registerForm');
+    showLoginBtn.addEventListener('click', () => {
+      loginForm.classList.remove('hidden');
+      registerForm.classList.add('hidden');
+      showLoginBtn.classList.add('bg-brand', 'text-white');
+      showRegisterBtn.classList.remove('bg-brand', 'text-white');
+      showRegisterBtn.classList.add('bg-gray-200', 'text-brand');
+    });
+    showRegisterBtn.addEventListener('click', () => {
+      registerForm.classList.remove('hidden');
+      loginForm.classList.add('hidden');
+      showRegisterBtn.classList.add('bg-brand', 'text-white');
+      showLoginBtn.classList.remove('bg-brand', 'text-white');
+      showLoginBtn.classList.add('bg-gray-200', 'text-brand');
     });
   </script>
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+  <script type="module">
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js';
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js';
+    import { getFirestore, doc, setDoc } from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
 
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyBsSrWpk0I6YnjNJcGRBnXg23WePsgdRx4",
-    authDomain: "vital-elixir-globalist.firebaseapp.com",
-    projectId: "vital-elixir-globalist",
-    storageBucket: "vital-elixir-globalist.firebasestorage.app",
-    messagingSenderId: "87028221342",
-    appId: "1:87028221342:web:0c7719acc703566e8fc28f",
-    measurementId: "G-5MWKWE2C4J"
-  };
+    // Firebase configuration (storageBucket corrected)
+    const firebaseConfig = {
+      apiKey: 'AIzaSyBsSrWpk0I6YnjNJcGRBnXg23WePsgdRx4',
+      authDomain: 'vital-elixir-globalist.firebaseapp.com',
+      projectId: 'vital-elixir-globalist',
+      storageBucket: 'vital-elixir-globalist.appspot.com',
+      messagingSenderId: '87028221342',
+      appId: '1:87028221342:web:0c7719acc703566e8fc28f',
+      measurementId: 'G-5MWKWE2C4J'
+    };
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
+    // Get redirect from query param
+    const params = new URLSearchParams(window.location.search);
+    const redirectTo = params.get('redirect') || 'index.html';
+
+    // Monitor auth state and redirect if already logged in
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // Store email locally for non-auth pages
+        localStorage.setItem('userEmail', user.email);
+        window.location.href = redirectTo;
+      }
+    });
+
+    const authMessage = document.getElementById('authMessage');
+    // Login form handler
+    loginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      authMessage.textContent = '';
+      const email = document.getElementById('loginEmail').value.trim();
+      const password = document.getElementById('loginPassword').value;
+      try {
+        const cred = await signInWithEmailAndPassword(auth, email, password);
+        // Save email in local storage for offline pages
+        localStorage.setItem('userEmail', email);
+        // Compose a mailto link to notify site owner of login
+        const body = encodeURIComponent(`User logged in: ${email}\nTime: ${new Date().toISOString()}`);
+        window.open(`mailto:vitalelixirglobalist@gmail.com?subject=User Login&body=${body}`, '_blank');
+        window.location.href = redirectTo;
+      } catch (error) {
+        authMessage.textContent = error.message;
+      }
+    });
+
+    // Register form handler
+    registerForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      authMessage.textContent = '';
+      const name = document.getElementById('regName').value.trim();
+      const email = document.getElementById('regEmail').value.trim();
+      const password = document.getElementById('regPassword').value;
+      const phone = document.getElementById('regPhone').value.trim();
+      if (!name) {
+        authMessage.textContent = 'Please enter your full name.';
+        return;
+      }
+      try {
+        const cred = await createUserWithEmailAndPassword(auth, email, password);
+        // Save additional user info to Firestore
+        await setDoc(doc(db, 'users', cred.user.uid), {
+          name: name,
+          email: email,
+          phone: phone || ''
+        });
+        localStorage.setItem('userEmail', email);
+        // Send registration email to site owner
+        const body = encodeURIComponent(`New user registered:\nName: ${name}\nEmail: ${email}\nPhone: ${phone || 'N/A'}\nTime: ${new Date().toISOString()}`);
+        window.open(`mailto:vitalelixirglobalist@gmail.com?subject=New User Registration&body=${body}`, '_blank');
+        window.location.href = redirectTo;
+      } catch (error) {
+        authMessage.textContent = error.message;
+      }
+    });
+  </script>
 </body>
 </html>
