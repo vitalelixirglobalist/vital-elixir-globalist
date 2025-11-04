@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cart – Vital Elixir Globalist</title>
+  <title>Your Cart – Vital Elixir Globalist</title>
   <meta name="description" content="Review your selected medicines and proceed to checkout." />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -11,7 +11,7 @@
       theme: {
         extend: { colors: { brand: '#0284c7' } }
       }
-    }
+    };
   </script>
   <style>
     html { scroll-behavior: smooth; }
@@ -24,20 +24,40 @@
 
   <section class="max-w-6xl mx-auto px-4 py-10">
     <h1 class="text-3xl font-bold mb-6">Your Cart</h1>
-    <div id="cartItems" class="space-y-4"></div>
-    <div id="cartSummary" class="mt-8 text-lg font-medium"></div>
+    <!-- Login Prompt Overlay -->
+    <div id="loginOverlay"
+      class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div class="bg-white p-6 rounded-xl shadow-lg max-w-sm text-center">
+        <h2 class="text-xl font-bold mb-4">Please log in to view your cart</h2>
+        <p class="text-sm text-gray-600 mb-6">You must be signed in to access your cart and proceed to
+          checkout.</p>
+        <button id="loginRedirect"
+          class="px-6 py-3 bg-brand text-white rounded-lg hover:bg-blue-700">Login</button>
+      </div>
+    </div>
 
-    <!-- Customer Details -->
-    <div class="mt-10 bg-white p-6 rounded-xl shadow">
-      <h2 class="text-2xl font-semibold mb-4">Customer Details</h2>
-      <form id="checkoutForm" class="grid md:grid-cols-2 gap-4">
-        <input type="text" id="customerName" placeholder="Full Name" required class="border rounded-lg px-3 py-2" />
-        <input type="email" id="customerEmail" placeholder="Email" required class="border rounded-lg px-3 py-2" />
-        <input type="text" id="customerPhone" placeholder="Phone / WhatsApp" class="border rounded-lg px-3 py-2" />
-        <input type="text" id="customerCountry" placeholder="Country" class="border rounded-lg px-3 py-2" />
-        <textarea id="customerAddress" rows="3" placeholder="Address" class="md:col-span-2 border rounded-lg px-3 py-2"></textarea>
-        <button type="button" id="payButton" class="md:col-span-2 mt-4 bg-brand text-white px-6 py-3 rounded-xl hover:bg-blue-700">Proceed to Payment</button>
-      </form>
+    <div id="cartContainer">
+      <div id="cartItems" class="space-y-4"></div>
+      <div id="cartSummary" class="mt-8 text-lg font-medium"></div>
+
+      <!-- Customer Details -->
+      <div class="mt-10 bg-white p-6 rounded-xl shadow" id="detailsSection">
+        <h2 class="text-2xl font-semibold mb-4">Customer Details</h2>
+        <form id="checkoutForm" class="grid md:grid-cols-2 gap-4">
+          <input type="text" id="customerName" placeholder="Full Name" required
+            class="border rounded-lg px-3 py-2" />
+          <input type="email" id="customerEmail" placeholder="Email" required
+            class="border rounded-lg px-3 py-2" />
+          <input type="text" id="customerPhone" placeholder="Phone / WhatsApp"
+            class="border rounded-lg px-3 py-2" />
+          <input type="text" id="customerCountry" placeholder="Country" class="border rounded-lg px-3 py-2" />
+          <textarea id="customerAddress" rows="3" placeholder="Address"
+            class="md:col-span-2 border rounded-lg px-3 py-2"></textarea>
+          <button type="button" id="payButton"
+            class="md:col-span-2 mt-4 bg-brand text-white px-6 py-3 rounded-xl hover:bg-blue-700">Proceed to
+            Payment</button>
+        </form>
+      </div>
     </div>
   </section>
 
@@ -45,57 +65,106 @@
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
   <script>
-    // Load header and menu functionality
+    // Load header and mobile menu
     async function loadHeader() {
       const header = await fetch('header.html');
       document.getElementById('header-placeholder').innerHTML = await header.text();
-
       const menuBtn = document.getElementById('menu-btn');
       const closeBtn = document.getElementById('close-menu');
       const mobileMenu = document.getElementById('mobile-menu');
       const sidebar = document.getElementById('sidebar');
-
-      if (!menuBtn || !sidebar || !mobileMenu) return;
-
-      menuBtn.addEventListener('click', () => {
-        mobileMenu.classList.remove('hidden');
-        setTimeout(() => sidebar.classList.remove('translate-x-full'), 10);
-      });
-      closeBtn.addEventListener('click', () => {
-        sidebar.classList.add('translate-x-full');
-        setTimeout(() => mobileMenu.classList.add('hidden'), 300);
-      });
-      mobileMenu.addEventListener('click', (e) => {
-        if (e.target === mobileMenu) {
+      if (menuBtn && sidebar && mobileMenu) {
+        menuBtn.addEventListener('click', () => {
+          mobileMenu.classList.remove('hidden');
+          setTimeout(() => sidebar.classList.remove('translate-x-full'), 10);
+        });
+        closeBtn.addEventListener('click', () => {
           sidebar.classList.add('translate-x-full');
           setTimeout(() => mobileMenu.classList.add('hidden'), 300);
-        }
-      });
+        });
+        mobileMenu.addEventListener('click', (e) => {
+          if (e.target === mobileMenu) {
+            sidebar.classList.add('translate-x-full');
+            setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+          }
+        });
+      }
     }
     loadHeader();
+  </script>
 
-    // Display cart items from localStorage
-    function renderCart() {
-      // Redirect to login if user email not set
-      const userEmail = localStorage.getItem('userEmail');
-      if (!userEmail) {
-        window.location.href = 'login.html';
-        return;
+  <script type="module">
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js';
+    import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js';
+    import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, setDoc } from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
+
+    const firebaseConfig = {
+      apiKey: 'AIzaSyBsSrWpk0I6YnjNJcGRBnXg23WePsgdRx4',
+      authDomain: 'vital-elixir-globalist.firebaseapp.com',
+      projectId: 'vital-elixir-globalist',
+      storageBucket: 'vital-elixir-globalist.appspot.com',
+      messagingSenderId: '87028221342',
+      appId: '1:87028221342:web:0c7719acc703566e8fc28f',
+      measurementId: 'G-5MWKWE2C4J'
+    };
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    // Elements
+    const loginOverlay = document.getElementById('loginOverlay');
+    const loginRedirect = document.getElementById('loginRedirect');
+    const cartItemsDiv = document.getElementById('cartItems');
+    const cartSummaryDiv = document.getElementById('cartSummary');
+    const detailsSection = document.getElementById('detailsSection');
+    const payButton = document.getElementById('payButton');
+
+    let currentUser = null;
+    onAuthStateChanged(auth, async (user) => {
+      currentUser = user;
+      if (!user) {
+        // show login overlay
+        loginOverlay.classList.remove('hidden');
+        document.getElementById('cartContainer').classList.add('hidden');
+      } else {
+        loginOverlay.classList.add('hidden');
+        document.getElementById('cartContainer').classList.remove('hidden');
+        // Pre-fill email and name if available in Firestore or localStorage
+        document.getElementById('customerEmail').value = user.email;
+        const userDoc = await getDocs(collection(db, 'users'));
+        // Additional user info can be loaded here if desired
+        renderCart();
       }
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      const cartContainer = document.getElementById('cartItems');
-      const summary = document.getElementById('cartSummary');
-      cartContainer.innerHTML = '';
+    });
+    loginRedirect.addEventListener('click', () => {
+      window.location.href = 'login.html?redirect=cart.html';
+    });
+
+    async function renderCart() {
+      cartItemsDiv.innerHTML = '';
+      cartSummaryDiv.innerHTML = '';
       let totalINR = 0;
       let totalUSD = 0;
 
-      if (cart.length === 0) {
-        cartContainer.innerHTML = '<p>Your cart is empty.</p>';
-        summary.innerHTML = '';
+      // Retrieve cart from localStorage for immediate display
+      const localCart = JSON.parse(localStorage.getItem('cart')) || [];
+      // Retrieve cart from Firestore
+      let firestoreCart = [];
+      try {
+        const snapshot = await getDocs(collection(db, 'users', currentUser.uid, 'cart'));
+        snapshot.forEach((docSnap) => {
+          firestoreCart.push({ id: docSnap.id, ...docSnap.data() });
+        });
+      } catch (err) {
+        console.error('Error fetching cart from Firestore', err);
+      }
+      // Merge local and Firestore carts to display; duplicates may show but this is illustrative
+      const mergedCart = [...firestoreCart, ...localCart];
+      if (mergedCart.length === 0) {
+        cartItemsDiv.innerHTML = '<p>Your cart is empty.</p>';
         return;
       }
-
-      cart.forEach((item, index) => {
+      mergedCart.forEach((item, index) => {
         totalINR += item.price_inr;
         totalUSD += item.price_usd;
         const itemDiv = document.createElement('div');
@@ -111,27 +180,49 @@
           <div class="text-sm text-right">
             <p>USD ${item.price_usd}</p>
             <p>INR ${item.price_inr}</p>
-            <button class="mt-1 text-red-500 text-xs" onclick="removeItem(${index})">Remove</button>
+            <button class="mt-1 text-red-500 text-xs removeItemBtn" data-index="${index}">Remove</button>
           </div>
         `;
-        cartContainer.appendChild(itemDiv);
+        cartItemsDiv.appendChild(itemDiv);
       });
-      summary.innerHTML = `Total: <span class="font-bold">USD ${totalUSD.toFixed(2)}</span> | <span class="font-bold">INR ${totalINR.toFixed(2)}</span>`;
+      cartSummaryDiv.innerHTML = `Total: <span class="font-bold">USD ${totalUSD.toFixed(2)}</span> | <span class="font-bold">INR ${totalINR.toFixed(2)}</span>`;
+      // Attach remove handlers
+      document.querySelectorAll('.removeItemBtn').forEach((btn) => {
+        btn.addEventListener('click', async (e) => {
+          const idx = parseInt(e.target.getAttribute('data-index'));
+          // remove from local storage
+          const lc = JSON.parse(localStorage.getItem('cart')) || [];
+          if (idx < lc.length) {
+            lc.splice(idx, 1);
+            localStorage.setItem('cart', JSON.stringify(lc));
+          } else {
+            // remove from Firestore
+            const fIdx = idx - lc.length;
+            const toRemove = firestoreCart[fIdx];
+            try {
+              await deleteDoc(doc(db, 'users', currentUser.uid, 'cart', toRemove.id));
+            } catch (error) {
+              console.error('Error deleting item from Firestore', error);
+            }
+          }
+          renderCart();
+        });
+      });
     }
-
-    // Remove item from cart
-    function removeItem(index) {
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      cart.splice(index, 1);
-      localStorage.setItem('cart', JSON.stringify(cart));
-      renderCart();
-    }
-
-    renderCart();
 
     // Payment integration
-    document.getElementById('payButton').addEventListener('click', async () => {
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    payButton.addEventListener('click', async () => {
+      const localCart = JSON.parse(localStorage.getItem('cart')) || [];
+      let firestoreCartItems = [];
+      try {
+        const snapshot = await getDocs(collection(db, 'users', currentUser.uid, 'cart'));
+        snapshot.forEach((docSnap) => {
+          firestoreCartItems.push({ id: docSnap.id, ...docSnap.data() });
+        });
+      } catch (error) {
+        console.error('Could not fetch Firestore cart', error);
+      }
+      const cart = [...firestoreCartItems, ...localCart];
       if (cart.length === 0) {
         alert('Your cart is empty. Please add products before checkout.');
         return;
@@ -146,40 +237,50 @@
         alert('Please provide your name and email.');
         return;
       }
-
-      // Calculate total amount in INR (paisa)
+      // Sum total INR for Razorpay amount
       let totalINR = 0;
       cart.forEach(item => { totalINR += item.price_inr; });
-      const amountPaise = totalINR * 100; // convert to paise
-
-      // Here you would typically create an order on your server and get an order_id
-      // For demo purposes, we skip server call and proceed directly to payment
-
+      const amountPaise = totalINR * 100;
       const options = {
-        key: 'RAZORPAY_KEY_ID', // TODO: Replace with your Razorpay key
+        key: 'RAZORPAY_KEY_ID', // Replace with your Razorpay key
         amount: amountPaise,
         currency: 'INR',
         name: 'Vital Elixir Globalist',
         description: 'Purchase of Medicines',
-        image: '',
-        handler: function (response) {
-          // Payment was successful
-          // In a real app, verify payment and send order details to backend
-          alert('Payment successful! ID: ' + response.razorpay_payment_id);
-          // Store order details locally for user
-          const userEmail = localStorage.getItem('userEmail');
-          const orders = JSON.parse(localStorage.getItem('orders')) || {};
-          if (!orders[userEmail]) orders[userEmail] = [];
-          orders[userEmail].push({
+        handler: async function (response) {
+          // Payment success - save order to Firestore
+          const orderData = {
             items: cart,
             date: new Date().toISOString(),
             status: 'success',
             orderId: response.razorpay_payment_id,
-            trackingId: ''
-          });
-          localStorage.setItem('orders', JSON.stringify(orders));
-          // Clear cart
+            trackingId: '',
+            customer: {
+              name: name,
+              email: email,
+              phone: phone,
+              country: country,
+              address: address
+            }
+          };
+          try {
+            await addDoc(collection(db, 'users', currentUser.uid, 'orders'), orderData);
+          } catch (err) {
+            console.error('Error saving order to Firestore', err);
+          }
+          // Clear cart in localStorage and Firestore
           localStorage.removeItem('cart');
+          // Delete each Firestore cart item
+          for (const item of firestoreCartItems) {
+            try {
+              await deleteDoc(doc(db, 'users', currentUser.uid, 'cart', item.id));
+            } catch (err) {
+              console.error('Error clearing Firestore cart', err);
+            }
+          }
+          // Send email (mailto) to site owner with order details
+          const mailBody = encodeURIComponent(`New order placed by ${name} (Email: ${email}).\n\nItems:\n${cart.map(i => i.name + ' - ' + i.pack).join(', ')}\nTotal INR: ${totalINR}\nOrder ID: ${response.razorpay_payment_id}`);
+          window.open(`mailto:vitalelixirglobalist@gmail.com?subject=New Order&body=${mailBody}`);
           window.location.href = 'thankyou.html';
         },
         prefill: {
@@ -199,29 +300,5 @@
       rzp.open();
     });
   </script>
-  <script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyBsSrWpk0I6YnjNJcGRBnXg23WePsgdRx4",
-    authDomain: "vital-elixir-globalist.firebaseapp.com",
-    projectId: "vital-elixir-globalist",
-    storageBucket: "vital-elixir-globalist.firebasestorage.app",
-    messagingSenderId: "87028221342",
-    appId: "1:87028221342:web:0c7719acc703566e8fc28f",
-    measurementId: "G-5MWKWE2C4J"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
 </body>
 </html>
-
