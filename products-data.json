@@ -5,7 +5,7 @@
     "composition": "Tadalafil 20 mg",
     "category": "Men’s Health",
     "use": "Erectile dysfunction",
-    "image": ""image": "assets/images/tadalafil20.jpg",
+    "image": "image": "assets/images/tadalafil20.jpg",
     "variants": [
       { "pack": "100 Tablets", "price_usd": 35, "price_inr": 1470 },
       { "pack": "300 Tablets", "price_usd": 45, "price_inr": 1890 }
