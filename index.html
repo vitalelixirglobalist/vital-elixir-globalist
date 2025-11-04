@@ -54,7 +54,7 @@
       <p class="mt-2 text-gray-600">Delivering authentic medicines with documentation and reliability.</p>
       <div class="mt-10 grid md:grid-cols-3 gap-6">
         <div class="p-6 border rounded-2xl shadow-sm hover:shadow-lg transition">
-          <h3 class="font-semibold text-xl text-brand">Sourcing & Verification</h3>
+          <h3 class="font-semibold text-xl text-brand">Sourcing &amp; Verification</h3>
           <p class="mt-2 text-sm text-gray-600">Genuine suppliers, batch verification, and expiry validation.</p>
         </div>
         <div class="p-6 border rounded-2xl shadow-sm hover:shadow-lg transition">
@@ -62,8 +62,8 @@
           <p class="mt-2 text-sm text-gray-600">Proforma invoices, COA (if applicable), export paperwork.</p>
         </div>
         <div class="p-6 border rounded-2xl shadow-sm hover:shadow-lg transition">
-          <h3 class="font-semibold text-xl text-brand">Packaging & Delivery</h3>
-          <p class="mt-2 text-sm text-gray-600">Gift-box dispatch, customs clearance, and insured shipping.</p>
+          <h3 class="font-semibold text-xl text-brand">Packaging &amp; Delivery</h3>
+          <p class="mt-2 text-sm text-gray-600">Gift‑box dispatch, customs clearance, and insured shipping.</p>
         </div>
       </div>
     </div>
@@ -72,7 +72,7 @@
   <!-- Compliance -->
   <section id="compliance" class="py-16 bg-blue-50">
     <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center">Compliance & Quality</h2>
+      <h2 class="text-3xl font-bold text-center">Compliance &amp; Quality</h2>
       <ul class="mt-6 grid md:grid-cols-2 gap-4 text-sm text-gray-700 list-disc list-inside">
         <li>Only licensed suppliers and sealed original products</li>
         <li>Batch numbers and invoices shared with customers</li>
@@ -168,13 +168,12 @@
       });
     }
     loadHeader();
-
     // Load featured products preview
     async function loadPreview() {
       try {
         const res = await fetch('products-data.json');
         const products = await res.json();
-        // Pick first 4 products (or random) to display
+        // Pick first 4 products to display
         const preview = products.slice(0, 4);
         const previewGrid = document.getElementById('previewGrid');
         preview.forEach((p) => {
@@ -193,29 +192,21 @@
     }
     loadPreview();
   </script>
+  <!-- Firebase Initialization -->
   <script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyBsSrWpk0I6YnjNJcGRBnXg23WePsgdRx4",
-    authDomain: "vital-elixir-globalist.firebaseapp.com",
-    projectId: "vital-elixir-globalist",
-    storageBucket: "vital-elixir-globalist.firebasestorage.app",
-    messagingSenderId: "87028221342",
-    appId: "1:87028221342:web:0c7719acc703566e8fc28f",
-    measurementId: "G-5MWKWE2C4J"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-analytics.js";
+    const firebaseConfig = {
+      apiKey: "AIzaSyBsSrWpk0I6YnjNJcGRBnXg23WePsgdRx4",
+      authDomain: "vital-elixir-globalist.firebaseapp.com",
+      projectId: "vital-elixir-globalist",
+      storageBucket: "vital-elixir-globalist.appspot.com",
+      messagingSenderId: "87028221342",
+      appId: "1:87028221342:web:0c7719acc703566e8fc28f",
+      measurementId: "G-5MWKWE2C4J"
+    };
+    const app = initializeApp(firebaseConfig);
+    getAnalytics(app);
+  </script>
 </body>
 </html>
-
