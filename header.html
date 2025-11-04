@@ -13,6 +13,7 @@
       <a href="my-account.html" class="hover:text-brand">My Account</a>
       <a href="about.html" class="hover:text-brand">About Us</a>
       <a href="index.html#contact" class="hover:text-brand">Contact</a>
+      <a href="login.html" class="px-3 py-1 bg-brand text-white rounded-lg hover:opacity-90 transition">Login</a>
     </nav>
 
     <!-- Hamburger Button (visible only on mobile) -->
@@ -24,7 +25,7 @@
     </button>
   </div>
 
-  <!-- Sidebar Menu (Mobile View, slides from right) -->
+  <!-- Sidebar Menu (Mobile View) -->
   <div id="mobile-menu" class="hidden fixed inset-0 bg-gray-800 bg-opacity-70 z-50">
     <div id="sidebar"
          class="w-64 bg-white h-full p-6 shadow-lg transform transition-transform duration-300 translate-x-full right-0 absolute">
@@ -36,7 +37,7 @@
         </svg>
       </button>
 
-      <!-- Navigation Links -->
+      <!-- Mobile Navigation Links -->
       <nav class="flex flex-col gap-4 text-gray-700 text-lg font-medium">
         <a href="index.html" class="hover:text-brand">🏠 Home</a>
         <a href="products.html" class="hover:text-brand">💊 Medicines</a>
@@ -45,6 +46,7 @@
         <a href="my-account.html" class="hover:text-brand">👤 My Account</a>
         <a href="about.html" class="hover:text-brand">👥 About Us</a>
         <a href="index.html#contact" class="hover:text-brand">📞 Contact</a>
+        <a href="login.html" class="bg-brand text-white py-2 rounded-lg hover:opacity-90 transition">🔐 Login</a>
       </nav>
     </div>
   </div>
@@ -77,6 +79,20 @@
       if (e.target === mobileMenu) {
         sidebar.classList.add('translate-x-full');
         setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+      }
+    });
+
+    /* -------------------------------
+       ✅ BONUS FIX:
+       Auto-correct internal links to .html
+       (prevents 404 errors on GitHub Pages)
+    --------------------------------*/
+    document.querySelectorAll('a[href^="/"]').forEach(link => {
+      const fixed = link.getAttribute('href').replace(/^\//, '');
+      if (!fixed.endsWith('.html') && !fixed.includes('#')) {
+        link.setAttribute('href', fixed + '.html');
+      } else {
+        link.setAttribute('href', fixed);
       }
     });
   });
