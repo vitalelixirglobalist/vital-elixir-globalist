@@ -87,6 +87,23 @@
       window.open(`https://parcelsapp.com/en/tracking/${id}`, '_blank');
     });
   </script>
+  <script type="module">
+  import { db, auth } from './firebase-config.js';
+  import { collection, getDocs } 
+    from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
+
+  async function loadTracking() {
+    const user = auth.currentUser;
+    if (!user) return;
+
+    const snap = await getDocs(collection(db, `USERS/${user.uid}/transactions`));
+    snap.forEach(doc => {
+      console.log("Tracking:", doc.data().trackingId, doc.data().status);
+    });
+  }
+
+  loadTracking();
+</script>
   <script type="module" src="firebase-config.js"></script>
 </body>
 </html>
