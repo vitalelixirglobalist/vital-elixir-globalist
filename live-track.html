@@ -4,44 +4,87 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Live Track Parcel – Vital Elixir Globalist</title>
+  <meta name="description" content="Track your parcel and get updates on your shipment status." />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    tailwind.config = {
-      theme: {
-        extend: { colors: { brand: '#0284c7' } }
-      }
-    }
+    tailwind.config = { theme: { extend: { colors: { brand: '#0284c7' } } } };
   </script>
 </head>
-
 <body class="text-gray-800 bg-gray-50">
   <div id="header-placeholder"></div>
-  <section class="max-w-xl mx-auto px-4 py-16 text-center">
-    <h1 class="text-3xl font-bold mb-4">Live Track Your Parcel</h1>
-    <p class="text-gray-600 mb-8">Enter your tracking ID to view real-time delivery status.</p>
-    <form id="trackForm" class="flex flex-col items-center space-y-4">
-      <input type="text" id="trackingId" placeholder="Tracking ID" required class="w-full border rounded-lg px-4 py-2" />
-      <button type="submit" class="bg-brand text-white px-6 py-3 rounded-xl hover:bg-blue-700">Track Parcel</button>
+  <section class="max-w-md mx-auto px-4 py-16">
+    <h1 class="text-3xl font-bold mb-6 text-center">Track Your Parcel</h1>
+    <p class="text-center text-gray-600 mb-8">Enter your tracking ID to view the status of your shipment.</p>
+    <form id="trackForm" class="bg-white p-6 rounded-xl shadow space-y-4">
+      <input type="text" id="trackingId" placeholder="Tracking ID" required class="w-full border rounded-lg px-3 py-2" />
+      <input type="email" id="trackEmail" placeholder="Your Email (optional)" class="w-full border rounded-lg px-3 py-2" />
+      <button type="submit" class="w-full bg-brand text-white py-2 rounded-lg hover:bg-blue-700">Track</button>
     </form>
   </section>
-
   <script>
-    // Load header
+    // Load header and mobile menu
     async function loadHeader() {
       const header = await fetch('header.html');
       document.getElementById('header-placeholder').innerHTML = await header.text();
+      const menuBtn = document.getElementById('menu-btn');
+      const closeBtn = document.getElementById('close-menu');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const sidebar = document.getElementById('sidebar');
+      if (menuBtn && sidebar && mobileMenu) {
+        menuBtn.addEventListener('click', () => {
+          mobileMenu.classList.remove('hidden');
+          setTimeout(() => sidebar.classList.remove('translate-x-full'), 10);
+        });
+        closeBtn.addEventListener('click', () => {
+          sidebar.classList.add('translate-x-full');
+          setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+        });
+        mobileMenu.addEventListener('click', (e) => {
+          if (e.target === mobileMenu) {
+            sidebar.classList.add('translate-x-full');
+            setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+          }
+        });
+      }
     }
     loadHeader();
-
-    document.getElementById('trackForm').addEventListener('submit', (e) => {
+  </script>
+  <script type="module">
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js';
+    import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
+    // We don't require auth here; tracking requests can be anonymous
+    const firebaseConfig = {
+      apiKey: 'AIzaSyBsSrWpk0I6YnjNJcGRBnXg23WePsgdRx4',
+      authDomain: 'vital-elixir-globalist.firebaseapp.com',
+      projectId: 'vital-elixir-globalist',
+      storageBucket: 'vital-elixir-globalist.appspot.com',
+      messagingSenderId: '87028221342',
+      appId: '1:87028221342:web:0c7719acc703566e8fc28f',
+      measurementId: 'G-5MWKWE2C4J'
+    };
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const trackForm = document.getElementById('trackForm');
+    trackForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       const id = document.getElementById('trackingId').value.trim();
-      if (!id) {
-        alert('Please enter a tracking ID.');
-        return;
+      const email = document.getElementById('trackEmail').value.trim();
+      if (!id) return;
+      // Save tracking request to Firestore
+      try {
+        await addDoc(collection(db, 'trackingRequests'), {
+          trackingId: id,
+          email: email,
+          date: new Date().toISOString()
+        });
+      } catch (err) {
+        console.error('Failed to save tracking request', err);
       }
-      const url = `https://parcelsapp.com/en/tracking/${encodeURIComponent(id)}`;
-      window.open(url, '_blank');
+      // Send mail notification to site owner
+      const body = encodeURIComponent(`Tracking request for ID ${id}\nEmail: ${email || 'N/A'}`);
+      window.open(`mailto:vitalelixirglobalist@gmail.com?subject=Tracking Request&body=${body}`, '_blank');
+      // Open parcel tracking page in new tab
+      window.open(`https://parcelsapp.com/en/tracking/${id}`, '_blank');
     });
   </script>
 </body>
