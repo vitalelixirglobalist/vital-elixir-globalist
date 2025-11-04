@@ -4,96 +4,158 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>My Account – Vital Elixir Globalist</title>
+  <meta name="description" content="View your orders, update your details and manage your account with Vital Elixir Globalist." />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    tailwind.config = {
-      theme: {
-        extend: { colors: { brand: '#0284c7' } }
-      }
-    }
+    tailwind.config = { theme: { extend: { colors: { brand: '#0284c7' } } } };
   </script>
+  <style>
+    html { scroll-behavior: smooth; }
+  </style>
 </head>
 
 <body class="text-gray-800 bg-gray-50">
+  <!-- Header placeholder -->
   <div id="header-placeholder"></div>
-  <section class="max-w-6xl mx-auto px-4 py-10">
+  <section class="max-w-5xl mx-auto px-4 py-10">
     <h1 class="text-3xl font-bold mb-6">My Account</h1>
-    <div id="accountInfo" class="mb-8"></div>
-    <h2 class="text-2xl font-semibold mb-4">Order History</h2>
-    <div id="ordersList" class="space-y-4"></div>
-    <button id="logoutBtn" class="mt-8 bg-red-500 text-white px-6 py-2 rounded-lg hover:bg-red-600">Log Out</button>
+    <!-- Login overlay shown when user is not authenticated -->
+    <div id="loginOverlay" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
+      <div class="bg-white p-6 rounded-xl shadow-lg max-w-sm text-center">
+        <h2 class="text-xl font-bold mb-4">Please log in to view your account</h2>
+        <p class="text-sm text-gray-600 mb-6">You must be signed in to see your orders and profile.</p>
+        <button id="loginRedirect" class="px-6 py-3 bg-brand text-white rounded-lg hover:bg-blue-700">Login</button>
+      </div>
+    </div>
+    <!-- Account content shown after login -->
+    <div id="accountContent" class="hidden">
+      <div class="bg-white p-6 rounded-xl shadow mb-8">
+        <h2 class="text-2xl font-semibold mb-4">Profile</h2>
+        <p class="mb-2"><strong>Name:</strong> <span id="profileName"></span></p>
+        <p class="mb-2"><strong>Email:</strong> <span id="profileEmail"></span></p>
+        <button id="logoutBtn" class="mt-4 bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600">Sign Out</button>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow">
+        <h2 class="text-2xl font-semibold mb-4">Order History</h2>
+        <div id="ordersList" class="space-y-4 text-sm"></div>
+      </div>
+    </div>
   </section>
-
   <script>
-    // Load header
+    // Load header and mobile menu functionality
     async function loadHeader() {
       const header = await fetch('header.html');
       document.getElementById('header-placeholder').innerHTML = await header.text();
+      const menuBtn = document.getElementById('menu-btn');
+      const closeBtn = document.getElementById('close-menu');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const sidebar = document.getElementById('sidebar');
+      if (menuBtn && sidebar && mobileMenu) {
+        menuBtn.addEventListener('click', () => {
+          mobileMenu.classList.remove('hidden');
+          setTimeout(() => sidebar.classList.remove('translate-x-full'), 10);
+        });
+        closeBtn.addEventListener('click', () => {
+          sidebar.classList.add('translate-x-full');
+          setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+        });
+        mobileMenu.addEventListener('click', (e) => {
+          if (e.target === mobileMenu) {
+            sidebar.classList.add('translate-x-full');
+            setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+          }
+        });
+      }
     }
     loadHeader();
+  </script>
+  <script type="module">
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js';
+    import { getAuth, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js';
+    import { getFirestore, doc, getDoc, collection, getDocs } from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
 
-    const userEmail = localStorage.getItem('userEmail');
-    const accountInfoDiv = document.getElementById('accountInfo');
-    const ordersListDiv = document.getElementById('ordersList');
-    if (!userEmail) {
-      // redirect to login if not logged in
-      window.location.href = 'login.html';
-    } else {
-      accountInfoDiv.innerHTML = `<p class="text-lg">Signed in as <span class="font-medium">${userEmail}</span></p>`;
-    }
+    // Firebase configuration
+    const firebaseConfig = {
+      apiKey: 'AIzaSyBsSrWpk0I6YnjNJcGRBnXg23WePsgdRx4',
+      authDomain: 'vital-elixir-globalist.firebaseapp.com',
+      projectId: 'vital-elixir-globalist',
+      storageBucket: 'vital-elixir-globalist.appspot.com',
+      messagingSenderId: '87028221342',
+      appId: '1:87028221342:web:0c7719acc703566e8fc28f',
+      measurementId: 'G-5MWKWE2C4J'
+    };
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
 
-    function renderOrders() {
-      const ordersData = JSON.parse(localStorage.getItem('orders')) || {};
-      const userOrders = ordersData[userEmail] || [];
-      ordersListDiv.innerHTML = '';
-      if (userOrders.length === 0) {
-        ordersListDiv.innerHTML = '<p>You have no past orders.</p>';
-        return;
-      }
-      userOrders.forEach((order, index) => {
-        const wrapper = document.createElement('div');
-        wrapper.className = 'bg-white p-4 rounded-lg shadow';
-        const itemList = order.items.map(item => `${item.name} (${item.pack})`).join(', ');
-        wrapper.innerHTML = `
-          <p class="font-medium">Order #${index + 1} – <span class="capitalize">${order.status}</span></p>
-          <p class="text-sm text-gray-600">Date: ${new Date(order.date).toLocaleString()}</p>
-          <p class="text-sm text-gray-600">Items: ${itemList}</p>
-          <p class="text-sm text-gray-600">Transaction ID: ${order.orderId || 'N/A'}</p>
-          <p class="text-sm text-gray-600">Tracking ID: ${order.trackingId || 'Not assigned'}</p>
-        `;
-        ordersListDiv.appendChild(wrapper);
+    const loginOverlay = document.getElementById('loginOverlay');
+    const accountContent = document.getElementById('accountContent');
+    const loginRedirectBtn = document.getElementById('loginRedirect');
+    const logoutBtn = document.getElementById('logoutBtn');
+    const profileNameEl = document.getElementById('profileName');
+    const profileEmailEl = document.getElementById('profileEmail');
+    const ordersList = document.getElementById('ordersList');
+
+    loginRedirectBtn.addEventListener('click', () => {
+      window.location.href = 'login.html?redirect=my-account.html';
+    });
+    if (logoutBtn) {
+      logoutBtn.addEventListener('click', async () => {
+        try {
+          await signOut(auth);
+          localStorage.removeItem('userEmail');
+          window.location.href = 'index.html';
+        } catch (err) {
+          console.error('Error signing out', err);
+        }
       });
     }
 
-    renderOrders();
-
-    document.getElementById('logoutBtn').addEventListener('click', () => {
-      localStorage.removeItem('userEmail');
-      window.location.href = 'login.html';
+    onAuthStateChanged(auth, async (user) => {
+      if (!user) {
+        loginOverlay.classList.remove('hidden');
+        accountContent.classList.add('hidden');
+        return;
+      }
+      // User logged in
+      loginOverlay.classList.add('hidden');
+      accountContent.classList.remove('hidden');
+      profileEmailEl.textContent = user.email;
+      try {
+        const userDoc = await getDoc(doc(db, 'users', user.uid));
+        if (userDoc.exists()) {
+          const data = userDoc.data();
+          profileNameEl.textContent = data.name || '';
+        }
+      } catch (err) {
+        console.error('Failed to fetch user profile', err);
+      }
+      // Load orders
+      ordersList.innerHTML = '';
+      try {
+        const snap = await getDocs(collection(db, 'users', user.uid, 'orders'));
+        if (snap.empty) {
+          ordersList.innerHTML = '<p>You have no orders yet.</p>';
+        } else {
+          snap.forEach((docSnap) => {
+            const order = docSnap.data();
+            const div = document.createElement('div');
+            div.className = 'border p-4 rounded-lg shadow-sm';
+            const itemsDescription = order.items.map(i => `${i.name} (${i.pack})`).join(', ');
+            div.innerHTML = `
+              <p class="mb-2 text-sm text-gray-700"><strong>Order ID:</strong> ${docSnap.id}</p>
+              <p class="mb-2 text-sm text-gray-700"><strong>Date:</strong> ${new Date(order.date).toLocaleDateString()}</p>
+              <p class="mb-2 text-sm text-gray-700"><strong>Items:</strong> ${itemsDescription}</p>
+              <p class="mb-2 text-sm text-gray-700"><strong>Status:</strong> ${order.status}</p>
+            `;
+            ordersList.appendChild(div);
+          });
+        }
+      } catch (err) {
+        console.error('Failed to fetch orders', err);
+        ordersList.innerHTML = '<p>Could not load your orders. Please try again later.</p>';
+      }
     });
   </script>
-  <script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyBsSrWpk0I6YnjNJcGRBnXg23WePsgdRx4",
-    authDomain: "vital-elixir-globalist.firebaseapp.com",
-    projectId: "vital-elixir-globalist",
-    storageBucket: "vital-elixir-globalist.firebasestorage.app",
-    messagingSenderId: "87028221342",
-    appId: "1:87028221342:web:0c7719acc703566e8fc28f",
-    measurementId: "G-5MWKWE2C4J"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
 </body>
 </html>
