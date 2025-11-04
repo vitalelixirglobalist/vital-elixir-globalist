@@ -4,29 +4,50 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Thank You – Vital Elixir Globalist</title>
+  <meta name="description" content="Thank you for your purchase from Vital Elixir Globalist." />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    tailwind.config = {
-      theme: {
-        extend: { colors: { brand: '#0284c7' } }
-      }
-    }
+    tailwind.config = { theme: { extend: { colors: { brand: '#0284c7' } } } };
   </script>
 </head>
-
 <body class="text-gray-800 bg-gray-50">
   <div id="header-placeholder"></div>
-  <section class="flex flex-col items-center justify-center min-h-screen text-center">
-    <h1 class="text-4xl font-extrabold text-brand mb-4">Thank you for your purchase!</h1>
-    <p class="text-gray-600 mb-6">Your order is being processed. We will contact you shortly with the shipment details.</p>
-    <a href="index.html" class="px-6 py-3 bg-brand text-white rounded-xl hover:bg-blue-700">Return Home</a>
+  <section class="max-w-3xl mx-auto px-4 py-20 text-center">
+    <h1 class="text-4xl font-extrabold mb-4">Thank You!</h1>
+    <p class="text-gray-700 mb-6">We appreciate your order and will process it shortly. A confirmation has been sent to your email.</p>
+    <div class="flex justify-center gap-4">
+      <a href="products.html" class="px-6 py-3 bg-brand text-white rounded-lg hover:bg-blue-700">Continue Shopping</a>
+      <a href="my-account.html" class="px-6 py-3 border border-brand text-brand rounded-lg hover:bg-blue-50">View My Account</a>
+    </div>
   </section>
-
+  <footer class="py-8 bg-white border-t text-center text-gray-600 text-sm">
+    © <span id="year"></span> Vital Elixir Globalist. All rights reserved.
+  </footer>
   <script>
-    // Load header
+    document.getElementById('year').textContent = new Date().getFullYear();
     async function loadHeader() {
       const header = await fetch('header.html');
       document.getElementById('header-placeholder').innerHTML = await header.text();
+      const menuBtn = document.getElementById('menu-btn');
+      const closeBtn = document.getElementById('close-menu');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const sidebar = document.getElementById('sidebar');
+      if (menuBtn && sidebar && mobileMenu) {
+        menuBtn.addEventListener('click', () => {
+          mobileMenu.classList.remove('hidden');
+          setTimeout(() => sidebar.classList.remove('translate-x-full'), 10);
+        });
+        closeBtn.addEventListener('click', () => {
+          sidebar.classList.add('translate-x-full');
+          setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+        });
+        mobileMenu.addEventListener('click', (e) => {
+          if (e.target === mobileMenu) {
+            sidebar.classList.add('translate-x-full');
+            setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+          }
+        });
+      }
     }
     loadHeader();
   </script>
