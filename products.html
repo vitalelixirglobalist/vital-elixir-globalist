@@ -4,18 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Products – Vital Elixir Globalist</title>
-  <meta name="description" content="Explore genuine medicines by category – Tablets, Creams, Drops, Sprays, and Injections." />
+  <meta name="description" content="Explore genuine medicines by category – tablets, creams, drops, sprays and injections."
+    />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: { colors: { brand: '#0284c7' } }
       }
-    }
+    };
   </script>
 </head>
 
 <body class="text-gray-800 bg-gray-50">
+  <!-- Header placeholder -->
   <div id="header-placeholder"></div>
 
   <!-- Page Title -->
@@ -25,48 +27,139 @@
   </section>
 
   <!-- Search & Category Filter -->
-  <div class="max-w-6xl mx-auto px-4 mb-8 flex flex-col md:flex-row md:justify-between md:items-center gap-4">
-    <input
-      id="searchBar"
-      type="text"
-      placeholder="Search medicines..."
-      class="w-full md:w-1/2 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand"
-    />
+  <div
+    class="max-w-6xl mx-auto px-4 mb-8 flex flex-col md:flex-row md:justify-between md:items-center gap-4">
+    <input id="searchBar" type="text" placeholder="Search medicines..."
+      class="w-full md:w-1/2 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand" />
     <select id="categoryFilter" class="border rounded p-2">
-  <option value="all">All Categories</option>
-  <option value="Men’s Health">Men’s Health</option>
-  <option value="Diabetes & Metabolic Care">Diabetes & Metabolic Care</option>
-  <option value="Dermatology & Skin Care">Dermatology & Skin Care</option>
-  <option value="Eye & Allergy Care">Eye & Allergy Care</option>
-  <option value="Hormonal & Thyroid Care">Hormonal & Thyroid Care</option>
-  <option value="Hormonal / Performance Enhancement">Hormonal / Performance Enhancement</option>
-  <option value="Infection & Antiparasitic Treatments">Infection & Antiparasitic Treatments</option>
-  <option value="Neurology">Neurology</option>
-  <option value="Thyroid Treatment">Thyroid Treatment</option>
-  <option value="Allergy / Anxiety">Allergy / Anxiety</option>
-  <option value="Anti-Malarial / Autoimmune">Anti-Malarial / Autoimmune</option>
-  <option value="Addiction Treatment">Addiction Treatment</option>
-  <option value="Anticoagulant">Anticoagulant</option>
-  <option value="Veterinary / Other Uses">Veterinary / Other Uses</option>
-  <option value="Veterinary / Antiparasitic">Veterinary / Antiparasitic</option>
-  <option value="Hormone Therapy">Hormone Therapy</option>
-  <option value="Supplement">Supplement</option>
-  <option value="Allergy / Asthma">Allergy / Asthma</option>
-</select>
+      <option value="all">All Categories</option>
+      <option value="Men’s Health">Men’s Health</option>
+      <option value="Diabetes & Metabolic Care">Diabetes & Metabolic Care</option>
+      <option value="Dermatology & Skin Care">Dermatology & Skin Care</option>
+      <option value="Eye & Allergy Care">Eye & Allergy Care</option>
+      <option value="Hormonal & Thyroid Care">Hormonal & Thyroid Care</option>
+      <option value="Hormonal / Performance Enhancement">Hormonal / Performance Enhancement</option>
+      <option value="Infection & Antiparasitic Treatments">Infection & Antiparasitic Treatments</option>
+      <option value="Neurology">Neurology</option>
+      <option value="Thyroid Treatment">Thyroid Treatment</option>
+      <option value="Allergy / Anxiety">Allergy / Anxiety</option>
+      <option value="Anti-Malarial / Autoimmune">Anti-Malarial / Autoimmune</option>
+      <option value="Addiction Treatment">Addiction Treatment</option>
+      <option value="Anticoagulant">Anticoagulant</option>
+      <option value="Veterinary / Other Uses">Veterinary / Other Uses</option>
+      <option value="Veterinary / Antiparasitic">Veterinary / Antiparasitic</option>
+      <option value="Hormone Therapy">Hormone Therapy</option>
+      <option value="Supplement">Supplement</option>
+      <option value="Allergy / Asthma">Allergy / Asthma</option>
+    </select>
   </div>
 
   <!-- Product Grid -->
-  <div id="productGrid" class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 pb-16"></div>
+  <div id="productGrid"
+    class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 pb-16"></div>
+
+  <!-- Modal Overlay for alerts and confirmations -->
+  <div id="modalOverlay"
+    class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div class="bg-white rounded-xl p-6 max-w-sm w-full text-center shadow-lg">
+      <h2 class="text-lg font-bold mb-4">Vital Elixir Globalist – Our customers are most important to us.</h2>
+      <p id="modalMessage" class="text-sm text-gray-700 mb-6"></p>
+      <div class="flex justify-center gap-4">
+        <button id="modalOk" class="bg-brand text-white px-4 py-2 rounded-lg hover:bg-blue-700">OK</button>
+        <button id="modalProceed"
+          class="hidden bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">Proceed
+          to Cart</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer class="py-8 bg-white border-t text-center text-gray-600 text-sm">
     © <span id="year"></span> Vital Elixir Globalist. All rights reserved.
   </footer>
 
-  <!-- Script -->
   <script>
     // Set footer year
     document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <script>
+    // Load header and menu
+    async function loadHeader() {
+      const header = await fetch('header.html');
+      document.getElementById('header-placeholder').innerHTML = await header.text();
+      // copy mobile menu functionality
+      const menuBtn = document.getElementById('menu-btn');
+      const closeBtn = document.getElementById('close-menu');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const sidebar = document.getElementById('sidebar');
+      if (!menuBtn || !sidebar || !mobileMenu) return;
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.remove('hidden');
+        setTimeout(() => sidebar.classList.remove('translate-x-full'), 10);
+      });
+      closeBtn.addEventListener('click', () => {
+        sidebar.classList.add('translate-x-full');
+        setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+      });
+      mobileMenu.addEventListener('click', (e) => {
+        if (e.target === mobileMenu) {
+          sidebar.classList.add('translate-x-full');
+          setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+        }
+      });
+    }
+    loadHeader();
+  </script>
+
+  <script type="module">
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js';
+    import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js';
+    import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
+
+    // Firebase config
+    const firebaseConfig = {
+      apiKey: 'AIzaSyBsSrWpk0I6YnjNJcGRBnXg23WePsgdRx4',
+      authDomain: 'vital-elixir-globalist.firebaseapp.com',
+      projectId: 'vital-elixir-globalist',
+      storageBucket: 'vital-elixir-globalist.appspot.com',
+      messagingSenderId: '87028221342',
+      appId: '1:87028221342:web:0c7719acc703566e8fc28f',
+      measurementId: 'G-5MWKWE2C4J'
+    };
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    let currentUser = null;
+    onAuthStateChanged(auth, (user) => {
+      currentUser = user;
+    });
+
+    // Modal functions
+    const modalOverlay = document.getElementById('modalOverlay');
+    const modalMessage = document.getElementById('modalMessage');
+    const modalOk = document.getElementById('modalOk');
+    const modalProceed = document.getElementById('modalProceed');
+    function showModal(message, showProceed = false) {
+      modalMessage.textContent = message;
+      modalOverlay.classList.remove('hidden');
+      if (showProceed) {
+        modalProceed.classList.remove('hidden');
+      } else {
+        modalProceed.classList.add('hidden');
+      }
+    }
+    function hideModal() {
+      modalOverlay.classList.add('hidden');
+    }
+    modalOk.addEventListener('click', () => {
+      hideModal();
+    });
+    modalProceed.addEventListener('click', () => {
+      hideModal();
+      window.location.href = 'cart.html';
+    });
 
     let allProducts = [];
     const productGrid = document.getElementById('productGrid');
@@ -78,7 +171,6 @@
       allProducts = await res.json();
       displayProducts(allProducts);
     }
-
     function displayProducts(products) {
       productGrid.innerHTML = '';
       products.forEach((p) => {
@@ -112,89 +204,65 @@
             </div>
           `;
         });
-        addBtn.addEventListener('click', () => {
+        addBtn.addEventListener('click', async () => {
           const variantIndex = select.selectedIndex - 1;
           if (variantIndex < 0) {
-            alert('Please select a quantity before adding to cart.');
+            showModal('Please select a quantity before adding to cart.');
             return;
           }
-          addToCart(p, variantIndex);
+          if (!currentUser) {
+            // Not logged in
+            showModal('Please log in to add items to your cart.', false);
+            // Redirect to login after closing modal
+            modalOk.onclick = () => {
+              hideModal();
+              window.location.href = 'login.html?redirect=products.html';
+            };
+            return;
+          }
+          // Add to local cart (for quick display)
+          const selectedVariant = p.variants[variantIndex];
+          const cart = JSON.parse(localStorage.getItem('cart')) || [];
+          cart.push({
+            name: p.name,
+            brand: p.brand,
+            pack: selectedVariant.pack,
+            price_usd: selectedVariant.price_usd,
+            price_inr: selectedVariant.price_inr,
+            image: p.image
+          });
+          localStorage.setItem('cart', JSON.stringify(cart));
+          // Save to Firestore under user cart subcollection
+          try {
+            await addDoc(collection(db, 'users', currentUser.uid, 'cart'), {
+              name: p.name,
+              brand: p.brand,
+              pack: selectedVariant.pack,
+              price_usd: selectedVariant.price_usd,
+              price_inr: selectedVariant.price_inr,
+              image: p.image,
+              dateAdded: new Date().toISOString()
+            });
+          } catch (error) {
+            console.error('Error adding to Firestore cart:', error);
+          }
+          showModal(`${p.name} (${selectedVariant.pack}) added to cart.`, true);
         });
         productGrid.appendChild(card);
       });
     }
-
-    function addToCart(product, variantIndex) {
-      if (variantIndex < 0) {
-        alert('Please select a quantity before adding to cart.');
-        return;
-      }
-      // Ensure user email is captured
-      let userEmail = localStorage.getItem('userEmail');
-      if (!userEmail) {
-        userEmail = prompt('Please enter your email to continue');
-        if (!userEmail) {
-          alert('Email is required to add items to cart.');
-          return;
-        }
-        localStorage.setItem('userEmail', userEmail.trim());
-      }
-      const selectedVariant = product.variants[variantIndex];
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      cart.push({
-        name: product.name,
-        brand: product.brand,
-        pack: selectedVariant.pack,
-        price_usd: selectedVariant.price_usd,
-        price_inr: selectedVariant.price_inr,
-        image: product.image
-      });
-      localStorage.setItem('cart', JSON.stringify(cart));
-      alert(`${product.name} (${selectedVariant.pack}) added to cart!`);
-    }
-
-    // 🔍 Search + Filter
-    searchBar.addEventListener('input', () => filterProducts());
-    categoryFilter.addEventListener('change', () => filterProducts());
-
     function filterProducts() {
       const query = searchBar.value.toLowerCase();
       const category = categoryFilter.value;
-      const filtered = allProducts.filter(p =>
+      const filtered = allProducts.filter((p) =>
         (category === 'all' || p.category === category) &&
         (p.name.toLowerCase().includes(query) || p.brand.toLowerCase().includes(query))
       );
       displayProducts(filtered);
     }
-
+    searchBar.addEventListener('input', filterProducts);
+    categoryFilter.addEventListener('change', filterProducts);
     loadProducts();
-
-    // ✅ Load header + mobile menu functionality
-    async function loadHeader() {
-      const header = await fetch('header.html');
-      document.getElementById('header-placeholder').innerHTML = await header.text();
-      const menuBtn = document.getElementById('menu-btn');
-      const closeBtn = document.getElementById('close-menu');
-      const mobileMenu = document.getElementById('mobile-menu');
-      const sidebar = document.getElementById('sidebar');
-      if (!menuBtn || !sidebar || !mobileMenu) return;
-      menuBtn.addEventListener('click', () => {
-        mobileMenu.classList.remove('hidden');
-        setTimeout(() => sidebar.classList.remove('translate-x-full'), 10);
-      });
-      closeBtn.addEventListener('click', () => {
-        sidebar.classList.add('translate-x-full');
-        setTimeout(() => mobileMenu.classList.add('hidden'), 300);
-      });
-      mobileMenu.addEventListener('click', (e) => {
-        if (e.target === mobileMenu) {
-          sidebar.classList.add('translate-x-full');
-          setTimeout(() => mobileMenu.classList.add('hidden'), 300);
-        }
-      });
-    }
-    loadHeader();
   </script>
 </body>
 </html>
-
