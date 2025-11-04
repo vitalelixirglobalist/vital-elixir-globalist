@@ -157,6 +157,29 @@
       }
     });
   </script>
+  <script type="module">
+  import { auth } from './firebase-config.js';
+  import { onAuthStateChanged, signOut } 
+    from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
+
+  onAuthStateChanged(auth, (user) => {
+    if (!user) {
+      alert("Please login first.");
+      window.location.href = "login.html";
+    }
+  });
+
+  // Optional logout button
+  const logoutBtn = document.getElementById('logout-btn');
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', () => {
+      signOut(auth).then(() => {
+        localStorage.removeItem('uid');
+        window.location.href = "index.html";
+      });
+    });
+  }
+</script>
   <script type="module" src="firebase-config.js"></script>
 </body>
 </html>
