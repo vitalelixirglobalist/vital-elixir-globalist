@@ -154,6 +154,39 @@
       }
     });
   </script>
+<script type="module">
+  import { auth, db } from './firebase-config.js';
+  import { createUserWithEmailAndPassword, signInWithEmailAndPassword } 
+    from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
+  import { setDoc, doc } 
+    from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
+
+  const form = document.getElementById('login-form');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    try {
+      // Try login first
+      const userCred = await signInWithEmailAndPassword(auth, email, password);
+      alert('Login successful!');
+      localStorage.setItem('uid', userCred.user.uid);
+      window.location.href = 'my-account.html';
+    } catch (err) {
+      // If no account, create one
+      const newUser = await createUserWithEmailAndPassword(auth, email, password);
+      await setDoc(doc(db, "USERS", newUser.user.uid), {
+        email,
+        createdAt: new Date().toISOString()
+      });
+      alert('Account created successfully!');
+      localStorage.setItem('uid', newUser.user.uid);
+      window.location.href = 'my-account.html';
+    }
+  });
+</script>
 <script type="module" src="firebase-config.js"></script>
 </body>
 </html>
