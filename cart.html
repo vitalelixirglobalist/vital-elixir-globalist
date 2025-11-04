@@ -323,8 +323,31 @@
     });
   }
 </script>
+  <script type="module">
+  import { db, auth } from './firebase-config.js';
+  import { addDoc, collection } 
+    from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
+
+  async function saveTransaction(amount, trackingId) {
+    const user = auth.currentUser;
+    if (!user) return;
+
+    await addDoc(collection(db, `USERS/${user.uid}/transactions`), {
+      amount,
+      date: new Date().toISOString(),
+      trackingId,
+      status: 'Success'
+    });
+
+    alert('Transaction saved!');
+  }
+
+  // Example usage:
+  // saveTransaction(1500, "LP123IN");
+</script>
   <script type="module" src="firebase-config.js"></script>
 </body>
 </html>
+
 
 
