@@ -18,22 +18,114 @@
   <!-- Header Placeholder -->
   <div id="header-placeholder"></div>
 
-  <!-- Hero -->
-  <section class="bg-gradient-to-b from-blue-50 to-white py-16 md:py-24 text-center">
-    <div class="max-w-3xl mx-auto px-4">
-      <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
-        Global Medicine Export Specialists
-      </h1>
-      <p class="mt-4 text-gray-600 text-lg">
-        Genuine medicines · Secure packaging · Smooth worldwide delivery.<br />
-        Focus regions: United States, United Kingdom, European Union, UAE & more.
-      </p>
-      <div class="mt-6 flex justify-center gap-4">
-        <a href="#contact" class="px-6 py-3 bg-brand text-white rounded-xl hover:bg-blue-700">Request a Quote</a>
-        <a href="https://wa.me/+918275595850" class="px-6 py-3 border border-brand rounded-xl hover:bg-blue-50">WhatsApp Us</a>
-      </div>
+ <!-- Hero -->
+<section class="bg-gradient-to-b from-blue-50 to-white py-16 md:py-24 text-center">
+  <div class="max-w-3xl mx-auto px-4">
+    <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+      Global Medicine Export Specialists
+    </h1>
+    <p class="mt-4 text-gray-600 text-lg">
+      Genuine medicines · Secure packaging · Smooth worldwide delivery.<br />
+      Focus regions: United States, United Kingdom, European Union, UAE & more.
+    </p>
+
+    <!-- Primary actions -->
+    <div class="mt-6 flex flex-wrap justify-center gap-4">
+      <a href="#contact" class="px-6 py-3 bg-brand text-white rounded-xl hover:bg-blue-700">
+        Request a Quote
+      </a>
+
+      <!-- NOTE: wa.me must NOT include the '+' sign -->
+      <a href="https://wa.me/+918275595850" class="px-6 py-3 border border-brand rounded-xl hover:bg-blue-50">
+        WhatsApp Us
+      </a>
     </div>
-  </section>
+
+    <!-- Secondary social/comm actions -->
+    <div class="mt-6 flex flex-wrap items-center justify-center gap-3 text-sm">
+
+      <!-- Instagram DM -->
+      <a
+        href="https://ig.me/m/vitalelixirglobalist"
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-gray-200 hover:bg-gray-50"
+        aria-label="Message us on Instagram"
+      >
+        <!-- IG icon (SVG) -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5Zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5Zm5.25-3.25a.75.75 0 1 1-.75.75.75.75 0 0 1 .75-.75Z"/>
+        </svg>
+        Instagram DM
+      </a>
+
+      <!-- Telegram -->
+      <a
+        href="https://t.me/vitalelixirglobalist"
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-gray-200 hover:bg-gray-50"
+        aria-label="Chat on Telegram"
+      >
+        <!-- Telegram icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M21.9 3.3a1.25 1.25 0 0 0-1.3-.2L3.8 10.6a1.25 1.25 0 0 0 .1 2.3l4.7 1.6 1.8 5a1.25 1.25 0 0 0 2.2.3l2.6-3.3 4.1 3a1.25 1.25 0 0 0 1.9-.8l2.1-14.7a1.25 1.25 0 0 0-.4-1.2ZM9.2 13.2l9.1-5.6-7.3 6.7a1.25 1.25 0 0 0-.4.7l-.3 2.1-1.1-3Z"/>
+        </svg>
+        Telegram
+      </a>
+
+      <!-- Send Us Text (collapsible) -->
+      <details class="group inline-block">
+        <summary
+          class="list-none inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-gray-200 hover:bg-gray-50 cursor-pointer select-none"
+          aria-label="Send us a text"
+        >
+          <!-- Chat bubble icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 5V6a2 2 0 0 1 2-2Z"/>
+          </svg>
+          Send Us Text
+          <!-- Chevron -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.17l3.71-2.94a.75.75 0 1 1 .94 1.16l-4.24 3.36a.75.75 0 0 1-.94 0L5.21 8.39a.75.75 0 0 1 .02-1.18Z" clip-rule="evenodd"/>
+          </svg>
+        </summary>
+
+        <!-- Dropdown panel -->
+        <div class="mt-2 flex flex-col gap-2 p-3 rounded-xl border border-gray-200 bg-white shadow-sm">
+          <!-- Apple / iMessage -->
+          <a
+            href="sms:+919420059603?&body=Hello%2C%20I%27d%20like%20to%20inquire%20about%20a%20medicine%20export."
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-900 text-white hover:opacity-90"
+            aria-label="Text us via iMessage / Messages on iPhone"
+          >
+            <!-- Apple logo -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M16.36 1.64c.2 1.4-.41 2.71-1.21 3.6-.77.86-2.1 1.58-3.33 1.48-.24-1.27.46-2.62 1.21-3.47.86-.97 2.33-1.68 3.33-1.61ZM20.34 17.7c-.63 1.45-.94 2.08-1.77 3.36-1.15 1.76-2.77 3.95-4.8 3.98-1.08.02-1.83-.31-2.66-.31-.85 0-1.73.32-2.67.33-2.05.04-3.61-1.9-4.77-3.65C1.4 18.07.02 13.52 2.05 10.72c1.08-1.53 2.79-2.5 4.72-2.53 1.11-.02 2.17.37 2.99.37.8 0 2.14-.46 3.62-.39 1.23.05 2.35.51 3.2 1.3-2.76 1.6-2.32 5.76.6 6.93.53.22 1.11.33 1.72.3-.18.49-.36.93-.56 1.27Z"/>
+            </svg>
+            iPhone (Messages / iMessage)
+          </a>
+
+          <!-- Android / RCS (note: same sms: scheme; RCS auto-enables if available) -->
+          <a
+            href="sms:+918275595850?&body=Hello%2C%20I%27d%20like%20to%20inquire%20about%20a%20medicine%20export."
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-200 hover:bg-gray-50"
+            aria-label="Text us via Android Messages / RCS"
+          >
+            <!-- Phone icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M6.6 10.8c1.4 2.6 3.6 4.8 6.2 6.2l2.1-2.1a1 1 0 0 1 1-.25c1.1.37 2.2.57 3.4.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.4 21 3 13.6 3 4a1 1 0 0 1 1-1h3.8a1 1 0 0 1 1 1c0 1.16.2 2.32.57 3.4a1 1 0 0 1-.25 1L6.6 10.8Z"/>
+            </svg>
+            Android (SMS / RCS)
+          </a>
+          <p class="text-xs text-gray-500">
+            Tip: If RCS is enabled on the user's device, the Android link opens a rich chat automatically.
+          </p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
 
   <!-- Featured Products Preview -->
   <section id="featured" class="py-16 bg-white">
@@ -211,4 +303,5 @@
   <script type="module" src="firebase-config.js"></script>
 </body>
 </html>
+
 
