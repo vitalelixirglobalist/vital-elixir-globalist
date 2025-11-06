@@ -1,36 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Compliance & Contact | Vital Elixir Globalist</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compliance & Contact – Vital Elixir Globalist</title>
+  <meta name="description" content="Vital Elixir Globalist's export compliance statement and contact information." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { brand: '#0284c7' } } } };
+  </script>
 </head>
-<body class="bg-white text-gray-800 font-sans">
 
-<header class="bg-brand text-white text-center py-6">
-  <h1 class="text-2xl font-bold">✅ Compliance & Contact</h1>
-</header>
+<body class="text-gray-800 bg-gray-50">
+  <div id="header-placeholder"></div>
 
-<section class="max-w-4xl mx-auto p-6 leading-relaxed">
-  <h2 class="text-xl font-semibold text-brand mb-3">📜 Export Compliance Statement</h2>
-  <ul class="list-disc pl-6">
-    <li>Licensed exporter registered under DGFT, GST, and Pharmexcil.</li>
-    <li>Fully compliant with FEMA and Indian medical export laws.</li>
-    <li>Invoices filed with Indian Medical Export Commissioner for clearance.</li>
-    <li>Every international payment supported with FIRC documentation.</li>
-    <li>Exports follow INCO Terms (FOB/CIF/DDP) and WHO GMP standards.</li>
-  </ul>
+  <section class="max-w-5xl mx-auto px-4 py-10">
+    <h1 class="text-3xl font-bold mb-6">✅ Compliance & Contact</h1>
 
-  <h2 class="text-xl font-semibold text-brand mt-8 mb-3">📞 Contact Us</h2>
-  <p>We are available to assist with orders, export compliance, and payments.</p>
-  <p class="mt-3">📧 <a href="mailto:Kashyaksahu@vitalelixirglobalist.com" class="text-brand font-semibold">Kashyaksahu@vitalelixirglobalist.com</a></p>
-  <p>📧 <a href="mailto:VitalElixirGlobalist@gmail.com" class="text-brand font-semibold">VitalElixirGlobalist@gmail.com</a></p>
-  <p>🌐 <a href="https://www.vitalelixirglobalist.com" class="text-brand font-semibold">www.vitalelixirglobalist.com</a></p>
-  <p>📍 Nagpur, Maharashtra, India</p>
-</section>
+    <h2 class="text-xl font-semibold text-brand mb-3">📜 Export Compliance Statement</h2>
+    <ul class="list-disc pl-6 mb-6">
+      <li>Licensed exporter under DGFT, GST, and Pharmexcil.</li>
+      <li>Complies with FEMA and Indian medical export laws.</li>
+      <li>Invoices filed with Indian Medical Export Commissioner.</li>
+      <li>Payments backed by FIRC and processed through authorized banks.</li>
+      <li>INCO Terms (FOB/CIF/DDP) followed for every shipment.</li>
+    </ul>
 
-<footer class="bg-brand text-white text-center py-4">
-  © 2025 Vital Elixir Globalist | Compliance · Contact
-</footer>
+    <h2 class="text-xl font-semibold text-brand mb-3">📞 Contact Us</h2>
+    <p>We’re always ready to assist with orders, payments, and documentation.</p>
+    <ul class="pl-6 mt-3">
+      <li>📧 <a href="mailto:Kashyaksahu@vitalelixirglobalist.com" class="text-brand font-semibold">Kashyaksahu@vitalelixirglobalist.com</a></li>
+      <li>📧 <a href="mailto:VitalElixirGlobalist@gmail.com" class="text-brand font-semibold">VitalElixirGlobalist@gmail.com</a></li>
+      <li>🌐 <a href="https://www.vitalelixirglobalist.com" class="text-brand font-semibold">www.vitalelixirglobalist.com</a></li>
+      <li>📍 Nagpur, Maharashtra, India</li>
+    </ul>
+  </section>
+
+  <footer class="bg-brand text-white text-center py-4 text-sm">
+    © 2025 Vital Elixir Globalist | Compliance · Contact
+  </footer>
+
+  <script>
+    async function loadHeader() {
+      const header = await fetch('header.html');
+      document.getElementById('header-placeholder').innerHTML = await header.text();
+      const menuBtn = document.getElementById('menu-btn');
+      const closeBtn = document.getElementById('close-menu');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const sidebar = document.getElementById('sidebar');
+      if (menuBtn && sidebar && mobileMenu) {
+        menuBtn.addEventListener('click', () => {
+          mobileMenu.classList.remove('hidden');
+          setTimeout(() => sidebar.classList.remove('translate-x-full'), 10);
+        });
+        closeBtn.addEventListener('click', () => {
+          sidebar.classList.add('translate-x-full');
+          setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+        });
+        mobileMenu.addEventListener('click', (e) => {
+          if (e.target === mobileMenu) {
+            sidebar.classList.add('translate-x-full');
+            setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+          }
+        });
+      }
+    }
+    loadHeader();
+  </script>
 </body>
 </html>
