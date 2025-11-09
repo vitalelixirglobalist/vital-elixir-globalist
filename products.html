@@ -161,6 +161,7 @@
       window.location.href = 'cart.html';
     });
 
+    const SHIPPING_USD = 35;
     let allProducts = [];
     const productGrid = document.getElementById('productGrid');
     const searchBar = document.getElementById('searchBar');
@@ -176,9 +177,9 @@
       products.forEach((p) => {
         const card = document.createElement('div');
         card.className = 'bg-white border rounded-xl p-4 shadow-sm hover:shadow-lg transition flex flex-col';
-        const dropdownOptions = p.variants
-          .map((v) => `<option value="${p.variants.indexOf(v)}">${v.pack}</option>`)
-          .join('');
+        const dropdownOptions = p.variants␊
+          .map((v) => `<option value="${p.variants.indexOf(v)}">${v.pack} (+USD ${SHIPPING_USD.toFixed(2)} shipping)</option>`)
+          .join('');␊
         card.innerHTML = `
           <img src="${p.image}" alt="${p.name}" class="w-full h-40 object-contain mb-3 rounded" />
           <h2 class="font-semibold text-lg text-brand">${p.name}</h2>
@@ -189,18 +190,23 @@
             <option disabled selected>Order Quantity</option>
             ${dropdownOptions}
           </select>
+          <p class="mt-2 text-xs text-gray-500">Shipping: +USD ${SHIPPING_USD.toFixed(2)} (added per product)</p>
           <div class="price-display mt-3 text-sm text-gray-700"></div>
           <button class="add-to-cart-btn mt-auto bg-brand text-white py-2 px-3 rounded-lg hover:bg-blue-700 transition mt-3">Add to Cart</button>
         `;
         const select = card.querySelector('.variantSelect');
         const priceDisplay = card.querySelector('.price-display');
         const addBtn = card.querySelector('.add-to-cart-btn');
-        select.addEventListener('change', (e) => {
+          select.addEventListener('change', (e) => {
           const variant = p.variants[e.target.value];
+          const shippingInr = variant.price_usd > 0 ? (variant.price_inr / variant.price_usd) * SHIPPING_USD : 0;
+          const totalUsd = variant.price_usd + SHIPPING_USD;
+          const totalInr = variant.price_inr + shippingInr;
           priceDisplay.innerHTML = `
-            <div class="mt-2 p-2 border border-blue-100 rounded-lg bg-blue-50 text-sm">
-              💵 <span class="font-medium text-brand">USD ${variant.price_usd}</span>
-              | 🇮🇳 <span class="font-medium text-brand">INR ${variant.price_inr}</span>
+            <div class="mt-2 p-2 border border-blue-100 rounded-lg bg-blue-50 text-sm space-y-1">
+              <p>💊 <span class="font-medium text-brand">Medicine:</span> USD ${variant.price_usd.toFixed(2)} | INR ${variant.price_inr.toFixed(2)}</p>
+              <p>🚚 <span class="font-medium text-brand">Shipping:</span> USD ${SHIPPING_USD.toFixed(2)} | INR ${shippingInr.toFixed(2)}</p>
+              <p class="font-semibold text-brand">Total: USD ${totalUsd.toFixed(2)} | INR ${totalInr.toFixed(2)}</p>
             </div>
           `;
         });
@@ -221,7 +227,10 @@
             return;
           }
           // Add to local cart (for quick display)
-          const selectedVariant = p.variants[variantIndex];
+         const selectedVariant = p.variants[variantIndex];
+          const shippingInr = selectedVariant.price_usd > 0 ? (selectedVariant.price_inr / selectedVariant.price_usd) * SHIPPING_USD : 0;
+          const totalUsd = selectedVariant.price_usd + SHIPPING_USD;
+          const totalInr = selectedVariant.price_inr + shippingInr;
           const cart = JSON.parse(localStorage.getItem('cart')) || [];
           cart.push({
             name: p.name,
@@ -229,6 +238,10 @@
             pack: selectedVariant.pack,
             price_usd: selectedVariant.price_usd,
             price_inr: selectedVariant.price_inr,
+            shipping_usd: SHIPPING_USD,
+            shipping_inr: parseFloat(shippingInr.toFixed(2)),
+            total_price_usd: parseFloat(totalUsd.toFixed(2)),
+            total_price_inr: parseFloat(totalInr.toFixed(2)),
             image: p.image
           });
           localStorage.setItem('cart', JSON.stringify(cart));
@@ -240,6 +253,10 @@
               pack: selectedVariant.pack,
               price_usd: selectedVariant.price_usd,
               price_inr: selectedVariant.price_inr,
+              shipping_usd: SHIPPING_USD,
+              shipping_inr: parseFloat(shippingInr.toFixed(2)),
+              total_price_usd: parseFloat(totalUsd.toFixed(2)),
+              total_price_inr: parseFloat(totalInr.toFixed(2)),
               image: p.image,
               dateAdded: new Date().toISOString()
             });
@@ -267,4 +284,5 @@
   <script type="module" src="firebase-config.js"></script>
 </body>
 </html>
+
 
