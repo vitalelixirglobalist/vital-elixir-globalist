@@ -177,9 +177,9 @@
       products.forEach((p) => {
         const card = document.createElement('div');
         card.className = 'bg-white border rounded-xl p-4 shadow-sm hover:shadow-lg transition flex flex-col';
-        const dropdownOptions = p.variants␊
+        const dropdownOptions = p.variants
           .map((v) => `<option value="${p.variants.indexOf(v)}">${v.pack} (+USD ${SHIPPING_USD.toFixed(2)} shipping)</option>`)
-          .join('');␊
+          .join('');
         card.innerHTML = `
           <img src="${p.image}" alt="${p.name}" class="w-full h-40 object-contain mb-3 rounded" />
           <h2 class="font-semibold text-lg text-brand">${p.name}</h2>
@@ -284,5 +284,6 @@
   <script type="module" src="firebase-config.js"></script>
 </body>
 </html>
+
 
 
