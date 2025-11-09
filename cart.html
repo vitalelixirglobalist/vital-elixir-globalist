@@ -107,9 +107,36 @@
       appId: '1:87028221342:web:0c7719acc703566e8fc28f',
       measurementId: 'G-5MWKWE2C4J'
     };
-    const app = initializeApp(firebaseConfig);
+  const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const db = getFirestore(app);
+    const SHIPPING_USD = 35;
+
+    const calculateShippingInr = (medicineUsd, medicineInr, existingShippingInr) => {
+      if (existingShippingInr !== undefined && existingShippingInr !== null) {
+        return Number(existingShippingInr);
+      }
+      if (!medicineUsd) return 0;
+      const rate = medicineInr / medicineUsd;
+      const computed = rate * SHIPPING_USD;
+      return parseFloat(computed.toFixed(2));
+    };
+
+    const calculateLineTotals = (item) => {
+      const medicineUsd = Number(item.price_usd || 0);
+      const medicineInr = Number(item.price_inr || 0);
+      const shippingUsd = item.shipping_usd !== undefined && item.shipping_usd !== null
+        ? Number(item.shipping_usd)
+        : SHIPPING_USD;
+      const shippingInr = calculateShippingInr(medicineUsd, medicineInr, item.shipping_inr);
+      const totalUsd = item.total_price_usd !== undefined && item.total_price_usd !== null
+        ? Number(item.total_price_usd)
+        : parseFloat((medicineUsd + shippingUsd).toFixed(2));
+      const totalInr = item.total_price_inr !== undefined && item.total_price_inr !== null
+        ? Number(item.total_price_inr)
+        : parseFloat((medicineInr + shippingInr).toFixed(2));
+      return { medicineUsd, medicineInr, shippingUsd, shippingInr, totalUsd, totalInr };
+    };
 
     // Elements
     const loginOverlay = document.getElementById('loginOverlay');
@@ -141,10 +168,12 @@
     });
 
     async function renderCart() {
-      cartItemsDiv.innerHTML = '';
+     cartItemsDiv.innerHTML = '';
       cartSummaryDiv.innerHTML = '';
-      let totalINR = 0;
-      let totalUSD = 0;
+      let subtotalINR = 0;
+      let subtotalUSD = 0;
+      let shippingTotalINR = 0;
+      let shippingTotalUSD = 0;
 
       // Retrieve cart from localStorage for immediate display
       const localCart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -164,9 +193,12 @@
         cartItemsDiv.innerHTML = '<p>Your cart is empty.</p>';
         return;
       }
-      mergedCart.forEach((item, index) => {
-        totalINR += item.price_inr;
-        totalUSD += item.price_usd;
+        mergedCart.forEach((item, index) => {
+        const { medicineUsd, medicineInr, shippingUsd, shippingInr, totalUsd, totalInr } = calculateLineTotals(item);
+        subtotalINR += medicineInr;
+        subtotalUSD += medicineUsd;
+        shippingTotalINR += shippingInr;
+        shippingTotalUSD += shippingUsd;
         const itemDiv = document.createElement('div');
         itemDiv.className = 'flex items-center p-4 bg-white rounded-lg shadow justify-between';
         itemDiv.innerHTML = `
@@ -177,15 +209,24 @@
               <p class="text-sm text-gray-500">${item.pack}</p>
             </div>
           </div>
-          <div class="text-sm text-right">
-            <p>USD ${item.price_usd}</p>
-            <p>INR ${item.price_inr}</p>
-            <button class="mt-1 text-red-500 text-xs removeItemBtn" data-index="${index}">Remove</button>
+          <div class="text-sm text-right space-y-1">
+            <p>Medicine: USD ${medicineUsd.toFixed(2)} | INR ${medicineInr.toFixed(2)}</p>
+            <p>Shipping: USD ${shippingUsd.toFixed(2)} | INR ${shippingInr.toFixed(2)}</p>
+            <p class="font-semibold text-brand">Total: USD ${totalUsd.toFixed(2)} | INR ${totalInr.toFixed(2)}</p>
+            <button class="block ml-auto text-red-500 text-xs removeItemBtn" data-index="${index}">Remove</button>
           </div>
         `;
         cartItemsDiv.appendChild(itemDiv);
       });
-      cartSummaryDiv.innerHTML = `Total: <span class="font-bold">USD ${totalUSD.toFixed(2)}</span> | <span class="font-bold">INR ${totalINR.toFixed(2)}</span>`;
+      const grandTotalUSD = subtotalUSD + shippingTotalUSD;
+      const grandTotalINR = subtotalINR + shippingTotalINR;
+      cartSummaryDiv.innerHTML = `
+        <div class="bg-white p-4 rounded-lg shadow space-y-2">
+          <p>Subtotal: USD ${subtotalUSD.toFixed(2)} | INR ${subtotalINR.toFixed(2)}</p>
+          <p>Shipping (+USD ${SHIPPING_USD.toFixed(2)} per item): USD ${shippingTotalUSD.toFixed(2)} | INR ${shippingTotalINR.toFixed(2)}</p>
+          <p class="font-bold text-brand text-lg">Total: USD ${grandTotalUSD.toFixed(2)} | INR ${grandTotalINR.toFixed(2)}</p>
+        </div>
+      `;
       // Attach remove handlers
       document.querySelectorAll('.removeItemBtn').forEach((btn) => {
         btn.addEventListener('click', async (e) => {
@@ -238,9 +279,12 @@
         return;
       }
       // Sum total INR for Razorpay amount
-      let totalINR = 0;
-      cart.forEach(item => { totalINR += item.price_inr; });
-      const amountPaise = totalINR * 100;
+     let totalINR = 0;
+      cart.forEach(item => {
+        const { totalInr } = calculateLineTotals(item);
+        totalINR += totalInr;
+      });
+      const amountPaise = Math.round(totalINR * 100);
       const options = {
         key: 'RAZORPAY_KEY_ID', // Replace with your Razorpay key
         amount: amountPaise,
@@ -348,6 +392,7 @@
   <script type="module" src="firebase-config.js"></script>
 </body>
 </html>
+
 
 
 
