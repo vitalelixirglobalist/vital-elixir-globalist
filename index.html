@@ -11,6 +11,110 @@
   </script>
   <style>
     html { scroll-behavior: smooth; }
+    /* Hero search styling */
+    .hero-section {
+      background: radial-gradient(circle at 10% 20%, rgba(2, 132, 199, 0.08), transparent 25%),
+        radial-gradient(circle at 90% 10%, rgba(2, 132, 199, 0.1), transparent 25%),
+        radial-gradient(circle at 50% 80%, rgba(14, 165, 233, 0.1), transparent 30%),
+        linear-gradient(180deg, #f1f5f9 0%, #ffffff 45%);
+    }
+    .hero-card {
+      background: #ffffff;
+      box-shadow: 0 15px 45px rgba(15, 23, 42, 0.08);
+      border: 1px solid #e2e8f0;
+    }
+    .hero-kicker {
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+      color: #0284c7;
+    }
+    .hero-letters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      justify-content: center;
+      margin-top: 0.4rem;
+    }
+    .hero-letter {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.2rem;
+      height: 2.2rem;
+      border-radius: 9999px;
+      background: #e2e8f0;
+      color: #0f172a;
+      font-weight: 600;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+    }
+    .hero-letter:hover,
+    .hero-letter:focus-visible {
+      background: #0284c7;
+      color: #ffffff;
+      border-color: #0284c7;
+      box-shadow: 0 10px 25px rgba(2, 132, 199, 0.25);
+    }
+    .hero-search-form {
+      gap: 0.75rem;
+    }
+    .hero-search-input {
+      border: 1px solid #cbd5e1;
+      background: #f8fafc;
+      box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.05);
+    }
+    .hero-results {
+      margin-top: 1.5rem;
+      text-align: left;
+    }
+    .hero-results h3 {
+      font-size: 0.95rem;
+      color: #0f172a;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+    .hero-results-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.75rem;
+    }
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 0.9rem;
+      border-radius: 0.9rem;
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      font-weight: 600;
+      color: #0f172a;
+      transition: all 0.2s ease;
+    }
+    .hero-pill:hover,
+    .hero-pill:focus-visible {
+      background: #0284c7;
+      color: #ffffff;
+      border-color: #0284c7;
+      box-shadow: 0 10px 25px rgba(2, 132, 199, 0.25);
+    }
+    .hero-empty {
+      color: #475569;
+      background: #f8fafc;
+      border: 1px dashed #cbd5e1;
+      border-radius: 0.9rem;
+      padding: 1rem;
+    }
+    @media (max-width: 640px) {
+      .hero-search-form {
+        flex-direction: column;
+      }
+      .hero-letter {
+        width: 2.1rem;
+        height: 2.1rem;
+        font-size: 0.95rem;
+      }
+    }
   </style>
 </head>
 
@@ -18,114 +122,67 @@
   <!-- Header Placeholder -->
   <div id="header-placeholder"></div>
 
- <!-- Hero -->
-<section class="bg-gradient-to-b from-blue-50 to-white py-16 md:py-24 text-center">
-  <div class="max-w-3xl mx-auto px-4">
-    <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
-      Global Medicine Export Specialists
-    </h1>
-    <p class="mt-4 text-gray-600 text-lg">
-      Genuine medicines · Secure packaging · Smooth worldwide delivery.<br />
-      Focus regions: United States, United Kingdom, European Union, UAE & more.
-    </p>
 
-    <!-- Primary actions -->
-    <div class="mt-6 flex flex-wrap justify-center gap-4">
-      <a href="#contact" class="px-6 py-3 bg-brand text-white rounded-xl hover:bg-blue-700">
-        Request a Quote
-      </a>
-
-      <!-- NOTE: wa.me must NOT include the '+' sign -->
-      <a href="https://wa.me/+918275595850?text=Hello%2C%20I%27d%20like%20to%20inquire%20about%20a%20medicine%20export." class="px-6 py-3 border border-brand rounded-xl hover:bg-blue-50">
-        WhatsApp Us
-      </a>
-    </div>
-
-    <!-- Secondary social/comm actions -->
-    <div class="mt-6 flex flex-wrap items-center justify-center gap-3 text-sm">
-
-      <!-- Instagram DM -->
-      <a
-        href="https://ig.me/m/vitalelixirglobalist?text=Hello%2C%20I%27d%20like%20to%20inquire%20about%20a%20medicine%20export."
-        target="_blank"
-        rel="noopener"
-        class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-gray-200 hover:bg-gray-50"
-        aria-label="Message us on Instagram"
-      >
-        <!-- IG icon (SVG) -->
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5Zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5Zm5.25-3.25a.75.75 0 1 1-.75.75.75.75 0 0 1 .75-.75Z"/>
-        </svg>
-        Instagram DM
-      </a>
-
-      <!-- Telegram -->
-      <a
-        href="https://t.me/vitalelixirglobalist?text=Hello%2C%20I%27d%20like%20to%20inquire%20about%20a%20medicine%20export."
-        target="_blank"
-        rel="noopener"
-        class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-gray-200 hover:bg-gray-50"
-        aria-label="Chat on Telegram"
-      >
-        <!-- Telegram icon -->
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M21.9 3.3a1.25 1.25 0 0 0-1.3-.2L3.8 10.6a1.25 1.25 0 0 0 .1 2.3l4.7 1.6 1.8 5a1.25 1.25 0 0 0 2.2.3l2.6-3.3 4.1 3a1.25 1.25 0 0 0 1.9-.8l2.1-14.7a1.25 1.25 0 0 0-.4-1.2ZM9.2 13.2l9.1-5.6-7.3 6.7a1.25 1.25 0 0 0-.4.7l-.3 2.1-1.1-3Z"/>
-        </svg>
-        Telegram
-      </a>
-
-      <!-- Send Us Text (collapsible) -->
-      <details class="group inline-block">
-        <summary
-          class="list-none inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-gray-200 hover:bg-gray-50 cursor-pointer select-none"
-          aria-label="Send us a text"
-        >
-          <!-- Chat bubble icon -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 5V6a2 2 0 0 1 2-2Z"/>
-          </svg>
-          Send Us Text
-          <!-- Chevron -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.17l3.71-2.94a.75.75 0 1 1 .94 1.16l-4.24 3.36a.75.75 0 0 1-.94 0L5.21 8.39a.75.75 0 0 1 .02-1.18Z" clip-rule="evenodd"/>
-          </svg>
-        </summary>
-
-        <!-- Dropdown panel -->
-        <div class="mt-2 flex flex-col gap-2 p-3 rounded-xl border border-gray-200 bg-white shadow-sm">
-          <!-- Apple / iMessage -->
-          <a
-            href="sms:+919420059603?&body=Hello%2C%20I%27d%20like%20to%20inquire%20about%20a%20medicine%20export."
-            class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-900 text-white hover:opacity-90"
-            aria-label="Text us via iMessage / Messages on iPhone"
-          >
-            <!-- Apple logo -->
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M16.36 1.64c.2 1.4-.41 2.71-1.21 3.6-.77.86-2.1 1.58-3.33 1.48-.24-1.27.46-2.62 1.21-3.47.86-.97 2.33-1.68 3.33-1.61ZM20.34 17.7c-.63 1.45-.94 2.08-1.77 3.36-1.15 1.76-2.77 3.95-4.8 3.98-1.08.02-1.83-.31-2.66-.31-.85 0-1.73.32-2.67.33-2.05.04-3.61-1.9-4.77-3.65C1.4 18.07.02 13.52 2.05 10.72c1.08-1.53 2.79-2.5 4.72-2.53 1.11-.02 2.17.37 2.99.37.8 0 2.14-.46 3.62-.39 1.23.05 2.35.51 3.2 1.3-2.76 1.6-2.32 5.76.6 6.93.53.22 1.11.33 1.72.3-.18.49-.36.93-.56 1.27Z"/>
-            </svg>
-            iPhone (Messages / iMessage)
-          </a>
-
-          <!-- Android / RCS (note: same sms: scheme; RCS auto-enables if available) -->
-          <a
-            href="sms:+918275595850?&body=Hello%2C%20I%27d%20like%20to%20inquire%20about%20a%20medicine%20export."
-            class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-200 hover:bg-gray-50"
-            aria-label="Text us via Android Messages / RCS"
-          >
-            <!-- Phone icon -->
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M6.6 10.8c1.4 2.6 3.6 4.8 6.2 6.2l2.1-2.1a1 1 0 0 1 1-.25c1.1.37 2.2.57 3.4.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.4 21 3 13.6 3 4a1 1 0 0 1 1-1h3.8a1 1 0 0 1 1 1c0 1.16.2 2.32.57 3.4a1 1 0 0 1-.25 1L6.6 10.8Z"/>
-            </svg>
-            Android (SMS / RCS)
-          </a>
-          <p class="text-xs text-gray-500">
-            Tip: If RCS is enabled on the user's device, the Android link opens a rich chat automatically.
-          </p>
+  <!-- NEW HERO SEARCH SECTION START -->
+  <section class="hero-section py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="hero-card rounded-2xl p-8 md:p-12 text-center">
+        <p class="hero-kicker">Find on website</p>
+        <h1 class="mt-3 text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+          See if we have your medication
+        </h1>
+        <div class="mt-4 text-gray-700 text-base md:text-lg flex flex-col items-center gap-3">
+          <span>Search by name:</span>
+          <div class="hero-letters" aria-label="Search medicines by letter">
+            <button type="button" class="hero-letter" data-letter="A">A</button>
+            <button type="button" class="hero-letter" data-letter="B">B</button>
+            <button type="button" class="hero-letter" data-letter="C">C</button>
+            <button type="button" class="hero-letter" data-letter="D">D</button>
+            <button type="button" class="hero-letter" data-letter="E">E</button>
+            <button type="button" class="hero-letter" data-letter="F">F</button>
+            <button type="button" class="hero-letter" data-letter="G">G</button>
+            <button type="button" class="hero-letter" data-letter="H">H</button>
+            <button type="button" class="hero-letter" data-letter="I">I</button>
+            <button type="button" class="hero-letter" data-letter="J">J</button>
+            <button type="button" class="hero-letter" data-letter="K">K</button>
+            <button type="button" class="hero-letter" data-letter="L">L</button>
+            <button type="button" class="hero-letter" data-letter="M">M</button>
+            <button type="button" class="hero-letter" data-letter="N">N</button>
+            <button type="button" class="hero-letter" data-letter="O">O</button>
+            <button type="button" class="hero-letter" data-letter="P">P</button>
+            <button type="button" class="hero-letter" data-letter="Q">Q</button>
+            <button type="button" class="hero-letter" data-letter="R">R</button>
+            <button type="button" class="hero-letter" data-letter="S">S</button>
+            <button type="button" class="hero-letter" data-letter="T">T</button>
+            <button type="button" class="hero-letter" data-letter="U">U</button>
+            <button type="button" class="hero-letter" data-letter="V">V</button>
+            <button type="button" class="hero-letter" data-letter="W">W</button>
+            <button type="button" class="hero-letter" data-letter="X">X</button>
+            <button type="button" class="hero-letter" data-letter="Y">Y</button>
+            <button type="button" class="hero-letter" data-letter="Z">Z</button>
+          </div>
         </div>
-      </details>
+        <form id="heroSearchForm" class="mt-8 flex hero-search-form flex-wrap justify-center" novalidate>
+          <input
+            id="heroSearchInput"
+            type="search"
+            name="search"
+            class="hero-search-input w-full md:w-2/3 lg:w-3/5 px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand"
+            placeholder="Search medicines or website"
+            aria-label="Search medicines or website"
+          />
+          <button
+            type="submit"
+            class="px-6 py-3 bg-brand text-white rounded-xl hover:bg-blue-700 shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand"
+          >
+            Search
+          </button>
+        </form>
+        <div id="heroSearchResults" class="hero-results" aria-live="polite"></div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+  <!-- NEW HERO SEARCH SECTION END -->
 
   <!-- Featured Products Preview -->
   <section id="featured" class="py-16 bg-white">
@@ -232,6 +289,147 @@
   </footer>
 
   <script>
+    const medicineIndex = {
+      A: [
+        { name: 'Azithromycin', url: 'products.html?search=Azithromycin' },
+        { name: 'Atorvastatin', url: 'products.html?search=Atorvastatin' }
+      ],
+      B: [
+        { name: 'Budesonide', url: 'products.html?search=Budesonide' },
+        { name: 'Baclofen', url: 'products.html?search=Baclofen' }
+      ],
+      C: [
+        { name: 'Ciprofloxacin', url: 'products.html?search=Ciprofloxacin' },
+        { name: 'Clopidogrel', url: 'products.html?search=Clopidogrel' }
+      ],
+      D: [{ name: 'Doxycycline', url: 'products.html?search=Doxycycline' }],
+      E: [{ name: 'Enoxaparin', url: 'products.html?search=Enoxaparin' }],
+      F: [{ name: 'Fluconazole', url: 'products.html?search=Fluconazole' }],
+      G: [{ name: 'Gabapentin', url: 'products.html?search=Gabapentin' }],
+      H: [{ name: 'Hydroxychloroquine', url: 'products.html?search=Hydroxychloroquine' }],
+      I: [
+        { name: 'Ivermectin', url: 'products.html?search=Ivermectin' },
+        { name: 'Imatinib', url: 'products.html?search=Imatinib' }
+      ],
+      J: [{ name: 'Jardiance (Empagliflozin)', url: 'products.html?search=Jardiance' }],
+      K: [{ name: 'Ketoconazole', url: 'products.html?search=Ketoconazole' }],
+      L: [{ name: 'Levothyroxine', url: 'products.html?search=Levothyroxine' }],
+      M: [
+        { name: 'Metformin', url: 'products.html?search=Metformin' },
+        { name: 'Methylprednisolone', url: 'products.html?search=Methylprednisolone' }
+      ],
+      N: [{ name: 'Naproxen', url: 'products.html?search=Naproxen' }],
+      O: [{ name: 'Oseltamivir', url: 'products.html?search=Oseltamivir' }],
+      P: [
+        { name: 'Prednisone', url: 'products.html?search=Prednisone' },
+        { name: 'Paracetamol', url: 'products.html?search=Paracetamol' }
+      ],
+      Q: [{ name: 'Quetiapine', url: 'products.html?search=Quetiapine' }],
+      R: [{ name: 'Rifampicin', url: 'products.html?search=Rifampicin' }],
+      S: [
+        { name: 'Sildenafil', url: 'products.html?search=Sildenafil' },
+        { name: 'Sofosbuvir', url: 'products.html?search=Sofosbuvir' }
+      ],
+      T: [{ name: 'Tadalafil', url: 'products.html?search=Tadalafil' }],
+      U: [{ name: 'Ursodiol', url: 'products.html?search=Ursodiol' }],
+      V: [{ name: 'Vitamin D3 (Cholecalciferol)', url: 'products.html?search=Vitamin%20D3' }],
+      W: [{ name: 'Warfarin', url: 'products.html?search=Warfarin' }],
+      X: [{ name: 'Xarelto (Rivaroxaban)', url: 'products.html?search=Xarelto' }],
+      Y: [{ name: 'Yervoy (Ipilimumab)', url: 'products.html?search=Yervoy' }],
+      Z: [{ name: 'Zinc Sulfate', url: 'products.html?search=Zinc%20Sulfate' }]
+    };
+
+    const keywordRoutes = {
+      about: 'about.html',
+      shipping: 'shipping.html',
+      quality: 'quality-assurance.html',
+      refund: 'refund-policy.html',
+      contact: 'contact.html',
+      compliance: 'compliance.html'
+    };
+
+    const heroSearchForm = document.getElementById('heroSearchForm');
+    const heroSearchInput = document.getElementById('heroSearchInput');
+    const heroSearchResults = document.getElementById('heroSearchResults');
+    const letterButtons = document.querySelectorAll('.hero-letter');
+    const allMedicines = Object.values(medicineIndex).flat();
+
+    const renderResults = (list, heading) => {
+      heroSearchResults.innerHTML = '';
+      if (!heading && (!list || list.length === 0)) {
+        heroSearchResults.innerHTML = '<div class="hero-empty">Start typing a medicine or click a letter to browse.</div>';
+        return;
+      }
+
+      if (heading) {
+        const title = document.createElement('h3');
+        title.textContent = heading;
+        heroSearchResults.appendChild(title);
+      }
+
+      if (!list || list.length === 0) {
+        const empty = document.createElement('div');
+        empty.className = 'hero-empty';
+        empty.textContent = 'No medicines found. Try another name or letter.';
+        heroSearchResults.appendChild(empty);
+        return;
+      }
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'hero-results-list';
+
+      list.forEach((item) => {
+        const link = document.createElement('a');
+        link.className = 'hero-pill';
+        link.href = item.url || '#';
+        link.textContent = item.name;
+        wrapper.appendChild(link);
+      });
+
+      heroSearchResults.appendChild(wrapper);
+    };
+
+    const handleSearch = (event) => {
+      event.preventDefault();
+      const rawQuery = heroSearchInput.value.trim();
+      const query = rawQuery.toLowerCase();
+
+      if (!query) {
+        renderResults([], '');
+        return;
+      }
+
+      const keywordMatch = Object.entries(keywordRoutes).find(([key]) => query.includes(key));
+      if (keywordMatch) {
+        window.location.href = keywordMatch[1];
+        return;
+      }
+
+      const matches = allMedicines.filter(({ name }) => name.toLowerCase().includes(query));
+
+      if (matches.length === 1 && (query.length >= 3 || query === matches[0].name.toLowerCase())) {
+        const target = matches[0].url;
+        if (target) {
+          window.location.href = target;
+          return;
+        }
+      }
+
+      renderResults(matches, `Results for "${rawQuery}"`);
+    };
+
+    letterButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const letter = btn.dataset.letter;
+        renderResults(medicineIndex[letter] || [], `Medicines starting with "${letter}"`);
+      });
+    });
+
+    heroSearchForm.addEventListener('submit', handleSearch);
+    renderResults([], '');
+  </script>
+
+  <script>
     // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
     // Load Header and Initialize Menu
@@ -303,6 +501,3 @@
   <script type="module" src="firebase-config.js"></script>
 </body>
 </html>
-
-
-
