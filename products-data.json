@@ -652,7 +652,7 @@
     { "pack": "1000 Tablets", "price_usd": 175, "price_inr": 0 },
     { "pack": "2000 Tablets", "price_usd": 289, "price_inr": 0 }
   ]
-}.
+},
 {
   "name": "Fenbendazole 1000 mg",
   "brand": "Generic",
@@ -950,45 +950,6 @@
     { "pack": "3 Tubes", "price_usd": 35, "price_inr": 0 },
     { "pack": "5 Tubes", "price_usd": 45, "price_inr": 0 },
     { "pack": "9 Tubes", "price_usd": 99, "price_inr": 0 }
-  ]
-},
-{
-  "name": "Estradiol Valerate 2 mg",
-  "brand": "Generic",
-  "composition": "Estradiol Valerate 2 mg",{
-  "name": "Melasure Skin Lightening Emulgel",
-  "brand": "Melasure",
-  "composition": "Skin Lightening Emulgel",
-  "category": "Dermatology",
-  "use": "Treatment of hyperpigmentation and skin discoloration",
-  "image": "assets/images/melasure_emulgel.jpg",
-  "variants": [
-    { "pack": "3 Tubes (20 g each)", "price_usd": 54, "price_inr": 0 },
-    { "pack": "5 Tubes (20 g each)", "price_usd": 69, "price_inr": 0 }
-  ]
-},
-{
-  "name": "Melasure Skin Lightening Emulgel",
-  "brand": "Melasure",
-  "composition": "Skin Lightening Emulgel",
-  "category": "Dermatology",
-  "use": "Treatment of hyperpigmentation and skin discoloration",
-  "image": "assets/images/melasure_emulgel.jpg",
-  "variants": [
-    { "pack": "3 Tubes (20 g each)", "price_usd": 54, "price_inr": 0 },
-    { "pack": "5 Tubes (20 g each)", "price_usd": 69, "price_inr": 0 }
-  ]
-},
-{
-  "name": "Melasure Skin Lightening Emulgel",
-  "brand": "Melasure",
-  "composition": "Skin Lightening Emulgel",
-  "category": "Dermatology",
-  "use": "Treatment of hyperpigmentation and skin discoloration",
-  "image": "assets/images/melasure_emulgel.jpg",
-  "variants": [
-    { "pack": "3 Tubes (20 g each)", "price_usd": 54, "price_inr": 0 },
-    { "pack": "5 Tubes (20 g each)", "price_usd": 69, "price_inr": 0 }
   ]
 },
 {
