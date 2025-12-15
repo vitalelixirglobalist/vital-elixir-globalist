@@ -12,7 +12,7 @@
   <style>
     html { scroll-behavior: smooth; }
     /* Hero search styling */
-    .hero-section {
+     .hero-section {
       position: relative;
       overflow: hidden;
       background: #f8fafc;
@@ -35,16 +35,18 @@
       position: absolute;
       inset: 0;
       background: radial-gradient(circle at 10% 20%, rgba(2, 132, 199, 0.08), transparent 25%),
-        radial-gradient(circle at 90% 10%, rgba(2, 132, 199, 0.1), transparent 25%),
-        radial-gradient(circle at 50% 80%, rgba(14, 165, 233, 0.1), transparent 30%),
-        linear-gradient(180deg, #f1f5f9 0%, #ffffff 45%);
+        radial-gradient(circle at 90% 10%, rgba(2, 132, 199, 0.08), transparent 25%),
+        radial-gradient(circle at 50% 80%, rgba(14, 165, 233, 0.08), transparent 30%),
+        linear-gradient(180deg, rgba(241, 245, 249, 0.45) 0%, rgba(255, 255, 255, 0.35) 45%);
+      opacity: 0.25;
       z-index: 0;
       pointer-events: none;
     }
     .hero-card {
-      background: #ffffff;
+      background: rgba(255, 255, 255, 0.82);
       box-shadow: 0 15px 45px rgba(15, 23, 42, 0.08);
       border: 1px solid #e2e8f0;
+      backdrop-filter: blur(2px);
     }
     .hero-kicker {
       text-transform: uppercase;
@@ -524,4 +526,5 @@
   <script type="module" src="firebase-config.js"></script>
 </body>
 </html>
+
 
