@@ -177,7 +177,33 @@
       .hero-letter {
         width: 2.1rem;
         height: 2.1rem;
-        font-size: 0.95rem;
+               font-size: 0.95rem;
+      }
+    }
+
+    /* Purpose section styling */
+    .purpose-section {
+      position: relative;
+      overflow: hidden;
+      background: url('assets/images/Kashyaksahu1.jpeg') center/cover no-repeat fixed;
+    }
+
+    .purpose-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: brightness(0.9);
+      z-index: 0;
+    }
+
+    .purpose-section p,
+    .purpose-section h2 {
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+    }
+
+    @media (max-width: 640px) {
+      .purpose-section {
+        background-attachment: scroll;
       }
     }
   </style>
@@ -261,7 +287,7 @@
     </div>
   </section>
 
-  <!-- ABOUT OUR PROCESS SECTION START -->
+   <!-- ABOUT OUR PROCESS SECTION START -->
   <section id="about-our-process" class="py-16 bg-gray-50">
     <div class="max-w-6xl mx-auto px-4">
       <div class="text-center">
@@ -316,9 +342,45 @@
           </div>
         </div>
       </div>
-    </div>
+     </div>
   </section>
   <!-- ABOUT OUR PROCESS SECTION END -->
+
+  <!-- NEW PURPOSE SECTION START -->
+  <section class="purpose-section relative py-20 px-4 text-white text-center">
+    <div class="purpose-overlay"></div>
+    <div class="max-w-4xl mx-auto relative z-10 space-y-6">
+      <h2 class="text-3xl md:text-4xl font-bold">Why Vital Elixir Globalist Exists</h2>
+      <p class="text-lg leading-relaxed">
+        Vital Elixir Globalist was not created only to sell medicines.
+      </p>
+      <p class="text-lg leading-relaxed">
+        It was created with a simple belief —<br />
+        that no patient should feel helpless because essential medication is unavailable or unaffordable.
+      </p>
+      <p class="text-lg leading-relaxed">
+        This business was started with a purpose:<br />
+        to reach people, understand their needs, and deliver genuine medicines with care, honesty, and responsibility.
+      </p>
+      <p class="text-lg leading-relaxed">
+        Every package we send carries more than medicines —<br />
+        it carries trust, hope, and good wishes.
+      </p>
+      <p class="text-lg leading-relaxed">
+        We always include extra medication, not as a business tactic,<br />
+        but as a gesture — so that when the parcel reaches, it brings relief and a big heartedly smile.
+      </p>
+      <p class="text-lg leading-relaxed">
+        Money will come and go.....&amp;  it's  never the goal.<br />
+        Relationships, gratitude, and blessings is what matters — and they stay longer.
+      </p>
+      <div class="text-lg leading-relaxed space-y-1">
+        <p class="font-bold">Kashyak Sahu</p>
+        <p>Strategic Leader, CEO</p>
+      </div>
+    </div>
+  </section>
+  <!-- NEW PURPOSE SECTION END -->
 
   <!-- Services -->
   <section id="services" class="py-16 bg-white">
@@ -625,6 +687,7 @@
   <script type="module" src="firebase-config.js"></script>
 </body>
 </html>
+
 
 
 
