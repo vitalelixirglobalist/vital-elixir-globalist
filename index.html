@@ -49,26 +49,22 @@
       position: relative;
       z-index: 1;
     }
-    .hero-section::before {
-      /* Increased background image visibility to ~70% */
-          content: "";
+.hero-section::before {
+      /* Revert to original medicine background */
+      content: "";
       position: absolute;
       inset: 0;
-      background: url('assets/images/doctorconsult.jpeg') center/cover no-repeat;
-      opacity: 0.6;
+      background: url('assets/images/findonweb.jpeg') center/cover no-repeat;
+      opacity: 0.8;
       z-index: 0;
       pointer-events: none;
     }
     .hero-section::after {
-      /* Softer overlay so image remains visible */
-         content: "";
+      /* Soft overlay for legibility */
+      content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(16, 120, 160, 0.32), rgba(12, 74, 110, 0.48)),
-        radial-gradient(circle at 10% 20%, rgba(2, 132, 199, 0.1), transparent 25%),
-        radial-gradient(circle at 90% 10%, rgba(45, 212, 191, 0.08), transparent 25%),
-        linear-gradient(180deg, rgba(15, 23, 42, 0.55), rgba(15, 23, 42, 0.35));
-      opacity: 0.4;
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.45), rgba(15, 23, 42, 0.25));
       z-index: 0;
       pointer-events: none;
     }
@@ -215,33 +211,6 @@
   <section class="hero-section py-16 md:py-24">
     <div class="max-w-6xl mx-auto px-4">
       <div class="grid md:grid-cols-2 gap-10 items-center">
-        <div class="space-y-5 text-white">
-          <p class="hero-kicker text-cyan-100">Medical-grade guidance</p>
-          <h1 class="mt-3 text-4xl md:text-5xl font-extrabold leading-tight drop-shadow">
-            No Prescription? or got the wrong one ? Get the right med.... Speak to Our Doctor — Anytime, Anywhere.
-          </h1>
-          <p class="text-lg text-blue-50 leading-relaxed">
-            Highlight 24/7 doctor availability, prescription clarification, medication guidance, and global support.
-          </p>
-          <div class="flex flex-wrap gap-3">
-            <a href="doctor-consultation.html" class="px-5 py-3 bg-white text-brand font-semibold rounded-xl shadow-lg hover:-translate-y-0.5 hover:shadow-xl transition transform">
-              📅 Book Free Doctor Consultation
-            </a>
-            <a href="mailto:support@vitalElixirGlobalist.com?subject=Doctor%20Consultation%20Request" class="px-5 py-3 border border-white/70 text-white font-semibold rounded-xl hover:bg-white/10 transition">
-              📧 Ask a Doctor Now
-            </a>
-          </div>
-          <div class="bg-white/15 border border-white/20 rounded-2xl p-5 backdrop-blur">
-            <p class="text-sm font-semibold uppercase tracking-wide text-cyan-100">Why patients trust us</p>
-            <ul class="mt-3 grid sm:grid-cols-2 gap-2 text-sm text-blue-50">
-              <li>• Licensed doctors available 24/7</li>
-              <li>• Prescription review &amp; medication guidance</li>
-              <li>• Global consultation support (Australia, UK, Europe, USA)</li>
-              <li>• Free post-purchase doctor consultation</li>
-            </ul>
-          </div>
-        </div>
-
         <div class="hero-card rounded-2xl p-8 md:p-10">
           <p class="hero-kicker">Find your medication</p>
           <h2 class="mt-3 text-3xl font-bold text-gray-900">Instant availability search</h2>
@@ -295,45 +264,37 @@
           </form>
           <div id="heroSearchResults" class="hero-results" aria-live="polite"></div>
         </div>
+
+        <div class="space-y-5 text-white bg-white/10 border border-white/20 rounded-2xl p-8 md:p-10 backdrop-blur">
+          <p class="hero-kicker text-cyan-100">Medical-grade guidance</p>
+          <h1 class="mt-3 text-4xl md:text-5xl font-extrabold leading-tight drop-shadow">
+            No Prescription? or got the wrong one ? Get the right med.... Speak to Our Doctor — Anytime, Anywhere.
+          </h1>
+          <p class="text-lg text-blue-50 leading-relaxed">
+            Highlight 24/7 doctor availability, prescription clarification, medication guidance, and global support.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <a href="doctor-consultation.html" class="px-5 py-3 bg-white text-brand font-semibold rounded-xl shadow-lg hover:-translate-y-0.5 hover:shadow-xl transition transform">
+              📅 Book Free Doctor Consultation
+            </a>
+            <a href="mailto:support@vitalElixirGlobalist.com?subject=Doctor%20Consultation%20Request" class="px-5 py-3 border border-white/70 text-white font-semibold rounded-xl hover:bg-white/10 transition">
+              📧 Ask a Doctor Now
+            </a>
+          </div>
+          <div class="bg-white/15 border border-white/20 rounded-2xl p-5 backdrop-blur">
+            <p class="text-sm font-semibold uppercase tracking-wide text-cyan-100">Why patients trust us</p>
+            <ul class="mt-3 grid sm:grid-cols-2 gap-2 text-sm text-blue-50">
+              <li>• Licensed doctors available 24/7</li>
+              <li>• Prescription review &amp; medication guidance</li>
+              <li>• Global consultation support (Australia, UK, Europe, USA)</li>
+              <li>• Free post-purchase doctor consultation</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </section>
   <!-- NEW HERO SEARCH SECTION END -->
-  
-  <section class="py-14 md:py-20 bg-white">
-    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
-      <div class="space-y-4">
-        <p class="text-sm font-semibold uppercase tracking-[0.15em] text-brand">Medical-grade guidance</p>
-        <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 leading-tight">
-          No Prescription? or got the wrong one ? Get the right med.... Speak to Our Doctor — Anytime, Anywhere.
-        </h2>
-        <p class="text-lg text-slate-600 leading-relaxed">
-          Highlight 24/7 doctor availability, prescription clarification, medication guidance, and global support.
-        </p>
-        <div class="flex flex-wrap gap-3">
-          <a href="doctor-consultation.html" class="px-5 py-3 bg-brand text-white font-semibold rounded-xl shadow-md hover:-translate-y-0.5 hover:shadow-lg transition transform">
-            📅 Book Free Doctor Consultation
-          </a>
-          <a href="mailto:support@vitalElixirGlobalist.com?subject=Doctor%20Consultation%20Request" class="px-5 py-3 border border-brand text-brand font-semibold rounded-xl hover:bg-brand hover:text-white transition">
-            📧 Ask a Doctor Now
-          </a>
-        </div>
-        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5">
-          <p class="text-sm font-semibold uppercase tracking-wide text-slate-700">Why patients trust us</p>
-          <ul class="mt-3 grid sm:grid-cols-2 gap-2 text-sm text-slate-600">
-            <li>• Licensed doctors available 24/7</li>
-            <li>• Prescription review &amp; medication guidance</li>
-            <li>• Global consultation support (Australia, UK, Europe, USA)</li>
-            <li>• Free post-purchase doctor consultation</li>
-          </ul>
-        </div>
-      </div>
-      <div class="relative overflow-hidden rounded-2xl shadow-xl">
-        <img src="assets/images/doctorconsult.jpeg" alt="Doctor consultation" class="w-full h-full object-cover" />
-        <div class="absolute inset-0 bg-cyan-900/20"></div>
-      </div>
-    </div>
-  </section>
 
   <!-- Featured Products Preview -->
     <section id="featured" class="py-16 bg-white">
@@ -827,6 +788,7 @@
   <script type="module" src="firebase-config.js"></script>
 </body>
 </html>
+
 
 
 
