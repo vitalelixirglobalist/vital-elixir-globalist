@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Doctor Consultation | Vital Elixir Globalist</title>
+  <meta name="description" content="Book licensed doctor consultations for prescriptions, medication guidance, and post-purchase follow-up with Vital Elixir Globalist." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { brand: '#0284c7' } } } }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .consult-hero {
+      position: relative;
+      overflow: hidden;
+      background: #0b1c2d;
+    }
+    .consult-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url('assets/images/doctorconsult.jpeg') center/cover no-repeat;
+      opacity: 0.6;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .consult-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.32), rgba(45, 212, 191, 0.28)),
+        linear-gradient(180deg, rgba(10, 21, 38, 0.6), rgba(10, 21, 38, 0.4));
+      opacity: 0.5;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .consult-card {
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.18);
+      backdrop-filter: blur(6px);
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <div id="header-placeholder"></div>
+
+  <main>
+    <section class="consult-hero py-16 md:py-24 text-white">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="consult-card rounded-3xl p-8 md:p-12 relative z-10">
+          <p class="text-sm uppercase tracking-[0.2em] text-cyan-100 font-semibold">Licensed doctor support</p>
+          <h1 class="mt-4 text-4xl md:text-5xl font-extrabold leading-tight">
+            Your Personal Doctor — Before &amp; After Your Medication Purchase
+          </h1>
+          <p class="mt-4 text-lg text-blue-50 leading-relaxed max-w-4xl">
+            At Vital Elixir Globalist, your health comes first.
+            Speak directly with our doctors for prescription clarity, medication safety, symptoms discussion, and follow-up care.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="#contact-actions" class="bg-white text-brand font-semibold px-5 py-3 rounded-xl shadow-lg hover:-translate-y-0.5 transition transform">
+              📅 Book Free Doctor Consultation
+            </a>
+            <a href="mailto:support@vitalElixirGlobalist.com?subject=Doctor%20Consultation%20Request" class="border border-white/70 text-white font-semibold px-5 py-3 rounded-xl hover:bg-white/10 transition">
+              📧 Ask a Doctor Now
+            </a>
+          </div>
+          <div class="mt-8 grid sm:grid-cols-2 md:grid-cols-4 gap-4 text-sm text-blue-50">
+            <div class="flex items-start gap-3 bg-white/10 border border-white/15 rounded-2xl p-4">
+              <span class="text-xl">🕒</span>
+              <div>
+                <p class="font-semibold">24/7 doctor availability</p>
+                <p class="text-blue-100">Global time zone coverage for urgent queries.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 bg-white/10 border border-white/15 rounded-2xl p-4">
+              <span class="text-xl">📋</span>
+              <div>
+                <p class="font-semibold">Prescription clarity</p>
+                <p class="text-blue-100">Ensure accuracy before you place an order.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 bg-white/10 border border-white/15 rounded-2xl p-4">
+              <span class="text-xl">🌍</span>
+              <div>
+                <p class="font-semibold">Global guidance</p>
+                <p class="text-blue-100">Australia, UK, Europe, USA and more.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 bg-white/10 border border-white/15 rounded-2xl p-4">
+              <span class="text-xl">🩺</span>
+              <div>
+                <p class="font-semibold">Free follow-ups</p>
+                <p class="text-blue-100">Post-purchase consultation at no extra cost.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white" id="how-it-works">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center">
+          <p class="text-sm uppercase tracking-[0.2em] text-brand font-semibold">HOW IT WORKS (3-Step Flow)</p>
+          <h2 class="mt-3 text-3xl md:text-4xl font-bold text-gray-900">Simple, secure, and patient-first</h2>
+          <p class="mt-3 text-gray-600 max-w-3xl mx-auto">Follow three guided steps to connect with a licensed doctor, get clarity, and receive ongoing support once your medicines are delivered.</p>
+        </div>
+
+        <div class="mt-10 grid md:grid-cols-3 gap-6">
+          <article class="border rounded-2xl shadow-sm hover:shadow-lg transition overflow-hidden">
+            <img src="assets/images/doctorconsultS1.jpeg" alt="Book appointment illustration" class="w-full h-48 object-cover" />
+            <div class="p-6 space-y-3">
+              <p class="text-brand font-semibold">🩺 Step 1: Book Appointment</p>
+              <ul class="text-sm text-gray-700 space-y-1">
+                <li>• Choose a suitable time</li>
+                <li>• Available 24/7</li>
+                <li>• Online consultation via chat or email</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="border rounded-2xl shadow-sm hover:shadow-lg transition overflow-hidden">
+            <img src="assets/images/doctorconsultS2.jpeg" alt="Doctor consultation illustration" class="w-full h-48 object-cover" />
+            <div class="p-6 space-y-3">
+              <p class="text-brand font-semibold">💬 Step 2: Doctor Consultation</p>
+              <ul class="text-sm text-gray-700 space-y-1">
+                <li>• Prescription review</li>
+                <li>• Medication explanation</li>
+                <li>• Symptom-related questions</li>
+                <li>• Side-effect &amp; dosage guidance</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="border rounded-2xl shadow-sm hover:shadow-lg transition overflow-hidden">
+            <img src="assets/images/doctorconsultS3.jpeg" alt="Post-purchase consultation illustration" class="w-full h-48 object-cover" />
+            <div class="p-6 space-y-3">
+              <p class="text-brand font-semibold">📦 Step 3: After-Purchase Free Consultation</p>
+              <p class="text-sm text-gray-700">Once you purchase medicines from us:</p>
+              <ul class="text-sm text-gray-700 space-y-1">
+                <li>• FREE follow-up doctor consultation</li>
+                <li>• Usage guidance</li>
+                <li>• Safety reassurance</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-blue-50" id="contact-actions">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center">
+          <p class="text-sm uppercase tracking-[0.2em] text-brand font-semibold">CONTACT &amp; ACTION BLOCK</p>
+          <h2 class="mt-3 text-3xl font-bold text-gray-900">Speak with a doctor the way you prefer</h2>
+          <p class="mt-2 text-gray-600 max-w-2xl mx-auto">Choose the fastest way to connect — our team responds promptly with clinical guidance tailored to your order.</p>
+        </div>
+
+        <div class="mt-10 grid md:grid-cols-3 gap-6">
+          <a href="https://calendly.com" class="block consult-card rounded-2xl p-6 text-center hover:-translate-y-1 transition transform">
+            <div class="text-3xl">📅</div>
+            <h3 class="mt-3 text-xl font-semibold text-gray-900">Book Appointment</h3>
+            <p class="mt-2 text-sm text-gray-600">Reserve a time and get matched with a licensed doctor.</p>
+          </a>
+          <a href="mailto:support@vitalElixirGlobalist.com?subject=Email%20Doctor%20Directly" class="block consult-card rounded-2xl p-6 text-center hover:-translate-y-1 transition transform">
+            <div class="text-3xl">📧</div>
+            <h3 class="mt-3 text-xl font-semibold text-gray-900">Email Doctor Directly</h3>
+            <p class="mt-2 text-sm text-gray-600">Share your prescription questions and get a written response.</p>
+          </a>
+          <a href="https://wa.me/+918275595850?text=Live%20medical%20query%20for%20doctor" class="block consult-card rounded-2xl p-6 text-center hover:-translate-y-1 transition transform">
+            <div class="text-3xl">💬</div>
+            <h3 class="mt-3 text-xl font-semibold text-gray-900">Live Medical Query</h3>
+            <p class="mt-2 text-sm text-gray-600">Chat instantly for medication safety and dosage guidance.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-slate-900 text-white py-10">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <div>
+        <p class="font-semibold">Vital Elixir Globalist</p>
+        <p class="text-sm text-gray-300">Global medicine export specialists with patient-first doctor access.</p>
+      </div>
+      <p class="text-sm text-gray-400">&copy; <span id="year"></span> Vital Elixir Globalist. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    async function loadHeader() {
+      const header = await fetch('header.html');
+      document.getElementById('header-placeholder').innerHTML = await header.text();
+      const menuBtn = document.getElementById('menu-btn');
+      const closeBtn = document.getElementById('close-menu');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const sidebar = document.getElementById('sidebar');
+      if (!menuBtn || !sidebar || !mobileMenu) return;
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.remove('hidden');
+        setTimeout(() => sidebar.classList.remove('translate-x-full'), 10);
+      });
+      closeBtn.addEventListener('click', () => {
+        sidebar.classList.add('translate-x-full');
+        setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+      });
+      mobileMenu.addEventListener('click', (e) => {
+        if (e.target === mobileMenu) {
+          sidebar.classList.add('translate-x-full');
+          setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+        }
+      });
+    }
+    loadHeader();
+  </script>
+</body>
+</html>
