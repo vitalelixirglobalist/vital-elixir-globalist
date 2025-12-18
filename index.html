@@ -12,35 +12,7 @@
   <style>
     html { scroll-behavior: smooth; }
     /* Hero search styling */
-  <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vital Elixir Globalist – Global Medicine Export Specialists</title>
-  <meta name="description" content="Vital Elixir Globalist exports genuine medicines worldwide — trusted by clients in major global markets." />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = { theme: { extend: { colors: { brand: '#0284c7' } } } }
-  </script>
-  <style>
-    html { scroll-behavior: smooth; }
-    /* Hero search styling */
-     .hero-section {
-      background: #0f172a;
-    }
-    .hero-card {
-      background: #ffffff;
-      box-shadow: 0 15px 45px rgba(15, 23, 42, 0.08);
-      border: 1px solid #e2e8f0;
-    }
-    .hero-kicker {
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-weight: 600;
-      color: #0284c7;
-    }
-        .hero-section {
+    .hero-section {
       position: relative;
       overflow: hidden;
       background: #0f172a;
@@ -86,110 +58,122 @@
       background: linear-gradient(135deg, rgba(2, 132, 199, 0.2), rgba(255, 255, 255, 0.2));
       z-index: 1;
     }
-    .hero-card {
-      /* Minimal card fill for premium subtlety */
+.hero-card {
       background: rgba(255, 255, 255, 0.9);
       box-shadow: 0 20px 50px rgba(15, 23, 42, 0.2);
       border: 1px solid rgba(226, 232, 240, 0.85);
       backdrop-filter: blur(6px);
     }
     .hero-kicker {
-      /* Higher contrast for title line */
       text-transform: uppercase;
       letter-spacing: 0.08em;
       font-weight: 700;
       color: #0273b0;
     }
-    .hero-section h1 {
-      /* Stronger headline weight for readability over image */
+    .hero-title {
       color: #0b172b;
       font-weight: 800;
+      letter-spacing: -0.02em;
     }
-    .hero-letters {
+    .search-trigger {
+      border: 1px solid #cbd5e1;
+      background: linear-gradient(90deg, rgba(2, 132, 199, 0.1), rgba(255, 255, 255, 0.8));
+      box-shadow: 0 10px 30px rgba(2, 132, 199, 0.15);
+      transition: all 0.2s ease;
+    }
+    .search-trigger:hover,
+    .search-trigger:focus-visible {
+      border-color: #0284c7;
+      box-shadow: 0 20px 40px rgba(2, 132, 199, 0.18);
+      background: #ffffff;
+    }
+    .category-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    }
+    .category-pill {
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      justify-content: center;
-      margin-top: 0.4rem;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 0.5rem 1rem;
+      border-radius: 1.1rem;
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-    .hero-letter {
+    .category-pill:hover,
+    .category-pill:focus-visible {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 45px rgba(2, 132, 199, 0.15);
+    }
+    .category-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 9999px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 2.2rem;
-      height: 2.2rem;
-      border-radius: 9999px;
-      background: #e2e8f0;
+      background: radial-gradient(circle at 30% 30%, #e0f2fe, #bfdbfe);
       color: #0f172a;
+      font-size: 1.5rem;
+      border: 1px solid #dbeafe;
+    }
+    .category-label {
+      font-size: 0.9rem;
       font-weight: 600;
-      border: 1px solid transparent;
-      transition: all 0.2s ease;
+      color: #0f172a;
+      text-align: center;
+      line-height: 1.3;
     }
-    .hero-letter:hover,
-    .hero-letter:focus-visible {
-      background: #0284c7;
-      color: #ffffff;
-      border-color: #0284c7;
-      box-shadow: 0 10px 25px rgba(2, 132, 199, 0.25);
+    .search-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      z-index: 50;
     }
-    .hero-search-form {
-      gap: 0.75rem;
+    .search-dialog {
+      width: min(960px, 100%);
+      background: #ffffff;
+      border-radius: 1.25rem;
+      padding: 1.75rem;
+      box-shadow: 0 30px 80px rgba(15, 23, 42, 0.3);
+      border: 1px solid #e2e8f0;
     }
-    .hero-search-input {
+    .search-input {
       border: 1px solid #cbd5e1;
       background: #f8fafc;
       box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.05);
     }
-    .hero-results {
-      margin-top: 1.5rem;
-      text-align: left;
-    }
-    .hero-results h3 {
-      font-size: 0.95rem;
-      color: #0f172a;
-      font-weight: 700;
-      margin-bottom: 0.6rem;
-    }
-    .hero-results-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 0.75rem;
-    }
-    .hero-pill {
-      display: inline-flex;
+    .search-result {
+      display: flex;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.75rem 0.9rem;
-      border-radius: 0.9rem;
-      background: #f1f5f9;
+      justify-content: space-between;
+      padding: 0.9rem 1rem;
       border: 1px solid #e2e8f0;
-      font-weight: 600;
-      color: #0f172a;
+      border-radius: 0.9rem;
+      background: #ffffff;
       transition: all 0.2s ease;
     }
-    .hero-pill:hover,
-    .hero-pill:focus-visible {
-      background: #0284c7;
-      color: #ffffff;
+    .search-result:hover,
+    .search-result:focus-visible {
       border-color: #0284c7;
-      box-shadow: 0 10px 25px rgba(2, 132, 199, 0.25);
+      box-shadow: 0 12px 32px rgba(2, 132, 199, 0.15);
+      transform: translateY(-2px);
     }
-    .hero-empty {
-      color: #475569;
-      background: #f8fafc;
-      border: 1px dashed #cbd5e1;
-      border-radius: 0.9rem;
-      padding: 1rem;
-    }
-    @media (max-width: 640px) {
-      .hero-search-form {
-        flex-direction: column;
-      }
-      .hero-letter {
-        width: 2.1rem;
-        height: 2.1rem;
-               font-size: 0.95rem;
-      }
+    .search-result small {
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      background: #e0f2fe;
+      color: #0369a1;
+      font-weight: 600;
     }
 
     /* Purpose section styling */
@@ -226,63 +210,76 @@
 
 
   <!-- NEW HERO SEARCH SECTION START -->
-  <section class="hero-section py-16 md:py-24">
-    <div class="max-w-5xl mx-auto px-4">
-      <div class="hero-card rounded-2xl p-8 md:p-12 shadow-xl">
-        <p class="hero-kicker">Find your medication</p>
-        <h2 class="mt-3 text-3xl md:text-4xl font-bold text-gray-900">Instant availability search</h2>
-        <p class="mt-3 text-base md:text-lg text-gray-700">Search by name or jump to a letter to see if we have what you need.</p>
-        <div class="mt-5 text-gray-700 text-base md:text-lg flex flex-col gap-3">
-          <span class="font-semibold text-gray-800">Search by name:</span>
-          <div class="hero-letters" aria-label="Search medicines by letter">
-            <button type="button" class="hero-letter" data-letter="A">A</button>
-            <button type="button" class="hero-letter" data-letter="B">B</button>
-            <button type="button" class="hero-letter" data-letter="C">C</button>
-            <button type="button" class="hero-letter" data-letter="D">D</button>
-            <button type="button" class="hero-letter" data-letter="E">E</button>
-            <button type="button" class="hero-letter" data-letter="F">F</button>
-            <button type="button" class="hero-letter" data-letter="G">G</button>
-            <button type="button" class="hero-letter" data-letter="H">H</button>
-            <button type="button" class="hero-letter" data-letter="I">I</button>
-            <button type="button" class="hero-letter" data-letter="J">J</button>
-            <button type="button" class="hero-letter" data-letter="K">K</button>
-            <button type="button" class="hero-letter" data-letter="L">L</button>
-            <button type="button" class="hero-letter" data-letter="M">M</button>
-            <button type="button" class="hero-letter" data-letter="N">N</button>
-            <button type="button" class="hero-letter" data-letter="O">O</button>
-            <button type="button" class="hero-letter" data-letter="P">P</button>
-            <button type="button" class="hero-letter" data-letter="Q">Q</button>
-            <button type="button" class="hero-letter" data-letter="R">R</button>
-            <button type="button" class="hero-letter" data-letter="S">S</button>
-            <button type="button" class="hero-letter" data-letter="T">T</button>
-            <button type="button" class="hero-letter" data-letter="U">U</button>
-            <button type="button" class="hero-letter" data-letter="V">V</button>
-            <button type="button" class="hero-letter" data-letter="W">W</button>
-            <button type="button" class="hero-letter" data-letter="X">X</button>
-            <button type="button" class="hero-letter" data-letter="Y">Y</button>
-            <button type="button" class="hero-letter" data-letter="Z">Z</button>
-          </div>
-        </div>
-        <form id="heroSearchForm" class="mt-8 flex hero-search-form flex-wrap justify-center" novalidate>
-          <input
-            id="heroSearchInput"
-            type="search"
-            name="search"
-            class="hero-search-input w-full md:w-2/3 lg:w-3/5 px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand"
-            placeholder="Search medicines or website"
-            aria-label="Search medicines or website"
-          />
+ <section class="hero-section py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="hero-card rounded-2xl p-8 md:p-12 shadow-xl space-y-8 text-center">
+        <h1 class="hero-title text-3xl md:text-5xl text-gray-900">See if we have your medication</h1>
+        <p class="text-base md:text-lg text-gray-700 max-w-3xl mx-auto">
+          Quickly check availability across our global pharmacy network with a clean, focused search.
+        </p>
+        <div class="max-w-2xl mx-auto w-full">
           <button
-            type="submit"
-            class="px-6 py-3 bg-brand text-white rounded-xl hover:bg-blue-700 shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand"
+            id="heroSearchTrigger"
+            type="button"
+            class="search-trigger w-full flex items-center justify-between gap-3 px-5 py-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand"
           >
-            Search
+            <div class="flex items-center gap-3 text-left">
+              <span class="inline-flex w-10 h-10 rounded-full bg-brand/10 text-brand items-center justify-center text-xl">🔍</span>
+              <div class="flex flex-col leading-tight">
+                <span class="text-sm text-slate-600">Medication availability</span>
+                <span class="text-base md:text-lg font-semibold text-gray-900">Search for a medicine</span>
+              </div>
+            </div>
+            <span class="inline-flex items-center gap-2 bg-brand text-white px-4 py-2 rounded-xl text-sm font-semibold shadow-md">
+              Open search
+            </span>
           </button>
-        </form>
-        <div id="heroSearchResults" class="hero-results" aria-live="polite"></div>
+        </div>
+        <div class="space-y-3">
+          <p class="text-xs uppercase tracking-[0.18em] text-slate-500 font-semibold">Search by category</p>
+          <div id="categoryGrid" class="category-grid"></div>
+        </div>
       </div>
     </div>
   </section>
+  <div
+    id="searchOverlay"
+    class="search-overlay hidden"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="searchOverlayTitle"
+  >
+    <div class="search-dialog">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wide text-brand">Availability search</p>
+          <h3 id="searchOverlayTitle" class="text-2xl font-bold text-gray-900">Find a medication</h3>
+          <p class="text-sm text-gray-600 mt-1">Type a product name to check if we stock it right now.</p>
+        </div>
+        <button
+          id="closeSearchOverlay"
+          type="button"
+          class="text-gray-500 hover:text-gray-800 inline-flex items-center justify-center w-10 h-10 rounded-full border border-gray-200"
+          aria-label="Close search"
+        >
+          ✕
+        </button>
+      </div>
+      <div class="mt-4 relative">
+        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">🔍</span>
+        <input
+          id="overlaySearchInput"
+          type="search"
+          class="search-input w-full rounded-2xl pl-11 pr-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-brand"
+          placeholder="Start typing a medication name"
+          autocomplete="off"
+        />
+      </div>
+      <div id="overlaySearchResults" class="mt-4 space-y-3 max-h-80 overflow-y-auto">
+        <p class="text-sm text-gray-500">Start typing to see if we have your medication.</p>
+      </div>
+    </div>
+  </div>
   <!-- NEW HERO SEARCH SECTION END -->
 
   <!-- Global Partner Earnings Program teaser -->
@@ -626,58 +623,34 @@
     <div class="text-center text-xs text-gray-500 mt-8">
       © <span id="year"></span> Vital Elixir Globalist. All rights reserved.
     </div>
-  </footer>
+</footer>
 
   <script>
-    const medicineIndex = {
-      A: [
-        { name: 'Azithromycin', url: 'products.html?search=Azithromycin' },
-        { name: 'Atorvastatin', url: 'products.html?search=Atorvastatin' }
-      ],
-      B: [
-        { name: 'Budesonide', url: 'products.html?search=Budesonide' },
-        { name: 'Baclofen', url: 'products.html?search=Baclofen' }
-      ],
-      C: [
-        { name: 'Ciprofloxacin', url: 'products.html?search=Ciprofloxacin' },
-        { name: 'Clopidogrel', url: 'products.html?search=Clopidogrel' }
-      ],
-      D: [{ name: 'Doxycycline', url: 'products.html?search=Doxycycline' }],
-      E: [{ name: 'Enoxaparin', url: 'products.html?search=Enoxaparin' }],
-      F: [{ name: 'Fluconazole', url: 'products.html?search=Fluconazole' }],
-      G: [{ name: 'Gabapentin', url: 'products.html?search=Gabapentin' }],
-      H: [{ name: 'Hydroxychloroquine', url: 'products.html?search=Hydroxychloroquine' }],
-      I: [
-        { name: 'Ivermectin', url: 'products.html?search=Ivermectin' },
-        { name: 'Imatinib', url: 'products.html?search=Imatinib' }
-      ],
-      J: [{ name: 'Jardiance (Empagliflozin)', url: 'products.html?search=Jardiance' }],
-      K: [{ name: 'Ketoconazole', url: 'products.html?search=Ketoconazole' }],
-      L: [{ name: 'Levothyroxine', url: 'products.html?search=Levothyroxine' }],
-      M: [
-        { name: 'Metformin', url: 'products.html?search=Metformin' },
-        { name: 'Methylprednisolone', url: 'products.html?search=Methylprednisolone' }
-      ],
-      N: [{ name: 'Naproxen', url: 'products.html?search=Naproxen' }],
-      O: [{ name: 'Oseltamivir', url: 'products.html?search=Oseltamivir' }],
-      P: [
-        { name: 'Prednisone', url: 'products.html?search=Prednisone' },
-        { name: 'Paracetamol', url: 'products.html?search=Paracetamol' }
-      ],
-      Q: [{ name: 'Quetiapine', url: 'products.html?search=Quetiapine' }],
-      R: [{ name: 'Rifampicin', url: 'products.html?search=Rifampicin' }],
-      S: [
-        { name: 'Sildenafil', url: 'products.html?search=Sildenafil' },
-        { name: 'Sofosbuvir', url: 'products.html?search=Sofosbuvir' }
-      ],
-      T: [{ name: 'Tadalafil', url: 'products.html?search=Tadalafil' }],
-      U: [{ name: 'Ursodiol', url: 'products.html?search=Ursodiol' }],
-      V: [{ name: 'Vitamin D3 (Cholecalciferol)', url: 'products.html?search=Vitamin%20D3' }],
-      W: [{ name: 'Warfarin', url: 'products.html?search=Warfarin' }],
-      X: [{ name: 'Xarelto (Rivaroxaban)', url: 'products.html?search=Xarelto' }],
-      Y: [{ name: 'Yervoy (Ipilimumab)', url: 'products.html?search=Yervoy' }],
-      Z: [{ name: 'Zinc Sulfate', url: 'products.html?search=Zinc%20Sulfate' }]
-    };
+    const searchOverlay = document.getElementById('searchOverlay');
+    const overlaySearchInput = document.getElementById('overlaySearchInput');
+    const overlaySearchResults = document.getElementById('overlaySearchResults');
+    const searchTrigger = document.getElementById('heroSearchTrigger');
+    const closeSearchOverlay = document.getElementById('closeSearchOverlay');
+    const categoryGrid = document.getElementById('categoryGrid');
+
+    const categories = [
+      { name: 'Men’s Health', icon: '💙' },
+      { name: 'Diabetes & Metabolic Care', icon: '🩸' },
+      { name: 'Dermatology & Skin Care', icon: '🧴' },
+      { name: 'Eye & Allergy Care', icon: '👁️' },
+      { name: 'Hormonal & Thyroid Care', icon: '🧬' },
+      { name: 'Hormone Therapy', icon: '⚖️' },
+      { name: 'Hormonal / Performance Enhancement', icon: '💪' },
+      { name: 'Infection & Antiparasitic Treatments', icon: '🦠' },
+      { name: 'Neurology', icon: '🧠' },
+      { name: 'Thyroid Treatment', icon: '🛡️' },
+      { name: 'Allergy / Anxiety', icon: '🌿' },
+      { name: 'Anti-Malarial / Autoimmune', icon: '🛡️' },
+      { name: 'Addiction Treatment', icon: '🩺' },
+      { name: 'Veterinary / Antiparasitic', icon: '🐾' },
+      { name: 'Veterinary / Other Uses', icon: '🐶' },
+      { name: 'Supplement', icon: '✨' }
+    ];
 
     const keywordRoutes = {
       about: 'about.html',
@@ -688,85 +661,124 @@
       compliance: 'compliance.html'
     };
 
-    const heroSearchForm = document.getElementById('heroSearchForm');
-    const heroSearchInput = document.getElementById('heroSearchInput');
-    const heroSearchResults = document.getElementById('heroSearchResults');
-    const letterButtons = document.querySelectorAll('.hero-letter');
-    const allMedicines = Object.values(medicineIndex).flat();
+    let productIndex = [];
 
-    const renderResults = (list, heading) => {
-      heroSearchResults.innerHTML = '';
-      if (!heading && (!list || list.length === 0)) {
-        heroSearchResults.innerHTML = '<div class="hero-empty">Start typing a medicine or click a letter to browse.</div>';
-        return;
-      }
-
-      if (heading) {
-        const title = document.createElement('h3');
-        title.textContent = heading;
-        heroSearchResults.appendChild(title);
-      }
-
-      if (!list || list.length === 0) {
-        const empty = document.createElement('div');
-        empty.className = 'hero-empty';
-        empty.textContent = 'No medicines found. Try another name or letter.';
-        heroSearchResults.appendChild(empty);
-        return;
-      }
-
-      const wrapper = document.createElement('div');
-      wrapper.className = 'hero-results-list';
-
-      list.forEach((item) => {
+    function renderCategories() {
+      if (!categoryGrid) return;
+      categoryGrid.innerHTML = '';
+      categories.forEach((category) => {
         const link = document.createElement('a');
-        link.className = 'hero-pill';
-        link.href = item.url || '#';
-        link.textContent = item.name;
-        wrapper.appendChild(link);
+        link.href = `products.html?search=${encodeURIComponent(category.name)}`;
+        link.className = 'category-pill focus:outline-none focus:ring-2 focus:ring-brand';
+        link.innerHTML = `
+          <span class="category-icon" aria-hidden="true">${category.icon}</span>
+          <span class="category-label">${category.name}</span>
+        `;
+        categoryGrid.appendChild(link);
       });
+    }
 
-      heroSearchResults.appendChild(wrapper);
-    };
+    async function loadProductIndex() {
+      if (productIndex.length) return productIndex;
+      try {
+        const res = await fetch('products-data.json');
+        const data = await res.json();
+        productIndex = data.map((item) => ({
+          name: item.name,
+          category: item.category,
+          url: `products.html?search=${encodeURIComponent(item.name)}`
+        }));
+      } catch (error) {
+        console.error('Failed to load product index', error);
+      }
+      return productIndex;
+    }
 
-    const handleSearch = (event) => {
-      event.preventDefault();
-      const rawQuery = heroSearchInput.value.trim();
-      const query = rawQuery.toLowerCase();
-
+    function renderSearchResults(results, query) {
+      overlaySearchResults.innerHTML = '';
       if (!query) {
-        renderResults([], '');
+        overlaySearchResults.innerHTML =
+          '<p class="text-sm text-gray-500">Start typing to see if we have your medication.</p>';
+        return;
+      }
+      if (!results.length) {
+        overlaySearchResults.innerHTML =
+          '<p class="text-sm text-gray-500">No matches found. Try another name.</p>';
+        return;
+      }
+      results.slice(0, 10).forEach((item) => {
+        const anchor = document.createElement('a');
+        anchor.className = 'search-result focus:outline-none focus:ring-2 focus:ring-brand';
+        anchor.href = item.url;
+        anchor.innerHTML = `
+          <span class="font-semibold text-gray-900">${item.name}</span>
+          <small>${item.category}</small>
+        `;
+        overlaySearchResults.appendChild(anchor);
+      });
+    }
+
+    async function handleOverlaySearch(query) {
+      const data = await loadProductIndex();
+      const lowered = query.toLowerCase().trim();
+
+      if (!lowered) {
+        renderSearchResults([], '');
         return;
       }
 
-      const keywordMatch = Object.entries(keywordRoutes).find(([key]) => query.includes(key));
+      const keywordMatch = Object.entries(keywordRoutes).find(([key]) => lowered.includes(key));
       if (keywordMatch) {
         window.location.href = keywordMatch[1];
         return;
       }
 
-      const matches = allMedicines.filter(({ name }) => name.toLowerCase().includes(query));
+      const matches = data.filter(
+        (item) =>
+          item.name.toLowerCase().includes(lowered) || item.category.toLowerCase().includes(lowered)
+      );
+      renderSearchResults(matches, query);
+    }
 
-      if (matches.length === 1 && (query.length >= 3 || query === matches[0].name.toLowerCase())) {
-        const target = matches[0].url;
-        if (target) {
-          window.location.href = target;
-          return;
-        }
+    function openOverlay() {
+      if (!searchOverlay || !overlaySearchInput || !overlaySearchResults) return;
+      searchOverlay.classList.remove('hidden');
+      document.body.classList.add('overflow-hidden');
+      overlaySearchInput.value = '';
+      overlaySearchResults.innerHTML =
+        '<p class="text-sm text-gray-500">Start typing to see if we have your medication.</p>';
+      setTimeout(() => overlaySearchInput.focus(), 50);
+      loadProductIndex();
+    }
+
+    function closeOverlay() {
+      if (!searchOverlay || !overlaySearchInput) return;
+      searchOverlay.classList.add('hidden');
+      document.body.classList.remove('overflow-hidden');
+      overlaySearchInput.value = '';
+    }
+
+    if (searchTrigger) {
+      searchTrigger.addEventListener('click', openOverlay);
+    }
+    if (closeSearchOverlay) {
+      closeSearchOverlay.addEventListener('click', closeOverlay);
+    }
+    if (overlaySearchInput) {
+      overlaySearchInput.addEventListener('input', (e) => handleOverlaySearch(e.target.value));
+    }
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && searchOverlay && !searchOverlay.classList.contains('hidden')) {
+        closeOverlay();
       }
-
-      renderResults(matches, `Results for "${rawQuery}"`);
-    };
-
-    letterButtons.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const letter = btn.dataset.letter;
-        renderResults(medicineIndex[letter] || [], `Medicines starting with "${letter}"`);
-      });
     });
+    if (searchOverlay) {
+      searchOverlay.addEventListener('click', (e) => {
+        if (e.target === searchOverlay) closeOverlay();
+      });
+    }
 
-    heroSearchForm.addEventListener('submit', handleSearch);
-    renderResults([], '');
+    renderCategories();
   </script>
 
   <script>
@@ -841,6 +853,7 @@
   <script type="module" src="firebase-config.js"></script>
 </body>
 </html>
+
 
 
 
