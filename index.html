@@ -63,14 +63,6 @@
       -webkit-backdrop-filter: blur(8px);
       box-shadow: 0 20px 50px rgba(15, 23, 42, 0.2);
     }
-    .hero-logo {
-      width: clamp(42px, 5vw, 56px);
-      height: clamp(42px, 5vw, 56px);
-      border-radius: 9999px;
-      object-fit: cover;
-      border: 2px solid rgba(255, 255, 255, 0.9);
-      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.2);
-    }
     .hero-kicker {
       text-transform: uppercase;
       letter-spacing: 0.08em;
@@ -94,10 +86,14 @@
       box-shadow: 0 20px 40px rgba(2, 132, 199, 0.18);
       background: #ffffff;
     }
-  .category-grid {
+   .category-grid {
       display: grid;
       gap: 0.75rem;
       grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+    .category-wrapper {
+      overflow: hidden;
+      transition: max-height 0.45s ease;
     }
     .category-pill {
       display: flex;
@@ -139,6 +135,23 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+    }
+    .view-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-weight: 600;
+      color: #0284c7;
+      padding: 0.5rem 0.9rem;
+      border-radius: 999px;
+      transition: color 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+    }
+    .view-toggle:hover,
+    .view-toggle:focus-visible {
+      color: #0369a1;
+      background: rgba(2, 132, 199, 0.08);
+      outline: none;
+      transform: translateY(-1px);
     }
     .search-overlay {
       position: fixed;
@@ -223,15 +236,8 @@
 
   <!-- NEW HERO SEARCH SECTION START -->
   <section class="hero-section py-16 md:py-24">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="hero-card rounded-2xl p-8 md:p-12 shadow-xl space-y-8 text-center md:text-left">
-        <div class="flex items-center gap-3 justify-center md:justify-start">
-          <img src="assets/images/logo.jpeg" alt="Vital Elixir Globalist logo" class="hero-logo" />
-          <div class="text-left">
-            <p class="text-sm font-semibold text-brand">Vital Elixir Globalist</p>
-            <p class="text-xs text-gray-600">Trusted global medicine exports</p>
-          </div>
-        </div>
+       <div class="max-w-6xl mx-auto px-4">
+      <div class="hero-card rounded-2xl p-8 md:p-12 shadow-xl space-y-6 text-center md:text-left">
         <h1 class="hero-title text-3xl md:text-5xl text-gray-900">See if we have your medication</h1>
         <p class="text-base md:text-lg text-gray-700 max-w-3xl mx-auto md:mx-0">
           Quickly check availability across our global pharmacy network with a clean, focused search.
@@ -256,7 +262,19 @@
         </div>
         <div class="space-y-3">
           <p class="text-xs uppercase tracking-[0.18em] text-slate-500 font-semibold">Search by category</p>
-          <div id="categoryGrid" class="category-grid"></div>
+          <div class="category-wrapper" id="categoryWrapper">
+            <div id="categoryGrid" class="category-grid"></div>
+          </div>
+          <div class="text-center md:text-right">
+            <button
+              id="toggleCategories"
+              type="button"
+              class="view-toggle focus:outline-none focus:ring-2 focus:ring-brand"
+              aria-expanded="false"
+            >
+              View all categories
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -647,10 +665,12 @@
   <script>
     const searchOverlay = document.getElementById('searchOverlay');
     const overlaySearchInput = document.getElementById('overlaySearchInput');
-    const overlaySearchResults = document.getElementById('overlaySearchResults');
+       const overlaySearchResults = document.getElementById('overlaySearchResults');
     const searchTrigger = document.getElementById('heroSearchTrigger');
     const closeSearchOverlay = document.getElementById('closeSearchOverlay');
     const categoryGrid = document.getElementById('categoryGrid');
+    const categoryWrapper = document.getElementById('categoryWrapper');
+    const toggleCategoriesBtn = document.getElementById('toggleCategories');
 
     const categories = [
       { name: 'Men’s Health', icon: '💙' },
@@ -670,6 +690,25 @@
       { name: 'Veterinary / Other Uses', icon: '🐶' },
       { name: 'Supplement', icon: '✨' }
     ];
+
+    let categoriesExpanded = false;
+    let collapsedCategoryHeight = 0;
+
+    function getSingleRowHeight() {
+      if (!categoryGrid || !categoryGrid.firstElementChild) return 0;
+      const firstItem = categoryGrid.firstElementChild;
+      const styles = getComputedStyle(categoryGrid);
+      const rowGap = parseFloat(styles.rowGap || styles.gap || 0);
+      return firstItem.offsetHeight + rowGap;
+    }
+
+    function applyCategoryHeight() {
+      if (!categoryWrapper || !categoryGrid) return;
+      const targetHeight = categoriesExpanded
+        ? categoryGrid.scrollHeight
+        : collapsedCategoryHeight || getSingleRowHeight();
+      categoryWrapper.style.maxHeight = `${targetHeight}px`;
+    }
 
     const keywordRoutes = {
       about: 'about.html',
@@ -696,7 +735,17 @@
         `;
         categoryGrid.appendChild(link);
       });
+      requestAnimationFrame(() => {
+        collapsedCategoryHeight = getSingleRowHeight();
+        categoriesExpanded = false;
+        if (toggleCategoriesBtn) {
+          toggleCategoriesBtn.textContent = 'View all categories';
+          toggleCategoriesBtn.setAttribute('aria-expanded', 'false');
+        }
+        applyCategoryHeight();
+      });
     }
+
 
     async function loadProductIndex() {
       if (productIndex.length) return productIndex;
@@ -796,11 +845,25 @@
         closeOverlay();
       }
     });
-    if (searchOverlay) {
+        if (searchOverlay) {
       searchOverlay.addEventListener('click', (e) => {
         if (e.target === searchOverlay) closeOverlay();
       });
     }
+
+    if (toggleCategoriesBtn) {
+      toggleCategoriesBtn.addEventListener('click', () => {
+        categoriesExpanded = !categoriesExpanded;
+        toggleCategoriesBtn.textContent = categoriesExpanded ? 'Hide categories' : 'View all categories';
+        toggleCategoriesBtn.setAttribute('aria-expanded', String(categoriesExpanded));
+        applyCategoryHeight();
+      });
+    }
+
+    window.addEventListener('resize', () => {
+      collapsedCategoryHeight = getSingleRowHeight();
+      applyCategoryHeight();
+    });
 
     renderCategories();
   </script>
@@ -877,6 +940,7 @@
   <script type="module" src="firebase-config.js"></script>
 </body>
 </html>
+
 
 
 
