@@ -170,7 +170,7 @@
     async function loadProducts() {
       const res = await fetch('products-data.json');
       allProducts = await res.json();
-      displayProducts(allProducts);
+    applyInitialFilters();
     }
     function displayProducts(products) {
       productGrid.innerHTML = '';
@@ -269,7 +269,7 @@
         productGrid.appendChild(card);
       });
     }
-    function filterProducts() {
+ function filterProducts() {
       const query = searchBar.value.toLowerCase();
       const category = categoryFilter.value;
       const filtered = allProducts.filter((p) =>
@@ -278,6 +278,27 @@
       );
       displayProducts(filtered);
     }
+    function applyInitialFilters() {
+      const params = new URLSearchParams(window.location.search);
+      const categoryParam = params.get('category');
+      const searchParam = params.get('search') || params.get('q');
+
+      if (categoryParam) {
+        const decodedCategory = decodeURIComponent(categoryParam);
+        const hasOption = Array.from(categoryFilter.options).some((opt) => opt.value === decodedCategory);
+        categoryFilter.value = hasOption ? decodedCategory : 'all';
+      }
+
+      if (searchParam) {
+        searchBar.value = decodeURIComponent(searchParam);
+      }
+
+      filterProducts();
+
+      if ((categoryParam || searchParam) && productGrid) {
+        productGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
     searchBar.addEventListener('input', filterProducts);
     categoryFilter.addEventListener('change', filterProducts);
     loadProducts();
@@ -285,6 +306,7 @@
   <script type="module" src="firebase-config.js"></script>
 </body>
 </html>
+
 
 
 
