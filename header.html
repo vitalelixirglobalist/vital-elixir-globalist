@@ -1,11 +1,14 @@
 <!-- Header component reused across all pages -->
-<header class="bg-white shadow sticky top-0 z-50">
-  <div class="max-w-6xl mx-auto flex justify-between items-center px-4 py-3">
+<header class="site-header shadow sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto flex justify-between items-center px-4 py-3 header-content">
     <!-- Logo -->
-    <div class="text-2xl font-bold text-brand">Vital Elixir Globalist</div>
+       <div class="logo-stack">
+      <img src="assets/images/logo.jpeg" alt="Vital Elixir Globalist logo" class="logo-mark">
+      <div class="logo-wordmark">Vital Elixir Globalist</div>
+    </div>
 
     <!-- Desktop Navigation -->
-    <nav class="hidden md:flex gap-6 text-sm font-medium">
+   <nav class="hidden md:flex gap-6 text-sm font-medium desktop-nav">
  <a href="index.html" class="hover:text-brand">🏠 Home</a>
   <a href="products.html" class="hover:text-brand">💊 Medicines</a>
   <a href="doctor-consultation.html" class="hover:text-brand">🩺 Doctor Consultation</a>
@@ -23,7 +26,7 @@
     </nav>
 
     <!-- Hamburger Button (visible only on mobile) -->
-    <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
+   <button id="menu-btn" class="md:hidden text-white focus:outline-none">
       <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M4 6h16M4 12h16m-7 6h7" />
@@ -89,6 +92,50 @@
 </aside>
 
 <style>
+    .site-header {
+    background-image: linear-gradient(135deg, rgba(15, 23, 42, 0.85), rgba(14, 165, 233, 0.6)), url('assets/images/header.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .header-content {
+    background: rgba(15, 23, 42, 0.6);
+    border-radius: 1rem;
+    backdrop-filter: blur(6px);
+    margin: 0.6rem auto;
+  }
+
+  .logo-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+    color: #e2e8f0;
+  }
+
+  .logo-mark {
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 0.7rem;
+    object-fit: cover;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
+  }
+
+  .logo-wordmark {
+    font-weight: 800;
+    font-size: 1.35rem;
+    letter-spacing: 0.02em;
+    color: #e2e8f0;
+  }
+
+  .desktop-nav a {
+    color: #e2e8f0;
+  }
+
+  .desktop-nav a:hover {
+    color: #38bdf8;
+  }
   .floating-action-bar {
     position: fixed;
     right: 1rem;
