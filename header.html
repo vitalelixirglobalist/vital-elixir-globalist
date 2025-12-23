@@ -108,15 +108,15 @@
   .logo-stack {
     display: flex;
     flex-direction: column;
-   align-items: center;
+    align-items: center;
   }
 
   .logo-mark {
-  height: 3.8rem;        /* main control */
-  width: auto;           /* auto-scale */
-  max-width: 7rem;
-  border-radius: 0.6rem;
-  object-fit: contain;
+     height: clamp(4.5rem, 7vw, 6.5rem);  /* bolder presence on banner */
+    width: auto;                         /* auto-scale */
+    max-width: 10rem;
+    border-radius: 0.6rem;
+    object-fit: contain;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
   }
   .desktop-nav a {
