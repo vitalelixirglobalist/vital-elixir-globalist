@@ -221,6 +221,26 @@
       text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
     }
 
+    .partner-card {
+      position: relative;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .partner-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url('assets/images/ProductDiscussion.jpeg') center/cover no-repeat;
+      opacity: 0.5;
+      z-index: 0;
+    }
+
+    .partner-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
     @media (max-width: 640px) {
       .purpose-section {
         background-attachment: scroll;
@@ -320,9 +340,9 @@
   <!-- NEW HERO SEARCH SECTION END -->
 
   <!-- Global Partner Earnings Program teaser -->
-  <section class="py-14 md:py-18 bg-white">
-    <div class="max-w-5xl mx-auto px-4">
-      <div class="bg-gradient-to-r from-sky-50 via-white to-sky-50 border border-sky-100 rounded-2xl shadow-sm p-8 md:p-10">
+   <section class="py-14 md:py-18 bg-white">␊
+    <div class="max-w-5xl mx-auto px-4">␊
+      <div class="partner-card bg-gradient-to-r from-sky-50 via-white to-sky-50 border border-sky-100 rounded-2xl shadow-sm p-8 md:p-10">
         <div class="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
           <div class="md:max-w-2xl space-y-3">
             <p class="text-brand font-semibold uppercase tracking-wide">Global Partner Earnings Program</p>
@@ -940,6 +960,7 @@
   <script type="module" src="firebase-config.js"></script>
 </body>
 </html>
+
 
 
 
