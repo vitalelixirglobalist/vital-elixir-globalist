@@ -1,11 +1,9 @@
 <!-- Header component reused across all pages -->
+<a class="fixed-site-logo" href="index.html" aria-label="Go to homepage">
+  <img src="assets/images/logo.jpeg" alt="Vital Elixir Globalist logo" />
+</a>
 <header class="site-header shadow sticky top-0 z-50">
   <div class="max-w-6xl mx-auto flex justify-between items-center px-4 py-3 header-content">
-    <!-- Logo -->
-       <div class="logo-stack">
-      <img src="assets/images/logo.jpeg" alt="Vital Elixir Globalist logo" class="logo-mark">
-    </div>
-
     <!-- Desktop Navigation -->
    <nav class="hidden md:flex gap-6 text-sm font-medium desktop-nav">
  <a href="index.html" class="hover:text-brand">🏠 Home</a>
@@ -120,21 +118,47 @@
     border-radius: 1rem;
     backdrop-filter: blur(6px);
     margin: 0.6rem auto;
+      padding-left: clamp(4.5rem, 8vw, 6.5rem);
   }
 
-  .logo-stack {
-    display: flex;
-    flex-direction: column;
+.fixed-site-logo {
+    position: fixed;
+    top: 10px;
+    left: 14px;
+    z-index: 10001;
+    display: inline-flex;
     align-items: center;
+  justify-content: center;
+    border-radius: 6px;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
-  .logo-mark {
-     height: clamp(4.5rem, 7vw, 6.5rem);  /* bolder presence on banner */
-    width: auto;                         /* auto-scale */
-    max-width: 10rem;
-    border-radius: 0.6rem;
+ .fixed-site-logo img {
+    height: 64px;
+    width: auto;
     object-fit: contain;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
+   display: block;
+    border-radius: 6px;
+    background: transparent;
+  }
+
+  .fixed-site-logo:hover,
+  .fixed-site-logo:focus-visible {
+    transform: scale(1.03);
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.3);
+  }
+
+  @media (max-width: 1024px) {
+    .fixed-site-logo img {
+      height: 54px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .fixed-site-logo img {
+      height: 46px;
+    }
   }
   .desktop-nav a {
     color: #e2e8f0;
