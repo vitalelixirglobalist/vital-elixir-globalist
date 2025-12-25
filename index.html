@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vital Elixir Globalist – Global Medicine Export Specialists</title>
+   <title>Vital Elixir Globalist – Global Medicine Export Specialists</title>
   <meta name="description" content="Vital Elixir Globalist exports genuine medicines worldwide — trusted by clients in major global markets." />
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="currency-utils.js"></script>
   <script>
     tailwind.config = { theme: { extend: { colors: { brand: '#0284c7' } } } }
   </script>
@@ -940,9 +941,12 @@
     // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
     // Load Header and Initialize Menu
-    async function loadHeader() {
+       async function loadHeader() {
       const header = await fetch('header.html');
       document.getElementById('header-placeholder').innerHTML = await header.text();
+      if (window.initCurrencySelect) {
+        window.initCurrencySelect();
+      }
       // Initialize menu after header loads
       const menuBtn = document.getElementById('menu-btn');
       const closeBtn = document.getElementById('close-menu');
@@ -1008,6 +1012,7 @@
   <script type="module" src="firebase-config.js"></script>
 </body>
 </html>
+
 
 
 
