@@ -6,6 +6,7 @@
   <title>Compliance & Contact – Vital Elixir Globalist</title>
   <meta name="description" content="Vital Elixir Globalist's export compliance statement and contact information." />
   <script src="https://cdn.tailwindcss.com"></script>
+    <script src="currency-utils.js"></script>
   <script>
     tailwind.config = { theme: { extend: { colors: { brand: '#0284c7', midnight: '#0f172a' } } } };
   </script>
@@ -77,6 +78,9 @@
     async function loadHeader() {
       const header = await fetch('header.html');
       document.getElementById('header-placeholder').innerHTML = await header.text();
+            if (window.initCurrencySelect) {
+        window.initCurrencySelect();
+      }
       const menuBtn = document.getElementById('menu-btn');
       const closeBtn = document.getElementById('close-menu');
       const mobileMenu = document.getElementById('mobile-menu');
