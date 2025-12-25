@@ -6,6 +6,7 @@
   <title>My Account – Vital Elixir Globalist</title>
   <meta name="description" content="View your orders, update your details and manage your account with Vital Elixir Globalist." />
   <script src="https://cdn.tailwindcss.com"></script>
+    <script src="currency-utils.js"></script>
   <script>
     tailwind.config = { theme: { extend: { colors: { brand: '#0284c7' } } } };
   </script>
@@ -47,6 +48,9 @@
       const header = await fetch('header.html');
       document.getElementById('header-placeholder').innerHTML = await header.text();
       const menuBtn = document.getElementById('menu-btn');
+            if (window.initCurrencySelect) {
+        window.initCurrencySelect();
+      }
       const closeBtn = document.getElementById('close-menu');
       const mobileMenu = document.getElementById('mobile-menu');
       const sidebar = document.getElementById('sidebar');
