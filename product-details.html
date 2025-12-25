@@ -144,6 +144,18 @@
       return Number(value || 0).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
     }
 
+    function getSelectedCurrency() {
+      return window.currencyUtils?.getSelectedCurrency?.() || 'GBP';
+    }
+
+    function formatForeignCurrency(value) {
+      const currency = getSelectedCurrency();
+      const converted = window.currencyUtils?.convertFromUsd
+        ? window.currencyUtils.convertFromUsd(value, currency)
+        : value;
+      return `${currency} ${formatMoney(converted)}`;
+    }
+
     function showToast(message) {
       if (!actionToast) return alert(message);
       actionToast.textContent = message;
@@ -168,9 +180,9 @@
       priceBreakdown.innerHTML = `
         <div class="space-y-2">
           <div class="flex items-center justify-between"><span class="font-semibold text-brand">Selected pack</span><span>${variant.pack}</span></div>
-          <div class="flex items-center justify-between"><span>Medicine</span><span>USD ${formatMoney(variant.price_usd)}${variant.price_inr ? ` | INR ${variant.price_inr.toFixed(2)}` : ''}</span></div>
-          <div class="flex items-center justify-between"><span>Shipping</span><span>USD ${formatMoney(SHIPPING_USD)}${variant.price_inr ? ` | INR ${shippingInr.toFixed(2)}` : ''}</span></div>
-          <div class="flex items-center justify-between font-bold text-brand text-lg"><span>Total</span><span>USD ${formatMoney(totalUsd)}${variant.price_inr ? ` | INR ${totalInr.toFixed(2)}` : ''}</span></div>
+          <div class="flex items-center justify-between"><span>Medicine</span><span>${formatForeignCurrency(variant.price_usd)}${variant.price_inr ? ` | INR ${variant.price_inr.toFixed(2)}` : ''}</span></div>
+          <div class="flex items-center justify-between"><span>Shipping</span><span>${formatForeignCurrency(SHIPPING_USD)}${variant.price_inr ? ` | INR ${shippingInr.toFixed(2)}` : ''}</span></div>
+          <div class="flex items-center justify-between font-bold text-brand text-lg"><span>Total</span><span>${formatForeignCurrency(totalUsd)}${variant.price_inr ? ` | INR ${totalInr.toFixed(2)}` : ''}</span></div>
         </div>
       `;
     }
@@ -182,17 +194,16 @@
       doseOption.textContent = product.composition;
       dosageSelect.appendChild(doseOption);
 
-      packSelect.innerHTML = '';
+          packSelect.innerHTML = '';
       product.variants.forEach((variant, index) => {
         const opt = document.createElement('option');
         opt.value = index;
-        opt.textContent = `${variant.pack} — USD ${formatMoney(variant.price_usd)}`;
+        opt.textContent = `${variant.pack} — ${formatForeignCurrency(variant.price_usd)}`;
         packSelect.appendChild(opt);
       });
       packSelect.value = '0';
-      updatePrice();
+      updatePrice();␊
     }
-
     function renderProduct(product) {
       selectedProduct = product;
       productImage.src = product.image;
@@ -308,11 +319,17 @@
       }
     }
 
-    function bindEvents() {
+      function bindEvents() {
       packSelect.addEventListener('change', updatePrice);
       document.getElementById('addToCartBtn').addEventListener('click', addToCart);
       document.getElementById('consultBtn').addEventListener('click', consultDoctor);
     }
+
+    document.addEventListener('currency:change', () => {
+      if (selectedProduct) {
+        renderSelectors(selectedProduct);
+      }
+    });
 
     async function loadHeader() {
       const header = await fetch('header.html');
@@ -347,3 +364,4 @@
   <script type="module" src="firebase-config.js"></script>
 </body>
 </html>
+
