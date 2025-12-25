@@ -26,6 +26,7 @@
       <div class="hidden md:flex items-center gap-2 text-xs text-white">
         <label for="currencySelect" class="font-semibold">Currency</label>
         <select id="currencySelect" class="rounded-md bg-white/90 text-slate-900 px-2 py-1 text-xs focus:outline-none focus:ring-2 focus:ring-brand">
+         <option value="USD">USD</option>
           <option value="GBP">GBP</option>
           <option value="EUR">EUR</option>
           <option value="CAD">CAD</option>
@@ -265,12 +266,13 @@
   (function () {
     const CURRENCY_KEY = 'selectedCurrency';
     const rates = {
+      USD: 1,
       GBP: 0.79,
       EUR: 0.92,
       CAD: 1.36,
       AUD: 1.52
     };
-    const defaultCurrency = 'GBP';
+   const defaultCurrency = 'USD';
 
     function getSelectedCurrency() {
       return localStorage.getItem(CURRENCY_KEY) || defaultCurrency;
