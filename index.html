@@ -51,10 +51,28 @@
       opacity: 0.5;
       z-index: 0;
     }
-    .guidance-overlay {
+       .guidance-overlay {
       position: absolute;
       inset: 0;
       background: linear-gradient(135deg, rgba(2, 132, 199, 0.2), rgba(255, 255, 255, 0.2));
+      z-index: 1;
+    }
+    .partner-hero-section {
+      position: relative;
+      overflow: hidden;
+    }
+    .partner-hero-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url('assets/images/GlobalPartner.jpeg') center/cover no-repeat;
+      opacity: 0.7;
+      z-index: 0;
+    }
+    .partner-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(15, 23, 42, 0.45), rgba(2, 132, 199, 0.15));
       z-index: 1;
     }
     .hero-card {
@@ -356,9 +374,10 @@
   <!-- NEW HERO SEARCH SECTION END -->
 
   <!-- Global Partner Earnings Program teaser -->
-   <section class="py-14 md:py-18 bg-white font-bold" style="font-family: Arial, sans-serif;">
-    <div class="max-w-5xl mx-auto px-4">
-    <div class="partner-card bg-white/70 backdrop-blur-md border border-sky-200 rounded-2xl shadow-lg p-8 md:p-10">
+   <section class="partner-hero-section py-16 md:py-24 font-bold" style="font-family: Arial, sans-serif;">
+    <div class="partner-hero-overlay" aria-hidden="true"></div>
+    <div class="max-w-6xl mx-auto px-4 relative z-10">
+      <div class="bg-white/60 rounded-2xl shadow-2xl p-8 md:p-12 backdrop-blur">
         <div class="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
           <div class="md:max-w-2xl space-y-3">
             <p class="text-brand font-semibold uppercase tracking-wide">Global Partner Earnings Program</p>
@@ -1027,6 +1046,7 @@
   <script type="module" src="firebase-config.js"></script>
 </body>
 </html>
+
 
 
 
