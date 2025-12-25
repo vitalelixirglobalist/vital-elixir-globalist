@@ -117,28 +117,13 @@
   </script>
 
   <script type="module">
-    import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js';
-    import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js';
-    import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
-
-    // Firebase config
-    const firebaseConfig = {
-      apiKey: 'AIzaSyBsSrWpk0I6YnjNJcGRBnXg23WePsgdRx4',
-      authDomain: 'vital-elixir-globalist.firebaseapp.com',
-      projectId: 'vital-elixir-globalist',
-      storageBucket: 'vital-elixir-globalist.appspot.com',
-      messagingSenderId: '87028221342',
-      appId: '1:87028221342:web:0c7719acc703566e8fc28f',
-      measurementId: 'G-5MWKWE2C4J'
-    };
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const db = getFirestore(app);
+    import { initAuth } from './auth.js';
+    import { addItem } from './cart-service.js';
 
     let currentUser = null;
-    onAuthStateChanged(auth, (user) => {
+    initAuth((user) => {
       currentUser = user;
-    });
+    });;
 
     // Modal functions
     const modalOverlay = document.getElementById('modalOverlay');
@@ -234,22 +219,13 @@
             return;
           }
           if (!currentUser) {
-            // Not logged in
-            showModal('Please log in to add items to your cart.', false);
-            // Redirect to login after closing modal
-            modalOk.onclick = () => {
-              hideModal();
-              window.location.href = 'login.html?redirect=products.html';
-            };
+            showModal('Setting up your cart. Please try again in a moment.', false);
             return;
           }
-          // Add to local cart (for quick display)
-         const selectedVariant = p.variants[variantIndex];
+          const selectedVariant = p.variants[variantIndex];
           const shippingInr = selectedVariant.price_usd > 0 ? (selectedVariant.price_inr / selectedVariant.price_usd) * SHIPPING_USD : 0;
-          const totalUsd = selectedVariant.price_usd + SHIPPING_USD;
-          const totalInr = selectedVariant.price_inr + shippingInr;
-          const cart = JSON.parse(localStorage.getItem('cart')) || [];
-          cart.push({
+          const cartItem = {
+            productId: `${p.name}::${selectedVariant.pack}`,
             name: p.name,
             brand: p.brand,
             pack: selectedVariant.pack,
@@ -257,30 +233,16 @@
             price_inr: selectedVariant.price_inr,
             shipping_usd: SHIPPING_USD,
             shipping_inr: parseFloat(shippingInr.toFixed(2)),
-           total_price_usd: Math.round(totalUsd),
-            total_price_inr: parseFloat(totalInr.toFixed(2)),
-            image: p.image
-          });
-          localStorage.setItem('cart', JSON.stringify(cart));
-          // Save to Firestore under user cart subcollection
+            image: p.image,
+            qty: 1
+          };
           try {
-            await addDoc(collection(db, 'users', currentUser.uid, 'cart'), {
-              name: p.name,
-              brand: p.brand,
-              pack: selectedVariant.pack,
-              price_usd: selectedVariant.price_usd,
-              price_inr: selectedVariant.price_inr,
-              shipping_usd: SHIPPING_USD,
-              shipping_inr: parseFloat(shippingInr.toFixed(2)),
-             total_price_usd: Math.round(totalUsd),
-              total_price_inr: parseFloat(totalInr.toFixed(2)),
-              image: p.image,
-              dateAdded: new Date().toISOString()
-            });
+            await addItem(currentUser.uid, cartItem);
+            showModal(`${p.name} (${selectedVariant.pack}) added to cart.`, true);
           } catch (error) {
-            console.error('Error adding to Firestore cart:', error);
+            console.error('Error adding to cart:', error);
+            showModal('Could not add this item to your cart. Please try again.');
           }
-          showModal(`${p.name} (${selectedVariant.pack}) added to cart.`, true);
         });
         productGrid.appendChild(card);
       });
@@ -320,9 +282,9 @@
     document.addEventListener('currency:change', filterProducts);
     loadProducts();
   </script>
-  <script type="module" src="firebase-config.js"></script>
 </body>
 </html>
+
 
 
 
