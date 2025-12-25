@@ -6,6 +6,7 @@
   <title>Frequently Asked Questions – Vital Elixir Globalist</title>
   <meta name="description" content="Find answers about payments, delivery, customs, tracking, ordering and support at Vital Elixir Globalist." />
   <script src="https://cdn.tailwindcss.com"></script>
+   <script src="currency-utils.js"></script>
   <script>
     tailwind.config = { theme: { extend: { colors: { brand: '#0284c7' } } } };
   </script>
@@ -233,6 +234,9 @@
     async function loadHeader() {
       const header = await fetch('header.html');
       document.getElementById('header-placeholder').innerHTML = await header.text();
+      if (window.initCurrencySelect) {
+        window.initCurrencySelect();
+      }
       const menuBtn = document.getElementById('menu-btn');
       const closeBtn = document.getElementById('close-menu');
       const mobileMenu = document.getElementById('mobile-menu');
