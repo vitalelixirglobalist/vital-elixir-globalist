@@ -304,7 +304,10 @@
       if (!select) return;
       select.value = getSelectedCurrency();
       select.addEventListener('change', (event) => {
-        setSelectedCurrency(event.target.value);
+          const nextCurrency = event.target.value;
+        if (nextCurrency === getSelectedCurrency()) return;
+        setSelectedCurrency(nextCurrency);
+        window.location.reload();
       });
     });
   })();
