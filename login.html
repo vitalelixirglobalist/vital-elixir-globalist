@@ -77,32 +77,18 @@
     });
   </script>
   <script type="module">
-    import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js';
-    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js';
-    import { getFirestore, doc, setDoc } from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
-
-    // Firebase configuration (storageBucket corrected)
-    const firebaseConfig = {
-      apiKey: 'AIzaSyBsSrWpk0I6YnjNJcGRBnXg23WePsgdRx4',
-      authDomain: 'vital-elixir-globalist.firebaseapp.com',
-      projectId: 'vital-elixir-globalist',
-      storageBucket: 'vital-elixir-globalist.appspot.com',
-      messagingSenderId: '87028221342',
-      appId: '1:87028221342:web:0c7719acc703566e8fc28f',
-      measurementId: 'G-5MWKWE2C4J'
-    };
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const db = getFirestore(app);
+        import { auth, db } from './firebase-config.js';
+    import { initAuth } from './auth.js';
+    import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js';
+    import { doc, setDoc } from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
 
     // Get redirect from query param
     const params = new URLSearchParams(window.location.search);
     const redirectTo = params.get('redirect') || 'index.html';
 
-    // Monitor auth state and redirect if already logged in
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // Store email locally for non-auth pages
+       // Monitor auth state and redirect if already logged in (non-anonymous)
+    initAuth((user) => {
+      if (user && !user.isAnonymous) {
         localStorage.setItem('userEmail', user.email);
         window.location.href = redirectTo;
       }
@@ -158,39 +144,6 @@
       }
     });
   </script>
-<script type="module">
-  import { auth, db } from './firebase-config.js';
-  import { createUserWithEmailAndPassword, signInWithEmailAndPassword } 
-    from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
-  import { setDoc, doc } 
-    from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
-
-  const form = document.getElementById('login-form');
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-
-    try {
-      // Try login first
-      const userCred = await signInWithEmailAndPassword(auth, email, password);
-      alert('Login successful!');
-      localStorage.setItem('uid', userCred.user.uid);
-      window.location.href = 'my-account.html';
-    } catch (err) {
-      // If no account, create one
-      const newUser = await createUserWithEmailAndPassword(auth, email, password);
-      await setDoc(doc(db, "USERS", newUser.user.uid), {
-        email,
-        createdAt: new Date().toISOString()
-      });
-      alert('Account created successfully!');
-      localStorage.setItem('uid', newUser.user.uid);
-      window.location.href = 'my-account.html';
-    }
-  });
-</script>
 <script type="module" src="firebase-config.js"></script>
 </body>
 </html>
