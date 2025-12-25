@@ -22,13 +22,24 @@
   <a href="login.html" class="bg-brand text-white py-1 px-3 rounded-md hover:opacity-90 transition">🔐 Login</a>
     </nav>
 
-    <!-- Hamburger Button (visible only on mobile) -->
-   <button id="menu-btn" class="md:hidden text-white focus:outline-none">
-      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M4 6h16M4 12h16m-7 6h7" />
-      </svg>
-    </button>
+       <div class="flex items-center gap-3">
+      <div class="hidden md:flex items-center gap-2 text-xs text-white">
+        <label for="currencySelect" class="font-semibold">Currency</label>
+        <select id="currencySelect" class="rounded-md bg-white/90 text-slate-900 px-2 py-1 text-xs focus:outline-none focus:ring-2 focus:ring-brand">
+          <option value="GBP">GBP</option>
+          <option value="EUR">EUR</option>
+          <option value="CAD">CAD</option>
+          <option value="AUD">AUD</option>
+        </select>
+      </div>
+      <!-- Hamburger Button (visible only on mobile) -->
+     <button id="menu-btn" class="md:hidden text-white focus:outline-none">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+      </button>
+    </div>
   </div>
 
   <!-- Sidebar Menu (Mobile View) -->
@@ -250,6 +261,54 @@
     }
   }
 </style>
+<script>
+  (function () {
+    const CURRENCY_KEY = 'selectedCurrency';
+    const rates = {
+      GBP: 0.79,
+      EUR: 0.92,
+      CAD: 1.36,
+      AUD: 1.52
+    };
+    const defaultCurrency = 'GBP';
+
+    function getSelectedCurrency() {
+      return localStorage.getItem(CURRENCY_KEY) || defaultCurrency;
+    }
+
+    function setSelectedCurrency(currency) {
+      if (!rates[currency]) return;
+      localStorage.setItem(CURRENCY_KEY, currency);
+      document.dispatchEvent(new CustomEvent('currency:change', { detail: { currency } }));
+    }
+
+    function convertFromUsd(amount, currency) {
+      const rate = rates[currency] || 1;
+      return Number(amount || 0) * rate;
+    }
+
+    function formatCurrency(amount, currency) {
+      return `${currency} ${Number(amount || 0).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
+    }
+
+    window.currencyUtils = {
+      rates,
+      getSelectedCurrency,
+      setSelectedCurrency,
+      convertFromUsd,
+      formatCurrency
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const select = document.getElementById('currencySelect');
+      if (!select) return;
+      select.value = getSelectedCurrency();
+      select.addEventListener('change', (event) => {
+        setSelectedCurrency(event.target.value);
+      });
+    });
+  })();
+</script>
 
 <!-- JS for Hamburger Menu -->
 <script>
