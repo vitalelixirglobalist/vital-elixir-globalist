@@ -1,11 +1,12 @@
 <!-- Header component reused across all pages -->
-<a class="fixed-site-logo" href="index.html" aria-label="Go to homepage">
-  <img src="assets/images/logo.jpeg" alt="Vital Elixir Globalist logo" />
-</a>
 <header class="site-header shadow sticky top-0 z-50">
   <div class="max-w-6xl mx-auto flex justify-between items-center px-4 py-3 header-content">
-    <!-- Desktop Navigation -->
-   <nav class="hidden md:flex gap-6 text-sm font-medium desktop-nav">
+ <div class="flex items-center gap-6">
+      <a class="site-logo" href="index.html" aria-label="Go to homepage">
+        <img src="assets/images/logo.jpeg" alt="Vital Elixir Globalist logo" />
+      </a>
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex gap-6 text-sm font-medium desktop-nav">
  <a href="index.html" class="hover:text-brand">🏠 Home</a>
   <a href="products.html" class="hover:text-brand">💊 Medicines</a>
   <a href="doctor-consultation.html" class="hover:text-brand">🩺 Doctor Consultation</a>
@@ -20,7 +21,8 @@
   <a href="my-account.html" class="hover:text-brand">👤 My Account</a>
 
   <a href="login.html" class="bg-brand text-white py-1 px-3 rounded-md hover:opacity-90 transition">🔐 Login</a>
-    </nav>
+         </nav>
+    </div>
 
        <div class="flex items-center gap-3">
       <div class="hidden md:flex items-center gap-2 text-xs text-white">
@@ -130,14 +132,9 @@
     border-radius: 1rem;
     backdrop-filter: blur(6px);
     margin: 0.6rem auto;
-      padding-left: clamp(4.5rem, 8vw, 6.5rem);
   }
 
-.fixed-site-logo {
-    position: fixed;
-    top: 10px;
-    left: 14px;
-    z-index: 10001;
+.site-logo {
     display: inline-flex;
     align-items: center;
   justify-content: center;
@@ -146,32 +143,32 @@
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
- .fixed-site-logo img {
-    height: 125px;
-    width: Auto;
+ .site-logo img {
+    height: 64px;
+    width: auto;
     object-fit: contain;
    display: block;
     border-radius: 6px;
     background: transparent;
   }
 
-  .fixed-site-logo:hover,
-  .fixed-site-logo:focus-visible {
+.site-logo:hover,
+  .site-logo:focus-visible {
     transform: scale(1.03);
     box-shadow: 0 12px 28px rgba(15, 23, 42, 0.3);
   }
 
   @media (max-width: 1024px) {
-    .fixed-site-logo img {
-      height: 125px;
-      width: autopx;
+   .site-logo img {
+      height: 54px;
+      width: auto;
     }
   }
 
   @media (max-width: 640px) {
-    .fixed-site-logo img {
-      height: 125px;
-      width: autopx;
+    .site-logo img {
+      height: 48px;
+      width: auto;
     }
   }
   .desktop-nav a {
