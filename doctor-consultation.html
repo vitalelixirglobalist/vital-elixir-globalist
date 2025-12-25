@@ -6,6 +6,7 @@
   <title>Doctor Consultation | Vital Elixir Globalist</title>
   <meta name="description" content="Book licensed doctor consultations for prescriptions, medication guidance, and post-purchase follow-up with Vital Elixir Globalist." />
   <script src="https://cdn.tailwindcss.com"></script>
+    <script src="currency-utils.js"></script>
   <script>
     tailwind.config = { theme: { extend: { colors: { brand: '#0284c7' } } } }
   </script>
@@ -195,6 +196,9 @@
     async function loadHeader() {
       const header = await fetch('header.html');
       document.getElementById('header-placeholder').innerHTML = await header.text();
+            if (window.initCurrencySelect) {
+        window.initCurrencySelect();
+      }
       const menuBtn = document.getElementById('menu-btn');
       const closeBtn = document.getElementById('close-menu');
       const mobileMenu = document.getElementById('mobile-menu');
