@@ -161,11 +161,23 @@
       window.location.href = 'cart.html';
     });
 
-    const SHIPPING_USD = 35;
+       const SHIPPING_USD = 35;
     let allProducts = [];
     const productGrid = document.getElementById('productGrid');
     const searchBar = document.getElementById('searchBar');
     const categoryFilter = document.getElementById('categoryFilter');
+
+    function getSelectedCurrency() {
+      return window.currencyUtils?.getSelectedCurrency?.() || 'GBP';
+    }
+
+    function formatForeignCurrency(value) {
+      const currency = getSelectedCurrency();
+      const converted = window.currencyUtils?.convertFromUsd
+        ? window.currencyUtils.convertFromUsd(value, currency)
+        : value;
+      return `${currency} ${Number(converted || 0).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
+    }
 
     async function loadProducts() {
       const res = await fetch('products-data.json');
@@ -178,7 +190,7 @@
         const card = document.createElement('div');
         card.className = 'bg-white border rounded-xl p-4 shadow-sm hover:shadow-lg transition flex flex-col';
         const dropdownOptions = p.variants
-          .map((v) => `<option value="${p.variants.indexOf(v)}">${v.pack} – USD ${Number(v.price_usd).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}</option>`)
+          .map((v) => `<option value="${p.variants.indexOf(v)}">${v.pack} – ${formatForeignCurrency(v.price_usd)}</option>`)
           .join('');
         card.innerHTML = `
           <img src="${p.image}" alt="${p.name}" class="w-full h-40 object-contain mb-3 rounded" />
@@ -191,7 +203,7 @@
             <option disabled selected>Order Quantity</option>
             ${dropdownOptions}
           </select>
-           <p class="mt-2 text-xs text-gray-500">Shipping: +USD ${Number(SHIPPING_USD).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })} (added per product)</p>
+           <p class="mt-2 text-xs text-gray-500">Shipping: +${formatForeignCurrency(SHIPPING_USD)} (added per product)</p>
           <div class="price-display mt-3 text-sm text-gray-700"></div>
           <button class="add-to-cart-btn mt-auto bg-brand text-white py-2 px-3 rounded-lg hover:bg-blue-700 transition mt-3">Add to Cart</button>
         `;
@@ -205,9 +217,9 @@
           const totalInr = variant.price_inr + shippingInr;
           priceDisplay.innerHTML = `
             <div class="mt-2 p-2 border border-blue-100 rounded-lg bg-blue-50 text-sm space-y-1">
-              <p>💊 <span class="font-medium text-brand">Medicine:</span> USD ${Number(variant.price_usd).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })} | INR ${variant.price_inr.toFixed(2)}</p>
-              <p>🚚 <span class="font-medium text-brand">Shipping:</span> USD ${Number(SHIPPING_USD).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })} | INR ${shippingInr.toFixed(2)}</p>
-              <p class="font-semibold text-brand">Total: USD ${Number(totalUsd).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })} | INR ${totalInr.toFixed(2)}</p>
+              <p>💊 <span class="font-medium text-brand">Medicine:</span> ${formatForeignCurrency(variant.price_usd)} | INR ${variant.price_inr.toFixed(2)}</p>
+              <p>🚚 <span class="font-medium text-brand">Shipping:</span> ${formatForeignCurrency(SHIPPING_USD)} | INR ${shippingInr.toFixed(2)}</p>
+              <p class="font-semibold text-brand">Total: ${formatForeignCurrency(totalUsd)} | INR ${totalInr.toFixed(2)}</p>
             </div>
           `;
         });
@@ -299,13 +311,15 @@
         productGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     }
-    searchBar.addEventListener('input', filterProducts);
+       searchBar.addEventListener('input', filterProducts);
     categoryFilter.addEventListener('change', filterProducts);
+    document.addEventListener('currency:change', filterProducts);
     loadProducts();
   </script>
   <script type="module" src="firebase-config.js"></script>
 </body>
 </html>
+
 
 
 
