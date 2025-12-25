@@ -7,7 +7,14 @@
   <meta name="description" content="See complete medication details, pricing, pack sizes, and trusted export quality information." />
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="currency-utils.js"></script>
-  <script>
+  <script type="module">
+    import { initAuth } from './auth.js';
+    import { addItem } from './cart-service.js';
+
+    let currentUser = null;
+    initAuth((user) => {
+      currentUser = user;
+    });
     tailwind.config = {
       theme: {
         extend: {
@@ -111,7 +118,7 @@
   <div id="actionToast" class="hidden fixed top-4 right-4 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-lg text-sm"></div>
 
   <div id="mobileActionBar" class="hidden fixed md:hidden bottom-0 inset-x-0 bg-white/95 border-t border-slate-200 p-4 flex gap-3 z-40">
-    <button class="flex-1 px-4 py-3 bg-brand text-white rounded-xl" onclick="addToCart()">Add to Cart</button>
+      <button id="mobileAddToCartBtn" class="flex-1 px-4 py-3 bg-brand text-white rounded-xl">Add to Cart</button>
     <button class="flex-1 px-4 py-3 border border-brand text-brand rounded-xl" onclick="consultDoctor()">Consult</button>
   </div>
 
@@ -268,12 +275,12 @@
       });
     }
 
-    function addToCart() {
       if (!selectedProduct) return showToast('No product selected.');
+      if (!currentUser) return showToast('Setting up your cart. Please try again in a moment.');
       const variant = selectedProduct.variants[selectedVariantIndex] || selectedProduct.variants[0];
       const shippingInr = getShippingInr(variant);
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      cart.push({
+      const cartItem = {
+        productId: `${selectedProduct.name}::${variant.pack}`,
         name: selectedProduct.name,
         brand: selectedProduct.brand,
         pack: variant.pack,
@@ -281,14 +288,17 @@
         price_inr: variant.price_inr,
         shipping_usd: SHIPPING_USD,
         shipping_inr: parseFloat(shippingInr.toFixed(2)),
-        total_price_usd: Math.round((variant.price_usd || 0) + SHIPPING_USD),
-        total_price_inr: parseFloat(((variant.price_inr || 0) + shippingInr).toFixed(2)),
-        image: selectedProduct.image
-      });
-      localStorage.setItem('cart', JSON.stringify(cart));
-      showToast(`${selectedProduct.name} (${variant.pack}) added to cart.`);
+        image: selectedProduct.image,
+        qty: 1
+      };
+      try {
+        await addItem(currentUser.uid, cartItem);
+        showToast(`${selectedProduct.name} (${variant.pack}) added to cart.`);
+      } catch (error) {
+        console.error('Error adding to cart:', error);
+        showToast('Could not add this item to your cart.');
+      }
     }
-
     function consultDoctor() {
       if (!selectedProduct) return;
       window.location.href = `doctor-consultation.html?product=${encodeURIComponent(selectedProduct.name)}`;
@@ -322,7 +332,11 @@
 
       function bindEvents() {
       packSelect.addEventListener('change', updatePrice);
-      document.getElementById('addToCartBtn').addEventListener('click', addToCart);
+          document.getElementById('addToCartBtn').addEventListener('click', addToCart);
+      const mobileAddToCartBtn = document.getElementById('mobileAddToCartBtn');
+      if (mobileAddToCartBtn) {
+        mobileAddToCartBtn.addEventListener('click', addToCart);
+      }
       document.getElementById('consultBtn').addEventListener('click', consultDoctor);
     }
 
@@ -365,8 +379,8 @@
       loadHeader();
     });
   </script>
-  <script type="module" src="firebase-config.js"></script>
 </body>
 </html>
+
 
 
