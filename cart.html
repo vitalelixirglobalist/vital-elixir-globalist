@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Cart – Vital Elixir Globalist</title>
+ <title>Your Cart – Vital Elixir Globalist</title>
   <meta name="description" content="Review your selected medicines and proceed to checkout." />
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="currency-utils.js"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -66,9 +67,12 @@
 
   <script>
     // Load header and mobile menu
-    async function loadHeader() {
+   async function loadHeader() {
       const header = await fetch('header.html');
       document.getElementById('header-placeholder').innerHTML = await header.text();
+      if (window.initCurrencySelect) {
+        window.initCurrencySelect();
+      }
       const menuBtn = document.getElementById('menu-btn');
       const closeBtn = document.getElementById('close-menu');
       const mobileMenu = document.getElementById('mobile-menu');
@@ -408,6 +412,7 @@
   <script type="module" src="firebase-config.js"></script>
 </body>
 </html>
+
 
 
 
