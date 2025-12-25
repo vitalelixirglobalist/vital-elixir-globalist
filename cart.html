@@ -109,8 +109,18 @@
     };
   const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
-    const db = getFirestore(app);
+       const db = getFirestore(app);
     const SHIPPING_USD = 35;
+
+    const getSelectedCurrency = () => window.currencyUtils?.getSelectedCurrency?.() || 'GBP';
+
+    const formatForeignCurrency = (value) => {
+      const currency = getSelectedCurrency();
+      const converted = window.currencyUtils?.convertFromUsd
+        ? window.currencyUtils.convertFromUsd(value, currency)
+        : value;
+      return `${currency} ${Number(converted || 0).toFixed(2)}`;
+    };
 
     const calculateShippingInr = (medicineUsd, medicineInr, existingShippingInr) => {
       if (existingShippingInr !== undefined && existingShippingInr !== null) {
@@ -201,7 +211,7 @@
         shippingTotalUSD += shippingUsd;
         const itemDiv = document.createElement('div');
         itemDiv.className = 'flex items-center p-4 bg-white rounded-lg shadow justify-between';
-        itemDiv.innerHTML = `
+              itemDiv.innerHTML = `
           <div class="flex items-center gap-4">
             <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-contain rounded" />
             <div>
@@ -209,10 +219,10 @@
               <p class="text-sm text-gray-500">${item.pack}</p>
             </div>
           </div>
-          <div class="text-sm text-right space-y-1">
-            <p>Medicine: USD ${medicineUsd.toFixed(2)} | INR ${medicineInr.toFixed(2)}</p>
-            <p>Shipping: USD ${shippingUsd.toFixed(2)} | INR ${shippingInr.toFixed(2)}</p>
-            <p class="font-semibold text-brand">Total: USD ${totalUsd.toFixed(2)} | INR ${totalInr.toFixed(2)}</p>
+          <div class="text-sm text-right space-y-1">␊
+            <p>Medicine: ${formatForeignCurrency(medicineUsd)} | INR ${medicineInr.toFixed(2)}</p>
+            <p>Shipping: ${formatForeignCurrency(shippingUsd)} | INR ${shippingInr.toFixed(2)}</p>
+            <p class="font-semibold text-brand">Total: ${formatForeignCurrency(totalUsd)} | INR ${totalInr.toFixed(2)}</p>
             <button class="block ml-auto text-red-500 text-xs removeItemBtn" data-index="${index}">Remove</button>
           </div>
         `;
@@ -222,9 +232,9 @@
       const grandTotalINR = subtotalINR + shippingTotalINR;
       cartSummaryDiv.innerHTML = `
         <div class="bg-white p-4 rounded-lg shadow space-y-2">
-          <p>Subtotal: USD ${subtotalUSD.toFixed(2)} | INR ${subtotalINR.toFixed(2)}</p>
-          <p>Shipping (+USD ${SHIPPING_USD.toFixed(2)} per item): USD ${shippingTotalUSD.toFixed(2)} | INR ${shippingTotalINR.toFixed(2)}</p>
-          <p class="font-bold text-brand text-lg">Total: USD ${grandTotalUSD.toFixed(2)} | INR ${grandTotalINR.toFixed(2)}</p>
+          <p>Subtotal: ${formatForeignCurrency(subtotalUSD)} | INR ${subtotalINR.toFixed(2)}</p>
+          <p>Shipping (+${formatForeignCurrency(SHIPPING_USD)} per item): ${formatForeignCurrency(shippingTotalUSD)} | INR ${shippingTotalINR.toFixed(2)}</p>
+          <p class="font-bold text-brand text-lg">Total: ${formatForeignCurrency(grandTotalUSD)} | INR ${grandTotalINR.toFixed(2)}</p>
         </div>
       `;
       // Attach remove handlers
@@ -247,8 +257,14 @@
             }
           }
           renderCart();
-        });
       });
+    }
+
+    document.addEventListener('currency:change', () => {
+      if (currentUser) {
+        renderCart();
+      }
+    });
     }
 
     // Payment integration
@@ -392,6 +408,7 @@
   <script type="module" src="firebase-config.js"></script>
 </body>
 </html>
+
 
 
 
