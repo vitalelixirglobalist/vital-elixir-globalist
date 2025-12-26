@@ -3,96 +3,341 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Products – Vital Elixir Globalist</title>
-  <meta name="description" content="Explore genuine medicines by category – tablets, creams, drops, sprays and injections."
-    />
+  <title>Medication Details – Vital Elixir Globalist</title>
+  <meta name="description" content="See complete medication details, pricing, pack sizes, and trusted export quality information." />
   <script src="https://cdn.tailwindcss.com"></script>
-    <script src="currency-utils.js"></script>
+  <script src="currency-utils.js"></script>
   <script>
     tailwind.config = {
       theme: {
-        extend: { colors: { brand: '#0284c7' } }
+        extend: {
+          colors: { brand: '#0284c7' },
+          boxShadow: {
+            glow: '0 12px 45px rgba(2, 132, 199, 0.18)'
+          }
+        }
       }
     };
   </script>
+  <style>
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: floatIn 0.6s ease-out; }
+    .glass-card { background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(12px); }
+  </style>
 </head>
 
-<body class="text-gray-800 bg-gray-50">
-  <!-- Header placeholder -->
+<body class="bg-slate-50 text-slate-800">
   <div id="header-placeholder"></div>
 
-  <!-- Page Title -->
-  <section class="text-center py-10 bg-gradient-to-b from-blue-50 to-white">
-    <h1 class="text-4xl font-extrabold text-gray-900">Our Medicines</h1>
-    <p class="text-gray-600 mt-2">Explore by category and add to your cart for quick checkout</p>
-  </section>
-
-  <!-- Search & Category Filter -->
-  <div
-    class="max-w-6xl mx-auto px-4 mb-8 flex flex-col md:flex-row md:justify-between md:items-center gap-4">
-    <input id="searchBar" type="text" placeholder="Search medicines..."
-      class="w-full md:w-1/2 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand" />
-    <select id="categoryFilter" class="border rounded p-2">
-      <option value="all">All Categories</option>
-      <option value="Men’s Health">Men’s Health</option>
-      <option value="Diabetes & Metabolic Care">Diabetes & Metabolic Care</option>
-      <option value="Dermatology & Skin Care">Dermatology & Skin Care</option>
-      <option value="Eye & Allergy Care">Eye & Allergy Care</option>
-      <option value="Hormonal & Thyroid Care">Hormonal & Thyroid Care</option>
-      <option value="Hormonal / Performance Enhancement">Hormonal / Performance Enhancement</option>
-      <option value="Infection & Antiparasitic Treatments">Infection & Antiparasitic Treatments</option>
-      <option value="Neurology">Neurology</option>
-      <option value="Thyroid Treatment">Thyroid Treatment</option>
-      <option value="Allergy / Anxiety">Allergy / Anxiety</option>
-      <option value="Anti-Malarial / Autoimmune">Anti-Malarial / Autoimmune</option>
-      <option value="Addiction Treatment">Addiction Treatment</option>
-      <option value="Anticoagulant">Anticoagulant</option>
-      <option value="Veterinary / Other Uses">Veterinary / Other Uses</option>
-      <option value="Veterinary / Antiparasitic">Veterinary / Antiparasitic</option>
-      <option value="Hormone Therapy">Hormone Therapy</option>
-      <option value="Supplement">Supplement</option>
-      <option value="Allergy / Asthma">Allergy / Asthma</option>
-    </select>
-  </div>
-
-  <!-- Product Grid -->
-  <div id="productGrid"
-    class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 pb-16"></div>
-
-  <!-- Modal Overlay for alerts and confirmations -->
-  <div id="modalOverlay"
-    class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-    <div class="bg-white rounded-xl p-6 max-w-sm w-full text-center shadow-lg">
-      <h2 class="text-lg font-bold mb-4">Vital Elixir Globalist – Our customers are most important to us.</h2>
-      <p id="modalMessage" class="text-sm text-gray-700 mb-6"></p>
-      <div class="flex justify-center gap-4">
-        <button id="modalOk" class="bg-brand text-white px-4 py-2 rounded-lg hover:bg-blue-700">OK</button>
-        <button id="modalProceed"
-          class="hidden bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">Proceed
-          to Cart</button>
+  <main class="max-w-6xl mx-auto px-4 pb-24 pt-10 space-y-12">
+    <section class="grid lg:grid-cols-2 gap-10 items-start">
+      <div class="relative group fade-up">
+        <div class="absolute -inset-2 rounded-3xl bg-gradient-to-br from-brand/20 to-blue-200 blur-2xl opacity-50 group-hover:opacity-80 transition"></div>
+        <div class="relative glass-card rounded-3xl p-6 shadow-glow">
+          <div class="flex items-center justify-between text-xs font-semibold text-brand">
+            <span class="px-3 py-1 rounded-full bg-blue-50 border border-blue-100">Worldwide availability</span>
+            <span class="px-3 py-1 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700">Export quality verified</span>
+          </div>
+          <div class="mt-6 bg-slate-100 rounded-2xl p-6 flex items-center justify-center">
+            <img id="product-image" src="" alt="Medication image" class="max-h-80 w-auto object-contain drop-shadow-lg" />
+          </div>
+        </div>
       </div>
-    </div>
+
+      <div class="space-y-6 fade-up" style="animation-delay: 0.1s;">
+        <div class="space-y-3">
+          <div class="flex flex-wrap items-center gap-3 text-sm">
+            <span id="product-category" class="px-3 py-1 rounded-full bg-blue-100 text-brand font-semibold"></span>
+            <span class="px-3 py-1 rounded-full bg-amber-50 text-amber-700 border border-amber-100">Consult-ready</span>
+          </div>
+          <h1 id="product-name" class="text-4xl font-extrabold text-slate-900 leading-tight"></h1>
+          <p id="product-use" class="text-lg text-slate-600"></p>
+          <div class="flex flex-wrap gap-4 text-sm text-slate-600">
+            <span id="product-brand" class="inline-flex items-center gap-2"><span class="text-brand">🏷️</span><span></span></span>
+            <span id="product-composition" class="inline-flex items-center gap-2"><span class="text-brand">🧪</span><span></span></span>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-3xl p-6 shadow-glow space-y-5">
+          <div class="grid md:grid-cols-2 gap-4">
+            <label class="flex flex-col gap-2 text-sm font-semibold text-slate-700">
+              <span class="flex items-center gap-2"><span class="text-brand">💊</span>Dosage / strength</span>
+              <select id="dosageSelect" class="w-full border rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand text-sm"></select>
+            </label>
+            <label class="flex flex-col gap-2 text-sm font-semibold text-slate-700">
+              <span class="flex items-center gap-2"><span class="text-brand">📦</span>Pack size</span>
+              <select id="packSelect" class="w-full border rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand text-sm"></select>
+            </label>
+          </div>
+
+          <div id="priceBreakdown" class="rounded-2xl border border-blue-100 bg-blue-50 p-4 text-sm text-slate-700"></div>
+
+          <div class="flex flex-wrap gap-3">
+            <button id="addToCartBtn" class="px-5 py-3 bg-brand text-white rounded-xl hover:bg-blue-700 transition shadow-glow">
+              Add to Cart
+            </button>
+            <button id="consultBtn" class="px-5 py-3 border border-brand text-brand rounded-xl hover:bg-blue-50 transition">
+              Consult Doctor for Dosage & Usage
+            </button>
+          </div>
+          <p class="text-xs text-slate-500 flex items-start gap-2">
+            <span class="text-brand">🔒</span>
+            <span>Our pharmacists review every order. We recommend confirming dosage with a licensed doctor before purchase.</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="space-y-4 fade-up" id="relatedSection">
+      <div class="flex items-center justify-between">
+        <div>
+          <p class="text-xs uppercase tracking-wide text-brand font-semibold">Similar options</p>
+          <h2 class="text-2xl font-bold text-slate-900">Similar medications from the same category</h2>
+        </div>
+        <span class="text-sm text-slate-500">Tap any card to open full details</span>
+      </div>
+      <div id="relatedGrid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4"></div>
+    </section>
+
+    <section class="space-y-4 fade-up" id="pairingsSection">
+      <div class="flex items-center gap-2 text-brand text-sm font-semibold"><span>🤝</span><span>Commonly prescribed with</span></div>
+      <div id="pairingsGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+    </section>
+  </main>
+
+  <div id="actionToast" class="hidden fixed top-4 right-4 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-lg text-sm"></div>
+
+  <div id="mobileActionBar" class="hidden fixed md:hidden bottom-0 inset-x-0 bg-white/95 border-t border-slate-200 p-4 flex gap-3 z-40">
+    <button class="flex-1 px-4 py-3 bg-brand text-white rounded-xl" onclick="addToCart()">Add to Cart</button>
+    <button class="flex-1 px-4 py-3 border border-brand text-brand rounded-xl" onclick="consultDoctor()">Consult</button>
   </div>
 
-  <!-- Footer -->
-  <footer class="py-8 bg-white border-t text-center text-gray-600 text-sm">
+  <footer class="py-8 bg-white border-t text-center text-slate-500 text-sm">
     © <span id="year"></span> Vital Elixir Globalist. All rights reserved.
   </footer>
 
   <script>
-    // Set footer year
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+    const SHIPPING_USD = 35;
+    let allProducts = [];
+    let selectedProduct = null;
+    let selectedVariantIndex = 0;
 
-  <script>
-    // Load header and menu
+    const productImage = document.getElementById('product-image');
+    const productName = document.getElementById('product-name');
+    const productBrand = document.getElementById('product-brand');
+    const productComposition = document.getElementById('product-composition');
+    const productCategory = document.getElementById('product-category');
+    const productUse = document.getElementById('product-use');
+    const dosageSelect = document.getElementById('dosageSelect');
+    const packSelect = document.getElementById('packSelect');
+    const priceBreakdown = document.getElementById('priceBreakdown');
+    const relatedGrid = document.getElementById('relatedGrid');
+    const pairingsGrid = document.getElementById('pairingsGrid');
+    const actionToast = document.getElementById('actionToast');
+    const mobileActionBar = document.getElementById('mobileActionBar');
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function formatMoney(value) {
+      return Number(value || 0).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+    }
+
+    function getSelectedCurrency() {
+      return window.currencyUtils?.getSelectedCurrency?.() || 'GBP';
+    }
+
+    function formatForeignCurrency(value) {
+      const currency = getSelectedCurrency();
+      const converted = window.currencyUtils?.convertFromUsd
+        ? window.currencyUtils.convertFromUsd(value, currency)
+        : value;
+      return `${currency} ${formatMoney(converted)}`;
+    }
+
+    function showToast(message) {
+      if (!actionToast) return alert(message);
+      actionToast.textContent = message;
+      actionToast.classList.remove('hidden');
+      setTimeout(() => actionToast.classList.add('hidden'), 2800);
+    }
+
+    function getShippingInr(variant) {
+      if (!variant.price_usd || !variant.price_inr) return 0;
+      return (variant.price_inr / variant.price_usd) * SHIPPING_USD;
+    }
+
+    function updatePrice() {
+      if (!selectedProduct || !selectedProduct.variants.length) return;
+      const index = Number(packSelect.value) || 0;
+      selectedVariantIndex = index;
+      const variant = selectedProduct.variants[index] || selectedProduct.variants[0];
+      const shippingInr = getShippingInr(variant);
+      const totalUsd = (variant.price_usd || 0) + SHIPPING_USD;
+      const totalInr = (variant.price_inr || 0) + shippingInr;
+
+      priceBreakdown.innerHTML = `
+        <div class="space-y-2">
+          <div class="flex items-center justify-between"><span class="font-semibold text-brand">Selected pack</span><span>${variant.pack}</span></div>
+          <div class="flex items-center justify-between"><span>Medicine</span><span>${formatForeignCurrency(variant.price_usd)}${variant.price_inr ? ` | INR ${variant.price_inr.toFixed(2)}` : ''}</span></div>
+          <div class="flex items-center justify-between"><span>Shipping</span><span>${formatForeignCurrency(SHIPPING_USD)}${variant.price_inr ? ` | INR ${shippingInr.toFixed(2)}` : ''}</span></div>
+          <div class="flex items-center justify-between font-bold text-brand text-lg"><span>Total</span><span>${formatForeignCurrency(totalUsd)}${variant.price_inr ? ` | INR ${totalInr.toFixed(2)}` : ''}</span></div>
+        </div>
+      `;
+    }
+
+    function renderSelectors(product) {
+      dosageSelect.innerHTML = '';
+      const doseOption = document.createElement('option');
+      doseOption.value = product.composition;
+      doseOption.textContent = product.composition;
+      dosageSelect.appendChild(doseOption);
+
+          packSelect.innerHTML = '';
+      product.variants.forEach((variant, index) => {
+        const opt = document.createElement('option');
+        opt.value = index;
+        opt.textContent = `${variant.pack} — ${formatForeignCurrency(variant.price_usd)}`;
+        packSelect.appendChild(opt);
+      });
+      packSelect.value = '0';
+      updatePrice();␊
+    }
+    function renderProduct(product) {
+      selectedProduct = product;
+      productImage.src = product.image;
+      productImage.alt = product.name;
+      productName.textContent = product.name;
+      productBrand.lastElementChild.textContent = product.brand;
+      productComposition.lastElementChild.textContent = product.composition;
+      productCategory.textContent = product.category;
+      productUse.textContent = product.use;
+
+      renderSelectors(product);
+      mobileActionBar.classList.remove('hidden');
+    }
+
+    function renderRelated(product) {
+      relatedGrid.innerHTML = '';
+      const related = allProducts.filter((p) => p.category === product.category && p.name !== product.name).slice(0, 4);
+      if (!related.length) {
+        relatedGrid.innerHTML = '<p class="text-sm text-slate-500">No similar medications available right now.</p>';
+        return;
+      }
+      related.forEach((item) => {
+        const card = document.createElement('a');
+        card.href = `product-details.html?product=${encodeURIComponent(item.name)}`;
+        card.className = 'glass-card p-4 rounded-2xl border border-slate-200 hover:-translate-y-1 transition shadow-sm hover:shadow-lg bg-white';
+        card.innerHTML = `
+          <div class="flex items-center gap-3">
+            <div class="h-14 w-14 rounded-xl bg-slate-100 flex items-center justify-center overflow-hidden">
+              <img src="${item.image}" alt="${item.name}" class="h-full w-full object-contain" />
+            </div>
+            <div class="space-y-1">
+              <p class="text-sm text-brand font-semibold">${item.category}</p>
+              <h3 class="font-bold text-slate-900 leading-tight">${item.name}</h3>
+              <p class="text-xs text-slate-500">${item.brand}</p>
+            </div>
+          </div>
+        `;
+        relatedGrid.appendChild(card);
+      });
+    }
+
+    function renderPairings(product) {
+      pairingsGrid.innerHTML = '';
+      let pairings = allProducts.filter((p) => p.name !== product.name && p.category !== product.category);
+      if (!pairings.length) pairings = allProducts.filter((p) => p.name !== product.name);
+      pairings.slice(0, 3).forEach((item) => {
+        const card = document.createElement('a');
+        card.href = `product-details.html?product=${encodeURIComponent(item.name)}`;
+        card.className = 'p-4 rounded-2xl border border-emerald-100 bg-emerald-50/60 hover:bg-emerald-50 transition';
+        card.innerHTML = `
+          <div class="flex items-start gap-3">
+            <div class="mt-1">🩺</div>
+            <div>
+              <p class="text-xs uppercase tracking-wide text-emerald-700 font-semibold">Often paired</p>
+              <h3 class="font-bold text-slate-900">${item.name}</h3>
+              <p class="text-sm text-slate-600">${item.category}</p>
+            </div>
+          </div>
+        `;
+        pairingsGrid.appendChild(card);
+      });
+    }
+
+    function addToCart() {
+      if (!selectedProduct) return showToast('No product selected.');
+      const variant = selectedProduct.variants[selectedVariantIndex] || selectedProduct.variants[0];
+      const shippingInr = getShippingInr(variant);
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.push({
+        name: selectedProduct.name,
+        brand: selectedProduct.brand,
+        pack: variant.pack,
+        price_usd: variant.price_usd,
+        price_inr: variant.price_inr,
+        shipping_usd: SHIPPING_USD,
+        shipping_inr: parseFloat(shippingInr.toFixed(2)),
+        total_price_usd: Math.round((variant.price_usd || 0) + SHIPPING_USD),
+        total_price_inr: parseFloat(((variant.price_inr || 0) + shippingInr).toFixed(2)),
+        image: selectedProduct.image
+      });
+      localStorage.setItem('cart', JSON.stringify(cart));
+      showToast(`${selectedProduct.name} (${variant.pack}) added to cart.`);
+    }
+
+    function consultDoctor() {
+      if (!selectedProduct) return;
+      window.location.href = `doctor-consultation.html?product=${encodeURIComponent(selectedProduct.name)}`;
+    }
+
+    function getQueryProduct() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get('product') || params.get('name');
+    }
+
+    async function loadProductDetails() {
+      try {
+        const res = await fetch('products-data.json');
+        allProducts = await res.json();
+        const productParam = decodeURIComponent(getQueryProduct() || '').trim();
+        const product = allProducts.find((p) => p.name.toLowerCase() === productParam.toLowerCase());
+
+        if (!product) {
+          document.querySelector('main').innerHTML = '<div class="text-center py-20 text-slate-600 text-lg">Product not found.</div>';
+          mobileActionBar.classList.add('hidden');
+          return;
+        }
+
+        renderProduct(product);
+        renderRelated(product);
+        renderPairings(product);
+      } catch (error) {
+        console.error('Error loading product details', error);
+      }
+    }
+
+      function bindEvents() {
+      packSelect.addEventListener('change', updatePrice);
+      document.getElementById('addToCartBtn').addEventListener('click', addToCart);
+      document.getElementById('consultBtn').addEventListener('click', consultDoctor);
+    }
+
+    document.addEventListener('currency:change', () => {
+      if (selectedProduct) {
+        renderSelectors(selectedProduct);
+      }
+    });
+
  async function loadHeader() {
       const header = await fetch('header.html');
       document.getElementById('header-placeholder').innerHTML = await header.text();
       if (window.initCurrencySelect) {
         window.initCurrencySelect();
       }
-      // copy mobile menu functionality
       const menuBtn = document.getElementById('menu-btn');
       const closeBtn = document.getElementById('close-menu');
       const mobileMenu = document.getElementById('mobile-menu');
@@ -113,183 +358,15 @@
         }
       });
     }
-    loadHeader();
-  </script>
 
-  <script type="module">
-    import { initAuth } from './auth.js';
-    import { addItem } from './cart-service.js';
-
-    let currentUser = null;
-    initAuth((user) => {
-      currentUser = user;
-    });;
-
-    // Modal functions
-    const modalOverlay = document.getElementById('modalOverlay');
-    const modalMessage = document.getElementById('modalMessage');
-    const modalOk = document.getElementById('modalOk');
-    const modalProceed = document.getElementById('modalProceed');
-    function showModal(message, showProceed = false) {
-      modalMessage.textContent = message;
-      modalOverlay.classList.remove('hidden');
-      if (showProceed) {
-        modalProceed.classList.remove('hidden');
-      } else {
-        modalProceed.classList.add('hidden');
-      }
-    }
-    function hideModal() {
-      modalOverlay.classList.add('hidden');
-    }
-    modalOk.addEventListener('click', () => {
-      hideModal();
+    document.addEventListener('DOMContentLoaded', () => {
+      bindEvents();
+      loadProductDetails();
+      loadHeader();
     });
-    modalProceed.addEventListener('click', () => {
-      hideModal();
-      window.location.href = 'cart.html';
-    });
-
-       const SHIPPING_USD = 35;
-    let allProducts = [];
-    const productGrid = document.getElementById('productGrid');
-    const searchBar = document.getElementById('searchBar');
-    const categoryFilter = document.getElementById('categoryFilter');
-
-    function getSelectedCurrency() {
-      return window.currencyUtils?.getSelectedCurrency?.() || 'GBP';
-    }
-
-    function formatForeignCurrency(value) {
-      const currency = getSelectedCurrency();
-      const converted = window.currencyUtils?.convertFromUsd
-        ? window.currencyUtils.convertFromUsd(value, currency)
-        : value;
-      return `${currency} ${Number(converted || 0).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
-    }
-
-    async function loadProducts() {
-      const res = await fetch('products-data.json');
-      allProducts = await res.json();
-    applyInitialFilters();
-    }
-    function displayProducts(products) {
-      productGrid.innerHTML = '';
-      products.forEach((p) => {
-        const card = document.createElement('div');
-        card.className = 'bg-white border rounded-xl p-4 shadow-sm hover:shadow-lg transition flex flex-col';
-        const dropdownOptions = p.variants
-          .map((v) => `<option value="${p.variants.indexOf(v)}">${v.pack} – ${formatForeignCurrency(v.price_usd)}</option>`)
-          .join('');
-        card.innerHTML = `
-          <img src="${p.image}" alt="${p.name}" class="w-full h-40 object-contain mb-3 rounded" />
-          <h2 class="font-semibold text-lg text-brand">${p.name}</h2>
-          <p class="text-sm text-gray-600">${p.brand}</p>
-          <p class="text-sm text-gray-500 mb-2">${p.composition}</p>
-          <p class="text-sm text-gray-600 mb-1"><strong>Use:</strong> ${p.use}</p>
-          <a href="product-details.html?product=${encodeURIComponent(p.name)}" class="inline-flex items-center gap-1 text-sm text-brand font-semibold hover:underline">View details<span aria-hidden="true">→</span></a>
-          <select class="variantSelect border mt-2 p-2 rounded w-full text-sm focus:ring-2 focus:ring-brand">
-            <option disabled selected>Order Quantity</option>
-            ${dropdownOptions}
-          </select>
-           <p class="mt-2 text-xs text-gray-500">Shipping: +${formatForeignCurrency(SHIPPING_USD)} (added per product)</p>
-          <div class="price-display mt-3 text-sm text-gray-700"></div>
-          <button class="add-to-cart-btn mt-auto bg-brand text-white py-2 px-3 rounded-lg hover:bg-blue-700 transition mt-3">Add to Cart</button>
-        `;
-        const select = card.querySelector('.variantSelect');
-        const priceDisplay = card.querySelector('.price-display');
-        const addBtn = card.querySelector('.add-to-cart-btn');
-          select.addEventListener('change', (e) => {
-          const variant = p.variants[e.target.value];
-                const shippingInr = variant.price_usd > 0 ? (variant.price_inr / variant.price_usd) * SHIPPING_USD : 0;
-          const totalUsd = variant.price_usd + SHIPPING_USD;
-          const totalInr = variant.price_inr + shippingInr;
-          priceDisplay.innerHTML = `
-            <div class="mt-2 p-2 border border-blue-100 rounded-lg bg-blue-50 text-sm space-y-1">
-              <p>💊 <span class="font-medium text-brand">Medicine:</span> ${formatForeignCurrency(variant.price_usd)} | INR ${variant.price_inr.toFixed(2)}</p>
-              <p>🚚 <span class="font-medium text-brand">Shipping:</span> ${formatForeignCurrency(SHIPPING_USD)} | INR ${shippingInr.toFixed(2)}</p>
-              <p class="font-semibold text-brand">Total: ${formatForeignCurrency(totalUsd)} | INR ${totalInr.toFixed(2)}</p>
-            </div>
-          `;
-        });
-        addBtn.addEventListener('click', async () => {
-          const variantIndex = select.selectedIndex - 1;
-          if (variantIndex < 0) {
-            showModal('Please select a quantity before adding to cart.');
-            return;
-          }
-          if (!currentUser) {
-            showModal('Setting up your cart. Please try again in a moment.', false);
-            return;
-          }
-          const selectedVariant = p.variants[variantIndex];
-          const shippingInr = selectedVariant.price_usd > 0 ? (selectedVariant.price_inr / selectedVariant.price_usd) * SHIPPING_USD : 0;
-          const cartItem = {
-            productId: `${p.name}::${selectedVariant.pack}`,
-            name: p.name,
-            brand: p.brand,
-            pack: selectedVariant.pack,
-            price_usd: selectedVariant.price_usd,
-            price_inr: selectedVariant.price_inr,
-            shipping_usd: SHIPPING_USD,
-            shipping_inr: parseFloat(shippingInr.toFixed(2)),
-            image: p.image,
-            qty: 1
-          };
-          try {
-            await addItem(currentUser.uid, cartItem);
-            showModal(`${p.name} (${selectedVariant.pack}) added to cart.`, true);
-          } catch (error) {
-            console.error('Error adding to cart:', error);
-            showModal('Could not add this item to your cart. Please try again.');
-          }
-        });
-        productGrid.appendChild(card);
-      });
-    }
- function filterProducts() {
-      const query = searchBar.value.toLowerCase();
-      const category = categoryFilter.value;
-      const filtered = allProducts.filter((p) =>
-        (category === 'all' || p.category === category) &&
-        (p.name.toLowerCase().includes(query) || p.brand.toLowerCase().includes(query))
-      );
-      displayProducts(filtered);
-    }
-    function applyInitialFilters() {
-      const params = new URLSearchParams(window.location.search);
-      const categoryParam = params.get('category');
-      const searchParam = params.get('search') || params.get('q');
-
-      if (categoryParam) {
-        const decodedCategory = decodeURIComponent(categoryParam);
-        const hasOption = Array.from(categoryFilter.options).some((opt) => opt.value === decodedCategory);
-        categoryFilter.value = hasOption ? decodedCategory : 'all';
-      }
-
-      if (searchParam) {
-        searchBar.value = decodeURIComponent(searchParam);
-      }
-
-      filterProducts();
-
-      if ((categoryParam || searchParam) && productGrid) {
-        productGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }
-       searchBar.addEventListener('input', filterProducts);
-    categoryFilter.addEventListener('change', filterProducts);
-    document.addEventListener('currency:change', filterProducts);
-    loadProducts();
   </script>
+  <script type="module" src="firebase-config.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
 
 
