@@ -861,10 +861,10 @@
       try {
         const res = await fetch('products-data.json');
         const data = await res.json();
-        productIndex = data.map((item) => ({
+       productIndex = data.map((item) => ({
           name: item.name,
           category: item.category,
-          url: `products.html?search=${encodeURIComponent(item.name)}`
+          url: `product-details.html?product=${encodeURIComponent(item.name)}`
         }));
       } catch (error) {
         console.error('Failed to load product index', error);
@@ -1052,6 +1052,7 @@
   <script type="module" src="firebase-config.js"></script>
 </body>
 </html>
+
 
 
 
