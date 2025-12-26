@@ -96,6 +96,325 @@
     }
     loadHeader();
   </script>
-    <script type="module" src="cart-page.js"></script>
+
+  <script type="module">
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js';
+    import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js';
+    import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, setDoc } from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
+
+    const firebaseConfig = {
+      apiKey: 'AIzaSyBsSrWpk0I6YnjNJcGRBnXg23WePsgdRx4',
+      authDomain: 'vital-elixir-globalist.firebaseapp.com',
+      projectId: 'vital-elixir-globalist',
+      storageBucket: 'vital-elixir-globalist.appspot.com',
+      messagingSenderId: '87028221342',
+      appId: '1:87028221342:web:0c7719acc703566e8fc28f',
+      measurementId: 'G-5MWKWE2C4J'
+    };
+  const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+       const db = getFirestore(app);
+    const SHIPPING_USD = 35;
+
+    const getSelectedCurrency = () => window.currencyUtils?.getSelectedCurrency?.() || 'GBP';
+
+    const formatForeignCurrency = (value) => {
+      const currency = getSelectedCurrency();
+      const converted = window.currencyUtils?.convertFromUsd
+        ? window.currencyUtils.convertFromUsd(value, currency)
+        : value;
+      return `${currency} ${Number(converted || 0).toFixed(2)}`;
+    };
+
+    const calculateShippingInr = (medicineUsd, medicineInr, existingShippingInr) => {
+      if (existingShippingInr !== undefined && existingShippingInr !== null) {
+        return Number(existingShippingInr);
+      }
+      if (!medicineUsd) return 0;
+      const rate = medicineInr / medicineUsd;
+      const computed = rate * SHIPPING_USD;
+      return parseFloat(computed.toFixed(2));
+    };
+
+    const calculateLineTotals = (item) => {
+      const medicineUsd = Number(item.price_usd || 0);
+      const medicineInr = Number(item.price_inr || 0);
+      const shippingUsd = item.shipping_usd !== undefined && item.shipping_usd !== null
+        ? Number(item.shipping_usd)
+        : SHIPPING_USD;
+      const shippingInr = calculateShippingInr(medicineUsd, medicineInr, item.shipping_inr);
+      const totalUsd = item.total_price_usd !== undefined && item.total_price_usd !== null
+        ? Number(item.total_price_usd)
+        : parseFloat((medicineUsd + shippingUsd).toFixed(2));
+      const totalInr = item.total_price_inr !== undefined && item.total_price_inr !== null
+        ? Number(item.total_price_inr)
+        : parseFloat((medicineInr + shippingInr).toFixed(2));
+      return { medicineUsd, medicineInr, shippingUsd, shippingInr, totalUsd, totalInr };
+    };
+
+    // Elements
+    const loginOverlay = document.getElementById('loginOverlay');
+    const loginRedirect = document.getElementById('loginRedirect');
+    const cartItemsDiv = document.getElementById('cartItems');
+    const cartSummaryDiv = document.getElementById('cartSummary');
+    const detailsSection = document.getElementById('detailsSection');
+    const payButton = document.getElementById('payButton');
+
+    let currentUser = null;
+    onAuthStateChanged(auth, async (user) => {
+      currentUser = user;
+      if (!user) {
+        // show login overlay
+        loginOverlay.classList.remove('hidden');
+        document.getElementById('cartContainer').classList.add('hidden');
+      } else {
+        loginOverlay.classList.add('hidden');
+        document.getElementById('cartContainer').classList.remove('hidden');
+        // Pre-fill email and name if available in Firestore or localStorage
+        document.getElementById('customerEmail').value = user.email;
+        const userDoc = await getDocs(collection(db, 'users'));
+        // Additional user info can be loaded here if desired
+        renderCart();
+      }
+    });
+    loginRedirect.addEventListener('click', () => {
+      window.location.href = 'login.html?redirect=cart.html';
+    });
+
+    async function renderCart() {
+     cartItemsDiv.innerHTML = '';
+      cartSummaryDiv.innerHTML = '';
+      let subtotalINR = 0;
+      let subtotalUSD = 0;
+      let shippingTotalINR = 0;
+      let shippingTotalUSD = 0;
+
+      // Retrieve cart from localStorage for immediate display
+      const localCart = JSON.parse(localStorage.getItem('cart')) || [];
+      // Retrieve cart from Firestore
+      let firestoreCart = [];
+      try {
+        const snapshot = await getDocs(collection(db, 'users', currentUser.uid, 'cart'));
+        snapshot.forEach((docSnap) => {
+          firestoreCart.push({ id: docSnap.id, ...docSnap.data() });
+        });
+      } catch (err) {
+        console.error('Error fetching cart from Firestore', err);
+      }
+      // Merge local and Firestore carts to display; duplicates may show but this is illustrative
+      const mergedCart = [...firestoreCart, ...localCart];
+      if (mergedCart.length === 0) {
+        cartItemsDiv.innerHTML = '<p>Your cart is empty.</p>';
+        return;
+      }
+        mergedCart.forEach((item, index) => {
+        const { medicineUsd, medicineInr, shippingUsd, shippingInr, totalUsd, totalInr } = calculateLineTotals(item);
+        subtotalINR += medicineInr;
+        subtotalUSD += medicineUsd;
+        shippingTotalINR += shippingInr;
+        shippingTotalUSD += shippingUsd;
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'flex items-center p-4 bg-white rounded-lg shadow justify-between';
+              itemDiv.innerHTML = `
+          <div class="flex items-center gap-4">
+            <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-contain rounded" />
+            <div>
+              <h3 class="font-semibold">${item.name}</h3>
+              <p class="text-sm text-gray-500">${item.pack}</p>
+            </div>
+          </div>
+          <div class="text-sm text-right space-y-1">␊
+            <p>Medicine: ${formatForeignCurrency(medicineUsd)} | INR ${medicineInr.toFixed(2)}</p>
+            <p>Shipping: ${formatForeignCurrency(shippingUsd)} | INR ${shippingInr.toFixed(2)}</p>
+            <p class="font-semibold text-brand">Total: ${formatForeignCurrency(totalUsd)} | INR ${totalInr.toFixed(2)}</p>
+            <button class="block ml-auto text-red-500 text-xs removeItemBtn" data-index="${index}">Remove</button>
+          </div>
+        `;
+        cartItemsDiv.appendChild(itemDiv);
+      });
+      const grandTotalUSD = subtotalUSD + shippingTotalUSD;
+      const grandTotalINR = subtotalINR + shippingTotalINR;
+      cartSummaryDiv.innerHTML = `
+        <div class="bg-white p-4 rounded-lg shadow space-y-2">
+          <p>Subtotal: ${formatForeignCurrency(subtotalUSD)} | INR ${subtotalINR.toFixed(2)}</p>
+          <p>Shipping (+${formatForeignCurrency(SHIPPING_USD)} per item): ${formatForeignCurrency(shippingTotalUSD)} | INR ${shippingTotalINR.toFixed(2)}</p>
+          <p class="font-bold text-brand text-lg">Total: ${formatForeignCurrency(grandTotalUSD)} | INR ${grandTotalINR.toFixed(2)}</p>
+        </div>
+      `;
+      // Attach remove handlers
+      document.querySelectorAll('.removeItemBtn').forEach((btn) => {
+        btn.addEventListener('click', async (e) => {
+          const idx = parseInt(e.target.getAttribute('data-index'));
+          // remove from local storage
+          const lc = JSON.parse(localStorage.getItem('cart')) || [];
+          if (idx < lc.length) {
+            lc.splice(idx, 1);
+            localStorage.setItem('cart', JSON.stringify(lc));
+          } else {
+            // remove from Firestore
+            const fIdx = idx - lc.length;
+            const toRemove = firestoreCart[fIdx];
+            try {
+              await deleteDoc(doc(db, 'users', currentUser.uid, 'cart', toRemove.id));
+            } catch (error) {
+              console.error('Error deleting item from Firestore', error);
+            }
+          }
+          renderCart();
+      });
+    }
+
+    document.addEventListener('currency:change', () => {
+      if (currentUser) {
+        renderCart();
+      }
+    });
+    }
+
+    // Payment integration
+    payButton.addEventListener('click', async () => {
+      const localCart = JSON.parse(localStorage.getItem('cart')) || [];
+      let firestoreCartItems = [];
+      try {
+        const snapshot = await getDocs(collection(db, 'users', currentUser.uid, 'cart'));
+        snapshot.forEach((docSnap) => {
+          firestoreCartItems.push({ id: docSnap.id, ...docSnap.data() });
+        });
+      } catch (error) {
+        console.error('Could not fetch Firestore cart', error);
+      }
+      const cart = [...firestoreCartItems, ...localCart];
+      if (cart.length === 0) {
+        alert('Your cart is empty. Please add products before checkout.');
+        return;
+      }
+      // Validate user details
+      const name = document.getElementById('customerName').value.trim();
+      const email = document.getElementById('customerEmail').value.trim();
+      const phone = document.getElementById('customerPhone').value.trim();
+      const country = document.getElementById('customerCountry').value.trim();
+      const address = document.getElementById('customerAddress').value.trim();
+      if (!name || !email) {
+        alert('Please provide your name and email.');
+        return;
+      }
+      // Sum total INR for Razorpay amount
+     let totalINR = 0;
+      cart.forEach(item => {
+        const { totalInr } = calculateLineTotals(item);
+        totalINR += totalInr;
+      });
+      const amountPaise = Math.round(totalINR * 100);
+      const options = {
+        key: 'RAZORPAY_KEY_ID', // Replace with your Razorpay key
+        amount: amountPaise,
+        currency: 'INR',
+        name: 'Vital Elixir Globalist',
+        description: 'Purchase of Medicines',
+        handler: async function (response) {
+          // Payment success - save order to Firestore
+          const orderData = {
+            items: cart,
+            date: new Date().toISOString(),
+            status: 'success',
+            orderId: response.razorpay_payment_id,
+            trackingId: '',
+            customer: {
+              name: name,
+              email: email,
+              phone: phone,
+              country: country,
+              address: address
+            }
+          };
+          try {
+            await addDoc(collection(db, 'users', currentUser.uid, 'orders'), orderData);
+          } catch (err) {
+            console.error('Error saving order to Firestore', err);
+          }
+          // Clear cart in localStorage and Firestore
+          localStorage.removeItem('cart');
+          // Delete each Firestore cart item
+          for (const item of firestoreCartItems) {
+            try {
+              await deleteDoc(doc(db, 'users', currentUser.uid, 'cart', item.id));
+            } catch (err) {
+              console.error('Error clearing Firestore cart', err);
+            }
+          }
+          // Send email (mailto) to site owner with order details
+          const mailBody = encodeURIComponent(`New order placed by ${name} (Email: ${email}).\n\nItems:\n${cart.map(i => i.name + ' - ' + i.pack).join(', ')}\nTotal INR: ${totalINR}\nOrder ID: ${response.razorpay_payment_id}`);
+          window.open(`mailto:vitalelixirglobalist@gmail.com?subject=New Order&body=${mailBody}`);
+          window.location.href = 'thankyou.html';
+        },
+        prefill: {
+          name: name,
+          email: email,
+          contact: phone
+        },
+        notes: {
+          address: address,
+          country: country
+        },
+        theme: {
+          color: '#0284c7'
+        }
+      };
+      const rzp = new Razorpay(options);
+      rzp.open();
+    });
+  </script>
+  <script type="module">
+  import { auth } from './firebase-config.js';
+  import { onAuthStateChanged, signOut } 
+    from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
+
+  onAuthStateChanged(auth, (user) => {
+    if (!user) {
+      alert("Please login first.");
+      window.location.href = "login.html";
+    }
+  });
+
+  // Optional logout button
+  const logoutBtn = document.getElementById('logout-btn');
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', () => {
+      signOut(auth).then(() => {
+        localStorage.removeItem('uid');
+        window.location.href = "index.html";
+      });
+    });
+  }
+</script>
+  <script type="module">
+  import { db, auth } from './firebase-config.js';
+  import { addDoc, collection } 
+    from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
+
+  async function saveTransaction(amount, trackingId) {
+    const user = auth.currentUser;
+    if (!user) return;
+
+    await addDoc(collection(db, `USERS/${user.uid}/transactions`), {
+      amount,
+      date: new Date().toISOString(),
+      trackingId,
+      status: 'Success'
+    });
+
+    alert('Transaction saved!');
+  }
+
+  // Example usage:
+  // saveTransaction(1500, "LP123IN");
+</script>
+  <script type="module" src="firebase-config.js"></script>
 </body>
 </html>
+
+
+
+
+
+
