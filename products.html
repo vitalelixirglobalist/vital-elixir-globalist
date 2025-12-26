@@ -7,6 +7,7 @@
   <meta name="description" content="Explore genuine medicines by category – tablets, creams, drops, sprays and injections."
     />
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="currency-utils.js"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -85,9 +86,12 @@
 
   <script>
     // Load header and menu
-    async function loadHeader() {
+   async function loadHeader() {
       const header = await fetch('header.html');
       document.getElementById('header-placeholder').innerHTML = await header.text();
+      if (window.initCurrencySelect) {
+        window.initCurrencySelect();
+      }
       // copy mobile menu functionality
       const menuBtn = document.getElementById('menu-btn');
       const closeBtn = document.getElementById('close-menu');
@@ -319,6 +323,7 @@
   <script type="module" src="firebase-config.js"></script>
 </body>
 </html>
+
 
 
 
