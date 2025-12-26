@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout – Vital Elixir Globalist</title>
+  <meta name="description" content="Review your order and select a payment method." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="currency-utils.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: { colors: { brand: '#0284c7' } }
+      }
+    };
+  </script>
+</head>
+<body class="text-gray-800 bg-gray-50">
+  <div id="header-placeholder"></div>
+
+  <main class="max-w-6xl mx-auto px-4 py-10">
+    <h1 class="text-3xl font-bold mb-6">Checkout</h1>
+
+    <div class="grid lg:grid-cols-3 gap-8">
+      <div class="lg:col-span-2 space-y-6">
+        <section class="bg-white p-6 rounded-xl shadow">
+          <h2 class="text-2xl font-semibold mb-4">Review your order</h2>
+
+          <div class="border border-gray-200 rounded-lg p-4 mb-6">
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="text-lg font-semibold">Delivery Address</h3>
+              <a href="#" class="text-sm text-brand hover:underline">Change</a>
+            </div>
+            <p class="text-sm text-gray-600">Add / Confirm your delivery address</p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold mb-3">Items in your order</h3>
+            <div id="checkoutItems" class="space-y-4"></div>
+          </div>
+        </section>
+
+        <section id="paymentSection" class="bg-white p-6 rounded-xl shadow">
+          <h2 class="text-2xl font-semibold mb-4">Select a payment method</h2>
+
+          <div class="space-y-4">
+            <label class="flex items-center gap-3 border border-gray-200 rounded-lg p-4 cursor-pointer">
+              <input type="radio" name="paymentMethod" value="wire" class="text-brand" checked />
+              <span class="font-semibold">Wire Transfer (Bank Transfer)</span>
+            </label>
+            <div data-payment-panel="wire" class="border border-gray-200 rounded-lg p-4 bg-gray-50">
+              [BANK DETAILS HERE - I WILL FILL THIS LATER]
+            </div>
+
+            <label class="flex items-center gap-3 border border-gray-200 rounded-lg p-4 cursor-pointer">
+              <input type="radio" name="paymentMethod" value="wise" class="text-brand" />
+              <span class="font-semibold">Wise</span>
+            </label>
+            <div data-payment-panel="wise" class="hidden border border-gray-200 rounded-lg p-4 bg-gray-50">
+              [WISE CHECKLIST HERE - I WILL FILL THIS LATER]
+            </div>
+
+            <label class="flex items-center gap-3 border border-gray-200 rounded-lg p-4 cursor-pointer">
+              <input type="radio" name="paymentMethod" value="paypal" class="text-brand" />
+              <span class="font-semibold">PayPal</span>
+            </label>
+            <div data-payment-panel="paypal" class="hidden border border-gray-200 rounded-lg p-4 bg-gray-50">
+              <p>PayPal ID: [PAYPAL ID HERE - I WILL FILL THIS LATER]</p>
+              <p class="text-sm text-gray-600 mt-2">Send payment to this PayPal ID and share the confirmation.</p>
+            </div>
+
+            <label class="flex items-center gap-3 border border-gray-200 rounded-lg p-4 cursor-pointer">
+              <input type="radio" name="paymentMethod" value="card" class="text-brand" />
+              <span class="font-semibold">Credit / Debit Card</span>
+            </label>
+            <div data-payment-panel="card" class="hidden border border-gray-200 rounded-lg p-4 bg-gray-50 text-gray-500">
+              Currently unavailable. We are sorry — please use another option.
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <aside class="lg:col-span-1">
+        <div class="bg-white p-6 rounded-xl shadow lg:sticky top-24 space-y-4">
+          <h2 class="text-xl font-semibold">Order Summary</h2>
+          <div id="orderSummary" class="text-sm space-y-2"></div>
+          <button id="proceedToPayment" class="w-full bg-brand text-white px-6 py-3 rounded-xl hover:bg-blue-700">
+            Proceed to Payment
+          </button>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <script type="module" src="checkout.js"></script>
+</body>
+</html>
