@@ -6,7 +6,6 @@
   <title>Medication Details – Vital Elixir Globalist</title>
   <meta name="description" content="See complete medication details, pricing, pack sizes, and trusted export quality information." />
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="currency-utils.js"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -332,12 +331,9 @@
       }
     });
 
- async function loadHeader() {
+    async function loadHeader() {
       const header = await fetch('header.html');
       document.getElementById('header-placeholder').innerHTML = await header.text();
-      if (window.initCurrencySelect) {
-        window.initCurrencySelect();
-      }
       const menuBtn = document.getElementById('menu-btn');
       const closeBtn = document.getElementById('close-menu');
       const mobileMenu = document.getElementById('mobile-menu');
@@ -368,5 +364,4 @@
   <script type="module" src="firebase-config.js"></script>
 </body>
 </html>
-
 
