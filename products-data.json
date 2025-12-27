@@ -5,7 +5,7 @@
   "composition": "Pimobendan 2.5 mg",
   "category": "Veterinary Medicines",
   "use": "Treatment of congestive heart failure in dogs",
-  "image": "assets/images/pimobendan25_vetmedin.jpg",
+  "image": "assets/images/products/pimobendan25_vetmedin.jpeg",
   "variants": [
     { "pack": "1 Bottle (50 Tablets)", "price_usd": 62, "price_inr": 0 },
     { "pack": "2 Bottles (100 Tablets)", "price_usd": 90, "price_inr": 0 },
@@ -19,7 +19,7 @@
   "composition": "Dapoxetine 90 mg",
   "category": "Men’s Health",
   "use": "Premature ejaculation",
-  "image": "assets/images/dapoxetine90.jpg",
+  "image": "assets/images/products/dapoxetine90.jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 49, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 69, "price_inr": 0 },
@@ -35,7 +35,7 @@
   "composition": "Dapoxetine 60 mg",
   "category": "Men’s Health",
   "use": "Premature ejaculation",
-  "image": "assets/images/dapoxetine60.jpg",
+  "image": "assets/images/products/dapoxetine60.jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 49, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 69, "price_inr": 0 },
@@ -51,7 +51,7 @@
   "composition": "Isotretinoin 40 mg",
   "category": "Dermatology",
   "use": "Severe acne treatment",
-  "image": "assets/images/isotretinoin40_accutane.jpg",
+  "image": "assets/images/products/isotretinoin40_accutane.jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 59, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 69, "price_inr": 0 },
@@ -65,7 +65,7 @@
   "composition": "Mebendazole 500 mg",
   "category": "Antiparasitic",
   "use": "Treatment of intestinal worm infections",
-  "image": "assets/images/mebendazole500.jpg",
+  "image": "assets/images/products/mebendazole500.jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 47, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 60, "price_inr": 0 },
@@ -81,7 +81,7 @@
   "composition": "Isotretinoin 30 mg",
   "category": "Dermatology",
   "use": "Severe acne treatment",
-  "image": "assets/images/isotretinoin30_accutane.jpg",
+  "image": "assets/images/products/isotretinoin30_accutane.jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 49, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 63, "price_inr": 0 },
@@ -97,7 +97,7 @@
   "composition": "Oxandrolone 10 mg",
   "category": "Anabolic Steroid",
   "use": "Weight gain and muscle wasting conditions",
-  "image": "assets/images/oxandrolone10_anavar.jpg",
+  "image": "assets/images/products/oxandrolone10_anavar.jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 55, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 74, "price_inr": 0 }
@@ -109,7 +109,7 @@
   "composition": "Ivermectin 40 mg",
   "category": "Antiparasitic",
   "use": "Treatment of parasitic infections",
-  "image": "assets/images/ivermectin40.jpg",
+  "image": "assets/images/products/ivermectin40.jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 45, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 58, "price_inr": 0 },
@@ -124,7 +124,7 @@
   "composition": "Fenbendazole 500 mg",
   "category": "Antiparasitic",
   "use": "Treatment of parasitic infections",
-  "image": "assets/images/fenbendazole500.jpg",
+  "image": "assets/images/products/fenbendazole500.jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 47, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 62, "price_inr": 0 },
@@ -139,7 +139,7 @@
   "composition": "Tirzepatide 10 mg",
   "category": "Metabolic / Weight Management",
   "use": "Type 2 diabetes and weight management",
-  "image": "assets/images/tirzepatide10_injection.jpg",
+  "image": "assets/images/products/tirzepatide10_injection.jpeg",
   "variants": [
     { "pack": "1 Pen", "price_usd": 179, "price_inr": 0 },
     { "pack": "2 Pens", "price_usd": 238, "price_inr": 0 },
@@ -152,7 +152,7 @@
   "composition": "Testosterone 1% w/w",
   "category": "Hormone Therapy",
   "use": "Testosterone replacement therapy",
-  "image": "assets/images/androtas_testosterone_gel.jpg",
+  "image": "assets/images/products/androtas_testosterone_gel.jpeg",
   "variants": [
     { "pack": "5 Gels (75 g each)", "price_usd": 169, "price_inr": 0 }
   ]
@@ -163,7 +163,7 @@
   "composition": "Atomoxetine 25 mg",
   "category": "Mental Health",
   "use": "Treatment of attention deficit hyperactivity disorder (ADHD)",
-  "image": "assets/images/atomoxetine25.jpg",
+  "image": "assets/images/products/atomoxetine25.jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 47, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 62, "price_inr": 0 },
@@ -179,7 +179,7 @@
   "composition": "Isotretinoin 20 mg",
   "category": "Dermatology",
   "use": "Severe acne treatment",
-  "image": "assets/images/isotretinoin20.jpg",
+  "image": "assets/images/products/isotretinoin20.jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 44, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 55, "price_inr": 0 },
@@ -194,7 +194,7 @@
   "composition": "Ivermectin 24 mg",
   "category": "Antiparasitic",
   "use": "Treatment of parasitic infections",
-  "image": "assets/images/ivermectin24.jpg",
+  "image": "assets/images/products/ivermectin24.jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 44, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 56, "price_inr": 0 },
@@ -210,7 +210,7 @@
   "composition": "Carvedilol 3.125 mg",
   "category": "Cardiology",
   "use": "Management of high blood pressure and heart failure",
-  "image": "assets/images/carvedilol3125.jpg",
+  "image": "assets/images/products/carvedilol3125.jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 42, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 52, "price_inr": 0 },
@@ -225,7 +225,7 @@
   "composition": "Tirzepatide 7.5 mg",
   "category": "Metabolic / Weight Management",
   "use": "Type 2 diabetes and weight management",
-  "image": "assets/images/tirzepatide75_tizaro.jpg",
+  "image": "assets/images/products/tirzepatide75_tizaro.jpeg",
   "variants": [
     { "pack": "1 KwikPen", "price_usd": 132, "price_inr": 0 },
     { "pack": "3 KwikPens", "price_usd": 396, "price_inr": 0 },
@@ -238,7 +238,7 @@
   "composition": "Tacrolimus 2 mg",
   "category": "Immunosuppressant",
   "use": "Prevention of organ transplant rejection",
-  "image": "assets/images/pangraf_tacrolimus2.jpg",
+  "image": "assets/images/products/pangraf_tacrolimus2.jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 124, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 201, "price_inr": 0 }
@@ -250,7 +250,7 @@
   "composition": "Tacrolimus 0.25 mg",
   "category": "Immunosuppressant",
   "use": "Prevention of organ transplant rejection",
-  "image": "assets/images/pangraf_tacrolimus025.jpg",
+  "image": "assets/images/products/pangraf_tacrolimus025.jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 47, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 62, "price_inr": 0 },
@@ -264,7 +264,7 @@
   "composition": "Tadalafil 80 mg",
   "category": "Men’s Health",
   "use": "Erectile dysfunction",
-  "image": "assets/images/vidalista80.jpg",
+  "image": "assets/images/products/vidalista80.jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 47, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 62, "price_inr": 0 },
@@ -279,7 +279,7 @@
   "composition": "Ivermectin 6 mg",
   "category": "Antiparasitic",
   "use": "Treatment of parasitic infections",
-  "image": "assets/images/ivermectin6.jpg",
+  "image": "assets/images/products/ivermectin6.jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 39, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 45, "price_inr": 0 },
@@ -294,7 +294,7 @@
   "composition": "Ivermectin 12 mg",
   "category": "Antiparasitic",
   "use": "Treatment of parasitic infections",
-  "image": "assets/images/ivermectin12.jpg",
+  "image": "assets/images/products/ivermectin12.jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 41, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 49, "price_inr": 0 },
@@ -309,7 +309,7 @@
   "composition": "Atomoxetine 40 mg",
   "category": "Mental Health",
   "use": "Treatment of attention deficit hyperactivity disorder (ADHD)",
-  "image": "assets/images/atomoxetine40.jpg",
+  "image": "assets/images/products/atomoxetine40.jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 90, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 146, "price_inr": 0 },
@@ -322,7 +322,7 @@
   "composition": "Acyclovir 800 mg",
   "category": "Antiviral",
   "use": "Treatment of herpes virus infections",
-  "image": "assets/images/acyclovir800.jpg",
+  "image": "assets/images/products/acyclovir800.jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 63, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 90, "price_inr": 0 },
@@ -338,7 +338,7 @@
   "composition": "Vardenafil + Dapoxetine",
   "category": "Men’s Health",
   "use": "Erectile dysfunction and premature ejaculation",
-  "image": "assets/images/levifil_oral_jelly.jpg",
+  "image": "assets/images/products/levifil_oral_jelly.jpeg",
   "variants": [
     { "pack": "50 Oral Jelly Pouches", "price_usd": 73, "price_inr": 0 },
     { "pack": "100 Oral Jelly Pouches", "price_usd": 111, "price_inr": 0 },
@@ -352,7 +352,7 @@
   "composition": "Hydroquinone + Mometasone + Tretinoin",
   "category": "Dermatology",
   "use": "Treatment of melasma and hyperpigmentation",
-  "image": "assets/images/melamet_cream.jpg",
+  "image": "assets/images/products/melamet_cream.jpeg",
   "variants": [
     { "pack": "1 Tube (15 g)", "price_usd": 41, "price_inr": 0 },
     { "pack": "3 Tubes (15 g each)", "price_usd": 56, "price_inr": 0 },
@@ -367,7 +367,7 @@
   "composition": "Fenofibrate 145 mg",
   "category": "Cardiology",
   "use": "Management of high cholesterol and triglyceride levels",
-  "image": "assets/images/fenofibrate145.jpg",
+  "image": "assets/images/products/fenofibrate145.jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 43, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 54, "price_inr": 0 },
@@ -382,7 +382,7 @@
   "composition": "Amoxicillin + Clavulanate 825 mg",
   "category": "Antibiotic",
   "use": "Treatment of bacterial infections",
-  "image": "assets/images/amoxicillin_clavulanate825.jpg",
+  "image": "assets/images/products/amoxicillin_clavulanate825.jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 52, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 69, "price_inr": 0 },
@@ -397,7 +397,7 @@
   "composition": "Cyproterone Acetate 2 mg + Ethinylestradiol 0.035 mg",
   "category": "Hormonal Therapy",
   "use": "Hormonal imbalance, acne, and androgen-related disorders",
-  "image": "assets/images/cyproterone_ethinylestradiol.jpg",
+  "image": "assets/images/products/cyproterone_ethinylestradiol.jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 59, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 82, "price_inr": 0 },
@@ -411,7 +411,7 @@
   "composition": "Chloroquine Phosphate 500 mg",
   "category": "Antimalarial",
   "use": "Treatment and prevention of malaria",
-  "image": "assets/images/lariago_ds_chloroquine500.jpg",
+  "image": "assets/images/products/lariago_ds_chloroquine500.jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 45, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 57, "price_inr": 0 },
@@ -427,7 +427,7 @@
   "composition": "Exemestane 25 mg",
   "category": "Oncology",
   "use": "Treatment of hormone-responsive breast cancer",
-  "image": "assets/images/exemestane25.jpg",
+  "image": "assets/images/products/exemestane25.jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 66, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 97, "price_inr": 0 },
@@ -443,7 +443,7 @@
   "composition": "Piroxicam 20 mg",
   "category": "Pain Relief / Anti-inflammatory",
   "use": "Management of pain and inflammation",
-  "image": "assets/images/piroxicam20.jpg",
+  "image": "assets/images/products/piroxicam20.jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 46, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 59, "price_inr": 0 },
@@ -459,7 +459,7 @@
   "composition": "Meloxicam 1.5 mg per 10 ml",
   "category": "Pain Relief / Anti-inflammatory",
   "use": "Management of pain and inflammation",
-  "image": "assets/images/meloxicam_oral_suspension_15.jpg",
+  "image": "assets/images/products/meloxicam_oral_suspension_15.jpeg",
   "variants": [
     { "pack": "1 Unit (10 ml)", "price_usd": 42, "price_inr": 0 },
     { "pack": "3 Units (10 ml each)", "price_usd": 58, "price_inr": 0 },
@@ -474,7 +474,7 @@
   "composition": "Fenbendazole 444 mg",
   "category": "Antiparasitic",
   "use": "Treatment of parasitic infections",
-  "image": "assets/images/fenbendazole444.jpg",
+  "image": "assets/images/products/fenbendazole444.jpeg",
   "variants": [
     { "pack": "100 Tablets", "price_usd": 25, "price_inr": 0 },
     { "pack": "300 Tablets", "price_usd": 55, "price_inr": 0 },
@@ -487,7 +487,7 @@
   "composition": "Progesterone 100 mg/ml",
   "category": "Hormonal Therapy",
   "use": "Hormonal support and progesterone supplementation",
-  "image": "assets/images/progesterone_injection_100.jpg",
+  "image": "assets/images/products/progesterone_injection_100.jpeg",
   "variants": [
     { "pack": "3 Injections", "price_usd": 35, "price_inr": 0 },
     { "pack": "5 Injections", "price_usd": 55, "price_inr": 0 },
@@ -501,7 +501,7 @@
   "composition": "Tadalafil 40 mg",
   "category": "Men’s Health",
   "use": "Erectile dysfunction",
-  "image": "assets/images/tadalafil40.jpg",
+  "image": "assets/images/products/tadalafil40.jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 45, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 56, "price_inr": 0 },
@@ -515,7 +515,7 @@
   "composition": "Ofloxacin + Clotrimazole + Betamethasone Dipropionate + Lignocaine Hydrochloride",
   "category": "ENT / Anti-infective",
   "use": "Treatment of ear infections with pain, inflammation, and fungal involvement",
-  "image": "assets/images/ofloxacin_clotrimazole_betamethasone_lignocaine_ear_drops.jpg",
+  "image": "assets/images/products/ofloxacin_clotrimazole_betamethasone_lignocaine_ear_drops.jpeg",
   "variants": [
     { "pack": "1 Bottle", "price_usd": 39, "price_inr": 0 },
     { "pack": "3 Bottles", "price_usd": 59, "price_inr": 0 },
@@ -529,7 +529,7 @@
   "composition": "Prazosin Hydrochloride 2.5 mg",
   "category": "Cardiology",
   "use": "Management of high blood pressure and related conditions",
-  "image": "assets/images/prazopress25.jpg",
+  "image": "assets/images/products/prazopress25.jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 43, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 53, "price_inr": 0 },
@@ -546,7 +546,7 @@
   "composition": "Rivaroxaban 20 mg",
   "category": "Anticoagulant",
   "use": "Prevention and treatment of blood clots",
-  "image": "assets/images/rivaroxaban20.jpg",
+  "image": "assets/images/products/rivaroxaban20.jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 49, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 59, "price_inr": 0 },
@@ -562,7 +562,7 @@
   "composition": "Fenbendazole 222 mg",
   "category": "Antiparasitic",
   "use": "Treatment of parasitic infections",
-  "image": "assets/images/fenbendazole222.jpg",
+  "image": "assets/images/products/fenbendazole222.jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 45, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 59, "price_inr": 0 },
@@ -578,7 +578,7 @@
   "composition": "Fenbendazole 1000 mg",
   "category": "Antiparasitic",
   "use": "Treatment of parasitic infections",
-  "image": "assets/images/fenbendazole1000.jpg",
+  "image": "assets/images/products/fenbendazole1000.jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 55, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 75, "price_inr": 0 },
@@ -594,7 +594,7 @@
   "composition": "Metformin 500 mg",
   "category": "Antidiabetic",
   "use": "Management of type 2 diabetes",
-  "image": "assets/images/metformin500.jpg",
+  "image": "assets/images/products/metformin500.jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 46, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 59, "price_inr": 0 },
@@ -610,7 +610,7 @@
   "composition": "Minoxidil 10 mg",
   "category": "Dermatology / Hair Care",
   "use": "Treatment of hair loss and alopecia",
-  "image": "assets/images/minoxidil10.jpg",
+  "image": "assets/images/products/minoxidil10.jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 49, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 69, "price_inr": 0 },
@@ -626,7 +626,7 @@
   "composition": "Minoxidil 5 mg",
   "category": "Dermatology / Hair Care",
   "use": "Treatment of hair loss and alopecia",
-  "image": "assets/images/minoxidil5.jpg",
+  "image": "assets/images/products/minoxidil5.jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 46, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 59, "price_inr": 0 },
@@ -642,7 +642,7 @@
   "composition": "Sildenafil Citrate 100 mg",
   "category": "Men’s Health",
   "use": "Erectile dysfunction",
-  "image": "assets/images/cenforce_sildenafil100.jpg",
+  "image": "assets/images/products/cenforce_sildenafil100.jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 41, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 50, "price_inr": 0 },
@@ -658,7 +658,7 @@
   "composition": "Tadalafil 60 mg",
   "category": "Men’s Health",
   "use": "Erectile dysfunction",
-  "image": "assets/images/tadalafil60.jpg",
+  "image": "assets/images/products/tadalafil60.jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 45, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 58, "price_inr": 0 },
@@ -674,7 +674,7 @@
   "composition": "Tadalafil 20 mg",
   "category": "Men’s Health",
   "use": "Erectile dysfunction",
-  "image": "assets/images/tadalafil20.jpg",
+  "image": "assets/images/products/tadalafil20.jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 42, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 52, "price_inr": 0 },
@@ -690,7 +690,7 @@
   "composition": "Ondansetron 4 mg",
   "category": "Antiemetic",
   "use": "Prevention and treatment of nausea and vomiting",
-  "image": "assets/images/ondansetron4.jpg",
+  "image": "assets/images/products/ondansetron4.jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 39, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 49, "price_inr": 0 },
@@ -705,7 +705,7 @@
   "composition": "Ondansetron 8 mg",
   "category": "Antiemetic",
   "use": "Prevention and treatment of nausea and vomiting",
-  "image": "assets/images/ondansetron8.jpg",
+  "image": "assets/images/products/ondansetron8.jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 44, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 55, "price_inr": 0 },
@@ -720,7 +720,7 @@
   "composition": "Pregabalin 300 mg",
   "category": "Neurology / Pain Management",
   "use": "Treatment of neuropathic pain and epilepsy",
-  "image": "assets/images/pregabalin300.jpg",
+  "image": "assets/images/products/pregabalin300.jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 44, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 53, "price_inr": 0 },
@@ -735,7 +735,7 @@
   "composition": "Oclacitinib 16 mg",
   "category": "Veterinary Medicine",
   "use": "Management of allergic dermatitis and pruritus in dogs",
-  "image": "assets/images/oclacitinib16.jpg",
+  "image": "assets/images/products/oclacitinib16.jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 136, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 222, "price_inr": 0 }
@@ -747,7 +747,7 @@
   "composition": "Meloxicam 2.5 mg",
   "category": "Pain Relief / Anti-inflammatory",
   "use": "Management of pain and inflammation",
-  "image": "assets/images/maloxocam_meloxicam25.jpg",
+  "image": "assets/images/products/maloxocam_meloxicam25.jpeg",
   "variants": [
     { "pack": "100 Tablets", "price_usd": 89, "price_inr": 0 }
   ]
@@ -758,7 +758,7 @@
   "composition": "Fluralaner 1400 mg",
   "category": "Veterinary Medicine",
   "use": "Flea and tick control for dogs (up to 75 lbs)",
-  "image": "assets/images/bravecto_1400mg.jpg",
+  "image": "assets/images/products/bravecto_1400mg.jpeg",
   "variants": [
     { "pack": "1 Tablet", "price_usd": 109, "price_inr": 0 },
     { "pack": "2 Tablets", "price_usd": 159, "price_inr": 0 },
@@ -771,7 +771,7 @@
   "composition": "Clobetasol Propionate",
   "category": "Dermatology",
   "use": "Treatment of inflammatory skin conditions",
-  "image": "assets/images/clobetasol_cream.jpg",
+  "image": "assets/images/products/clobetasol_cream.jpeg",
   "variants": [
     { "pack": "3 Tubes", "price_usd": 35, "price_inr": 0 },
     { "pack": "5 Tubes", "price_usd": 45, "price_inr": 0 },
@@ -784,7 +784,7 @@
   "composition": "Lignocaine 5%",
   "category": "Anesthetic / Pain Relief",
   "use": "Local anesthesia and pain relief",
-  "image": "assets/images/xylocaine_5_ointment.jpg",
+  "image": "assets/images/products/xylocaine_5_ointment.jpeg",
   "variants": [
     { "pack": "3 Tubes (50 g each)", "price_usd": 29, "price_inr": 0 },
     { "pack": "5 Tubes (50 g each)", "price_usd": 39, "price_inr": 0 },
@@ -797,7 +797,7 @@
   "composition": "Bimatoprost 0.03%",
   "category": "Ophthalmology",
   "use": "Treatment of glaucoma and ocular hypertension",
-  "image": "assets/images/lumigan_bimatoprost_003.jpg",
+  "image": "assets/images/products/lumigan_bimatoprost_003.jpeg",
   "variants": [	
     { "pack": "3 Bottles", "price_usd": 55, "price_inr": 0 },
     { "pack": "5 Bottles", "price_usd": 75, "price_inr": 0 }
@@ -809,7 +809,7 @@
   "composition": "Orlistat 120 mg",
   "category": "Weight Management",
   "use": "Management of obesity and weight loss",
-  "image": "assets/images/orlijohn_orlistat120.jpg",
+  "image": "assets/images/products/orlijohn_orlistat120.jpeg",
   "variants": [
     { "pack": "100 Capsules", "price_usd": 55, "price_inr": 0 },
     { "pack": "300 Capsules", "price_usd": 79, "price_inr": 0 }
@@ -821,7 +821,7 @@
   "composition": "Semaglutide 7 mg",
   "category": "Metabolic / Weight Management",
   "use": "Management of type 2 diabetes and weight loss",
-  "image": "assets/images/semaglutide7_tablet.jpg",
+  "image": "assets/images/products/semaglutide7_tablet.jpeg",
   "variants": [
     { "pack": "10 Tablets", "price_usd": 49, "price_inr": 0 },
     { "pack": "30 Tablets", "price_usd": 149, "price_inr": 0 },
@@ -834,7 +834,7 @@
   "composition": "Praziquantel 600 mg",
   "category": "Antiparasitic",
   "use": "Treatment of parasitic worm infections",
-  "image": "assets/images/praziquantel600.jpg",
+  "image": "assets/images/products/praziquantel600.jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 49, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 59, "price_inr": 0 }
@@ -846,7 +846,7 @@
   "composition": "Tamoxifen 10 mg",
   "category": "Oncology",
   "use": "Treatment and prevention of hormone-responsive breast cancer",
-  "image": "assets/images/tamoxifen10.jpg",
+  "image": "assets/images/products/tamoxifen10.jpeg",
   "variants": [
     { "pack": "300 Tablets", "price_usd": 45, "price_inr": 0 },
     { "pack": "500 Tablets", "price_usd": 64, "price_inr": 0 }
@@ -858,7 +858,7 @@
   "composition": "Pheniramine 50 mg",
   "category": "Antihistamine",
   "use": "Relief of allergic conditions and symptoms",
-  "image": "assets/images/pheniramine50.jpg",
+  "image": "assets/images/products/pheniramine50.jpeg",
   "variants": [
     { "pack": "100 Tablets", "price_usd": 18, "price_inr": 0 },
     { "pack": "300 Tablets", "price_usd": 28, "price_inr": 0 },
@@ -871,7 +871,7 @@
   "composition": "Levothyroxine Sodium 88 mcg",
   "category": "Endocrinology",
   "use": "Treatment of hypothyroidism",
-  "image": "assets/images/thyroxine_sodium_88.jpg",
+  "image": "assets/images/products/thyroxine_sodium_88.jpeg",
   "variants": [
     { "pack": "120 Tablets", "price_usd": 44, "price_inr": 0 },
     { "pack": "360 Tablets", "price_usd": 64, "price_inr": 0 }
@@ -883,7 +883,7 @@
   "composition": "Shilajit-based formulation",
   "category": "Herbal / Men’s Health",
   "use": "Energy, stamina, and vitality support",
-  "image": "assets/images/shilarise_sunrise.jpg",
+  "image": "assets/images/products/shilarise_sunrise.jpeg",
   "variants": [
     { "pack": "100 Tablets", "price_usd": 44, "price_inr": 0 },
     { "pack": "300 Tablets", "price_usd": 64, "price_inr": 0 }
@@ -895,7 +895,7 @@
   "composition": "Insulin Lispro 100 IU/ml",
   "category": "Antidiabetic",
   "use": "Management of diabetes mellitus",
-  "image": "assets/images/humalog_junior_kwikpen.jpg",
+  "image": "assets/images/products/humalog_junior_kwikpen.jpeg",
   "variants": [
     { "pack": "1 KwikPen", "price_usd": 85, "price_inr": 0 }
   ]
@@ -906,7 +906,7 @@
   "composition": "Insulin Glargine 100 IU/ml",
   "category": "Antidiabetic",
   "use": "Long-acting insulin for management of diabetes mellitus",
-  "image": "assets/images/lantus_solostar_insulin_glargine.jpg",
+  "image": "assets/images/products/lantus_solostar_insulin_glargine.jpeg",
   "variants": [
     { "pack": "1 Cartridge (3 ml)", "price_usd": 42, "price_inr": 0 },
     { "pack": "3 Cartridges (3 ml each)", "price_usd": 57, "price_inr": 0 }
@@ -918,7 +918,7 @@
   "composition": "Sirolimus 1 mg",
   "category": "Immunosuppressant",
   "use": "Prevention of organ transplant rejection",
-  "image": "assets/images/rapamune_sirolimus1.jpg",
+  "image": "assets/images/products/rapamune_sirolimus1.jpeg",
   "variants": [
     { "pack": "30 Tablets", "price_usd": 48, "price_inr": 0 },
     { "pack": "50 Tablets", "price_usd": 60, "price_inr": 0 },
@@ -931,7 +931,7 @@
   "composition": "Triclabendazole 250 mg",
   "category": "Antiparasitic",
   "use": "Treatment of liver fluke and parasitic infections",
-  "image": "assets/images/triclabendazole250.jpg",
+  "image": "assets/images/products/triclabendazole250.jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 54, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 80, "price_inr": 0 }
@@ -943,7 +943,7 @@
   "composition": "Mometasone Furoate 0.1%",
   "category": "Dermatology",
   "use": "Treatment of inflammatory skin conditions",
-  "image": "assets/images/mometasone_furoate_01.jpg",
+  "image": "assets/images/products/mometasone_furoate_01.jpeg",
   "variants": [
     { "pack": "3 Tubes", "price_usd": 10, "price_inr": 0 },
     { "pack": "5 Tubes", "price_usd": 19, "price_inr": 0 }
@@ -955,7 +955,7 @@
   "composition": "Budesonide",
   "category": "ENT / Allergy",
   "use": "Treatment of allergic rhinitis and nasal inflammation",
-  "image": "assets/images/budesonide_nasal_spray.jpg",
+  "image": "assets/images/products/budesonide_nasal_spray.jpeg",
   "variants": [
     { "pack": "3 Bottles", "price_usd": 20, "price_inr": 0 },
     { "pack": "5 Bottles", "price_usd": 30, "price_inr": 0 }
@@ -967,7 +967,7 @@
   "composition": "Boldenone Undecylenate 250 mg/ml",
   "category": "Anabolic Steroid / Veterinary",
   "use": "Muscle growth and weight gain (veterinary use)",
-  "image": "assets/images/boldebolin_250_injection.jpg",
+  "image": "assets/images/products/boldebolin_250_injection.jpeg",
   "variants": [
     { "pack": "1 Vial (10 ml)", "price_usd": 35, "price_inr": 0 },
     { "pack": "3 Vials (10 ml each)", "price_usd": 65, "price_inr": 0 }
@@ -979,7 +979,7 @@
   "composition": "Risedronate Sodium 150 mg",
   "category": "Bone Health / Osteoporosis",
   "use": "Treatment and prevention of osteoporosis",
-  "image": "assets/images/actonel_risedronate150.jpg",
+  "image": "assets/images/products/actonel_risedronate150.jpeg",
   "variants": [
     { "pack": "100 Tablets", "price_usd": 15, "price_inr": 0 },
     { "pack": "300 Tablets", "price_usd": 25, "price_inr": 0 }
@@ -991,7 +991,7 @@
   "composition": "Budesonide 200 mcg + Formoterol Fumarate Dihydrate 6 mcg",
   "category": "Respiratory",
   "use": "Management of asthma and chronic obstructive pulmonary disease (COPD)",
-  "image": "assets/images/budesonide_formoterol_200_6_dpi.jpg",
+  "image": "assets/images/products/budesonide_formoterol_200_6_dpi.jpeg",
   "variants": [
     { "pack": "30 Capsules", "price_usd": 33, "price_inr": 0 },
     { "pack": "90 Capsules", "price_usd": 46, "price_inr": 0 }
@@ -1003,7 +1003,7 @@
   "composition": "Tazarotene 0.1%",
   "category": "Dermatology",
   "use": "Treatment of acne and psoriasis",
-  "image": "assets/images/tazarotene_01_cream.jpg",
+  "image": "assets/images/products/tazarotene_01_cream.jpeg",
   "variants": [
     { "pack": "3 Tubes (20 g each)", "price_usd": 34, "price_inr": 0 },
     { "pack": "5 Tubes (20 g each)", "price_usd": 70, "price_inr": 0 }
@@ -1015,7 +1015,7 @@
   "composition": "Isotretinoin 30 mg",
   "category": "Dermatology",
   "use": "Severe acne treatment",
-  "image": "assets/images/isotretinoin30.jpg",
+  "image": "assets/images/products/isotretinoin30.jpeg",
   "variants": [
     { "pack": "100 Tablets", "price_usd": 79, "price_inr": 0 },
     { "pack": "300 Tablets", "price_usd": 149, "price_inr": 0 }
@@ -1027,7 +1027,7 @@
   "composition": "Tretinoin 0.05%",
   "category": "Dermatology",
   "use": "Treatment of acne and skin renewal",
-  "image": "assets/images/ret_grow_a_tretinoin_005.jpg",
+  "image": "assets/images/products/ret_grow_a_tretinoin_005.jpeg",
   "variants": [
     { "pack": "1 Tube", "price_usd": 19, "price_inr": 0 },
     { "pack": "3 Tubes", "price_usd": 29, "price_inr": 0 },
@@ -1040,7 +1040,7 @@
   "composition": "Ketorolac Tromethamine",
   "category": "Ophthalmology",
   "use": "Relief of eye pain and inflammation",
-  "image": "assets/images/ketorolac_eye_drop_5ml.jpg",
+  "image": "assets/images/products/ketorolac_eye_drop_5ml.jpeg",
   "variants": [
     { "pack": "1 Bottle (5 ml)", "price_usd": 15, "price_inr": 0 },
     { "pack": "3 Bottles (5 ml each)", "price_usd": 25, "price_inr": 0 },
@@ -1053,7 +1053,7 @@
   "composition": "Testosterone Cypionate 250 mg/ml",
   "category": "Hormone Therapy",
   "use": "Testosterone replacement therapy",
-  "image": "assets/images/testosterone_cypionate_250_injection.jpg",
+  "image": "assets/images/products/testosterone_cypionate_250_injection.jpeg",
   "variants": [
     { "pack": "1 Vial (10 ml)", "price_usd": 85, "price_inr": 0 },
     { "pack": "3 Vials (10 ml each)", "price_usd": 129, "price_inr": 0 }
@@ -1065,7 +1065,7 @@
   "composition": "Ondansetron 2 mg/ml",
   "category": "Antiemetic",
   "use": "Prevention and treatment of nausea and vomiting",
-  "image": "assets/images/ondansetron_injection_2mgml.jpg",
+  "image": "assets/images/products/ondansetron_injection_2mgml.jpeg",
   "variants": [
     { "pack": "1 Box (Pack of 10)", "price_usd": 69, "price_inr": 0 },
     { "pack": "3 Boxes (Pack of 10 each)", "price_usd": 89, "price_inr": 0 }
@@ -1077,7 +1077,7 @@
   "composition": "Ketorolac Tromethamine 10 mg",
   "category": "Pain Relief / Anti-inflammatory",
   "use": "Short-term management of moderate to severe pain",
-  "image": "assets/images/ketorolac_injection_10mg.jpg",
+  "image": "assets/images/products/ketorolac_injection_10mg.jpeg",
   "variants": [
     { "pack": "1 Injection", "price_usd": 45, "price_inr": 0 },
     { "pack": "3 Injections", "price_usd": 55, "price_inr": 0 },
@@ -1090,7 +1090,7 @@
   "composition": "Sulbutiamine 200 mg",
   "category": "Neurology / Cognitive Health",
   "use": "Management of fatigue, asthenia, and cognitive support",
-  "image": "assets/images/sulbutiamine200.jpg",
+  "image": "assets/images/products/sulbutiamine200.jpeg",
   "variants": [
     { "pack": "100 Tablets", "price_usd": 89, "price_inr": 0 },
     { "pack": "300 Tablets", "price_usd": 159, "price_inr": 0 }
@@ -1102,7 +1102,7 @@
   "composition": "Sildenafil Citrate 100 mg",
   "category": "Men’s Health",
   "use": "Erectile dysfunction",
-  "image": "assets/images/kamagra_oral_jelly.jpg",
+  "image": "assets/images/products/kamagra_oral_jelly.jpeg",
   "variants": [
     { "pack": "50 Oral Jelly Pouches", "price_usd": 29, "price_inr": 0 },
     { "pack": "100 Oral Jelly Pouches", "price_usd": 49, "price_inr": 0 }
@@ -1114,7 +1114,7 @@
   "composition": "Atomoxetine 60 mg",
   "category": "Mental Health",
   "use": "Treatment of attention deficit hyperactivity disorder (ADHD)",
-  "image": "assets/images/atomoxetine60.jpg",
+  "image": "assets/images/products/atomoxetine60.jpeg",
   "variants": [
     { "pack": "100 Tablets", "price_usd": 89, "price_inr": 0 },
     { "pack": "300 Tablets", "price_usd": 168, "price_inr": 0 }
@@ -1126,7 +1126,7 @@
   "composition": "Shilajit Gold Plus (2X Strength)",
   "category": "Herbal / Men’s Health",
   "use": "Stamina, vigour, vitality, and overall strength support",
-  "image": "assets/images/zandu_shilajit_gold_plus.jpg",
+  "image": "assets/images/products/zandu_shilajit_gold_plus.jpeg",
   "variants": [
     { "pack": "60 Capsules", "price_usd": 35, "price_inr": 0 },
     { "pack": "180 Capsules", "price_usd": 78, "price_inr": 0 }
@@ -1138,7 +1138,7 @@
   "composition": "Ivermectin 3 mg",
   "category": "Antiparasitic",
   "use": "Treatment of parasitic infections",
-  "image": "assets/images/ivermectin3.jpg",
+  "image": "assets/images/products/ivermectin3.jpeg",
   "variants": [
     { "pack": "100 Tablets", "price_usd": 11, "price_inr": 0 },
     { "pack": "300 Tablets", "price_usd": 19, "price_inr": 0 },
@@ -1151,7 +1151,7 @@
   "composition": "Nystatin 50,000 IU",
   "category": "Antifungal",
   "use": "Treatment of fungal infections",
-  "image": "assets/images/nystatin_50000iu.jpg",
+  "image": "assets/images/products/nystatin_50000iu.jpeg",
   "variants": [
     { "pack": "100 Tablets", "price_usd": 85, "price_inr": 0 },
     { "pack": "300 Tablets", "price_usd": 131, "price_inr": 0 },
@@ -1164,7 +1164,7 @@
   "composition": "N-Acetylcarnosine",
   "category": "Ophthalmology",
   "use": "Eye health support and cataract management",
-  "image": "assets/images/n_acetylcarnosine_eye_drops_10ml.jpg",
+  "image": "assets/images/products/n_acetylcarnosine_eye_drops_10ml.jpeg",
   "variants": [
     { "pack": "1 Bottle (10 ml)", "price_usd": 41, "price_inr": 0 },
     { "pack": "3 Bottles (10 ml each)", "price_usd": 55, "price_inr": 0 },
@@ -1177,7 +1177,7 @@
   "composition": "Minoxidil 5%",
   "category": "Dermatology / Hair Care",
   "use": "Treatment of hair loss and alopecia",
-  "image": "assets/images/minoxidil_5_percent_60ml.jpg",
+  "image": "assets/images/products/minoxidil_5_percent_60ml.jpeg",
   "variants": [
     { "pack": "1 Bottle (60 ml)", "price_usd": 59, "price_inr": 0 },
     { "pack": "2 Bottles (60 ml each)", "price_usd": 85, "price_inr": 0 },
@@ -1190,7 +1190,7 @@
   "composition": "Propranolol Hydrochloride 10 mg",
   "category": "Cardiology",
   "use": "Management of high blood pressure, anxiety, and heart-related conditions",
-  "image": "assets/images/propranolol10.jpg",
+  "image": "assets/images/products/propranolol10.jpeg",
   "variants": [
     { "pack": "100 Tablets (Shipping Included)", "price_usd": 39, "price_inr": 0 },
     { "pack": "300 Tablets (Shipping Included)", "price_usd": 45, "price_inr": 0 },
@@ -1203,7 +1203,7 @@
   "composition": "Methandrostenolone 20 mg",
   "category": "Anabolic Steroid",
   "use": "Muscle growth and strength enhancement",
-  "image": "assets/images/danabol20.jpg",
+  "image": "assets/images/products/danabol20.jpeg",
   "variants": [
     { "pack": "100 Tablets", "price_usd": 69, "price_inr": 0 },
     { "pack": "200 Tablets", "price_usd": 89, "price_inr": 0 },
@@ -1216,7 +1216,7 @@
   "composition": "Indomethacin 25 mg",
   "category": "Pain Relief / Anti-inflammatory",
   "use": "Management of pain and inflammation",
-  "image": "assets/images/indomethacin25.jpg",
+  "image": "assets/images/products/indomethacin25.jpeg",
   "variants": [
     { "pack": "300 Tablets", "price_usd": 79, "price_inr": 0 }
   ]
@@ -1227,7 +1227,7 @@
     "composition": "Sildenafil Citrate 100 mg",
     "category": "Men’s Health",
     "use": "Erectile dysfunction",
-    "image": "assets/images/shilarise.jpg",
+    "image": "assets/images/products/shilarise.jpeg",
     "variants": [
       { "pack": "100 Tablets", "price_usd": 44, "price_inr": 1848 },
       { "pack": "300 Tablets", "price_usd": 64, "price_inr": 2688 }
@@ -1239,7 +1239,7 @@
     "composition": "Finasteride 1 mg",
     "category": "Men’s Health",
     "use": "Hair loss treatment",
-    "image": "assets/images/finasteride1.jpg",
+    "image": "assets/images/products/finasteride1.jpeg",
     "variants": [
       { "pack": "100 Tablets", "price_usd": 20, "price_inr": 840 },
       { "pack": "300 Tablets", "price_usd": 30, "price_inr": 1260 }
@@ -1251,7 +1251,7 @@
     "composition": "Finasteride 5 mg",
     "category": "Men’s Health",
     "use": "Prostate enlargement",
-    "image": "assets/images/finasteride5.jpg",
+    "image": "assets/images/products/finasteride5.jpeg",
     "variants": [
       { "pack": "100 Tablets", "price_usd": 25, "price_inr": 1050 },
       { "pack": "300 Tablets", "price_usd": 35, "price_inr": 1470 }
@@ -1263,7 +1263,7 @@
     "composition": "Semaglutide 7 mg",
     "category": "Diabetes & Metabolic Care",
     "use": "Diabetes & weight management",
-    "image": "assets/images/semaglutide.jpg",
+    "image": "assets/images/products/semaglutide.jpeg",
     "variants": [
       { "pack": "10 Tablets", "price_usd": 49, "price_inr": 2058 },
       { "pack": "30 Tablets", "price_usd": 149, "price_inr": 6258 },
@@ -1276,7 +1276,7 @@
     "composition": "Insulin Glargine 100 IU/ml",
     "category": "Diabetes & Metabolic Care",
     "use": "Long-acting insulin",
-    "image": "assets/images/lantus.jpg",
+    "image": "assets/images/products/lantus.jpeg",
     "variants": [
       { "pack": "1 Pen", "price_usd": 42, "price_inr": 1764 },
       { "pack": "3 Pens", "price_usd": 57, "price_inr": 2394 }
@@ -1288,7 +1288,7 @@
     "composition": "Insulin Lispro 100 IU/ml",
     "category": "Diabetes & Metabolic Care",
     "use": "Fast-acting insulin",
-    "image": "assets/images/humalog.jpg",
+    "image": "assets/images/products/humalog.jpeg",
     "variants": [
       { "pack": "1 Pen", "price_usd": 85, "price_inr": 3570 }
     ]
@@ -1299,7 +1299,7 @@
     "composition": "Orlistat 120 mg",
     "category": "Diabetes & Metabolic Care",
     "use": "Weight loss aid",
-    "image": "assets/images/orlistat.jpg",
+    "image": "assets/images/products/orlistat.jpeg",
     "variants": [
       { "pack": "100 Tablets", "price_usd": 55, "price_inr": 2310 },
       { "pack": "300 Tablets", "price_usd": 79, "price_inr": 3318 }
@@ -1311,7 +1311,7 @@
     "composition": "Mometasone Furoate 0.1%",
     "category": "Dermatology & Skin Care",
     "use": "Anti-inflammatory, skin allergy",
-    "image": "assets/images/mometasone.jpg",
+    "image": "assets/images/products/mometasone.jpeg",
     "variants": [
       { "pack": "3 Tubes", "price_usd": 10, "price_inr": 420 },
       { "pack": "5 Tubes", "price_usd": 19, "price_inr": 798 }
@@ -1323,7 +1323,7 @@
     "composition": "Clobetasol Propionate 0.05%",
     "category": "Dermatology & Skin Care",
     "use": "Eczema, psoriasis, skin allergy",
-    "image": "assets/images/clobetasol.jpg",
+    "image": "assets/images/products/clobetasol.jpeg",
     "variants": [
       { "pack": "3 Tubes", "price_usd": 35, "price_inr": 1470 },
       { "pack": "5 Tubes", "price_usd": 45, "price_inr": 1890 },
@@ -1336,7 +1336,7 @@
     "composition": "Lidocaine 5%",
     "category": "Dermatology & Skin Care",
     "use": "Local anaesthetic for pain relief",
-    "image": "assets/images/xylocaine.jpg",
+    "image": "assets/images/products/xylocaine.jpeg",
     "variants": [
       { "pack": "3 Tubes", "price_usd": 29, "price_inr": 1218 },
       { "pack": "5 Tubes", "price_usd": 39, "price_inr": 1638 },
@@ -1349,7 +1349,7 @@
     "composition": "Hydroquinone + Tretinoin + Mometasone",
     "category": "Dermatology & Skin Care",
     "use": "Skin brightening, pigmentation control",
-    "image": "assets/images/melasure.jpg",
+    "image": "assets/images/products/melasure.jpeg",
     "variants": [
       { "pack": "3 Tubes", "price_usd": 54, "price_inr": 2268 },
       { "pack": "5 Tubes", "price_usd": 69, "price_inr": 2898 }
@@ -1361,7 +1361,7 @@
     "composition": "Bepotastine Besilate 1.5%",
     "category": "Eye & Allergy Care",
     "use": "Eye allergy relief",
-    "image": "assets/images/bepotastine.jpg",
+    "image": "assets/images/products/bepotastine.jpeg",
     "variants": [
       { "pack": "3 Bottles", "price_usd": 45, "price_inr": 1890 },
       { "pack": "5 Bottles", "price_usd": 65, "price_inr": 2730 }
@@ -1373,7 +1373,7 @@
     "composition": "Bimatoprost 0.03%",
     "category": "Eye & Allergy Care",
     "use": "Glaucoma, eyelash growth",
-    "image": "assets/images/lumigan.jpg",
+    "image": "assets/images/products/lumigan.jpeg",
     "variants": [
       { "pack": "3 Bottles", "price_usd": 55, "price_inr": 2310 },
       { "pack": "5 Bottles", "price_usd": 75, "price_inr": 3150 }
@@ -1385,7 +1385,7 @@
     "composition": "Budesonide 100 mcg",
     "category": "Eye & Allergy Care",
     "use": "Nasal allergy, sinus relief",
-    "image": "assets/images/budesonide.jpg",
+    "image": "assets/images/products/budesonide.jpeg",
     "variants": [
       { "pack": "3 Bottles", "price_usd": 20, "price_inr": 840 },
       { "pack": "5 Bottles", "price_usd": 30, "price_inr": 1260 }
@@ -1397,7 +1397,7 @@
     "composition": "Estradiol Valerate 2 mg",
     "category": "Hormonal & Thyroid Care",
     "use": "Hormone replacement therapy",
-    "image": "assets/images/estradiol.jpg",
+    "image": "assets/images/products/estradiol.jpeg",
     "variants": [
       { "pack": "50 Tablets", "price_usd": 35, "price_inr": 1470 },
       { "pack": "100 Tablets", "price_usd": 49, "price_inr": 2058 }
@@ -1409,7 +1409,7 @@
     "composition": "Levothyroxine Sodium 88 mcg",
     "category": "Hormonal & Thyroid Care",
     "use": "Thyroid hormone replacement",
-    "image": "assets/images/thyroxine.jpg",
+    "image": "assets/images/products/thyroxine.jpeg",
     "variants": [
       { "pack": "120 Tablets", "price_usd": 44, "price_inr": 1848 },
       { "pack": "360 Tablets", "price_usd": 64, "price_inr": 2688 }
@@ -1421,7 +1421,7 @@
     "composition": "Sirolimus 1 mg",
     "category": "Hormonal & Thyroid Care",
     "use": "Immunosuppressant, anti-aging therapy",
-    "image": "assets/images/sirolimus.jpg",
+    "image": "assets/images/products/sirolimus.jpeg",
     "variants": [
       { "pack": "30 Tablets", "price_usd": 48, "price_inr": 2016 },
       { "pack": "50 Tablets", "price_usd": 60, "price_inr": 2520 },
@@ -1434,7 +1434,7 @@
     "composition": "Triclabendazole 250 mg",
     "category": "Infection & Antiparasitic Treatments",
     "use": "Antiparasitic (liver fluke infections)",
-    "image": "assets/images/triclabendazole.jpg",
+    "image": "assets/images/products/triclabendazole.jpeg",
     "variants": [
       { "pack": "50 Tablets", "price_usd": 54, "price_inr": 2268 },
       { "pack": "100 Tablets", "price_usd": 80, "price_inr": 3360 }
@@ -1446,7 +1446,7 @@
     "composition": "Praziquantel 600 mg",
     "category": "Infection & Antiparasitic Treatments",
     "use": "Tapeworm & schistosomiasis treatment",
-    "image": "assets/images/praziquantel.jpg",
+    "image": "assets/images/products/praziquantel.jpeg",
     "variants": [
       { "pack": "50 Tablets", "price_usd": 49, "price_inr": 2058 },
       { "pack": "100 Tablets", "price_usd": 59, "price_inr": 2478 }
@@ -1458,7 +1458,7 @@
     "composition": "Tamoxifen Citrate 10 mg",
     "category": "Infection & Antiparasitic Treatments",
     "use": "Anti-cancer, hormone therapy",
-    "image": "assets/images/tamoxifen.jpg",
+    "image": "assets/images/products/tamoxifen.jpeg",
     "variants": [
       { "pack": "300 Tablets", "price_usd": 45, "price_inr": 1890 },
       { "pack": "500 Tablets", "price_usd": 64, "price_inr": 2688 }
@@ -1470,7 +1470,7 @@
     "composition": "Rabeprazole Sodium 20 mg",
     "category": "Infection & Antiparasitic Treatments",
     "use": "Acid reflux, GERD",
-    "image": "assets/images/rabeprazole.jpg",
+    "image": "assets/images/products/rabeprazole.jpeg",
     "variants": [
       { "pack": "100 Tablets", "price_usd": 19, "price_inr": 798 },
       { "pack": "300 Tablets", "price_usd": 29, "price_inr": 1218 },
@@ -1483,7 +1483,7 @@
     "composition": "Pheniramine Maleate 50 mg",
     "category": "Infection & Antiparasitic Treatments",
     "use": "Allergy, itching relief",
-    "image": "assets/images/pheniramine.jpg",
+    "image": "assets/images/products/pheniramine.jpeg",
     "variants": [
       { "pack": "100 Tablets", "price_usd": 18, "price_inr": 756 },
       { "pack": "300 Tablets", "price_usd": 28, "price_inr": 1176 },
@@ -1496,7 +1496,7 @@
     "composition": "Indomethacin 50 mg",
     "category": "Infection & Antiparasitic Treatments",
     "use": "Anti-inflammatory, pain relief",
-    "image": "assets/images/indomethacin.jpg",
+    "image": "assets/images/products/indomethacin.jpeg",
     "variants": [
       { "pack": "300 Tablets", "price_usd": 85, "price_inr": 3570 },
       { "pack": "500 Tablets", "price_usd": 99, "price_inr": 4158 }
@@ -1508,7 +1508,7 @@
     "composition": "Boldenone Undecylenate 250 mg/ml (10ml vial)",
     "category": "Hormonal / Performance Enhancement",
     "use": "Muscle recovery & strength (under medical supervision)",
-    "image": "assets/images/boldebolin.jpg",
+    "image": "assets/images/products/boldebolin.jpeg",
     "variants": [
       { "pack": "1 Vial", "price_usd": 35, "price_inr": 1470 },
       { "pack": "3 Vials", "price_usd": 65, "price_inr": 2730 }
@@ -1520,7 +1520,7 @@
     "composition": "Levetiracetam 500 mg",
     "category": "Neurology",
     "use": "Used to treat seizures and epilepsy in adults and children.",
-    "image": "assets/images/leveteracitam.jpg",
+    "image": "assets/images/products/leveteracitam.jpeg",
     "variants": [
       { "pack": "100 Tablets", "price_usd": 95, "price_inr": 8075 },
       { "pack": "300 Tablets", "price_usd": 149, "price_inr": 12665 },
@@ -1533,7 +1533,7 @@
     "composition": "Propylthiouracil 50 mg",
     "category": "Thyroid Treatment",
     "use": "Used to treat hyperthyroidism and Graves’ disease.",
-    "image": "assets/images/propylthiouracil.jpg",
+    "image": "assets/images/products/propylthiouracil.jpeg",
     "variants": [
       { "pack": "100 Tablets", "price_usd": 95, "price_inr": 8075 },
       { "pack": "300 Tablets", "price_usd": 135, "price_inr": 11475 }
@@ -1545,7 +1545,7 @@
     "composition": "Hydroxyzine Hydrochloride 10 mg",
     "category": "Allergy / Anxiety",
     "use": "Used to relieve itching, anxiety, and allergic reactions.",
-    "image": "assets/images/hydroxyzine10.jpg",
+    "image": "assets/images/products/hydroxyzine10.jpeg",
     "variants": [
       { "pack": "100 Tablets", "price_usd": 90, "price_inr": 7650 },
       { "pack": "300 Tablets", "price_usd": 160, "price_inr": 13600 }
@@ -1557,7 +1557,7 @@
     "composition": "Hydroxyzine Hydrochloride 25 mg",
     "category": "Allergy / Anxiety",
     "use": "Used for anxiety and to relieve itching caused by allergies.",
-    "image": "assets/images/hydroxyzine25.jpg",
+    "image": "assets/images/products/hydroxyzine25.jpeg",
     "variants": [
       { "pack": "100 Tablets", "price_usd": 110, "price_inr": 9350 },
       { "pack": "300 Tablets", "price_usd": 199, "price_inr": 16915 }
@@ -1569,7 +1569,7 @@
     "composition": "Hydroxychloroquine Sulfate 200 mg",
     "category": "Anti-Malarial / Autoimmune",
     "use": "Used to treat malaria, lupus, and rheumatoid arthritis.",
-    "image": "assets/images/hydroxychloroquine200.jpg",
+    "image": "assets/images/products/hydroxychloroquine200.jpeg",
     "variants": [
       { "pack": "100 Tablets", "price_usd": 115, "price_inr": 9775 },
       { "pack": "300 Tablets", "price_usd": 135, "price_inr": 11475 },
@@ -1583,7 +1583,7 @@
     "composition": "Hydroxychloroquine Sulfate 400 mg",
     "category": "Anti-Malarial / Autoimmune",
     "use": "Used to treat autoimmune diseases such as lupus and rheumatoid arthritis.",
-    "image": "assets/images/hydroxychloroquine400.jpg",
+    "image": "assets/images/products/hydroxychloroquine400.jpeg",
     "variants": [
       { "pack": "100 Tablets", "price_usd": 125, "price_inr": 10625 },
       { "pack": "300 Tablets", "price_usd": 145, "price_inr": 12325 },
@@ -1597,7 +1597,7 @@
     "composition": "Tretinoin 0.05%",
     "category": "Dermatology",
     "use": "Used for acne treatment and reducing fine wrinkles.",
-    "image": "assets/images/tretinoin.jpg",
+    "image": "assets/images/products/tretinoin.jpeg",
     "variants": [
       { "pack": "1 Tube", "price_usd": 79, "price_inr": 6715 },
       { "pack": "3 Tubes", "price_usd": 94, "price_inr": 7990 },
@@ -1610,7 +1610,7 @@
     "composition": "Naltrexone Hydrochloride 50 mg",
     "category": "Addiction Treatment",
     "use": "Used to manage alcohol and opioid dependence.",
-    "image": "assets/images/naltrexone50.jpg",
+    "image": "assets/images/products/naltrexone50.jpeg",
     "variants": [
       { "pack": "100 Tablets", "price_usd": 199, "price_inr": 16915 }
     ]
@@ -1621,7 +1621,7 @@
     "composition": "Triclabendazole 250 mg",
     "category": "Anthelmintic / Veterinary",
     "use": "Used to treat liver fluke infections in animals and humans.",
-    "image": "assets/images/triclabendazole.jpg",
+    "image": "assets/images/products/triclabendazole.jpeg",
     "variants": [
       { "pack": "100 Tablets", "price_usd": 110, "price_inr": 9350 },
       { "pack": "300 Tablets", "price_usd": 189, "price_inr": 16065 }
@@ -1633,7 +1633,7 @@
     "composition": "Sildenafil Citrate 100 mg",
     "category": "Erectile Dysfunction",
     "use": "Used to treat erectile dysfunction in men.",
-    "image": "assets/images/cenforce100.jpg",
+    "image": "assets/images/products/cenforce100.jpeg",
     "variants": [
       { "pack": "100 Tablets", "price_usd": 85, "price_inr": 7225 },
       { "pack": "300 Tablets", "price_usd": 108, "price_inr": 9180 },
@@ -1647,7 +1647,7 @@
     "composition": "Rivaroxaban 20 mg",
     "category": "Anticoagulant",
     "use": "Used to prevent blood clots and treat deep vein thrombosis.",
-    "image": "assets/images/rivaroxaban.jpg",
+    "image": "assets/images/products/rivaroxaban.jpeg",
     "variants": [
       { "pack": "50 Tablets", "price_usd": 85, "price_inr": 7225 },
       { "pack": "100 Tablets", "price_usd": 99, "price_inr": 8415 },
@@ -1660,7 +1660,7 @@
     "composition": "Mesterolone 25 mg",
     "category": "Hormone Therapy",
     "use": "Used to treat male hypogonadism and fertility disorders.",
-    "image": "assets/images/mesterolone.jpg",
+    "image": "assets/images/products/mesterolone.jpeg",
     "variants": [
       { "pack": "100 Tablets", "price_usd": 139, "price_inr": 11815 },
       { "pack": "300 Tablets", "price_usd": 289, "price_inr": 24565 }
@@ -1672,7 +1672,7 @@
     "composition": "L-Carnitine 500 mg",
     "category": "Supplement",
     "use": "Supports energy production and fat metabolism.",
-    "image": "assets/images/lcarnitine.jpg",
+    "image": "assets/images/products/lcarnitine.jpeg",
     "variants": [
       { "pack": "100 Tablets", "price_usd": 135, "price_inr": 11475 },
       { "pack": "300 Tablets", "price_usd": 249, "price_inr": 21165 }
@@ -1684,7 +1684,7 @@
     "composition": "Ketotifen Fumarate 1 mg",
     "category": "Allergy / Asthma",
     "use": "Used for allergic rhinitis, asthma prevention, and chronic urticaria.",
-    "image": "assets/images/asthafen.jpg",
+    "image": "assets/images/products/asthafen.jpeg",
     "variants": [
       { "pack": "100 Tablets", "price_usd": 85, "price_inr": 7225 },
       { "pack": "300 Tablets", "price_usd": 119, "price_inr": 10115 },
@@ -1692,3 +1692,4 @@
     ]
   }
 ]
+
