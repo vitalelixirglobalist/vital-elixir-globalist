@@ -105,23 +105,6 @@
   <div class="fab-label" aria-hidden="true">24/7 Live Chat Team</div>
 </aside>
 <style>
-    :root {
-    --site-zoom: 0.8;
-  }
-
-  /* Apply an 80% zoom sitewide (Chrome) with a transform fallback for browsers
-     that do not support the non-standard zoom property. */
-  html {
-    zoom: var(--site-zoom);
-  }
-
-  @supports not (zoom: 1) {
-    body {
-      transform: scale(var(--site-zoom));
-      transform-origin: top left;
-      width: calc(100% / var(--site-zoom));
-    }
-  }
     .site-header {
     background-image: linear-gradient(135deg, rgba(15, 23, 42, 0.85), rgba(14, 165, 233, 0.6)), url('assets/images/header.jpeg');
     background-size: cover;
@@ -130,34 +113,28 @@
   }
 
   .header-content {
-        --header-height: clamp(4rem, 5vw, 5.5rem);
+      --header-height: 5.2rem;
     background: rgba(15, 23, 42, 0.6);
     border-radius: 1rem;
     backdrop-filter: blur(6px);
     margin: 0.6rem auto;
         min-height: var(--header-height);
+            height: var(--header-height);
     padding-left: 0;
   }
 
 .site-logo {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    justify-content: center;
-    align-self: stretch;
-    margin-left: 0;
-    border-radius: 6px;
-    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.25);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    height: 100%;
   }
 
  .site-logo img {
     height: 100%;
-    max-height: calc(var(--header-height) - 1rem);
+    max-height: calc(var(--header-height) - 0.6rem);
     width: auto;
     object-fit: contain;
-   display: block;
-    border-radius: 6px;
-    background: transparent;
+      display: block;
   }
 
 .site-logo:hover,
@@ -166,12 +143,12 @@
     box-shadow: 0 12px 28px rgba(15, 23, 42, 0.3);
   }
 
-   @media (max-width: 768px) {
+  @media (max-width: 768px) {
     .header-content {
-      --header-height: clamp(3.25rem, 9vw, 4rem);
+      --header-height: 3.6rem;
     }
     .site-logo img {
-         max-height: calc(var(--header-height) - 0.75rem);
+max-height: 2.8rem;
     }
   }
   .desktop-nav a {
