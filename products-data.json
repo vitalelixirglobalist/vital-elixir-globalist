@@ -1,17 +1,5 @@
 [
   {
-    "name": "Tadalafil 20 mg",
-    "brand": "Sunrise",
-    "composition": "Tadalafil 20 mg",
-    "category": "Men’s Health",
-    "use": "Erectile dysfunction",
-    "image": "assets/images/tadalafil20.jpg",
-    "variants": [
-      { "pack": "100 Tablets", "price_usd": 35, "price_inr": 1470 },
-      { "pack": "300 Tablets", "price_usd": 45, "price_inr": 1890 }
-    ]
-  },
-  {
   "name": "Pimobendan 2.5 mg",
   "brand": "Vetmedin",
   "composition": "Pimobendan 2.5 mg",
@@ -217,32 +205,6 @@
   ]
 },
 {
-  "name": "Ivermectin 40 mg",
-  "brand": "Generic",
-  "composition": "Ivermectin 40 mg",
-  "category": "Antiparasitic",
-  "use": "Treatment of parasitic infections",
-  "image": "assets/images/ivermectin40.jpg",
-  "variants": [
-    { "pack": "50 Tablets", "price_usd": 46, "price_inr": 0 },
-    { "pack": "100 Tablets", "price_usd": 59, "price_inr": 0 },
-    { "pack": "300 Tablets", "price_usd": 80, "price_inr": 0 },
-    { "pack": "500 Tablets", "price_usd": 104, "price_inr": 0 },
-    { "pack": "1000 Tablets", "price_usd": 180, "price_inr": 0 }
-  ]
-},
-{
-  "name": "Shilajit Gold Tablets",
-  "brand": "Generic",
-  "composition": "Shilajit Gold",
-  "category": "Herbal / Ayurvedic",
-  "use": "Energy, stamina, and overall vitality support",
-  "image": "assets/images/shilajit_gold.jpg",
-  "variants": [
-    { "pack": "240 Tablets (4 Boxes)", "price_usd": 99, "price_inr": 0 }
-  ]
-},
-{
   "name": "Carvedilol 3.125 mg",
   "brand": "Generic",
   "composition": "Carvedilol 3.125 mg",
@@ -294,21 +256,6 @@
     { "pack": "100 Tablets", "price_usd": 62, "price_inr": 0 },
     { "pack": "300 Tablets", "price_usd": 87, "price_inr": 0 },
     { "pack": "500 Tablets", "price_usd": 115, "price_inr": 0 }
-  ]
-},
-{
-  "name": "Fenbendazole 222 mg",
-  "brand": "Generic",
-  "composition": "Fenbendazole 222 mg",
-  "category": "Antiparasitic",
-  "use": "Treatment of parasitic infections",
-  "image": "assets/images/fenbendazole222.jpg",
-  "variants": [
-    { "pack": "50 Tablets", "price_usd": 46, "price_inr": 0 },
-    { "pack": "100 Tablets", "price_usd": 59, "price_inr": 0 },
-    { "pack": "300 Tablets", "price_usd": 79, "price_inr": 0 },
-    { "pack": "500 Tablets", "price_usd": 99, "price_inr": 0 },
-    { "pack": "1000 Tablets", "price_usd": 175, "price_inr": 0 }
   ]
 },
 {
@@ -397,18 +344,6 @@
     { "pack": "100 Oral Jelly Pouches", "price_usd": 111, "price_inr": 0 },
     { "pack": "300 Oral Jelly Pouches", "price_usd": 215, "price_inr": 0 },
     { "pack": "500 Oral Jelly Pouches", "price_usd": 313, "price_inr": 0 }
-  ]
-},
-{
-  "name": "Sildenafil 100 mg Oral Jelly",
-  "brand": "Kamagra",
-  "composition": "Sildenafil Citrate 100 mg",
-  "category": "Men’s Health",
-  "use": "Erectile dysfunction",
-  "image": "assets/images/kamagra_oral_jelly.jpg",
-  "variants": [
-    { "pack": "50 Oral Jelly Pouches", "price_usd": 59, "price_inr": 0 },
-    { "pack": "100 Oral Jelly Pouches", "price_usd": 89, "price_inr": 0 }
   ]
 },
 {
@@ -561,22 +496,6 @@
   ]
 },
 {
-  "name": "Metformin 500 mg",
-  "brand": "Generic",
-  "composition": "Metformin 500 mg",
-  "category": "Antidiabetic",
-  "use": "Management of type 2 diabetes",
-  "image": "assets/images/metformin500.jpg",
-  "variants": [
-    { "pack": "50 Tablets", "price_usd": 46, "price_inr": 0 },
-    { "pack": "100 Tablets", "price_usd": 59, "price_inr": 0 },
-    { "pack": "300 Tablets", "price_usd": 79, "price_inr": 0 },
-    { "pack": "500 Tablets", "price_usd": 101, "price_inr": 0 },
-    { "pack": "1000 Tablets", "price_usd": 175, "price_inr": 0 },
-    { "pack": "2000 Tablets", "price_usd": 314, "price_inr": 0 }
-  ]
-},
-{
   "name": "Tadalafil 40 mg",
   "brand": "Generic",
   "composition": "Tadalafil 40 mg",
@@ -666,37 +585,6 @@
     { "pack": "300 Tablets", "price_usd": 129, "price_inr": 0 },
     { "pack": "500 Tablets", "price_usd": 179, "price_inr": 0 },
     { "pack": "1000 Tablets", "price_usd": 299, "price_inr": 0 },
-    { "pack": "2000 Tablets", "price_usd": 549, "price_inr": 0 }
-  ]
-},
-{
-  "name": "Bepotastine Besilate Ophthalmic Solution 1.5%",
-  "brand": "Generic",
-  "composition": "Bepotastine Besilate 1.5%",
-  "category": "Ophthalmology",
-  "use": "Treatment of allergic conjunctivitis and eye itching",
-  "image": "assets/images/bepotastine_besilate_15.jpg",
-  "variants": [
-    { "pack": "3 Bottles", "price_usd": 49, "price_inr": 0 },
-    { "pack": "5 Bottles", "price_usd": 69, "price_inr": 0 },
-    { "pack": "7 Bottles", "price_usd": 85, "price_inr": 0 },
-    { "pack": "9 Bottles", "price_usd": 95, "price_inr": 0 },
-    { "pack": "11 Bottles", "price_usd": 129, "price_inr": 0 }
-  ]
-},
-{
-  "name": "Orlistat 120 mg",
-  "brand": "Generic",
-  "composition": "Orlistat 120 mg",
-  "category": "Weight Management",
-  "use": "Management of obesity and weight loss",
-  "image": "assets/images/orlistat120.jpg",
-  "variants": [
-    { "pack": "50 Tablets", "price_usd": 55, "price_inr": 0 },
-    { "pack": "100 Tablets", "price_usd": 75, "price_inr": 0 },
-    { "pack": "300 Tablets", "price_usd": 119, "price_inr": 0 },
-    { "pack": "500 Tablets", "price_usd": 169, "price_inr": 0 },
-    { "pack": "1000 Tablets", "price_usd": 309, "price_inr": 0 },
     { "pack": "2000 Tablets", "price_usd": 549, "price_inr": 0 }
   ]
 },
@@ -878,68 +766,6 @@
   ]
 },
 {
-  "name": "Fluralaner 1000 mg",
-  "brand": "Bravecto",
-  "composition": "Fluralaner 1000 mg",
-  "category": "Veterinary Medicine",
-  "use": "Flea and tick control for dogs (up to 75 lbs)",
-  "image": "assets/images/bravecto_1000mg.jpg",
-  "variants": [
-    { "pack": "1 Tablet", "price_usd": 105, "price_inr": 0 },
-    { "pack": "2 Tablets", "price_usd": 145, "price_inr": 0 },
-    { "pack": "3 Tablets", "price_usd": 189, "price_inr": 0 }
-  ]
-},
-{
-  "name": "Minoxidil 10 mg",
-  "brand": "Minox",
-  "composition": "Minoxidil 10 mg",
-  "category": "Dermatology / Hair Care",
-  "use": "Treatment of hair loss and alopecia",
-  "image": "assets/images/minox_minoxidil10.jpg",
-  "variants": [
-    { "pack": "300 Tablets", "price_usd": 79, "price_inr": 0 }
-  ]
-},
-{
-  "name": "Minoxidil 5 mg",
-  "brand": "Minox",
-  "composition": "Minoxidil 5 mg",
-  "category": "Dermatology / Hair Care",
-  "use": "Treatment of hair loss and alopecia",
-  "image": "assets/images/minox_minoxidil5.jpg",
-  "variants": [
-    { "pack": "100 Tablets", "price_usd": 39, "price_inr": 0 },
-    { "pack": "300 Tablets", "price_usd": 59, "price_inr": 0 },
-    { "pack": "500 Tablets", "price_usd": 75, "price_inr": 0 }
-  ]
-},
-{
-  "name": "Indomethacin 50 mg",
-  "brand": "Generic",
-  "composition": "Indomethacin 50 mg",
-  "category": "Pain Relief / Anti-inflammatory",
-  "use": "Management of pain and inflammation",
-  "image": "assets/images/indomethacin50.jpg",
-  "variants": [
-    { "pack": "300 Tablets", "price_usd": 85, "price_inr": 0 },
-    { "pack": "500 Tablets", "price_usd": 99, "price_inr": 0 }
-  ]
-},
-{
-  "name": "Metformin 500 mg",
-  "brand": "Generic",
-  "composition": "Metformin 500 mg",
-  "category": "Antidiabetic",
-  "use": "Management of type 2 diabetes",
-  "image": "assets/images/metformin500.jpg",
-  "variants": [
-    { "pack": "100 Tablets", "price_usd": 35, "price_inr": 0 },
-    { "pack": "300 Tablets", "price_usd": 59, "price_inr": 0 },
-    { "pack": "500 Tablets", "price_usd": 79, "price_inr": 0 }
-  ]
-},
-{
   "name": "Clobetasol Propionate Cream",
   "brand": "Generic",
   "composition": "Clobetasol Propionate",
@@ -1015,18 +841,6 @@
   ]
 },
 {
-  "name": "Mebendazole 500 mg",
-  "brand": "Generic",
-  "composition": "Mebendazole 500 mg",
-  "category": "Antiparasitic",
-  "use": "Treatment of intestinal worm infections",
-  "image": "assets/images/mebendazole500.jpg",
-  "variants": [
-    { "pack": "100 Tablets", "price_usd": 34, "price_inr": 0 },
-    { "pack": "300 Tablets", "price_usd": 52, "price_inr": 0 }
-  ]
-},
-{
   "name": "Tamoxifen 10 mg",
   "brand": "Generic",
   "composition": "Tamoxifen 10 mg",
@@ -1052,19 +866,6 @@
   ]
 },
 {
-  "name": "Rabeprazole 20 mg",
-  "brand": "Generic",
-  "composition": "Rabeprazole 20 mg",
-  "category": "Gastroenterology",
-  "use": "Treatment of acid reflux and peptic ulcer disease",
-  "image": "assets/images/rabeprazole20.jpg",
-  "variants": [
-    { "pack": "100 Tablets", "price_usd": 19, "price_inr": 0 },
-    { "pack": "300 Tablets", "price_usd": 29, "price_inr": 0 },
-    { "pack": "500 Tablets", "price_usd": 39, "price_inr": 0 }
-  ]
-},
-{
   "name": "Thyroxine Sodium 88 mcg",
   "brand": "Generic",
   "composition": "Levothyroxine Sodium 88 mcg",
@@ -1074,18 +875,6 @@
   "variants": [
     { "pack": "120 Tablets", "price_usd": 44, "price_inr": 0 },
     { "pack": "360 Tablets", "price_usd": 64, "price_inr": 0 }
-  ]
-},
-{
-  "name": "Bepotastine Besilate Ophthalmic Solution 1.5%",
-  "brand": "Generic",
-  "composition": "Bepotastine Besilate 1.5%",
-  "category": "Ophthalmology",
-  "use": "Treatment of allergic conjunctivitis and eye itching",
-  "image": "assets/images/bepotastine_besilate_15.jpg",
-  "variants": [
-    { "pack": "3 Bottles", "price_usd": 45, "price_inr": 0 },
-    { "pack": "5 Bottles", "price_usd": 65, "price_inr": 0 }
   ]
 },
 {
@@ -1137,30 +926,6 @@
   ]
 },
 {
-  "name": "Tadalafil 60 mg",
-  "brand": "Generic",
-  "composition": "Tadalafil 60 mg",
-  "category": "Men’s Health",
-  "use": "Erectile dysfunction",
-  "image": "assets/images/tadalafil60.jpg",
-  "variants": [
-    { "pack": "100 Tablets", "price_usd": 45, "price_inr": 0 },
-    { "pack": "300 Tablets", "price_usd": 55, "price_inr": 0 }
-  ]
-},
-{
-  "name": "Tadalafil 20 mg",
-  "brand": "Generic",
-  "composition": "Tadalafil 20 mg",
-  "category": "Men’s Health",
-  "use": "Erectile dysfunction",
-  "image": "assets/images/tadalafil20.jpg",
-  "variants": [
-    { "pack": "100 Tablets", "price_usd": 35, "price_inr": 0 },
-    { "pack": "300 Tablets", "price_usd": 45, "price_inr": 0 }
-  ]
-},
-{
   "name": "Triclabendazole 250 mg",
   "brand": "Generic",
   "composition": "Triclabendazole 250 mg",
@@ -1170,30 +935,6 @@
   "variants": [
     { "pack": "50 Tablets", "price_usd": 54, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 80, "price_inr": 0 }
-  ]
-},
-{
-  "name": "Finasteride 5 mg",
-  "brand": "Generic",
-  "composition": "Finasteride 5 mg",
-  "category": "Men’s Health / Urology",
-  "use": "Treatment of benign prostatic hyperplasia and hair loss",
-  "image": "assets/images/finasteride5.jpg",
-  "variants": [
-    { "pack": "100 Tablets", "price_usd": 25, "price_inr": 0 },
-    { "pack": "300 Tablets", "price_usd": 35, "price_inr": 0 }
-  ]
-},
-{
-  "name": "Finasteride 1 mg",
-  "brand": "Generic",
-  "composition": "Finasteride 1 mg",
-  "category": "Men’s Health / Dermatology",
-  "use": "Treatment of male pattern hair loss",
-  "image": "assets/images/finasteride1.jpg",
-  "variants": [
-    { "pack": "100 Tablets", "price_usd": 20, "price_inr": 0 },
-    { "pack": "300 Tablets", "price_usd": 30, "price_inr": 0 }
   ]
 },
 {
@@ -1230,17 +971,6 @@
   "variants": [
     { "pack": "1 Vial (10 ml)", "price_usd": 35, "price_inr": 0 },
     { "pack": "3 Vials (10 ml each)", "price_usd": 65, "price_inr": 0 }
-  ]
-},
-{
-  "name": "Oclacitinib 16 mg",
-  "brand": "Generic",
-  "composition": "Oclacitinib 16 mg",
-  "category": "Veterinary Medicine",
-  "use": "Management of allergic dermatitis and pruritus in dogs",
-  "image": "assets/images/oclacitinib16.jpg",
-  "variants": [
-    { "pack": "10 Tablets", "price_usd": 35, "price_inr": 0 }
   ]
 },
 {
@@ -1416,19 +1146,6 @@
   ]
 },
 {
-  "name": "Ivermectin 12 mg",
-  "brand": "Generic",
-  "composition": "Ivermectin 12 mg",
-  "category": "Antiparasitic",
-  "use": "Treatment of parasitic infections",
-  "image": "assets/images/ivermectin12.jpg",
-  "variants": [
-    { "pack": "100 Tablets", "price_usd": 15, "price_inr": 0 },
-    { "pack": "300 Tablets", "price_usd": 22, "price_inr": 0 },
-    { "pack": "500 Tablets", "price_usd": 31, "price_inr": 0 }
-  ]
-},
-{
   "name": "Nystatin 50,000 IU",
   "brand": "Generic",
   "composition": "Nystatin 50,000 IU",
@@ -1468,19 +1185,6 @@
   ]
 },
 {
-  "name": "Fenbendazole 444 mg",
-  "brand": "Generic",
-  "composition": "Fenbendazole 444 mg",
-  "category": "Antiparasitic",
-  "use": "Treatment of parasitic infections",
-  "image": "assets/images/fenbendazole444.jpg",
-  "variants": [
-    { "pack": "100 Tablets", "price_usd": 59, "price_inr": 0 },
-    { "pack": "300 Tablets", "price_usd": 85, "price_inr": 0 },
-    { "pack": "500 Tablets", "price_usd": 111, "price_inr": 0 }
-  ]
-},
-{
   "name": "Propranolol 10 mg",
   "brand": "Generic",
   "composition": "Propranolol Hydrochloride 10 mg",
@@ -1507,17 +1211,6 @@
   ]
 },
 {
-  "name": "Indomethacin 50 mg",
-  "brand": "Generic",
-  "composition": "Indomethacin 50 mg",
-  "category": "Pain Relief / Anti-inflammatory",
-  "use": "Management of pain and inflammation",
-  "image": "assets/images/indomethacin50.jpg",
-  "variants": [
-    { "pack": "300 Tablets", "price_usd": 85, "price_inr": 0 }
-  ]
-},
-{
   "name": "Indomethacin 25 mg",
   "brand": "Generic",
   "composition": "Indomethacin 25 mg",
@@ -1528,18 +1221,6 @@
     { "pack": "300 Tablets", "price_usd": 79, "price_inr": 0 }
   ]
 },
-  {
-    "name": "Tadalafil 60 mg",
-    "brand": "Sunrise",
-    "composition": "Tadalafil 60 mg",
-    "category": "Men’s Health",
-    "use": "Erectile dysfunction (extra strength)",
-    "image": "assets/images/tadalafil60.jpg",
-    "variants": [
-      { "pack": "100 Tablets", "price_usd": 45, "price_inr": 1890 },
-      { "pack": "300 Tablets", "price_usd": 55, "price_inr": 2310 }
-    ]
-  },
   {
     "name": "Shilarise",
     "brand": "Sunrise",
@@ -1574,43 +1255,6 @@
     "variants": [
       { "pack": "100 Tablets", "price_usd": 25, "price_inr": 1050 },
       { "pack": "300 Tablets", "price_usd": 35, "price_inr": 1470 }
-    ]
-  },
-  {
-    "name": "Minoxidil 5 mg",
-    "brand": "Intas",
-    "composition": "Minoxidil 5 mg",
-    "category": "Men’s Health",
-    "use": "Hair growth stimulant",
-    "image": "assets/images/minoxidil5.jpg",
-    "variants": [
-      { "pack": "100 Tablets", "price_usd": 39, "price_inr": 1638 },
-      { "pack": "300 Tablets", "price_usd": 59, "price_inr": 2478 },
-      { "pack": "500 Tablets", "price_usd": 75, "price_inr": 3150 }
-    ]
-  },
-  {
-    "name": "Minoxidil 10 mg",
-    "brand": "Intas",
-    "composition": "Minoxidil 10 mg",
-    "category": "Men’s Health",
-    "use": "High-strength hair growth",
-    "image": "assets/images/minoxidil10.jpg",
-    "variants": [
-      { "pack": "300 Tablets", "price_usd": 79, "price_inr": 3318 }
-    ]
-  },
-  {
-    "name": "Metformin 500 mg",
-    "brand": "Sun Pharma",
-    "composition": "Metformin Hydrochloride 500 mg",
-    "category": "Diabetes & Metabolic Care",
-    "use": "Type-2 diabetes control",
-    "image": "assets/images/metformin.jpg",
-    "variants": [
-      { "pack": "100 Tablets", "price_usd": 35, "price_inr": 1470 },
-      { "pack": "300 Tablets", "price_usd": 59, "price_inr": 2478 },
-      { "pack": "500 Tablets", "price_usd": 79, "price_inr": 3318 }
     ]
   },
   {
@@ -1809,18 +1453,6 @@
     ]
   },
   {
-    "name": "Mebendazole 500 mg",
-    "brand": "Cipla",
-    "composition": "Mebendazole 500 mg",
-    "category": "Infection & Antiparasitic Treatments",
-    "use": "Deworming agent",
-    "image": "assets/images/mebendazole.jpg",
-    "variants": [
-      { "pack": "100 Tablets", "price_usd": 34, "price_inr": 1428 },
-      { "pack": "300 Tablets", "price_usd": 52, "price_inr": 2184 }
-    ]
-  },
-  {
     "name": "Tamoxifen 10 mg",
     "brand": "Sun Pharma",
     "composition": "Tamoxifen Citrate 10 mg",
@@ -1880,30 +1512,6 @@
     "variants": [
       { "pack": "1 Vial", "price_usd": 35, "price_inr": 1470 },
       { "pack": "3 Vials", "price_usd": 65, "price_inr": 2730 }
-    ]
-  },
-  {
-    "name": "Oclacitinib Tablets 16 mg",
-    "brand": "Zoetis",
-    "composition": "Oclacitinib Maleate 16 mg",
-    "category": "Veterinary / Other Uses",
-    "use": "Pet allergy & dermatitis",
-    "image": "assets/images/oclacitinib.jpg",
-    "variants": [
-      { "pack": "10 Tablets", "price_usd": 35, "price_inr": 1470 },
-      { "pack": "40 Tablets", "price_usd": 119, "price_inr": 5000 }
-    ]
-  },
-  {
-    "name": "Oclacitinib Tablets 16 mg (Alt)",
-    "brand": "Zoetis",
-    "composition": "Oclacitinib Maleate 16 mg",
-    "category": "Veterinary / Other Uses",
-    "use": "Used to treat allergic dermatitis and control itching in dogs.",
-    "image": "assets/images/oclacitinib.jpg",
-    "variants": [
-      { "pack": "10 Tablets", "price_usd": 35, "price_inr": 2975 },
-      { "pack": "40 Tablets", "price_usd": 119, "price_inr": 10115 }
     ]
   },
   {
@@ -2044,31 +1652,6 @@
       { "pack": "50 Tablets", "price_usd": 85, "price_inr": 7225 },
       { "pack": "100 Tablets", "price_usd": 99, "price_inr": 8415 },
       { "pack": "300 Tablets", "price_usd": 159, "price_inr": 13515 }
-    ]
-  },
-  {
-    "name": "Fenbendazole 222 mg",
-    "brand": "Safegard",
-    "composition": "Fenbendazole 222 mg",
-    "category": "Veterinary / Antiparasitic",
-    "use": "Used for the treatment of parasitic infections in animals and humans (research use).",
-    "image": "assets/images/fenbendazole222.jpg",
-    "variants": [
-      { "pack": "100 Tablets", "price_usd": 95, "price_inr": 8075 },
-      { "pack": "500 Tablets", "price_usd": 149, "price_inr": 12665 }
-    ]
-  },
-  {
-    "name": "Fenbendazole 1000 mg",
-    "brand": "Safegard",
-    "composition": "Fenbendazole 1g",
-    "category": "Veterinary / Antiparasitic",
-    "use": "Used to treat intestinal parasites; also studied for potential anti-cancer properties.",
-    "image": "assets/images/fenbendazole1000.jpg",
-    "variants": [
-      { "pack": "100 Tablets", "price_usd": 110, "price_inr": 9350 },
-      { "pack": "300 Tablets", "price_usd": 149, "price_inr": 12665 },
-      { "pack": "500 Tablets", "price_usd": 199, "price_inr": 16915 }
     ]
   },
   {
