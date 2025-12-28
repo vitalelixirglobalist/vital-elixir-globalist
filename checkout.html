@@ -48,9 +48,18 @@
               <input type="radio" name="paymentMethod" value="card" class="text-brand" />
               <span class="font-semibold">Credit / Debit Card</span>
             </label>
-            <div data-payment-panel="card" class="hidden border border-gray-200 rounded-lg p-4 bg-gray-50 text-gray-500">
-              Currently unavailable. We are sorry — please use another option.
-            </div>
+           <div data-payment-panel="card" class="hidden border border-red-200 rounded-lg p-4 bg-red-50">
+      <p class="text-red-600 text-sm font-medium mb-3">
+      Credit / Debit Card payments are currently unavailable.
+    </p>
+    <button
+    type="button"
+    onclick="openContactPopup()"
+    class="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 rounded-lg"
+    >
+  Connect with 24/7 Order Processing Team
+    </button>
+        </div>
 
              <label class="flex items-center gap-3 border border-gray-200 rounded-lg p-4 cursor-pointer">
               <input type="radio" name="paymentMethod" value="paypal" class="text-brand" />
