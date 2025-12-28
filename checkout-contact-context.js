@@ -43,6 +43,46 @@ function removeExistingPopup() {
   document.getElementById('checkout-contact-popup')?.remove();
 }
 
+function injectCheckoutPopupStyles() {
+  if (document.getElementById('checkout-contact-popup-styles')) return;
+
+  const style = document.createElement('style');
+  style.id = 'checkout-contact-popup-styles';
+  style.innerHTML = `
+    .ccp-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      transition: transform .15s ease, box-shadow .15s ease;
+      box-shadow: 0 6px 16px rgba(0,0,0,.18);
+    }
+    .ccp-icon:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 22px rgba(0,0,0,.25);
+    }
+
+    .ccp-whatsapp { background: #25D366; }
+    .ccp-rcs { background: #2563eb; }
+    .ccp-imessage { background: #10b981; }
+    .ccp-telegram { background: #229ED9; }
+    .ccp-instagram {
+      background: radial-gradient(circle at 30% 110%,
+        #fdf497 0%, #fdf497 5%, #fd5949 45%,
+        #d6249f 60%, #285AEB 90%);
+    }
+
+    .ccp-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+  `;
+  document.head.appendChild(style);
+}
+
 function createPopup(anchorEl, message) {
   removeExistingPopup();
 
@@ -54,15 +94,58 @@ function createPopup(anchorEl, message) {
   popup.style.top = `${window.scrollY + rect.bottom + 8}px`;
   popup.style.left = `${window.scrollX + rect.left}px`;
 
-  popup.innerHTML = `
-    <h4 class="font-semibold mb-3">Contact Order Team</h4>
-    <div class="grid grid-cols-3 gap-3 text-center text-sm">
-      <a href="https://wa.me/918275595850?text=${message}" target="_blank">WhatsApp</a>
-      <a href="https://t.me/vitalelixirglobalist?text=${message}" target="_blank">Telegram</a>
-      <a href="https://ig.me/m/vitalelixirglobalist?text=${message}" target="_blank">Instagram</a>
-    </div>
-    <button class="mt-4 text-xs text-gray-500" onclick="document.getElementById('checkout-contact-popup').remove()">Close</button>
-  `;
+  injectCheckoutPopupStyles();
+
+popup.innerHTML = `
+  <h4 class="font-semibold mb-4">Contact Order Processing Team</h4>
+
+  <div class="grid grid-cols-3 gap-4 justify-items-center">
+
+    <!-- WhatsApp -->
+    <a class="ccp-icon ccp-whatsapp"
+       href="https://wa.me/918275595850?text=${message}"
+       target="_blank"
+       aria-label="WhatsApp">
+      ${getWhatsAppSVG()}
+    </a>
+
+    <!-- RCS -->
+    <a class="ccp-icon ccp-rcs"
+       href="sms:+918275595850?&body=${message}"
+       aria-label="RCS Message">
+      ${getSmsPrimarySVG()}
+    </a>
+
+    <!-- iMessage -->
+    <a class="ccp-icon ccp-imessage"
+       href="sms:+919420059603?&body=${message}"
+       aria-label="iMessage">
+      ${getSmsSecondarySVG()}
+    </a>
+
+    <!-- Telegram -->
+    <a class="ccp-icon ccp-telegram"
+       href="https://t.me/vitalelixirglobalist?text=${message}"
+       target="_blank"
+       aria-label="Telegram">
+      ${getTelegramSVG()}
+    </a>
+
+    <!-- Instagram -->
+    <a class="ccp-icon ccp-instagram"
+       href="https://ig.me/m/vitalelixirglobalist?text=${message}"
+       target="_blank"
+       aria-label="Instagram">
+      ${getInstagramSVG()}
+    </a>
+
+  </div>
+
+  <button class="mt-5 text-xs text-gray-500 w-full"
+    onclick="document.getElementById('checkout-contact-popup').remove()">
+    Close
+  </button>
+`;
 
   document.body.appendChild(popup);
 }
