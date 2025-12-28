@@ -44,23 +44,15 @@
           <h2 class="text-2xl font-semibold mb-4">Select a payment method</h2>
 
           <div class="space-y-4">
-            <label class="flex items-center gap-3 border border-gray-200 rounded-lg p-4 cursor-pointer">
-              <input type="radio" name="paymentMethod" value="wire" class="text-brand" checked />
-              <span class="font-semibold">Wire Transfer (Bank Transfer)</span>
+          <label class="flex items-center gap-3 border border-gray-200 rounded-lg p-4 cursor-pointer">
+              <input type="radio" name="paymentMethod" value="card" class="text-brand" />
+              <span class="font-semibold">Credit / Debit Card</span>
             </label>
-            <div data-payment-panel="wire" class="border border-gray-200 rounded-lg p-4 bg-gray-50">
-              [BANK DETAILS HERE - I WILL FILL THIS LATER]
+            <div data-payment-panel="card" class="hidden border border-gray-200 rounded-lg p-4 bg-gray-50 text-gray-500">
+              Currently unavailable. We are sorry — please use another option.
             </div>
 
-            <label class="flex items-center gap-3 border border-gray-200 rounded-lg p-4 cursor-pointer">
-              <input type="radio" name="paymentMethod" value="wise" class="text-brand" />
-              <span class="font-semibold">Wise</span>
-            </label>
-            <div data-payment-panel="wise" class="hidden border border-gray-200 rounded-lg p-4 bg-gray-50">
-              [WISE CHECKLIST HERE - I WILL FILL THIS LATER]
-            </div>
-
-            <label class="flex items-center gap-3 border border-gray-200 rounded-lg p-4 cursor-pointer">
+             <label class="flex items-center gap-3 border border-gray-200 rounded-lg p-4 cursor-pointer">
               <input type="radio" name="paymentMethod" value="paypal" class="text-brand" />
               <span class="font-semibold">PayPal</span>
             </label>
@@ -70,11 +62,19 @@
             </div>
 
             <label class="flex items-center gap-3 border border-gray-200 rounded-lg p-4 cursor-pointer">
-              <input type="radio" name="paymentMethod" value="card" class="text-brand" />
-              <span class="font-semibold">Credit / Debit Card</span>
+              <input type="radio" name="paymentMethod" value="wise" class="text-brand" />
+              <span class="font-semibold">Wise</span>
             </label>
-            <div data-payment-panel="card" class="hidden border border-gray-200 rounded-lg p-4 bg-gray-50 text-gray-500">
-              Currently unavailable. We are sorry — please use another option.
+            <div data-payment-panel="wise" class="hidden border border-gray-200 rounded-lg p-4 bg-gray-50">
+              [WISE CHECKLIST HERE - I WILL FILL THIS LATER]
+            </div>
+          
+            <label class="flex items-center gap-3 border border-gray-200 rounded-lg p-4 cursor-pointer">
+              <input type="radio" name="paymentMethod" value="wire" class="text-brand" checked />
+              <span class="font-semibold">Wire Transfer (Bank Transfer)</span>
+            </label>
+            <div data-payment-panel="wire" class="border border-gray-200 rounded-lg p-4 bg-gray-50">
+              [BANK DETAILS HERE - I WILL FILL THIS LATER]
             </div>
           </div>
         </section>
