@@ -1,7 +1,38 @@
 import { auth, db } from '/firebase-config.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js';
 import { collection, getDocs } from 'https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js';
+/* ========= ADD THIS BLOCK (START) ========= */
+function getWhatsAppSVG() {
+  return `<svg viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 2a10 10 0 0 0-8.94 14.6L2 22l5.55-1.44A10 10 0 1 0 12 2z"/>
+  </svg>`;
+}
 
+function getSmsPrimarySVG() {
+  return `<svg viewBox="0 0 24 24" fill="currentColor">
+    <path d="M4 4h16a2 2 0 0 1 2 2v8.5a2 2 0 0 1-2 2H8l-4 3.5V6a2 2 0 0 1 2-2z"/>
+  </svg>`;
+}
+
+function getSmsSecondarySVG() {
+  return `<svg viewBox="0 0 24 24" fill="currentColor">
+    <path d="M4 5.5A3.5 3.5 0 0 1 7.5 2h9A3.5 3.5 0 0 1 20 5.5v6A3.5 3.5 0 0 1 16.5 15H9.2l-3.7 2.9V5.5z"/>
+  </svg>`;
+}
+
+function getTelegramSVG() {
+  return `<svg viewBox="0 0 24 24" fill="currentColor">
+    <path d="M21.9 3.3L3.4 8.1a1.2 1.2 0 0 0 .05 2.3l4.3 1.6 1.6 4.3a1.2 1.2 0 0 0 2.3.05l3.4-5.3 2.6 1.8a1.2 1.2 0 0 0 1.9-.8l1.4-7.7z"/>
+  </svg>`;
+}
+
+function getInstagramSVG() {
+  return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+    <rect x="4" y="4" width="16" height="16" rx="4"/>
+    <circle cx="12" cy="12" r="3.5"/>
+    <circle cx="17" cy="7" r="1" fill="currentColor"/>
+  </svg>`;
+}
 let cachedUser = null;
 
 onAuthStateChanged(auth, user => {
