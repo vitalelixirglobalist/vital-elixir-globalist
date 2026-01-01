@@ -24,7 +24,24 @@
     };
   </script>
   <style>
- 
+    /* === FORCE RESET FAB ICONS (PAGE-SAFE FIX) === */
+body .fab-stack,
+body .popup-fab-stack {
+  transform: none !important;
+  scale: 1 !important;
+  zoom: 1 !important;
+}
+
+body .fab-icon {
+  width: 48px !important;
+  height: 48px !important;
+}
+
+body .fab-icon svg,
+body .fab-icon img {
+  width: 22px !important;
+  height: 22px !important;
+}
     html { scroll-behavior: smooth; }
   </style>
 </head>
@@ -423,8 +440,13 @@
       const grandTotalUSD = subtotalUSD + shippingTotalUSD + taxUSD - discountUSD;
       const grandTotalINR = subtotalINR + shippingTotalINR + taxINR - discountINR;
 
-      cartSummaryDiv.innerHTML = `
-        <div class="space-y-3">
+   cartSummaryDiv.innerHTML = `
+  <div class="mb-4">
+    <h3 class="text-lg font-semibold">Order Summary</h3>
+    <p class="text-xs text-slate-500">Review total charges before checkout</p>
+  </div>
+
+  <div class="space-y-3">
           <div class="flex items-center justify-between text-sm">
             <span class="text-slate-600">Medication total</span>
             <span class="font-medium">${formatForeignCurrency(subtotalUSD)} | INR ${subtotalINR.toFixed(2)}</span>
@@ -591,4 +613,3 @@
   </script>
 </body>
 </html>
-
