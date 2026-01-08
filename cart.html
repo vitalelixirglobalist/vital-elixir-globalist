@@ -23,6 +23,38 @@
       }
     };
   </script>
+  <!-- VS Code Live Server DEV FIX (GitHub Safe) -->
+<script>
+(function () {
+  if (
+    location.hostname === "localhost" ||
+    location.hostname === "127.0.0.1"
+  ) {
+    const style = document.createElement("style");
+    style.innerHTML = `
+      /* Force sane scaling ONLY in VS Code Live Server */
+      html, body {
+        zoom: 100% !important;
+        font-size: 16px !important;
+      }
+
+      svg {
+        max-width: 100% !important;
+        max-height: 100% !important;
+      }
+
+      .floating-action-bar,
+      .fab-stack,
+      .fab-icon {
+        transform: none !important;
+        scale: 1 !important;
+      }
+    `;
+    document.head.appendChild(style);
+    console.log("✔ VS Code DEV FIX active");
+  }
+})();
+</script>
   <style>
     /* === FORCE RESET FAB ICONS (PAGE-SAFE FIX) === */
 body .fab-stack,
@@ -44,6 +76,7 @@ body .fab-icon img {
 }
     html { scroll-behavior: smooth; }
   </style>
+  <script src="dev-fix.js"></script>
 </head>
 
 <body class="text-slate-900 bg-slate-50">
@@ -91,24 +124,60 @@ body .fab-icon img {
           </div>
         </div>
 
-        <div class="bg-white rounded-2xl shadow-soft border border-slate-100 p-6">
-          <h3 class="text-lg font-semibold mb-2">Customer Details</h3>
-          <p class="text-xs text-slate-500 mb-4">Used for order verification and delivery communication.</p>
-          <form id="checkoutForm" class="grid md:grid-cols-2 gap-4">
-            <input type="text" id="customerName" placeholder="Full Name" required
-              class="border border-slate-200 rounded-lg px-3 py-2" />
-            <input type="email" id="customerEmail" placeholder="Email" required
-              class="border border-slate-200 rounded-lg px-3 py-2" />
-            <input type="text" id="customerPhone" placeholder="Phone / WhatsApp"
-              class="border border-slate-200 rounded-lg px-3 py-2" />
-            <input type="text" id="customerCountry" placeholder="Country" class="border border-slate-200 rounded-lg px-3 py-2" />
-            <textarea id="customerAddress" rows="3" placeholder="Address"
-              class="md:col-span-2 border border-slate-200 rounded-lg px-3 py-2"></textarea>
-            <button type="button" id="payButton"
-              class="md:col-span-2 mt-2 bg-brand text-white px-6 py-3 rounded-xl hover:bg-blue-700">Proceed to
-              Payment</button>
-          </form>
-        </div>
+        <!-- CUSTOM PROCEED TO CHECK OUT SECTION -->
+<div class="bg-white rounded-2xl shadow-soft border-2 border-red-500 p-6">
+  <h2 class="text-2xl font-bold mb-5">Proceed to check out</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+    <!-- LEFT OPTION -->
+    <div class="border rounded-xl p-5 flex flex-col justify-between">
+      <div>
+        <h3 class="text-lg font-bold mb-3">
+          24/7 live chat order placement team
+        </h3>
+
+        <ul class="list-disc pl-5 text-sm space-y-2 text-slate-700">
+          <li>Dedicated team to understand your requirement</li>
+          <li>Assistance for secure payment placement</li>
+          <li>Assigned executive to keep you informed</li>
+          <li>Updates provided till parcel reaches your doorstep</li>
+        </ul>
+      </div>
+
+      <button
+        type="button"
+         id="checkoutWithTeam"
+        onclick="openCheckoutContactPopup(this)"
+        class="mt-6 w-full bg-brand text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition">
+        Proceed to check out with team
+      </button>
+    </div>
+
+    <!-- RIGHT OPTION -->
+    <div class="border rounded-xl p-5 flex flex-col justify-between">
+      <div>
+        <h3 class="text-lg font-bold mb-3">
+          Direct check out with our payment portal
+        </h3>
+
+        <ul class="list-disc pl-5 text-sm space-y-2 text-slate-700">
+          <li>Review the order summary</li>
+          <li>Proceed securely through payment portal</li>
+        </ul>
+      </div>
+
+  <a
+  href="checkout.html"
+  id="checkoutWithPortal"
+  class="mt-6 block text-center w-full bg-brand text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition">
+  Proceed to check out with payment portal
+</a>
+    </div>
+
+  </div>
+</div>
+
       </div>
 
       <div class="lg:col-span-4 space-y-6">
@@ -132,14 +201,6 @@ body .fab-icon img {
           <p class="text-xs text-slate-500 mb-4">Get expert guidance on dosage, interactions, and suitability for your health profile.</p>
           <button type="button"
             class="w-full border border-medical text-medical rounded-lg py-2 text-sm font-semibold hover:bg-emerald-50">Consult a Doctor for this medication</button>
-        </div>
-
-        <div class="bg-white rounded-2xl shadow-soft border border-slate-100 p-5 space-y-3">
-          <a href="checkout.html"
-            class="block text-center bg-brand text-white px-6 py-3 rounded-xl font-semibold hover:bg-blue-700">Proceed to Checkout</a>
-          <button type="button" id="setReminder"
-            class="w-full border border-slate-200 rounded-xl py-2 text-sm text-slate-700 hover:border-slate-300">Set Reminder / Checkout Later</button>
-          <p id="reminderMessage" class="text-xs text-slate-500"></p>
         </div>
       </div>
     </div>
@@ -611,5 +672,17 @@ body .fab-icon img {
             rzp.open();
     });
   </script>
+  <script type="module" src="/checkout-contact-context.js"></script>
+  <!-- === SYSTEM CHECKOUT DATA (DO NOT STYLE / DO NOT REMOVE) === -->
+<div id="checkout-system-layer" style="position:absolute; left:-9999px; top:-9999px;">
+  <form id="checkoutForm">
+    <input type="text" id="customerName" />
+    <input type="email" id="customerEmail" />
+    <input type="text" id="customerPhone" />
+    <input type="text" id="customerCountry" />
+    <textarea id="customerAddress"></textarea>
+    <button type="button" id="payButton"></button>
+  </form>
+</div>
 </body>
 </html>
