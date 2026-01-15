@@ -14,6 +14,36 @@
       }
     };
   </script>
+ <style>
+/* DEV SAFETY OVERRIDE — SAFE FOR GITHUB */
+.floating-action-bar {
+  right: 0 !important;
+  bottom: 0 !important;
+}
+
+.floating-action-bar .fab-icon {
+  width: 48px !important;
+  height: 48px !important;
+  min-width: 48px !important;
+  min-height: 48px !important;
+}
+
+.floating-action-bar .fab-icon svg {
+  width: 24px !important;
+  height: 24px !important;
+  max-width: 24px !important;
+  max-height: 24px !important;
+}
+
+.floating-action-bar .fab-stack {
+  transform: none !important;
+}
+
+.floating-action-bar * {
+  box-sizing: border-box !important;
+}
+</style>
+
 </head>
 <body class="text-gray-800 bg-gray-50">
   <div id="header-placeholder"></div>
@@ -62,21 +92,82 @@
         </div>
 
              <label class="flex items-center gap-3 border border-gray-200 rounded-lg p-4 cursor-pointer">
-              <input type="radio" name="paymentMethod" value="paypal" class="text-brand" />
-              <span class="font-semibold">PayPal</span>
-            </label>
-            <div data-payment-panel="paypal" class="hidden border border-gray-200 rounded-lg p-4 bg-gray-50">
-              <p>PayPal ID: [PAYPAL ID HERE - I WILL FILL THIS LATER]</p>
-              <p class="text-sm text-gray-600 mt-2">Send payment to this PayPal ID and share the confirmation.</p>
-            </div>
+  <input type="radio" name="paymentMethod" value="paypal" class="text-brand" />
+  <span class="font-semibold">PayPal</span>
+</label>
+
+<div data-payment-panel="paypal" class="hidden border border-gray-200 rounded-lg p-4 bg-gray-50 space-y-3">
+  <p class="text-sm text-gray-700">
+    Choose how you would like to proceed with PayPal payment.
+  </p>
+
+  <!-- Split Buttons -->
+  <div class="grid grid-cols-2 gap-3">
+    <!-- LEFT: Connect with Team -->
+    <button
+      type="button"
+      onclick="openCheckoutContactPopup(this)"
+      class="w-full bg-gray-800 hover:bg-gray-900 text-white font-semibold py-3 rounded-lg"
+    >
+      Connect with Our Team
+    </button>
+
+    <!-- RIGHT: PayPal -->
+    <a
+      href="https://www.paypal.me/KunalSanjayparate"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg"
+    >
+      Pay with PayPal
+    </a>
+  </div>
+
+  <p class="text-xs text-gray-500">
+    PayPal app will open automatically on mobile devices.
+  </p>
+</div>
 
             <label class="flex items-center gap-3 border border-gray-200 rounded-lg p-4 cursor-pointer">
-              <input type="radio" name="paymentMethod" value="wise" class="text-brand" />
-              <span class="font-semibold">Wise</span>
-            </label>
-            <div data-payment-panel="wise" class="hidden border border-gray-200 rounded-lg p-4 bg-gray-50">
-              [WISE CHECKLIST HERE - I WILL FILL THIS LATER]
-            </div>
+  <input type="radio" name="paymentMethod" value="wise" class="text-brand" />
+  <span class="font-semibold">Wise</span>
+</label>
+
+<div data-payment-panel="wise" class="hidden border border-blue-200 rounded-lg p-4 bg-blue-50 space-y-4">
+  <p class="text-blue-700 text-sm font-medium">
+    Wise payments require manual confirmation.
+  </p>
+
+  <!-- Wise details (copy friendly) -->
+  <div class="bg-white border border-gray-200 rounded-lg p-3 text-sm space-y-1">
+    <p><strong>Beneficiary Name:</strong> First name- VITAL ELIXIR, Second name - GLOBALIST</p>
+    <p><strong>Account Number: /Account #:</strong> 50200113832693</p>
+    <p><strong>IFSC: :</strong> HDFC0001248</p>
+    <p><strong>Bank Name: :</strong> HDFC Bank</p>
+    <p><strong>Branch Address: :</strong> SADAR BRANCH Nagpur (Maharashtra/ India)</p>
+    <p><strong>Account Type:</strong> CURRENT Account</p>
+    <p><strong>Swift Code: </strong> HDFCINBB</p>
+    <p><strong>Recipient ( Receivers Address ) </strong>  PLOT NO 15A MAA JAGDAMBA NAGRI COLLECTOR COLONY
+NEAR PRASAD VIHAR GODHANI NAGPUR - 440023</p>
+    <p><strong>Purpose of Payment </strong> Serv</p>
+    <p><strong>Swift Code: </strong> HDFCINBB</p>
+    <p><strong>Swift Code: </strong> HDFCINBB</p>
+  </div>
+
+  <!-- CTA Button -->
+  <a
+    href="https://wise.com/"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg"
+  >
+    Open Wise & Send Payment
+  </a>
+
+  <p class="text-xs text-gray-600">
+    This will open Wise app or website. Copy the details above and complete the transfer.
+  </p>
+</div>
           
             <label class="flex items-center gap-3 border border-gray-200 rounded-lg p-4 cursor-pointer">
               <input type="radio" name="paymentMethod" value="wire" class="text-brand" checked />
