@@ -154,7 +154,14 @@
     object-fit: contain;
       display: block;
   }
+}
 
+/* DESKTOP LOGO SIZE FIX — ADD THIS BELOW */
+@media (min-width: 1024px) {
+  .site-logo img {
+    max-height: 3.8rem;
+  }
+}
 .site-logo:hover,
   .site-logo:focus-visible {
     transform: scale(1.03);
