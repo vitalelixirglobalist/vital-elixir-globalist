@@ -5,7 +5,8 @@
     GBP: 0.79,
     EUR: 0.92,
     CAD: 1.36,
-    AUD: 1.52
+    AUD: 1.52,
+    GHS: 12.0
   };
   const defaultCurrency = 'USD';
 
