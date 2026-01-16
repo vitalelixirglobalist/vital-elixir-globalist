@@ -60,7 +60,22 @@
 
       <!-- Mobile Navigation Links -->
       <nav class="flex flex-col gap-4 text-gray-700 text-lg font-medium">
-      <a href="index.html" class="hover:text-brand">🏠 Home</a>
+     <!-- Mobile Currency Selector -->
+<div class="mb-4 pb-4 border-b border-gray-200 md:hidden">
+  <label for="currencySelectMobile" class="block text-xs font-semibold text-gray-500 mb-1">
+    Currency
+  </label>
+  <select
+    id="currencySelectMobile"
+    class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand">
+    <option value="USD">USD</option>
+    <option value="GBP">GBP</option>
+    <option value="EUR">EUR</option>
+    <option value="CAD">CAD</option>
+    <option value="AUD">AUD</option>
+  </select>
+</div>
+        <a href="index.html" class="hover:text-brand">🏠 Home</a>
   <a href="products.html" class="hover:text-brand">💊 Medicines</a>
   <a href="doctor-consultation.html" class="hover:text-brand">🩺 Doctor Consultation</a>
     <a href="global-partner-earnings-program.html" class="hover:text-brand font-semibold text-brand">🌐 Global Partner Program</a>
@@ -298,8 +313,20 @@ max-height: 2.8rem;
     };
 
     document.addEventListener('DOMContentLoaded', () => {
-      const select = document.getElementById('currencySelect');
-      if (!select) return;
+const desktopSelect = document.getElementById('currencySelect');
+const mobileSelect = document.getElementById('currencySelectMobile');
+
+const activeSelect = desktopSelect || mobileSelect;
+if (!activeSelect) return;
+
+activeSelect.value = getSelectedCurrency();
+
+activeSelect.addEventListener('change', (event) => {
+  const nextCurrency = event.target.value;
+  if (nextCurrency === getSelectedCurrency()) return;
+  setSelectedCurrency(nextCurrency);
+  window.location.reload();
+});
       select.value = getSelectedCurrency();
       select.addEventListener('change', (event) => {
           const nextCurrency = event.target.value;
