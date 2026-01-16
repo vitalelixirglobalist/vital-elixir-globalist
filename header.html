@@ -83,6 +83,9 @@
 <!-- Floating Side Action Bar (visible on all pages) -->
 <aside class="floating-action-bar" aria-label="Quick contact options">
   <div class="fab-stack" aria-label="Quick contact icons">
+        <button class="fab-icon fab-representative" type="button" aria-label="Toggle contact options">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 3h6a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H9l-3 2.4a.75.75 0 0 1-1.2-.6V6a3 3 0 0 1 3-3Z"/><path d="M14.5 9.5h3a2.5 2.5 0 0 1 2.5 2.5v5.2a.8.8 0 0 1-1.28.64L16.9 16.5h-2.4a2 2 0 0 1-2-2" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
     <a class="fab-icon whatsapp" href="https://wa.me/+918275595850?text=Hello%2C%20I%27d%20like%20to%20inquire%20about%20a%20medicine%20export." target="_blank" aria-label="WhatsApp">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.94 14.6L2 22l5.55-1.44A10 10 0 1 0 12 2Zm5.23 14.7c-.23.66-1.34 1.27-1.9 1.35-.49.07-1.12.1-1.8-.11-.41-.13-.94-.3-1.62-.59-2.85-1.23-4.7-4.09-4.85-4.29-.14-.2-1.16-1.55-1.16-2.96s.73-2.1.99-2.39c.26-.29.57-.36.76-.36h.55c.17 0 .4-.06.63.48.23.55.8 1.9.87 2.04.07.14.12.3.02.49-.1.2-.15.32-.3.49-.15.17-.32.38-.45.51-.15.15-.3.32-.13.63.17.32.75 1.23 1.6 2 .11.11 1.93 1.5 2.96 1.85.3.11.49.09.67-.05.17-.13.76-.63.96-.85.2-.22.4-.18.68-.11.28.07 1.75.82 2.05.97.3.15.5.22.57.34.07.12.07.7-.16 1.35Z"/></svg>
     </a>
@@ -144,6 +147,17 @@
   }
 
   @media (max-width: 768px) {
+        /* Mobile-only overflow guard to prevent horizontal scroll */
+    html,
+    body {
+      overflow-x: hidden;
+    }
+
+    /* Mobile-only click safety when menu is hidden */
+    #mobile-menu.hidden {
+      pointer-events: none;
+    }
+
     .header-content {
       --header-height: 3.6rem;
     }
@@ -212,6 +226,10 @@ max-height: 2.8rem;
        background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
     color: #fff;
   }
+  /* Representative icon hidden on desktop to preserve existing layout */
+  .floating-action-bar .fab-representative {
+    display: none;
+  }
 
   .floating-action-bar .fab-label {
     writing-mode: horizontal-tb;
@@ -230,7 +248,12 @@ max-height: 2.8rem;
   }
 
   @media (max-width: 768px) {
-       .floating-action-bar .fab-stack {
+    /* Mobile-only compact chat stack to avoid blocking content */
+    .floating-action-bar {
+      max-width: 100vw;
+    }
+
+    .floating-action-bar .fab-stack {
       padding: 0.6rem 0.6rem 0.25rem;
     }
 
@@ -238,6 +261,26 @@ max-height: 2.8rem;
     min-width: 10rem;
       font-size: 0.8rem;
       padding: 0.5rem 1rem;
+    }
+    
+    .floating-action-bar .fab-representative {
+      display: inline-flex;
+      width: 2.2rem;
+      height: 2.2rem;
+      margin: 0;
+    }
+
+    .floating-action-bar .fab-representative svg {
+      width: 1.1rem;
+      height: 1.1rem;
+    }
+
+    .floating-action-bar .fab-stack .fab-icon:not(.fab-representative) {
+      display: none;
+    }
+
+    .floating-action-bar.fab-open .fab-stack .fab-icon:not(.fab-representative) {
+      display: inline-flex;
     }
   }
 </style>
@@ -307,7 +350,8 @@ max-height: 2.8rem;
     const closeBtn = document.getElementById('close-menu');
     const mobileMenu = document.getElementById('mobile-menu');
     const sidebar = document.getElementById('sidebar');
-
+    const floatingBar = document.querySelector('.floating-action-bar');
+    const fabRepresentative = document.querySelector('.fab-representative');  
     if (!menuBtn || !sidebar || !mobileMenu) return;
 
     // Open sidebar
@@ -329,6 +373,15 @@ max-height: 2.8rem;
         setTimeout(() => mobileMenu.classList.add('hidden'), 300);
       }
     });
+    
+   // Mobile-only compact chat toggle
+    if (floatingBar && fabRepresentative) {
+      fabRepresentative.addEventListener('click', () => {
+        if (!window.matchMedia('(max-width: 768px)').matches) return;
+        const isOpen = floatingBar.classList.toggle('fab-open');
+        fabRepresentative.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+    }
 
     /* -------------------------------
        ✅ BONUS FIX:
