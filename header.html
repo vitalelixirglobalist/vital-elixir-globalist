@@ -283,71 +283,57 @@ max-height: 2.8rem;
 }
 </style>
 <script>
-  (function () {
-    const CURRENCY_KEY = 'selectedCurrency';
-    const rates = {
-      USD: 1,
-      GBP: 0.79,
-      EUR: 0.92,
-      CAD: 1.36,
-      AUD: 1.52,
-      GHS: 12.0
-    };
-   const defaultCurrency = 'USD';
+(function () {
+  const CURRENCY_KEY = 'selectedCurrency';
 
-    function getSelectedCurrency() {
-      return localStorage.getItem(CURRENCY_KEY) || defaultCurrency;
-    }
+  const rates = {
+    USD: 1,
+    GBP: 0.79,
+    EUR: 0.92,
+    CAD: 1.36,
+    AUD: 1.52,
+    GHS: 12.0
+  };
 
-    function setSelectedCurrency(currency) {
-      if (!rates[currency]) return;
-      localStorage.setItem(CURRENCY_KEY, currency);
-      document.dispatchEvent(new CustomEvent('currency:change', { detail: { currency } }));
-    }
+  const defaultCurrency = 'USD';
 
-    function convertFromUsd(amount, currency) {
-      const rate = rates[currency] || 1;
-      return Number(amount || 0) * rate;
-    }
+  function getSelectedCurrency() {
+    return localStorage.getItem(CURRENCY_KEY) || defaultCurrency;
+  }
 
-    function formatCurrency(amount, currency) {
-      return `${currency} ${Number(amount || 0).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
-    }
+  function setSelectedCurrency(currency) {
+    if (!rates[currency]) return;
+    localStorage.setItem(CURRENCY_KEY, currency);
+  }
 
-    window.currencyUtils = {
-      rates,
-      getSelectedCurrency,
-      setSelectedCurrency,
-      convertFromUsd,
-      formatCurrency
-    };
+  function bindCurrencySelect(selectElement) {
+    if (!selectElement) return;
 
-    document.addEventListener('DOMContentLoaded', () => {
-const desktopSelect = document.getElementById('currencySelect');
-const mobileSelect = document.getElementById('currencySelectMobile');
+    selectElement.value = getSelectedCurrency();
 
-const activeSelect = desktopSelect || mobileSelect;
-if (!activeSelect) return;
+    selectElement.addEventListener('change', (event) => {
+      const nextCurrency = event.target.value;
+      if (nextCurrency === getSelectedCurrency()) return;
 
-activeSelect.value = getSelectedCurrency();
+      setSelectedCurrency(nextCurrency);
 
-activeSelect.addEventListener('change', (event) => {
-  const nextCurrency = event.target.value;
-  if (nextCurrency === getSelectedCurrency()) return;
-  setSelectedCurrency(nextCurrency);
-  window.location.reload();
-});
-      select.value = getSelectedCurrency();
-      select.addEventListener('change', (event) => {
-          const nextCurrency = event.target.value;
-        if (nextCurrency === getSelectedCurrency()) return;
-        setSelectedCurrency(nextCurrency);
-        window.location.reload();
-      });
+      // 🔥 force immediate reload
+      window.location.reload();
     });
-  })();
-</script>
+  }
 
+  document.addEventListener('DOMContentLoaded', () => {
+    bindCurrencySelect(document.getElementById('currencySelect'));        // desktop
+    bindCurrencySelect(document.getElementById('currencySelectMobile')); // mobile
+  });
+
+  window.currencyUtils = {
+    rates,
+    getSelectedCurrency,
+    setSelectedCurrency
+  };
+})();
+</script>
 <!-- JS for Hamburger Menu -->
 <script>
   document.addEventListener("DOMContentLoaded", () => {
