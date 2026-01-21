@@ -329,13 +329,36 @@ selectElement.addEventListener('change', (event) => {
   setTimeout(() => {
     window.location.reload();
   }, 150);
+  // ✅ GLOBAL currency change handler (desktop + mobile safe)
+document.addEventListener('change', (event) => {
+  const target = event.target;
+
+  if (
+    target.id !== 'currencySelect' &&
+    target.id !== 'currencySelectMobile'
+  ) {
+    return;
+  }
+
+  const nextCurrency = target.value;
+  const currentCurrency = localStorage.getItem('selectedCurrency') || 'USD';
+
+  if (nextCurrency === currentCurrency) return;
+
+  // Save currency
+  localStorage.setItem('selectedCurrency', nextCurrency);
+
+  // 🔥 FORCE reload (mobile-safe)
+  setTimeout(() => {
+    window.location.href = window.location.href;
+  }, 200);
 });
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    bindCurrencySelect(document.getElementById('currencySelect'));        // desktop
-    bindCurrencySelect(document.getElementById('currencySelectMobile')); // mobile
-  });
+// document.addEventListener('DOMContentLoaded', () => {
+//   bindCurrencySelect(document.getElementById('currencySelect'));        // desktop
+//   bindCurrencySelect(document.getElementById('currencySelectMobile')); // mobile
+// });
 
   window.currencyUtils = {
     rates,
