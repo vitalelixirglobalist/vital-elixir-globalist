@@ -352,7 +352,7 @@
   "composition": "Hydroquinone + Mometasone + Tretinoin",
   "category": "Dermatology",
   "use": "Treatment of melasma and hyperpigmentation",
-  "image": "assets/images/products/melamet_cream.jpeg",
+  "image": "assets/images/products/melamet_cream..jpeg",
   "variants": [
     { "pack": "1 Tube (15 g)", "price_usd": 41, "price_inr": 0 },
     { "pack": "3 Tubes (15 g each)", "price_usd": 56, "price_inr": 0 },
@@ -397,7 +397,7 @@
   "composition": "Cyproterone Acetate 2 mg + Ethinylestradiol 0.035 mg",
   "category": "Hormonal Therapy",
   "use": "Hormonal imbalance, acne, and androgen-related disorders",
-  "image": "assets/images/products/cyproterone_ethinylestradiol.jpeg",
+  "image": "assets/images/products/cyproterone_ethinylestradio.jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 59, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 82, "price_inr": 0 },
