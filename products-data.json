@@ -411,7 +411,7 @@
   "composition": "Chloroquine Phosphate 500 mg",
   "category": "Antimalarial",
   "use": "Treatment and prevention of malaria",
-  "image": "assets/images/products/lariago_ds_chloroquine500.jpeg",
+  "image": "assets/images/products/lariago_ds_chloroquine500..jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 45, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 57, "price_inr": 0 },
@@ -1222,18 +1222,6 @@
   ]
 },
   {
-    "name": "Shilarise",
-    "brand": "Sunrise",
-    "composition": "Sildenafil Citrate 100 mg",
-    "category": "Men’s Health",
-    "use": "Erectile dysfunction",
-    "image": "assets/images/products/shilarise.jpeg",
-    "variants": [
-      { "pack": "100 Tablets", "price_usd": 44, "price_inr": 1848 },
-      { "pack": "300 Tablets", "price_usd": 64, "price_inr": 2688 }
-    ]
-  },
-  {
     "name": "Finasteride 1 mg",
     "brand": "Cipla",
     "composition": "Finasteride 1 mg",
@@ -1258,37 +1246,12 @@
     ]
   },
   {
-    "name": "Semaglutide 7 mg",
-    "brand": "Novo Nordisk",
-    "composition": "Semaglutide 7 mg",
-    "category": "Diabetes & Metabolic Care",
-    "use": "Diabetes & weight management",
-    "image": "assets/images/products/semaglutide.jpeg",
-    "variants": [
-      { "pack": "10 Tablets", "price_usd": 49, "price_inr": 2058 },
-      { "pack": "30 Tablets", "price_usd": 149, "price_inr": 6258 },
-      { "pack": "60 Tablets", "price_usd": 215, "price_inr": 9030 }
-    ]
-  },
-  {
-    "name": "Lantus Solostar",
-    "brand": "Sanofi",
-    "composition": "Insulin Glargine 100 IU/ml",
-    "category": "Diabetes & Metabolic Care",
-    "use": "Long-acting insulin",
-    "image": "assets/images/products/lantus.jpeg",
-    "variants": [
-      { "pack": "1 Pen", "price_usd": 42, "price_inr": 1764 },
-      { "pack": "3 Pens", "price_usd": 57, "price_inr": 2394 }
-    ]
-  },
-  {
     "name": "Humalog Junior Kwikpen",
     "brand": "Eli Lilly",
     "composition": "Insulin Lispro 100 IU/ml",
     "category": "Diabetes & Metabolic Care",
     "use": "Fast-acting insulin",
-    "image": "assets/images/products/humalog.jpeg",
+    "image": "assets/images/products/humalog_junior_kwikpen.jpeg",
     "variants": [
       { "pack": "1 Pen", "price_usd": 85, "price_inr": 3570 }
     ]
@@ -1299,7 +1262,7 @@
     "composition": "Orlistat 120 mg",
     "category": "Diabetes & Metabolic Care",
     "use": "Weight loss aid",
-    "image": "assets/images/products/orlistat.jpeg",
+    "image": "assets/images/products/orlijohn_orlistat120.jpeg",
     "variants": [
       { "pack": "100 Tablets", "price_usd": 55, "price_inr": 2310 },
       { "pack": "300 Tablets", "price_usd": 79, "price_inr": 3318 }
@@ -1311,7 +1274,7 @@
     "composition": "Mometasone Furoate 0.1%",
     "category": "Dermatology & Skin Care",
     "use": "Anti-inflammatory, skin allergy",
-    "image": "assets/images/products/mometasone.jpeg",
+    "image": "assets/images/products/mometasone_furoate_01.jpeg",
     "variants": [
       { "pack": "3 Tubes", "price_usd": 10, "price_inr": 420 },
       { "pack": "5 Tubes", "price_usd": 19, "price_inr": 798 }
@@ -1323,7 +1286,7 @@
     "composition": "Clobetasol Propionate 0.05%",
     "category": "Dermatology & Skin Care",
     "use": "Eczema, psoriasis, skin allergy",
-    "image": "assets/images/products/clobetasol.jpeg",
+    "image": "assets/images/products/clobetasol_cream.jpeg",
     "variants": [
       { "pack": "3 Tubes", "price_usd": 35, "price_inr": 1470 },
       { "pack": "5 Tubes", "price_usd": 45, "price_inr": 1890 },
@@ -1336,7 +1299,7 @@
     "composition": "Lidocaine 5%",
     "category": "Dermatology & Skin Care",
     "use": "Local anaesthetic for pain relief",
-    "image": "assets/images/products/xylocaine.jpeg",
+    "image": "assets/images/products/xylocaine_5_ointment.jpeg",
     "variants": [
       { "pack": "3 Tubes", "price_usd": 29, "price_inr": 1218 },
       { "pack": "5 Tubes", "price_usd": 39, "price_inr": 1638 },
@@ -1361,7 +1324,7 @@
     "composition": "Bepotastine Besilate 1.5%",
     "category": "Eye & Allergy Care",
     "use": "Eye allergy relief",
-    "image": "assets/images/products/bepotastine.jpeg",
+    "image": "assets/images/products/bepotastine_besilate_15.jpeg",
     "variants": [
       { "pack": "3 Bottles", "price_usd": 45, "price_inr": 1890 },
       { "pack": "5 Bottles", "price_usd": 65, "price_inr": 2730 }
@@ -1373,7 +1336,7 @@
     "composition": "Bimatoprost 0.03%",
     "category": "Eye & Allergy Care",
     "use": "Glaucoma, eyelash growth",
-    "image": "assets/images/products/lumigan.jpeg",
+    "image": "assets/images/products/lumigan_bimatoprost_003.jpeg",
     "variants": [
       { "pack": "3 Bottles", "price_usd": 55, "price_inr": 2310 },
       { "pack": "5 Bottles", "price_usd": 75, "price_inr": 3150 }
@@ -1385,7 +1348,7 @@
     "composition": "Budesonide 100 mcg",
     "category": "Eye & Allergy Care",
     "use": "Nasal allergy, sinus relief",
-    "image": "assets/images/products/budesonide.jpeg",
+    "image": "assets/images/products/budesonide_nasal_spray.jpeg",
     "variants": [
       { "pack": "3 Bottles", "price_usd": 20, "price_inr": 840 },
       { "pack": "5 Bottles", "price_usd": 30, "price_inr": 1260 }
@@ -1446,7 +1409,7 @@
     "composition": "Praziquantel 600 mg",
     "category": "Infection & Antiparasitic Treatments",
     "use": "Tapeworm & schistosomiasis treatment",
-    "image": "assets/images/products/praziquantel.jpeg",
+    "image": "assets/images/products/praziquantel600.jpeg",
     "variants": [
       { "pack": "50 Tablets", "price_usd": 49, "price_inr": 2058 },
       { "pack": "100 Tablets", "price_usd": 59, "price_inr": 2478 }
@@ -1496,7 +1459,7 @@
     "composition": "Indomethacin 50 mg",
     "category": "Infection & Antiparasitic Treatments",
     "use": "Anti-inflammatory, pain relief",
-    "image": "assets/images/products/indomethacin.jpeg",
+    "image": "assets/images/products/indomethacin50.jpeg",
     "variants": [
       { "pack": "300 Tablets", "price_usd": 85, "price_inr": 3570 },
       { "pack": "500 Tablets", "price_usd": 99, "price_inr": 4158 }
@@ -1621,7 +1584,7 @@
     "composition": "Triclabendazole 250 mg",
     "category": "Anthelmintic / Veterinary",
     "use": "Used to treat liver fluke infections in animals and humans.",
-    "image": "assets/images/products/triclabendazole.jpeg",
+    "image": "assets/images/products/triclabendazole250.jpeg",
     "variants": [
       { "pack": "100 Tablets", "price_usd": 110, "price_inr": 9350 },
       { "pack": "300 Tablets", "price_usd": 189, "price_inr": 16065 }
