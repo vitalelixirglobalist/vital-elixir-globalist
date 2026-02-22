@@ -578,7 +578,7 @@
   "composition": "Fenbendazole 1000 mg",
   "category": "Antiparasitic",
   "use": "Treatment of parasitic infections",
-  "image": "assets/images/products/Fenbendazole1000.jpeg",
+  "image": "assets/images/products/fenbendazole1000.jpeg",
   "variants": [
     { "pack": "50 Tablets", "price_usd": 55, "price_inr": 0 },
     { "pack": "100 Tablets", "price_usd": 75, "price_inr": 0 },
