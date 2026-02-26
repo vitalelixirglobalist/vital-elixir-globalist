@@ -66,7 +66,7 @@
       </button>
 
       <!-- Mobile Navigation Links -->
-      <nav class="flex flex-col gap-4 text-gray-700 text-lg font-medium">
+     <nav class="flex flex-col gap-4 text-gray-700 text-lg font-medium pb-28">
      <!-- Mobile Currency Selector -->
 <div class="mb-4 pb-4 border-b border-gray-200 md:hidden">
   <label for="currencySelectMobile" class="block text-xs font-semibold text-gray-500 mb-1">
@@ -298,6 +298,12 @@ max-height: 2.8rem;
   min-width: unset;
   width: fit-content;
   max-width: fit-content;
+}
+  /* 🔥 MOBILE SIDEBAR SAFE SPACE FIX */
+@media (max-width: 768px) {
+  #sidebar {
+    padding-bottom: 30vh; /* keeps 30% screen safe */
+  }
 }
 </style>
 <script>
