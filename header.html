@@ -335,47 +335,33 @@ max-height: 2.8rem;
 
     selectElement.value = getSelectedCurrency();
 
-selectElement.addEventListener('change', (event) => {
-  const nextCurrency = event.target.value;
-  if (nextCurrency === getSelectedCurrency()) return;
+document.addEventListener('DOMContentLoaded', () => {
 
-  // Save currency
-  setSelectedCurrency(nextCurrency);
+  const selects = [
+    document.getElementById('currencySelect'),
+    document.getElementById('currencySelectMobile')
+  ];
 
-  // ✅ Mobile-safe reload (very important)
-  setTimeout(() => {
-    window.location.reload();
-  }, 150);
-  // ✅ GLOBAL currency change handler (desktop + mobile safe)
-document.addEventListener('change', (event) => {
-  const target = event.target;
+  selects.forEach(select => {
+    if (!select) return;
 
-  if (
-    target.id !== 'currencySelect' &&
-    target.id !== 'currencySelectMobile'
-  ) {
-    return;
-  }
+    // Set initial value
+    select.value = localStorage.getItem('selectedCurrency') || 'USD';
 
-  const nextCurrency = target.value;
-  const currentCurrency = localStorage.getItem('selectedCurrency') || 'USD';
+    select.addEventListener('change', (e) => {
+      const newCurrency = e.target.value;
+      const currentCurrency = localStorage.getItem('selectedCurrency') || 'USD';
 
-  if (nextCurrency === currentCurrency) return;
+      if (newCurrency === currentCurrency) return;
 
-  // Save currency
-  localStorage.setItem('selectedCurrency', nextCurrency);
+      localStorage.setItem('selectedCurrency', newCurrency);
 
-  // 🔥 FORCE reload (mobile-safe)
-  setTimeout(() => {
-    window.location.href = window.location.href;
-  }, 200);
+      // 🔥 Force hard reload (mobile-safe)
+      window.location.href = window.location.href;
+    });
+  });
+
 });
-  }
-
-// document.addEventListener('DOMContentLoaded', () => {
-//   bindCurrencySelect(document.getElementById('currencySelect'));        // desktop
-//   bindCurrencySelect(document.getElementById('currencySelectMobile')); // mobile
-// });
 
   window.currencyUtils = {
     rates,
