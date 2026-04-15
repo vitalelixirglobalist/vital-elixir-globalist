@@ -2,7 +2,7 @@
   const CURRENCY_KEY = 'selectedCurrency';
 
   // 🔥 GLOBAL PRICE CONTROL (ONLY YOU EDIT THIS)
-  const GLOBAL_PRICE_INCREASE_PERCENT = 0; 
+  const GLOBAL_PRICE_INCREASE_PERCENT = 50; 
   // 👉 Change this value anytime (example: 30 for +30%)
 
   const rates = {
