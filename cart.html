@@ -267,32 +267,51 @@ body .fab-icon img {
       return parseFloat(computed.toFixed(2));
     };
 
-    const calculateLineTotals = (item, quantity) => {
-      const medicineUsd = Number(item.price_usd || 0);
-      const medicineInr = Number(item.price_inr || 0);
-      const shippingUsd = item.shipping_usd !== undefined && item.shipping_usd !== null
-        ? Number(item.shipping_usd)
-        : SHIPPING_USD;
-      const shippingInr = calculateShippingInr(medicineUsd, medicineInr, item.shipping_inr);
-      const lineMedicineUsd = parseFloat((medicineUsd * quantity).toFixed(2));
-      const lineMedicineInr = parseFloat((medicineInr * quantity).toFixed(2));
-      const lineShippingUsd = parseFloat((shippingUsd * quantity).toFixed(2));
-      const lineShippingInr = parseFloat((shippingInr * quantity).toFixed(2));
-      const totalUsd = parseFloat((lineMedicineUsd + lineShippingUsd).toFixed(2));
-      const totalInr = parseFloat((lineMedicineInr + lineShippingInr).toFixed(2));
-      return {
-        medicineUsd,
-        medicineInr,
-        shippingUsd,
-        shippingInr,
-        lineMedicineUsd,
-        lineMedicineInr,
-        lineShippingUsd,
-        lineShippingInr,
-        totalUsd,
-        totalInr
-      };
-    };
+const calculateLineTotals = (item, quantity) => {
+  const medicineUsd = Number(item.price_usd || 0);
+  const medicineInr = Number(item.price_inr || 0);
+
+  // Shipping only for display purpose
+  const shippingUsd = item.shipping_usd !== undefined && item.shipping_usd !== null
+    ? Number(item.shipping_usd)
+    : SHIPPING_USD;
+
+  const shippingInr = calculateShippingInr(
+    medicineUsd,
+    medicineInr,
+    item.shipping_inr
+  );
+
+  const lineMedicineUsd = parseFloat(
+    (medicineUsd * quantity).toFixed(2)
+  );
+
+  const lineMedicineInr = parseFloat(
+    (medicineInr * quantity).toFixed(2)
+  );
+
+  // IMPORTANT:
+  // Do NOT multiply shipping by quantity
+  // Shipping applied globally later
+  const totalUsd = parseFloat(
+    (lineMedicineUsd).toFixed(2)
+  );
+
+  const totalInr = parseFloat(
+    (lineMedicineInr).toFixed(2)
+  );
+
+  return {
+    medicineUsd,
+    medicineInr,
+    shippingUsd,
+    shippingInr,
+    lineMedicineUsd,
+    lineMedicineInr,
+    totalUsd,
+    totalInr
+  };
+};
 
     const getQuantity = (item) => Number(item.quantity || item.qty || item.count || 1);
 
@@ -452,14 +471,11 @@ body .fab-icon img {
           totalUsd,
           totalInr
         } = calculateLineTotals(item, quantity);
-
         subtotalINR += lineMedicineInr;
         subtotalUSD += lineMedicineUsd;
-        shippingTotalINR += lineShippingInr;
-        shippingTotalUSD += lineShippingUsd;
-
+        
         const tabletDisplay = packCount ? `${packCount * quantity} tablets` : `${quantity} units`;
-
+        
         const itemDiv = document.createElement('div');
         itemDiv.className = 'grid gap-4 py-6 md:grid-cols-12 items-center';
         itemDiv.innerHTML = `
@@ -487,13 +503,25 @@ body .fab-icon img {
           <div class="md:col-span-4 text-sm text-right space-y-1">
             <p class="text-slate-500">Price per unit: ${formatForeignCurrency(medicineUsd)} | INR ${medicineInr.toFixed(2)}</p>
             <p class="text-slate-500">Subtotal: ${formatForeignCurrency(lineMedicineUsd)} | INR ${lineMedicineInr.toFixed(2)}</p>
-            <p class="text-slate-500">Shipping: ${formatForeignCurrency(lineShippingUsd)} | INR ${lineShippingInr.toFixed(2)}</p>
             <p class="font-semibold text-brand">Item total: ${formatForeignCurrency(totalUsd)} | INR ${totalInr.toFixed(2)}</p>
           </div>
         `;
         cartItemsDiv.appendChild(itemDiv);
       });
+      
+        // Apply shipping only once for entire cart
+if (cartItems.length > 0) {
+  shippingTotalUSD = SHIPPING_USD;
 
+  // Convert once using first product ratio
+  const firstItem = cartItems[0];
+
+  shippingTotalINR = calculateShippingInr(
+    Number(firstItem.price_usd || 0),
+    Number(firstItem.price_inr || 0),
+    firstItem.shipping_inr
+  );
+}
       const taxUSD = 0;
       const taxINR = 0;
       const discountUSD = parseFloat((subtotalUSD * discountRate).toFixed(2));
