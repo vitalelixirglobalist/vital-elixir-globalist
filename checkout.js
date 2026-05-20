@@ -80,19 +80,41 @@ async function loadHeader() {
 }
 
 async function getCartItems(currentUser) {
-  const localCart = JSON.parse(localStorage.getItem('cart')) || [];
-  let firestoreCart = [];
+
+  // If user logged in → ONLY use Firestore
   if (currentUser) {
+
     try {
-      const snapshot = await getDocs(collection(db, 'users', currentUser.uid, 'cart'));
+
+      const snapshot = await getDocs(
+        collection(db, 'users', currentUser.uid, 'cart')
+      );
+
+      const firestoreCart = [];
+
       snapshot.forEach((docSnap) => {
-        firestoreCart.push({ id: docSnap.id, ...docSnap.data() });
+
+        firestoreCart.push({
+          id: docSnap.id,
+          ...docSnap.data()
+        });
+
       });
+
+      return firestoreCart;
+
     } catch (error) {
+
       console.error('Error fetching cart from Firestore', error);
+
+      return [];
+
     }
+
   }
-  return [...firestoreCart, ...localCart];
+
+  // Guest user → use localStorage only
+  return JSON.parse(localStorage.getItem('cart')) || [];
 }
 
 function renderPaymentPanels(selectedValue) {
@@ -139,10 +161,8 @@ function renderCheckout(cartItems) {
     if (!hasPrice) {
       hasUnknownPrice = true;
     } else {
-      subtotalUSD += medicineUsd;
-      subtotalINR += medicineInr;
-      shippingTotalUSD += shippingUsd;
-      shippingTotalINR += shippingInr;
+    subtotalUSD += medicineUsd * quantity;
+    subtotalINR += medicineInr * quantity;
     }
 
     const itemDiv = document.createElement('div');
@@ -158,7 +178,7 @@ function renderCheckout(cartItems) {
       </div>
       <div class="text-sm text-gray-700 sm:text-right space-y-1">
         <p class="font-semibold">${hasPrice ? formatForeignCurrency(medicineUsd) : 'Price on request'}</p>
-        ${hasPrice ? `<p class="text-xs text-gray-500">Subtotal: ${formatForeignCurrency(totalUsd)} | INR ${totalInr.toFixed(2)}</p>` : ''}
+        ${hasPrice ? `<p class="text-xs text-gray-500">Subtotal: ${formatForeignCurrency(medicineUsd * quantity)} | INR ${(medicineInr * quantity).toFixed(2)}</p>` : ''}
       </div>
     `;
     checkoutItemsDiv.appendChild(itemDiv);
@@ -167,12 +187,34 @@ function renderCheckout(cartItems) {
   if (hasUnknownPrice) {
     orderSummaryDiv.innerHTML = `
       <p class="flex items-center justify-between"><span>Subtotal</span><span>Price on request</span></p>
-      <p class="flex items-center justify-between"><span>Shipping/Documentation</span><span>${formatForeignCurrency(SHIPPING_USD)} per item</span></p>
+      <p class="flex items-center justify-between"><span>Shipping/Documentation</span><span>${formatForeignCurrency(SHIPPING_USD)} per order</span></p>
       <p class="flex items-center justify-between font-semibold"><span>Total</span><span>Price on request</span></p>
     `;
     return;
   }
 
+  // Apply shipping ONLY once
+if (cartItems.length > 0) {
+
+  shippingTotalUSD = SHIPPING_USD;
+
+  const firstItem = cartItems[0];
+
+  const medicineUsd = Number(firstItem.price_usd || 0);
+
+  const medicineInr = Number(firstItem.price_inr || 0);
+
+  if (medicineUsd > 0) {
+
+    const conversionRate = medicineInr / medicineUsd;
+
+    shippingTotalINR = parseFloat(
+      (conversionRate * SHIPPING_USD).toFixed(2)
+    );
+
+  }
+
+}
   const totalUSD = subtotalUSD + shippingTotalUSD;
   const totalINR = subtotalINR + shippingTotalINR;
 
