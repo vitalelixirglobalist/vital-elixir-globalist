@@ -26,6 +26,7 @@
     .fade-up { animation: floatIn 0.6s ease-out; }
     .glass-card { background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(12px); }
   </style>
+  <script src="dev-fix.js"></script>
 </head>
 
 <body class="bg-slate-50 text-slate-800">
@@ -270,26 +271,91 @@
       });
     }
 
-    function addToCart() {
-      if (!selectedProduct) return showToast('No product selected.');
-      const variant = selectedProduct.variants[selectedVariantIndex] || selectedProduct.variants[0];
-      const shippingInr = getShippingInr(variant);
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      cart.push({
-        name: selectedProduct.name,
-        brand: selectedProduct.brand,
-        pack: variant.pack,
-        price_usd: variant.price_usd,
-        price_inr: variant.price_inr,
-        shipping_usd: SHIPPING_USD,
-        shipping_inr: parseFloat(shippingInr.toFixed(2)),
-        total_price_usd: Math.round((variant.price_usd || 0) + SHIPPING_USD),
-        total_price_inr: parseFloat(((variant.price_inr || 0) + shippingInr).toFixed(2)),
-        image: selectedProduct.image
-      });
-      localStorage.setItem('cart', JSON.stringify(cart));
-      showToast(`${selectedProduct.name} (${variant.pack}) added to cart.`);
+    async function addToCart() {
+
+  if (!selectedProduct) {
+    return showToast('No product selected.');
+  }
+
+  const variant =
+    selectedProduct.variants[selectedVariantIndex] ||
+    selectedProduct.variants[0];
+
+  const shippingInr = getShippingInr(variant);
+
+  const user = window.auth.currentUser;
+
+  // guest users
+  if (!user) {
+
+    const localCart =
+      JSON.parse(localStorage.getItem('cart')) || [];
+
+    localCart.push({
+      name: selectedProduct.name,
+      brand: selectedProduct.brand,
+      pack: variant.pack,
+      quantity: 1,
+      price_usd: variant.price_usd,
+      price_inr: variant.price_inr,
+      image: selectedProduct.image
+    });
+
+    localStorage.setItem(
+      'cart',
+      JSON.stringify(localCart)
+    );
+
+    showToast('Please login first.');
+
+    return;
+  }
+
+  const productId =
+    (
+      selectedProduct.name +
+      '-' +
+      variant.pack
+    )
+    .toLowerCase()
+    .replace(/\s+/g, '-');
+
+  await window.setDoc(
+
+    window.doc(
+      window.db,
+      'users',
+      user.uid,
+      'cart',
+      productId
+    ),
+
+    {
+      productId,
+
+      name: selectedProduct.name,
+
+      brand: selectedProduct.brand,
+
+      pack: variant.pack,
+
+      quantity: 1,
+
+      price_usd: variant.price_usd,
+
+      price_inr: variant.price_inr,
+
+      image: selectedProduct.image,
+
+      addedAt: new Date().toISOString()
     }
+
+  );
+
+  showToast(
+    `${selectedProduct.name} added to cart.`
+  );
+}
 
     function consultDoctor() {
       if (!selectedProduct) return;
@@ -364,7 +430,23 @@
       loadHeader();
     });
   </script>
-  <script type="module" src="firebase-config.js"></script>
+  <script type="module">
+
+import { auth, db } from './firebase-config.js';
+
+import {
+  doc,
+  setDoc,
+  getDoc
+} from 'https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js';
+
+window.auth = auth;
+window.db = db;
+window.setDoc = setDoc;
+window.doc = doc;
+window.getDoc = getDoc;
+
+</script>
 </body>
 </html>
 

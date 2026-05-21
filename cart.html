@@ -673,7 +673,41 @@ if (cartItems.length > 0) {
             }
           };
           try {
-            await addDoc(collection(db, 'users', currentUser.uid, 'orders'), orderData);
+            // SAVE INSIDE USER ACCOUNT
+await addDoc(
+  collection(
+    db,
+    'users',
+    currentUser.uid,
+    'orders'
+  ),
+  orderData
+);
+
+// SAVE INSIDE GLOBAL ORDERS
+await addDoc(
+  collection(
+    db,
+    'orders'
+  ),
+  {
+
+    ...orderData,
+
+    userId: currentUser.uid,
+
+    customerName: name,
+
+    customerEmail: email,
+
+    trackingId: '',
+
+    courier: '',
+
+    status: 'Pending'
+
+  }
+);
           } finally {
             for (const item of cart) {
               await deleteDoc(doc(db, 'users', currentUser.uid, 'cart', getProductId(item)));

@@ -305,6 +305,25 @@ max-height: 2.8rem;
     padding-bottom: 30vh; /* keeps 30% screen safe */
   }
 }
+/* LOCALHOST SVG SIZE FIX */
+svg {
+  width: 24px !important;
+  height: 24px !important;
+  max-width: 24px !important;
+  max-height: 24px !important;
+  overflow: hidden !important;
+  flex-shrink: 0 !important;
+}
+
+.fab-icon svg {
+  width: 20px !important;
+  height: 20px !important;
+}
+
+.site-logo img {
+  height: 55px !important;
+  width: auto !important;
+}
 </style>
 <script>
 (function () {

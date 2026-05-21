@@ -1,189 +1,396 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Account – Vital Elixir Globalist</title>
-  <meta name="description" content="View your orders, update your details and manage your account with Vital Elixir Globalist." />
-  <script src="https://cdn.tailwindcss.com"></script>
-    <script src="currency-utils.js"></script>
-  <script>
-    tailwind.config = { theme: { extend: { colors: { brand: '#0284c7' } } } };
-  </script>
-  <style>
-    html { scroll-behavior: smooth; }
-  </style>
-</head>
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Account – Vital Elixir Globalist</title>
+    <meta name="description" content="View your orders, update your details and manage your account with Vital Elixir Globalist." />
+    <script src="https://cdn.tailwindcss.com"></script>
+      <script src="currency-utils.js"></script>
+    <script>
+      tailwind.config = { theme: { extend: { colors: { brand: '#0284c7' } } } };
+    </script>
+    <style>
+      html { scroll-behavior: smooth; }
+    </style>
+    <script src="dev-fix.js"></script>
+  </head>
 
-<body class="text-gray-800 bg-gray-50">
-  <!-- Header placeholder -->
-  <div id="header-placeholder"></div>
-  <section class="max-w-5xl mx-auto px-4 py-10">
-    <h1 class="text-3xl font-bold mb-6">My Account</h1>
-    <!-- Login overlay shown when user is not authenticated -->
-    <div id="loginOverlay" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
-      <div class="bg-white p-6 rounded-xl shadow-lg max-w-sm text-center">
-        <h2 class="text-xl font-bold mb-4">Please log in to view your account</h2>
-        <p class="text-sm text-gray-600 mb-6">You must be signed in to see your orders and profile.</p>
-        <button id="loginRedirect" class="px-6 py-3 bg-brand text-white rounded-lg hover:bg-blue-700">Login</button>
+  <body class="text-gray-800 bg-gray-50">
+    <!-- Header placeholder -->
+    <div id="header-placeholder"></div>
+    <section class="max-w-5xl mx-auto px-4 py-10">
+      <h1 class="text-3xl font-bold mb-6">My Account</h1>
+      <!-- Login overlay shown when user is not authenticated -->
+      <div id="loginOverlay" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
+        <div class="bg-white p-6 rounded-xl shadow-lg max-w-sm text-center">
+          <h2 class="text-xl font-bold mb-4">Please log in to view your account</h2>
+          <p class="text-sm text-gray-600 mb-6">You must be signed in to see your orders and profile.</p>
+          <button id="loginRedirect" class="px-6 py-3 bg-brand text-white rounded-lg hover:bg-blue-700">Login</button>
+        </div>
       </div>
-    </div>
-    <!-- Account content shown after login -->
-    <div id="accountContent" class="hidden">
-      <div class="bg-white p-6 rounded-xl shadow mb-8">
-        <h2 class="text-2xl font-semibold mb-4">Profile</h2>
-        <p class="mb-2"><strong>Name:</strong> <span id="profileName"></span></p>
-        <p class="mb-2"><strong>Email:</strong> <span id="profileEmail"></span></p>
-        <button id="logoutBtn" class="mt-4 bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600">Sign Out</button>
+      <!-- Account content shown after login -->
+      <div id="accountContent" class="hidden">
+        <div class="bg-white p-6 rounded-xl shadow mb-8">
+          <h2 class="text-2xl font-semibold mb-4">Profile</h2>
+          <p class="mb-2">
+    <strong>Name:</strong>
+    <span id="profileName"></span>
+  </p>
+
+  <p class="mb-2">
+    <strong>Email:</strong>
+    <span id="profileEmail"></span>
+  </p>
+
+  <p class="mb-2">
+    <strong>Country:</strong>
+    <span id="profileCountry"></span>
+  </p>
+
+  <p class="mb-2">
+    <strong>Contact Channel:</strong>
+    <span id="profileLocation"></span>
+  </p>
+
+  <p class="mb-2">
+    <strong>Customer Type:</strong>
+    <span id="profileCustomerType"></span>
+  </p>
+
+  <p class="mb-2">
+    <strong>WhatsApp:</strong>
+    <span id="profileWhatsapp"></span>
+  </p>
+
+  <p class="mb-2">
+    <strong>VIP Status:</strong>
+  <span id="profileVip"></span>
+  </p>
+
+  <div class="mt-4 border-t pt-4">
+
+    <h3 class="font-bold text-lg mb-2">
+      Team Notes
+    </h3>
+
+    <p
+      id="profileNotes"
+      class="text-gray-700"
+    ></p>
+
+  </div>
+          <button id="logoutBtn" class="mt-4 bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600">Sign Out</button>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow">
+          <h2 class="text-2xl font-semibold mb-4">Order History</h2>
+          <div id="ordersList" class="space-y-4 text-sm"></div>
+        </div>
       </div>
-      <div class="bg-white p-6 rounded-xl shadow">
-        <h2 class="text-2xl font-semibold mb-4">Order History</h2>
-        <div id="ordersList" class="space-y-4 text-sm"></div>
-      </div>
-    </div>
-  </section>
-  <script>
-    // Load header and mobile menu functionality
-    async function loadHeader() {
-      const header = await fetch('header.html');
-      document.getElementById('header-placeholder').innerHTML = await header.text();
-      const menuBtn = document.getElementById('menu-btn');
-            if (window.initCurrencySelect) {
-        window.initCurrencySelect();
-      }
-      const closeBtn = document.getElementById('close-menu');
-      const mobileMenu = document.getElementById('mobile-menu');
-      const sidebar = document.getElementById('sidebar');
-      if (menuBtn && sidebar && mobileMenu) {
-        menuBtn.addEventListener('click', () => {
-          mobileMenu.classList.remove('hidden');
-          setTimeout(() => sidebar.classList.remove('translate-x-full'), 10);
-        });
-        closeBtn.addEventListener('click', () => {
-          sidebar.classList.add('translate-x-full');
-          setTimeout(() => mobileMenu.classList.add('hidden'), 300);
-        });
-        mobileMenu.addEventListener('click', (e) => {
-          if (e.target === mobileMenu) {
+    </section>
+    <script>
+      // Load header and mobile menu functionality
+      async function loadHeader() {
+        const header = await fetch('header.html');
+        document.getElementById('header-placeholder').innerHTML = await header.text();
+        const menuBtn = document.getElementById('menu-btn');
+              if (window.initCurrencySelect) {
+          window.initCurrencySelect();
+        }
+        const closeBtn = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const sidebar = document.getElementById('sidebar');
+        if (menuBtn && sidebar && mobileMenu) {
+          menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+            setTimeout(() => sidebar.classList.remove('translate-x-full'), 10);
+          });
+          closeBtn.addEventListener('click', () => {
             sidebar.classList.add('translate-x-full');
             setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+          });
+          mobileMenu.addEventListener('click', (e) => {
+            if (e.target === mobileMenu) {
+              sidebar.classList.add('translate-x-full');
+              setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+            }
+          });
+        }
+      }
+      loadHeader();
+    </script>
+    <script type="module">
+      import {
+    auth,
+    db
+  }
+  from './firebase-config.js';
+  console.log("Imported DB:", db);
+
+  import {
+    onAuthStateChanged,
+    signOut
+  }
+  from 'https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js';
+
+  import {
+  doc,
+  getDoc,
+  collection,
+  getDocs,
+  getFirestore
+}
+from 'https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js';
+
+      if (!db) {
+
+  console.error(
+    "Firestore DB missing"
+  );
+
+}
+
+      const loginOverlay = document.getElementById('loginOverlay');
+      const accountContent = document.getElementById('accountContent');
+      const loginRedirectBtn = document.getElementById('loginRedirect');
+      const logoutBtn = document.getElementById('logoutBtn');
+      const profileNameEl =
+    document.getElementById(
+      'profileName'
+    );
+
+  const profileEmailEl =
+    document.getElementById(
+      'profileEmail'
+    );
+
+  const profileCountryEl =
+    document.getElementById(
+      'profileCountry'
+    );
+
+  const profileLocationEl =
+    document.getElementById(
+      'profileLocation'
+    );
+
+  const profileCustomerTypeEl =
+    document.getElementById(
+      'profileCustomerType'
+    );
+
+  const profileWhatsappEl =
+    document.getElementById(
+      'profileWhatsapp'
+    );
+
+  const profileVipEl =
+    document.getElementById(
+      'profileVip'
+    );
+
+  const profileNotesEl =
+    document.getElementById(
+      'profileNotes'
+    );
+
+  const ordersList =
+    document.getElementById(
+      'ordersList'
+    );
+
+      loginRedirectBtn.addEventListener('click', () => {
+        window.location.href = 'login.html?redirect=my-account.html';
+      });
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', async () => {
+          try {
+            await signOut(auth);
+            localStorage.removeItem('userEmail');
+            window.location.href = 'index.html';
+          } catch (err) {
+            console.error('Error signing out', err);
           }
         });
       }
-    }
-    loadHeader();
-  </script>
-  <script type="module">
-    import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js';
-    import { getAuth, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js';
-    import { getFirestore, doc, getDoc, collection, getDocs } from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
 
-    // Firebase configuration
-    const firebaseConfig = {
-      apiKey: 'AIzaSyBsSrWpk0I6YnjNJcGRBnXg23WePsgdRx4',
-      authDomain: 'vital-elixir-globalist.firebaseapp.com',
-      projectId: 'vital-elixir-globalist',
-      storageBucket: 'vital-elixir-globalist.appspot.com',
-      messagingSenderId: '87028221342',
-      appId: '1:87028221342:web:0c7719acc703566e8fc28f',
-      measurementId: 'G-5MWKWE2C4J'
-    };
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const db = getFirestore(app);
+      onAuthStateChanged(auth, async (user) => {
 
-    const loginOverlay = document.getElementById('loginOverlay');
-    const accountContent = document.getElementById('accountContent');
-    const loginRedirectBtn = document.getElementById('loginRedirect');
-    const logoutBtn = document.getElementById('logoutBtn');
-    const profileNameEl = document.getElementById('profileName');
-    const profileEmailEl = document.getElementById('profileEmail');
-    const ordersList = document.getElementById('ordersList');
+  if (!user) {
 
-    loginRedirectBtn.addEventListener('click', () => {
-      window.location.href = 'login.html?redirect=my-account.html';
-    });
-    if (logoutBtn) {
-      logoutBtn.addEventListener('click', async () => {
-        try {
-          await signOut(auth);
-          localStorage.removeItem('userEmail');
-          window.location.href = 'index.html';
-        } catch (err) {
-          console.error('Error signing out', err);
-        }
-      });
-    }
+    loginOverlay.classList.remove(
+      'hidden'
+    );
 
-    onAuthStateChanged(auth, async (user) => {
-      if (!user) {
-        loginOverlay.classList.remove('hidden');
-        accountContent.classList.add('hidden');
-        return;
-      }
-      // User logged in
-      loginOverlay.classList.add('hidden');
-      accountContent.classList.remove('hidden');
-      profileEmailEl.textContent = user.email;
-      try {
-        const userDoc = await getDoc(doc(db, 'users', user.uid));
-        if (userDoc.exists()) {
-          const data = userDoc.data();
-          profileNameEl.textContent = data.name || '';
-        }
-      } catch (err) {
-        console.error('Failed to fetch user profile', err);
-      }
-      // Load orders
-      ordersList.innerHTML = '';
-      try {
-        const snap = await getDocs(collection(db, 'users', user.uid, 'orders'));
-        if (snap.empty) {
-          ordersList.innerHTML = '<p>You have no orders yet.</p>';
-        } else {
-          snap.forEach((docSnap) => {
-            const order = docSnap.data();
-            const div = document.createElement('div');
-            div.className = 'border p-4 rounded-lg shadow-sm';
-            const itemsDescription = order.items.map(i => `${i.name} (${i.pack})`).join(', ');
-            div.innerHTML = `
-              <p class="mb-2 text-sm text-gray-700"><strong>Order ID:</strong> ${docSnap.id}</p>
-              <p class="mb-2 text-sm text-gray-700"><strong>Date:</strong> ${new Date(order.date).toLocaleDateString()}</p>
-              <p class="mb-2 text-sm text-gray-700"><strong>Items:</strong> ${itemsDescription}</p>
-              <p class="mb-2 text-sm text-gray-700"><strong>Status:</strong> ${order.status}</p>
-            `;
-            ordersList.appendChild(div);
-          });
-        }
-      } catch (err) {
-        console.error('Failed to fetch orders', err);
-        ordersList.innerHTML = '<p>Could not load your orders. Please try again later.</p>';
-      }
-    });
-  </script>
-  <script type="module">
-  import { auth } from './firebase-config.js';
-  import { onAuthStateChanged, signOut } 
-    from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
+    accountContent.classList.add(
+      'hidden'
+    );
 
-  onAuthStateChanged(auth, (user) => {
-    if (!user) {
-      alert("Please login first.");
-      window.location.href = "login.html";
-    }
-  });
-
-  // Optional logout button
-  const logoutBtn = document.getElementById('logout-btn');
-  if (logoutBtn) {
-    logoutBtn.addEventListener('click', () => {
-      signOut(auth).then(() => {
-        localStorage.removeItem('uid');
-        window.location.href = "index.html";
-      });
-    });
+    return;
   }
-</script>
-  <script type="module" src="firebase-config.js"></script>
-</body>
-</html>
+
+  console.log(
+    "Logged in UID:",
+    user.uid
+  );
+          
+        // User logged in
+        loginOverlay.classList.add('hidden');
+        accountContent.classList.remove('hidden');
+        profileEmailEl.textContent = user.email;
+        try {
+          const userDoc = await getDoc(doc(db, 'users', user.uid));
+          console.log(
+          "Firestore document exists:",
+          userDoc.exists()
+          );
+          if (userDoc.exists()) {
+
+    const data =
+      userDoc.data();
+    console.log(
+    "Firestore data:",
+    data
+  );
+    profileEmailEl.textContent =
+    user.email || 'Not Added';
+    
+    console.log(
+    "Customer data loaded:",
+    data
+  );
+
+    profileNameEl.textContent =
+      data.name || '';
+
+    profileCountryEl.textContent =
+      data.country || 'Not Added';
+    
+    profileLocationEl.textContent =
+    data.contactchannel || 'Not Added';
+
+    profileCustomerTypeEl.textContent =
+    data.customerType || 'Standard';
+
+    profileWhatsappEl.textContent =
+      data.whatsapp || 'Not Added';
+
+    profileVipEl.textContent =
+      data.vip === 'Yes'
+        ? 'VIP Customer'
+        : 'Standard Customer';
+
+    profileNotesEl.textContent =
+      data.adminNotes || 'No notes yet';
+  
+  // Load orders
+       ordersList.innerHTML = `
+
+  <div class="border p-4 rounded-lg shadow-sm">
+
+    <div class="space-y-3">
+
+      <div class="grid grid-cols-2 gap-4">
+
+        <div class="font-semibold">
+          Order Status :
+        </div>
+
+        <div>
+          ${data.orderStatus || 'Pending'}
+        </div>
+
+        <div class="font-semibold">
+          Tracking ID :
+        </div>
+
+        <div>
+          ${data.trackingId || 'Not Assigned'}
+        </div>
+
+        <div class="font-semibold">
+          Courier :
+        </div>
+
+        <div>
+          ${data.courier || 'Pending'}
+        </div>
+
+        <div class="font-semibold">
+          Order Details :
+        </div>
+
+        <div>
+          ${data.orderDetails || 'Pending Confirmation'}
+        </div>
+
+        <div class="font-semibold">
+          Ordered Date :
+        </div>
+
+        <div>
+          ${data.orderedDate || 'N/A'}
+        </div>
+
+        <div class="font-semibold">
+          Ordered Amount :
+        </div>
+
+        <div>
+          ${data.orderedAmount || 'N/A'}
+        </div>
+
+        <div class="font-semibold">
+          Invoice No :
+        </div>
+
+        <div>
+          ${data.invoiceNo || 'Pending'}
+        </div>
+
+        <div class="font-semibold">
+          Tracking Link :
+        </div>
+
+        <div>
+
+          ${
+            data.trackingLink
+              ? `<a
+                  href="${data.trackingLink}"
+                  target="_blank"
+                  class="text-blue-600 underline"
+                >
+                  Track Shipment
+                </a>`
+              : 'Pending'
+          }
+
+        </div>
+
+        <div class="font-semibold">
+          CRM Staff Allocated :
+        </div>
+
+        <div>
+          ${data.crmStaff || 'Not Assigned'}
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+`;
+
+      }
+        } catch (err) {
+          console.error('Failed to fetch user profile', err);
+        }
+        
+             
+      });
+    </script>
+  </body>
+  </html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>My Orders</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body class="bg-slate-100 min-h-screen">
+
+  <div class="max-w-6xl mx-auto p-6">
+
+    <h1 class="text-4xl font-bold mb-8">
+      My Orders
+    </h1>
+
+    <div
+      id="ordersContainer"
+      class="space-y-6"
+    ></div>
+
+  </div>
+
+  <script type="module">
+
+    import {
+      auth,
+      db
+    } from './firebase-config.js';
+
+    import {
+      onAuthStateChanged
+    } from 'https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js';
+
+    import {
+      collection,
+      getDocs
+    } from 'https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js';
+
+
+    const ordersContainer =
+      document.getElementById(
+        'ordersContainer'
+      );
+
+
+    onAuthStateChanged(
+      auth,
+      async (user) => {
+
+        if (!user) {
+
+          window.location.href =
+            'login.html';
+
+          return;
+        }
+
+        await loadOrders(user.uid);
+
+      }
+    );
+
+
+    async function loadOrders(uid) {
+
+      try {
+
+        const ordersSnapshot =
+          await getDocs(
+
+            collection(
+              db,
+              'users',
+              uid,
+              'orders'
+            )
+
+          );
+
+        if (ordersSnapshot.empty) {
+
+          ordersContainer.innerHTML = `
+
+            <div class="bg-white p-6 rounded-2xl shadow">
+
+              <p class="text-gray-600">
+                No orders found.
+              </p>
+
+            </div>
+
+          `;
+
+          return;
+        }
+
+        ordersContainer.innerHTML = '';
+
+        ordersSnapshot.forEach(
+          (orderDoc) => {
+
+            const order =
+              orderDoc.data();
+
+            const card =
+              document.createElement(
+                'div'
+              );
+
+            card.className =
+              'bg-white rounded-2xl shadow p-6';
+
+            const medicines =
+              order.items
+                ?.map(
+
+                  item => `
+
+                    <div class="border rounded-lg p-3 mt-2">
+
+                      <p>
+                        <strong>Medicine:</strong>
+                        ${item.name}
+                      </p>
+
+                      <p>
+                        <strong>Pack:</strong>
+                        ${item.pack}
+                      </p>
+
+                      <p>
+                        <strong>Price:</strong>
+                        $${item.total_price_usd || 0}
+                      </p>
+
+                    </div>
+
+                  `
+
+                )
+                .join('');
+
+            const totalAmount =
+              order.items?.reduce(
+
+                (sum, item) =>
+
+                  sum +
+                  Number(
+                    item.total_price_usd || 0
+                  ),
+
+                0
+
+              ) || 0;
+
+            card.innerHTML = `
+
+              <div class="space-y-3">
+
+                <h2 class="text-2xl font-bold">
+                  Order
+                </h2>
+
+                <p>
+                  <strong>Status:</strong>
+                  ${order.status || 'Pending'}
+                </p>
+
+                <p>
+                  <strong>Tracking ID:</strong>
+                  ${order.trackingId || 'Not Assigned'}
+                </p>
+
+                <p>
+                  <strong>Courier:</strong>
+                  ${order.courier || 'Pending'}
+                </p>
+
+                <p>
+                  <strong>Admin Notes:</strong>
+                  ${order.notes || 'No notes'}
+                </p>
+
+                <p>
+                  <strong>Order Date:</strong>
+                  ${order.date || 'N/A'}
+                </p>
+
+                <div>
+
+                  <h3 class="text-xl font-bold mt-4 mb-2">
+                    Medicines
+                  </h3>
+
+                  ${medicines}
+
+                </div>
+
+                <p class="text-xl font-bold mt-4">
+
+                  Total:
+                  $${totalAmount}
+
+                </p>
+
+              </div>
+
+            `;
+
+            ordersContainer.appendChild(
+              card
+            );
+
+          }
+        );
+
+      } catch(error) {
+
+        console.error(error);
+
+      }
+
+    }
+
+  </script>
+
+</body>
+
+</html>

@@ -17,6 +17,7 @@
   <style>
     html { scroll-behavior: smooth; }
   </style>
+  <script src="dev-fix.js"></script>
 </head>
 
 <body class="text-gray-800 bg-gray-50">
@@ -100,13 +101,21 @@
     const redirectTo = params.get('redirect') || 'index.html';
 
     // Monitor auth state and redirect if already logged in
+    let isRegistering = false;
     onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // Store email locally for non-auth pages
-        localStorage.setItem('userEmail', user.email);
-        window.location.href = redirectTo;
-      }
-    });
+
+  if (isRegistering) return;
+
+  if (user) {
+
+    localStorage.setItem(
+      'userEmail',
+      user.email
+    );
+
+    window.location.href = redirectTo;
+  }
+});
 
     const authMessage = document.getElementById('authMessage');
     // Login form handler
@@ -116,6 +125,7 @@
       const email = document.getElementById('loginEmail').value.trim();
       const password = document.getElementById('loginPassword').value;
       try {
+        isRegistering = true;
         const cred = await signInWithEmailAndPassword(auth, email, password);
         // Save email in local storage for offline pages
         localStorage.setItem('userEmail', email);
@@ -124,8 +134,11 @@
         window.open(`mailto:vitalelixirglobalist@gmail.com?subject=User Login&body=${body}`, '_blank');
         window.location.href = redirectTo;
       } catch (error) {
-        authMessage.textContent = error.message;
-      }
+
+  isRegistering = false;
+
+  authMessage.textContent = error.message;
+}
     });
 
     // Register form handler
@@ -141,56 +154,41 @@
         return;
       }
       try {
+        isRegistering = true;
         const cred = await createUserWithEmailAndPassword(auth, email, password);
         // Save additional user info to Firestore
+        console.log("Trying Firestore save...");
         await setDoc(doc(db, 'users', cred.user.uid), {
-          name: name,
-          email: email,
-          phone: phone || ''
-        });
+
+  name: name,
+
+  email: email,
+
+  phone: phone || '',
+
+  role: 'customer',
+
+  createdAt: new Date().toISOString()
+
+});
+
+console.log("Firestore save success!");
+
+isRegistering = false;
         localStorage.setItem('userEmail', email);
         // Send registration email to site owner
         const body = encodeURIComponent(`New user registered:\nName: ${name}\nEmail: ${email}\nPhone: ${phone || 'N/A'}\nTime: ${new Date().toISOString()}`);
         window.open(`mailto:vitalelixirglobalist@gmail.com?subject=New User Registration&body=${body}`, '_blank');
         window.location.href = redirectTo;
       } catch (error) {
-        authMessage.textContent = error.message;
-      }
+
+  isRegistering = false;
+
+  authMessage.textContent = error.message;
+}
     });
   </script>
-<script type="module">
-  import { auth, db } from './firebase-config.js';
-  import { createUserWithEmailAndPassword, signInWithEmailAndPassword } 
-    from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
-  import { setDoc, doc } 
-    from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
 
-  const form = document.getElementById('login-form');
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-
-    try {
-      // Try login first
-      const userCred = await signInWithEmailAndPassword(auth, email, password);
-      alert('Login successful!');
-      localStorage.setItem('uid', userCred.user.uid);
-      window.location.href = 'my-account.html';
-    } catch (err) {
-      // If no account, create one
-      const newUser = await createUserWithEmailAndPassword(auth, email, password);
-      await setDoc(doc(db, "USERS", newUser.user.uid), {
-        email,
-        createdAt: new Date().toISOString()
-      });
-      alert('Account created successfully!');
-      localStorage.setItem('uid', newUser.user.uid);
-      window.location.href = 'my-account.html';
-    }
-  });
-</script>
 <script type="module" src="firebase-config.js"></script>
 </body>
 </html>
