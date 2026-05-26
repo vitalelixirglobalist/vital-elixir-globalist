@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Admin Dashboard</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-100">
+
+  <div class="max-w-7xl mx-auto p-8">
+
+    <div class="flex items-center justify-between mb-8">
+
+      <h1 class="text-4xl font-bold">
+        Admin Dashboard
+      </h1>
+
+      <button
+        id="logoutBtn"
+        class="bg-red-500 hover:bg-red-600 text-white px-5 py-2 rounded-lg"
+      >
+        Logout
+      </button>
+
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 mb-10">
+
+      <div class="bg-white rounded-2xl p-6 shadow">
+        <h2 class="text-xl font-semibold">
+          Total Users
+        </h2>
+
+        <p id="totalUsers" class="text-4xl font-bold mt-4">
+          0
+        </p>
+      </div>
+
+      <div class="bg-white rounded-2xl p-6 shadow">
+        <h2 class="text-xl font-semibold">
+          Total Orders
+        </h2>
+
+        <p id="totalOrders" class="text-4xl font-bold mt-4">
+          0
+        </p>
+      </div>
+
+      <div class="bg-white rounded-2xl p-6 shadow">
+        <h2 class="text-xl font-semibold">
+          Active Carts
+        </h2>
+
+        <p id="totalCarts" class="text-4xl font-bold mt-4">
+          0
+        </p>
+      </div>
+
+    </div>
+
+    <div class="bg-white rounded-2xl shadow p-6">
+
+      <h2 class="text-2xl font-bold mb-6">
+        Registered Users
+      </h2>
+
+      <div id="usersContainer" class="space-y-4"></div>
+
+        </div>
+
+  </div>
+
+  <script type="module" src="admin-dashboard.js"></script>
+
+</body>
+</html>
