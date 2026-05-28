@@ -83,10 +83,15 @@ body .fab-icon img {
   <!-- Header Placeholder -->
   <div id="header-placeholder"></div>
 
-  <section class="max-w-6xl mx-auto px-4 py-10">
+  <section class="w-full max-w-[1400px] mx-auto px-4 py-10">
     <div class="flex flex-col gap-2 mb-6">
-      <h1 class="text-3xl font-bold">Your Cart Items</h1>
-      <p class="text-sm text-slate-600">Review your medicines, update quantities, and proceed securely.</p>
+      <h1 class="text-3xl font-bold">
+  Your Selected Medications
+</h1>
+
+<p class="text-sm text-slate-600">
+  Review your selected medications and submit your international medication request.
+</p>
     </div>
 
     <!-- Login Prompt Overlay -->
@@ -101,8 +106,8 @@ body .fab-icon img {
       </div>
     </div>
 
-    <div id="cartContainer" class="grid gap-6 lg:grid-cols-12">
-      <div class="lg:col-span-8 space-y-6">
+    <div id="cartContainer" class="grid gap-6 grid-cols-1">
+      <div class="space-y-6">
         <div class="bg-white rounded-2xl shadow-soft border border-slate-100">
           <div class="flex flex-wrap items-center justify-between gap-3 px-6 py-4 border-b border-slate-100">
             <div>
@@ -114,94 +119,155 @@ body .fab-icon img {
               Back to Products
             </a>
           </div>
-          <div class="px-6 py-4">
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 px-6 py-4">
+
+          <!-- LEFT SIDE CART -->
+          <div class="lg:col-span-2">
+
             <div class="hidden md:grid grid-cols-12 text-xs uppercase tracking-wide text-slate-500 border-b border-slate-100 pb-3">
               <div class="col-span-5">Product</div>
               <div class="col-span-3">Quantity</div>
               <div class="col-span-4 text-right">Pricing</div>
             </div>
+
             <div id="cartItems" class="divide-y divide-slate-100"></div>
+
           </div>
+
+          <!-- RIGHT SIDE SUMMARY -->
+          <div>
+
+            <div
+              id="cartSummary"
+              class="bg-slate-50 rounded-2xl border border-slate-200 p-5 lg:sticky lg:top-24">
+            </div>
+
+          </div>
+
         </div>
+          </div>
+        <!-- CUSTOM MEDICATION REQUEST SECTION -->
+<div class="bg-white rounded-2xl shadow-soft border border-slate-200 p-6">
 
-        <!-- CUSTOM PROCEED TO CHECK OUT SECTION -->
-<div class="bg-white rounded-2xl shadow-soft border-2 border-red-500 p-6">
-  <h2 class="text-2xl font-bold mb-5">Proceed to check out</h2>
+  <h2 class="text-2xl font-bold mb-2">
+    Medication Request & Assistance
+  </h2>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+  <p class="text-sm text-slate-600 mb-6">
+    Choose how you would like our international medication support team to assist you.
+  </p>
 
-    <!-- LEFT OPTION -->
-    <div class="border rounded-xl p-5 flex flex-col justify-between">
-      <div>
-        <h3 class="text-lg font-bold mb-3">
-          24/7 live chat order placement team
-        </h3>
+  <!-- TWO COLUMN REQUEST LAYOUT -->
+<div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
 
-        <ul class="list-disc pl-5 text-sm space-y-2 text-slate-700">
-          <li>Dedicated team to understand your requirement</li>
-          <li>Assistance for secure payment placement</li>
-          <li>Assigned executive to keep you informed</li>
-          <li>Updates provided till parcel reaches your doorstep</li>
-        </ul>
+  <!-- LEFT MAIN CARD -->
+  <div class="lg:col-span-4">
+
+    <div class="bg-blue-50 border border-blue-200 rounded-2xl p-6 h-full">
+
+      <!-- TITLE -->
+      <h3 class="text-2xl font-bold text-blue-900 mb-4">
+        Submit Medication Request
+      </h3>
+
+      <!-- DESCRIPTION -->
+      <p class="text-sm text-slate-700 mb-5 leading-relaxed">
+        Your selected medicines and quantities will be securely shared with our international medication support team.
+      </p>
+
+      <!-- BULLETS -->
+      <ul class="list-disc pl-5 text-sm space-y-3 text-slate-700">
+
+        <li>
+          No payment required at this stage
+        </li>
+
+        <li>
+          Our team will verify availability and shipping options
+        </li>
+
+        <li>
+          Dedicated executive assistance for your order
+        </li>
+
+        <li>
+          Support available for international delivery guidance
+        </li>
+
+      </ul>
+
+      <!-- LIVE SUPPORT -->
+      <div class="border-t border-blue-200 mt-6 pt-5">
+
+        <p class="text-center text-green-700 font-semibold text-base">
+
+          🟢 Our international medication support team is available 24/7 to assist you.
+
+        </p>
+
       </div>
 
+      <!-- BUTTON -->
       <button
         type="button"
-         id="checkoutWithTeam"
-        onclick="openCheckoutContactPopup(this)"
-        class="mt-6 w-full bg-brand text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition">
-        Proceed to check out with team
+        id="submitMedicationRequest"
+        class="mt-6 w-full bg-blue-600 text-white py-4 rounded-xl font-semibold text-lg hover:bg-blue-700 transition">
+
+        Submit Medication Request
+
       </button>
-    </div>
 
-    <!-- RIGHT OPTION -->
-    <div class="border rounded-xl p-5 flex flex-col justify-between">
-      <div>
-        <h3 class="text-lg font-bold mb-3">
-          Direct check out with our payment portal
-        </h3>
-
-        <ul class="list-disc pl-5 text-sm space-y-2 text-slate-700">
-          <li>Review the order summary</li>
-          <li>Proceed securely through payment portal</li>
-        </ul>
-      </div>
-
-  <a
-  href="checkout.html"
-  id="checkoutWithPortal"
-  class="mt-6 block text-center w-full bg-brand text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition">
-  Proceed to check out with payment portal
-</a>
     </div>
 
   </div>
-</div>
+
+  <!-- RIGHT DOCTOR CONSULT CARD -->
+  <div class="lg:col-span-1">
+
+    <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm h-full flex flex-col justify-between">
+
+      <div>
+
+        <h3 class="text-lg font-bold mb-3 text-slate-900 leading-snug">
+          Need Help Consulting a Doctor?
+        </h3>
+
+        <ul class="space-y-3 text-sm text-slate-600 leading-relaxed">
+
+        <li>
+          • Connect with licensed medical professionals
+        </li>
+
+        <li>
+          • Consultation and prescription guidance
+        </li>
+
+        <li>
+          • Treatment-related assistance
+        </li>
+
+      </ul>
 
       </div>
 
-      <div class="lg:col-span-4 space-y-6">
-        <div id="cartSummary" class="bg-white rounded-2xl shadow-soft border border-slate-100 p-5"></div>
+      <button
+    type="button"
+    onclick="openCheckoutContactPopup(this)"
+    class="w-full bg-brand text-white rounded-lg py-3 text-sm font-semibold hover:bg-blue-700">
 
-        <div class="bg-white rounded-2xl shadow-soft border border-slate-100 p-5">
-          <h3 class="text-base font-semibold mb-3">Coupon & Loyalty</h3>
-          <div class="space-y-3">
-            <input type="text" id="loyaltyCode" placeholder="Loyalty customer coupon"
-              class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm" />
-            <input type="text" id="promoCode" placeholder="Promotional coupon"
-              class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm" />
-            <button type="button" id="applyCoupon"
-              class="w-full bg-slate-900 text-white rounded-lg py-2 text-sm hover:bg-slate-800">Apply Coupon</button>
-            <p id="couponMessage" class="text-xs text-slate-500"></p>
-          </div>
-        </div>
+    Talk to Medication Support Team
 
-        <div class="bg-white rounded-2xl shadow-soft border border-slate-100 p-5">
-          <h3 class="text-base font-semibold mb-2">Consult a Doctor</h3>
-          <p class="text-xs text-slate-500 mb-4">Get expert guidance on dosage, interactions, and suitability for your health profile.</p>
-          <button type="button"
-            class="w-full border border-medical text-medical rounded-lg py-2 text-sm font-semibold hover:bg-emerald-50">Consult a Doctor for this medication</button>
-        </div>
+  </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+</div>
+        
+
       </div>
     </div>
   </section>
@@ -250,11 +316,41 @@ body .fab-icon img {
     const getSelectedCurrency = () => window.currencyUtils?.getSelectedCurrency?.() || 'GBP';
 
     const formatForeignCurrency = (value) => {
+
+    const currency =
+      getSelectedCurrency();
+
+    const rate =
+      window.currencyUtils?.rates?.[currency] || 1;
+
+    const converted =
+      Number(value || 0) * rate;
+
+    return `${currency} ${Number(converted).toFixed(2)}`;
+
+    };
+
+    const getSelectedCurrencyRate = () => {
       const currency = getSelectedCurrency();
-      const converted = window.currencyUtils?.convertFromUsd
-        ? window.currencyUtils.convertFromUsd(value, currency)
-        : value;
-      return `${currency} ${Number(converted || 0).toFixed(2)}`;
+      return window.currencyUtils?.rates?.[currency] || 1;
+    };
+
+    const convertDisplayedAmount = (value) => {
+
+  const currency =
+    getSelectedCurrency();
+
+  return parseFloat(
+
+    window.currencyUtils
+      .convertFromUsd(
+        Number(value || 0),
+        currency
+      )
+      .toFixed(2)
+
+      );
+
     };
 
     const calculateShippingInr = (medicineUsd, medicineInr, existingShippingInr) => {
@@ -263,55 +359,100 @@ body .fab-icon img {
       }
       if (!medicineUsd) return 0;
       const rate = medicineInr / medicineUsd;
-      const computed = rate * SHIPPING_USD;
-      return parseFloat(computed.toFixed(2));
+      const increaseMultiplier =
+      1 + (
+        (window.currencyUtils?.GLOBAL_PRICE_INCREASE_PERCENT || 0)
+        / 100
+      );
+
+    const computed =
+      rate *
+      SHIPPING_USD *
+      increaseMultiplier;
+
+          return parseFloat(computed.toFixed(2));
+        };
+
+    const calculateLineTotals = (item, quantity) => {
+
+    const increasePercent =
+      window.currencyUtils?.GLOBAL_PRICE_INCREASE_PERCENT || 0;
+
+    const multiplier =
+      1 + (increasePercent / 100);
+
+    /* =========================
+      MEDICINE PRICE
+    ========================= */
+
+    const originalMedicineUsd =
+      Number(item.price_usd || 0);
+
+    const originalMedicineInr =
+      Number(item.price_inr || 0);
+
+    // APPLY GLOBAL INCREASE
+    const medicineUsd =
+      parseFloat(
+        (originalMedicineUsd * multiplier)
+        .toFixed(2)
+      );
+
+    const medicineInr =
+      parseFloat(
+        (originalMedicineInr * multiplier)
+        .toFixed(2)
+      );
+
+    /* =========================
+      SHIPPING
+      (ONLY DISPLAY PURPOSE)
+    ========================= */
+
+    const shippingUsd =
+      SHIPPING_USD;
+
+    const shippingInr =
+      calculateShippingInr(
+        originalMedicineUsd,
+        originalMedicineInr,
+        item.shipping_inr
+      );
+
+    /* =========================
+      LINE TOTALS
+    ========================= */
+
+    const lineMedicineUsd =
+      parseFloat(
+        (medicineUsd * quantity)
+        .toFixed(2)
+      );
+
+    const lineMedicineInr =
+      parseFloat(
+        (medicineInr * quantity)
+        .toFixed(2)
+      );
+
+    return {
+
+      medicineUsd,
+      medicineInr,
+
+      shippingUsd,
+      shippingInr,
+
+      lineMedicineUsd,
+      lineMedicineInr,
+
+      totalUsd: lineMedicineUsd,
+      totalInr: lineMedicineInr
+
     };
 
-const calculateLineTotals = (item, quantity) => {
-  const medicineUsd = Number(item.price_usd || 0);
-  const medicineInr = Number(item.price_inr || 0);
-
-  // Shipping only for display purpose
-  const shippingUsd = item.shipping_usd !== undefined && item.shipping_usd !== null
-    ? Number(item.shipping_usd)
-    : SHIPPING_USD;
-
-  const shippingInr = calculateShippingInr(
-    medicineUsd,
-    medicineInr,
-    item.shipping_inr
-  );
-
-  const lineMedicineUsd = parseFloat(
-    (medicineUsd * quantity).toFixed(2)
-  );
-
-  const lineMedicineInr = parseFloat(
-    (medicineInr * quantity).toFixed(2)
-  );
-
-  // IMPORTANT:
-  // Do NOT multiply shipping by quantity
-  // Shipping applied globally later
-  const totalUsd = parseFloat(
-    (lineMedicineUsd).toFixed(2)
-  );
-
-  const totalInr = parseFloat(
-    (lineMedicineInr).toFixed(2)
-  );
-
-  return {
-    medicineUsd,
-    medicineInr,
-    shippingUsd,
-    shippingInr,
-    lineMedicineUsd,
-    lineMedicineInr,
-    totalUsd,
-    totalInr
   };
-};
+
 
     const getQuantity = (item) => Number(item.quantity || item.qty || item.count || 1);
 
@@ -331,11 +472,13 @@ const calculateLineTotals = (item, quantity) => {
     const loginRedirect = document.getElementById('loginRedirect');
     const cartItemsDiv = document.getElementById('cartItems');
     const cartSummaryDiv = document.getElementById('cartSummary');
+    const cartSummaryMobileDiv = document.getElementById('cartSummaryMobile');  
     const payButton = document.getElementById('payButton');
     const applyCouponBtn = document.getElementById('applyCoupon');
     const couponMessage = document.getElementById('couponMessage');
     const reminderMessage = document.getElementById('reminderMessage');
     const reminderBtn = document.getElementById('setReminder');
+    const submitMedicationRequestBtn = document.getElementById('submitMedicationRequest');
 
     let currentUser = null;
     let hasSyncedLocalCart = false;
@@ -511,7 +654,22 @@ const calculateLineTotals = (item, quantity) => {
       
         // Apply shipping only once for entire cart
 if (cartItems.length > 0) {
-  shippingTotalUSD = SHIPPING_USD;
+ 
+const increaseMultiplier =
+  1 + (
+    (window.currencyUtils?.GLOBAL_PRICE_INCREASE_PERCENT || 0)
+    / 100
+  );
+
+  shippingTotalUSD =
+  parseFloat(
+    (
+      window.currencyUtils.convertFromUsd(
+        SHIPPING_USD,
+        'USD'
+      )
+    ).toFixed(2)
+  );
 
   // Convert once using first product ratio
   const firstItem = cartItems[0];
@@ -531,8 +689,13 @@ if (cartItems.length > 0) {
 
    cartSummaryDiv.innerHTML = `
   <div class="mb-4">
-    <h3 class="text-lg font-semibold">Order Summary</h3>
-    <p class="text-xs text-slate-500">Review total charges before checkout</p>
+    <h3 class="text-lg font-semibold">
+  Medication Request Summary
+</h3>
+
+<p class="text-xs text-slate-500">
+  Review your selected medications before submitting your request.
+</p>
   </div>
 
   <div class="space-y-3">
@@ -553,13 +716,16 @@ if (cartItems.length > 0) {
             <span class="font-medium">- ${formatForeignCurrency(discountUSD)} | INR ${discountINR.toFixed(2)}</span>
           </div>
           <div class="border-t border-slate-200 pt-3 flex items-center justify-between">
-            <span class="text-base font-semibold">Final payable amount</span>
+            <span class="text-base font-semibold"> Estimated Request Total </span>
             <span class="text-lg font-bold text-brand">${formatForeignCurrency(grandTotalUSD)} | INR ${grandTotalINR.toFixed(2)}</span>
           </div>
-          <p class="text-xs text-slate-500">Shipping estimates are based on standard delivery for each item.</p>
+          <p class="text-xs text-slate-500"> Final pricing and shipping options may vary based on destination country, availability, and international delivery requirements. </p>
         </div>
       `;
 
+      if (cartSummaryMobileDiv) {
+      cartSummaryMobileDiv.innerHTML = cartSummaryDiv.innerHTML;
+          }
       document.querySelectorAll('.removeItemBtn').forEach((btn) => {
         btn.addEventListener('click', async (e) => {
           const idx = parseInt(e.target.getAttribute('data-index'));
@@ -602,27 +768,320 @@ if (cartItems.length > 0) {
       renderCart();
     });
 
-    applyCouponBtn.addEventListener('click', () => {
-      const loyaltyCode = document.getElementById('loyaltyCode').value.trim();
-      const promoCode = document.getElementById('promoCode').value.trim();
-      if (!loyaltyCode && !promoCode) {
-        discountRate = 0;
-        couponMessage.textContent = 'Enter a loyalty or promotional coupon to apply.';
-        renderCart();
-        return;
+    if (applyCouponBtn) {
+
+  applyCouponBtn.addEventListener('click', () => {
+
+    const loyaltyCode =
+      document.getElementById('loyaltyCode')?.value?.trim() || '';
+
+    const promoCode =
+      document.getElementById('promoCode')?.value?.trim() || '';
+
+    if (!loyaltyCode && !promoCode) {
+
+      discountRate = 0;
+
+      if (couponMessage) {
+
+        couponMessage.textContent =
+          'Enter a loyalty or promotional coupon to apply.';
+
       }
-      discountRate = 0.05;
-      couponMessage.textContent = 'Coupon applied successfully. Discount reflected in totals.';
+
       renderCart();
-    });
 
-    reminderBtn.addEventListener('click', () => {
-      reminderMessage.textContent = 'We will keep your cart ready. You can resume checkout later.';
-      setTimeout(() => {
+      return;
+
+    }
+
+    discountRate = 0.05;
+
+    if (couponMessage) {
+
+      couponMessage.textContent =
+        'Coupon applied successfully. Discount reflected in totals.';
+
+    }
+
+    renderCart();
+
+  });
+
+}
+
+    if (reminderBtn) {
+
+  if (reminderBtn) {
+
+  reminderBtn.addEventListener('click', () => {
+
+    if (reminderMessage) {
+
+      reminderMessage.textContent =
+        'We will keep your cart ready. You can resume checkout later.';
+
+    }
+
+    setTimeout(() => {
+
+      if (reminderMessage) {
+
         reminderMessage.textContent = '';
-      }, 4000);
-    });
 
+      }
+
+    }, 4000);
+
+  });
+
+
+  }
+  }
+
+    /* =========================================
+SUBMIT MEDICATION REQUEST
+========================================= */
+
+submitMedicationRequestBtn.addEventListener('click', async () => {
+
+  try {
+
+    let cart = [];
+
+    if (currentUser) {
+
+      cart = await fetchFirestoreCart(currentUser.uid);
+
+    } else {
+
+      cart = getLocalCart();
+
+    }
+
+    if (cart.length === 0) {
+
+      alert('Your medication request list is empty.');
+
+      return;
+
+    }
+
+    /* =========================================
+    CUSTOMER DETAILS
+    ========================================= */
+
+    const customerData = {
+
+      name:
+        document.getElementById('customerName')?.value || '',
+
+      email:
+        document.getElementById('customerEmail')?.value || '',
+
+      phone:
+        document.getElementById('customerPhone')?.value || '',
+
+      country:
+        document.getElementById('customerCountry')?.value || '',
+
+      address:
+        document.getElementById('customerAddress')?.value || ''
+
+    };
+
+    /* =========================================
+    TOTAL CALCULATION
+    ========================================= */
+
+    let totalUSD = 0;
+    let totalINR = 0;
+    const processedCart = [];
+    
+    cart.forEach((item) => {
+
+        const quantity =
+          Math.max(1, getQuantity(item));
+
+        const {
+
+          medicineUsd,
+          medicineInr,
+
+          totalUsd,
+          totalInr,
+
+          shippingUsd,
+          shippingInr
+
+        } = calculateLineTotals(
+          item,
+          quantity
+        );
+
+        totalUSD += totalUsd;
+        totalINR += totalInr;
+
+        processedCart.push({
+
+          ...item,
+
+          quantity,
+
+          // FINAL MODIFIED VALUES
+          final_price_usd: medicineUsd,
+
+          final_price_inr: medicineInr,
+
+          final_total_usd: totalUsd,
+
+          final_total_inr: totalInr,
+
+          // DISPLAYED CONVERTED VALUES
+          selected_currency: getSelectedCurrency(),
+          final_price_local: convertDisplayedAmount(medicineUsd),
+          final_total_local: convertDisplayedAmount(totalUsd),
+
+          // SHIPPING ONLY FOR DISPLAY
+          shipping_usd: 0,
+
+          shipping_inr: 0
+
+        });
+
+      });
+
+
+
+    // ADD SHIPPING ONLY ONCE
+    totalUSD += finalShippingUsd;
+
+    if (cart.length > 0) {
+
+      const firstItem = cart[0];
+
+      totalINR += calculateShippingInr(
+
+        Number(firstItem.price_usd || 0),
+
+        Number(firstItem.price_inr || 0),
+
+        firstItem.shipping_inr
+
+      );
+
+    }
+
+      
+      const increaseMultiplier =
+      1 + (
+        (window.currencyUtils?.GLOBAL_PRICE_INCREASE_PERCENT || 0)
+        / 100
+      );
+
+      const finalShippingUsd =
+      parseFloat(
+        (
+          window.currencyUtils.convertFromUsd(
+            SHIPPING_USD,
+            'USD'
+          )
+        ).toFixed(2)
+      );
+
+    let finalShippingInr = 0;
+
+    if (cart.length > 0) {
+
+      const firstItem = cart[0];
+
+      finalShippingInr =
+        calculateShippingInr(
+
+          Number(firstItem.price_usd || 0),
+
+          Number(firstItem.price_inr || 0),
+
+          firstItem.shipping_inr
+
+        );
+
+        }
+    /* =========================================
+    SAVE TO FIRESTORE
+    ========================================= */
+
+    await addDoc(
+
+      collection(db, "medication_requests"),
+
+      {
+
+        customer: customerData,
+
+        items: processedCart,
+
+        totals: { 
+          medicationTotalUSD:
+            totalUSD - finalShippingUsd,
+
+          medicationTotalINR:
+            totalINR - finalShippingInr,
+
+          medicationTotalLocal:
+            convertDisplayedAmount(totalUSD - finalShippingUsd),
+
+          shippingUSD:
+            finalShippingUsd,
+
+          shippingINR:
+            finalShippingInr,
+
+          shippingLocal:
+            convertDisplayedAmount(finalShippingUsd),
+
+          grandTotalUSD:
+            totalUSD,
+
+          grandTotalINR:
+            totalINR,
+
+          grandTotalLocal:
+            convertDisplayedAmount(totalUSD),
+
+          currency:
+            getSelectedCurrency()
+
+         },
+
+        status: "new-request",
+
+        requestDate: new Date().toISOString(),
+
+        userId: currentUser?.uid || null
+
+      }
+
+    );
+
+    /* =========================================
+    REDIRECT PAGE
+    ========================================= */
+
+    window.location.href =
+      "checkout-with-team.html";
+
+  } catch (error) {
+
+    console.error(error);
+
+    alert(
+      "Failed to submit medication request."
+    );
+
+  }
+
+});
     // Payment integration
     payButton.addEventListener('click', async () => {
       if (!currentUser) {
@@ -631,7 +1090,7 @@ if (cartItems.length > 0) {
       }
       const cart = await fetchFirestoreCart(currentUser.uid);
       if (cart.length === 0) {
-        alert('Your cart is empty. Please add products before checkout.');
+        alert('Your medication request list is empty. Please add medications before continuing.');
         return;
       }
       const name = document.getElementById('customerName').value.trim();
@@ -656,7 +1115,7 @@ if (cartItems.length > 0) {
         amount: amountPaise,
         currency: 'INR',
         name: 'Vital Elixir Globalist',
-        description: 'Purchase of Medicines',
+        description: 'Medication Assistance Request',
         handler: async function (response) {
           const orderData = {
             items: cart,
@@ -713,7 +1172,7 @@ await addDoc(
               await deleteDoc(doc(db, 'users', currentUser.uid, 'cart', getProductId(item)));
             }
           }
-          const mailBody = encodeURIComponent(`New order placed by ${name} (Email: ${email}).\n\nItems:\n${cart.map(i => i.name + ' - ' + i.pack).join(', ')}\nTotal INR: ${totalINR}\nOrder ID: ${response.razorpay_payment_id}`);
+          const mailBody = encodeURIComponent(`New medication request submitted by ${name} (Email: ${email}).\n\nRequested Medications:\n${cart.map(i => i.name + ' - ' + i.pack).join(', ')}\nEstimated Total INR: ${totalINR}\nReference ID: ${response.razorpay_payment_id}`);
           window.open(`mailto:vitalelixirglobalist@gmail.com?subject=New Order&body=${mailBody}`);
           window.location.href = 'thankyou.html';
         },

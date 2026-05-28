@@ -61,7 +61,11 @@
   }
 
   window.currencyUtils = {
+
+    GLOBAL_PRICE_INCREASE_PERCENT,
+
     rates,
+    
     getSelectedCurrency,
     setSelectedCurrency,
     convertFromUsd,

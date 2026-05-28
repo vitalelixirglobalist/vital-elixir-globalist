@@ -345,49 +345,92 @@ svg {
   }
 
   function setSelectedCurrency(currency) {
-    if (!rates[currency]) return;
-    localStorage.setItem(CURRENCY_KEY, currency);
-  }
 
-  function bindCurrencySelect(selectElement) {
-    if (!selectElement) return;
+  if (!rates[currency]) return;
 
-    selectElement.value = getSelectedCurrency();
+  localStorage.setItem(
+    CURRENCY_KEY,
+    currency
+  );
 
-document.addEventListener('DOMContentLoaded', () => {
+}
 
-  const selects = [
-    document.getElementById('currencySelect'),
-    document.getElementById('currencySelectMobile')
-  ];
+window.currencyUtils = {
 
-  selects.forEach(select => {
-    if (!select) return;
+  rates,
 
-    // Set initial value
-    select.value = localStorage.getItem('selectedCurrency') || 'USD';
+  getSelectedCurrency,
 
-    select.addEventListener('change', (e) => {
-      const newCurrency = e.target.value;
-      const currentCurrency = localStorage.getItem('selectedCurrency') || 'USD';
+  setSelectedCurrency
 
-      if (newCurrency === currentCurrency) return;
+};
 
-      localStorage.setItem('selectedCurrency', newCurrency);
-
-      // 🔥 Force hard reload (mobile-safe)
-      window.location.href = window.location.href;
-    });
-  });
-
-});
-
-  window.currencyUtils = {
-    rates,
-    getSelectedCurrency,
-    setSelectedCurrency
-  };
 })();
+</script>
+
+<script>
+
+document.addEventListener(
+  'DOMContentLoaded',
+  () => {
+
+    const desktop =
+      document.getElementById(
+        'currencySelect'
+      );
+
+    const mobile =
+      document.getElementById(
+        'currencySelectMobile'
+      );
+
+    const current =
+      window.currencyUtils
+        .getSelectedCurrency();
+
+    if (desktop) {
+      desktop.value = current;
+    }
+
+    if (mobile) {
+      mobile.value = current;
+    }
+
+    function handleCurrencyChange(e) {
+
+      const currency =
+        e.target.value;
+
+      window.currencyUtils
+        .setSelectedCurrency(
+          currency
+        );
+
+      window.location.reload();
+
+    }
+
+    if (desktop) {
+
+      desktop.addEventListener(
+        'change',
+        handleCurrencyChange
+      );
+
+    }
+
+    if (mobile) {
+
+      mobile.addEventListener(
+        'change',
+        handleCurrencyChange
+      );
+
+    }
+
+  }
+);
+
 </script>
 <!-- JS for Hamburger Menu -->
 <script>

@@ -6,6 +6,7 @@
   <title>Medication Details – Vital Elixir Globalist</title>
   <meta name="description" content="See complete medication details, pricing, pack sizes, and trusted export quality information." />
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="currency-utils.js"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -148,17 +149,16 @@
       return Number(value || 0).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
     }
 
-    function getSelectedCurrency() {
-      return window.currencyUtils?.getSelectedCurrency?.() || 'GBP';
-    }
+    
 
     function formatForeignCurrency(value) {
-      const currency = getSelectedCurrency();
+      const currency =
+      window.currencyUtils.getSelectedCurrency();
       const converted = window.currencyUtils?.convertFromUsd
         ? window.currencyUtils.convertFromUsd(value, currency)
         : value;
       return `${currency} ${formatMoney(converted)}`;
-    }
+      }
 
     function showToast(message) {
       if (!actionToast) return alert(message);
@@ -395,14 +395,22 @@
     }
 
     document.addEventListener('currency:change', () => {
-      if (selectedProduct) {
-        renderSelectors(selectedProduct);
+
+        if (selectedProduct) {
+
+          renderSelectors(selectedProduct);
+
+          updatePrice();
+
       }
+
     });
 
     async function loadHeader() {
-      const header = await fetch('header.html');
+    const header = await fetch('header.html');
       document.getElementById('header-placeholder').innerHTML = await header.text();
+      // EXECUTE HEADER SCRIPTS
+
       const menuBtn = document.getElementById('menu-btn');
       const closeBtn = document.getElementById('close-menu');
       const mobileMenu = document.getElementById('mobile-menu');
@@ -447,6 +455,7 @@ window.doc = doc;
 window.getDoc = getDoc;
 
 </script>
+
 </body>
 </html>
 
