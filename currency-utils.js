@@ -1,9 +1,8 @@
 (function () {
   const CURRENCY_KEY = 'selectedCurrency';
 
-  // 🔥 GLOBAL PRICE CONTROL (ONLY YOU EDIT THIS)
-  const GLOBAL_PRICE_INCREASE_PERCENT = 30; 
-  // 👉 Change this value anytime (example: 30 for +30%)
+  // Global price control. pricing-engine.js is the only file that applies it.
+  const GLOBAL_PRICE_INCREASE_PERCENT = 30;
 
   const rates = {
     USD: 1,
@@ -26,15 +25,10 @@
     document.dispatchEvent(new CustomEvent('currency:change', { detail: { currency } }));
   }
 
-  // 🔥 MODIFIED FUNCTION (PRICE INCREASE APPLIED HERE)
   function convertFromUsd(amount, currency) {
     const baseAmount = Number(amount || 0);
-
-    // Apply global % increase
-    const increasedAmount = baseAmount * (1 + GLOBAL_PRICE_INCREASE_PERCENT / 100);
-
     const rate = rates[currency] || 1;
-    return increasedAmount * rate;
+    return baseAmount * rate;
   }
 
   function formatCurrency(amount, currency) {
@@ -61,11 +55,8 @@
   }
 
   window.currencyUtils = {
-
     GLOBAL_PRICE_INCREASE_PERCENT,
-
     rates,
-    
     getSelectedCurrency,
     setSelectedCurrency,
     convertFromUsd,

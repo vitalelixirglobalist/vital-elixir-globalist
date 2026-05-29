@@ -24,6 +24,13 @@ const usersContainer = document.getElementById('usersContainer');
 
 const logoutBtn = document.getElementById('logoutBtn');
 
+const formatUsd = (value) => `$${Number(value || 0).toFixed(2)}`;
+
+const getDisplayPricing = (cartItem) => {
+  if (cartItem.pricing) return cartItem.pricing;
+  const normalized = window.pricingEngine.normalizeCartItem(cartItem);
+  return normalized.pricing;
+};
 
 onAuthStateChanged(auth, async (user) => {
 
@@ -129,6 +136,7 @@ try {
     liveCartSnapshot.forEach((cartDoc) => {
 
       const cartItem = cartDoc.data();
+      const pricing = getDisplayPricing(cartItem);
 
       cartItemsHtml += `
 
@@ -150,8 +158,18 @@ try {
           </p>
 
           <p>
-            <strong>Price:</strong>
-            $${cartItem.total_price_usd || 0}
+            <strong>Final Price:</strong>
+            ${formatUsd(pricing.final_price_usd)}
+          </p>
+
+          <p>
+          <strong>Shipping Charges:</strong>
+          ${formatUsd(pricing.final_shipping_usd)}
+         </p>
+
+          <p>
+            <strong>Final Total:</strong>
+            ${formatUsd(pricing.final_total_usd)}
           </p>
 
         </div>

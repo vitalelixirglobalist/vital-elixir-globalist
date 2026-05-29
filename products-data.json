@@ -1653,6 +1653,1138 @@
       { "pack": "300 Tablets", "price_usd": 119, "price_inr": 10115 },
       { "pack": "500 Tablets", "price_usd": 145, "price_inr": 12325 }
     ]
-  }
+  },
+  {
+  "name": "Cyproheptadine HCL",
+  "brand": "Generic",
+  "composition": "Cyproheptadine Hydrochloride 4 mg",
+  "category": "Allergy / Anxiety",
+  "use": "Antihistamine used for allergy relief, appetite stimulation, and management of certain migraine conditions.",
+  "image": "assets/images/products/cyproheptadine_hydrochloride_4mg.jpeg",
+  "variants": [
+    { "pack": "50 Tablets", "price_usd": 41, "price_inr": 3485 },
+    { "pack": "100 Tablets", "price_usd": 49, "price_inr": 4165 },
+    { "pack": "300 Tablets", "price_usd": 59, "price_inr": 5015 },
+    { "pack": "500 Tablets", "price_usd": 69, "price_inr": 5865 },
+    { "pack": "1000 Tablets", "price_usd": 79, "price_inr": 6715 },
+    { "pack": "2000 Tablets", "price_usd": 118, "price_inr": 10030 }
+  ]
+},
+{
+  "name": "Adapalene 0.1%",
+  "brand": "Generic",
+  "composition": "Adapalene 0.1% w/w",
+  "category": "Dermatology & Skin Care",
+  "use": "Topical retinoid used for treatment of acne vulgaris and improvement of skin texture.",
+  "image": "assets/images/products/adapalene_0_1_percent.jpeg",
+  "variants": [
+    { "pack": "1 Tube (15gm)", "price_usd": 45, "price_inr": 3825 },
+    { "pack": "3 Tubes (15gm)", "price_usd": 59, "price_inr": 5015 },
+    { "pack": "5 Tubes (15gm)", "price_usd": 79, "price_inr": 6715 },
+    { "pack": "7 Tubes (15gm)", "price_usd": 95, "price_inr": 8075 },
+    { "pack": "9 Tubes (15gm)", "price_usd": 109, "price_inr": 9265 }
+  ]
+},
+{
+  "name": "Adapalene 0.3%",
+  "brand": "Generic",
+  "composition": "Adapalene 0.3% w/w",
+  "category": "Dermatology & Skin Care",
+  "use": "Higher-strength topical retinoid for moderate to severe acne management.",
+  "image": "assets/images/products/adapalene_0_3_percent.jpeg",
+  "variants": [
+    { "pack": "1 Tube (15gm)", "price_usd": 45, "price_inr": 3825 },
+    { "pack": "3 Tubes (15gm)", "price_usd": 59, "price_inr": 5015 },
+    { "pack": "5 Tubes (15gm)", "price_usd": 79, "price_inr": 6715 },
+    { "pack": "7 Tubes (15gm)", "price_usd": 95, "price_inr": 8075 },
+    { "pack": "9 Tubes (15gm)", "price_usd": 109, "price_inr": 9265 }
+  ]
+},
+{
+  "name": "Betamethasone 0.1%",
+  "brand": "Generic",
+  "composition": "Betamethasone 0.1% w/w",
+  "category": "Dermatology & Skin Care",
+  "use": "Topical corticosteroid used to reduce inflammation, redness, itching, and skin irritation.",
+  "image": "assets/images/products/betamethasone_0_1_percent.jpeg",
+  "variants": [
+    { "pack": "1 Tube (20gm)", "price_usd": 39, "price_inr": 3315 },
+    { "pack": "3 Tubes (20gm)", "price_usd": 59, "price_inr": 5015 },
+    { "pack": "5 Tubes (20gm)", "price_usd": 69, "price_inr": 5865 },
+    { "pack": "7 Tubes (20gm)", "price_usd": 79, "price_inr": 6715 },
+    { "pack": "9 Tubes (20gm)", "price_usd": 89, "price_inr": 7565 }
+  ]
+},
+{
+  "name": "Testosterone Gel 1%",
+  "brand": "Generic",
+  "composition": "Testosterone 1% w/w",
+  "category": "Hormonal / Performance Enhancement",
+  "use": "Topical testosterone replacement therapy used for low testosterone levels in adult males.",
+  "image": "assets/images/products/testosterone_1_percent.jpeg",
+  "variants": [
+    { "pack": "1 Packet (5gm)", "price_usd": 39, "price_inr": 3315 },
+    { "pack": "3 Packets (5gm)", "price_usd": 49, "price_inr": 4165 },
+    { "pack": "5 Packets (5gm)", "price_usd": 69, "price_inr": 5865 },
+    { "pack": "7 Packets (5gm)", "price_usd": 89, "price_inr": 7565 },
+    { "pack": "9 Packets (5gm)", "price_usd": 99, "price_inr": 8415 }
+  ]
+},
+{
+  "name": "Pain O Soma",
+  "brand": "Generic",
+  "composition": "Carisoprodol 500 mg",
+  "category": "Neurology",
+  "use": "Muscle relaxant used for relief of acute musculoskeletal pain and discomfort.",
+  "image": "assets/images/products/carisoprodol_500mg.jpeg",
+  "variants": [
+    { "pack": "50 Tablets", "price_usd": 39, "price_inr": 3315 },
+    { "pack": "100 Tablets", "price_usd": 49, "price_inr": 4165 },
+    { "pack": "300 Tablets", "price_usd": 69, "price_inr": 5865 },
+    { "pack": "500 Tablets", "price_usd": 79, "price_inr": 6715 },
+    { "pack": "1000 Tablets", "price_usd": 119, "price_inr": 10115 }
+  ]
+},
+{
+  "name": "Mebendazole 200mg",
+  "brand": "Generic",
+  "composition": "Mebendazole 200 mg",
+  "category": "Infection & Antiparasitic Treatments",
+  "use": "Anthelmintic medication used for treatment of intestinal worm infestations.",
+  "image": "assets/images/products/mebendazole_200mg.jpeg",
+  "variants": [
+    { "pack": "50 Tablets", "price_usd": 45, "price_inr": 3825 },
+    { "pack": "100 Tablets", "price_usd": 55, "price_inr": 4675 },
+    { "pack": "300 Tablets", "price_usd": 65, "price_inr": 5525 },
+    { "pack": "500 Tablets", "price_usd": 79, "price_inr": 6715 },
+    { "pack": "1000 Tablets", "price_usd": 133, "price_inr": 11305 },
+    { "pack": "2000 Tablets", "price_usd": 229, "price_inr": 19465 }
+  ]
+},
+{
+  "name": "Ret Grow A 0.01%",
+  "brand": "Generic",
+  "composition": "Tretinoin 0.01% w/w",
+  "category": "Dermatology & Skin Care",
+  "use": "Topical retinoid used for acne treatment, skin renewal, and reduction of fine wrinkles.",
+  "image": "assets/images/products/tretinoin_0_01_percent.jpeg",
+  "variants": [
+    { "pack": "1 Tube (20gm)", "price_usd": 39, "price_inr": 3315 },
+    { "pack": "3 Tubes (20gm)", "price_usd": 55, "price_inr": 4675 },
+    { "pack": "5 Tubes (20gm)", "price_usd": 69, "price_inr": 5865 },
+    { "pack": "7 Tubes (20gm)", "price_usd": 79, "price_inr": 6715 },
+    { "pack": "9 Tubes (20gm)", "price_usd": 95, "price_inr": 8075 }
+  ]
+},
+{
+  "name": "Hydrocortisone Cream 1%",
+  "brand": "Generic",
+  "composition": "Hydrocortisone 1% w/w",
+  "category": "Dermatology & Skin Care",
+  "use": "Topical corticosteroid used for eczema, dermatitis, allergic rashes, and itching relief.",
+  "image": "assets/images/products/hydrocortisone_1_percent.jpeg",
+  "variants": [
+    { "pack": "1 Tube (15gm)", "price_usd": 39, "price_inr": 3315 },
+    { "pack": "3 Tubes (15gm)", "price_usd": 59, "price_inr": 5015 },
+    { "pack": "5 Tubes (15gm)", "price_usd": 69, "price_inr": 5865 },
+    { "pack": "7 Tubes (15gm)", "price_usd": 79, "price_inr": 6715 },
+    { "pack": "9 Tubes (15gm)", "price_usd": 89, "price_inr": 7565 }
+  ]
+},
+{
+  "name": "Fenbendazole 1000mg",
+  "brand": "Generic",
+  "composition": "Fenbendazole 1000 mg",
+  "category": "Veterinary / Antiparasitic",
+  "use": "Broad-spectrum antiparasitic used for management of worm infestations and parasitic infections.",
+  "image": "assets/images/products/fenbendazole_1000mg.jpeg",
+  "variants": [
+    { "pack": "50 Tablets", "price_usd": 59, "price_inr": 5015 },
+    { "pack": "100 Tablets", "price_usd": 99, "price_inr": 8415 },
+    { "pack": "300 Tablets", "price_usd": 125, "price_inr": 10625 },
+    { "pack": "500 Tablets", "price_usd": 178, "price_inr": 15130 },
+    { "pack": "1000 Tablets", "price_usd": 349, "price_inr": 29665 }
+  ]
+},
+{
+  "name": "Testosterone Cypionate 250mg/ml",
+  "brand": "Generic",
+  "composition": "Testosterone Cypionate 250 mg/ml",
+  "category": "Hormonal / Performance Enhancement",
+  "use": "Long-acting testosterone replacement therapy used for low testosterone levels and performance enhancement.",
+  "image": "assets/images/products/testosterone_cypionate_250mg_ml.jpeg",
+  "variants": [
+    { "pack": "5 Vials (10ml Each)", "price_usd": 139, "price_inr": 11815 },
+    { "pack": "7 Vials (10ml Each)", "price_usd": 193, "price_inr": 16405 },
+    { "pack": "9 Vials (10ml Each)", "price_usd": 245, "price_inr": 20825 }
+  ]
+},
+{
+  "name": "Sustamix 250mg/ml",
+  "brand": "Generic",
+  "composition": "Testosterone Blend 250 mg/ml",
+  "category": "Hormonal / Performance Enhancement",
+  "use": "Combination testosterone ester preparation used for testosterone replacement and performance enhancement.",
+  "image": "assets/images/products/testosterone_blend_250mg_ml.jpeg",
+  "variants": [
+    { "pack": "5 Boxes (10 x 1ml)", "price_usd": 125, "price_inr": 10625 },
+    { "pack": "7 Boxes (10 x 1ml)", "price_usd": 169, "price_inr": 14365 },
+    { "pack": "9 Boxes (10 x 1ml)", "price_usd": 219, "price_inr": 18615 }
+  ]
+},
+{
+  "name": "Tetrafol L-Methylfolate 7.5mg",
+  "brand": "Generic",
+  "composition": "L-Methylfolate Calcium 7.5 mg",
+  "category": "Supplement",
+  "use": "Active folate supplement used to support neurological health, mood balance, and folate deficiency management.",
+  "image": "assets/images/products/l_methylfolate_calcium_7_5mg.jpeg",
+  "variants": [
+    { "pack": "50 Tablets", "price_usd": 69, "price_inr": 5865 },
+    { "pack": "100 Tablets", "price_usd": 99, "price_inr": 8415 },
+    { "pack": "300 Tablets", "price_usd": 196, "price_inr": 16660 },
+    { "pack": "500 Tablets", "price_usd": 283, "price_inr": 24055 }
+  ]
+},
+{
+  "name": "Super Tadarise",
+  "brand": "Generic",
+  "composition": "Tadalafil 20 mg + Dapoxetine 60 mg",
+  "category": "Men’s Health",
+  "use": "Used for erectile dysfunction and premature ejaculation in adult men.",
+  "image": "assets/images/products/tadalafil_20mg_dapoxetine_60mg.jpeg",
+  "variants": [
+    { "pack": "100 Tablets", "price_usd": 79, "price_inr": 6715 },
+    { "pack": "300 Tablets", "price_usd": 128, "price_inr": 10880 },
+    { "pack": "500 Tablets", "price_usd": 177, "price_inr": 15045 },
+    { "pack": "1000 Tablets", "price_usd": 325, "price_inr": 27625 },
+    { "pack": "2000 Tablets", "price_usd": 598, "price_inr": 50830 }
+  ]
+},
+{
+  "name": "Masteron 100mg/ml",
+  "brand": "Generic",
+  "composition": "Drostanolone Propionate 100 mg/ml",
+  "category": "Hormonal / Performance Enhancement",
+  "use": "Anabolic androgenic steroid used for physique enhancement and muscle definition.",
+  "image": "assets/images/products/drostanolone_propionate_100mg_ml.jpeg",
+  "variants": [
+    { "pack": "1 Vial (10ml)", "price_usd": 52, "price_inr": 4420 },
+    { "pack": "3 Vials (10ml)", "price_usd": 156, "price_inr": 13260 },
+    { "pack": "5 Vials (10ml)", "price_usd": 254, "price_inr": 21590 },
+    { "pack": "7 Vials (10ml)", "price_usd": 353, "price_inr": 30005 },
+    { "pack": "9 Vials (10ml)", "price_usd": 451, "price_inr": 38335 }
+  ]
+},
+{
+  "name": "Primobolan 100mg/ml",
+  "brand": "Generic",
+  "composition": "Methenolone Enanthate 100 mg/ml",
+  "category": "Hormonal / Performance Enhancement",
+  "use": "Anabolic steroid used for lean muscle development and performance enhancement.",
+  "image": "assets/images/products/methenolone_enanthate_100mg_ml.jpeg",
+  "variants": [
+    { "pack": "1 Vial (10ml)", "price_usd": 89, "price_inr": 7565 },
+    { "pack": "3 Vials (10ml)", "price_usd": 270, "price_inr": 22950 },
+    { "pack": "5 Vials (10ml)", "price_usd": 444, "price_inr": 37740 },
+    { "pack": "7 Vials (10ml)", "price_usd": 619, "price_inr": 52615 },
+    { "pack": "9 Vials (10ml)", "price_usd": 793, "price_inr": 67405 }
+  ]
+},
+{
+  "name": "Biotin 10mg",
+  "brand": "Generic",
+  "composition": "Biotin 10 mg",
+  "category": "Supplement",
+  "use": "Supports healthy hair, skin, nails, and energy metabolism.",
+  "image": "assets/images/products/biotin_10mg.jpeg",
+  "variants": [
+    { "pack": "50 Tablets", "price_usd": 48, "price_inr": 4080 },
+    { "pack": "100 Tablets", "price_usd": 60, "price_inr": 5100 },
+    { "pack": "300 Tablets", "price_usd": 79, "price_inr": 6715 },
+    { "pack": "500 Tablets", "price_usd": 98, "price_inr": 8330 },
+    { "pack": "1000 Tablets", "price_usd": 168, "price_inr": 14280 },
+    { "pack": "2000 Tablets", "price_usd": 293, "price_inr": 24905 }
+  ]
+},
+{
+  "name": "Levobunolol Hydrochloride 0.5%",
+  "brand": "Generic",
+  "composition": "Levobunolol Hydrochloride 0.5% w/v",
+  "category": "Eye & Allergy Care",
+  "use": "Beta-blocker eye drop used to lower elevated intraocular pressure in glaucoma and ocular hypertension.",
+  "image": "assets/images/products/levobunolol_hydrochloride_0_5_percent.jpeg",
+  "variants": [
+    { "pack": "1 Bottle (5ml)", "price_usd": 43, "price_inr": 3655 },
+    { "pack": "3 Bottles (5ml)", "price_usd": 62, "price_inr": 5270 },
+    { "pack": "5 Bottles (5ml)", "price_usd": 83, "price_inr": 7055 },
+    { "pack": "7 Bottles (5ml)", "price_usd": 99, "price_inr": 8415 },
+    { "pack": "9 Bottles (5ml)", "price_usd": 109, "price_inr": 9265 }
+  ]
+},
+{
+  "name": "Tamoxifen 10mg",
+  "brand": "Generic",
+  "composition": "Tamoxifen Citrate 10 mg",
+  "category": "Hormone Therapy",
+  "use": "Selective estrogen receptor modulator used in hormone-responsive breast cancer and estrogen control.",
+  "image": "assets/images/products/tamoxifen_citrate_10mg.jpeg",
+  "variants": [
+    { "pack": "50 Tablets", "price_usd": 43, "price_inr": 3655 },
+    { "pack": "100 Tablets", "price_usd": 53, "price_inr": 4505 },
+    { "pack": "300 Tablets", "price_usd": 62, "price_inr": 5270 },
+    { "pack": "500 Tablets", "price_usd": 73, "price_inr": 6205 },
+    { "pack": "1000 Tablets", "price_usd": 119, "price_inr": 10115 },
+    { "pack": "2000 Tablets", "price_usd": 199, "price_inr": 16915 }
+  ]
+},
+{
+  "name": "Azithromycin 500mg",
+  "brand": "Generic",
+  "composition": "Azithromycin 500 mg",
+  "category": "Infection & Antiparasitic Treatments",
+  "use": "Macrolide antibiotic used for respiratory, skin, ear, and sexually transmitted bacterial infections.",
+  "image": "assets/images/products/azithromycin_500mg.jpeg",
+  "variants": [
+    { "pack": "50 Tablets", "price_usd": 44, "price_inr": 3740 },
+    { "pack": "100 Tablets", "price_usd": 55, "price_inr": 4675 },
+    { "pack": "300 Tablets", "price_usd": 66, "price_inr": 5610 },
+    { "pack": "500 Tablets", "price_usd": 80, "price_inr": 6800 },
+    { "pack": "1000 Tablets", "price_usd": 133, "price_inr": 11305 },
+    { "pack": "2000 Tablets", "price_usd": 230, "price_inr": 19550 }
+  ]
+},
+{
+  "name": "Tamoxifen 20mg",
+  "brand": "Generic",
+  "composition": "Tamoxifen Citrate 20 mg",
+  "category": "Hormone Therapy",
+  "use": "Used in the treatment and prevention of hormone receptor-positive breast cancer and estrogen management.",
+  "image": "assets/images/products/tamoxifen_citrate_20mg.jpeg",
+  "variants": [
+    { "pack": "50 Tablets", "price_usd": 44, "price_inr": 3740 },
+    { "pack": "100 Tablets", "price_usd": 56, "price_inr": 4760 },
+    { "pack": "300 Tablets", "price_usd": 69, "price_inr": 5865 },
+    { "pack": "500 Tablets", "price_usd": 86, "price_inr": 7310 },
+    { "pack": "1000 Tablets", "price_usd": 144, "price_inr": 12240 },
+    { "pack": "2000 Tablets", "price_usd": 252, "price_inr": 21420 }
+  ]
+},
+{
+  "name": "Cenforce 200mg",
+  "brand": "Generic",
+  "composition": "Sildenafil Citrate 200 mg",
+  "category": "Men’s Health",
+  "use": "Used for the treatment of erectile dysfunction (ED) by improving blood flow to the penis.",
+  "image": "assets/images/products/sildenafil_citrate_200mg.jpeg",
+  "variants": [
+    { "pack": "50 Tablets", "price_usd": 43, "price_inr": 3655 },
+    { "pack": "100 Tablets", "price_usd": 54, "price_inr": 4590 },
+    { "pack": "300 Tablets", "price_usd": 64, "price_inr": 5440 },
+    { "pack": "500 Tablets", "price_usd": 77, "price_inr": 6545 },
+    { "pack": "1000 Tablets", "price_usd": 126, "price_inr": 10710 },
+    { "pack": "2000 Tablets", "price_usd": 216, "price_inr": 18360 }
+  ]
+},
+{
+  "name": "Curcumin 600mg",
+  "brand": "Generic",
+  "composition": "Curcumin 600 mg",
+  "category": "Supplement",
+  "use": "Natural antioxidant and anti-inflammatory supplement that supports joint, immune, and overall wellness.",
+  "image": "assets/images/products/curcumin_600mg.jpeg",
+  "variants": [
+    { "pack": "3 Bottles (60 Capsules Each)", "price_usd": 52, "price_inr": 4420 },
+    { "pack": "5 Bottles (60 Capsules Each)", "price_usd": 81, "price_inr": 6885 },
+    { "pack": "7 Bottles (60 Capsules Each)", "price_usd": 110, "price_inr": 9350 },
+    { "pack": "9 Bottles (60 Capsules Each)", "price_usd": 139, "price_inr": 11815 }
+  ]
+},
+{
+  "name": "Fenbendazole 150mg",
+  "brand": "Generic",
+  "composition": "Fenbendazole 150 mg",
+  "category": "Veterinary / Antiparasitic",
+  "use": "Broad-spectrum antiparasitic used for treatment of intestinal worms and parasitic infections.",
+  "image": "assets/images/products/fenbendazole_150mg.jpeg",
+  "variants": [
+    { "pack": "50 Tablets", "price_usd": 45, "price_inr": 3825 },
+    { "pack": "100 Tablets", "price_usd": 59, "price_inr": 5015 },
+    { "pack": "300 Tablets", "price_usd": 79, "price_inr": 6715 },
+    { "pack": "500 Tablets", "price_usd": 99, "price_inr": 8415 },
+    { "pack": "1000 Tablets", "price_usd": 175, "price_inr": 14875 }
+  ]
+},
+{
+  "name": "Mebendazole 100mg",
+  "brand": "Generic",
+  "composition": "Mebendazole 100 mg",
+  "category": "Infection & Antiparasitic Treatments",
+  "use": "Anthelmintic medication used to treat intestinal worm infections such as pinworms, hookworms, and roundworms.",
+  "image": "assets/images/products/mebendazole_100mg.jpeg",
+  "variants": [
+    { "pack": "50 Tablets", "price_usd": 45, "price_inr": 3825 },
+    { "pack": "100 Tablets", "price_usd": 49, "price_inr": 4165 },
+    { "pack": "300 Tablets", "price_usd": 69, "price_inr": 5865 },
+    { "pack": "500 Tablets", "price_usd": 79, "price_inr": 6715 },
+    { "pack": "1000 Tablets", "price_usd": 99, "price_inr": 8415 }
+  ]
+},
+{
+  "name": "Rosuvastatin 10mg",
+  "brand": "Generic",
+  "composition": "Rosuvastatin Calcium 10 mg",
+  "category": "Diabetes & Metabolic Care",
+  "use": "Used to lower cholesterol and triglyceride levels and reduce cardiovascular risk.",
+  "image": "assets/images/products/rosuvastatin_calcium_10mg.jpeg",
+  "variants": [
+    { "pack": "50 Tablets", "price_usd": 42, "price_inr": 3570 },
+    { "pack": "100 Tablets", "price_usd": 49, "price_inr": 4165 },
+    { "pack": "300 Tablets", "price_usd": 59, "price_inr": 5015 },
+    { "pack": "500 Tablets", "price_usd": 69, "price_inr": 5865 },
+    { "pack": "1000 Tablets", "price_usd": 109, "price_inr": 9265 }
+  ]
+},
+{
+  "name": "Ivermectin Oral Paste 6.08g",
+  "brand": "Generic",
+  "composition": "Ivermectin Oral Paste 1.87%",
+  "category": "Veterinary / Antiparasitic",
+  "use": "Antiparasitic treatment used for control and elimination of internal and external parasites.",
+  "image": "assets/images/products/ivermectin_oral_paste_1_87_percent.jpeg",
+  "variants": [
+    { "pack": "1 Syringe", "price_usd": 88, "price_inr": 7480 },
+    { "pack": "3 Syringes", "price_usd": 95, "price_inr": 8075 },
+    { "pack": "5 Syringes", "price_usd": 109, "price_inr": 9265 },
+    { "pack": "7 Syringes", "price_usd": 125, "price_inr": 10625 },
+    { "pack": "9 Syringes", "price_usd": 133, "price_inr": 11305 }
+  ]
+},
+{
+  "name": "Metronidazole 500mg",
+  "brand": "Generic",
+  "composition": "Metronidazole 500 mg",
+  "category": "Infection & Antiparasitic Treatments",
+  "use": "Antibiotic and antiprotozoal medication used to treat bacterial and parasitic infections.",
+  "image": "assets/images/products/metronidazole_500mg.jpeg",
+  "variants": [
+    { "pack": "50 Tablets", "price_usd": 39, "price_inr": 3315 },
+    { "pack": "100 Tablets", "price_usd": 49, "price_inr": 4165 },
+    { "pack": "300 Tablets", "price_usd": 59, "price_inr": 5015 },
+    { "pack": "500 Tablets", "price_usd": 69, "price_inr": 5865 },
+    { "pack": "1000 Tablets", "price_usd": 99, "price_inr": 8415 },
+    { "pack": "2000 Tablets", "price_usd": 169, "price_inr": 14365 }
+  ]
+},
+  {
+    "name": "Ibuprofen 400mg",
+    "brand": "Generic",
+    "composition": "Ibuprofen 400 mg",
+    "category": "Infection & Antiparasitic Treatments",
+    "use": "Pain relief, inflammation reduction, fever management, and musculoskeletal discomfort treatment",
+    "image": "assets/images/products/ibuprofen_400mg.jpeg",
+    "variants": [
+      { "pack": "50 Tablets", "price_usd": 60, "price_inr": 5100 },
+      { "pack": "100 Tablets", "price_usd": 87, "price_inr": 7395 },
+      { "pack": "300 Tablets", "price_usd": 163, "price_inr": 13855 },
+      { "pack": "500 Tablets", "price_usd": 241, "price_inr": 20485 },
+      { "pack": "1000 Tablets", "price_usd": 455, "price_inr": 38675 },
+      { "pack": "2000 Tablets", "price_usd": 874, "price_inr": 74290 }
+    ]
+  },
+  {
+    "name": "Doxycycline 100mg",
+    "brand": "Generic",
+    "composition": "Doxycycline 100 mg",
+    "category": "Infection & Antiparasitic Treatments",
+    "use": "Treatment of bacterial infections, respiratory infections, acne, and certain sexually transmitted infections",
+    "image": "assets/images/products/doxycycline_100mg.jpeg",
+    "variants": [
+      { "pack": "50 Tablets", "price_usd": 72, "price_inr": 6120 },
+      { "pack": "100 Tablets", "price_usd": 112, "price_inr": 9520 },
+      { "pack": "300 Tablets", "price_usd": 238, "price_inr": 20230 },
+      { "pack": "500 Tablets", "price_usd": 367, "price_inr": 31195 },
+      { "pack": "1000 Tablets", "price_usd": 707, "price_inr": 60095 },
+      { "pack": "2000 Tablets", "price_usd": 1378, "price_inr": 117130 }
+    ]
+  },
+  {
+    "name": "Vardenafil 80mg",
+    "brand": "Generic",
+    "composition": "Vardenafil 80 mg",
+    "category": "Men’s Health",
+    "use": "Management of erectile dysfunction and improvement of sexual performance",
+    "image": "assets/images/products/vardenafil_80mg.jpeg",
+    "variants": [
+      { "pack": "50 Tablets", "price_usd": 59, "price_inr": 5015 },
+      { "pack": "100 Tablets", "price_usd": 89, "price_inr": 7565 },
+      { "pack": "300 Tablets", "price_usd": 149, "price_inr": 12665 },
+      { "pack": "500 Tablets", "price_usd": 199, "price_inr": 16915 }
+    ]
+  },
+  {
+    "name": "Ivermectin 12mg",
+    "brand": "Generic",
+    "composition": "Ivermectin 12 mg",
+    "category": "Infection & Antiparasitic Treatments",
+    "use": "Treatment of parasitic infections, scabies, strongyloidiasis, and other worm infestations",
+    "image": "assets/images/products/ivermectin_12mg.jpeg",
+    "variants": [
+      { "pack": "50 Tablets", "price_usd": 39, "price_inr": 3315 },
+      { "pack": "100 Tablets", "price_usd": 49, "price_inr": 4165 },
+      { "pack": "300 Tablets", "price_usd": 69, "price_inr": 5865 },
+      { "pack": "500 Tablets", "price_usd": 79, "price_inr": 6715 },
+      { "pack": "1000 Tablets", "price_usd": 99, "price_inr": 8415 }
+    ]
+  },
+  {
+    "name": "NovelTreat 2.4mg",
+    "brand": "Generic",
+    "composition": "Semaglutide 2.4 mg",
+    "category": "Diabetes & Metabolic Care",
+    "use": "Weight management, appetite control, and metabolic health support",
+    "image": "assets/images/products/semaglutide_2.4mg.jpeg",
+    "variants": [
+      { "pack": "1 Month (4 Doses)", "price_usd": 189, "price_inr": 16065 },
+      { "pack": "2 Months (8 Doses)", "price_usd": 299, "price_inr": 25415 }
+    ]
+  },
+  {
+    "name": "Wegovy 2.4mg",
+    "brand": "Generic",
+    "composition": "Semaglutide 2.4 mg",
+    "category": "Diabetes & Metabolic Care",
+    "use": "Chronic weight management, appetite suppression, and obesity treatment support",
+    "image": "assets/images/products/semaglutide_2.4mg.jpeg",
+    "variants": [
+      { "pack": "1 Month (4 Doses)", "price_usd": 299, "price_inr": 25415 },
+      { "pack": "2 Months (8 Doses)", "price_usd": 489, "price_inr": 41565 }
+    ]
+  },
+  {
+    "name": "Albendazole 400mg",
+    "brand": "Generic",
+    "composition": "Albendazole 400 mg",
+    "category": "Infection & Antiparasitic Treatments",
+    "use": "Treatment of intestinal worm infections, tapeworms, and other parasitic infestations",
+    "image": "assets/images/products/albendazole_400mg.jpeg",
+    "variants": [
+      { "pack": "50 Tablets", "price_usd": 39, "price_inr": 3315 },
+      { "pack": "100 Tablets", "price_usd": 49, "price_inr": 4165 },
+      { "pack": "300 Tablets", "price_usd": 69, "price_inr": 5865 },
+      { "pack": "500 Tablets", "price_usd": 79, "price_inr": 6715 },
+      { "pack": "1000 Tablets", "price_usd": 99, "price_inr": 8415 }
+    ]
+  },
+  {
+    "name": "Indomethacin 25mg",
+    "brand": "Generic",
+    "composition": "Indomethacin 25 mg",
+    "category": "Neurology",
+    "use": "Pain and inflammation management in arthritis, gout, and musculoskeletal disorders",
+    "image": "assets/images/products/indomethacin_25mg.jpeg",
+    "variants": [
+      { "pack": "50 Tablets", "price_usd": 39, "price_inr": 3315 },
+      { "pack": "100 Tablets", "price_usd": 49, "price_inr": 4165 },
+      { "pack": "300 Tablets", "price_usd": 59, "price_inr": 5015 },
+      { "pack": "500 Tablets", "price_usd": 69, "price_inr": 5865 },
+      { "pack": "1000 Tablets", "price_usd": 99, "price_inr": 8415 },
+      { "pack": "2000 Tablets", "price_usd": 169, "price_inr": 14365 }
+    ]
+  },
+  {
+    "name": "Pregabalin 75mg",
+    "brand": "Generic",
+    "composition": "Pregabalin 75 mg",
+    "category": "Neurology",
+    "use": "Management of neuropathic pain, fibromyalgia, anxiety disorders, and seizure control",
+    "image": "assets/images/products/pregabalin_75mg.jpeg",
+    "variants": [
+      { "pack": "50 Tablets", "price_usd": 45, "price_inr": 3825 },
+      { "pack": "100 Tablets", "price_usd": 55, "price_inr": 4675 },
+      { "pack": "300 Tablets", "price_usd": 69, "price_inr": 5865 },
+      { "pack": "500 Tablets", "price_usd": 79, "price_inr": 6715 },
+      { "pack": "1000 Tablets", "price_usd": 119, "price_inr": 10115 },
+      { "pack": "2000 Tablets", "price_usd": 189, "price_inr": 16065 }
+    ]
+  },
+  {
+    "name": "Pregabalin 150mg",
+    "brand": "Generic",
+    "composition": "Pregabalin 150 mg",
+    "category": "Neurology",
+    "use": "Management of neuropathic pain, fibromyalgia, anxiety disorders, and seizure control",
+    "image": "assets/images/products/pregabalin_150mg.jpeg",
+    "variants": [
+      { "pack": "50 Tablets", "price_usd": 45, "price_inr": 3825 },
+      { "pack": "100 Tablets", "price_usd": 59, "price_inr": 5015 },
+      { "pack": "300 Tablets", "price_usd": 79, "price_inr": 6715 },
+      { "pack": "500 Tablets", "price_usd": 99, "price_inr": 8415 },
+      { "pack": "1000 Tablets", "price_usd": 169, "price_inr": 14365 },
+      { "pack": "2000 Tablets", "price_usd": 289, "price_inr": 24565 }
+    ]
+  },
+  {
+    "name": "Pregabalin 300mg",
+    "brand": "Generic",
+    "composition": "Pregabalin 300 mg",
+    "category": "Neurology",
+    "use": "Management of neuropathic pain, fibromyalgia, anxiety disorders, and seizure control",
+    "image": "assets/images/products/pregabalin_300mg.jpeg",
+    "variants": [
+      { "pack": "50 Tablets", "price_usd": 49, "price_inr": 4165 },
+      { "pack": "100 Tablets", "price_usd": 65, "price_inr": 5525 },
+      { "pack": "300 Tablets", "price_usd": 89, "price_inr": 7565 },
+      { "pack": "500 Tablets", "price_usd": 119, "price_inr": 10115 },
+      { "pack": "1000 Tablets", "price_usd": 189, "price_inr": 16065 }
+    ]
+  },
+  {
+    "name": "Modafinil 400mg",
+    "brand": "Generic",
+    "composition": "Modafinil 400 mg",
+    "category": "Neurology",
+    "use": "Promotion of wakefulness, management of narcolepsy, shift work sleep disorder, and fatigue reduction",
+    "image": "assets/images/products/modafinil_400mg.jpeg",
+    "variants": [
+      { "pack": "50 Tablets", "price_usd": 55, "price_inr": 4675 },
+      { "pack": "100 Tablets", "price_usd": 75, "price_inr": 6375 },
+      { "pack": "300 Tablets", "price_usd": 119, "price_inr": 10115 },
+      { "pack": "500 Tablets", "price_usd": 149, "price_inr": 12665 },
+      { "pack": "1000 Tablets", "price_usd": 279, "price_inr": 23715 },
+      { "pack": "2000 Tablets", "price_usd": 495, "price_inr": 42075 }
+    ]
+  },
+  {
+    "name": "Modafinil 300mg",
+    "brand": "Generic",
+    "composition": "Modafinil 300 mg",
+    "category": "Neurology",
+    "use": "Promotion of wakefulness, management of narcolepsy, shift work sleep disorder, and fatigue reduction",
+    "image": "assets/images/products/modafinil_300mg.jpeg",
+    "variants": [
+      { "pack": "50 Tablets", "price_usd": 49, "price_inr": 4165 },
+      { "pack": "100 Tablets", "price_usd": 65, "price_inr": 5525 },
+      { "pack": "300 Tablets", "price_usd": 89, "price_inr": 7565 },
+      { "pack": "500 Tablets", "price_usd": 119, "price_inr": 10115 },
+      { "pack": "1000 Tablets", "price_usd": 209, "price_inr": 17765 },
+      { "pack": "2000 Tablets", "price_usd": 369, "price_inr": 31365 }
+    ]
+  },
+  {
+    "name": "Modafinil 200mg",
+    "brand": "Generic",
+    "composition": "Modafinil 200 mg",
+    "category": "Neurology",
+    "use": "Promotion of wakefulness, management of narcolepsy, shift work sleep disorder, and fatigue reduction",
+    "image": "assets/images/products/modafinil_200mg.jpeg",
+    "variants": [
+      { "pack": "50 Tablets", "price_usd": 45, "price_inr": 3825 },
+      { "pack": "100 Tablets", "price_usd": 55, "price_inr": 4675 },
+      { "pack": "300 Tablets", "price_usd": 69, "price_inr": 5865 },
+      { "pack": "500 Tablets", "price_usd": 79, "price_inr": 6715 },
+      { "pack": "1000 Tablets", "price_usd": 129, "price_inr": 10965 },
+      { "pack": "2000 Tablets", "price_usd": 209, "price_inr": 17765 }
+    ]
+  },
+  {
+    "name": "Modafinil 100mg",
+    "brand": "Generic",
+    "composition": "Modafinil 100 mg",
+    "category": "Neurology",
+    "use": "Promotion of wakefulness, management of narcolepsy, shift work sleep disorder, and fatigue reduction",
+    "image": "assets/images/products/modafinil_100mg.jpeg",
+    "variants": [
+      { "pack": "50 Tablets", "price_usd": 45, "price_inr": 3825 },
+      { "pack": "100 Tablets", "price_usd": 55, "price_inr": 4675 },
+      { "pack": "300 Tablets", "price_usd": 69, "price_inr": 5865 },
+      { "pack": "500 Tablets", "price_usd": 79, "price_inr": 6715 },
+      { "pack": "1000 Tablets", "price_usd": 109, "price_inr": 9265 },
+      { "pack": "2000 Tablets", "price_usd": 179, "price_inr": 15215 }
+    ]
+  },
+  {
+    "name": "Armodafinil 50mg",
+    "brand": "Generic",
+    "composition": "Armodafinil 50 mg",
+    "category": "Neurology",
+    "use": "Improvement of wakefulness in narcolepsy, obstructive sleep apnea, and shift work disorder",
+    "image": "assets/images/products/armodafinil_50mg.jpeg",
+    "variants": [
+      { "pack": "50 Tablets", "price_usd": 45, "price_inr": 3825 },
+      { "pack": "100 Tablets", "price_usd": 55, "price_inr": 4675 },
+      { "pack": "300 Tablets", "price_usd": 75, "price_inr": 6375 },
+      { "pack": "500 Tablets", "price_usd": 89, "price_inr": 7565 },
+      { "pack": "1000 Tablets", "price_usd": 149, "price_inr": 12665 },
+      { "pack": "2000 Tablets", "price_usd": 269, "price_inr": 22865 }
+    ]
+  },
+  {
+    "name": "Modafinil + Armodafinil 250mg",
+    "brand": "Generic",
+    "composition": "Modafinil 200 mg + Armodafinil 50 mg",
+    "category": "Neurology",
+    "use": "Enhanced wakefulness support, cognitive alertness, fatigue reduction, and sleep disorder management",
+    "image": "assets/images/products/modafinil_200mg_armodafinil_50mg.jpeg",
+    "variants": [
+      { "pack": "50 Tablets", "price_usd": 55, "price_inr": 4675 },
+      { "pack": "100 Tablets", "price_usd": 79, "price_inr": 6715 },
+      { "pack": "300 Tablets", "price_usd": 105, "price_inr": 8925 },
+      { "pack": "500 Tablets", "price_usd": 139, "price_inr": 11815 },
+      { "pack": "1000 Tablets", "price_usd": 249, "price_inr": 21165 },
+      { "pack": "2000 Tablets", "price_usd": 449, "price_inr": 38165 }
+    ]
+  },
+  {
+    "name": "Armodafinil 150mg",
+    "brand": "Generic",
+    "composition": "Armodafinil 150 mg",
+    "category": "Neurology",
+    "use": "Improves wakefulness in narcolepsy, obstructive sleep apnea, and shift work sleep disorder",
+    "image": "assets/images/products/armodafinil_150mg.jpeg",
+    "variants": [
+      { "pack": "50 Tablets", "price_usd": 55, "price_inr": 4675 },
+      { "pack": "100 Tablets", "price_usd": 79, "price_inr": 6715 },
+      { "pack": "300 Tablets", "price_usd": 105, "price_inr": 8925 },
+      { "pack": "500 Tablets", "price_usd": 139, "price_inr": 11815 },
+      { "pack": "1000 Tablets", "price_usd": 249, "price_inr": 21165 },
+      { "pack": "2000 Tablets", "price_usd": 449, "price_inr": 38165 }
+    ]
+  },
+  {
+    "name": "Armodafinil 250mg",
+    "brand": "Generic",
+    "composition": "Armodafinil 250 mg",
+    "category": "Neurology",
+    "use": "Promotes alertness and wakefulness for sleep disorders and excessive daytime sleepiness",
+    "image": "assets/images/products/armodafinil_250mg.jpeg",
+    "variants": [
+      { "pack": "50 Tablets", "price_usd": 59, "price_inr": 5015 },
+      { "pack": "100 Tablets", "price_usd": 89, "price_inr": 7565 },
+      { "pack": "300 Tablets", "price_usd": 139, "price_inr": 11815 },
+      { "pack": "500 Tablets", "price_usd": 199, "price_inr": 16915 },
+      { "pack": "1000 Tablets", "price_usd": 369, "price_inr": 31365 },
+      { "pack": "2000 Tablets", "price_usd": 681, "price_inr": 57885 }
+    ]
+  },
+  {
+    "name": "Empagliflozin + Metformin 12.5mg/850mg",
+    "brand": "Generic",
+    "composition": "Empagliflozin 12.5 mg + Metformin 850 mg",
+    "category": "Diabetes & Metabolic Care",
+    "use": "Management of type 2 diabetes mellitus and improved blood glucose control",
+    "image": "assets/images/products/empagliflozin_12.5mg_metformin_850mg.jpeg",
+    "variants": [
+      { "pack": "50 Tablets", "price_usd": 49, "price_inr": 4165 },
+      { "pack": "100 Tablets", "price_usd": 65, "price_inr": 5525 },
+      { "pack": "300 Tablets", "price_usd": 85, "price_inr": 7225 },
+      { "pack": "500 Tablets", "price_usd": 109, "price_inr": 9265 },
+      { "pack": "1000 Tablets", "price_usd": 179, "price_inr": 15215 },
+      { "pack": "2000 Tablets", "price_usd": 309, "price_inr": 26265 }
+    ]
+  },
+  {
+    "name": "Dapagliflozin + Metformin 10mg/1000mg",
+    "brand": "Generic",
+    "composition": "Dapagliflozin 10 mg + Metformin 1000 mg",
+    "category": "Diabetes & Metabolic Care",
+    "use": "Blood sugar control in type 2 diabetes and cardiovascular risk reduction",
+    "image": "assets/images/products/dapagliflozin_10mg_metformin_1000mg.jpeg",
+    "variants": [
+      { "pack": "50 Tablets", "price_usd": 49, "price_inr": 4165 },
+      { "pack": "100 Tablets", "price_usd": 59, "price_inr": 5015 },
+      { "pack": "300 Tablets", "price_usd": 75, "price_inr": 6375 },
+      { "pack": "500 Tablets", "price_usd": 95, "price_inr": 8075 },
+      { "pack": "1000 Tablets", "price_usd": 149, "price_inr": 12665 },
+      { "pack": "2000 Tablets", "price_usd": 269, "price_inr": 22865 }
+    ]
+  },
+  {
+    "name": "Dapagliflozin 10mg",
+    "brand": "Generic",
+    "composition": "Dapagliflozin 10 mg",
+    "category": "Diabetes & Metabolic Care",
+    "use": "Management of type 2 diabetes, heart failure, and chronic kidney disease",
+    "image": "assets/images/products/dapagliflozin_10mg.jpeg",
+    "variants": [
+      { "pack": "50 Tablets", "price_usd": 49, "price_inr": 4165 },
+      { "pack": "100 Tablets", "price_usd": 59, "price_inr": 5015 },
+      { "pack": "300 Tablets", "price_usd": 79, "price_inr": 6715 },
+      { "pack": "500 Tablets", "price_usd": 99, "price_inr": 8415 },
+      { "pack": "1000 Tablets", "price_usd": 149, "price_inr": 12665 },
+      { "pack": "2000 Tablets", "price_usd": 269, "price_inr": 22865 }
+    ]
+  },
+  {
+    "name": "Dapagliflozin 5mg",
+    "brand": "Generic",
+    "composition": "Dapagliflozin 5 mg",
+    "category": "Diabetes & Metabolic Care",
+    "use": "Management of type 2 diabetes and improvement of glycemic control",
+    "image": "assets/images/products/dapagliflozin_5mg.jpeg",
+    "variants": [
+      { "pack": "50 Tablets", "price_usd": 45, "price_inr": 3825 },
+      { "pack": "100 Tablets", "price_usd": 55, "price_inr": 4675 },
+      { "pack": "300 Tablets", "price_usd": 75, "price_inr": 6375 },
+      { "pack": "500 Tablets", "price_usd": 99, "price_inr": 8415 },
+      { "pack": "1000 Tablets", "price_usd": 135, "price_inr": 11475 },
+      { "pack": "2000 Tablets", "price_usd": 259, "price_inr": 22015 }
+    ]
+  },
+  {
+    "name": "Sildenafil 150mg + Dapoxetine 100mg",
+    "brand": "Generic",
+    "composition": "Sildenafil Citrate 150 mg + Dapoxetine 100 mg",
+    "category": "Men’s Health",
+    "use": "Treatment of erectile dysfunction and premature ejaculation",
+    "image": "assets/images/products/sildenafil_150mg_dapoxetine_100mg.jpeg",
+    "variants": [
+      { "pack": "50 Tablets", "price_usd": 59, "price_inr": 5015 },
+      { "pack": "100 Tablets", "price_usd": 89, "price_inr": 7565 },
+      { "pack": "300 Tablets", "price_usd": 139, "price_inr": 11815 },
+      { "pack": "500 Tablets", "price_usd": 199, "price_inr": 16915 },
+      { "pack": "1000 Tablets", "price_usd": 369, "price_inr": 31365 },
+      { "pack": "2000 Tablets", "price_usd": 681, "price_inr": 57885 }
+    ]
+  },
+  {
+    "name": "Sildenafil 100mg + Dapoxetine 100mg",
+    "brand": "Generic",
+    "composition": "Sildenafil Citrate 100 mg + Dapoxetine 100 mg",
+    "category": "Men’s Health",
+    "use": "Treatment of erectile dysfunction with premature ejaculation support",
+    "image": "assets/images/products/sildenafil_100mg_dapoxetine_100mg.jpeg",
+    "variants": [
+      { "pack": "50 Tablets", "price_usd": 55, "price_inr": 4675 },
+      { "pack": "100 Tablets", "price_usd": 69, "price_inr": 5865 },
+      { "pack": "300 Tablets", "price_usd": 119, "price_inr": 10115 },
+      { "pack": "500 Tablets", "price_usd": 149, "price_inr": 12665 },
+      { "pack": "1000 Tablets", "price_usd": 269, "price_inr": 22865 },
+      { "pack": "2000 Tablets", "price_usd": 492, "price_inr": 41820 }
+    ]
+  },
+  {
+    "name": "Extra Super Tadarise 80mg",
+    "brand": "Generic",
+    "composition": "Tadalafil 20 mg + Dapoxetine 60 mg",
+    "category": "Men’s Health",
+    "use": "Management of erectile dysfunction and premature ejaculation",
+    "image": "assets/images/products/tadalafil_20mg_dapoxetine_60mg.jpeg",
+    "variants": [
+      { "pack": "50 Tablets", "price_usd": 57, "price_inr": 4845 },
+      { "pack": "100 Tablets", "price_usd": 79, "price_inr": 6715 },
+      { "pack": "300 Tablets", "price_usd": 129, "price_inr": 10965 },
+      { "pack": "500 Tablets", "price_usd": 179, "price_inr": 15215 }
+    ]
+  },
+  {
+    "name": "Tretinoin 0.025% Cream",
+    "brand": "Generic",
+    "composition": "Tretinoin 0.025%",
+    "category": "Dermatology & Skin Care",
+    "use": "Treatment of acne, fine wrinkles, sun damage, and skin texture improvement",
+    "image": "assets/images/products/tretinoin_0.025_percent.jpeg",
+    "variants": [
+      { "pack": "1 Tube (20g)", "price_usd": 39, "price_inr": 3315 },
+      { "pack": "3 Tubes (20g)", "price_usd": 49, "price_inr": 4165 },
+      { "pack": "5 Tubes (20g)", "price_usd": 69, "price_inr": 5865 },
+      { "pack": "7 Tubes (20g)", "price_usd": 79, "price_inr": 6715 },
+      { "pack": "9 Tubes (20g)", "price_usd": 89, "price_inr": 7565 }
+    ]
+  },
+  {
+    "name": "Metoprolol Succinate SR 50mg",
+    "brand": "Generic",
+    "composition": "Metoprolol Succinate Sustained Release 50 mg",
+    "category": "Thyroid Treatment",
+    "use": "Management of hypertension, angina, heart failure, and cardiovascular protection",
+    "image": "assets/images/products/metoprolol_succinate_sr_50mg.jpeg",
+    "variants": [
+      { "pack": "50 Tablets", "price_usd": 45, "price_inr": 3825 },
+      { "pack": "100 Tablets", "price_usd": 59, "price_inr": 5015 },
+      { "pack": "300 Tablets", "price_usd": 79, "price_inr": 6715 },
+      { "pack": "500 Tablets", "price_usd": 99, "price_inr": 8415 },
+      { "pack": "1000 Tablets", "price_usd": 175, "price_inr": 14875 },
+      { "pack": "2000 Tablets", "price_usd": 315, "price_inr": 26775 }
+    ]
+  },
+  {
+    "name": "Ivermectin 24mg",
+    "brand": "Generic",
+    "composition": "Ivermectin 24 mg",
+    "category": "Infection & Antiparasitic Treatments",
+    "use": "Treatment of parasitic infections, scabies, and intestinal worm infestations",
+    "image": "assets/images/products/ivermectin_24mg.jpeg",
+    "variants": [
+      { "pack": "50 Tablets", "price_usd": 45, "price_inr": 3825 },
+      { "pack": "100 Tablets", "price_usd": 59, "price_inr": 5015 },
+      { "pack": "300 Tablets", "price_usd": 79, "price_inr": 6715 },
+      { "pack": "500 Tablets", "price_usd": 85, "price_inr": 7225 },
+      { "pack": "1000 Tablets", "price_usd": 149, "price_inr": 12665 },
+      { "pack": "2000 Tablets", "price_usd": 269, "price_inr": 22865 }
+    ]
+  },
+  {
+    "name": "Sildenafil Citrate 100mg",
+    "brand": "Generic",
+    "composition": "Sildenafil Citrate 100 mg",
+    "category": "Men’s Health",
+    "use": "Treatment of erectile dysfunction and improvement of sexual performance",
+    "image": "assets/images/products/sildenafil_citrate_100mg.jpeg",
+    "variants": [
+      { "pack": "50 Tablets", "price_usd": 39, "price_inr": 3315 },
+      { "pack": "100 Tablets", "price_usd": 49, "price_inr": 4165 },
+      { "pack": "300 Tablets", "price_usd": 59, "price_inr": 5015 },
+      { "pack": "500 Tablets", "price_usd": 69, "price_inr": 5865 },
+      { "pack": "1000 Tablets", "price_usd": 99, "price_inr": 8415 },
+      { "pack": "2000 Tablets", "price_usd": 149, "price_inr": 12665 }
+    ]
+  },
+  {
+    "name": "Asthalin Inhaler 200mcg",
+    "brand": "Generic",
+    "composition": "Salbutamol 200 mcg Inhaler",
+    "category": "Allergy / Anxiety",
+    "use": "Relief of asthma symptoms, bronchospasm, and breathing difficulties",
+    "image": "assets/images/products/salbutamol_200mcg_inhaler.jpeg",
+    "variants": [
+      { "pack": "1 Unit", "price_usd": 85, "price_inr": 7225 },
+      { "pack": "3 Units", "price_usd": 99, "price_inr": 8415 },
+      { "pack": "5 Units", "price_usd": 115, "price_inr": 9775 },
+      { "pack": "7 Units", "price_usd": 135, "price_inr": 11475 },
+      { "pack": "9 Units", "price_usd": 149, "price_inr": 12665 }
+    ]
+  },
+  {
+    "name": "Mastronex-E 200mg/ml",
+    "brand": "Generic",
+    "composition": "Drostanolone Enanthate 200 mg/ml",
+    "category": "Hormonal / Performance Enhancement",
+    "use": "Performance enhancement, physique conditioning, and anabolic support",
+    "image": "assets/images/products/drostanolone_enanthate_200mg_ml.jpeg",
+    "variants": [
+      { "pack": "3 Bottles (10ml)", "price_usd": 149, "price_inr": 12665 },
+      { "pack": "5 Bottles (10ml)", "price_usd": 199, "price_inr": 16915 }
+    ]
+  },
+  {
+    "name": "Rybelsus 3mg",
+    "brand": "Generic",
+    "composition": "Semaglutide 3 mg",
+    "category": "Diabetes & Metabolic Care",
+    "use": "Blood glucose management in type 2 diabetes and metabolic health support",
+    "image": "assets/images/products/semaglutide_3mg.jpeg",
+    "variants": [
+      { "pack": "20 Tablets", "price_usd": 99, "price_inr": 8415 },
+      { "pack": "30 Tablets", "price_usd": 139, "price_inr": 11815 },
+      { "pack": "50 Tablets", "price_usd": 219, "price_inr": 18615 }
+    ]
+  },
+  {
+    "name": "Rybelsus 7mg",
+    "brand": "Generic",
+    "composition": "Semaglutide 7 mg",
+    "category": "Diabetes & Metabolic Care",
+    "use": "Management of type 2 diabetes and improvement of glycemic control",
+    "image": "assets/images/products/semaglutide_7mg.jpeg",
+    "variants": [
+      { "pack": "20 Tablets", "price_usd": 129, "price_inr": 10965 },
+      { "pack": "30 Tablets", "price_usd": 159, "price_inr": 13515 },
+      { "pack": "50 Tablets", "price_usd": 249, "price_inr": 21165 }
+    ]
+  },
+  {
+    "name": "Testosterone Enanthate 250mg/ml",
+    "brand": "Generic",
+    "composition": "Testosterone Enanthate 250 mg/ml",
+    "category": "Hormonal / Performance Enhancement",
+    "use": "Testosterone replacement therapy, muscle development, and hormonal support",
+    "image": "assets/images/products/testosterone_enanthate_250mg_ml.jpeg",
+    "variants": [
+      { "pack": "5 Bottles (10ml)", "price_usd": 125, "price_inr": 10625 },
+      { "pack": "7 Bottles (10ml)", "price_usd": 169, "price_inr": 14365 },
+      { "pack": "9 Bottles (10ml)", "price_usd": 219, "price_inr": 18615 }
+    ]
+  },
+  {
+    "name": "Tadalafil 10mg",
+    "brand": "Generic",
+    "composition": "Tadalafil 10 mg",
+    "category": "Men’s Health",
+    "use": "Treatment of erectile dysfunction and improvement of sexual performance",
+    "image": "assets/images/products/tadalafil_10mg.jpeg",
+    "variants": [
+      { "pack": "50 Tablets", "price_usd": 35, "price_inr": 2975 },
+      { "pack": "100 Tablets", "price_usd": 49, "price_inr": 4165 },
+      { "pack": "300 Tablets", "price_usd": 59, "price_inr": 5015 },
+      { "pack": "500 Tablets", "price_usd": 69, "price_inr": 5865 },
+      { "pack": "1000 Tablets", "price_usd": 99, "price_inr": 8415 }
+    ]
+  },
+  {
+    "name": "Eplerenone 25mg",
+    "brand": "Generic",
+    "composition": "Eplerenone 25 mg",
+    "category": "Thyroid Treatment",
+    "use": "Management of heart failure, hypertension, and cardiovascular risk reduction",
+    "image": "assets/images/products/eplerenone_25mg.jpeg",
+    "variants": [
+      { "pack": "50 Tablets", "price_usd": 55, "price_inr": 4675 },
+      { "pack": "100 Tablets", "price_usd": 69, "price_inr": 5865 },
+      { "pack": "300 Tablets", "price_usd": 109, "price_inr": 9265 },
+      { "pack": "500 Tablets", "price_usd": 149, "price_inr": 12665 },
+      { "pack": "1000 Tablets", "price_usd": 275, "price_inr": 23375 },
+      { "pack": "2000 Tablets", "price_usd": 499, "price_inr": 42415 }
+    ]
+  },
+  {
+  "name": "Azelaic Acid Gel 20%",
+  "brand": "Generic",
+  "composition": "Azelaic Acid 20% w/w",
+  "category": "🧴 Dermatology & Skin Care",
+  "use": "Treatment of acne vulgaris, rosacea, post-inflammatory hyperpigmentation, and skin discoloration.",
+  "image": "assets/images/products/azelaic_acid_20_percent.jpeg",
+  "variants": [
+    { "pack": "1 Tube", "price_usd": 39, "price_inr": 3315 },
+    { "pack": "3 Tubes", "price_usd": 59, "price_inr": 5015 },
+    { "pack": "5 Tubes", "price_usd": 79, "price_inr": 6715 },
+    { "pack": "7 Tubes", "price_usd": 99, "price_inr": 8415 }
+  ]
+},
+{
+  "name": "Isotretinoin 5mg",
+  "brand": "Generic",
+  "composition": "Isotretinoin 5 mg",
+  "category": "🧴 Dermatology & Skin Care",
+  "use": "Treatment of severe nodular acne and acne resistant to conventional therapies.",
+  "image": "assets/images/products/isotretinoin_5mg.jpeg",
+  "variants": [
+    { "pack": "50 Tablets", "price_usd": 39, "price_inr": 3315 },
+    { "pack": "100 Tablets", "price_usd": 49, "price_inr": 4165 },
+    { "pack": "300 Tablets", "price_usd": 55, "price_inr": 4675 },
+    { "pack": "500 Tablets", "price_usd": 69, "price_inr": 5865 }
+  ]
+},
+{
+  "name": "Testosterone Gel 1%",
+  "brand": "Generic",
+  "composition": "Testosterone 1% Gel",
+  "category": "💪 Hormonal / Performance Enhancement",
+  "use": "Testosterone replacement therapy in males with low testosterone levels and hypogonadism.",
+  "image": "assets/images/products/testosterone_1_percent_gel.jpeg",
+  "variants": [
+    { "pack": "3 Bottles", "price_usd": 129, "price_inr": 10965 },
+    { "pack": "5 Bottles", "price_usd": 189, "price_inr": 16065 }
+  ]
+},
+{
+  "name": "Tadalafil 20mg",
+  "brand": "Generic",
+  "composition": "Tadalafil 20 mg",
+  "category": "Men’s Health",
+  "use": "Treatment of erectile dysfunction and improvement of male sexual performance.",
+  "image": "assets/images/products/tadalafil_20mg.jpeg",
+  "variants": [
+    { "pack": "50 Tablets", "price_usd": 39, "price_inr": 3315 },
+    { "pack": "100 Tablets", "price_usd": 49, "price_inr": 4165 },
+    { "pack": "300 Tablets", "price_usd": 59, "price_inr": 5015 },
+    { "pack": "500 Tablets", "price_usd": 69, "price_inr": 5865 },
+    { "pack": "1000 Tablets", "price_usd": 109, "price_inr": 9265 },
+    { "pack": "2000 Tablets", "price_usd": 169, "price_inr": 14365 }
+  ]
+},
+{
+  "name": "Super Tadarise",
+  "brand": "Generic",
+  "composition": "Tadalafil 20 mg + Dapoxetine 60 mg",
+  "category": "Men’s Health",
+  "use": "Management of erectile dysfunction and premature ejaculation in adult males.",
+  "image": "assets/images/products/tadalafil_20mg_dapoxetine_60mg.jpeg",
+  "variants": [
+    { "pack": "50 Tablets", "price_usd": 55, "price_inr": 4675 },
+    { "pack": "100 Tablets", "price_usd": 69, "price_inr": 5865 },
+    { "pack": "300 Tablets", "price_usd": 109, "price_inr": 9265 },
+    { "pack": "500 Tablets", "price_usd": 149, "price_inr": 12665 },
+    { "pack": "1000 Tablets", "price_usd": 275, "price_inr": 23375 },
+    { "pack": "2000 Tablets", "price_usd": 499, "price_inr": 42415 }
+  ]
+},
+{
+  "name": "Isotretinoin 20mg",
+  "brand": "Generic",
+  "composition": "Isotretinoin 20 mg",
+  "category": "🧴 Dermatology & Skin Care",
+  "use": "Treatment of severe acne, cystic acne, and acne unresponsive to standard treatments.",
+  "image": "assets/images/products/isotretinoin_20mg.jpeg",
+  "variants": [
+    { "pack": "50 Tablets", "price_usd": 39, "price_inr": 3315 },
+    { "pack": "100 Tablets", "price_usd": 55, "price_inr": 4675 },
+    { "pack": "300 Tablets", "price_usd": 69, "price_inr": 5865 },
+    { "pack": "500 Tablets", "price_usd": 79, "price_inr": 6715 },
+    { "pack": "1000 Tablets", "price_usd": 129, "price_inr": 10965 }
+  ]
+},
+{
+  "name": "Micronized Progesterone 100mg",
+  "brand": "Generic",
+  "composition": "Micronized Progesterone 100 mg",
+  "category": "⚖️ Hormone Therapy",
+  "use": "Hormonal support, progesterone replacement, and women's health management.",
+  "image": "assets/images/products/micronized_progesterone_100mg.jpeg",
+  "variants": [
+    { "pack": "50 Tablets", "price_usd": 45, "price_inr": 3825 },
+    { "pack": "100 Tablets", "price_usd": 59, "price_inr": 5015 },
+    { "pack": "300 Tablets", "price_usd": 75, "price_inr": 6375 },
+    { "pack": "500 Tablets", "price_usd": 89, "price_inr": 7565 },
+    { "pack": "1000 Tablets", "price_usd": 149, "price_inr": 12665 },
+    { "pack": "2000 Tablets", "price_usd": 269, "price_inr": 22865 }
+  ]
+},
+{
+  "name": "Gliclazide 60mg MR",
+  "brand": "Generic",
+  "composition": "Gliclazide Modified Release 60 mg",
+  "category": "🩸 Diabetes & Metabolic Care",
+  "use": "Management of type 2 diabetes mellitus and blood glucose control.",
+  "image": "assets/images/products/gliclazide_modified_release_60mg.jpeg",
+  "variants": [
+    { "pack": "50 Tablets", "price_usd": 49, "price_inr": 4165 },
+    { "pack": "100 Tablets", "price_usd": 69, "price_inr": 5865 },
+    { "pack": "300 Tablets", "price_usd": 109, "price_inr": 9265 },
+    { "pack": "500 Tablets", "price_usd": 139, "price_inr": 11815 },
+    { "pack": "1000 Tablets", "price_usd": 249, "price_inr": 21165 },
+    { "pack": "2000 Tablets", "price_usd": 459, "price_inr": 39015 }
+  ]
+},
+{
+  "name": "Ivermectin 3mg",
+  "brand": "Generic",
+  "composition": "Ivermectin 3 mg",
+  "category": "🦠 Infection & Antiparasitic Treatments",
+  "use": "Treatment of parasitic infections including strongyloidiasis, onchocerciasis, and scabies.",
+  "image": "assets/images/products/ivermectin_3mg.jpeg",
+  "variants": [
+    { "pack": "50 Tablets", "price_usd": 39, "price_inr": 3315 },
+    { "pack": "100 Tablets", "price_usd": 49, "price_inr": 4165 },
+    { "pack": "300 Tablets", "price_usd": 69, "price_inr": 5865 },
+    { "pack": "500 Tablets", "price_usd": 79, "price_inr": 6715 },
+    { "pack": "1000 Tablets", "price_usd": 99, "price_inr": 8415 }
+  ]
+},
+{
+  "name": "Isotretinoin 10mg",
+  "brand": "Generic",
+  "composition": "Isotretinoin 10 mg",
+  "category": "🧴 Dermatology & Skin Care",
+  "use": "Treatment of severe acne vulgaris and chronic acne unresponsive to conventional therapies.",
+  "image": "assets/images/products/isotretinoin_10mg.jpeg",
+  "variants": [
+    { "pack": "50 Tablets", "price_usd": 39, "price_inr": 3315 },
+    { "pack": "100 Tablets", "price_usd": 55, "price_inr": 4675 },
+    { "pack": "300 Tablets", "price_usd": 69, "price_inr": 5865 },
+    { "pack": "500 Tablets", "price_usd": 79, "price_inr": 6715 },
+    { "pack": "1000 Tablets", "price_usd": 129, "price_inr": 10965 }
+  ]
+}
 ]
 

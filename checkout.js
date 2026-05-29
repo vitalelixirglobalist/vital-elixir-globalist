@@ -16,39 +16,18 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-const SHIPPING_USD = 35;
-
 const checkoutItemsDiv = document.getElementById('checkoutItems');
 const orderSummaryDiv = document.getElementById('orderSummary');
 const proceedToPaymentBtn = document.getElementById('proceedToPayment');
 const paymentSection = document.getElementById('paymentSection');
 
-const getSelectedCurrency = () => window.currencyUtils?.getSelectedCurrency?.() || 'GBP';
+const getSelectedCurrency = () => window.pricingEngine.getDisplayedCurrency();
 
 const formatForeignCurrency = (value) => {
-  const currency = getSelectedCurrency();
-  const converted = window.currencyUtils?.convertFromUsd
-    ? window.currencyUtils.convertFromUsd(value, currency)
-    : value;
-  return `${currency} ${Number(converted || 0).toFixed(2)}`;
-};
-
-const calculateLineTotals = (item) => {
-  const medicineUsd = Number(item.price_usd || 0);
-  const medicineInr = Number(item.price_inr || 0);
-  const shippingUsd = item.shipping_usd !== undefined && item.shipping_usd !== null
-    ? Number(item.shipping_usd)
-    : SHIPPING_USD;
-  const shippingInr = item.shipping_inr !== undefined && item.shipping_inr !== null
-    ? Number(item.shipping_inr)
-    : 0;
-  const totalUsd = item.total_price_usd !== undefined && item.total_price_usd !== null
-    ? Number(item.total_price_usd)
-    : parseFloat((medicineUsd + shippingUsd).toFixed(2));
-  const totalInr = item.total_price_inr !== undefined && item.total_price_inr !== null
-    ? Number(item.total_price_inr)
-    : parseFloat((medicineInr + shippingInr).toFixed(2));
-  return { medicineUsd, medicineInr, shippingUsd, shippingInr, totalUsd, totalInr };
+  return window.pricingEngine.formatLocalAmount(value, {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  });
 };
 
 async function loadHeader() {
@@ -146,23 +125,17 @@ function renderCheckout(cartItems) {
     return;
   }
 
-  let subtotalUSD = 0;
-  let subtotalINR = 0;
-  let shippingTotalUSD = 0;
-  let shippingTotalINR = 0;
+  const cartPricing = window.pricingEngine.calculateCartPricing(cartItems);
   let hasUnknownPrice = false;
 
-  cartItems.forEach((item) => {
-    const { medicineUsd, medicineInr, shippingUsd, shippingInr, totalUsd, totalInr } = calculateLineTotals(item);
-    const hasPrice = Boolean(item.price_usd || item.price_inr || item.total_price_usd || item.total_price_inr);
+  cartPricing.items.forEach((item) => {
+    const pricing = item.pricing;
+    const hasPrice = Boolean(pricing.original_price_usd || pricing.original_price_inr);
     const strength = item.strength || item.pack || '';
-    const quantity = item.quantity || 1;
+    const quantity = pricing.quantity;
 
     if (!hasPrice) {
       hasUnknownPrice = true;
-    } else {
-    subtotalUSD += medicineUsd * quantity;
-    subtotalINR += medicineInr * quantity;
     }
 
     const itemDiv = document.createElement('div');
@@ -177,8 +150,8 @@ function renderCheckout(cartItems) {
         </div>
       </div>
       <div class="text-sm text-gray-700 sm:text-right space-y-1">
-        <p class="font-semibold">${hasPrice ? formatForeignCurrency(medicineUsd) : 'Price on request'}</p>
-        ${hasPrice ? `<p class="text-xs text-gray-500">Subtotal: ${formatForeignCurrency(medicineUsd * quantity)} | INR ${(medicineInr * quantity).toFixed(2)}</p>` : ''}
+        <p class="font-semibold">${hasPrice ? formatForeignCurrency(pricing.final_price_usd) : 'Price on request'}</p>
+        ${hasPrice ? `<p class="text-xs text-gray-500">Subtotal: ${formatForeignCurrency(pricing.final_medication_total_usd)} | INR ${pricing.final_medication_total_inr.toFixed(2)}</p>` : ''}
       </div>
     `;
     checkoutItemsDiv.appendChild(itemDiv);
@@ -187,41 +160,16 @@ function renderCheckout(cartItems) {
   if (hasUnknownPrice) {
     orderSummaryDiv.innerHTML = `
       <p class="flex items-center justify-between"><span>Subtotal</span><span>Price on request</span></p>
-      <p class="flex items-center justify-between"><span>Shipping/Documentation</span><span>${formatForeignCurrency(SHIPPING_USD)} per order</span></p>
+      <p class="flex items-center justify-between"><span>Shipping/Documentation</span><span>${formatForeignCurrency(cartPricing.shippingUSD)} per order</span></p>
       <p class="flex items-center justify-between font-semibold"><span>Total</span><span>Price on request</span></p>
     `;
     return;
   }
 
-  // Apply shipping ONLY once
-if (cartItems.length > 0) {
-
-  shippingTotalUSD = SHIPPING_USD;
-
-  const firstItem = cartItems[0];
-
-  const medicineUsd = Number(firstItem.price_usd || 0);
-
-  const medicineInr = Number(firstItem.price_inr || 0);
-
-  if (medicineUsd > 0) {
-
-    const conversionRate = medicineInr / medicineUsd;
-
-    shippingTotalINR = parseFloat(
-      (conversionRate * SHIPPING_USD).toFixed(2)
-    );
-
-  }
-
-}
-  const totalUSD = subtotalUSD + shippingTotalUSD;
-  const totalINR = subtotalINR + shippingTotalINR;
-
   orderSummaryDiv.innerHTML = `
-    <p class="flex items-center justify-between"><span>Subtotal</span><span>${formatForeignCurrency(subtotalUSD)} | INR ${subtotalINR.toFixed(2)}</span></p>
-    <p class="flex items-center justify-between"><span>Shipping/Documentation</span><span>${formatForeignCurrency(shippingTotalUSD)} | INR ${shippingTotalINR.toFixed(2)}</span></p>
-    <p class="flex items-center justify-between font-semibold"><span>Total</span><span>${formatForeignCurrency(totalUSD)} | INR ${totalINR.toFixed(2)}</span></p>
+    <p class="flex items-center justify-between"><span>Subtotal</span><span>${formatForeignCurrency(cartPricing.medicationTotalUSD)} | INR ${cartPricing.medicationTotalINR.toFixed(2)}</span></p>
+    <p class="flex items-center justify-between"><span>Shipping/Documentation</span><span>${formatForeignCurrency(cartPricing.shippingUSD)} | INR ${cartPricing.shippingINR.toFixed(2)}</span></p>
+    <p class="flex items-center justify-between font-semibold"><span>Total</span><span>${formatForeignCurrency(cartPricing.grandTotalUSD)} | INR ${cartPricing.grandTotalINR.toFixed(2)}</span></p>
   `;
 }
 

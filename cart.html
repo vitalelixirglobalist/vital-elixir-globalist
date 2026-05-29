@@ -7,6 +7,7 @@
   <meta name="description" content="Review your selected medicines and proceed to checkout." />
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="currency-utils.js"></script>
+  <script src="pricing-engine.js"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -311,148 +312,17 @@ body .fab-icon img {
     import { auth, db } from './firebase-config.js';
     import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js';
     import { collection, addDoc, getDocs, deleteDoc, doc, setDoc, getDoc } from 'https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js';
-    const SHIPPING_USD = 35;
+    const getSelectedCurrency = () => window.pricingEngine.getDisplayedCurrency();
 
-    const getSelectedCurrency = () => window.currencyUtils?.getSelectedCurrency?.() || 'GBP';
+    const formatForeignCurrency = (value) =>
+      window.pricingEngine.formatLocalAmount(value, {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
 
-    const formatForeignCurrency = (value) => {
-
-    const currency =
-      getSelectedCurrency();
-
-    const rate =
-      window.currencyUtils?.rates?.[currency] || 1;
-
-    const converted =
-      Number(value || 0) * rate;
-
-    return `${currency} ${Number(converted).toFixed(2)}`;
-
-    };
-
-    const getSelectedCurrencyRate = () => {
-      const currency = getSelectedCurrency();
-      return window.currencyUtils?.rates?.[currency] || 1;
-    };
-
-    const convertDisplayedAmount = (value) => {
-
-  const currency =
-    getSelectedCurrency();
-
-  return parseFloat(
-
-    window.currencyUtils
-      .convertFromUsd(
-        Number(value || 0),
-        currency
-      )
-      .toFixed(2)
-
-      );
-
-    };
-
-    const calculateShippingInr = (medicineUsd, medicineInr, existingShippingInr) => {
-      if (existingShippingInr !== undefined && existingShippingInr !== null) {
-        return Number(existingShippingInr);
-      }
-      if (!medicineUsd) return 0;
-      const rate = medicineInr / medicineUsd;
-      const increaseMultiplier =
-      1 + (
-        (window.currencyUtils?.GLOBAL_PRICE_INCREASE_PERCENT || 0)
-        / 100
-      );
-
-    const computed =
-      rate *
-      SHIPPING_USD *
-      increaseMultiplier;
-
-          return parseFloat(computed.toFixed(2));
-        };
-
-    const calculateLineTotals = (item, quantity) => {
-
-    const increasePercent =
-      window.currencyUtils?.GLOBAL_PRICE_INCREASE_PERCENT || 0;
-
-    const multiplier =
-      1 + (increasePercent / 100);
-
-    /* =========================
-      MEDICINE PRICE
-    ========================= */
-
-    const originalMedicineUsd =
-      Number(item.price_usd || 0);
-
-    const originalMedicineInr =
-      Number(item.price_inr || 0);
-
-    // APPLY GLOBAL INCREASE
-    const medicineUsd =
-      parseFloat(
-        (originalMedicineUsd * multiplier)
-        .toFixed(2)
-      );
-
-    const medicineInr =
-      parseFloat(
-        (originalMedicineInr * multiplier)
-        .toFixed(2)
-      );
-
-    /* =========================
-      SHIPPING
-      (ONLY DISPLAY PURPOSE)
-    ========================= */
-
-    const shippingUsd =
-      SHIPPING_USD;
-
-    const shippingInr =
-      calculateShippingInr(
-        originalMedicineUsd,
-        originalMedicineInr,
-        item.shipping_inr
-      );
-
-    /* =========================
-      LINE TOTALS
-    ========================= */
-
-    const lineMedicineUsd =
-      parseFloat(
-        (medicineUsd * quantity)
-        .toFixed(2)
-      );
-
-    const lineMedicineInr =
-      parseFloat(
-        (medicineInr * quantity)
-        .toFixed(2)
-      );
-
-    return {
-
-      medicineUsd,
-      medicineInr,
-
-      shippingUsd,
-      shippingInr,
-
-      lineMedicineUsd,
-      lineMedicineInr,
-
-      totalUsd: lineMedicineUsd,
-      totalInr: lineMedicineInr
-
-    };
-
-  };
-
+    // All cart/request pricing flows through pricing-engine.js.
+    const calculateCartPricing = (cart) =>
+      window.pricingEngine.calculateCartPricing(cart, { discountRate });
 
     const getQuantity = (item) => Number(item.quantity || item.qty || item.count || 1);
 
@@ -557,7 +427,8 @@ body .fab-icon img {
         if (existingIds.has(productId)) {
           continue;
         }
-        await setDoc(doc(db, 'users', uid, 'cart', productId), { ...item, id: productId }, { merge: true });
+        const normalized = window.pricingEngine.normalizeCartItem(item);
+        await setDoc(doc(db, 'users', uid, 'cart', productId), { ...normalized, id: productId }, { merge: true });
       }
       localStorage.removeItem('cart');
       sessionStorage.setItem(sessionKey, 'true');
@@ -568,23 +439,25 @@ body .fab-icon img {
       if (!currentUser) {
         const localCart = getLocalCart();
         if (index >= 0 && index < localCart.length) {
-          localCart[index].quantity = nextQty;
+          localCart[index] = window.pricingEngine.normalizeCartItem(
+            { ...localCart[index], quantity: nextQty },
+            nextQty
+          );
           localStorage.setItem('cart', JSON.stringify(localCart));
         }
         return;
       }
       const productId = getProductId(item);
-      await setDoc(doc(db, 'users', currentUser.uid, 'cart', productId), { quantity: nextQty }, { merge: true });
+      const normalized = window.pricingEngine.normalizeCartItem(
+        { ...item, quantity: nextQty },
+        nextQty
+      );
+      await setDoc(doc(db, 'users', currentUser.uid, 'cart', productId), normalized, { merge: true });
     };
 
     async function renderCart() {
       cartItemsDiv.innerHTML = '';
       cartSummaryDiv.innerHTML = '';
-      let subtotalINR = 0;
-      let subtotalUSD = 0;
-      let shippingTotalINR = 0;
-      let shippingTotalUSD = 0;
-
       let cartItems = [];
       if (currentUser) {
         cartItems = await fetchFirestoreCart(currentUser.uid);
@@ -598,27 +471,17 @@ body .fab-icon img {
         return;
       }
 
-      cartItems.forEach((item, index) => {
-        const quantity = Math.max(1, getQuantity(item));
+      const cartPricing = calculateCartPricing(cartItems);
+      const pricedCartItems = cartPricing.items;
+
+      pricedCartItems.forEach((item, index) => {
+        const quantity = item.pricing.quantity;
         const packCount = getPackCount(item);
         const strength = getStrength(item);
-        const {
-          medicineUsd,
-          medicineInr,
-          shippingUsd,
-          shippingInr,
-          lineMedicineUsd,
-          lineMedicineInr,
-          lineShippingUsd,
-          lineShippingInr,
-          totalUsd,
-          totalInr
-        } = calculateLineTotals(item, quantity);
-        subtotalINR += lineMedicineInr;
-        subtotalUSD += lineMedicineUsd;
-        
+        const pricing = item.pricing;
+
         const tabletDisplay = packCount ? `${packCount * quantity} tablets` : `${quantity} units`;
-        
+
         const itemDiv = document.createElement('div');
         itemDiv.className = 'grid gap-4 py-6 md:grid-cols-12 items-center';
         itemDiv.innerHTML = `
@@ -644,48 +507,13 @@ body .fab-icon img {
             <p class="text-xs text-slate-500 mt-1">${tabletDisplay}</p>
           </div>
           <div class="md:col-span-4 text-sm text-right space-y-1">
-            <p class="text-slate-500">Price per unit: ${formatForeignCurrency(medicineUsd)} | INR ${medicineInr.toFixed(2)}</p>
-            <p class="text-slate-500">Subtotal: ${formatForeignCurrency(lineMedicineUsd)} | INR ${lineMedicineInr.toFixed(2)}</p>
-            <p class="font-semibold text-brand">Item total: ${formatForeignCurrency(totalUsd)} | INR ${totalInr.toFixed(2)}</p>
+            <p class="text-slate-500">Price per unit: ${formatForeignCurrency(pricing.final_price_usd)} | INR ${pricing.final_price_inr.toFixed(2)}</p>
+            <p class="text-slate-500">Subtotal: ${formatForeignCurrency(pricing.final_medication_total_usd)} | INR ${pricing.final_medication_total_inr.toFixed(2)}</p>
+            <p class="font-semibold text-brand">Item total: ${formatForeignCurrency(pricing.final_medication_total_usd)} | INR ${pricing.final_medication_total_inr.toFixed(2)}</p>
           </div>
         `;
         cartItemsDiv.appendChild(itemDiv);
       });
-      
-        // Apply shipping only once for entire cart
-if (cartItems.length > 0) {
- 
-const increaseMultiplier =
-  1 + (
-    (window.currencyUtils?.GLOBAL_PRICE_INCREASE_PERCENT || 0)
-    / 100
-  );
-
-  shippingTotalUSD =
-  parseFloat(
-    (
-      window.currencyUtils.convertFromUsd(
-        SHIPPING_USD,
-        'USD'
-      )
-    ).toFixed(2)
-  );
-
-  // Convert once using first product ratio
-  const firstItem = cartItems[0];
-
-  shippingTotalINR = calculateShippingInr(
-    Number(firstItem.price_usd || 0),
-    Number(firstItem.price_inr || 0),
-    firstItem.shipping_inr
-  );
-}
-      const taxUSD = 0;
-      const taxINR = 0;
-      const discountUSD = parseFloat((subtotalUSD * discountRate).toFixed(2));
-      const discountINR = parseFloat((subtotalINR * discountRate).toFixed(2));
-      const grandTotalUSD = subtotalUSD + shippingTotalUSD + taxUSD - discountUSD;
-      const grandTotalINR = subtotalINR + shippingTotalINR + taxINR - discountINR;
 
    cartSummaryDiv.innerHTML = `
   <div class="mb-4">
@@ -701,23 +529,23 @@ const increaseMultiplier =
   <div class="space-y-3">
           <div class="flex items-center justify-between text-sm">
             <span class="text-slate-600">Medication total</span>
-            <span class="font-medium">${formatForeignCurrency(subtotalUSD)} | INR ${subtotalINR.toFixed(2)}</span>
+            <span class="font-medium">${formatForeignCurrency(cartPricing.medicationTotalUSD)} | INR ${cartPricing.medicationTotalINR.toFixed(2)}</span>
           </div>
           <div class="flex items-center justify-between text-sm">
             <span class="text-slate-600">Shipping charges</span>
-            <span class="font-medium">${formatForeignCurrency(shippingTotalUSD)} | INR ${shippingTotalINR.toFixed(2)}</span>
+            <span class="font-medium">${formatForeignCurrency(cartPricing.shippingUSD)} | INR ${cartPricing.shippingINR.toFixed(2)}</span>
           </div>
           <div class="flex items-center justify-between text-sm">
             <span class="text-slate-600">Tax</span>
-            <span class="font-medium">${formatForeignCurrency(taxUSD)} | INR ${taxINR.toFixed(2)}</span>
+            <span class="font-medium">${formatForeignCurrency(cartPricing.taxUSD)} | INR ${cartPricing.taxINR.toFixed(2)}</span>
           </div>
           <div class="flex items-center justify-between text-sm">
             <span class="text-slate-600">Discount</span>
-            <span class="font-medium">- ${formatForeignCurrency(discountUSD)} | INR ${discountINR.toFixed(2)}</span>
+            <span class="font-medium">- ${formatForeignCurrency(cartPricing.discountUSD)} | INR ${cartPricing.discountINR.toFixed(2)}</span>
           </div>
           <div class="border-t border-slate-200 pt-3 flex items-center justify-between">
             <span class="text-base font-semibold"> Estimated Request Total </span>
-            <span class="text-lg font-bold text-brand">${formatForeignCurrency(grandTotalUSD)} | INR ${grandTotalINR.toFixed(2)}</span>
+            <span class="text-lg font-bold text-brand">${formatForeignCurrency(cartPricing.grandTotalUSD)} | INR ${cartPricing.grandTotalINR.toFixed(2)}</span>
           </div>
           <p class="text-xs text-slate-500"> Final pricing and shipping options may vary based on destination country, availability, and international delivery requirements. </p>
         </div>
@@ -891,122 +719,44 @@ submitMedicationRequestBtn.addEventListener('click', async () => {
     };
 
     /* =========================================
-    TOTAL CALCULATION
+    PRICING SNAPSHOT
     ========================================= */
 
-    let totalUSD = 0;
-    let totalINR = 0;
-    const processedCart = [];
-    
-    cart.forEach((item) => {
+const cartPricing = calculateCartPricing(cart);
 
-        const quantity =
-          Math.max(1, getQuantity(item));
+const processedCart = cartPricing.items.map((item) => ({
+  ...item,
+  quantity: item.pricing.quantity,
+  raw: item.raw,
+  pricing: item.pricing,
+  final_price_usd: item.pricing.final_price_usd,
+  final_price_inr: item.pricing.final_price_inr,
+  final_total_usd: item.pricing.final_total_usd,
+  final_total_inr: item.pricing.final_total_inr,
+  final_price_local: item.pricing.final_price_local,
+  final_total_local: item.pricing.final_total_local,
+  selected_currency: item.pricing.selected_currency
+}));
 
-        const {
+const pricingSummary = {
+  medicationTotalUSD: cartPricing.medicationTotalUSD,
+  medicationTotalINR: cartPricing.medicationTotalINR,
+  shippingUSD: cartPricing.shippingUSD,
+  shippingINR: cartPricing.shippingINR,
+  grandTotalUSD: cartPricing.grandTotalUSD,
+  grandTotalINR: cartPricing.grandTotalINR,
+  medicationTotalLocal: cartPricing.medicationTotalLocal,
+  shippingLocal: cartPricing.shippingLocal,
+  grandTotalLocal: cartPricing.grandTotalLocal,
+  taxUSD: cartPricing.taxUSD,
+  taxINR: cartPricing.taxINR,
+  taxLocal: cartPricing.taxLocal,
+  discountUSD: cartPricing.discountUSD,
+  discountINR: cartPricing.discountINR,
+  discountLocal: cartPricing.discountLocal,
+  currency: cartPricing.currency
+};
 
-          medicineUsd,
-          medicineInr,
-
-          totalUsd,
-          totalInr,
-
-          shippingUsd,
-          shippingInr
-
-        } = calculateLineTotals(
-          item,
-          quantity
-        );
-
-        totalUSD += totalUsd;
-        totalINR += totalInr;
-
-        processedCart.push({
-
-          ...item,
-
-          quantity,
-
-          // FINAL MODIFIED VALUES
-          final_price_usd: medicineUsd,
-
-          final_price_inr: medicineInr,
-
-          final_total_usd: totalUsd,
-
-          final_total_inr: totalInr,
-
-          // DISPLAYED CONVERTED VALUES
-          selected_currency: getSelectedCurrency(),
-          final_price_local: convertDisplayedAmount(medicineUsd),
-          final_total_local: convertDisplayedAmount(totalUsd),
-
-          // SHIPPING ONLY FOR DISPLAY
-          shipping_usd: 0,
-
-          shipping_inr: 0
-
-        });
-
-      });
-
-
-
-    // ADD SHIPPING ONLY ONCE
-    totalUSD += finalShippingUsd;
-
-    if (cart.length > 0) {
-
-      const firstItem = cart[0];
-
-      totalINR += calculateShippingInr(
-
-        Number(firstItem.price_usd || 0),
-
-        Number(firstItem.price_inr || 0),
-
-        firstItem.shipping_inr
-
-      );
-
-    }
-
-      
-      const increaseMultiplier =
-      1 + (
-        (window.currencyUtils?.GLOBAL_PRICE_INCREASE_PERCENT || 0)
-        / 100
-      );
-
-      const finalShippingUsd =
-      parseFloat(
-        (
-          window.currencyUtils.convertFromUsd(
-            SHIPPING_USD,
-            'USD'
-          )
-        ).toFixed(2)
-      );
-
-    let finalShippingInr = 0;
-
-    if (cart.length > 0) {
-
-      const firstItem = cart[0];
-
-      finalShippingInr =
-        calculateShippingInr(
-
-          Number(firstItem.price_usd || 0),
-
-          Number(firstItem.price_inr || 0),
-
-          firstItem.shipping_inr
-
-        );
-
-        }
     /* =========================================
     SAVE TO FIRESTORE
     ========================================= */
@@ -1021,38 +771,9 @@ submitMedicationRequestBtn.addEventListener('click', async () => {
 
         items: processedCart,
 
-        totals: { 
-          medicationTotalUSD:
-            totalUSD - finalShippingUsd,
+        pricingSummary,
 
-          medicationTotalINR:
-            totalINR - finalShippingInr,
-
-          medicationTotalLocal:
-            convertDisplayedAmount(totalUSD - finalShippingUsd),
-
-          shippingUSD:
-            finalShippingUsd,
-
-          shippingINR:
-            finalShippingInr,
-
-          shippingLocal:
-            convertDisplayedAmount(finalShippingUsd),
-
-          grandTotalUSD:
-            totalUSD,
-
-          grandTotalINR:
-            totalINR,
-
-          grandTotalLocal:
-            convertDisplayedAmount(totalUSD),
-
-          currency:
-            getSelectedCurrency()
-
-         },
+        totals: pricingSummary,
 
         status: "new-request",
 
@@ -1102,13 +823,8 @@ submitMedicationRequestBtn.addEventListener('click', async () => {
         alert('Please provide your name and email.');
         return;
       }
-      let totalINR = 0;
-      cart.forEach(item => {
-        const quantity = Math.max(1, getQuantity(item));
-        const { totalInr } = calculateLineTotals(item, quantity);
-        totalINR += totalInr;
-      });
-      totalINR = totalINR - totalINR * discountRate;
+      const cartPricing = calculateCartPricing(cart);
+      const totalINR = cartPricing.grandTotalINR;
       const amountPaise = Math.round(totalINR * 100);
       const options = {
         key: 'RAZORPAY_KEY_ID',
@@ -1118,7 +834,25 @@ submitMedicationRequestBtn.addEventListener('click', async () => {
         description: 'Medication Assistance Request',
         handler: async function (response) {
           const orderData = {
-            items: cart,
+            items: cartPricing.items,
+            pricingSummary: {
+              medicationTotalUSD: cartPricing.medicationTotalUSD,
+              medicationTotalINR: cartPricing.medicationTotalINR,
+              shippingUSD: cartPricing.shippingUSD,
+              shippingINR: cartPricing.shippingINR,
+              grandTotalUSD: cartPricing.grandTotalUSD,
+              grandTotalINR: cartPricing.grandTotalINR,
+              medicationTotalLocal: cartPricing.medicationTotalLocal,
+              shippingLocal: cartPricing.shippingLocal,
+              grandTotalLocal: cartPricing.grandTotalLocal,
+              taxUSD: cartPricing.taxUSD,
+              taxINR: cartPricing.taxINR,
+              taxLocal: cartPricing.taxLocal,
+              discountUSD: cartPricing.discountUSD,
+              discountINR: cartPricing.discountINR,
+              discountLocal: cartPricing.discountLocal,
+              currency: cartPricing.currency
+            },
             date: new Date().toISOString(),
             status: 'success',
             orderId: response.razorpay_payment_id,

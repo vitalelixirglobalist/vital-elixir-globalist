@@ -357,11 +357,15 @@ svg {
 
 window.currencyUtils = {
 
-  rates,
+  ...(window.currencyUtils || {}),
 
-  getSelectedCurrency,
+  rates: window.currencyUtils?.rates || rates,
 
-  setSelectedCurrency
+  getSelectedCurrency:
+    window.currencyUtils?.getSelectedCurrency || getSelectedCurrency,
+
+  setSelectedCurrency:
+    window.currencyUtils?.setSelectedCurrency || setSelectedCurrency
 
 };
 

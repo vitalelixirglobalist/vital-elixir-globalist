@@ -7,6 +7,7 @@
   <meta name="description" content="See complete medication details, pricing, pack sizes, and trusted export quality information." />
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="currency-utils.js"></script>
+  <script src="pricing-engine.js"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -145,20 +146,55 @@
 
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    function formatMoney(value) {
-      return Number(value || 0).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+    function getSelectedCurrency() {
+      return window.pricingEngine.getDisplayedCurrency();
     }
 
-    
+    function formatLocalCurrency(value) {
+      return window.pricingEngine.formatCurrencyAmount(value, getSelectedCurrency(), {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
+      });
+    }
 
-    function formatForeignCurrency(value) {
-      const currency =
-      window.currencyUtils.getSelectedCurrency();
-      const converted = window.currencyUtils?.convertFromUsd
-        ? window.currencyUtils.convertFromUsd(value, currency)
-        : value;
-      return `${currency} ${formatMoney(converted)}`;
-      }
+    function getVariantPricing(variant) {
+      return window.pricingEngine.calculateItemPricing({
+        price_usd: variant.price_usd,
+        price_inr: variant.price_inr,
+        shipping_usd: SHIPPING_USD
+      }, 1);
+    }
+
+    function buildCartItem(product, variant) {
+      // Product details uses the same engine snapshot that cart/request/email consume.
+      const baseItem = {
+        name: product.name,
+        brand: product.brand,
+        pack: variant.pack,
+        quantity: 1,
+        price_usd: variant.price_usd,
+        price_inr: variant.price_inr,
+        shipping_usd: SHIPPING_USD,
+        image: product.image
+      };
+      const normalized = window.pricingEngine.normalizeCartItem(baseItem, 1);
+
+      return {
+        ...baseItem,
+        raw: normalized.raw,
+        pricing: normalized.pricing,
+        shipping_inr: normalized.raw.shipping_inr,
+        final_price_usd: normalized.pricing.final_price_usd,
+        final_price_inr: normalized.pricing.final_price_inr,
+        final_total_usd: normalized.pricing.final_total_usd,
+        final_total_inr: normalized.pricing.final_total_inr,
+        final_price_local: normalized.pricing.final_price_local,
+        final_total_local: normalized.pricing.final_total_local,
+        selected_currency: normalized.pricing.selected_currency,
+        total_price_usd: normalized.pricing.final_total_usd,
+        total_price_inr: normalized.pricing.final_total_inr
+      };
+    }
 
     function showToast(message) {
       if (!actionToast) return alert(message);
@@ -167,26 +203,19 @@
       setTimeout(() => actionToast.classList.add('hidden'), 2800);
     }
 
-    function getShippingInr(variant) {
-      if (!variant.price_usd || !variant.price_inr) return 0;
-      return (variant.price_inr / variant.price_usd) * SHIPPING_USD;
-    }
-
     function updatePrice() {
       if (!selectedProduct || !selectedProduct.variants.length) return;
       const index = Number(packSelect.value) || 0;
       selectedVariantIndex = index;
       const variant = selectedProduct.variants[index] || selectedProduct.variants[0];
-      const shippingInr = getShippingInr(variant);
-      const totalUsd = (variant.price_usd || 0) + SHIPPING_USD;
-      const totalInr = (variant.price_inr || 0) + shippingInr;
+      const pricing = getVariantPricing(variant);
 
       priceBreakdown.innerHTML = `
         <div class="space-y-2">
           <div class="flex items-center justify-between"><span class="font-semibold text-brand">Selected pack</span><span>${variant.pack}</span></div>
-          <div class="flex items-center justify-between"><span>Medicine</span><span>${formatForeignCurrency(variant.price_usd)}${variant.price_inr ? ` | INR ${variant.price_inr.toFixed(2)}` : ''}</span></div>
-          <div class="flex items-center justify-between"><span>Shipping</span><span>${formatForeignCurrency(SHIPPING_USD)}${variant.price_inr ? ` | INR ${shippingInr.toFixed(2)}` : ''}</span></div>
-          <div class="flex items-center justify-between font-bold text-brand text-lg"><span>Total</span><span>${formatForeignCurrency(totalUsd)}${variant.price_inr ? ` | INR ${totalInr.toFixed(2)}` : ''}</span></div>
+          <div class="flex items-center justify-between"><span>Medicine</span><span>${formatLocalCurrency(pricing.final_price_local)}${pricing.final_price_inr ? ` | INR ${pricing.final_price_inr.toFixed(2)}` : ''}</span></div>
+          <div class="flex items-center justify-between"><span>Shipping</span><span>${formatLocalCurrency(pricing.final_shipping_local)}${pricing.final_shipping_inr ? ` | INR ${pricing.final_shipping_inr.toFixed(2)}` : ''}</span></div>
+          <div class="flex items-center justify-between font-bold text-brand text-lg"><span>Total</span><span>${formatLocalCurrency(pricing.final_total_local)}${pricing.final_total_inr ? ` | INR ${pricing.final_total_inr.toFixed(2)}` : ''}</span></div>
         </div>
       `;
     }
@@ -201,8 +230,9 @@
           packSelect.innerHTML = '';
       product.variants.forEach((variant, index) => {
         const opt = document.createElement('option');
+        const pricing = getVariantPricing(variant);
         opt.value = index;
-        opt.textContent = `${variant.pack} — ${formatForeignCurrency(variant.price_usd)}`;
+        opt.textContent = `${variant.pack} - ${formatLocalCurrency(pricing.final_price_local)}`;
         packSelect.appendChild(opt);
       });
       packSelect.value = '0';
@@ -281,7 +311,7 @@
     selectedProduct.variants[selectedVariantIndex] ||
     selectedProduct.variants[0];
 
-  const shippingInr = getShippingInr(variant);
+  const cartItem = buildCartItem(selectedProduct, variant);
 
   const user = window.auth.currentUser;
 
@@ -291,15 +321,7 @@
     const localCart =
       JSON.parse(localStorage.getItem('cart')) || [];
 
-    localCart.push({
-      name: selectedProduct.name,
-      brand: selectedProduct.brand,
-      pack: variant.pack,
-      quantity: 1,
-      price_usd: variant.price_usd,
-      price_inr: variant.price_inr,
-      image: selectedProduct.image
-    });
+    localCart.push(cartItem);
 
     localStorage.setItem(
       'cart',
@@ -333,19 +355,7 @@
     {
       productId,
 
-      name: selectedProduct.name,
-
-      brand: selectedProduct.brand,
-
-      pack: variant.pack,
-
-      quantity: 1,
-
-      price_usd: variant.price_usd,
-
-      price_inr: variant.price_inr,
-
-      image: selectedProduct.image,
+      ...cartItem,
 
       addedAt: new Date().toISOString()
     }

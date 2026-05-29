@@ -26,6 +26,36 @@ const transporter = nodemailer.createTransport({
 
 });
 
+function readFinalPricing(item) {
+  const pricing = item.pricing || {};
+
+  return {
+    finalPriceUSD:
+      pricing.final_price_usd ??
+      item.final_price_usd ??
+      "N/A",
+
+    finalPriceINR:
+      pricing.final_price_inr ??
+      item.final_price_inr ??
+      "N/A",
+
+    finalTotalUSD:
+      pricing.final_total_usd ??
+      item.final_total_usd ??
+      "N/A",
+
+    finalTotalINR:
+      pricing.final_total_inr ??
+      item.final_total_inr ??
+      "N/A"
+  };
+}
+
+function readPricingSummary(data) {
+  return data.pricingSummary || data.totals || {};
+}
+
 /* =========================================
 FIREBASE TRIGGER
 RUNS AUTOMATICALLY WHEN NEW REQUEST ADDED
@@ -43,11 +73,12 @@ exports.sendMedicationRequestEmail = onDocumentCreated(
 
       const customer = data.customer || {};
       const items = data.items || [];
-      const totals = data.totals || {};
+      const totals = readPricingSummary(data);
 
       let itemList = "";
 
       items.forEach((item, index) => {
+        const pricing = readFinalPricing(item);
 
         itemList += `
 ${index + 1}. ${item.name || "Medicine"}
@@ -57,8 +88,12 @@ Pack: ${item.pack || "N/A"}
 Quantity: ${item.quantity || 1}
 
 Price:
-USD ${item.price_usd || 0}
-INR ${item.price_inr || 0}
+USD ${pricing.finalPriceUSD}
+INR ${pricing.finalPriceINR}
+
+Item Total:
+USD ${pricing.finalTotalUSD}
+INR ${pricing.finalTotalINR}
 
 -----------------------------------
 `;
@@ -108,10 +143,10 @@ ${itemList}
 TOTALS
 
 USD:
-${totals.totalUSD || 0}
+${totals.grandTotalUSD || 0}
 
 INR:
-${totals.totalINR || 0}
+${totals.grandTotalINR || 0}
 
 ====================================
 
