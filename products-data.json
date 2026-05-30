@@ -147,17 +147,6 @@
   ]
 },
 {
-  "name": "Testosterone Gel 1% w/w",
-  "brand": "Androtas",
-  "composition": "Testosterone 1% w/w",
-  "category": "Hormone Therapy",
-  "use": "Testosterone replacement therapy",
-  "image": "assets/images/products/androtas_testosterone_gel.jpeg",
-  "variants": [
-    { "pack": "5 Gels (75 g each)", "price_usd": 169, "price_inr": 0 }
-  ]
-},
-{
   "name": "Atomoxetine 25 mg",
   "brand": "Generic",
   "composition": "Atomoxetine 25 mg",
@@ -1716,12 +1705,12 @@
   ]
 },
 {
-  "name": "Testosterone Gel 1%",
+  "name": "Testosterone Gel 1% Cernos gel 5g",
   "brand": "Generic",
   "composition": "Testosterone 1% w/w",
   "category": "Hormonal / Performance Enhancement",
   "use": "Topical testosterone replacement therapy used for low testosterone levels in adult males.",
-  "image": "assets/images/products/testosterone_1_percent.jpeg",
+  "image": "assets/images/products/testosterone_1_percent_cernos.jpeg",
   "variants": [
     { "pack": "1 Packet (5gm)", "price_usd": 39, "price_inr": 3315 },
     { "pack": "3 Packets (5gm)", "price_usd": 49, "price_inr": 4165 },
@@ -2666,12 +2655,12 @@
   ]
 },
 {
-  "name": "Testosterone Gel 1%",
+  "name": "Testosterone Gel 1% Androfast 80g",
   "brand": "Generic",
   "composition": "Testosterone 1% Gel",
   "category": "💪 Hormonal / Performance Enhancement",
   "use": "Testosterone replacement therapy in males with low testosterone levels and hypogonadism.",
-  "image": "assets/images/products/testosterone_1_percent_gel.jpeg",
+  "image": "assets/images/products/testosterone_1_percent_gel_androfast.jpeg",
   "variants": [
     { "pack": "3 Bottles", "price_usd": 129, "price_inr": 10965 },
     { "pack": "5 Bottles", "price_usd": 189, "price_inr": 16065 }
