@@ -147,17 +147,6 @@
   ]
 },
 {
-  "name": "Testosterone Gel 1% w/w",
-  "brand": "Androtas",
-  "composition": "Testosterone 1% w/w",
-  "category": "Hormone Therapy",
-  "use": "Testosterone replacement therapy",
-  "image": "assets/images/products/androtas_testosterone_gel.jpeg",
-  "variants": [
-    { "pack": "5 Gels (75 g each)", "price_usd": 169, "price_inr": 0 }
-  ]
-},
-{
   "name": "Atomoxetine 25 mg",
   "brand": "Generic",
   "composition": "Atomoxetine 25 mg",
