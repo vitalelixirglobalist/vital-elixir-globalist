@@ -355,18 +355,70 @@ body .fab-icon img {
     let discountRate = 0;
 
     onAuthStateChanged(auth, async (user) => {
-      currentUser = user;
-      if (!user) {
-        loginOverlay.classList.remove('hidden');
-        await renderCart();
-      } else {
-        loginOverlay.classList.add('hidden');
-        document.getElementById('cartContainer').classList.remove('hidden');
-        document.getElementById('customerEmail').value = user.email;
-        await syncLocalCartOnce(user.uid);
-        await renderCart();
-      }
-    });
+
+        currentUser = user;
+
+        if (!user) {
+
+          loginOverlay.classList.remove('hidden');
+
+          await renderCart();
+
+        } else {
+
+          loginOverlay.classList.add('hidden');
+
+          document
+            .getElementById('cartContainer')
+            .classList.remove('hidden');
+
+          document
+            .getElementById('customerEmail')
+            .value = user.email;
+
+          try {
+
+            const userDoc = await getDoc(
+              doc(db, 'users', user.uid)
+            );
+
+            if (userDoc.exists()) {
+
+              const userData = userDoc.data();
+
+              console.log(
+                'Customer profile loaded:',
+                userData
+              );
+
+              document
+                .getElementById('customerName')
+                .value =
+                userData.name || '';
+
+              document
+                .getElementById('customerPhone')
+                .value =
+                userData.phone || '';
+
+            }
+
+          } catch (error) {
+
+            console.error(
+              'Failed loading customer profile:',
+              error
+            );
+
+          }
+
+          await syncLocalCartOnce(user.uid);
+
+          await renderCart();
+
+        }
+
+      });
 
     loginRedirect.addEventListener('click', () => {
       window.location.href = 'login.html?redirect=cart.html';

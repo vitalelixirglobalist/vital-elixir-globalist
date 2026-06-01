@@ -207,6 +207,11 @@ try {
             </p>
 
             <p>
+              <strong>Phone:</strong>
+              ${userData.phone || 'No Phone'}
+            </p>
+
+            <p>
               <strong>Name:</strong>
               ${userData.name || 'No Name'}
             </p>
