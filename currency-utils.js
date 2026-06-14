@@ -2,7 +2,7 @@
   const CURRENCY_KEY = 'selectedCurrency';
 
   // Global price control. pricing-engine.js is the only file that applies it.
-  const GLOBAL_PRICE_INCREASE_PERCENT = 1;
+  const GLOBAL_PRICE_INCREASE_PERCENT = 0.01;
 
   const rates = {
     USD: 1,
