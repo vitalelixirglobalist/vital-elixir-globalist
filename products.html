@@ -240,7 +240,23 @@ from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
       productGrid.innerHTML = '';
       products.forEach((p) => {
         const card = document.createElement('div');
-        card.className = 'bg-white border rounded-xl p-4 shadow-sm hover:shadow-lg transition flex flex-col';
+
+        card.className =
+        'bg-white border rounded-xl p-4 shadow-sm hover:shadow-lg transition flex flex-col cursor-pointer';
+
+        card.addEventListener("click", (e) => {
+
+            // Don't open details when interacting with controls
+            if (
+                e.target.closest(".variantSelect") ||
+                e.target.closest(".add-to-cart-btn")
+            ) {
+                return;
+            }
+
+            window.location.href =
+                `product-details.html?product=${encodeURIComponent(p.name)}`;
+        });
         const dropdownOptions = p.variants
           .map((v) => {
             const pricing = getVariantPricing(v);
@@ -253,7 +269,6 @@ from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
           <p class="text-sm text-gray-600">${p.brand}</p>
           <p class="text-sm text-gray-500 mb-2">${p.composition}</p>
           <p class="text-sm text-gray-600 mb-1"><strong>Use:</strong> ${p.use}</p>
-          <a href="product-details.html?product=${encodeURIComponent(p.name)}" class="inline-flex items-center gap-1 text-sm text-brand font-semibold hover:underline">View details<span aria-hidden="true">→</span></a>
           <select class="variantSelect border mt-2 p-2 rounded w-full text-sm focus:ring-2 focus:ring-brand">
             <option disabled selected>Order Quantity</option>
             ${dropdownOptions}
