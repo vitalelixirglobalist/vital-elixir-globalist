@@ -17,7 +17,141 @@
     };
   </script>
   <script src="dev-fix.js"></script>
-</head>
+<style>
+    .qty-dropdown{
+        position:relative;
+        width:100%;
+        margin-top:10px;
+        font-size:13px;
+    }
+
+    .qty-dropdown,
+    .qty-selected,
+    .qty-options{
+        width:100%;
+        box-sizing:border-box;
+    }
+
+    .qty-selected{
+        border:1px solid #d1d5db;
+        border-radius:8px;
+        background:#fff;
+        cursor:pointer;
+        overflow:hidden;
+    }
+
+    .qty-header,
+    .qty-row{
+        display:grid;
+        grid-template-columns:12% 36% 24% 28%;
+        align-items:center;
+        gap:0;
+        width:100%;
+    }
+
+    .qty-header{
+        background:#f8fafc;
+        padding:7px 4px;
+        border-bottom:1px solid #e5e7eb;
+        font-size:13px;
+        font-weight:500;
+    }
+
+    .qty-header span:nth-child(1),
+    .qty-header span:nth-child(2){
+        font-weight:700;
+        text-decoration:underline;
+    }
+
+    .qty-header span:nth-child(3),
+    .qty-header span:nth-child(4){
+        font-weight:500;
+    }
+    
+    .qty-header span,
+    .qty-row span{
+        white-space:nowrap; 
+        text-align:center;
+        padding:0 2px;
+        overflow:hidden;
+        text-overflow:ellipsis;
+    }
+
+    
+    .qty-selected-row{
+        padding:8px 10px;
+    }
+
+    .qty-selected-row::after{
+        content:"▾";
+        float:right;
+        color:#0284c7;
+        font-size:11px;
+    }
+
+    .qty-options{
+        display:none;
+        position:absolute;
+        left:0;
+        right:0;
+        top:100%;
+        background:#fff;
+        border:1px solid #d1d5db;
+        border-top:none;
+        z-index:100;
+        box-shadow:0 8px 18px rgba(0,0,0,.08);
+        max-height:250px;
+        overflow-y:auto;
+    }
+
+    .qty-row{
+        padding:7px 4px;
+        cursor:pointer;
+        transition:.2s;
+        font-size:13px;
+        border-top:1px solid #f1f5f9;
+    }
+
+    .qty-row:hover{
+        background:#eff6ff;
+    }
+
+    .qty-row.active{
+        background:#dbeafe;
+        font-weight:600;
+    }
+
+    .qty-dropdown.open .qty-options{
+        display:block;
+    }
+
+    .qty-title{
+        font-size:12px;
+        color:#64748b;
+        margin-bottom:5px;
+        font-weight:600;
+    }
+
+    @media(max-width:768px){
+
+    .qty-header,
+    .qty-row{
+    grid-template-columns:36px 78px 50px 56px;
+    font-size:10px;
+    column-gap:3px;
+    }
+    .qty-header{
+    padding:6px 8px;
+    }
+
+    .qty-selected-row{
+    padding:8px;
+    }
+
+    }
+    </style>
+
+    </head>
 
 <body class="text-gray-800 bg-gray-50">
   <!-- Header placeholder -->
@@ -31,7 +165,7 @@
 
   <!-- Search & Category Filter -->
   <div
-    class="max-w-6xl mx-auto px-4 mb-8 flex flex-col md:flex-row md:justify-between md:items-center gap-4">
+    class="max-w-7xl mx-auto px-4 mb-8 flex flex-col md:flex-row md:justify-between md:items-center gap-4">
     <input id="searchBar" type="text" placeholder="Search medicines..."
       class="w-full md:w-1/2 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand" />
     <select id="categoryFilter" class="border rounded p-2">
@@ -59,7 +193,7 @@
 
   <!-- Product Grid -->
   <div id="productGrid"
-    class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 pb-16"></div>
+    class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 pb-16">
 
   <!-- Modal Overlay for alerts and confirmations -->
   <div id="modalOverlay"
@@ -191,7 +325,53 @@ from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
         maximumFractionDigits: 0
       });
     }
+          function getPerTablet(variant){
 
+        if(!variant.quantity) return "-";
+
+        return window.pricingEngine.formatLocalAmount(
+            variant.price_usd / variant.quantity,
+            {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }
+        );
+
+    }
+
+      function buildQuantityDropdown(product){
+
+          return `
+      <div class="qty-dropdown">
+
+      <div class="qty-title">
+      Select Qty
+      </div>
+
+      <div class="qty-selected">
+
+      <div class="qty-header">
+
+      <span>Qty</span>
+
+      <span>Buy With Us</span>
+
+      <span>Per Tab</span>
+
+      <span>USA Price</span>
+
+      </div>
+
+      <div class="qty-selected-row qty-row"></div>
+
+      </div>
+
+      <div class="qty-options"></div>
+
+      </div>
+      `;
+
+      }
     function getVariantPricing(variant) {
       return window.pricingEngine.calculateItemPricing({
         price_usd: variant.price_usd,
@@ -257,46 +437,120 @@ from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
             window.location.href =
                 `product-details.html?product=${encodeURIComponent(p.name)}`;
         });
-        const dropdownOptions = p.variants
-          .map((v) => {
-            const pricing = getVariantPricing(v);
-            return `<option value="${p.variants.indexOf(v)}">${v.pack} - ${formatLocalCurrency(pricing.final_price_local)}</option>`;
-          })
-          .join('');
+
         card.innerHTML = `
           <img src="${p.image}" alt="${p.name}" class="w-full h-40 object-contain mb-3 rounded" />
           <h2 class="font-semibold text-lg text-brand">${p.name}</h2>
           <p class="text-sm text-gray-600">${p.brand}</p>
           <p class="text-sm text-gray-500 mb-2">${p.composition}</p>
           <p class="text-sm text-gray-600 mb-1"><strong>Use:</strong> ${p.use}</p>
-          <select class="variantSelect border mt-2 p-2 rounded w-full text-sm focus:ring-2 focus:ring-brand">
-            <option disabled selected>Order Quantity</option>
-            ${dropdownOptions}
-          </select>
+          ${buildQuantityDropdown(p)}
            <p class="mt-2 text-xs text-gray-500">Shipping: +${formatForeignCurrency(getVariantPricing({ price_usd: 0, price_inr: 0 }).final_shipping_usd)} (added per product)</p>
           <div class="price-display mt-3 text-sm text-gray-700"></div>
           <button class="add-to-cart-btn mt-auto bg-brand text-white py-2 px-3 rounded-lg hover:bg-blue-700 transition mt-3">Add to Cart</button>
         `;
-        const select = card.querySelector('.variantSelect');
         const priceDisplay = card.querySelector('.price-display');
         const addBtn = card.querySelector('.add-to-cart-btn');
-          select.addEventListener('change', (e) => {
-          const variant = p.variants[e.target.value];
-          const pricing = getVariantPricing(variant);
-          priceDisplay.innerHTML = `
-            <div class="mt-2 p-2 border border-blue-100 rounded-lg bg-blue-50 text-sm space-y-1">
-              <p>💊 <span class="font-medium text-brand">Medicine:</span> ${formatForeignCurrency(pricing.final_price_usd)} | INR ${pricing.final_price_inr.toFixed(2)}</p>
-              <p>🚚 <span class="font-medium text-brand">Shipping:</span> ${formatForeignCurrency(pricing.final_shipping_usd)} | INR ${pricing.final_shipping_inr.toFixed(2)}</p>
-              <p class="font-semibold text-brand">Total: ${formatForeignCurrency(pricing.final_total_usd)} | INR ${pricing.final_total_inr.toFixed(2)}</p>
-            </div>
-          `;
+        const qtyDropdown = card.querySelector(".qty-dropdown");
+        const qtySelected = qtyDropdown.querySelector(".qty-selected-row");
+        const qtyOptions = qtyDropdown.querySelector(".qty-options");
+
+        let selectedVariantIndex = 0;
+
+        function renderQty(index){
+
+            const variant = p.variants[index];
+
+            qtySelected.innerHTML=`
+        <span>${variant.quantity}</span>
+        <span>${formatForeignCurrency(variant.price_usd)}</span>
+        <span>${getPerTablet(variant)}</span>
+        <span>${formatForeignCurrency(variant.usa_price_usd)}</span>
+        `;
+
+        }
+
+        qtyOptions.innerHTML="";
+
+        p.variants.forEach((variant,index)=>{
+
+        const row=document.createElement("div");
+
+        row.className="qty-row";
+
+        row.innerHTML=`
+        <span>${variant.quantity}</span>
+        <span>${formatForeignCurrency(variant.price_usd)}</span>
+        <span>${getPerTablet(variant)}</span>
+        <span>${formatForeignCurrency(variant.usa_price_usd)}</span>
+        `;
+
+        if(index===0)
+        row.classList.add("active");
+
+        row.onclick=(e)=>{
+
+        e.stopPropagation();
+
+        qtyOptions
+        .querySelectorAll(".qty-row")
+        .forEach(r=>r.classList.remove("active"));
+
+        row.classList.add("active");
+
+        selectedVariantIndex=index;
+
+        renderQty(index);
+
+        qtyDropdown.classList.remove("open");
+
+        const pricing=getVariantPricing(variant);
+
+        priceDisplay.innerHTML=`
+        <div class="mt-2 p-2 border border-blue-100 rounded-lg bg-blue-50 text-sm space-y-1">
+        <p>💊 <span class="font-medium text-brand">Medicine:</span> ${formatForeignCurrency(pricing.final_price_usd)} | INR ${pricing.final_price_inr.toFixed(2)}</p>
+        <p>🚚 <span class="font-medium text-brand">Shipping:</span> ${formatForeignCurrency(pricing.final_shipping_usd)} | INR ${pricing.final_shipping_inr.toFixed(2)}</p>
+        <p class="font-semibold text-brand">Total: ${formatForeignCurrency(pricing.final_total_usd)} | INR ${pricing.final_total_inr.toFixed(2)}</p>
+        </div>
+        `;
+
+        };
+
+        qtyOptions.appendChild(row);
+
         });
+
+        renderQty(0);
+
+        qtyDropdown
+        .querySelector(".qty-selected")
+        .onclick=(e)=>{
+
+        e.stopPropagation();
+
+        document
+        .querySelectorAll(".qty-dropdown")
+        .forEach(d=>{
+
+        if(d!==qtyDropdown)
+        d.classList.remove("open");
+
+        });
+
+        qtyDropdown.classList.toggle("open");
+
+        };
+
+        document.addEventListener("click",()=>{
+
+        qtyDropdown.classList.remove("open");
+
+        });
+
+
+          
         addBtn.addEventListener('click', async () => {
-          const variantIndex = select.selectedIndex - 1;
-          if (variantIndex < 0) {
-            showModal('Please select a quantity before adding to cart.');
-            return;
-          }
+          const variantIndex = selectedVariantIndex;
           if (!currentUser) {
             // Not logged in
             showModal('Please log in to add items to your cart.', false);
@@ -306,6 +560,10 @@ from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
               window.location.href = 'login.html?redirect=products.html';
             };
             return;
+              }
+              if(!p.variants[variantIndex]){
+              showModal("Please select quantity.");
+              return;
           }
           // Add to local cart (for quick display)
          const selectedVariant = p.variants[variantIndex];
@@ -349,7 +607,10 @@ await setDoc(
           } catch (error) {
             console.error('Error adding to Firestore cart:', error);
           }
-          showModal(`${p.name} (${selectedVariant.pack}) added to cart.`, true);
+          showModal(
+          `${p.name}<br><strong>${selectedVariant.pack}</strong> added to cart.`,
+          true
+          );
         });
         productGrid.appendChild(card);
       });

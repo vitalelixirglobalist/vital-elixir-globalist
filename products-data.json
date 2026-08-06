@@ -1,5 +1,5 @@
 [
-  {
+{
   "name": "Pimobendan 2.5 mg",
   "brand": "Vetmedin",
   "composition": "Pimobendan 2.5 mg",
@@ -7,10 +7,10 @@
   "use": "Treatment of congestive heart failure in dogs",
   "image": "assets/images/products/pimobendan25_vetmedin.jpeg",
   "variants": [
-    { "pack": "1 Bottle (50 Tablets)", "price_usd": 62, "price_inr": 0 },
-    { "pack": "2 Bottles (100 Tablets)", "price_usd": 90, "price_inr": 0 },
-    { "pack": "6 Bottles (300 Tablets)", "price_usd": 158, "price_inr": 0 },
-    { "pack": "10 Bottles (500 Tablets)", "price_usd": 223, "price_inr": 0 }
+    { "pack": "1 Bottle (50 Tablets)", "quantity": 50, "price_usd": 62, "usa_price_usd": 120, "price_inr": 0 },
+    { "pack": "2 Bottles (100 Tablets)", "quantity": 100, "price_usd": 90, "usa_price_usd": 220, "price_inr": 0 },
+    { "pack": "6 Bottles (300 Tablets)", "quantity": 300, "price_usd": 158, "usa_price_usd": 580, "price_inr": 0 },
+    { "pack": "10 Bottles (500 Tablets)", "quantity": 500, "price_usd": 223, "usa_price_usd": 920, "price_inr": 0 }
   ]
 },
 {
@@ -21,12 +21,12 @@
   "use": "Premature ejaculation",
   "image": "assets/images/products/dapoxetine90.jpeg",
   "variants": [
-    { "pack": "50 Tablets", "price_usd": 49, "price_inr": 0 },
-    { "pack": "100 Tablets", "price_usd": 69, "price_inr": 0 },
-    { "pack": "300 Tablets", "price_usd": 115, "price_inr": 0 },
-    { "pack": "500 Tablets", "price_usd": 159, "price_inr": 0 },
-    { "pack": "1000 Tablets", "price_usd": 289, "price_inr": 0 },
-    { "pack": "2000 Tablets", "price_usd": 544, "price_inr": 0 }
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 49, "usa_price_usd": 110, "price_inr": 0 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 69, "usa_price_usd": 190, "price_inr": 0 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 115, "usa_price_usd": 520, "price_inr": 0 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 159, "usa_price_usd": 790, "price_inr": 0 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 289, "usa_price_usd": 1490, "price_inr": 0 },
+    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 544, "usa_price_usd": 2890, "price_inr": 0 }
   ]
 },
 {
@@ -37,12 +37,12 @@
   "use": "Premature ejaculation",
   "image": "assets/images/products/dapoxetine60.jpeg",
   "variants": [
-    { "pack": "50 Tablets", "price_usd": 49, "price_inr": 0 },
-    { "pack": "100 Tablets", "price_usd": 69, "price_inr": 0 },
-    { "pack": "300 Tablets", "price_usd": 115, "price_inr": 0 },
-    { "pack": "500 Tablets", "price_usd": 159, "price_inr": 0 },
-    { "pack": "1000 Tablets", "price_usd": 289, "price_inr": 0 },
-    { "pack": "2000 Tablets", "price_usd": 544, "price_inr": 0 }
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 49, "usa_price_usd": 110, "price_inr": 0 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 69, "usa_price_usd": 190, "price_inr": 0 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 115, "usa_price_usd": 520, "price_inr": 0 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 159, "usa_price_usd": 790, "price_inr": 0 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 289, "usa_price_usd": 1490, "price_inr": 0 },
+    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 544, "usa_price_usd": 2890, "price_inr": 0 }
   ]
 },
 {
@@ -53,10 +53,10 @@
   "use": "Severe acne treatment",
   "image": "assets/images/products/isotretinoin40_accutane.jpeg",
   "variants": [
-    { "pack": "50 Tablets", "price_usd": 59, "price_inr": 0 },
-    { "pack": "100 Tablets", "price_usd": 69, "price_inr": 0 },
-    { "pack": "300 Tablets", "price_usd": 89, "price_inr": 0 },
-    { "pack": "500 Tablets", "price_usd": 115, "price_inr": 0 }
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 59, "usa_price_usd": 140, "price_inr": 0 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 69, "usa_price_usd": 220, "price_inr": 0 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 89, "usa_price_usd": 590, "price_inr": 0 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 115, "usa_price_usd": 890, "price_inr": 0 }
   ]
 },
 {
@@ -67,12 +67,12 @@
   "use": "Treatment of intestinal worm infections",
   "image": "assets/images/products/mebendazole500.jpeg",
   "variants": [
-    { "pack": "50 Tablets", "price_usd": 47, "price_inr": 0 },
-    { "pack": "100 Tablets", "price_usd": 60, "price_inr": 0 },
-    { "pack": "300 Tablets", "price_usd": 76, "price_inr": 0 },
-    { "pack": "500 Tablets", "price_usd": 95, "price_inr": 0 },
-    { "pack": "1000 Tablets", "price_usd": 161, "price_inr": 0 },
-    { "pack": "2000 Tablets", "price_usd": 279, "price_inr": 0 }
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 47, "usa_price_usd": 100, "price_inr": 0 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 60, "usa_price_usd": 180, "price_inr": 0 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 76, "usa_price_usd": 490, "price_inr": 0 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 95, "usa_price_usd": 720, "price_inr": 0 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 161, "usa_price_usd": 1350, "price_inr": 0 },
+    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 279, "usa_price_usd": 2490, "price_inr": 0 }
   ]
 },
 {
