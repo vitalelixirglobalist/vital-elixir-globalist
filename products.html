@@ -325,12 +325,55 @@ from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
         maximumFractionDigits: 0
       });
     }
-          function getPerTablet(variant){
+         function getRegionalPriceData(variant){
 
+    const currency=getSelectedCurrency();
+
+    switch(currency){
+
+        case "USD":
+            return{
+                buyWithUs:variant.price_usd,
+                marketPrice:variant.market_price_usd,
+                isManual:true
+            };
+
+        case "GBP":
+            if(variant.price_gbp!==undefined){
+                return{
+                    buyWithUs:variant.price_gbp,
+                    marketPrice:variant.market_price_gbp,
+                    isManual:true
+                };
+            }
+            break;
+
+        case "AUD":
+            if(variant.price_aud!==undefined){
+                return{
+                    buyWithUs:variant.price_aud,
+                    marketPrice:variant.market_price_aud,
+                    isManual:true
+                };
+            }
+            break;
+
+    }
+
+    const pricing=getVariantPricing(variant);
+
+    return{
+        buyWithUs:pricing.final_price_local,
+        marketPrice:pricing.final_price_local,
+        isManual:false
+    };
+
+}
+      function getPerTablet(variant){
         if(!variant.quantity) return "-";
-
-        return window.pricingEngine.formatLocalAmount(
-            variant.price_usd / variant.quantity,
+        const regional = getRegionalPriceData(variant);
+          return window.pricingEngine.formatLocalAmount(
+              regional.buyWithUs / variant.quantity,
             {
                 minimumFractionDigits: 2,
                 maximumFractionDigits: 2
@@ -349,48 +392,83 @@ from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
       </div>
 
       <div class="qty-selected">
-
       <div class="qty-header">
-
       <span>Qty</span>
-
       <span>Buy With Us</span>
-
       <span>Per Tab</span>
-
-      <span>USA Price</span>
-
+      <span>USA Retail Price</span>
       </div>
 
       <div class="qty-selected-row qty-row"></div>
-
       </div>
 
       <div class="qty-options"></div>
-
       </div>
       `;
 
       }
-    function getVariantPricing(variant) {
-      return window.pricingEngine.calculateItemPricing({
-        price_usd: variant.price_usd,
-        price_inr: variant.price_inr,
-        shipping_usd: SHIPPING_USD
-      }, 1);
+          function getVariantPricing(variant){
+
+        const currency = getSelectedCurrency();
+
+        if(currency==="USD"){
+
+            return window.pricingEngine.calculateItemPricing({
+                price_usd: variant.price_usd,
+                price_inr: variant.price_inr,
+                shipping_usd: SHIPPING_USD
+            },1);
+
+        }
+
+        if(currency==="GBP" && variant.price_gbp!==undefined){
+
+            return window.pricingEngine.calculateItemPricing({
+                price_usd: variant.price_gbp,
+                price_inr: 0,
+                shipping_usd: SHIPPING_USD
+            },1);
+
+        }
+
+        if(currency==="AUD" && variant.price_aud!==undefined){
+
+            return window.pricingEngine.calculateItemPricing({
+                price_usd: variant.price_aud,
+                price_inr: 0,
+                shipping_usd: SHIPPING_USD
+            },1);
+
+        }
+
+        return window.pricingEngine.calculateItemPricing({
+            price_usd: variant.price_usd,
+            price_inr: variant.price_inr,
+            shipping_usd: SHIPPING_USD
+        },1);
+
     }
 
     function buildCartItem(product, variant) {
       // Store raw inputs and the normalized pricing snapshot produced by the engine.
-      const baseItem = {
-        name: product.name,
-        brand: product.brand,
-        pack: variant.pack,
-        quantity: 1,
-        price_usd: variant.price_usd,
-        price_inr: variant.price_inr,
-        shipping_usd: SHIPPING_USD,
-        image: product.image
+            const baseItem = {
+          name: product.name,
+          brand: product.brand,
+          pack: variant.pack,
+          quantity: 1,
+
+          price_usd: variant.price_usd,
+          market_price_usd: variant.market_price_usd,
+
+          price_gbp: variant.price_gbp,
+          market_price_gbp: variant.market_price_gbp,
+
+          price_aud: variant.price_aud,
+          market_price_aud: variant.market_price_aud,
+
+          price_inr: variant.price_inr,
+          shipping_usd: SHIPPING_USD,
+          image: product.image
       };
       const normalized = window.pricingEngine.normalizeCartItem(baseItem, 1);
 
@@ -461,12 +539,14 @@ from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
 
             const variant = p.variants[index];
 
-            qtySelected.innerHTML=`
-        <span>${variant.quantity}</span>
-        <span>${formatForeignCurrency(variant.price_usd)}</span>
-        <span>${getPerTablet(variant)}</span>
-        <span>${formatForeignCurrency(variant.usa_price_usd)}</span>
-        `;
+            const regional = getRegionalPriceData(variant);
+
+          qtySelected.innerHTML=`
+          <span>${variant.quantity}</span>
+          <span>${formatForeignCurrency(regional.buyWithUs)}</span>
+          <span>${getPerTablet(variant)}</span>
+          <span>${formatForeignCurrency(regional.marketPrice)}</span>
+          `;
 
         }
 
@@ -478,13 +558,14 @@ from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
 
         row.className="qty-row";
 
+        const regional = getRegionalPriceData(variant);
+
         row.innerHTML=`
         <span>${variant.quantity}</span>
-        <span>${formatForeignCurrency(variant.price_usd)}</span>
+        <span>${formatForeignCurrency(regional.buyWithUs)}</span>
         <span>${getPerTablet(variant)}</span>
-        <span>${formatForeignCurrency(variant.usa_price_usd)}</span>
+        <span>${formatForeignCurrency(regional.marketPrice)}</span>
         `;
-
         if(index===0)
         row.classList.add("active");
 
@@ -508,7 +589,7 @@ from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
 
         priceDisplay.innerHTML=`
         <div class="mt-2 p-2 border border-blue-100 rounded-lg bg-blue-50 text-sm space-y-1">
-        <p>💊 <span class="font-medium text-brand">Medicine:</span> ${formatForeignCurrency(pricing.final_price_usd)} | INR ${pricing.final_price_inr.toFixed(2)}</p>
+        <p>💊 <span class="font-medium text-brand">Medicine:</span> ${formatForeignCurrency(getRegionalPriceData(variant).buyWithUs)}| INR ${pricing.final_price_inr.toFixed(2)}</p>
         <p>🚚 <span class="font-medium text-brand">Shipping:</span> ${formatForeignCurrency(pricing.final_shipping_usd)} | INR ${pricing.final_shipping_inr.toFixed(2)}</p>
         <p class="font-semibold text-brand">Total: ${formatForeignCurrency(pricing.final_total_usd)} | INR ${pricing.final_total_inr.toFixed(2)}</p>
         </div>

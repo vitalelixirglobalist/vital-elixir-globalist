@@ -7,10 +7,10 @@
   "use": "Treatment of congestive heart failure in dogs",
   "image": "assets/images/products/pimobendan25_vetmedin.jpeg",
   "variants": [
-    { "pack": "1 Bottle (50 Tablets)", "quantity": 50, "price_usd": 62, "usa_price_usd": 120, "price_inr": 0 },
-    { "pack": "2 Bottles (100 Tablets)", "quantity": 100, "price_usd": 90, "usa_price_usd": 220, "price_inr": 0 },
-    { "pack": "6 Bottles (300 Tablets)", "quantity": 300, "price_usd": 158, "usa_price_usd": 580, "price_inr": 0 },
-    { "pack": "10 Bottles (500 Tablets)", "quantity": 500, "price_usd": 223, "usa_price_usd": 920, "price_inr": 0 }
+    { "pack": "1 Bottle (50 Tablets)", "quantity": 50, "price_usd": 62, "market_price_usd": 120, "price_gbp": 58, "market_price_gbp": 115, "price_aud": 64, "market_price_aud": 125, "price_inr": 0 },
+    { "pack": "2 Bottles (100 Tablets)", "quantity": 100, "price_usd": 90, "market_price_usd": 220, "price_gbp": 86, "market_price_gbp": 210, "price_aud": 94, "market_price_aud": 230, "price_inr": 0 },
+    { "pack": "6 Bottles (300 Tablets)", "quantity": 300, "price_usd": 158, "market_price_usd": 580, "price_gbp": 152, "market_price_gbp": 560, "price_aud": 165, "market_price_aud": 610, "price_inr": 0 },
+    { "pack": "10 Bottles (500 Tablets)", "quantity": 500, "price_usd": 223, "market_price_usd": 920, "price_gbp": 214, "market_price_gbp": 890, "price_aud": 232, "market_price_aud": 960, "price_inr": 0 }
   ]
 },
 {
@@ -21,12 +21,12 @@
   "use": "Premature ejaculation",
   "image": "assets/images/products/dapoxetine90.jpeg",
   "variants": [
-    { "pack": "50 Tablets", "quantity": 50, "price_usd": 49, "usa_price_usd": 110, "price_inr": 0 },
-    { "pack": "100 Tablets", "quantity": 100, "price_usd": 69, "usa_price_usd": 190, "price_inr": 0 },
-    { "pack": "300 Tablets", "quantity": 300, "price_usd": 115, "usa_price_usd": 520, "price_inr": 0 },
-    { "pack": "500 Tablets", "quantity": 500, "price_usd": 159, "usa_price_usd": 790, "price_inr": 0 },
-    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 289, "usa_price_usd": 1490, "price_inr": 0 },
-    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 544, "usa_price_usd": 2890, "price_inr": 0 }
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 49, "market_price_usd": 110, "price_gbp": 47, "market_price_gbp": 105, "price_aud": 51, "market_price_aud": 115, "price_inr": 0 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 69, "market_price_usd": 190, "price_gbp": 66, "market_price_gbp": 182, "price_aud": 72, "market_price_aud": 198, "price_inr": 0 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 115, "market_price_usd": 520, "price_gbp": 110, "market_price_gbp": 500, "price_aud": 120, "market_price_aud": 540, "price_inr": 0 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 159, "market_price_usd": 790, "price_gbp": 152, "market_price_gbp": 760, "price_aud": 166, "market_price_aud": 820, "price_inr": 0 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 289, "market_price_usd": 1490, "price_gbp": 278, "market_price_gbp": 1440, "price_aud": 302, "market_price_aud": 1550, "price_inr": 0 },
+    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 544, "market_price_usd": 2890, "price_gbp": 525, "market_price_gbp": 2810, "price_aud": 568, "market_price_aud": 3010, "price_inr": 0 }
   ]
 },
 {
@@ -37,12 +37,12 @@
   "use": "Premature ejaculation",
   "image": "assets/images/products/dapoxetine60.jpeg",
   "variants": [
-    { "pack": "50 Tablets", "quantity": 50, "price_usd": 49, "usa_price_usd": 110, "price_inr": 0 },
-    { "pack": "100 Tablets", "quantity": 100, "price_usd": 69, "usa_price_usd": 190, "price_inr": 0 },
-    { "pack": "300 Tablets", "quantity": 300, "price_usd": 115, "usa_price_usd": 520, "price_inr": 0 },
-    { "pack": "500 Tablets", "quantity": 500, "price_usd": 159, "usa_price_usd": 790, "price_inr": 0 },
-    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 289, "usa_price_usd": 1490, "price_inr": 0 },
-    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 544, "usa_price_usd": 2890, "price_inr": 0 }
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 49, "market_price_usd": 110, "price_gbp": 47, "market_price_gbp": 105, "price_aud": 51, "market_price_aud": 115, "price_inr": 0 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 69, "market_price_usd": 190, "price_gbp": 66, "market_price_gbp": 182, "price_aud": 72, "market_price_aud": 198, "price_inr": 0 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 115, "market_price_usd": 520, "price_gbp": 110, "market_price_gbp": 500, "price_aud": 120, "market_price_aud": 540, "price_inr": 0 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 159, "market_price_usd": 790, "price_gbp": 152, "market_price_gbp": 760, "price_aud": 166, "market_price_aud": 820, "price_inr": 0 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 289, "market_price_usd": 1490, "price_gbp": 278, "market_price_gbp": 1440, "price_aud": 302, "market_price_aud": 1550, "price_inr": 0 },
+    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 544, "market_price_usd": 2890, "price_gbp": 525, "market_price_gbp": 2810, "price_aud": 568, "market_price_aud": 3010, "price_inr": 0 }
   ]
 },
 {
@@ -53,10 +53,10 @@
   "use": "Severe acne treatment",
   "image": "assets/images/products/isotretinoin40_accutane.jpeg",
   "variants": [
-    { "pack": "50 Tablets", "quantity": 50, "price_usd": 59, "usa_price_usd": 140, "price_inr": 0 },
-    { "pack": "100 Tablets", "quantity": 100, "price_usd": 69, "usa_price_usd": 220, "price_inr": 0 },
-    { "pack": "300 Tablets", "quantity": 300, "price_usd": 89, "usa_price_usd": 590, "price_inr": 0 },
-    { "pack": "500 Tablets", "quantity": 500, "price_usd": 115, "usa_price_usd": 890, "price_inr": 0 }
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 59, "market_price_usd": 140, "price_gbp": 56, "market_price_gbp": 134, "price_aud": 61, "market_price_aud": 146, "price_inr": 0 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 69, "market_price_usd": 220, "price_gbp": 66, "market_price_gbp": 210, "price_aud": 72, "market_price_aud": 228, "price_inr": 0 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 89, "market_price_usd": 590, "price_gbp": 85, "market_price_gbp": 570, "price_aud": 93, "market_price_aud": 615, "price_inr": 0 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 115, "market_price_usd": 890, "price_gbp": 110, "market_price_gbp": 860, "price_aud": 120, "market_price_aud": 930, "price_inr": 0 }
   ]
 },
 {
@@ -67,12 +67,12 @@
   "use": "Treatment of intestinal worm infections",
   "image": "assets/images/products/mebendazole500.jpeg",
   "variants": [
-    { "pack": "50 Tablets", "quantity": 50, "price_usd": 47, "usa_price_usd": 100, "price_inr": 0 },
-    { "pack": "100 Tablets", "quantity": 100, "price_usd": 60, "usa_price_usd": 180, "price_inr": 0 },
-    { "pack": "300 Tablets", "quantity": 300, "price_usd": 76, "usa_price_usd": 490, "price_inr": 0 },
-    { "pack": "500 Tablets", "quantity": 500, "price_usd": 95, "usa_price_usd": 720, "price_inr": 0 },
-    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 161, "usa_price_usd": 1350, "price_inr": 0 },
-    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 279, "usa_price_usd": 2490, "price_inr": 0 }
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 47, "market_price_usd": 100, "price_gbp": 45, "market_price_gbp": 96, "price_aud": 49, "market_price_aud": 105, "price_inr": 0 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 60, "market_price_usd": 180, "price_gbp": 57, "market_price_gbp": 172, "price_aud": 63, "market_price_aud": 188, "price_inr": 0 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 76, "market_price_usd": 490, "price_gbp": 73, "market_price_gbp": 470, "price_aud": 80, "market_price_aud": 510, "price_inr": 0 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 95, "market_price_usd": 720, "price_gbp": 91, "market_price_gbp": 695, "price_aud": 99, "market_price_aud": 750, "price_inr": 0 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 161, "market_price_usd": 1350, "price_gbp": 155, "market_price_gbp": 1310, "price_aud": 168, "market_price_aud": 1410, "price_inr": 0 },
+    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 279, "market_price_usd": 2490, "price_gbp": 268, "market_price_gbp": 2420, "price_aud": 291, "market_price_aud": 2590, "price_inr": 0 }
   ]
 },
 {
