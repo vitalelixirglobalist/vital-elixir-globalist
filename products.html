@@ -19,11 +19,14 @@
   <script src="dev-fix.js"></script>
 <style>
     .qty-dropdown{
-        position:relative;
-        width:100%;
-        margin-top:10px;
-        font-size:13px;
-    }
+    position:relative;
+    width:100%;
+    max-width:100%;
+    flex:1;
+    display:block;
+    margin-top:10px;
+    font-size:13px;
+}
 
     .qty-dropdown,
     .qty-selected,
@@ -33,12 +36,13 @@
     }
 
     .qty-selected{
-        border:1px solid #d1d5db;
-        border-radius:8px;
-        background:#fff;
-        cursor:pointer;
-        overflow:hidden;
-    }
+    width:100%;
+    border:1px solid #d1d5db;
+    border-radius:8px;
+    background:#fff;
+    cursor:pointer;
+    overflow:hidden;
+}
 
     .qty-header,
     .qty-row{
@@ -132,23 +136,44 @@
         font-weight:600;
     }
 
-    @media(max-width:768px){
+        @media(max-width:768px){
 
-    .qty-header,
-    .qty-row{
-    grid-template-columns:36px 78px 50px 56px;
-    font-size:10px;
-    column-gap:3px;
-    }
-    .qty-header{
-    padding:6px 8px;
-    }
+        .qty-dropdown{
+            width:100%;
+            min-width:100%;
+        }
 
-    .qty-selected-row{
-    padding:8px;
-    }
+        .qty-selected{
+            width:100%;
+        }
 
-    }
+        .qty-options{
+            width:100%;
+        }
+
+        .qty-header,
+        .qty-row{
+            display:grid;
+            width:100%;
+            grid-template-columns:minmax(34px,12%) minmax(82px,34%) minmax(52px,18%) minmax(92px,36%);
+            font-size:10px;
+            column-gap:0;
+        }
+
+        .qty-header{
+            padding:6px 4px;
+        }
+
+        .qty-header span,
+        .qty-row span{
+            padding:0 1px;
+        }
+
+        .qty-selected-row{
+            padding:8px 4px;
+        }
+
+      }
     </style>
 
     </head>
@@ -193,8 +218,8 @@
 
   <!-- Product Grid -->
   <div id="productGrid"
-    class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 pb-16">
-
+    <div class="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12 items-start">  
+  </div>
   <!-- Modal Overlay for alerts and confirmations -->
   <div id="modalOverlay"
     class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
@@ -500,7 +525,7 @@ from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
         const card = document.createElement('div');
 
         card.className =
-        'bg-white border rounded-xl p-4 shadow-sm hover:shadow-lg transition flex flex-col cursor-pointer';
+      'bg-white border rounded-xl p-3 md:p-4 shadow-sm hover:shadow-lg transition flex flex-col cursor-pointer';
 
         card.addEventListener("click", (e) => {
 
@@ -543,9 +568,9 @@ from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
 
           qtySelected.innerHTML=`
           <span>${variant.quantity}</span>
-          <span>${formatForeignCurrency(regional.buyWithUs)}</span>
+          <span>${formatLocalCurrency(regional.buyWithUs)}</span>
           <span>${getPerTablet(variant)}</span>
-          <span>${formatForeignCurrency(regional.marketPrice)}</span>
+          <span>${formatLocalCurrency(regional.marketPrice)}</span>
           `;
 
         }
@@ -562,9 +587,9 @@ from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
 
         row.innerHTML=`
         <span>${variant.quantity}</span>
-        <span>${formatForeignCurrency(regional.buyWithUs)}</span>
+        <span>${formatLocalCurrency(regional.buyWithUs)}</span>
         <span>${getPerTablet(variant)}</span>
-        <span>${formatForeignCurrency(regional.marketPrice)}</span>
+        <span>${formatLocalCurrency(regional.marketPrice)}</span>
         `;
         if(index===0)
         row.classList.add("active");
@@ -589,9 +614,9 @@ from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
 
         priceDisplay.innerHTML=`
         <div class="mt-2 p-2 border border-blue-100 rounded-lg bg-blue-50 text-sm space-y-1">
-        <p>💊 <span class="font-medium text-brand">Medicine:</span> ${formatForeignCurrency(getRegionalPriceData(variant).buyWithUs)}| INR ${pricing.final_price_inr.toFixed(2)}</p>
+        <p>💊 <span class="font-medium text-brand">Medicine:</span> ${formatLocalCurrency(getRegionalPriceData(variant).buyWithUs)} | INR ${pricing.final_price_inr.toFixed(2)}</p>
         <p>🚚 <span class="font-medium text-brand">Shipping:</span> ${formatForeignCurrency(pricing.final_shipping_usd)} | INR ${pricing.final_shipping_inr.toFixed(2)}</p>
-        <p class="font-semibold text-brand">Total: ${formatForeignCurrency(pricing.final_total_usd)} | INR ${pricing.final_total_inr.toFixed(2)}</p>
+        <p class="font-semibold text-brand">Total: ${formatLocalCurrency(pricing.final_total_local)} | INR ${pricing.final_total_inr.toFixed(2)}</p>
         </div>
         `;
 

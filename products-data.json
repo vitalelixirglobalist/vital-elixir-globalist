@@ -7,7 +7,7 @@
   "use": "Treatment of congestive heart failure in dogs",
   "image": "assets/images/products/pimobendan25_vetmedin.jpeg",
   "variants": [
-    { "pack": "1 Bottle (50 Tablets)", "quantity": 50, "price_usd": 62, "market_price_usd": 120, "price_gbp": 58, "market_price_gbp": 115, "price_aud": 64, "market_price_aud": 125, "price_inr": 0 },
+    { "pack": "1 Bottle (50 Tablets)", "quantity": 50, "price_usd": 62, "market_price_usd": 120, "price_gbp": 52, "market_price_gbp": 104, "price_aud": 72, "market_price_aud": 144, "price_inr": 0 },
     { "pack": "2 Bottles (100 Tablets)", "quantity": 100, "price_usd": 90, "market_price_usd": 220, "price_gbp": 86, "market_price_gbp": 210, "price_aud": 94, "market_price_aud": 230, "price_inr": 0 },
     { "pack": "6 Bottles (300 Tablets)", "quantity": 300, "price_usd": 158, "market_price_usd": 580, "price_gbp": 152, "market_price_gbp": 560, "price_aud": 165, "market_price_aud": 610, "price_inr": 0 },
     { "pack": "10 Bottles (500 Tablets)", "quantity": 500, "price_usd": 223, "market_price_usd": 920, "price_gbp": 214, "market_price_gbp": 890, "price_aud": 232, "market_price_aud": 960, "price_inr": 0 }
