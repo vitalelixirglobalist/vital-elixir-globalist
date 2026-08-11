@@ -231,9 +231,9 @@
             <button id="consultBtn" class="px-5 py-3 border border-brand text-brand rounded-xl hover:bg-blue-50 transition">
               Consult Doctor for Dosage & Usage
             </button>
-            <a href="checkout.html" class="px-5 py-3 bg-brand text-white rounded-xl hover:bg-blue-700 transition shadow-glow">
-              Proceed to Pay
-            </a>
+            <a href="cart.html" class="px-5 py-3 bg-brand text-white rounded-xl hover:bg-blue-700 transition shadow-glow">
+              Proceed to Cart
+          </a>
           </div>
           <p class="text-xs text-slate-500 flex items-start gap-2">
             <span class="text-brand">🔒</span>
@@ -692,14 +692,23 @@
       document.getElementById('addToCartBtn').addEventListener('click', addToCart);
       document.getElementById('consultBtn').addEventListener('click', consultDoctor);
     }
-    document.addEventListener("currency:change", () => {
-        if (!selectedProduct) return;
-        renderSelectors(selectedProduct);
-    });
+      document.addEventListener("currency:change", () => {
+            if (!selectedProduct) return;
 
+            renderSelectors(selectedProduct);
+            updatePrice();
+
+            renderRelated(selectedProduct);
+            renderPairings(selectedProduct);
+        });
     async function loadHeader() {
-    const header = await fetch('header.html');
+      const header = await fetch('header.html');
       document.getElementById('header-placeholder').innerHTML = await header.text();
+
+      if (window.initCurrencySelect) {
+          window.initCurrencySelect();
+      }
+
       // EXECUTE HEADER SCRIPTS
 
       const menuBtn = document.getElementById('menu-btn');
