@@ -414,19 +414,23 @@ document.addEventListener(
       mobile.value = current;
     }
 
-    function handleCurrencyChange(e) {
+          function handleCurrencyChange(e) {
 
-      const currency =
-        e.target.value;
+        const currency = e.target.value;
 
-      window.currencyUtils
-        .setSelectedCurrency(
-          currency
+        window.currencyUtils.setSelectedCurrency(currency);
+
+        document.dispatchEvent(
+          new CustomEvent("currency:change", {
+            detail: { currency }
+          })
         );
 
-      window.location.reload();
+        setTimeout(() => {
+          window.location.reload(true);
+        }, 120);
 
-    }
+      }
 
     if (desktop) {
 
