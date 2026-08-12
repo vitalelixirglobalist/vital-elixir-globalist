@@ -414,40 +414,47 @@ document.addEventListener(
       mobile.value = current;
     }
 
-          function handleCurrencyChange(e) {
+            let currencyChanging = false;
 
-        const currency = e.target.value;
+       function handleCurrencyChange(e) {
 
-        window.currencyUtils.setSelectedCurrency(currency);
+        console.log("Currency Changed");
+        alert("Currency Changed");
 
-        document.dispatchEvent(
-          new CustomEvent("currency:change", {
-            detail: { currency }
-          })
-        );
+          if (currencyChanging) return;
 
-        setTimeout(() => {
-          window.location.reload(true);
-        }, 120);
+          currencyChanging = true;
 
-      }
+          const currency = e.target.value;
+
+          window.currencyUtils.setSelectedCurrency(currency);
+
+          if (desktop) desktop.value = currency;
+          if (mobile) mobile.value = currency;
+
+          document.dispatchEvent(
+            new CustomEvent("currency:change", {
+              detail: { currency }
+            })
+          );
+
+          setTimeout(() => {
+            window.location.reload();
+          }, 100);
+
+        }
 
     if (desktop) {
 
-      desktop.addEventListener(
-        'change',
-        handleCurrencyChange
-      );
-
-    }
+      desktop.addEventListener("input", handleCurrencyChange);
+      desktop.addEventListener("change", handleCurrencyChange);
+          }
 
     if (mobile) {
 
-      mobile.addEventListener(
-        'change',
-        handleCurrencyChange
-      );
-
+      mobile.addEventListener("input", handleCurrencyChange);
+      mobile.addEventListener("change", handleCurrencyChange);
+     
     }
 
   }
