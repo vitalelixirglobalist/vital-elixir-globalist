@@ -1,11 +1,18 @@
 [
 {
+  "id": "pimobendan25",
   "name": "Pimobendan 2.5 mg",
   "brand": "Vetmedin",
   "composition": "Pimobendan 2.5 mg",
   "category": "Veterinary Medicines",
   "use": "Treatment of congestive heart failure in dogs",
-  "image": "assets/images/products/pimobendan25_vetmedin.jpeg",
+  "thumbnail": "assets/images/products/pimobendan25_vetmedin.jpeg",
+  "images": [
+    "assets/images/products/pimobendan25_vetmedin.jpeg",
+    "assets/images/products/pimobendan25_box.jpeg",
+    "assets/images/products/pimobendan25_back.jpeg",
+    "assets/images/products/pimobendan25_blister.jpeg"
+  ],
   "variants": [
     { "pack": "1 Bottle (50 Tablets)", "quantity": 50, "price_usd": 62, "market_price_usd": 120, "price_gbp": 52, "market_price_gbp": 104, "price_aud": 72, "market_price_aud": 144, "price_inr": 0 },
     { "pack": "2 Bottles (100 Tablets)", "quantity": 100, "price_usd": 90, "market_price_usd": 220, "price_gbp": 86, "market_price_gbp": 210, "price_aud": 94, "market_price_aud": 230, "price_inr": 0 },
@@ -14,6 +21,7 @@
   ]
 },
 {
+  "id": "dapoxetine90",
   "name": "Dapoxetine 90 mg",
   "brand": "Generic",
   "composition": "Dapoxetine 90 mg",
@@ -30,6 +38,7 @@
   ]
 },
 {
+  "id": "dapoxetine60",
   "name": "Dapoxetine 60 mg",
   "brand": "Generic",
   "composition": "Dapoxetine 60 mg",

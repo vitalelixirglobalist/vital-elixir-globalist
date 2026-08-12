@@ -184,9 +184,32 @@
             <span class="px-3 py-1 rounded-full bg-blue-50 border border-blue-100">Worldwide availability</span>
             <span class="px-3 py-1 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700">Export quality verified</span>
           </div>
-          <div class="mt-6 bg-slate-100 rounded-2xl p-6 flex items-center justify-center">
-            <img id="product-image" src="" alt="Medication image" class="max-h-80 w-auto object-contain drop-shadow-lg" />
+                <div class="mt-6 relative bg-slate-100 rounded-2xl p-6">
+
+          <button id="prevImageBtn"
+              class="hidden absolute left-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white shadow-lg hover:bg-slate-100 text-xl font-bold">
+              ❮
+          </button>
+
+          <div class="flex justify-center items-center min-h-[320px]">
+
+              <img id="product-image"
+                  src=""
+                  alt="Medication image"
+                  class="max-h-80 w-auto object-contain drop-shadow-lg transition-opacity duration-500" />
+
           </div>
+
+          <button id="nextImageBtn"
+              class="hidden absolute right-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white shadow-lg hover:bg-slate-100 text-xl font-bold">
+              ❯
+          </button>
+
+      </div>
+
+      <div id="imageDots"
+          class="mt-4 flex justify-center gap-2">
+      </div>
         </div>
       </div>
       </div>
@@ -258,6 +281,10 @@
       <div class="flex items-center gap-2 text-brand text-sm font-semibold"><span>🤝</span><span>Commonly prescribed with</span></div>
       <div id="pairingsGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
     </section>
+    <section id="productContentSection" class="space-y-8 fade-up hidden">
+    </section>
+
+
   </main>
 
   <div id="actionToast" class="hidden fixed top-4 right-4 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-lg text-sm"></div>
@@ -295,6 +322,12 @@
     const pairingsGrid = document.getElementById('pairingsGrid');
     const actionToast = document.getElementById('actionToast');
     const mobileActionBar = document.getElementById('mobileActionBar');
+    const prevImageBtn = document.getElementById("prevImageBtn");
+    const nextImageBtn = document.getElementById("nextImageBtn");
+    const imageDots = document.getElementById("imageDots");
+
+    let currentImageIndex = 0;
+    let imageSliderInterval = null;
 
     document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -529,8 +562,8 @@
       }
     function renderProduct(product) {
       selectedProduct = product;
-      productImage.src = product.image;
       productImage.alt = product.name;
+      initializeGallery(product);
       productName.textContent = product.name;
       productBrand.lastElementChild.textContent = product.brand;
       productComposition.lastElementChild.textContent = product.composition;
@@ -541,6 +574,149 @@
       mobileActionBar.classList.remove('hidden');
     }
 
+        function initializeGallery(product){
+
+        const images = product.images && product.images.length
+            ? product.images
+            : [product.thumbnail];
+
+        currentImageIndex = 0;
+
+        function showImage(index){
+
+            currentImageIndex=index;
+
+            productImage.style.opacity=0;
+
+            setTimeout(()=>{
+
+                productImage.src=images[index];
+                productImage.style.opacity=1;
+
+                [...imageDots.children].forEach((d,i)=>{
+
+                    d.classList.toggle("bg-brand",i===index);
+                    d.classList.toggle("bg-slate-300",i!==index);
+
+                });
+
+            },150);
+
+        }
+
+        imageDots.innerHTML="";
+
+        images.forEach((_,i)=>{
+
+            const dot=document.createElement("button");
+
+            dot.className="w-3 h-3 rounded-full bg-slate-300";
+
+            dot.onclick=()=>{
+
+                stopSlider();
+
+                showImage(i);
+
+                startSlider();
+
+            };
+
+            imageDots.appendChild(dot);
+
+        });
+
+        if(images.length<=1){
+
+            prevImageBtn.classList.add("hidden");
+            nextImageBtn.classList.add("hidden");
+
+            imageDots.classList.add("hidden");
+
+            showImage(0);
+
+            return;
+
+        }
+
+        imageDots.classList.remove("hidden");
+
+        prevImageBtn.classList.remove("hidden");
+        nextImageBtn.classList.remove("hidden");
+
+        prevImageBtn.onclick=()=>{
+
+            stopSlider();
+
+            showImage((currentImageIndex-1+images.length)%images.length);
+
+            startSlider();
+
+        };
+
+        nextImageBtn.onclick=()=>{
+
+            stopSlider();
+
+            showImage((currentImageIndex+1)%images.length);
+
+            startSlider();
+
+        };
+
+        let startX=0;
+
+        productImage.addEventListener("touchstart",(e)=>{
+
+            startX=e.touches[0].clientX;
+
+        },{passive:true});
+
+        productImage.addEventListener("touchend",(e)=>{
+
+            const endX=e.changedTouches[0].clientX;
+
+            if(Math.abs(endX-startX)<40) return;
+
+            stopSlider();
+
+            if(endX<startX){
+
+                showImage((currentImageIndex+1)%images.length);
+
+            }else{
+
+                showImage((currentImageIndex-1+images.length)%images.length);
+
+            }
+
+            startSlider();
+
+        });
+
+        function startSlider(){
+
+            stopSlider();
+
+            imageSliderInterval=setInterval(()=>{
+
+                showImage((currentImageIndex+1)%images.length);
+
+            },3000);
+
+        }
+
+        function stopSlider(){
+
+            clearInterval(imageSliderInterval);
+
+        }
+
+        showImage(0);
+
+        startSlider();
+
+    }
     function renderRelated(product) {
       relatedGrid.innerHTML = '';
       const related = allProducts.filter((p) => p.category === product.category && p.name !== product.name).slice(0, 4);
@@ -555,7 +731,7 @@
         card.innerHTML = `
           <div class="flex items-center gap-3">
             <div class="h-14 w-14 rounded-xl bg-slate-100 flex items-center justify-center overflow-hidden">
-              <img src="${item.image}" alt="${item.name}" class="h-full w-full object-contain" />
+              <img src="${item.thumbnail}" alt="${item.name}" class="h-full w-full object-contain" />
             </div>
             <div class="space-y-1">
               <p class="text-sm text-brand font-semibold">${item.category}</p>
@@ -589,7 +765,262 @@
         pairingsGrid.appendChild(card);
       });
     }
+      function renderProductContent(product){
 
+        const section=document.getElementById("productContentSection");
+
+        if(!product.content){
+            section.classList.add("hidden");
+            return;
+        }
+
+        const c=product.content;
+
+        section.classList.remove("hidden");
+
+        section.innerHTML=`
+
+        <div class="glass-card rounded-3xl p-8 shadow-glow space-y-10">
+
+        <div>
+
+        <h2 class="text-3xl font-bold text-slate-900 mb-5">
+        🩺 Product Information
+        </h2>
+
+        <p class="text-slate-700 leading-8">
+        ${c.overview}
+        </p>
+
+        </div>
+
+
+        <div>
+
+        <h2 class="text-2xl font-bold text-brand mb-4">
+        ⭐ Benefits
+        </h2>
+
+        <ul class="list-disc pl-6 space-y-2">
+        ${c.benefits.map(x=>`<li>${x}</li>`).join("")}
+        </ul>
+
+        </div>
+
+
+        <div>
+
+        <h2 class="text-2xl font-bold text-brand mb-4">
+        ⚙️ How It Works
+        </h2>
+
+        <p class="text-slate-700 leading-8">
+        ${c.how_it_works}
+        </p>
+
+        </div>
+
+
+        <div>
+
+        <h2 class="text-2xl font-bold text-brand mb-4">
+        📖 Directions for Use
+        </h2>
+
+        <ul class="list-disc pl-6 space-y-2">
+        ${c.directions.map(x=>`<li>${x}</li>`).join("")}
+        </ul>
+
+        </div>
+
+
+        <div>
+
+        <h2 class="text-2xl font-bold text-brand mb-4">
+        ⚠️ Possible Side Effects
+        </h2>
+
+        <ul class="list-disc pl-6 space-y-2">
+        ${c.side_effects.map(x=>`<li>${x}</li>`).join("")}
+        </ul>
+
+        </div>
+
+
+        <div>
+
+        <h2 class="text-2xl font-bold text-brand mb-4">
+        🛡️ Precautions
+        </h2>
+
+        <ul class="list-disc pl-6 space-y-2">
+        ${c.precautions.map(x=>`<li>${x}</li>`).join("")}
+        </ul>
+
+        </div>
+
+
+        <div>
+
+        <h2 class="text-2xl font-bold text-brand mb-4">
+        📦 Storage
+        </h2>
+
+        <p class="text-slate-700 leading-8">
+        ${c.storage}
+        </p>
+
+        </div>
+
+
+        <hr class="border-slate-200">
+
+
+        <div>
+
+        <h2 class="text-3xl font-bold text-slate-900 mb-6">
+        ❓ Frequently Asked Questions
+        </h2>
+
+        <div class="space-y-4">
+
+        ${c.faq.map(f=>`
+
+        <details class="rounded-xl border border-slate-200 p-5 bg-slate-50">
+
+        <summary class="font-semibold cursor-pointer text-slate-900">
+        ${f.question}
+        </summary>
+
+        <p class="mt-3 text-slate-600 leading-7">
+        ${f.answer}
+        </p>
+
+        </details>
+
+        `).join("")}
+
+        </div>
+
+        </div>
+
+
+        <hr class="border-slate-200">
+
+
+        <div>
+
+        <h2 class="text-3xl font-bold text-slate-900 mb-5">
+        🔗 Related Searches & Medicines
+        </h2>
+
+        <div class="flex flex-wrap gap-3">
+
+        ${c.people_also_search.map(item=>`
+
+        <button
+        class="people-search-item px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-brand text-sm font-medium hover:bg-blue-100 transition"
+        data-product="${item.product_id || ""}"
+        data-search="${item.text}">
+
+        🔗 ${item.text}
+
+        </button>
+
+        `).join("")}
+
+        </div>
+
+        </div>
+
+
+        <hr class="border-slate-200">
+
+
+        <div>
+
+        <h2 class="text-3xl font-bold text-slate-900 mb-5">
+        🚚 International Shipping
+        </h2>
+
+        <p class="text-slate-700 leading-8">
+
+        We assist customers with international medication orders across multiple countries. Our medication support team verifies availability, export eligibility and shipping options before confirming every order.
+
+        </p>
+
+        </div>
+
+
+        <hr class="border-slate-200">
+
+
+        <div>
+
+        <h2 class="text-3xl font-bold text-slate-900 mb-5">
+        ⭐ Why Choose Vital Elixir Globalist
+        </h2>
+
+        <ul class="list-disc pl-6 space-y-2">
+
+        <li>Dedicated international medication support.</li>
+
+        <li>Competitive pricing on multiple pack sizes.</li>
+
+        <li>Worldwide shipping assistance.</li>
+
+        <li>Responsive customer support throughout your order.</li>
+
+        <li>Large catalogue of branded and generic medicines.</li>
+
+        </ul>
+
+        </div>
+
+
+        <hr class="border-slate-200">
+
+
+        <div>
+
+        <h2 class="text-3xl font-bold text-slate-900 mb-5">
+        ⚠️ Medical Disclaimer
+        </h2>
+
+        <p class="text-slate-600 leading-8">
+
+        The information provided on this page is intended for educational purposes only and should not replace professional medical or veterinary advice. Always consult a qualified healthcare professional or licensed veterinarian before starting, stopping or changing any medication.
+
+        </p>
+
+        </div>
+
+
+        </div>
+
+        `;
+              section.querySelectorAll(".people-search-item").forEach(btn => {
+
+          btn.addEventListener("click", () => {
+
+              const productId = btn.dataset.product;
+              const search = btn.dataset.search;
+
+              if (productId) {
+
+                  window.location.href = `product-details.html?id=${productId}`;
+
+              } else {
+
+                  window.location.href = `products.html?search=${encodeURIComponent(search)}`;
+
+              }
+
+          });
+
+      });
+
+        }
     async function addToCart() {
 
   if (!selectedProduct) {
@@ -668,8 +1099,13 @@
 
     async function loadProductDetails() {
       try {
-        const res = await fetch('products-data.json');
-        allProducts = await res.json();
+        const [productsRes, contentRes] = await Promise.all([
+            fetch('products-data.json'),
+            fetch('product-content.json')
+        ]);
+
+        allProducts = await productsRes.json();
+        const productContent = await contentRes.json();
         const productParam = decodeURIComponent(getQueryProduct() || '').trim();
         const product = allProducts.find((p) => p.name.toLowerCase() === productParam.toLowerCase());
 
@@ -678,11 +1114,12 @@
           mobileActionBar.classList.add('hidden');
           return;
         }
-
+        product.content = productContent[product.id] || null;
         renderProduct(product);
         selectedVariantIndex = 0;
         renderRelated(product);
         renderPairings(product);
+        renderProductContent(product);
       } catch (error) {
         console.error('Error loading product details', error);
       }

@@ -46,7 +46,9 @@
         <div class="md:hidden flex items-center gap-2">
 
         <select
+          <select
           id="currencySelectMobileTop"
+          onchange="window.handleCurrencyChange(this.value)"
           class="mobile-currency rounded-lg border-2 border-sky-300 bg-white text-slate-900 px-3 py-2 text-sm font-bold focus:outline-none">
           <option value="USD">USD</option>
           <option value="GBP">GBP</option>
@@ -416,16 +418,16 @@ document.addEventListener(
 
             let currencyChanging = false;
 
-       function handleCurrencyChange(e) {
-
-        console.log("Currency Changed");
-        alert("Currency Changed");
+       window.handleCurrencyChange = function(valueOrEvent) {
 
           if (currencyChanging) return;
 
           currencyChanging = true;
 
-          const currency = e.target.value;
+          const currency =
+            typeof valueOrEvent === "string"
+                ? valueOrEvent
+                : valueOrEvent.target.value;
 
           window.currencyUtils.setSelectedCurrency(currency);
 
@@ -438,9 +440,7 @@ document.addEventListener(
             })
           );
 
-          setTimeout(() => {
-            window.location.reload();
-          }, 100);
+          window.location.reload();
 
         }
 
