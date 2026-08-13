@@ -35,13 +35,24 @@
     <form id="loginForm" class="space-y-4">
       <input type="email" id="loginEmail" placeholder="Email" required class="w-full border rounded-lg px-3 py-2" />
       <input type="password" id="loginPassword" placeholder="Password" required class="w-full border rounded-lg px-3 py-2" />
-      <button type="submit" class="w-full bg-brand text-white py-2 rounded-lg hover:bg-blue-700">Login</button>
+
+      <button
+        type="button"
+        id="forgotPasswordBtn"
+        class="text-brand text-sm underline"
+      >
+        Forgot Password?
+      </button>
+
+      <button type="submit" class="w-full bg-brand text-white py-2 rounded-lg hover:bg-blue-700">
+        Login
+      </button>
     </form>
     <form id="registerForm" class="space-y-4 hidden">
       <input type="text" id="regName" placeholder="Full Name" required class="w-full border rounded-lg px-3 py-2" />
       <input type="email" id="regEmail" placeholder="Email" required class="w-full border rounded-lg px-3 py-2" />
+      <input type="text" id="regPhone" placeholder="Phone Number *" required class="w-full border rounded-lg px-3 py-2" />
       <input type="password" id="regPassword" placeholder="Password (min 6 characters)" required class="w-full border rounded-lg px-3 py-2" />
-      <input type="text" id="regPhone" placeholder="Phone Number (optional)" class="w-full border rounded-lg px-3 py-2" />
       <button type="submit" class="w-full bg-brand text-white py-2 rounded-lg hover:bg-blue-700">Register</button>
     </form>
   </section>
@@ -79,8 +90,9 @@
   </script>
   <script type="module">
     import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js';
-    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js';
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js';
     import { getFirestore, doc, setDoc } from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
+
 
     // Firebase configuration (storageBucket corrected)
     const firebaseConfig = {
@@ -141,6 +153,41 @@
 }
     });
 
+    // Forgot password handler
+    document
+      .getElementById('forgotPasswordBtn')
+      .addEventListener('click', async () => {
+
+      const email =
+      document.getElementById('loginEmail')
+      .value
+      .trim();
+
+      if (!email) {
+      authMessage.textContent =
+      'Enter your email first.';
+      return;
+      }
+
+      try {
+
+      await sendPasswordResetEmail(
+      auth,
+      email
+      );
+
+      authMessage.textContent =
+      'Password reset email sent. Check inbox.';
+
+      } catch (error) {
+
+      authMessage.textContent =
+      error.message;
+
+      }
+
+      });
+
     // Register form handler
     registerForm.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -149,10 +196,16 @@
       const email = document.getElementById('regEmail').value.trim();
       const password = document.getElementById('regPassword').value;
       const phone = document.getElementById('regPhone').value.trim();
-      if (!name) {
-        authMessage.textContent = 'Please enter your full name.';
-        return;
-      }
+
+        if (!name) {
+          authMessage.textContent = 'Please enter your full name.';
+          return;
+        }
+
+        if (!phone) {
+          authMessage.textContent = 'Phone number is required.';
+          return;
+        }
       try {
         isRegistering = true;
         const cred = await createUserWithEmailAndPassword(auth, email, password);

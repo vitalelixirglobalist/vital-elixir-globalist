@@ -1,0 +1,101 @@
+{
+  "pimobendan25": {
+    "overview": "Pimobendan 2.5 mg (Vetmedin) is a veterinary medicine commonly prescribed for dogs with congestive heart failure (CHF). It helps improve heart function by increasing the strength of heart contractions while relaxing blood vessels, allowing blood to circulate more efficiently. It is widely used in dogs diagnosed with dilated cardiomyopathy (DCM) and myxomatous mitral valve disease (MMVD) under veterinary supervision.",
+
+    "benefits": [
+      "Supports improved heart pumping function.",
+      "Helps manage symptoms of congestive heart failure in dogs.",
+      "Improves blood circulation by relaxing blood vessels.",
+      "May enhance quality of life and physical activity in suitable patients.",
+      "Commonly prescribed by veterinarians for chronic cardiac conditions."
+    ],
+
+    "how_it_works": "Pimobendan belongs to a class of medicines known as inodilators. It increases the force of heart muscle contractions while simultaneously widening blood vessels. This combination helps reduce the workload on the heart and improves circulation throughout the body.",
+
+    "directions": [
+      "Use only under the guidance of a licensed veterinarian.",
+      "Administer exactly as prescribed.",
+      "Do not change the dosage without veterinary advice.",
+      "Regular veterinary monitoring is recommended during treatment."
+    ],
+
+    "side_effects": [
+      "Reduced appetite",
+      "Vomiting",
+      "Diarrhea",
+      "Lethargy",
+      "Changes in heart rhythm (rare)"
+    ],
+
+    "precautions": [
+      "For veterinary use only.",
+      "Not suitable for every type of heart disease.",
+      "Inform your veterinarian about all medicines and supplements your pet is receiving.",
+      "Keep out of reach of children and other animals."
+    ],
+
+    "storage": "Store in a cool, dry place below room temperature. Protect from moisture and direct sunlight. Keep the container tightly closed after use.",
+
+    "faq": [
+      {
+         "id":"faq1",
+        "question": "What is Pimobendan 2.5 mg used for?",
+        "answer": "Pimobendan is commonly prescribed to help manage congestive heart failure in dogs and improve overall heart function under veterinary supervision."
+      },
+      {
+         "id":"faq2",
+        "question": "Can Pimobendan cure heart disease?",
+        "answer": "No. Pimobendan helps manage heart disease and its symptoms but does not cure the underlying condition."
+      },
+      {
+         "id":"faq3",
+        "question": "How long does Pimobendan take to work?",
+        "answer": "Many dogs begin showing improvement within a few days, although individual response varies depending on the condition."
+      },
+      {
+         "id":"faq4",
+        "question": "Can Pimobendan be given with other heart medications?",
+        "answer": "Yes. Veterinarians often prescribe Pimobendan together with other cardiac medicines when appropriate."
+      },
+      {
+         "id":"faq5",
+        "question": "Is international shipping available?",
+        "answer": "International availability and shipping depend on your destination country's regulations. Our medication support team can assist with availability and shipping guidance."
+      }
+    ],
+
+    "people_also_search":[
+
+{
+"text":"Vetmedin Tablets",
+"product_id":"pimobendan25"
+},
+
+{
+"text":"Furosemide",
+"product_id":"furosemide40"
+},
+
+{
+"text":"Enalapril",
+"product_id":"enalapril10"
+},
+
+{
+"text":"Dog Heart Medication",
+"product_id":null
+},
+
+{
+"text":"Congestive Heart Failure in Dogs",
+"product_id":null
+},
+
+{
+"text":"Canine Cardiology",
+"product_id":null
+}
+
+]
+  }
+}

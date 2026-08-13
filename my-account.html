@@ -39,12 +39,17 @@
   </p>
 
   <p class="mb-2">
-    <strong>Email:</strong>
-    <span id="profileEmail"></span>
-  </p>
+  <strong>Email:</strong>
+  <span id="profileEmail"></span>
+</p>
 
-  <p class="mb-2">
-    <strong>Country:</strong>
+<p class="mb-2">
+  <strong>Phone:</strong>
+  <span id="profilePhone"></span>
+</p>
+
+<p class="mb-2">
+  <strong>Country:</strong>
     <span id="profileCountry"></span>
   </p>
 
@@ -164,6 +169,10 @@ from 'https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js';
       'profileEmail'
     );
 
+  const profilePhoneEl =
+    document.getElementById(
+    'profilePhone'
+    );
   const profileCountryEl =
     document.getElementById(
       'profileCountry'
@@ -262,7 +271,10 @@ from 'https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js';
 
     profileNameEl.textContent =
       data.name || '';
-
+    
+    profilePhoneEl.textContent =
+      data.phone || 'Not Added';
+    
     profileCountryEl.textContent =
       data.country || 'Not Added';
     

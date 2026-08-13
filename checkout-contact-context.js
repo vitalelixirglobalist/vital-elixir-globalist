@@ -48,23 +48,19 @@ async function fetchFirestoreCart(uid) {
 
 function buildCartMessage(cartItems) {
   let message = `Hello Team,%0A%0AI've finalized the following order:%0A%0A`;
-  let totalINR = 0;
-  let totalUSD = 0;
+  const cartPricing = window.pricingEngine.calculateCartPricing(cartItems);
 
-  cartItems.forEach((item, index) => {
-    const qty = item.quantity || 1;
-    const usd = Number(item.total_price_usd || item.price_usd || 0) * qty;
-    const inr = Number(item.total_price_inr || item.price_inr || 0) * qty;
-    totalUSD += usd;
-    totalINR += inr;
+  cartPricing.items.forEach((item, index) => {
+    const pricing = item.pricing;
 
     message += `${index + 1}. ${item.name}%0A`;
     if (item.pack) message += `Pack: ${item.pack}%0A`;
-    message += `Quantity: ${qty}%0A`;
-    message += `Item Total: USD ${usd.toFixed(2)} | INR ${inr.toFixed(2)}%0A%0A`;
+    message += `Quantity: ${pricing.quantity}%0A`;
+    message += `Item Total: USD ${pricing.final_medication_total_usd.toFixed(2)} | INR ${pricing.final_medication_total_inr.toFixed(2)}%0A%0A`;
   });
 
-  message += `Final Payable Amount:%0AUSD ${totalUSD.toFixed(2)} | INR ${totalINR.toFixed(2)}%0A%0A`;
+  message += `Shipping:%0AUSD ${cartPricing.shippingUSD.toFixed(2)} | INR ${cartPricing.shippingINR.toFixed(2)}%0A%0A`;
+  message += `Final Payable Amount:%0AUSD ${cartPricing.grandTotalUSD.toFixed(2)} | INR ${cartPricing.grandTotalINR.toFixed(2)}%0A%0A`;
   message += `Please assist me with order processing.`;
 
   return message;

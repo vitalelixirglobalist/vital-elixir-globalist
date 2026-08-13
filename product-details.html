@@ -6,6 +6,8 @@
   <title>Medication Details – Vital Elixir Globalist</title>
   <meta name="description" content="See complete medication details, pricing, pack sizes, and trusted export quality information." />
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="currency-utils.js"></script>
+  <script src="pricing-engine.js"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -27,25 +29,139 @@
     .glass-card { background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(12px); }
   </style>
   <script src="dev-fix.js"></script>
-</head>
+    <style>
+      .qty-dropdown{
+          position:relative;
+          width:100%;
+          margin-top:10px;
+          font-size:13px;
+      }
 
-<body class="bg-slate-50 text-slate-800">
-  <div id="header-placeholder"></div>
+      .qty-dropdown,
+      .qty-selected,
+      .qty-options{
+          width:100%;
+          box-sizing:border-box;
+      }
+
+      .qty-selected{
+          border:1px solid #d1d5db;
+          border-radius:10px;
+          background:#fff;
+          cursor:pointer;
+          overflow:hidden;
+      }
+
+      .qty-header,
+      .qty-row{
+          display:grid;
+         grid-template-columns:13% 31% 21% 35%;
+          align-items:center;
+          width:100%;
+          gap:2px;
+      }
+
+      .qty-header{
+          background:#f8fafc;
+          padding:8px 4px;
+          border-bottom:1px solid #e5e7eb;
+          font-size:13px;
+      }
+      .qty-header span:nth-child(1),
+      .qty-header span:nth-child(2){
+          font-weight:700;
+          text-decoration:underline;
+      }
+
+      .qty-header span,
+      .qty-row span{
+          text-align:center;
+          white-space:nowrap;
+          padding:0;
+          overflow:hidden;
+          text-overflow:ellipsis;
+      }
+
+      .qty-selected-row{
+          padding:10px 6px;
+      }
+
+      .qty-selected-row::after{
+          content:"▼";
+          float:right;
+          color:#0284c7;
+          font-size:10px;
+      }
+
+      .qty-options{
+          display:none;
+          position:absolute;
+          left:0;
+          right:0;
+          top:100%;
+          background:#fff;
+          border:1px solid #d1d5db;
+          border-top:none;
+          z-index:999;
+          box-shadow:0 10px 20px rgba(0,0,0,.08);
+          max-height:260px;
+          overflow-y:auto;
+      }
+
+      .qty-row{
+          padding:8px 4px;
+          cursor:pointer;
+          border-top:1px solid #f1f5f9;
+          transition:.2s;
+          font-size:13px;
+      }
+      .qty-row:hover{
+          background:#eff6ff;
+      }
+
+      .qty-row.active{
+          background:#dbeafe;
+          font-weight:600;
+      }
+
+      .qty-dropdown.open .qty-options{
+          display:block;
+      }
+
+      .qty-title{
+          font-size:15px;
+          font-weight:600;
+          color:#64748b;
+          margin-bottom:6px;
+      }
+
+      @media(max-width:768px){
+
+      .qty-header,
+      .qty-row{
+          grid-template-columns:14% 32% 20% 34%;
+          font-size:13px;
+      }
+
+      .qty-header{
+          padding:8px 4px;
+      }
+
+      .qty-selected-row{
+          padding:9px 4px;
+      }
+
+      }
+      </style>
+
+      </head>
+
+    <body class="bg-slate-50 text-slate-800">
+    <div id="header-placeholder"></div>
+
 
   <main class="max-w-6xl mx-auto px-4 pb-24 pt-10 space-y-12">
     <section class="grid lg:grid-cols-2 gap-10 items-start">
-      <div class="relative group fade-up">
-        <div class="absolute -inset-2 rounded-3xl bg-gradient-to-br from-brand/20 to-blue-200 blur-2xl opacity-50 group-hover:opacity-80 transition"></div>
-        <div class="relative glass-card rounded-3xl p-6 shadow-glow">
-          <div class="flex items-center justify-between text-xs font-semibold text-brand">
-            <span class="px-3 py-1 rounded-full bg-blue-50 border border-blue-100">Worldwide availability</span>
-            <span class="px-3 py-1 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700">Export quality verified</span>
-          </div>
-          <div class="mt-6 bg-slate-100 rounded-2xl p-6 flex items-center justify-center">
-            <img id="product-image" src="" alt="Medication image" class="max-h-80 w-auto object-contain drop-shadow-lg" />
-          </div>
-        </div>
-      </div>
 
       <div class="space-y-6 fade-up" style="animation-delay: 0.1s;">
         <div class="space-y-3">
@@ -61,18 +177,74 @@
           </div>
         </div>
 
-        <div class="glass-card rounded-3xl p-6 shadow-glow space-y-5">
-          <div class="grid md:grid-cols-2 gap-4">
-            <label class="flex flex-col gap-2 text-sm font-semibold text-slate-700">
-              <span class="flex items-center gap-2"><span class="text-brand">💊</span>Dosage / strength</span>
-              <select id="dosageSelect" class="w-full border rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand text-sm"></select>
-            </label>
-            <label class="flex flex-col gap-2 text-sm font-semibold text-slate-700">
-              <span class="flex items-center gap-2"><span class="text-brand">📦</span>Pack size</span>
-              <select id="packSelect" class="w-full border rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand text-sm"></select>
-            </label>
+      <div class="relative group fade-up lg:mt-12 xl:mt-14">
+        <div class="absolute -inset-2 rounded-3xl bg-gradient-to-br from-brand/20 to-blue-200 blur-2xl opacity-50 group-hover:opacity-80 transition"></div>
+        <div class="relative glass-card rounded-3xl p-6 shadow-glow">
+          <div class="flex items-center justify-between text-xs font-semibold text-brand">
+            <span class="px-3 py-1 rounded-full bg-blue-50 border border-blue-100">Worldwide availability</span>
+            <span class="px-3 py-1 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700">Export quality verified</span>
+          </div>
+                <div class="mt-6 relative bg-slate-100 rounded-2xl p-6">
+
+          <button id="prevImageBtn"
+              class="hidden absolute left-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white shadow-lg hover:bg-slate-100 text-xl font-bold">
+              ❮
+          </button>
+
+          <div class="flex justify-center items-center min-h-[320px]">
+
+              <img id="product-image"
+                  src=""
+                  alt="Medication image"
+                  class="max-h-80 w-auto object-contain drop-shadow-lg transition-opacity duration-500" />
+
           </div>
 
+          <button id="nextImageBtn"
+              class="hidden absolute right-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white shadow-lg hover:bg-slate-100 text-xl font-bold">
+              ❯
+          </button>
+
+      </div>
+
+      <div id="imageDots"
+          class="mt-4 flex justify-center gap-2">
+      </div>
+        </div>
+      </div>
+      </div>
+        <div class="fade-up lg:sticky lg:top-24" style="animation-delay:0.1s;">
+
+        <div class="glass-card rounded-3xl p-6 shadow-glow space-y-5">
+         <div class="grid lg:grid-cols-[0.8fr_1.2fr] md:grid-cols-[0.80fr_1.10fr] gap-5 items-start">
+            <label class="flex flex-col gap-2 text-sm font-semibold text-slate-700">
+              <span class="flex items-center gap-2"><span class="text-brand">💊</span>Dosage / strength</span>
+             <select id="dosageSelect" class="block w-full min-w-0 border rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-brand text-base font-medium"></select>
+            </label>
+            <div class="flex flex-col gap-2 w-full min-w-0">
+
+          <div class="qty-title">
+              Select Qty
+          </div>
+          <div class="qty-dropdown">
+              <div class="qty-selected">
+                  <div class="qty-header">
+                      <span>Qty</span>
+                      <span>Buy With Us</span>
+                      <span>Per Tab</span>
+                      <span>USA  Retail Price</span>
+                  </div>
+                  <div class="qty-row qty-selected-row">
+                      <span id="selectedQty">-</span>
+                      <span id="selectedPrice">-</span>
+                      <span id="selectedPerTab">-</span>
+                      <span id="selectedUsaPrice">-</span>
+                  </div>
+              </div>
+              <div class="qty-options" id="qtyOptions"></div>
+          </div>
+      </div>
+          </div>
           <div id="priceBreakdown" class="rounded-2xl border border-blue-100 bg-blue-50 p-4 text-sm text-slate-700"></div>
 
            <div class="flex flex-wrap gap-3">
@@ -82,9 +254,9 @@
             <button id="consultBtn" class="px-5 py-3 border border-brand text-brand rounded-xl hover:bg-blue-50 transition">
               Consult Doctor for Dosage & Usage
             </button>
-            <a href="checkout.html" class="px-5 py-3 bg-brand text-white rounded-xl hover:bg-blue-700 transition shadow-glow">
-              Proceed to Pay
-            </a>
+            <a href="cart.html" class="px-5 py-3 bg-brand text-white rounded-xl hover:bg-blue-700 transition shadow-glow">
+              Proceed to Cart
+          </a>
           </div>
           <p class="text-xs text-slate-500 flex items-start gap-2">
             <span class="text-brand">🔒</span>
@@ -109,6 +281,10 @@
       <div class="flex items-center gap-2 text-brand text-sm font-semibold"><span>🤝</span><span>Commonly prescribed with</span></div>
       <div id="pairingsGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
     </section>
+    <section id="productContentSection" class="space-y-8 fade-up hidden">
+    </section>
+
+
   </main>
 
   <div id="actionToast" class="hidden fixed top-4 right-4 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-lg text-sm"></div>
@@ -135,29 +311,166 @@
     const productCategory = document.getElementById('product-category');
     const productUse = document.getElementById('product-use');
     const dosageSelect = document.getElementById('dosageSelect');
-    const packSelect = document.getElementById('packSelect');
+    const qtyDropdown = document.querySelector(".qty-dropdown");
+    const qtyOptions = document.getElementById("qtyOptions");
+    const selectedQty = document.getElementById("selectedQty");
+    const selectedPrice = document.getElementById("selectedPrice");
+    const selectedPerTab = document.getElementById("selectedPerTab");
+    const selectedUsaPrice = document.getElementById("selectedUsaPrice");
     const priceBreakdown = document.getElementById('priceBreakdown');
     const relatedGrid = document.getElementById('relatedGrid');
     const pairingsGrid = document.getElementById('pairingsGrid');
     const actionToast = document.getElementById('actionToast');
     const mobileActionBar = document.getElementById('mobileActionBar');
+    const prevImageBtn = document.getElementById("prevImageBtn");
+    const nextImageBtn = document.getElementById("nextImageBtn");
+    const imageDots = document.getElementById("imageDots");
+
+    let currentImageIndex = 0;
+    let imageSliderInterval = null;
 
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    function formatMoney(value) {
-      return Number(value || 0).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
-    }
-
     function getSelectedCurrency() {
-      return window.currencyUtils?.getSelectedCurrency?.() || 'GBP';
+      return window.pricingEngine.getDisplayedCurrency();
     }
 
-    function formatForeignCurrency(value) {
-      const currency = getSelectedCurrency();
-      const converted = window.currencyUtils?.convertFromUsd
-        ? window.currencyUtils.convertFromUsd(value, currency)
-        : value;
-      return `${currency} ${formatMoney(converted)}`;
+    function formatLocalCurrency(value) {
+      return window.pricingEngine.formatCurrencyAmount(value, getSelectedCurrency(), {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
+      });
+    }
+
+    function getRegionalPriceData(variant){
+
+    const currency=getSelectedCurrency();
+
+    switch(currency){
+
+        case "USD":
+            return{
+                buyWithUs:variant.price_usd,
+                marketPrice:variant.market_price_usd,
+                isManual:true
+            };
+
+        case "GBP":
+            if(variant.price_gbp!==undefined){
+                return{
+                    buyWithUs:variant.price_gbp,
+                    marketPrice:variant.market_price_gbp,
+                    isManual:true
+                };
+            }
+            break;
+
+        case "AUD":
+            if(variant.price_aud!==undefined){
+                return{
+                    buyWithUs:variant.price_aud,
+                    marketPrice:variant.market_price_aud,
+                    isManual:true
+                };
+            }
+            break;
+
+    }
+
+    const pricing=window.pricingEngine.calculateItemPricing({
+        price_usd:variant.price_usd,
+        price_inr:variant.price_inr,
+        shipping_usd:SHIPPING_USD
+    },1);
+
+    return{
+        buyWithUs:pricing.final_price_local,
+        marketPrice:pricing.final_price_local,
+        isManual:false
+    };
+
+}
+
+    function getVariantPricing(variant){
+
+    const currency=getSelectedCurrency();
+
+    if(currency==="USD"){
+
+        return window.pricingEngine.calculateItemPricing({
+            price_usd:variant.price_usd,
+            price_inr:variant.price_inr,
+            shipping_usd:SHIPPING_USD
+        },1);
+
+    }
+
+    if(currency==="GBP" && variant.price_gbp!==undefined){
+
+        return window.pricingEngine.calculateItemPricing({
+            price_usd:variant.price_gbp,
+            price_inr:0,
+            shipping_usd:SHIPPING_USD
+        },1);
+
+    }
+
+    if(currency==="AUD" && variant.price_aud!==undefined){
+
+        return window.pricingEngine.calculateItemPricing({
+            price_usd:variant.price_aud,
+            price_inr:0,
+            shipping_usd:SHIPPING_USD
+        },1);
+
+    }
+
+        return window.pricingEngine.calculateItemPricing({
+            price_usd:variant.price_usd,
+            price_inr:variant.price_inr,
+            shipping_usd:SHIPPING_USD
+        },1);
+
+    }
+
+    function buildCartItem(product, variant) {
+      // Product details uses the same engine snapshot that cart/request/email consume.
+      const baseItem = {
+    name: product.name,
+    brand: product.brand,
+    pack: variant.pack,
+    quantity: 1,
+
+    price_usd: variant.price_usd,
+    market_price_usd: variant.market_price_usd,
+
+    price_gbp: variant.price_gbp,
+    market_price_gbp: variant.market_price_gbp,
+
+    price_aud: variant.price_aud,
+    market_price_aud: variant.market_price_aud,
+
+    price_inr: variant.price_inr,
+    shipping_usd: SHIPPING_USD,
+    image: product.image
+    };
+      const normalized = window.pricingEngine.normalizeCartItem(baseItem, 1);
+
+      return {
+        ...baseItem,
+        raw: normalized.raw,
+        pricing: normalized.pricing,
+        shipping_inr: normalized.raw.shipping_inr,
+        final_price_usd: normalized.pricing.final_price_usd,
+        final_price_inr: normalized.pricing.final_price_inr,
+        final_total_usd: normalized.pricing.final_total_usd,
+        final_total_inr: normalized.pricing.final_total_inr,
+        final_price_local: normalized.pricing.final_price_local,
+        final_total_local: normalized.pricing.final_total_local,
+        selected_currency: normalized.pricing.selected_currency,
+        total_price_usd: normalized.pricing.final_total_usd,
+        total_price_inr: normalized.pricing.final_total_inr
+      };
     }
 
     function showToast(message) {
@@ -167,51 +480,90 @@
       setTimeout(() => actionToast.classList.add('hidden'), 2800);
     }
 
-    function getShippingInr(variant) {
-      if (!variant.price_usd || !variant.price_inr) return 0;
-      return (variant.price_inr / variant.price_usd) * SHIPPING_USD;
-    }
-
     function updatePrice() {
       if (!selectedProduct || !selectedProduct.variants.length) return;
-      const index = Number(packSelect.value) || 0;
-      selectedVariantIndex = index;
-      const variant = selectedProduct.variants[index] || selectedProduct.variants[0];
-      const shippingInr = getShippingInr(variant);
-      const totalUsd = (variant.price_usd || 0) + SHIPPING_USD;
-      const totalInr = (variant.price_inr || 0) + shippingInr;
+      const variant =
+        selectedProduct.variants[selectedVariantIndex] ||
+        selectedProduct.variants[0];
+      const pricing = getVariantPricing(variant);
 
       priceBreakdown.innerHTML = `
         <div class="space-y-2">
           <div class="flex items-center justify-between"><span class="font-semibold text-brand">Selected pack</span><span>${variant.pack}</span></div>
-          <div class="flex items-center justify-between"><span>Medicine</span><span>${formatForeignCurrency(variant.price_usd)}${variant.price_inr ? ` | INR ${variant.price_inr.toFixed(2)}` : ''}</span></div>
-          <div class="flex items-center justify-between"><span>Shipping</span><span>${formatForeignCurrency(SHIPPING_USD)}${variant.price_inr ? ` | INR ${shippingInr.toFixed(2)}` : ''}</span></div>
-          <div class="flex items-center justify-between font-bold text-brand text-lg"><span>Total</span><span>${formatForeignCurrency(totalUsd)}${variant.price_inr ? ` | INR ${totalInr.toFixed(2)}` : ''}</span></div>
+          <div class="flex items-center justify-between"><span>Medicine</span><span>${formatLocalCurrency(pricing.final_price_local)}${pricing.final_price_inr ? ` | INR ${pricing.final_price_inr.toFixed(2)}` : ''}</span></div>
+          <div class="flex items-center justify-between"><span>Shipping</span><span>${formatLocalCurrency(pricing.final_shipping_local)}${pricing.final_shipping_inr ? ` | INR ${pricing.final_shipping_inr.toFixed(2)}` : ''}</span></div>
+          <div class="flex items-center justify-between font-bold text-brand text-lg"><span>Total</span><span>${formatLocalCurrency(pricing.final_total_local)}${pricing.final_total_inr ? ` | INR ${pricing.final_total_inr.toFixed(2)}` : ''}</span></div>
         </div>
       `;
     }
-
-    function renderSelectors(product) {
-      dosageSelect.innerHTML = '';
-      const doseOption = document.createElement('option');
-      doseOption.value = product.composition;
-      doseOption.textContent = product.composition;
-      dosageSelect.appendChild(doseOption);
-
-          packSelect.innerHTML = '';
-      product.variants.forEach((variant, index) => {
-        const opt = document.createElement('option');
-        opt.value = index;
-        opt.textContent = `${variant.pack} — ${formatForeignCurrency(variant.price_usd)}`;
-        packSelect.appendChild(opt);
-      });
-      packSelect.value = '0';
-      updatePrice();
-    }
+          function getPerTablet(variant){
+          if(!variant.quantity) return "-";
+          const regional = getRegionalPriceData(variant);
+          return window.pricingEngine.formatLocalAmount(
+              regional.buyWithUs / variant.quantity,
+              {
+                  minimumFractionDigits:2,
+                  maximumFractionDigits:2
+              }
+          );
+      }
+      function renderSelectors(product){
+          dosageSelect.innerHTML="";
+          const doseOption=document.createElement("option");
+          doseOption.value=product.composition;
+          doseOption.textContent=product.composition;
+          dosageSelect.appendChild(doseOption);
+          qtyOptions.innerHTML="";
+          function renderQty(index){
+              const variant=product.variants[index];
+              const regional = getRegionalPriceData(variant);
+              selectedQty.textContent=variant.quantity;
+              selectedPrice.textContent = formatLocalCurrency(regional.buyWithUs);
+              selectedPerTab.textContent = getPerTablet(variant);
+              selectedUsaPrice.textContent = formatLocalCurrency(regional.marketPrice);
+          }
+          product.variants.forEach((variant,index)=>{
+              const row=document.createElement("div");
+              row.className="qty-row";
+              const regional = getRegionalPriceData(variant);
+              row.innerHTML=`
+                  <span>${variant.quantity}</span>
+                  <span>${formatLocalCurrency(regional.buyWithUs)}</span>
+                  <span>${getPerTablet(variant)}</span>
+                  <span>${formatLocalCurrency(regional.marketPrice)}</span>
+              `;
+              if(index===0)
+                  row.classList.add("active");
+              row.onclick=(e)=>{
+                  e.stopPropagation();
+                  qtyOptions
+                      .querySelectorAll(".qty-row")
+                      .forEach(r=>r.classList.remove("active"));
+                  row.classList.add("active");
+                  selectedVariantIndex=index;
+                  renderQty(index);
+                  qtyDropdown.classList.remove("open");
+                  updatePrice();
+              };
+              qtyOptions.appendChild(row);
+          });
+          renderQty(0);
+          qtyDropdown
+              .querySelector(".qty-selected")
+              .onclick=(e)=>{
+                  e.stopPropagation();
+                  qtyDropdown.classList.toggle("open");
+              };
+          document.addEventListener("click",()=>{
+              qtyDropdown.classList.remove("open");
+          });
+          selectedVariantIndex=0;
+          updatePrice();
+      }
     function renderProduct(product) {
       selectedProduct = product;
-      productImage.src = product.image;
       productImage.alt = product.name;
+      initializeGallery(product);
       productName.textContent = product.name;
       productBrand.lastElementChild.textContent = product.brand;
       productComposition.lastElementChild.textContent = product.composition;
@@ -222,6 +574,149 @@
       mobileActionBar.classList.remove('hidden');
     }
 
+        function initializeGallery(product){
+
+        const images = product.images && product.images.length
+            ? product.images
+            : [product.thumbnail];
+
+        currentImageIndex = 0;
+
+        function showImage(index){
+
+            currentImageIndex=index;
+
+            productImage.style.opacity=0;
+
+            setTimeout(()=>{
+
+                productImage.src=images[index];
+                productImage.style.opacity=1;
+
+                [...imageDots.children].forEach((d,i)=>{
+
+                    d.classList.toggle("bg-brand",i===index);
+                    d.classList.toggle("bg-slate-300",i!==index);
+
+                });
+
+            },150);
+
+        }
+
+        imageDots.innerHTML="";
+
+        images.forEach((_,i)=>{
+
+            const dot=document.createElement("button");
+
+            dot.className="w-3 h-3 rounded-full bg-slate-300";
+
+            dot.onclick=()=>{
+
+                stopSlider();
+
+                showImage(i);
+
+                startSlider();
+
+            };
+
+            imageDots.appendChild(dot);
+
+        });
+
+        if(images.length<=1){
+
+            prevImageBtn.classList.add("hidden");
+            nextImageBtn.classList.add("hidden");
+
+            imageDots.classList.add("hidden");
+
+            showImage(0);
+
+            return;
+
+        }
+
+        imageDots.classList.remove("hidden");
+
+        prevImageBtn.classList.remove("hidden");
+        nextImageBtn.classList.remove("hidden");
+
+        prevImageBtn.onclick=()=>{
+
+            stopSlider();
+
+            showImage((currentImageIndex-1+images.length)%images.length);
+
+            startSlider();
+
+        };
+
+        nextImageBtn.onclick=()=>{
+
+            stopSlider();
+
+            showImage((currentImageIndex+1)%images.length);
+
+            startSlider();
+
+        };
+
+        let startX=0;
+
+        productImage.addEventListener("touchstart",(e)=>{
+
+            startX=e.touches[0].clientX;
+
+        },{passive:true});
+
+        productImage.addEventListener("touchend",(e)=>{
+
+            const endX=e.changedTouches[0].clientX;
+
+            if(Math.abs(endX-startX)<40) return;
+
+            stopSlider();
+
+            if(endX<startX){
+
+                showImage((currentImageIndex+1)%images.length);
+
+            }else{
+
+                showImage((currentImageIndex-1+images.length)%images.length);
+
+            }
+
+            startSlider();
+
+        });
+
+        function startSlider(){
+
+            stopSlider();
+
+            imageSliderInterval=setInterval(()=>{
+
+                showImage((currentImageIndex+1)%images.length);
+
+            },3000);
+
+        }
+
+        function stopSlider(){
+
+            clearInterval(imageSliderInterval);
+
+        }
+
+        showImage(0);
+
+        startSlider();
+
+    }
     function renderRelated(product) {
       relatedGrid.innerHTML = '';
       const related = allProducts.filter((p) => p.category === product.category && p.name !== product.name).slice(0, 4);
@@ -236,7 +731,7 @@
         card.innerHTML = `
           <div class="flex items-center gap-3">
             <div class="h-14 w-14 rounded-xl bg-slate-100 flex items-center justify-center overflow-hidden">
-              <img src="${item.image}" alt="${item.name}" class="h-full w-full object-contain" />
+              <img src="${item.thumbnail}" alt="${item.name}" class="h-full w-full object-contain" />
             </div>
             <div class="space-y-1">
               <p class="text-sm text-brand font-semibold">${item.category}</p>
@@ -270,7 +765,262 @@
         pairingsGrid.appendChild(card);
       });
     }
+      function renderProductContent(product){
 
+        const section=document.getElementById("productContentSection");
+
+        if(!product.content){
+            section.classList.add("hidden");
+            return;
+        }
+
+        const c=product.content;
+
+        section.classList.remove("hidden");
+
+        section.innerHTML=`
+
+        <div class="glass-card rounded-3xl p-8 shadow-glow space-y-10">
+
+        <div>
+
+        <h2 class="text-3xl font-bold text-slate-900 mb-5">
+        🩺 Product Information
+        </h2>
+
+        <p class="text-slate-700 leading-8">
+        ${c.overview}
+        </p>
+
+        </div>
+
+
+        <div>
+
+        <h2 class="text-2xl font-bold text-brand mb-4">
+        ⭐ Benefits
+        </h2>
+
+        <ul class="list-disc pl-6 space-y-2">
+        ${c.benefits.map(x=>`<li>${x}</li>`).join("")}
+        </ul>
+
+        </div>
+
+
+        <div>
+
+        <h2 class="text-2xl font-bold text-brand mb-4">
+        ⚙️ How It Works
+        </h2>
+
+        <p class="text-slate-700 leading-8">
+        ${c.how_it_works}
+        </p>
+
+        </div>
+
+
+        <div>
+
+        <h2 class="text-2xl font-bold text-brand mb-4">
+        📖 Directions for Use
+        </h2>
+
+        <ul class="list-disc pl-6 space-y-2">
+        ${c.directions.map(x=>`<li>${x}</li>`).join("")}
+        </ul>
+
+        </div>
+
+
+        <div>
+
+        <h2 class="text-2xl font-bold text-brand mb-4">
+        ⚠️ Possible Side Effects
+        </h2>
+
+        <ul class="list-disc pl-6 space-y-2">
+        ${c.side_effects.map(x=>`<li>${x}</li>`).join("")}
+        </ul>
+
+        </div>
+
+
+        <div>
+
+        <h2 class="text-2xl font-bold text-brand mb-4">
+        🛡️ Precautions
+        </h2>
+
+        <ul class="list-disc pl-6 space-y-2">
+        ${c.precautions.map(x=>`<li>${x}</li>`).join("")}
+        </ul>
+
+        </div>
+
+
+        <div>
+
+        <h2 class="text-2xl font-bold text-brand mb-4">
+        📦 Storage
+        </h2>
+
+        <p class="text-slate-700 leading-8">
+        ${c.storage}
+        </p>
+
+        </div>
+
+
+        <hr class="border-slate-200">
+
+
+        <div>
+
+        <h2 class="text-3xl font-bold text-slate-900 mb-6">
+        ❓ Frequently Asked Questions
+        </h2>
+
+        <div class="space-y-4">
+
+        ${c.faq.map(f=>`
+
+        <details class="rounded-xl border border-slate-200 p-5 bg-slate-50">
+
+        <summary class="font-semibold cursor-pointer text-slate-900">
+        ${f.question}
+        </summary>
+
+        <p class="mt-3 text-slate-600 leading-7">
+        ${f.answer}
+        </p>
+
+        </details>
+
+        `).join("")}
+
+        </div>
+
+        </div>
+
+
+        <hr class="border-slate-200">
+
+
+        <div>
+
+        <h2 class="text-3xl font-bold text-slate-900 mb-5">
+        🔗 Related Searches & Medicines
+        </h2>
+
+        <div class="flex flex-wrap gap-3">
+
+        ${c.people_also_search.map(item=>`
+
+        <button
+        class="people-search-item px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-brand text-sm font-medium hover:bg-blue-100 transition"
+        data-product="${item.product_id || ""}"
+        data-search="${item.text}">
+
+        🔗 ${item.text}
+
+        </button>
+
+        `).join("")}
+
+        </div>
+
+        </div>
+
+
+        <hr class="border-slate-200">
+
+
+        <div>
+
+        <h2 class="text-3xl font-bold text-slate-900 mb-5">
+        🚚 International Shipping
+        </h2>
+
+        <p class="text-slate-700 leading-8">
+
+        We assist customers with international medication orders across multiple countries. Our medication support team verifies availability, export eligibility and shipping options before confirming every order.
+
+        </p>
+
+        </div>
+
+
+        <hr class="border-slate-200">
+
+
+        <div>
+
+        <h2 class="text-3xl font-bold text-slate-900 mb-5">
+        ⭐ Why Choose Vital Elixir Globalist
+        </h2>
+
+        <ul class="list-disc pl-6 space-y-2">
+
+        <li>Dedicated international medication support.</li>
+
+        <li>Competitive pricing on multiple pack sizes.</li>
+
+        <li>Worldwide shipping assistance.</li>
+
+        <li>Responsive customer support throughout your order.</li>
+
+        <li>Large catalogue of branded and generic medicines.</li>
+
+        </ul>
+
+        </div>
+
+
+        <hr class="border-slate-200">
+
+
+        <div>
+
+        <h2 class="text-3xl font-bold text-slate-900 mb-5">
+        ⚠️ Medical Disclaimer
+        </h2>
+
+        <p class="text-slate-600 leading-8">
+
+        The information provided on this page is intended for educational purposes only and should not replace professional medical or veterinary advice. Always consult a qualified healthcare professional or licensed veterinarian before starting, stopping or changing any medication.
+
+        </p>
+
+        </div>
+
+
+        </div>
+
+        `;
+              section.querySelectorAll(".people-search-item").forEach(btn => {
+
+          btn.addEventListener("click", () => {
+
+              const productId = btn.dataset.product;
+              const search = btn.dataset.search;
+
+              if (productId) {
+
+                  window.location.href = `product-details.html?id=${productId}`;
+
+              } else {
+
+                  window.location.href = `products.html?search=${encodeURIComponent(search)}`;
+
+              }
+
+          });
+
+      });
+
+        }
     async function addToCart() {
 
   if (!selectedProduct) {
@@ -281,7 +1031,7 @@
     selectedProduct.variants[selectedVariantIndex] ||
     selectedProduct.variants[0];
 
-  const shippingInr = getShippingInr(variant);
+  const cartItem = buildCartItem(selectedProduct, variant);
 
   const user = window.auth.currentUser;
 
@@ -291,15 +1041,7 @@
     const localCart =
       JSON.parse(localStorage.getItem('cart')) || [];
 
-    localCart.push({
-      name: selectedProduct.name,
-      brand: selectedProduct.brand,
-      pack: variant.pack,
-      quantity: 1,
-      price_usd: variant.price_usd,
-      price_inr: variant.price_inr,
-      image: selectedProduct.image
-    });
+    localCart.push(cartItem);
 
     localStorage.setItem(
       'cart',
@@ -333,19 +1075,7 @@
     {
       productId,
 
-      name: selectedProduct.name,
-
-      brand: selectedProduct.brand,
-
-      pack: variant.pack,
-
-      quantity: 1,
-
-      price_usd: variant.price_usd,
-
-      price_inr: variant.price_inr,
-
-      image: selectedProduct.image,
+      ...cartItem,
 
       addedAt: new Date().toISOString()
     }
@@ -353,8 +1083,8 @@
   );
 
   showToast(
-    `${selectedProduct.name} added to cart.`
-  );
+    `${selectedProduct.name} (${variant.pack}) added to cart.`
+    );
 }
 
     function consultDoctor() {
@@ -369,8 +1099,13 @@
 
     async function loadProductDetails() {
       try {
-        const res = await fetch('products-data.json');
-        allProducts = await res.json();
+        const [productsRes, contentRes] = await Promise.all([
+            fetch('products-data.json'),
+            fetch('product-content.json')
+        ]);
+
+        allProducts = await productsRes.json();
+        const productContent = await contentRes.json();
         const productParam = decodeURIComponent(getQueryProduct() || '').trim();
         const product = allProducts.find((p) => p.name.toLowerCase() === productParam.toLowerCase());
 
@@ -379,30 +1114,40 @@
           mobileActionBar.classList.add('hidden');
           return;
         }
-
+        product.content = productContent[product.id] || null;
         renderProduct(product);
+        selectedVariantIndex = 0;
         renderRelated(product);
         renderPairings(product);
+        renderProductContent(product);
       } catch (error) {
         console.error('Error loading product details', error);
       }
     }
 
       function bindEvents() {
-      packSelect.addEventListener('change', updatePrice);
       document.getElementById('addToCartBtn').addEventListener('click', addToCart);
       document.getElementById('consultBtn').addEventListener('click', consultDoctor);
     }
+      document.addEventListener("currency:change", () => {
+            if (!selectedProduct) return;
 
-    document.addEventListener('currency:change', () => {
-      if (selectedProduct) {
-        renderSelectors(selectedProduct);
-      }
-    });
+            renderSelectors(selectedProduct);
+            updatePrice();
 
+            renderRelated(selectedProduct);
+            renderPairings(selectedProduct);
+        });
     async function loadHeader() {
       const header = await fetch('header.html');
       document.getElementById('header-placeholder').innerHTML = await header.text();
+
+      if (window.initCurrencySelect) {
+          window.initCurrencySelect();
+      }
+
+      // EXECUTE HEADER SCRIPTS
+
       const menuBtn = document.getElementById('menu-btn');
       const closeBtn = document.getElementById('close-menu');
       const mobileMenu = document.getElementById('mobile-menu');
@@ -447,6 +1192,7 @@ window.doc = doc;
 window.getDoc = getDoc;
 
 </script>
+
 </body>
 </html>
 

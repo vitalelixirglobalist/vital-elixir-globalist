@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Checkout With Team – Vital Elixir Globalist</title>
+
+  <meta
+    name="description"
+    content="Your medication request has been received by our international support team."
+  />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="currency-utils.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#0284c7',
+            medical: '#0f766e',
+            slate: '#0f172a'
+          },
+          boxShadow: {
+            soft: '0 10px 30px rgba(15, 23, 42, 0.08)'
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- VS CODE DEV FIX -->
+  <script>
+    (function () {
+      if (
+        location.hostname === "localhost" ||
+        location.hostname === "127.0.0.1"
+      ) {
+        const style = document.createElement("style");
+
+        style.innerHTML = `
+          html, body {
+            zoom: 100% !important;
+            font-size: 16px !important;
+          }
+
+          svg {
+            max-width: 100% !important;
+            max-height: 100% !important;
+          }
+        `;
+
+        document.head.appendChild(style);
+      }
+    })();
+  </script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .online-pulse {
+      width: 10px;
+      height: 10px;
+      border-radius: 9999px;
+      background: #22c55e;
+      position: relative;
+    }
+
+    .online-pulse::after {
+      content: "";
+      position: absolute;
+      inset: -6px;
+      border-radius: 9999px;
+      border: 2px solid #22c55e;
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(0.8);
+        opacity: 1;
+      }
+
+      100% {
+        transform: scale(1.8);
+        opacity: 0;
+      }
+    }
+
+    .support-card {
+      transition: all 0.25s ease;
+    }
+
+    .support-card:hover {
+      transform: translateY(-4px);
+    }
+  </style>
+  <script src="dev-fix.js"></script>
+</head>
+
+<body class="bg-slate-50 text-slate-900">
+
+  <!-- HEADER -->
+  <div id="header-placeholder"></div>
+
+  <!-- MAIN -->
+  <main class="w-full max-w-[1400px] mx-auto px-4 py-10">
+
+    <!-- SUCCESS HERO -->
+    <section class="bg-white rounded-3xl shadow-soft border border-slate-100 p-8 mb-8">
+
+      <div class="grid lg:grid-cols-2 gap-8 items-center">
+
+        <!-- LEFT -->
+        <div>
+
+          <div class="flex items-center gap-4 mb-5">
+
+            <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center text-3xl">
+              ✅
+            </div>
+
+            <div>
+              <h1 class="text-3xl font-bold">
+                Request Successfully Submitted
+              </h1>
+
+              <p class="text-brand font-semibold text-lg mt-2">
+                Connect With Our 24/7 Live Support Team For Immediate Assistance
+              </p>
+
+              <p class="text-slate-600 mt-1">
+                Your medication inquiry has been received by our international support team.
+              </p>
+            </div>
+
+          </div>
+
+          <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5">
+
+            <h2 class="font-semibold text-lg mb-3">
+              A medication specialist is now reviewing:
+            </h2>
+
+            <div class="grid sm:grid-cols-2 gap-3 text-sm text-slate-700">
+
+              <div class="flex items-center gap-2">
+                ✔ Product availability
+              </div>
+
+              <div class="flex items-center gap-2">
+                ✔ Export possibility
+              </div>
+
+              <div class="flex items-center gap-2">
+                ✔ India pricing
+              </div>
+
+              <div class="flex items-center gap-2">
+                ✔ Shipping feasibility
+              </div>
+
+            </div>
+
+            <div class="mt-5 flex items-center gap-3">
+
+              <div class="online-pulse"></div>
+
+              <span
+                id="onlineSpecialists"
+                class="text-sm font-medium text-green-700">
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- RIGHT -->
+        <div class="bg-gradient-to-br from-brand to-blue-700 rounded-3xl text-white p-8">
+
+          <div class="flex items-center gap-3 mb-4">
+
+            <div class="text-3xl">
+              ⏰
+            </div>
+
+            <div>
+              <p class="text-sm opacity-80">
+                Average Response Time
+              </p>
+
+              <h2 class="text-4xl font-bold">
+                5–15 Minutes
+              </h2>
+            </div>
+
+          </div>
+
+          <div class="space-y-4 mt-8 text-sm">
+
+            <div class="flex items-start gap-3">
+              <span>✔</span>
+              <span>24/7 international medication support</span>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <span>✔</span>
+              <span>Secure communication channels</span>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <span>✔</span>
+              <span>Dedicated export assistance team</span>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <span>✔</span>
+              <span>Live shipment guidance available</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- REQUEST SUMMARY -->
+    <section class="grid lg:grid-cols-2 gap-6 mb-8">
+
+      <!-- LEFT -->
+      <div class="bg-white rounded-2xl shadow-soft border border-slate-100 p-6">
+
+        <h2 class="text-2xl font-bold mb-4">
+          Medication Request Summary
+        </h2>
+
+        <div class="space-y-4 text-sm">
+
+          <div class="flex justify-between">
+            <span class="text-slate-500">
+              Request ID
+            </span>
+
+            <span
+              id="requestId"
+              class="font-semibold">
+            </span>
+          </div>
+
+          <div class="flex justify-between">
+            <span class="text-slate-500">
+              Submitted
+            </span>
+
+            <span class="font-semibold" id="submittedTime">
+              --
+            </span>
+          </div>
+
+          <div class="flex justify-between">
+            <span class="text-slate-500">
+              Status
+            </span>
+
+            <span class="text-yellow-600 font-semibold">
+              Under Specialist Review
+            </span>
+          </div>
+
+        </div>
+
+        <div class="border-t border-slate-200 mt-5 pt-5">
+
+          <h3 class="font-semibold mb-3">
+            Requested Medications
+          </h3>
+
+          <div id="requestedItems" class="space-y-3 text-sm text-slate-700">
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- RIGHT -->
+      <div class="bg-white rounded-2xl shadow-soft border border-slate-100 p-6">
+
+        <h2 class="text-2xl font-bold mb-5">
+          What Happens Next?
+        </h2>
+
+        <div class="space-y-5">
+
+          <div class="flex gap-4">
+            <div class="w-10 h-10 rounded-full bg-blue-100 text-brand flex items-center justify-center font-bold">
+              1
+            </div>
+
+            <div>
+              <h3 class="font-semibold">
+                Medication Review
+              </h3>
+
+              <p class="text-sm text-slate-600">
+                Our team reviews availability and export feasibility.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="w-10 h-10 rounded-full bg-blue-100 text-brand flex items-center justify-center font-bold">
+              2
+            </div>
+
+            <div>
+              <h3 class="font-semibold">
+                Pricing Preparation
+              </h3>
+
+              <p class="text-sm text-slate-600">
+                Shipping and pricing options are prepared.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="w-10 h-10 rounded-full bg-blue-100 text-brand flex items-center justify-center font-bold">
+              3
+            </div>
+
+            <div>
+              <h3 class="font-semibold">
+                Specialist Contact
+              </h3>
+
+              <p class="text-sm text-slate-600">
+                A support specialist contacts you directly.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="w-10 h-10 rounded-full bg-blue-100 text-brand flex items-center justify-center font-bold">
+              4
+            </div>
+
+            <div>
+              <h3 class="font-semibold">
+                Dispatch Assistance
+              </h3>
+
+              <p class="text-sm text-slate-600">
+                Shipment and tracking guidance is provided.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- SUPPORT OPTIONS -->
+    <section class="bg-white rounded-3xl shadow-soft border border-slate-100 p-8 mb-8">
+
+      <div class="text-center mb-10">
+
+        <h2 class="text-3xl font-bold mb-3">
+          Connect With Our 24/7 Support Team
+        </h2>
+
+        <p class="text-slate-600">
+          Choose your preferred communication method for faster assistance.
+        </p>
+
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+  <!-- WHATSAPP -->
+  <a
+    href="https://wa.me/+918275595850?text=Hello%2C%20I%20have%20submitted%20my%20medication%20inquiry%20and%20want%20a%20live%20team%20to%20help%20place%20my%20order%20immediately."
+    target="_blank"
+    class="support-card bg-green-50 border border-green-200 rounded-2xl p-6 block"
+  >
+    <div class="text-4xl mb-4">
+      🟢
+    </div>
+
+    <h3 class="text-xl font-bold mb-2">
+      WhatsApp Support
+    </h3>
+
+    <p class="text-sm text-slate-700 mb-5">
+      Fastest response option for medication pricing and shipping guidance.
+    </p>
+
+    <div class="text-sm font-semibold text-green-700">
+      Average reply: 2–5 minutes
+    </div>
+  </a>
+
+  <!-- EMAIL -->
+  <a
+    href="mailto:vitalelixirglobalist@gmail.com?subject=Medication%20Inquiry%20Support&body=Hello%2C%20I%20have%20submitted%20my%20medication%20inquiry%20and%20want%20a%20live%20team%20to%20help%20place%20my%20order%20immediately."
+    class="support-card bg-blue-50 border border-blue-200 rounded-2xl p-6 block"
+  >
+    <div class="text-4xl mb-4">
+      📧
+    </div>
+
+    <h3 class="text-xl font-bold mb-2">
+      Email Support
+    </h3>
+
+    <p class="text-sm text-slate-700 mb-5">
+      Receive quotations, medicine images, invoices, and export details.
+    </p>
+
+    <div class="text-sm font-semibold text-blue-700">
+      Continue by Email
+    </div>
+  </a>
+
+  <!-- TELEGRAM -->
+  <a
+    href="https://t.me/vitalelixirglobalist?text=Hello%2C%20I%20have%20submitted%20my%20medication%20inquiry%20and%20want%20a%20live%20team%20to%20help%20place%20my%20order%20immediately."
+    target="_blank"
+    class="support-card bg-sky-50 border border-sky-200 rounded-2xl p-6 block"
+  >
+    <div class="text-4xl mb-4">
+      ✈
+    </div>
+
+    <h3 class="text-xl font-bold mb-2">
+      Telegram Assistance
+    </h3>
+
+    <p class="text-sm text-slate-700 mb-5">
+      Ideal for international communication and file sharing.
+    </p>
+
+    <div class="text-sm font-semibold text-sky-700">
+      Open Telegram
+    </div>
+  </a>
+
+ <!-- IMESSAGE + RCS SPLIT -->
+<div class="grid grid-cols-2 gap-4">
+
+  <!-- IMESSAGE -->
+  <a
+    href="sms:+919420059603?&body=Hello%2C%20I%20have%20submitted%20my%20medication%20inquiry%20and%20want%20a%20live%20team%20to%20help%20place%20my%20order%20immediately."
+    class="support-card bg-slate-50 border border-slate-200 rounded-2xl p-5 block"
+  >
+
+    <div class="text-3xl mb-3">
+      🍎
+    </div>
+
+    <h3 class="text-lg font-bold mb-2">
+      iMessage
+    </h3>
+
+    <p class="text-xs text-slate-700 mb-4">
+      Continue with Apple iMessage support.
+    </p>
+
+    <div class="text-xs font-semibold text-slate-700">
+      +91 94200 59603
+    </div>
+
+  </a>
+
+  <!-- RCS -->
+  <a
+    href="sms:+918275595850?&body=Hello%2C%20I%20have%20submitted%20my%20medication%20inquiry%20and%20want%20a%20live%20team%20to%20help%20place%20my%20order%20immediately."
+    class="support-card bg-blue-50 border border-blue-200 rounded-2xl p-5 block"
+  >
+
+    <div class="text-3xl mb-3">
+      💬
+    </div>
+
+    <h3 class="text-lg font-bold mb-2">
+      RCS Chat
+    </h3>
+
+    <p class="text-xs text-slate-700 mb-4">
+      Continue through Android RCS messaging.
+    </p>
+
+    <div class="text-xs font-semibold text-blue-700">
+      +91 82755 95850
+    </div>
+
+  </a>
+
+</div>
+
+  <!-- CALL -->
+  <a
+    href="tel:+918275595850"
+    class="support-card bg-orange-50 border border-orange-200 rounded-2xl p-6 block"
+  >
+    <div class="text-4xl mb-4">
+      ☎
+    </div>
+
+    <h3 class="text-xl font-bold mb-2">
+      International Call
+    </h3>
+
+    <p class="text-sm text-slate-700 mb-5">
+      Speak directly with our medication assistance team.
+    </p>
+
+    <div class="text-sm font-semibold text-orange-700">
+      Call Support Team
+    </div>
+  </a>
+
+  <!-- CALLBACK -->
+  <a
+    href="sms:+918275595850?&body=Hello%2C%20I%20have%20submitted%20my%20medication%20inquiry%20and%20would%20like%20a%20callback%20from%20your%20live%20support%20team."
+    class="support-card bg-purple-50 border border-purple-200 rounded-2xl p-6 block"
+  >
+
+    <div class="text-4xl mb-4">
+      📞
+    </div>
+
+    <h3 class="text-xl font-bold mb-2">
+      Request Callback
+    </h3>
+
+    <p class="text-sm text-slate-700 mb-5">
+      Our team can contact you directly regarding your request.
+    </p>
+
+    <div
+      class="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-xl font-semibold text-center"
+    >
+      Schedule Callback
+    </div>
+
+      </a>
+
+    </div>
+
+
+    </section>
+
+    <!-- TRUST SECTION -->
+    <section class="grid md:grid-cols-3 gap-6 mb-8">
+
+      <div class="bg-white rounded-2xl shadow-soft border border-slate-100 p-6">
+        <div class="text-3xl mb-3">
+          🌍
+        </div>
+
+        <h3 class="text-xl font-bold mb-2">
+          International Assistance
+        </h3>
+
+        <p class="text-sm text-slate-600">
+          Supporting customers across USA, UK, Europe & Australia.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-soft border border-slate-100 p-6">
+        <div class="text-3xl mb-3">
+          📦
+        </div>
+
+        <h3 class="text-xl font-bold mb-2">
+          Export Grade Packaging
+        </h3>
+
+        <p class="text-sm text-slate-600">
+          Secure packaging assistance and shipment support available.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-soft border border-slate-100 p-6">
+        <div class="text-3xl mb-3">
+          🔒
+        </div>
+
+        <h3 class="text-xl font-bold mb-2">
+          Secure Communication
+        </h3>
+
+        <p class="text-sm text-slate-600">
+          Multiple protected communication channels for customer assistance.
+        </p>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- HEADER SCRIPT -->
+  <script>
+    async function loadHeader() {
+      const header = await fetch('header.html');
+
+      document.getElementById('header-placeholder').innerHTML =
+        await header.text();
+
+      if (window.initCurrencySelect) {
+        window.initCurrencySelect();
+      }
+
+      const menuBtn = document.getElementById('menu-btn');
+      const closeBtn = document.getElementById('close-menu');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const sidebar = document.getElementById('sidebar');
+
+      if (menuBtn && sidebar && mobileMenu) {
+
+        menuBtn.addEventListener('click', () => {
+          mobileMenu.classList.remove('hidden');
+
+          setTimeout(() => {
+            sidebar.classList.remove('translate-x-full');
+          }, 10);
+        });
+
+        closeBtn.addEventListener('click', () => {
+          sidebar.classList.add('translate-x-full');
+
+          setTimeout(() => {
+            mobileMenu.classList.add('hidden');
+          }, 300);
+        });
+
+        mobileMenu.addEventListener('click', (e) => {
+
+          if (e.target === mobileMenu) {
+            sidebar.classList.add('translate-x-full');
+
+            setTimeout(() => {
+              mobileMenu.classList.add('hidden');
+            }, 300);
+          }
+
+        });
+
+      }
+    }
+
+    loadHeader();
+  </script>
+
+  <!-- REQUEST DATA SCRIPT -->
+  <script>
+
+    /* =========================================
+      RANDOM LIVE DATA
+      ========================================= */
+
+      // RANDOM SPECIALISTS ONLINE
+
+      const specialistsOnline =
+        Math.floor(Math.random() * 5) + 3;
+
+      // RANDOM REQUEST ID
+
+      const requestNumber =
+        Math.floor(
+          10000 + Math.random() * 90000
+        );
+
+      document.getElementById(
+        "onlineSpecialists"
+      ).innerText =
+        `${specialistsOnline} Specialists Online Now`;
+
+      document.getElementById(
+        "requestId"
+      ).innerText =
+        `VEG-${requestNumber}`;
+
+
+    const submittedTime =
+      new Date().toLocaleString();
+
+    document.getElementById("submittedTime").innerText =
+      submittedTime;
+
+    const requestedItems =
+      document.getElementById("requestedItems");
+
+    const cart =
+      JSON.parse(localStorage.getItem("cart")) || [];
+
+    if (cart.length === 0) {
+
+      requestedItems.innerHTML = `
+        <div class="text-slate-500 text-sm">
+          Medication request details will appear here.
+        </div>
+      `;
+
+    } else {
+
+      cart.forEach(item => {
+
+        const quantity =
+          item.quantity || 1;
+
+        requestedItems.innerHTML += `
+          <div class="flex items-center justify-between border border-slate-100 rounded-xl p-3">
+            
+            <div>
+              <h4 class="font-semibold">
+                ${item.name || "Medication"}
+              </h4>
+
+              <p class="text-xs text-slate-500">
+                ${item.pack || "Standard Pack"}
+              </p>
+            </div>
+
+            <div class="text-sm font-semibold">
+              Qty: ${quantity}
+            </div>
+
+          </div>
+        `;
+      });
+
+    }
+  </script>
+
+</body>
+</html>

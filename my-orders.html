@@ -125,7 +125,13 @@
               order.items
                 ?.map(
 
-                  item => `
+                  item => {
+                    const pricing = item.pricing || {};
+                    const finalTotalUSD =
+                      pricing.final_total_usd ??
+                      item.final_total_usd;
+
+                    return `
 
                     <div class="border rounded-lg p-3 mt-2">
 
@@ -140,30 +146,21 @@
                       </p>
 
                       <p>
-                        <strong>Price:</strong>
-                        $${item.total_price_usd || 0}
+                        <strong>Final Total:</strong>
+                        ${finalTotalUSD !== undefined ? `$${Number(finalTotalUSD).toFixed(2)}` : 'Pricing unavailable'}
                       </p>
 
                     </div>
 
-                  `
+                  `;
+                  }
 
                 )
                 .join('');
 
             const totalAmount =
-              order.items?.reduce(
-
-                (sum, item) =>
-
-                  sum +
-                  Number(
-                    item.total_price_usd || 0
-                  ),
-
-                0
-
-              ) || 0;
+              order.pricingSummary?.grandTotalUSD ??
+              order.totals?.grandTotalUSD;
 
             card.innerHTML = `
 
@@ -211,7 +208,7 @@
                 <p class="text-xl font-bold mt-4">
 
                   Total:
-                  $${totalAmount}
+                  ${totalAmount !== undefined ? `$${Number(totalAmount).toFixed(2)}` : 'Pricing unavailable'}
 
                 </p>
 

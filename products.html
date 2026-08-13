@@ -8,6 +8,7 @@
     />
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="currency-utils.js"></script>
+  <script src="pricing-engine.js"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -16,7 +17,166 @@
     };
   </script>
   <script src="dev-fix.js"></script>
-</head>
+<style>
+    .qty-dropdown{
+    position:relative;
+    width:100%;
+    max-width:100%;
+    flex:1;
+    display:block;
+    margin-top:10px;
+    font-size:13px;
+}
+
+    .qty-dropdown,
+    .qty-selected,
+    .qty-options{
+        width:100%;
+        box-sizing:border-box;
+    }
+
+    .qty-selected{
+    width:100%;
+    border:1px solid #d1d5db;
+    border-radius:8px;
+    background:#fff;
+    cursor:pointer;
+    overflow:hidden;
+}
+
+    .qty-header,
+    .qty-row{
+        display:grid;
+        grid-template-columns:12% 36% 24% 28%;
+        align-items:center;
+        gap:0;
+        width:100%;
+    }
+
+    .qty-header{
+        background:#f8fafc;
+        padding:7px 4px;
+        border-bottom:1px solid #e5e7eb;
+        font-size:13px;
+        font-weight:500;
+    }
+
+    .qty-header span:nth-child(1),
+    .qty-header span:nth-child(2){
+        font-weight:700;
+        text-decoration:underline;
+    }
+
+    .qty-header span:nth-child(3),
+    .qty-header span:nth-child(4){
+        font-weight:500;
+    }
+    
+    .qty-header span,
+    .qty-row span{
+        white-space:nowrap; 
+        text-align:center;
+        padding:0 2px;
+        overflow:hidden;
+        text-overflow:ellipsis;
+    }
+
+    
+    .qty-selected-row{
+        padding:8px 10px;
+    }
+
+    .qty-selected-row::after{
+        content:"▾";
+        float:right;
+        color:#0284c7;
+        font-size:11px;
+    }
+
+    .qty-options{
+        display:none;
+        position:absolute;
+        left:0;
+        right:0;
+        top:100%;
+        background:#fff;
+        border:1px solid #d1d5db;
+        border-top:none;
+        z-index:100;
+        box-shadow:0 8px 18px rgba(0,0,0,.08);
+        max-height:250px;
+        overflow-y:auto;
+    }
+
+    .qty-row{
+        padding:7px 4px;
+        cursor:pointer;
+        transition:.2s;
+        font-size:13px;
+        border-top:1px solid #f1f5f9;
+    }
+
+    .qty-row:hover{
+        background:#eff6ff;
+    }
+
+    .qty-row.active{
+        background:#dbeafe;
+        font-weight:600;
+    }
+
+    .qty-dropdown.open .qty-options{
+        display:block;
+    }
+
+    .qty-title{
+        font-size:12px;
+        color:#64748b;
+        margin-bottom:5px;
+        font-weight:600;
+    }
+
+        @media(max-width:768px){
+
+        .qty-dropdown{
+            width:100%;
+            min-width:100%;
+        }
+
+        .qty-selected{
+            width:100%;
+        }
+
+        .qty-options{
+            width:100%;
+        }
+
+        .qty-header,
+        .qty-row{
+            display:grid;
+            width:100%;
+            grid-template-columns:minmax(34px,12%) minmax(82px,34%) minmax(52px,18%) minmax(92px,36%);
+            font-size:10px;
+            column-gap:0;
+        }
+
+        .qty-header{
+            padding:6px 4px;
+        }
+
+        .qty-header span,
+        .qty-row span{
+            padding:0 1px;
+        }
+
+        .qty-selected-row{
+            padding:8px 4px;
+        }
+
+      }
+    </style>
+
+    </head>
 
 <body class="text-gray-800 bg-gray-50">
   <!-- Header placeholder -->
@@ -30,7 +190,7 @@
 
   <!-- Search & Category Filter -->
   <div
-    class="max-w-6xl mx-auto px-4 mb-8 flex flex-col md:flex-row md:justify-between md:items-center gap-4">
+    class="max-w-7xl mx-auto px-4 mb-8 flex flex-col md:flex-row md:justify-between md:items-center gap-4">
     <input id="searchBar" type="text" placeholder="Search medicines..."
       class="w-full md:w-1/2 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand" />
     <select id="categoryFilter" class="border rounded p-2">
@@ -57,9 +217,8 @@
   </div>
 
   <!-- Product Grid -->
-  <div id="productGrid"
-    class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 pb-16"></div>
-
+<div id="productGrid" class="max-w-7xl mx-auto px-4 mb-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+</div>
   <!-- Modal Overlay for alerts and confirmations -->
   <div id="modalOverlay"
     class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
@@ -174,15 +333,184 @@ from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
     const categoryFilter = document.getElementById('categoryFilter');
 
     function getSelectedCurrency() {
-      return window.currencyUtils?.getSelectedCurrency?.() || 'GBP';
+      return window.pricingEngine.getDisplayedCurrency();
     }
 
     function formatForeignCurrency(value) {
-      const currency = getSelectedCurrency();
-      const converted = window.currencyUtils?.convertFromUsd
-        ? window.currencyUtils.convertFromUsd(value, currency)
-        : value;
-      return `${currency} ${Number(converted || 0).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
+      return window.pricingEngine.formatLocalAmount(value, {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
+      });
+    }
+
+    function formatLocalCurrency(value) {
+      return window.pricingEngine.formatCurrencyAmount(value, getSelectedCurrency(), {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
+      });
+    }
+         function getRegionalPriceData(variant){
+
+    const currency=getSelectedCurrency();
+
+    switch(currency){
+
+        case "USD":
+            return{
+                buyWithUs:variant.price_usd,
+                marketPrice:variant.market_price_usd,
+                isManual:true
+            };
+
+        case "GBP":
+            if(variant.price_gbp!==undefined){
+                return{
+                    buyWithUs:variant.price_gbp,
+                    marketPrice:variant.market_price_gbp,
+                    isManual:true
+                };
+            }
+            break;
+
+        case "AUD":
+            if(variant.price_aud!==undefined){
+                return{
+                    buyWithUs:variant.price_aud,
+                    marketPrice:variant.market_price_aud,
+                    isManual:true
+                };
+            }
+            break;
+
+    }
+
+    const pricing=getVariantPricing(variant);
+
+    return{
+        buyWithUs:pricing.final_price_local,
+        marketPrice:pricing.final_price_local,
+        isManual:false
+    };
+
+}
+      function getPerTablet(variant){
+        if(!variant.quantity) return "-";
+        const regional = getRegionalPriceData(variant);
+          return window.pricingEngine.formatLocalAmount(
+              regional.buyWithUs / variant.quantity,
+            {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }
+        );
+
+    }
+
+      function buildQuantityDropdown(product){
+
+          return `
+      <div class="qty-dropdown">
+
+      <div class="qty-title">
+      Select Qty
+      </div>
+
+      <div class="qty-selected">
+      <div class="qty-header">
+      <span>Qty</span>
+      <span>Buy With Us</span>
+      <span>Per Tab</span>
+      <span>USA Retail Price</span>
+      </div>
+
+      <div class="qty-selected-row qty-row"></div>
+      </div>
+
+      <div class="qty-options"></div>
+      </div>
+      `;
+
+      }
+          function getVariantPricing(variant){
+
+        const currency = getSelectedCurrency();
+
+        if(currency==="USD"){
+
+            return window.pricingEngine.calculateItemPricing({
+                price_usd: variant.price_usd,
+                price_inr: variant.price_inr,
+                shipping_usd: SHIPPING_USD
+            },1);
+
+        }
+
+        if(currency==="GBP" && variant.price_gbp!==undefined){
+
+            return window.pricingEngine.calculateItemPricing({
+                price_usd: variant.price_gbp,
+                price_inr: 0,
+                shipping_usd: SHIPPING_USD
+            },1);
+
+        }
+
+        if(currency==="AUD" && variant.price_aud!==undefined){
+
+            return window.pricingEngine.calculateItemPricing({
+                price_usd: variant.price_aud,
+                price_inr: 0,
+                shipping_usd: SHIPPING_USD
+            },1);
+
+        }
+
+        return window.pricingEngine.calculateItemPricing({
+            price_usd: variant.price_usd,
+            price_inr: variant.price_inr,
+            shipping_usd: SHIPPING_USD
+        },1);
+
+    }
+
+    function buildCartItem(product, variant) {
+      // Store raw inputs and the normalized pricing snapshot produced by the engine.
+            const baseItem = {
+          name: product.name,
+          brand: product.brand,
+          pack: variant.pack,
+          quantity: 1,
+
+          price_usd: variant.price_usd,
+          market_price_usd: variant.market_price_usd,
+
+          price_gbp: variant.price_gbp,
+          market_price_gbp: variant.market_price_gbp,
+
+          price_aud: variant.price_aud,
+          market_price_aud: variant.market_price_aud,
+
+          price_inr: variant.price_inr,
+          shipping_usd: SHIPPING_USD,
+          image: product.image
+      };
+      const normalized = window.pricingEngine.normalizeCartItem(baseItem, 1);
+
+      return {
+        ...baseItem,
+        raw: normalized.raw,
+        pricing: normalized.pricing,
+        shipping_inr: normalized.raw.shipping_inr,
+        final_price_usd: normalized.pricing.final_price_usd,
+        final_price_inr: normalized.pricing.final_price_inr,
+        final_total_usd: normalized.pricing.final_total_usd,
+        final_total_inr: normalized.pricing.final_total_inr,
+        final_price_local: normalized.pricing.final_price_local,
+        final_total_local: normalized.pricing.final_total_local,
+        selected_currency: normalized.pricing.selected_currency,
+        total_price_usd: normalized.pricing.final_total_usd,
+        total_price_inr: normalized.pricing.final_total_inr
+      };
     }
 
     async function loadProducts() {
@@ -194,47 +522,140 @@ from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
       productGrid.innerHTML = '';
       products.forEach((p) => {
         const card = document.createElement('div');
-        card.className = 'bg-white border rounded-xl p-4 shadow-sm hover:shadow-lg transition flex flex-col';
-        const dropdownOptions = p.variants
-          .map((v) => `<option value="${p.variants.indexOf(v)}">${v.pack} – ${formatForeignCurrency(v.price_usd)}</option>`)
-          .join('');
+
+        card.className =
+      'bg-white border rounded-xl p-3 md:p-4 shadow-sm hover:shadow-lg transition flex flex-col cursor-pointer';
+
+        card.addEventListener("click", (e) => {
+
+            // Don't open details when interacting with controls
+            if (
+                e.target.closest(".variantSelect") ||
+                e.target.closest(".add-to-cart-btn")
+            ) {
+                return;
+            }
+
+            window.location.href =
+                `product-details.html?product=${encodeURIComponent(p.name)}`;
+        });
+
         card.innerHTML = `
           <img src="${p.image}" alt="${p.name}" class="w-full h-40 object-contain mb-3 rounded" />
           <h2 class="font-semibold text-lg text-brand">${p.name}</h2>
           <p class="text-sm text-gray-600">${p.brand}</p>
           <p class="text-sm text-gray-500 mb-2">${p.composition}</p>
           <p class="text-sm text-gray-600 mb-1"><strong>Use:</strong> ${p.use}</p>
-          <a href="product-details.html?product=${encodeURIComponent(p.name)}" class="inline-flex items-center gap-1 text-sm text-brand font-semibold hover:underline">View details<span aria-hidden="true">→</span></a>
-          <select class="variantSelect border mt-2 p-2 rounded w-full text-sm focus:ring-2 focus:ring-brand">
-            <option disabled selected>Order Quantity</option>
-            ${dropdownOptions}
-          </select>
-           <p class="mt-2 text-xs text-gray-500">Shipping: +${formatForeignCurrency(SHIPPING_USD)} (added per product)</p>
+          ${buildQuantityDropdown(p)}
+           <p class="mt-2 text-xs text-gray-500">Shipping: +${formatForeignCurrency(getVariantPricing({ price_usd: 0, price_inr: 0 }).final_shipping_usd)} (added per product)</p>
           <div class="price-display mt-3 text-sm text-gray-700"></div>
           <button class="add-to-cart-btn mt-auto bg-brand text-white py-2 px-3 rounded-lg hover:bg-blue-700 transition mt-3">Add to Cart</button>
         `;
-        const select = card.querySelector('.variantSelect');
         const priceDisplay = card.querySelector('.price-display');
         const addBtn = card.querySelector('.add-to-cart-btn');
-          select.addEventListener('change', (e) => {
-          const variant = p.variants[e.target.value];
-                const shippingInr = variant.price_usd > 0 ? (variant.price_inr / variant.price_usd) * SHIPPING_USD : 0;
-          const totalUsd = variant.price_usd + SHIPPING_USD;
-          const totalInr = variant.price_inr + shippingInr;
-          priceDisplay.innerHTML = `
-            <div class="mt-2 p-2 border border-blue-100 rounded-lg bg-blue-50 text-sm space-y-1">
-              <p>💊 <span class="font-medium text-brand">Medicine:</span> ${formatForeignCurrency(variant.price_usd)} | INR ${variant.price_inr.toFixed(2)}</p>
-              <p>🚚 <span class="font-medium text-brand">Shipping:</span> ${formatForeignCurrency(SHIPPING_USD)} | INR ${shippingInr.toFixed(2)}</p>
-              <p class="font-semibold text-brand">Total: ${formatForeignCurrency(totalUsd)} | INR ${totalInr.toFixed(2)}</p>
-            </div>
+        const qtyDropdown = card.querySelector(".qty-dropdown");
+        const qtySelected = qtyDropdown.querySelector(".qty-selected-row");
+        const qtyOptions = qtyDropdown.querySelector(".qty-options");
+
+        let selectedVariantIndex = 0;
+
+        function renderQty(index){
+
+            const variant = p.variants[index];
+
+            const regional = getRegionalPriceData(variant);
+
+          qtySelected.innerHTML=`
+          <span>${variant.quantity}</span>
+          <span>${formatLocalCurrency(regional.buyWithUs)}</span>
+          <span>${getPerTablet(variant)}</span>
+          <span>${formatLocalCurrency(regional.marketPrice)}</span>
           `;
+
+        }
+
+        qtyOptions.innerHTML="";
+
+        p.variants.forEach((variant,index)=>{
+
+        const row=document.createElement("div");
+
+        row.className="qty-row";
+
+        const regional = getRegionalPriceData(variant);
+
+        row.innerHTML=`
+        <span>${variant.quantity}</span>
+        <span>${formatLocalCurrency(regional.buyWithUs)}</span>
+        <span>${getPerTablet(variant)}</span>
+        <span>${formatLocalCurrency(regional.marketPrice)}</span>
+        `;
+        if(index===0)
+        row.classList.add("active");
+
+        row.onclick=(e)=>{
+
+        e.stopPropagation();
+
+        qtyOptions
+        .querySelectorAll(".qty-row")
+        .forEach(r=>r.classList.remove("active"));
+
+        row.classList.add("active");
+
+        selectedVariantIndex=index;
+
+        renderQty(index);
+
+        qtyDropdown.classList.remove("open");
+
+        const pricing=getVariantPricing(variant);
+
+        priceDisplay.innerHTML=`
+        <div class="mt-2 p-2 border border-blue-100 rounded-lg bg-blue-50 text-sm space-y-1">
+        <p>💊 <span class="font-medium text-brand">Medicine:</span> ${formatLocalCurrency(getRegionalPriceData(variant).buyWithUs)} | INR ${pricing.final_price_inr.toFixed(2)}</p>
+        <p>🚚 <span class="font-medium text-brand">Shipping:</span> ${formatForeignCurrency(pricing.final_shipping_usd)} | INR ${pricing.final_shipping_inr.toFixed(2)}</p>
+        <p class="font-semibold text-brand">Total: ${formatLocalCurrency(pricing.final_total_local)} | INR ${pricing.final_total_inr.toFixed(2)}</p>
+        </div>
+        `;
+
+        };
+
+        qtyOptions.appendChild(row);
+
         });
+
+        renderQty(0);
+
+        qtyDropdown
+        .querySelector(".qty-selected")
+        .onclick=(e)=>{
+
+        e.stopPropagation();
+
+        document
+        .querySelectorAll(".qty-dropdown")
+        .forEach(d=>{
+
+        if(d!==qtyDropdown)
+        d.classList.remove("open");
+
+        });
+
+        qtyDropdown.classList.toggle("open");
+
+        };
+
+        document.addEventListener("click",()=>{
+
+        qtyDropdown.classList.remove("open");
+
+        });
+
+
+          
         addBtn.addEventListener('click', async () => {
-          const variantIndex = select.selectedIndex - 1;
-          if (variantIndex < 0) {
-            showModal('Please select a quantity before adding to cart.');
-            return;
-          }
+          const variantIndex = selectedVariantIndex;
           if (!currentUser) {
             // Not logged in
             showModal('Please log in to add items to your cart.', false);
@@ -244,25 +665,16 @@ from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
               window.location.href = 'login.html?redirect=products.html';
             };
             return;
+              }
+              if(!p.variants[variantIndex]){
+              showModal("Please select quantity.");
+              return;
           }
           // Add to local cart (for quick display)
          const selectedVariant = p.variants[variantIndex];
-          const shippingInr = selectedVariant.price_usd > 0 ? (selectedVariant.price_inr / selectedVariant.price_usd) * SHIPPING_USD : 0;
-          const totalUsd = selectedVariant.price_usd + SHIPPING_USD;
-          const totalInr = selectedVariant.price_inr + shippingInr;
+          const cartItem = buildCartItem(p, selectedVariant);
           const cart = JSON.parse(localStorage.getItem('cart')) || [];
-          cart.push({
-            name: p.name,
-            brand: p.brand,
-            pack: selectedVariant.pack,
-            price_usd: selectedVariant.price_usd,
-            price_inr: selectedVariant.price_inr,
-            shipping_usd: SHIPPING_USD,
-            shipping_inr: parseFloat(shippingInr.toFixed(2)),
-           total_price_usd: Math.round(totalUsd),
-            total_price_inr: parseFloat(totalInr.toFixed(2)),
-            image: p.image
-          });
+          cart.push(cartItem);
           localStorage.setItem('cart', JSON.stringify(cart));
           // Save to Firestore under user cart subcollection
           try {
@@ -289,31 +701,7 @@ await setDoc(
 
     productId,
 
-    name: p.name,
-
-    brand: p.brand,
-
-    pack: selectedVariant.pack,
-
-    quantity: 1,
-
-    price_usd: selectedVariant.price_usd,
-
-    price_inr: selectedVariant.price_inr,
-
-    shipping_usd: SHIPPING_USD,
-
-    shipping_inr: parseFloat(
-      shippingInr.toFixed(2)
-    ),
-
-    total_price_usd: Math.round(totalUsd),
-
-    total_price_inr: parseFloat(
-      totalInr.toFixed(2)
-    ),
-
-    image: p.image,
+    ...cartItem,
 
     dateAdded:
       new Date().toISOString()
@@ -324,7 +712,10 @@ await setDoc(
           } catch (error) {
             console.error('Error adding to Firestore cart:', error);
           }
-          showModal(`${p.name} (${selectedVariant.pack}) added to cart.`, true);
+          showModal(
+          `${p.name}<br><strong>${selectedVariant.pack}</strong> added to cart.`,
+          true
+          );
         });
         productGrid.appendChild(card);
       });
