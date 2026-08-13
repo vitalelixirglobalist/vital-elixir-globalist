@@ -45,17 +45,13 @@
       </div>
         <div class="md:hidden flex items-center gap-2">
 
-        <select
-          <select
-          id="currencySelectMobileTop"
-          onchange="window.handleCurrencyChange(this.value)"
-          class="mobile-currency rounded-lg border-2 border-sky-300 bg-white text-slate-900 px-3 py-2 text-sm font-bold focus:outline-none">
-          <option value="USD">USD</option>
-          <option value="GBP">GBP</option>
-          <option value="EUR">EUR</option>
-          <option value="CAD">CAD</option>
-          <option value="AUD">AUD</option>
-          <option value="GHS">GHS</option>
+        <select id="currencySelectMobileTop" class="mobile-currency rounded-lg border-2 border-sky-300 bg-white text-slate-900 px-3 py-2 text-sm font-bold focus:outline-none">
+        <option value="USD">USD</option>
+        <option value="GBP">GBP</option>
+        <option value="EUR">EUR</option>
+        <option value="CAD">CAD</option>
+        <option value="AUD">AUD</option>
+        <option value="GHS">GHS</option>
         </select>
 
         <button id="menu-btn" class="text-white focus:outline-none">
@@ -341,126 +337,7 @@ svg {
   width: auto !important;
 }
 </style>
-<script>
-(function () {
-  const CURRENCY_KEY = 'selectedCurrency';
 
-  const rates = {
-    USD: 1,
-    GBP: 0.79,
-    EUR: 0.92,
-    CAD: 1.36,
-    AUD: 1.52,
-    GHS: 12.0
-  };
-
-  const defaultCurrency = 'USD';
-
-  function getSelectedCurrency() {
-    return localStorage.getItem(CURRENCY_KEY) || defaultCurrency;
-  }
-
-  function setSelectedCurrency(currency) {
-
-  if (!rates[currency]) return;
-
-  localStorage.setItem(
-    CURRENCY_KEY,
-    currency
-  );
-
-}
-
-window.currencyUtils = {
-
-  ...(window.currencyUtils || {}),
-
-  rates: window.currencyUtils?.rates || rates,
-
-  getSelectedCurrency:
-    window.currencyUtils?.getSelectedCurrency || getSelectedCurrency,
-
-  setSelectedCurrency:
-    window.currencyUtils?.setSelectedCurrency || setSelectedCurrency
-
-};
-
-})();
-</script>
-
-<script>
-
-document.addEventListener(
-  'DOMContentLoaded',
-  () => {
-
-    const desktop =
-      document.getElementById(
-        'currencySelect'
-      );
-
-      const mobile =
-      document.getElementById(
-        'currencySelectMobileTop'
-      );
-
-    const current =
-      window.currencyUtils
-        .getSelectedCurrency();
-
-    if (desktop) {
-      desktop.value = current;
-    }
-
-    if (mobile) {
-      mobile.value = current;
-    }
-
-            let currencyChanging = false;
-
-       window.handleCurrencyChange = function(valueOrEvent) {
-
-          if (currencyChanging) return;
-
-          currencyChanging = true;
-
-          const currency =
-            typeof valueOrEvent === "string"
-                ? valueOrEvent
-                : valueOrEvent.target.value;
-
-          window.currencyUtils.setSelectedCurrency(currency);
-
-          if (desktop) desktop.value = currency;
-          if (mobile) mobile.value = currency;
-
-          document.dispatchEvent(
-            new CustomEvent("currency:change", {
-              detail: { currency }
-            })
-          );
-
-          window.location.reload();
-
-        }
-
-    if (desktop) {
-
-      desktop.addEventListener("input", handleCurrencyChange);
-      desktop.addEventListener("change", handleCurrencyChange);
-          }
-
-    if (mobile) {
-
-      mobile.addEventListener("input", handleCurrencyChange);
-      mobile.addEventListener("change", handleCurrencyChange);
-     
-    }
-
-  }
-);
-
-</script>
 <!-- JS for Hamburger Menu -->
 <script>
   document.addEventListener("DOMContentLoaded", () => {

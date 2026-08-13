@@ -38,19 +38,34 @@
     })}`;
   }
 
-  function initCurrencySelect() {
-    const select = document.getElementById('currencySelect');
-    if (!select || select.dataset.currencyBound === 'true') return;
+    function initCurrencySelect() {
+    const desktopSelect = document.getElementById('currencySelect');
+    const mobileSelect = document.getElementById('currencySelectMobileTop');
+    const selects = [desktopSelect, mobileSelect].filter(Boolean);
+    if (!selects.length) return;
+    const currentCurrency = getSelectedCurrency();
+    selects.forEach((select) => {
+      select.value = currentCurrency;
+      if (select.dataset.currencyBound === 'true') return;
+      select.dataset.currencyBound = 'true';
+      select.addEventListener('change', (event) => {
+        const nextCurrency = event.target.value;
 
-    select.dataset.currencyBound = 'true';
-    select.value = getSelectedCurrency();
+        if (!rates[nextCurrency]) return;
 
-    select.addEventListener('change', (event) => {
-      const nextCurrency = event.target.value;
-      if (nextCurrency === getSelectedCurrency()) return;
+        // Keep desktop + mobile selectors synchronized
+        selects.forEach((otherSelect) => {
+          otherSelect.value = nextCurrency;
+        });
 
-      setSelectedCurrency(nextCurrency);
-      window.location.reload();
+        if (nextCurrency === getSelectedCurrency()) return;
+
+        // Save selected currency permanently in browser
+        setSelectedCurrency(nextCurrency);
+
+        // Reload page so all prices update
+        window.location.reload();
+      });
     });
   }
 
