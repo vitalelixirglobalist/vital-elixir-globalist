@@ -82,6 +82,16 @@
           text-overflow:ellipsis;
       }
 
+      /* Allow only the Retail Price heading to wrap */
+      .qty-header span:last-child{
+          white-space:normal;
+          overflow:visible;
+          text-overflow:unset;
+          line-height:1.15;
+          text-align:center;
+          word-break:keep-all;
+      }
+
       .qty-selected-row{
           padding:10px 6px;
       }
@@ -232,7 +242,7 @@
                       <span>Qty</span>
                       <span>Buy With Us</span>
                       <span>Per Tab</span>
-                      <span>USA  Retail Price</span>
+                      <span id="marketPriceHeading">USA Retail Price</span>
                   </div>
                   <div class="qty-row qty-selected-row">
                       <span id="selectedQty">-</span>
@@ -340,6 +350,28 @@
         minimumFractionDigits: 0,
         maximumFractionDigits: 0
       });
+    }
+
+    function getMarketPriceHeading(){
+
+    switch(getSelectedCurrency()){
+        case "USD":
+            return "USA Retail Price";
+        case "GBP":
+            return "UK Retail Price";
+        case "AUD":
+            return "AUS Retail Price";
+        case "EUR":
+            return "EUR Retail Price";
+        case "CAD":
+            return "CAD Retail Price";
+        case "GHS":
+            return "GHS Retail Price";
+        default:
+            return getSelectedCurrency() + " Retail Price";
+
+      }
+
     }
 
     function getRegionalPriceData(variant){
@@ -514,9 +546,13 @@
           doseOption.textContent=product.composition;
           dosageSelect.appendChild(doseOption);
           qtyOptions.innerHTML="";
-          function renderQty(index){
+      function renderQty(index){
               const variant=product.variants[index];
               const regional = getRegionalPriceData(variant);
+              const marketPriceHeading =
+              document.getElementById("marketPriceHeading");
+              marketPriceHeading.textContent =
+                  getMarketPriceHeading();
               selectedQty.textContent=variant.quantity;
               selectedPrice.textContent = formatLocalCurrency(regional.buyWithUs);
               selectedPerTab.textContent = getPerTablet(variant);

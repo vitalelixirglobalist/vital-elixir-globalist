@@ -80,8 +80,15 @@
         overflow:hidden;
         text-overflow:ellipsis;
     }
+    .qty-header span:last-child{
+    white-space:normal;
+    overflow:visible;
+    text-overflow:unset;
+    line-height:1.15;
+    text-align:center;
+    word-break:keep-all;
+    }
 
-    
     .qty-selected-row{
         padding:8px 10px;
     }
@@ -137,7 +144,9 @@
     }
 
         @media(max-width:768px){
-
+        .qty-header span:last-child{
+            font-size:9px;
+        }
         .qty-dropdown{
             width:100%;
             min-width:100%;
@@ -349,22 +358,39 @@ from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
         maximumFractionDigits: 0
       });
     }
-         function getRegionalPriceData(variant){
 
-    const currency=getSelectedCurrency();
+      function getMarketPriceHeading(){
 
-    switch(currency){
+      switch(getSelectedCurrency()){
+          case "USD":
+              return "USA Retail Price";
+          case "GBP":
+              return "UK Retail Price";
+          case "AUD":
+              return "AUS Retail Price";
+          case "EUR":
+              return "EUR Retail Price";
+          case "CAD":
+              return "CAD Retail Price";
+          case "GHS":
+            return "GHS Retail Price";
+          default:
+              return getSelectedCurrency() + " Retail Price";
+      }
 
-        case "USD":
+  }
+    function getRegionalPriceData(variant){
+        const currency=getSelectedCurrency();
+        switch(currency){
+            case "USD":
             return{
                 buyWithUs:variant.price_usd,
                 marketPrice:variant.market_price_usd,
                 isManual:true
             };
-
-        case "GBP":
-            if(variant.price_gbp!==undefined){
-                return{
+            case "GBP":
+                if(variant.price_gbp!==undefined){
+                    return{
                     buyWithUs:variant.price_gbp,
                     marketPrice:variant.market_price_gbp,
                     isManual:true
@@ -420,7 +446,7 @@ from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
       <span>Qty</span>
       <span>Buy With Us</span>
       <span>Per Tab</span>
-      <span>USA Retail Price</span>
+      <span id="marketPriceHeading">USA Retail Price</span>
       </div>
 
       <div class="qty-selected-row qty-row"></div>
@@ -541,7 +567,7 @@ from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
         });
 
         card.innerHTML = `
-          <img src="${p.image}" alt="${p.name}" class="w-full h-40 object-contain mb-3 rounded" />
+          <img src="${p.thumbnail}" alt="${p.name}" class="w-full h-40 object-contain mb-3 rounded" />
           <h2 class="font-semibold text-lg text-brand">${p.name}</h2>
           <p class="text-sm text-gray-600">${p.brand}</p>
           <p class="text-sm text-gray-500 mb-2">${p.composition}</p>
@@ -560,11 +586,14 @@ from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
         let selectedVariantIndex = 0;
 
         function renderQty(index){
-
             const variant = p.variants[index];
-
             const regional = getRegionalPriceData(variant);
+            const header = card.querySelector("#marketPriceHeading");
+              if(header){
+                  header.textContent =
+                      getMarketPriceHeading();
 
+              }
           qtySelected.innerHTML=`
           <span>${variant.quantity}</span>
           <span>${formatLocalCurrency(regional.buyWithUs)}</span>
