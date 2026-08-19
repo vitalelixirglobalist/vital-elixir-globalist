@@ -7,8 +7,10 @@
   <meta name="description" content="Explore genuine medicines by category – tablets, creams, drops, sprays and injections."
     />
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="header.css">
   <script src="currency-utils.js"></script>
   <script src="pricing-engine.js"></script>
+  <script src="header.js" defer></script>
   <script>
     tailwind.config = {
       theme: {
@@ -189,7 +191,7 @@
 
 <body class="text-gray-800 bg-gray-50">
   <!-- Header placeholder -->
-  <div id="header-placeholder"></div>
+  <div id="header-placeholder" style="height:95px;"></div>
 
   <!-- Page Title -->
   <section class="text-center py-10 bg-gradient-to-b from-blue-50 to-white">
@@ -257,30 +259,17 @@
     // Load header and menu
    async function loadHeader() {
       const header = await fetch('header.html');
-      document.getElementById('header-placeholder').innerHTML = await header.text();
-      if (window.initCurrencySelect) {
-        window.initCurrencySelect();
+
+      document.getElementById('header-placeholder').innerHTML =
+          await header.text();
+
+      if(window.initHeader){
+          window.initHeader();
       }
-      // copy mobile menu functionality
-      const menuBtn = document.getElementById('menu-btn');
-      const closeBtn = document.getElementById('close-menu');
-      const mobileMenu = document.getElementById('mobile-menu');
-      const sidebar = document.getElementById('sidebar');
-      if (!menuBtn || !sidebar || !mobileMenu) return;
-      menuBtn.addEventListener('click', () => {
-        mobileMenu.classList.remove('hidden');
-        setTimeout(() => sidebar.classList.remove('translate-x-full'), 10);
-      });
-      closeBtn.addEventListener('click', () => {
-        sidebar.classList.add('translate-x-full');
-        setTimeout(() => mobileMenu.classList.add('hidden'), 300);
-      });
-      mobileMenu.addEventListener('click', (e) => {
-        if (e.target === mobileMenu) {
-          sidebar.classList.add('translate-x-full');
-          setTimeout(() => mobileMenu.classList.add('hidden'), 300);
-        }
-      });
+
+      if(window.initCurrencySelect){
+          window.initCurrencySelect();
+      }
     }
     loadHeader();
   </script>
@@ -316,7 +305,7 @@ from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
     const modalOk = document.getElementById('modalOk');
     const modalProceed = document.getElementById('modalProceed');
     function showModal(message, showProceed = false) {
-      modalMessage.textContent = message;
+      modalMessage.innerHTML = message;
       modalOverlay.classList.remove('hidden');
       if (showProceed) {
         modalProceed.classList.remove('hidden');

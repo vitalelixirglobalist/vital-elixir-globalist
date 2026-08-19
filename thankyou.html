@@ -6,7 +6,9 @@
   <title>Thank You – Vital Elixir Globalist</title>
   <meta name="description" content="Thank you for your purchase from Vital Elixir Globalist." />
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="header.css">
     <script src="currency-utils.js"></script>
+    <script src="header.js" defer></script>
   <script>
     tailwind.config = { theme: { extend: { colors: { brand: '#0284c7' } } } };
   </script>
@@ -29,9 +31,16 @@
     document.getElementById('year').textContent = new Date().getFullYear();
     async function loadHeader() {
       const header = await fetch('header.html');
-      document.getElementById('header-placeholder').innerHTML = await header.text();
-            if (window.initCurrencySelect) {
-        window.initCurrencySelect();
+
+      document.getElementById('header-placeholder').innerHTML =
+          await header.text();
+
+      if(window.initHeader){
+          window.initHeader();
+      }
+
+      if(window.initCurrencySelect){
+          window.initCurrencySelect();
       }
       const menuBtn = document.getElementById('menu-btn');
       const closeBtn = document.getElementById('close-menu');

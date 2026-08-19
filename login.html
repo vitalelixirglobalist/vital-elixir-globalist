@@ -6,7 +6,9 @@
   <title>Login – Vital Elixir Globalist</title>
   <meta name="description" content="Login or register to manage your orders and cart on Vital Elixir Globalist." />
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="header.css">
     <script src="currency-utils.js"></script>
+    <script src="header.js" defer></script>
   <script>
     tailwind.config = {
       theme: {
@@ -60,10 +62,17 @@
   <script>
     // Load header
     async function loadHeader() {
-      const resp = await fetch('header.html');
-      document.getElementById('header-placeholder').innerHTML = await resp.text();
-            if (window.initCurrencySelect) {
-        window.initCurrencySelect();
+      const header = await fetch('header.html');
+
+      document.getElementById('header-placeholder').innerHTML =
+          await header.text();
+
+      if(window.initHeader){
+          window.initHeader();
+      }
+
+      if(window.initCurrencySelect){
+          window.initCurrencySelect();
       }
     }
     loadHeader();
