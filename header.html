@@ -1,239 +1,297 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vital Elixir Globalist</title>
+<!-- Header component reused across all pages -->
+<header class="site-header shadow">
+  <div class="max-w-6xl mx-auto flex justify-between items-center px-4 py-3 header-content">
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: '#0284c7' // Custom brand color (sky-600)
-          }
-        }
-      }
-    }
-  </script>
-
-  <!-- Styling for Header & Floating Action Bar -->
-  <style>
-    .site-header {
-      background-color: #0f172a; /* Dark header background */
-      color: #ffffff;
-      position: sticky;
-      top: 0;
-      z-index: 40;
-    }
-    
-    .floating-action-bar {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      z-index: 50;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 8px;
-    }
-
-    .fab-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .fab-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #ffffff;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
-      transition: transform 0.2s ease, opacity 0.2s ease;
-    }
-
-    .fab-icon:hover {
-      transform: scale(1.08);
-      opacity: 0.95;
-    }
-
-    .fab-icon svg {
-      width: 22px;
-      height: 22px;
-    }
-
-    .fab-icon.whatsapp { background-color: #25D366; }
-    .fab-icon.phone { background-color: #0284c7; }
-    .fab-icon.sms-primary { background-color: #3b82f6; }
-    .fab-icon.sms-secondary { background-color: #6366f1; }
-    .fab-icon.telegram { background-color: #0088cc; }
-    .fab-icon.instagram { 
-      background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); 
-    }
-
-    .fab-label {
-      background: rgba(15, 23, 42, 0.85);
-      color: #fff;
-      font-size: 11px;
-      font-weight: 600;
-      padding: 3px 8px;
-      border-radius: 6px;
-    }
-  </style>
-</head>
-<body class="bg-gray-50 text-slate-800">
-
-  <!-- Header component reused across all pages -->
-  <header class="site-header shadow">
-  <div class="header-content">
-    
-    <!-- 1. Left: Fixed Logo -->
-    <a class="site-logo" href="index.html" aria-label="Go to homepage">
-      <img 
-        src="assets/images/logo.jpeg"
-        alt="Vital Elixir Globalist logo"
-        loading="eager"
-        fetchpriority="high"
-        decoding="async"
-      />
-    </a>
-
-    <!-- 2. Middle: Flexible wrapping navigation that uses all middle space -->
-    <nav class="hidden md:flex desktop-nav">
-      <a href="index.html" class="nav-item">🏠 Home</a>
-      <a href="products.html" class="nav-item">💊 Medicines</a>
-      <a href="doctor-consultation.html" class="nav-item">🩺 Doctor Consultation</a>
-      <a href="global-partner-earnings-program.html" class="nav-item font-semibold text-sky-400">🌐 Global Partner</a>
-      <a href="cart.html" class="nav-item">🛒 Cart</a>
-      <a href="live-track.html" class="nav-item">📦 Live Track</a>
-      <a href="shipping.html" class="nav-item">🚚 Shipping</a>
-      <a href="faq.html" class="nav-item">❓ FAQ</a>
-      <a href="compliance.html" class="nav-item">✅ Compliance</a>
-      <a href="payment.html" class="nav-item">💳 Payment</a>
-      <a href="about.html" class="nav-item">👥 About Us</a>
-      <a href="my-account.html" class="nav-item">👤 Account</a>
-    </nav>
-
-    <!-- 3. Right: Fixed Action Controls (Never collapses/overlaps) -->
-    <div class="header-actions">
-      <a href="login.html" class="login-btn">
-        🔐 Login
+    <div class="flex items-center gap-6">
+      <a class="site-logo" href="index.html" aria-label="Go to homepage">
+        <img
+          src="assets/images/logo.jpeg"
+          alt="Vital Elixir Globalist logo"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
       </a>
 
-      <select id="currencySelect" class="desktop-currency">
-        <option value="USD">USD</option>
-        <option value="GBP">GBP</option>
-        <option value="EUR">EUR</option>
-        <option value="CAD">CAD</option>
-        <option value="AUD">AUD</option>
-        <option value="GHS">GHS</option>
-      </select>
-
-      <!-- Mobile hamburger toggle -->
-      <button id="menu-btn" class="mobile-toggle md:hidden" aria-label="Open menu">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
-        </svg>
-      </button>
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex gap-6 text-sm font-medium desktop-nav">
+        <a href="index.html" class="hover:text-brand">🏠 Home</a>
+        <a href="products.html" class="hover:text-brand">💊 Medicines</a>
+        <a href="doctor-consultation.html" class="hover:text-brand">🩺 Doctor Consultation</a>
+        <a href="global-partner-earnings-program.html" class="hover:text-brand font-semibold text-brand">🌐 Global Partner Program</a>
+        <a href="cart.html" class="hover:text-brand">🛒 Cart</a>
+        <a href="live-track.html" class="hover:text-brand">📦 Live Track</a>
+        <a href="shipping.html" class="hover:text-brand">🚚 Shipping · Privacy · Refund</a>
+        <a href="faq.html" class="hover:text-brand">❓ FAQ</a>
+        <a href="compliance.html" class="hover:text-brand">✅ Compliance · Contact</a>
+        <a href="payment.html" class="hover:text-brand">💳 Payment · Terms</a>
+        <a href="about.html" class="hover:text-brand">👥 About Us</a>
+        <a href="my-account.html" class="hover:text-brand">👤 My Account</a>
+        <a href="login.html" class="bg-brand text-white py-1 px-3 rounded-md hover:opacity-90 transition">🔐 Login</a>
+      </nav>
     </div>
 
-  </div>
-</header>
+    <div class="flex items-center gap-3">
 
-    <!-- Sidebar Menu (Mobile View) -->
-    <div id="mobile-menu" class="hidden fixed inset-0 bg-gray-900 bg-opacity-70 z-50 transition-opacity">
-      <div id="sidebar" class="w-72 bg-white h-full p-6 shadow-lg transform transition-transform duration-300 translate-x-full right-0 absolute overflow-y-auto">
-        <!-- Close Button -->
-        <button id="close-menu" class="text-gray-600 hover:text-brand mb-6" aria-label="Close navigation menu">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      <div class="hidden md:flex items-center gap-3">
+        <span class="text-white font-bold text-sm whitespace-nowrap">🌍 Currency</span>
+
+        <select
+          id="currencySelect"
+          class="desktop-currency rounded-lg border-2 border-sky-300 bg-white text-slate-900 px-3 py-2 text-sm font-bold shadow-md focus:outline-none focus:ring-2 focus:ring-sky-300"
+        >
+          <option value="USD">USD</option>
+          <option value="GBP">GBP</option>
+          <option value="EUR">EUR</option>
+          <option value="CAD">CAD</option>
+          <option value="AUD">AUD</option>
+          <option value="GHS">GHS</option>
+        </select>
+      </div>
+
+      <div class="md:hidden flex items-center gap-2">
+
+        <select
+          id="currencySelectMobileTop"
+          class="mobile-currency rounded-lg border-2 border-sky-300 bg-white text-slate-900 px-3 py-2 text-sm font-bold focus:outline-none"
+        >
+          <option value="USD">USD</option>
+          <option value="GBP">GBP</option>
+          <option value="EUR">EUR</option>
+          <option value="CAD">CAD</option>
+          <option value="AUD">AUD</option>
+          <option value="GHS">GHS</option>
+        </select>
+
+        <button id="menu-btn" class="text-white focus:outline-none">
+          <svg
+            class="w-7 h-7"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16m-7 6h7"
+            />
           </svg>
         </button>
 
-        <!-- Mobile Navigation Links -->
-        <nav class="flex flex-col gap-4 text-gray-700 text-base font-medium pb-28">
-          <a href="index.html" class="hover:text-brand">🏠 Home</a>
-          <a href="products.html" class="hover:text-brand">💊 Medicines</a>
-          <a href="doctor-consultation.html" class="hover:text-brand">🩺 Doctor Consultation</a>
-          <a href="global-partner-earnings-program.html" class="hover:text-brand font-semibold text-brand">🌐 Global Partner Program</a>
-          <a href="cart.html" class="hover:text-brand">🛒 Cart</a>
-          <a href="live-track.html" class="hover:text-brand">📦 Live Track</a>
-          <a href="shipping.html" class="hover:text-brand">🚚 Shipping · Privacy · Refund</a>
-          <a href="faq.html" class="hover:text-brand">❓ FAQ</a>
-          <a href="compliance.html" class="hover:text-brand">✅ Compliance · Contact</a>
-          
-          <hr class="border-gray-200 my-2">
-          <p class="text-xs uppercase tracking-wide text-gray-400 font-semibold">Support & Legal</p>
-          <a href="payment.html" class="hover:text-brand">💳 Payment · Terms</a>
-          <a href="my-account.html" class="hover:text-brand">👤 My Account</a>
-          <a href="about.html" class="hover:text-brand">👥 About Us</a>
-
-          <a href="login.html" class="bg-brand text-white py-2 rounded-lg text-center hover:opacity-90 transition font-semibold">🔐 Login</a>
-        </nav>
       </div>
     </div>
-  </header>
 
-  <!-- Floating Side Action Bar -->
-  <aside class="floating-action-bar" aria-label="Quick contact options">
-    <div class="fab-stack" aria-label="Quick contact icons">
-      <a class="fab-icon whatsapp" href="https://wa.me/+918275595850?text=Hello%2C%20I%27d%20like%20to%20inquire%20about%20a%20medicine%20export." target="_blank" aria-label="WhatsApp">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.94 14.6L2 22l5.55-1.44A10 10 0 1 0 12 2Zm5.23 14.7c-.23.66-1.34 1.27-1.9 1.35-.49.07-1.12.1-1.8-.11-.41-.13-.94-.3-1.62-.59-2.85-1.23-4.7-4.09-4.85-4.29-.14-.2-1.16-1.55-1.16-2.96s.73-2.1.99-2.39c.26-.29.57-.36.76-.36h.55c.17 0 .4-.06.63.48.23.55.8 1.9.87 2.04.07.14.12.3.02.49-.1.2-.15.32-.3.49-.15.17-.32.38-.45.51-.15.15-.3.32-.13.63.17.32.75 1.23 1.6 2 .11.11 1.93 1.5 2.96 1.85.3.11.49.09.67-.05.17-.13.76-.63.96-.85.2-.22.4-.18.68-.11.28.07 1.75.82 2.05.97.3.15.5.22.57.34.07.12.07.7-.16 1.35Z"/></svg>
-      </a>
-      <a class="fab-icon phone" href="tel:+918275595850" aria-label="Call now">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.46 15.46 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V21a1 1 0 0 1-1 1C11.4 22 2 12.6 2 1a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.24 1.02l-2.2 2.2Z"/></svg>
-      </a>
-      <a class="fab-icon sms-primary" href="sms:+918275595850?&body=Hello%2C%20I%27d%20like%20to%20inquire%20about%20a%20medicine%20export." aria-label="SMS Primary">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v8.5a2 2 0 0 1-2 2H8l-4 3.5V6a2 2 0 0 1 2-2Z"/><path d="M8 9h8M8 13h5" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>
-      </a>
-      <a class="fab-icon sms-secondary" href="sms:+919420059603?&body=Hello%2C%20I%27d%20like%20to%20inquire%20about%20a%20medicine%20export." aria-label="iMessage">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 5.5A3.5 3.5 0 0 1 7.5 2h9A3.5 3.5 0 0 1 20 5.5v6A3.5 3.5 0 0 1 16.5 15H9.2l-3.7 2.9c-.3.24-.75.02-.7-.36l.3-2.54V5.5Z"/><path d="M8 8.75h8M8 11.25h5.5" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/></svg>
-      </a>
-      <a class="fab-icon telegram" href="https://t.me/vitalelixirglobalist?text=Hello%2C%20I%27d%20like%20to%20inquire%20about%20a%20medicine%20export." target="_blank" aria-label="Telegram">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.92 3.27a1.25 1.25 0 0 0-1.6-1.6L3.38 8.08a1.25 1.25 0 0 0 .05 2.36l4.35 1.55 1.55 4.35a1.25 1.25 0 0 0 2.36.05l3.43-5.3a.62.62 0 0 1 .88-.19l2.55 1.77a1.25 1.25 0 0 0 1.92-.76l1.45-7.64Z"/><path d="M9.1 12.36 19.1 5.9" stroke="#fff" stroke-width="1.3" stroke-linecap="round"/></svg>
-      </a>
-      <a class="fab-icon instagram" href="https://ig.me/m/vitalelixirglobalist?text=Hello%2C%20I%27d%20like%20to%20inquire%20about%20a%20medicine%20export." target="_blank" aria-label="Instagram DM">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><circle cx="12" cy="12" r="3.5"/><circle cx="17" cy="7" r="1" fill="currentColor" stroke="none"/></svg>
-      </a>
+  </div>
+
+  <!-- Sidebar Menu (Mobile View) -->
+  <div
+    id="mobile-menu"
+    class="hidden fixed inset-0 bg-gray-800 bg-opacity-70 z-50"
+  >
+    <div
+      id="sidebar"
+      class="w-64 bg-white h-full p-6 shadow-lg transform transition-transform duration-300 translate-x-full right-0 absolute overflow-y-auto"
+    >
+
+      <!-- Close Button -->
+      <button id="close-menu" class="text-gray-600 hover:text-brand mb-6">
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+
+      <!-- Mobile Navigation Links -->
+      <nav class="flex flex-col gap-4 text-gray-700 text-lg font-medium pb-28">
+
+        <!-- Currency selector moved to top header -->
+        <a href="index.html" class="hover:text-brand">🏠 Home</a>
+
+        <a href="products.html" class="hover:text-brand">
+          💊 Medicines
+        </a>
+
+        <a href="doctor-consultation.html" class="hover:text-brand">
+          🩺 Doctor Consultation
+        </a>
+
+        <a
+          href="global-partner-earnings-program.html"
+          class="hover:text-brand font-semibold text-brand"
+        >
+          🌐 Global Partner Program
+        </a>
+
+        <a href="cart.html" class="hover:text-brand">
+          🛒 Cart
+        </a>
+
+        <a href="live-track.html" class="hover:text-brand">
+          📦 Live Track
+        </a>
+
+        <a href="shipping.html" class="hover:text-brand">
+          🚚 Shipping · Privacy · Refund
+        </a>
+
+        <a href="faq.html" class="hover:text-brand">
+          ❓ FAQ
+        </a>
+
+        <a href="compliance.html" class="hover:text-brand">
+          ✅ Compliance · Contact
+        </a>
+
+        <hr class="border-gray-500 my-2">
+
+        <p class="text-xs uppercase tracking-wide text-gray-300">
+          Support & Legal
+        </p>
+
+        <a href="payment.html" class="hover:text-brand">
+          💳 Payment · Terms
+        </a>
+
+        <a href="my-account.html" class="hover:text-brand">
+          👤 My Account
+        </a>
+
+        <a href="about.html" class="hover:text-brand">
+          👥 About Us
+        </a>
+
+        <a
+          href="login.html"
+          class="bg-brand text-white py-2 rounded-lg text-center hover:opacity-90 transition"
+        >
+          🔐 Login
+        </a>
+
+      </nav>
     </div>
-    <div class="fab-label" aria-hidden="true">24/7 Live Chat Team</div>
-  </aside>
+  </div>
+</header>
 
-  <!-- Mobile Drawer Toggle Script -->
-  <script>
-    const menuBtn = document.getElementById('menu-btn');
-    const closeBtn = document.getElementById('close-menu');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const sidebar = document.getElementById('sidebar');
+<!-- Floating Side Action Bar (visible on all pages) -->
+<aside
+  class="floating-action-bar"
+  aria-label="Quick contact options"
+>
 
-    if (menuBtn && mobileMenu && sidebar) {
-      menuBtn.addEventListener('click', () => {
-        mobileMenu.classList.remove('hidden');
-        setTimeout(() => {
-          sidebar.classList.remove('translate-x-full');
-        }, 10);
-      });
+  <div class="fab-stack" aria-label="Quick contact icons">
 
-      const closeDrawer = () => {
-        sidebar.classList.add('translate-x-full');
-        setTimeout(() => {
-          mobileMenu.classList.add('hidden');
-        }, 300);
-      };
+    <a
+      class="fab-icon whatsapp"
+      href="https://wa.me/+918275595850?text=Hello%2C%20I%27d%20like%20to%20inquire%20about%20a%20medicine%20export."
+      target="_blank"
+      aria-label="WhatsApp"
+    >
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2a10 10 0 0 0-8.94 14.6L2 22l5.55-1.44A10 10 0 1 0 12 2Zm5.23 14.7c-.23.66-1.34 1.27-1.9 1.35-.49.07-1.12.1-1.8-.11-.41-.13-.94-.3-1.62-.59-2.85-1.23-4.7-4.09-4.85-4.29-.14-.2-1.16-1.55-1.16-2.96s.73-2.1.99-2.39c.26-.29.57-.36.76-.36h.55c.17 0 .4-.06.63.48.23.55.8 1.9.87 2.04.07.14.12.3.02.49-.1.2-.15.32-.3.49-.15.17-.32.38-.45.51-.15.15-.3.32-.13.63.17.32.75 1.23 1.6 2 .11.11 1.93 1.5 2.96 1.85.3.11.49.09.67-.05.17-.13.76-.63.96-.85.2-.22.4-.18.68-.11.28.07 1.75.82 2.05.97.3.15.5.22.57.34.07.12.07.7-.16 1.35Z"/>
+      </svg>
+    </a>
 
-      closeBtn.addEventListener('click', closeDrawer);
-      mobileMenu.addEventListener('click', (e) => {
-        if (e.target === mobileMenu) closeDrawer();
-      });
-    }
-  </script>
+    <a
+      class="fab-icon phone"
+      data-contact-number
+      href="tel:+918275595850"
+      aria-label="Call now"
+    >
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M6.62 10.79a15.46 15.46 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V21a1 1 0 0 1-1 1C11.4 22 2 12.6 2 1a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.24 1.02l-2.2 2.2Z"/>
+      </svg>
+    </a>
 
-  <script type="module" src="firebase-config.js"></script>
-</body>
-</html>
+    <a
+      class="fab-icon sms-primary"
+      href="sms:+918275595850?&body=Hello%2C%20I%27d%20like%20to%20inquire%20about%20a%20medicine%20export."
+      aria-label="SMS Primary"
+    >
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M4 4h16a2 2 0 0 1 2 2v8.5a2 2 0 0 1-2 2H8l-4 3.5V6a2 2 0 0 1 2-2Z"/>
+        <path
+          d="M8 9h8M8 13h5"
+          stroke="#fff"
+          stroke-width="1.5"
+          stroke-linecap="round"
+        />
+      </svg>
+    </a>
+
+    <a
+      class="fab-icon sms-secondary"
+      href="sms:+919420059603?&body=Hello%2C%20I%27d%20like%20to%20inquire%20about%20a%20medicine%20export."
+      aria-label="iMessage"
+    >
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M4 5.5A3.5 3.5 0 0 1 7.5 2h9A3.5 3.5 0 0 1 20 5.5v6A3.5 3.5 0 0 1 16.5 15H9.2l-3.7 2.9c-.3.24-.75.02-.7-.36l.3-2.54V5.5Z"/>
+        <path
+          d="M8 8.75h8M8 11.25h5.5"
+          stroke="#fff"
+          stroke-width="1.4"
+          stroke-linecap="round"
+        />
+      </svg>
+    </a>
+
+    <a
+      class="fab-icon telegram"
+      href="https://t.me/vitalelixirglobalist?text=Hello%2C%20I%27d%20like%20to%20inquire%20about%20a%20medicine%20export."
+      target="_blank"
+      aria-label="Telegram"
+    >
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M21.92 3.27a1.25 1.25 0 0 0-1.6-1.6L3.38 8.08a1.25 1.25 0 0 0 .05 2.36l4.35 1.55 1.55 4.35a1.25 1.25 0 0 0 2.36.05l3.43-5.3a.62.62 0 0 1 .88-.19l2.55 1.77a1.25 1.25 0 0 0 1.92-.76l1.45-7.64Z"/>
+        <path
+          d="M9.1 12.36 19.1 5.9"
+          stroke="#fff"
+          stroke-width="1.3"
+          stroke-linecap="round"
+        />
+      </svg>
+    </a>
+
+    <a
+      class="fab-icon instagram"
+      href="https://ig.me/m/vitalelixirglobalist?text=Hello%2C%20I%27d%20like%20to%20inquire%20about%20a%20medicine%20export."
+      target="_blank"
+      aria-label="Instagram DM"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.6"
+        aria-hidden="true"
+      >
+        <rect x="4" y="4" width="16" height="16" rx="4"/>
+        <circle cx="12" cy="12" r="3.5"/>
+        <circle
+          cx="17"
+          cy="7"
+          r="1"
+          fill="currentColor"
+          stroke="none"
+        />
+      </svg>
+    </a>
+
+  </div>
+
+  <div class="fab-label" aria-hidden="true">
+    24/7 Live Chat Team
+  </div>
+
+</aside>
+
+<script type="module" src="firebase-config.js"></script>
