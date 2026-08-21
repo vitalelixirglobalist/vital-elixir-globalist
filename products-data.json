@@ -1281,1013 +1281,1317 @@
   ]
 },
 {
+  "id": "isotretinoin30",
   "name": "Isotretinoin 30 mg",
   "brand": "Generic",
   "composition": "Isotretinoin 30 mg",
   "category": "Dermatology",
-  "use": "Severe acne treatment",
-  "image": "assets/images/products/isotretinoin30.jpeg",
+  "use": "Treatment of severe acne",
+  "thumbnail": "assets/images/products/isotretinoin30.jpeg",
+  "images": [
+    "assets/images/products/isotretinoin30.jpeg"
+  ],
   "variants": [
-    { "pack": "100 Tablets", "price_usd": 79, "price_inr": 0 },
-    { "pack": "300 Tablets", "price_usd": 149, "price_inr": 0 }
+    { "pack": "100 Capsules", "quantity": 100, "price_usd": 79, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 0 },
+    { "pack": "300 Capsules", "quantity": 300, "price_usd": 149, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 0 }
   ]
 },
 {
-  "name": "Tretinoin Cream 0.25%",
+  "id": "tretinoin0025",
+  "name": "Tretinoin Cream 0.025%",
   "brand": "Ret Grow-A",
-  "composition": "Tretinoin 0.25%",
+  "composition": "Tretinoin 0.025%",
   "category": "Dermatology",
-  "use": "Treatment of acne and skin renewal",
-  "image": "assets/images/products/ret_grow_a_tretinoin_0.25.jpeg",
+  "use": "Treatment of acne vulgaris",
+  "thumbnail": "assets/images/products/ret_grow_a_tretinoin_0.25.jpeg",
+  "images": [
+    "assets/images/products/ret_grow_a_tretinoin_0.25.jpeg"
+  ],
   "variants": [
-    { "pack": "1 Tube", "price_usd": 39, "price_inr": 2600 },
-      { "pack": "3 Tubes", "price_usd": 49, "price_inr": 3200 },
-      { "pack": "5 Tubes", "price_usd": 59, "price_inr": 4300 },
-      { "pack": "7 Tubes", "price_usd": 69, "price_inr": 5210 },
-      { "pack": "9 Tubes", "price_usd": 79, "price_inr": 6500 }
+    { "pack": "1 Tube (20 g)", "quantity": 1, "price_usd": 39, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 2600 },
+    { "pack": "3 Tubes (20 g each)", "quantity": 3, "price_usd": 49, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3200 },
+    { "pack": "5 Tubes (20 g each)", "quantity": 5, "price_usd": 59, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4300 },
+    { "pack": "7 Tubes (20 g each)", "quantity": 7, "price_usd": 69, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5210 },
+    { "pack": "9 Tubes (20 g each)", "quantity": 9, "price_usd": 79, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 6500 }
   ]
 },
 {
+  "id": "ketorolacophthalmic",
   "name": "Ketorolac Tromethamine Ophthalmic Solution",
   "brand": "Generic",
   "composition": "Ketorolac Tromethamine",
   "category": "Ophthalmology",
-  "use": "Relief of eye pain and inflammation",
-  "image": "assets/images/products/ketorolac_eye_drop_5ml.jpeg",
+  "use": "Relief of ocular inflammation and associated symptoms",
+  "thumbnail": "assets/images/products/ketorolac_eye_drop_5ml.jpeg",
+  "images": [
+    "assets/images/products/ketorolac_eye_drop_5ml.jpeg"
+  ],
   "variants": [
-    { "pack": "1 Bottle (5 ml)", "price_usd": 15, "price_inr": 0 },
-    { "pack": "3 Bottles (5 ml each)", "price_usd": 25, "price_inr": 0 },
-    { "pack": "5 Bottles (5 ml each)", "price_usd": 35, "price_inr": 0 }
+    { "pack": "1 Bottle (5 ml)", "quantity": 1, "price_usd": 15, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 0 },
+    { "pack": "3 Bottles (5 ml each)", "quantity": 3, "price_usd": 25, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 0 },
+    { "pack": "5 Bottles (5 ml each)", "quantity": 5, "price_usd": 35, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 0 }
   ]
 },
 {
+  "id": "testosteronecypionate250",
   "name": "Testosterone Cypionate Injection 250 mg/ml",
   "brand": "Generic",
   "composition": "Testosterone Cypionate 250 mg/ml",
   "category": "Hormone Therapy",
-  "use": "Testosterone replacement therapy",
-  "image": "assets/images/products/testosterone_cypionate_250_injection.jpeg",
+  "use": "Testosterone replacement therapy for appropriate patients with testosterone deficiency",
+  "thumbnail": "assets/images/products/testosterone_cypionate_250_injection.jpeg",
+  "images": [
+    "assets/images/products/testosterone_cypionate_250_injection.jpeg"
+  ],
   "variants": [
-    { "pack": "1 Vial (10 ml)", "price_usd": 85, "price_inr": 0 },
-    { "pack": "3 Vials (10 ml each)", "price_usd": 129, "price_inr": 0 }
+    { "pack": "1 Vial (10 ml)", "quantity": 1, "price_usd": 85, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 0 },
+    { "pack": "3 Vials (10 ml each)", "quantity": 3, "price_usd": 129, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 0 }
   ]
 },
 {
+  "id": "ondansetroninjection2",
   "name": "Ondansetron Injection 2 mg/ml",
   "brand": "Generic",
   "composition": "Ondansetron 2 mg/ml",
   "category": "Antiemetic",
   "use": "Prevention and treatment of nausea and vomiting",
-  "image": "assets/images/products/ondansetron_injection_2mgml.jpeg",
+  "thumbnail": "assets/images/products/ondansetron_injection_2mgml.jpeg",
+  "images": [
+    "assets/images/products/ondansetron_injection_2mgml.jpeg"
+  ],
   "variants": [
-    { "pack": "1 Box (Pack of 10)", "price_usd": 69, "price_inr": 0 },
-    { "pack": "3 Boxes (Pack of 10 each)", "price_usd": 89, "price_inr": 0 }
+    { "pack": "1 Box (Pack of 10)", "quantity": 10, "price_usd": 69, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 0 },
+    { "pack": "3 Boxes (Pack of 10 each)", "quantity": 30, "price_usd": 89, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 0 }
   ]
 },
 {
+  "id": "ketorolacinjection10",
   "name": "Ketorolac Tromethamine Injection 10 mg",
   "brand": "Generic",
   "composition": "Ketorolac Tromethamine 10 mg",
   "category": "Pain Relief / Anti-inflammatory",
-  "use": "Short-term management of moderate to severe pain",
-  "image": "assets/images/products/ketorolac_injection_10mg.jpeg",
+  "use": "Short-term management of moderate to severe acute pain",
+  "thumbnail": "assets/images/products/ketorolac_injection_10mg.jpeg",
+  "images": [
+    "assets/images/products/ketorolac_injection_10mg.jpeg"
+  ],
   "variants": [
-    { "pack": "1 Injection", "price_usd": 45, "price_inr": 0 },
-    { "pack": "3 Injections", "price_usd": 55, "price_inr": 0 },
-    { "pack": "5 Injections", "price_usd": 65, "price_inr": 0 }
+    { "pack": "1 Injection", "quantity": 1, "price_usd": 45, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 0 },
+    { "pack": "3 Injections", "quantity": 3, "price_usd": 55, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 0 },
+    { "pack": "5 Injections", "quantity": 5, "price_usd": 65, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 0 }
   ]
 },
 {
+  "id": "sulbutiamine200",
   "name": "Sulbutiamine 200 mg",
   "brand": "Generic",
   "composition": "Sulbutiamine 200 mg",
-  "category": "Neurology / Cognitive Health",
-  "use": "Management of fatigue, asthenia, and cognitive support",
-  "image": "assets/images/products/sulbutiamine200.jpeg",
+  "category": "Neurology / Fatigue Management",
+  "use": "Symptomatic treatment of fatigue and asthenia in adults",
+  "thumbnail": "assets/images/products/sulbutiamine200.jpeg",
+  "images": [
+    "assets/images/products/sulbutiamine200.jpeg"
+  ],
   "variants": [
-    { "pack": "100 Tablets", "price_usd": 89, "price_inr": 0 },
-    { "pack": "300 Tablets", "price_usd": 159, "price_inr": 0 }
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 89, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 0 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 159, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 0 }
   ]
 },
 {
+  "id": "kamagraoraljelly100",
   "name": "Sildenafil 100 mg Oral Jelly",
   "brand": "Kamagra",
-  "composition": "Sildenafil Citrate 100 mg",
+  "composition": "Sildenafil Citrate equivalent to Sildenafil 100 mg",
   "category": "Men’s Health",
   "use": "Erectile dysfunction",
-  "image": "assets/images/products/kamagra_oral_jelly.jpeg",
+  "thumbnail": "assets/images/products/kamagra_oral_jelly.jpeg",
+  "images": [
+    "assets/images/products/kamagra_oral_jelly.jpeg"
+  ],
   "variants": [
-    { "pack": "50 Oral Jelly Pouches", "price_usd": 29, "price_inr": 0 },
-    { "pack": "100 Oral Jelly Pouches", "price_usd": 49, "price_inr": 0 }
+    { "pack": "50 Oral Jelly Pouches (5 g each)", "quantity": 50, "price_usd": 29, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 0 },
+    { "pack": "100 Oral Jelly Pouches (5 g each)", "quantity": 100, "price_usd": 49, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 0 }
   ]
 },
 {
+  "id": "atomoxetine60",
   "name": "Atomoxetine 60 mg",
   "brand": "Generic",
   "composition": "Atomoxetine 60 mg",
   "category": "Mental Health",
   "use": "Treatment of attention deficit hyperactivity disorder (ADHD)",
-  "image": "assets/images/products/atomoxetine60.jpeg",
+  "thumbnail": "assets/images/products/atomoxetine60.jpeg",
+  "images": [
+    "assets/images/products/atomoxetine60.jpeg"
+  ],
   "variants": [
-    { "pack": "100 Tablets", "price_usd": 89, "price_inr": 0 },
-    { "pack": "300 Tablets", "price_usd": 168, "price_inr": 0 }
+    { "pack": "100 Capsules", "quantity": 100, "price_usd": 89, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 0 },
+    { "pack": "300 Capsules", "quantity": 300, "price_usd": 168, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 0 }
   ]
 },
 {
+  "id": "zandushilajitgoldplus",
   "name": "Shilajit Gold Plus Capsules",
   "brand": "Zandu",
-  "composition": "Shilajit Gold Plus (2X Strength)",
+  "composition": "Shilajit Gold Plus Ayurvedic formulation",
   "category": "Herbal / Men’s Health",
-  "use": "Stamina, vigour, vitality, and overall strength support",
-  "image": "assets/images/products/zandu_shilajit_gold_plus.jpeg",
+  "use": "Support for strength, stamina, energy and vitality",
+  "thumbnail": "assets/images/products/zandu_shilajit_gold_plus.jpeg",
+  "images": [
+    "assets/images/products/zandu_shilajit_gold_plus.jpeg"
+  ],
   "variants": [
-    { "pack": "60 Capsules", "price_usd": 35, "price_inr": 0 },
-    { "pack": "180 Capsules", "price_usd": 78, "price_inr": 0 }
+    { "pack": "60 Capsules", "quantity": 60, "price_usd": 35, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 0 },
+    { "pack": "180 Capsules", "quantity": 180, "price_usd": 78, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 0 }
   ]
 },
 {
+  "id": "ivermectin3",
   "name": "Ivermectin 3 mg",
   "brand": "Generic",
   "composition": "Ivermectin 3 mg",
   "category": "Antiparasitic",
-  "use": "Treatment of parasitic infections",
-  "image": "assets/images/products/ivermectin3.jpeg",
+  "use": "Treatment of susceptible parasitic infections",
+  "thumbnail": "assets/images/products/ivermectin3.jpeg",
+  "images": [
+    "assets/images/products/ivermectin3.jpeg"
+  ],
   "variants": [
-    { "pack": "100 Tablets", "price_usd": 11, "price_inr": 0 },
-    { "pack": "300 Tablets", "price_usd": 19, "price_inr": 0 },
-    { "pack": "500 Tablets", "price_usd": 28, "price_inr": 0 }
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 11, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 0 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 19, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 0 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 28, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 0 }
   ]
 },
 {
-  "name": "Nystatin 50,000 IU",
+  "id": "nystatin500000",
+  "name": "Nystatin 500,000 IU",
   "brand": "Generic",
-  "composition": "Nystatin 50,000 IU",
+  "composition": "Nystatin 500,000 IU",
   "category": "Antifungal",
-  "use": "Treatment of fungal infections",
-  "image": "assets/images/products/nystatin_50000iu.jpeg",
+  "use": "Treatment of susceptible gastrointestinal Candida infections",
+  "thumbnail": "assets/images/products/nystatin_50000iu.jpeg",
+  "images": [
+    "assets/images/products/nystatin_50000iu.jpeg"
+  ],
   "variants": [
-    { "pack": "100 Tablets", "price_usd": 85, "price_inr": 0 },
-    { "pack": "300 Tablets", "price_usd": 131, "price_inr": 0 },
-    { "pack": "500 Tablets", "price_usd": 165, "price_inr": 0 }
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 85, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 0 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 131, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 0 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 165, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 0 }
   ]
 },
 {
+  "id": "nacetylcarnosineeyedrops",
   "name": "N-Acetylcarnosine Eye Drops",
   "brand": "Generic",
   "composition": "N-Acetylcarnosine",
-  "category": "Ophthalmology",
-  "use": "Eye health support and cataract management",
-  "image": "assets/images/products/n_acetylcarnosine_eye_drops_10ml.jpeg",
+  "category": "Ophthalmology / Eye Care",
+  "use": "Eye health and antioxidant support",
+  "thumbnail": "assets/images/products/n_acetylcarnosine_eye_drops_10ml.jpeg",
+  "images": [
+    "assets/images/products/n_acetylcarnosine_eye_drops_10ml.jpeg"
+  ],
   "variants": [
-    { "pack": "1 Bottle (10 ml)", "price_usd": 41, "price_inr": 0 },
-    { "pack": "3 Bottles (10 ml each)", "price_usd": 55, "price_inr": 0 },
-    { "pack": "5 Bottles (10 ml each)", "price_usd": 69, "price_inr": 0 }
+    { "pack": "1 Bottle (10 ml)", "quantity": 1, "price_usd": 41, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 0 },
+    { "pack": "3 Bottles (10 ml each)", "quantity": 3, "price_usd": 55, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 0 },
+    { "pack": "5 Bottles (10 ml each)", "quantity": 5, "price_usd": 69, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 0 }
   ]
 },
 {
+  "id": "minoxidiltopical5",
   "name": "Minoxidil Topical Solution 5%",
   "brand": "Generic",
-  "composition": "Minoxidil 5%",
+  "composition": "Minoxidil 5% w/v",
   "category": "Dermatology / Hair Care",
-  "use": "Treatment of hair loss and alopecia",
-  "image": "assets/images/products/minoxidil_5_percent_60ml.jpeg",
+  "use": "Hair regrowth treatment for gradual hereditary hair loss on the scalp",
+  "thumbnail": "assets/images/products/minoxidil_5_percent_60ml.jpeg",
+  "images": [
+    "assets/images/products/minoxidil_5_percent_60ml.jpeg"
+  ],
   "variants": [
-    { "pack": "1 Bottle (60 ml)", "price_usd": 59, "price_inr": 0 },
-    { "pack": "2 Bottles (60 ml each)", "price_usd": 85, "price_inr": 0 },
-    { "pack": "5 Bottles (60 ml each)", "price_usd": 111, "price_inr": 0 }
+    { "pack": "1 Bottle (60 ml)", "quantity": 1, "price_usd": 59, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 0 },
+    { "pack": "2 Bottles (60 ml each)", "quantity": 2, "price_usd": 85, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 0 },
+    { "pack": "5 Bottles (60 ml each)", "quantity": 5, "price_usd": 111, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 0 }
   ]
 },
 {
+  "id": "propranolol10",
   "name": "Propranolol 10 mg",
   "brand": "Generic",
   "composition": "Propranolol Hydrochloride 10 mg",
   "category": "Cardiology",
-  "use": "Management of high blood pressure, anxiety, and heart-related conditions",
-  "image": "assets/images/products/propranolol10.jpeg",
+  "use": "Management of hypertension and certain cardiovascular conditions",
+  "thumbnail": "assets/images/products/propranolol10.jpeg",
+  "images": [
+    "assets/images/products/propranolol10.jpeg"
+  ],
   "variants": [
-    { "pack": "100 Tablets (Shipping Included)", "price_usd": 39, "price_inr": 0 },
-    { "pack": "300 Tablets (Shipping Included)", "price_usd": 45, "price_inr": 0 },
-    { "pack": "500 Tablets (Shipping Included)", "price_usd": 63, "price_inr": 0 }
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 39, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 0 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 45, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 0 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 63, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 0 }
   ]
 },
 {
+  "id": "methandrostenolone20",
   "name": "Methandrostenolone 20 mg",
   "brand": "Danabol",
   "composition": "Methandrostenolone 20 mg",
   "category": "Anabolic Steroid",
-  "use": "Muscle growth and strength enhancement",
-  "image": "assets/images/products/danabol20.jpeg",
+  "use": "Anabolic-androgenic steroid; use and regulatory status vary by country",
+  "thumbnail": "assets/images/products/danabol20.jpeg",
+  "images": [
+    "assets/images/products/danabol20.jpeg"
+  ],
   "variants": [
-    { "pack": "100 Tablets", "price_usd": 69, "price_inr": 0 },
-    { "pack": "200 Tablets", "price_usd": 89, "price_inr": 0 },
-    { "pack": "300 Tablets", "price_usd": 109, "price_inr": 0 }
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 69, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 0 },
+    { "pack": "200 Tablets", "quantity": 200, "price_usd": 89, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 0 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 109, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 0 }
   ]
 },
 {
+  "id": "indomethacin25",
   "name": "Indomethacin 25 mg",
   "brand": "Generic",
   "composition": "Indomethacin 25 mg",
   "category": "Pain Relief / Anti-inflammatory",
-  "use": "Management of pain and inflammation",
-  "image": "assets/images/products/indomethacin25.jpeg",
+  "use": "Management of pain and inflammation associated with certain inflammatory musculoskeletal conditions",
+  "thumbnail": "assets/images/products/indomethacin25.jpeg",
+  "images": [
+    "assets/images/products/indomethacin25.jpeg"
+  ],
   "variants": [
-    { "pack": "300 Tablets", "price_usd": 79, "price_inr": 0 }
+    { "pack": "300 Capsules", "quantity": 300, "price_usd": 79, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 0 }
   ]
 },
   {
-    "name": "Finasteride 1 mg",
-    "brand": "Cipla",
-    "composition": "Finasteride 1 mg",
-    "category": "Men’s Health",
-    "use": "Hair loss treatment",
-    "image": "assets/images/products/finasteride1.jpeg",
-    "variants": [
-      { "pack": "100 Tablets", "price_usd": 20, "price_inr": 840 },
-      { "pack": "300 Tablets", "price_usd": 30, "price_inr": 1260 }
-    ]
-  },
+  "id": "finasteride1",
+  "name": "Finasteride 1 mg",
+  "brand": "Cipla",
+  "composition": "Finasteride 1 mg",
+  "category": "Dermatology / Hair Care",
+  "use": "Treatment of male pattern hair loss (androgenetic alopecia) in men",
+  "thumbnail": "assets/images/products/finasteride1.jpeg",
+  "images": [
+    "assets/images/products/finasteride1.jpeg"
+  ],
+  "variants": [
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 20, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 840 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 30, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 1260 }
+  ]
+},
   {
-    "name": "Finasteride 5 mg",
-    "brand": "Intas",
-    "composition": "Finasteride 5 mg",
-    "category": "Men’s Health",
-    "use": "Prostate enlargement",
-    "image": "assets/images/products/finasteride5.jpeg",
-    "variants": [
-      { "pack": "100 Tablets", "price_usd": 25, "price_inr": 1050 },
-      { "pack": "300 Tablets", "price_usd": 35, "price_inr": 1470 }
-    ]
-  },
+  "id": "finasteride5",
+  "name": "Finasteride 5 mg",
+  "brand": "Intas",
+  "composition": "Finasteride 5 mg",
+  "category": "Men’s Health / Urology",
+  "use": "Treatment of symptomatic benign prostatic hyperplasia (BPH) in men with an enlarged prostate",
+  "thumbnail": "assets/images/products/finasteride5.jpeg",
+  "images": [
+    "assets/images/products/finasteride5.jpeg"
+  ],
+  "variants": [
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 25, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 1050 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 35, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 1470 }
+  ]
+},
   {
-    "name": "Humalog Junior Kwikpen",
-    "brand": "Eli Lilly",
-    "composition": "Insulin Lispro 100 IU/ml",
-    "category": "Diabetes & Metabolic Care",
-    "use": "Fast-acting insulin",
-    "image": "assets/images/products/humalog_junior_kwikpen.jpeg",
-    "variants": [
-      { "pack": "1 Pen", "price_usd": 85, "price_inr": 3570 }
-    ]
-  },
+  "id": "insulinlispro100",
+  "name": "Insulin Lispro 100 IU/ml",
+  "brand": "Humalog Junior KwikPen",
+  "composition": "Insulin Lispro 100 IU/ml",
+  "category": "Antidiabetic",
+  "use": "Rapid-acting insulin for management of diabetes mellitus",
+  "thumbnail": "assets/images/products/humalog_junior_kwikpen.jpeg",
+  "images": [
+    "assets/images/products/humalog_junior_kwikpen.jpeg"
+  ],
+  "variants": [
+    { "pack": "1 Junior KwikPen (3 ml, 300 Units)", "quantity": 1, "price_usd": 85, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3570 }
+  ]
+},
   {
-    "name": "Orlistat 120 mg (Orlijohn)",
-    "brand": "Johnlee",
-    "composition": "Orlistat 120 mg",
-    "category": "Diabetes & Metabolic Care",
-    "use": "Weight loss aid",
-    "image": "assets/images/products/orlijohn_orlistat120.jpeg",
-    "variants": [
-      { "pack": "100 Tablets", "price_usd": 55, "price_inr": 2310 },
-      { "pack": "300 Tablets", "price_usd": 79, "price_inr": 3318 }
-    ]
-  },
+  "id": "orlistat120",
+  "name": "Orlistat 120 mg",
+  "brand": "Orlijohn",
+  "composition": "Orlistat 120 mg",
+  "category": "Weight Management",
+  "use": "Obesity management including weight loss and weight maintenance with a reduced-calorie diet",
+  "thumbnail": "assets/images/products/orlijohn_orlistat120.jpeg",
+  "images": [
+    "assets/images/products/orlijohn_orlistat120.jpeg"
+  ],
+  "variants": [
+    { "pack": "100 Capsules", "quantity": 100, "price_usd": 55, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 2310 },
+    { "pack": "300 Capsules", "quantity": 300, "price_usd": 79, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3318 }
+  ]
+},
+ {
+  "id": "mometasonefuroate01",
+  "name": "Mometasone Furoate 0.1% Cream",
+  "brand": "Glenmark",
+  "composition": "Mometasone Furoate 0.1%",
+  "category": "Dermatology & Skin Care",
+  "use": "Treatment of corticosteroid-responsive inflammatory and itchy skin conditions",
+  "thumbnail": "assets/images/products/mometasone_furoate_01.jpeg",
+  "images": [
+    "assets/images/products/mometasone_furoate_01.jpeg"
+  ],
+  "variants": [
+    { "pack": "3 Tubes", "quantity": 3, "price_usd": 10, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 420 },
+    { "pack": "5 Tubes", "quantity": 5, "price_usd": 19, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 798 }
+  ]
+},
   {
-    "name": "Mometasone Furoate 0.1% Cream",
-    "brand": "Glenmark",
-    "composition": "Mometasone Furoate 0.1%",
-    "category": "Dermatology & Skin Care",
-    "use": "Anti-inflammatory, skin allergy",
-    "image": "assets/images/products/mometasone_furoate_01.jpeg",
-    "variants": [
-      { "pack": "3 Tubes", "price_usd": 10, "price_inr": 420 },
-      { "pack": "5 Tubes", "price_usd": 19, "price_inr": 798 }
-    ]
-  },
+  "id": "clobetasolcream",
+  "name": "Clobetasol Propionate Cream 0.05%",
+  "brand": "Sun Pharma",
+  "composition": "Clobetasol Propionate 0.05%",
+  "category": "Dermatology & Skin Care",
+  "use": "Treatment of corticosteroid-responsive inflammatory and itchy skin conditions",
+  "thumbnail": "assets/images/products/clobetasol_cream.jpeg",
+  "images": [
+    "assets/images/products/clobetasol_cream.jpeg"
+  ],
+  "variants": [
+    { "pack": "3 Tubes", "quantity": 3, "price_usd": 35, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 1470 },
+    { "pack": "5 Tubes", "quantity": 5, "price_usd": 45, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 1890 },
+    { "pack": "9 Tubes", "quantity": 9, "price_usd": 99, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4158 }
+  ]
+},
   {
-    "name": "Clobetasol Cream",
-    "brand": "Sun Pharma",
-    "composition": "Clobetasol Propionate 0.05%",
-    "category": "Dermatology & Skin Care",
-    "use": "Eczema, psoriasis, skin allergy",
-    "image": "assets/images/products/clobetasol_cream.jpeg",
-    "variants": [
-      { "pack": "3 Tubes", "price_usd": 35, "price_inr": 1470 },
-      { "pack": "5 Tubes", "price_usd": 45, "price_inr": 1890 },
-      { "pack": "9 Tubes", "price_usd": 99, "price_inr": 4158 }
-    ]
-  },
+  "id": "xylocaine5ointment",
+  "name": "Xylocaine 5% Ointment",
+  "brand": "AstraZeneca",
+  "composition": "Lidocaine 5%",
+  "category": "Anesthetic / Pain Relief",
+  "use": "Local anesthesia and temporary relief of localized pain",
+  "thumbnail": "assets/images/products/xylocaine_5_ointment.jpeg",
+  "images": [
+    "assets/images/products/xylocaine_5_ointment.jpeg"
+  ],
+  "variants": [
+    { "pack": "3 Tubes (50 g each)", "quantity": 3, "price_usd": 29, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 1218 },
+    { "pack": "5 Tubes (50 g each)", "quantity": 5, "price_usd": 39, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 1638 },
+    { "pack": "7 Tubes (50 g each)", "quantity": 7, "price_usd": 45, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 1890 }
+  ]
+},
   {
-    "name": "Xylocaine 5% Ointment (50g)",
-    "brand": "AstraZeneca",
-    "composition": "Lidocaine 5%",
-    "category": "Dermatology & Skin Care",
-    "use": "Local anaesthetic for pain relief",
-    "image": "assets/images/products/xylocaine_5_ointment.jpeg",
-    "variants": [
-      { "pack": "3 Tubes", "price_usd": 29, "price_inr": 1218 },
-      { "pack": "5 Tubes", "price_usd": 39, "price_inr": 1638 },
-      { "pack": "7 Tubes", "price_usd": 45, "price_inr": 1890 }
-    ]
-  },
+  "id": "melasure",
+  "name": "Melasure Skin Lightening Emulgel",
+  "brand": "Melasure",
+  "composition": "Niacinamide + Kojic Acid Dipalmitate + Alpha Arbutin + Mulberry Extract + Licorice Extract",
+  "category": "Dermatology & Skin Care",
+  "use": "Support for uneven skin tone, dark spots and hyperpigmentation",
+  "thumbnail": "assets/images/products/melasure.jpeg",
+  "images": [
+    "assets/images/products/melasure.jpeg"
+  ],
+  "variants": [
+    { "pack": "3 Tubes (20 g each)", "quantity": 3, "price_usd": 54, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 2268 },
+    { "pack": "5 Tubes (20 g each)", "quantity": 5, "price_usd": 69, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 2898 }
+  ]
+},
   {
-    "name": "Melasure Skin Lightening Emulgel (20g)",
-    "brand": "Curatio",
-    "composition": "Hydroquinone + Tretinoin + Mometasone",
-    "category": "Dermatology & Skin Care",
-    "use": "Skin brightening, pigmentation control",
-    "image": "assets/images/products/melasure.jpeg",
-    "variants": [
-      { "pack": "3 Tubes", "price_usd": 54, "price_inr": 2268 },
-      { "pack": "5 Tubes", "price_usd": 69, "price_inr": 2898 }
-    ]
-  },
+  "id": "bepotastine15",
+  "name": "Bepotastine Besilate Ophthalmic Solution 1.5%",
+  "brand": "Ajanta",
+  "composition": "Bepotastine Besilate 1.5%",
+  "category": "Eye & Allergy Care",
+  "use": "Relief of ocular itching associated with allergic conjunctivitis",
+  "thumbnail": "assets/images/products/bepotastine_besilate_15.jpeg",
+  "images": [
+    "assets/images/products/bepotastine_besilate_15.jpeg"
+  ],
+  "variants": [
+    { "pack": "3 Bottles", "quantity": 3, "price_usd": 45, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 1890 },
+    { "pack": "5 Bottles", "quantity": 5, "price_usd": 65, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 2730 }
+  ]
+},
   {
-    "name": "Bepotastine Besilate Ophthalmic Solution 1.5%",
-    "brand": "Ajanta",
-    "composition": "Bepotastine Besilate 1.5%",
-    "category": "Eye & Allergy Care",
-    "use": "Eye allergy relief",
-    "image": "assets/images/products/bepotastine_besilate_15.jpeg",
-    "variants": [
-      { "pack": "3 Bottles", "price_usd": 45, "price_inr": 1890 },
-      { "pack": "5 Bottles", "price_usd": 65, "price_inr": 2730 }
-    ]
-  },
+  "id": "bimatoprost003",
+  "name": "Bimatoprost Ophthalmic Solution 0.03%",
+  "brand": "Lumigan",
+  "composition": "Bimatoprost 0.03%",
+  "category": "Eye & Allergy Care",
+  "use": "Reduction of elevated intraocular pressure in open-angle glaucoma and ocular hypertension",
+  "thumbnail": "assets/images/products/lumigan_bimatoprost_003.jpeg",
+  "images": [
+    "assets/images/products/lumigan_bimatoprost_003.jpeg"
+  ],
+  "variants": [
+    { "pack": "3 Bottles", "quantity": 3, "price_usd": 55, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 2310 },
+    { "pack": "5 Bottles", "quantity": 5, "price_usd": 75, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3150 }
+  ]
+},
   {
-    "name": "Lumigan 0.03% Ophthalmic Solution",
-    "brand": "Allergan",
-    "composition": "Bimatoprost 0.03%",
-    "category": "Eye & Allergy Care",
-    "use": "Glaucoma, eyelash growth",
-    "image": "assets/images/products/lumigan_bimatoprost_003.jpeg",
-    "variants": [
-      { "pack": "3 Bottles", "price_usd": 55, "price_inr": 2310 },
-      { "pack": "5 Bottles", "price_usd": 75, "price_inr": 3150 }
-    ]
-  },
+  "id": "budesonidenasalspray",
+  "name": "Budesonide Aqueous Nasal Spray 100 mcg",
+  "brand": "Cipla",
+  "composition": "Budesonide 100 mcg per spray",
+  "category": "ENT / Allergy",
+  "use": "Treatment of allergic rhinitis and associated nasal symptoms",
+  "thumbnail": "assets/images/products/budesonide_nasal_spray.jpeg",
+  "images": [
+    "assets/images/products/budesonide_nasal_spray.jpeg"
+  ],
+  "variants": [
+    { "pack": "3 Bottles", "quantity": 3, "price_usd": 20, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 840 },
+    { "pack": "5 Bottles", "quantity": 5, "price_usd": 30, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 1260 }
+  ]
+},
   {
-    "name": "Budesonide Nasal Spray",
-    "brand": "Cipla",
-    "composition": "Budesonide 100 mcg",
-    "category": "Eye & Allergy Care",
-    "use": "Nasal allergy, sinus relief",
-    "image": "assets/images/products/budesonide_nasal_spray.jpeg",
-    "variants": [
-      { "pack": "3 Bottles", "price_usd": 20, "price_inr": 840 },
-      { "pack": "5 Bottles", "price_usd": 30, "price_inr": 1260 }
-    ]
-  },
+  "id": "estradiolvalerate2",
+  "name": "Estradiol Valerate 2 mg",
+  "brand": "Abbott",
+  "composition": "Estradiol Valerate 2 mg",
+  "category": "Hormonal & Thyroid Care",
+  "use": "Hormone replacement therapy for estrogen-deficiency symptoms",
+  "thumbnail": "assets/images/products/estradiol.jpeg",
+  "images": [
+    "assets/images/products/estradiol.jpeg"
+  ],
+  "variants": [
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 35, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 1470 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 49, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 2058 }
+  ]
+},
   {
-    "name": "Estradiol Valerate 2 mg",
-    "brand": "Abbott",
-    "composition": "Estradiol Valerate 2 mg",
-    "category": "Hormonal & Thyroid Care",
-    "use": "Hormone replacement therapy",
-    "image": "assets/images/products/estradiol.jpeg",
-    "variants": [
-      { "pack": "50 Tablets", "price_usd": 35, "price_inr": 1470 },
-      { "pack": "100 Tablets", "price_usd": 49, "price_inr": 2058 }
-    ]
-  },
+  "id": "levothyroxine88",
+  "name": "Thyroxine Sodium 88 mcg",
+  "brand": "Thyronorm",
+  "composition": "Levothyroxine Sodium 88 mcg",
+  "category": "Hormonal & Thyroid Care",
+  "use": "Thyroid hormone replacement for hypothyroidism",
+  "thumbnail": "assets/images/products/thyroxine.jpeg",
+  "images": [
+    "assets/images/products/thyroxine.jpeg"
+  ],
+  "variants": [
+    { "pack": "120 Tablets", "quantity": 120, "price_usd": 44, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 1848 },
+    { "pack": "360 Tablets", "quantity": 360, "price_usd": 64, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 2688 }
+  ]
+},
   {
-    "name": "Thyroxine Sodium 88 mcg",
-    "brand": "Abbott",
-    "composition": "Levothyroxine Sodium 88 mcg",
-    "category": "Hormonal & Thyroid Care",
-    "use": "Thyroid hormone replacement",
-    "image": "assets/images/products/thyroxine.jpeg",
-    "variants": [
-      { "pack": "120 Tablets", "price_usd": 44, "price_inr": 1848 },
-      { "pack": "360 Tablets", "price_usd": 64, "price_inr": 2688 }
-    ]
-  },
+  "id": "sirolimus1",
+  "name": "Sirolimus (Rapamycin) 1 mg",
+  "brand": "Biocon",
+  "composition": "Sirolimus 1 mg",
+  "category": "Immunosuppressant",
+  "use": "Prevention of organ transplant rejection in appropriate patients",
+  "thumbnail": "assets/images/products/sirolimus.jpeg",
+  "images": [
+    "assets/images/products/sirolimus.jpeg"
+  ],
+  "variants": [
+    { "pack": "30 Tablets", "quantity": 30, "price_usd": 48, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 2016 },
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 60, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 2520 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 90, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3780 }
+  ]
+},
   {
-    "name": "Sirolimus (Rapamycin) 1 mg",
-    "brand": "Biocon",
-    "composition": "Sirolimus 1 mg",
-    "category": "Hormonal & Thyroid Care",
-    "use": "Immunosuppressant, anti-aging therapy",
-    "image": "assets/images/products/sirolimus.jpeg",
-    "variants": [
-      { "pack": "30 Tablets", "price_usd": 48, "price_inr": 2016 },
-      { "pack": "50 Tablets", "price_usd": 60, "price_inr": 2520 },
-      { "pack": "100 Tablets", "price_usd": 90, "price_inr": 3780 }
-    ]
-  },
+  "id": "triclabendazole250",
+  "name": "Triclabendazole 250 mg",
+  "brand": "Lupin",
+  "composition": "Triclabendazole 250 mg",
+  "category": "Infection & Antiparasitic Treatments",
+  "use": "Treatment of liver fluke infections (fascioliasis)",
+  "thumbnail": "assets/images/products/triclabendazole.jpeg",
+  "images": [
+    "assets/images/products/triclabendazole.jpeg"
+  ],
+  "variants": [
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 54, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 2268 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 80, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3360 }
+  ]
+},
   {
-    "name": "Triclabendazole 250 mg",
-    "brand": "Lupin",
-    "composition": "Triclabendazole 250 mg",
-    "category": "Infection & Antiparasitic Treatments",
-    "use": "Antiparasitic (liver fluke infections)",
-    "image": "assets/images/products/triclabendazole.jpeg",
-    "variants": [
-      { "pack": "50 Tablets", "price_usd": 54, "price_inr": 2268 },
-      { "pack": "100 Tablets", "price_usd": 80, "price_inr": 3360 }
-    ]
-  },
+  "id": "praziquantel600",
+  "name": "Praziquantel 600 mg",
+  "brand": "Biltricide",
+  "composition": "Praziquantel 600 mg",
+  "category": "Infection & Antiparasitic Treatments",
+  "use": "Treatment of susceptible schistosome and liver fluke infections",
+  "thumbnail": "assets/images/products/praziquantel600.jpeg",
+  "images": [
+    "assets/images/products/praziquantel600.jpeg"
+  ],
+  "variants": [
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 49, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 2058 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 59, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 2478 }
+  ]
+},
   {
-    "name": "Praziquantel 600 mg",
-    "brand": "Bayer",
-    "composition": "Praziquantel 600 mg",
-    "category": "Infection & Antiparasitic Treatments",
-    "use": "Tapeworm & schistosomiasis treatment",
-    "image": "assets/images/products/praziquantel600.jpeg",
-    "variants": [
-      { "pack": "50 Tablets", "price_usd": 49, "price_inr": 2058 },
-      { "pack": "100 Tablets", "price_usd": 59, "price_inr": 2478 }
-    ]
-  },
+  "id": "tamoxifen10",
+  "name": "Tamoxifen 10 mg",
+  "brand": "Sun Pharma",
+  "composition": "Tamoxifen Citrate equivalent to Tamoxifen 10 mg",
+  "category": "Oncology / Hormonal Therapy",
+  "use": "Treatment and prevention of hormone-responsive breast cancer",
+  "thumbnail": "assets/images/products/tamoxifen.jpeg",
+  "images": [
+    "assets/images/products/tamoxifen.jpeg"
+  ],
+  "variants": [
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 45, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 1890 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 64, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 2688 }
+  ]
+},
   {
-    "name": "Tamoxifen 10 mg",
-    "brand": "Sun Pharma",
-    "composition": "Tamoxifen Citrate 10 mg",
-    "category": "Infection & Antiparasitic Treatments",
-    "use": "Anti-cancer, hormone therapy",
-    "image": "assets/images/products/tamoxifen.jpeg",
-    "variants": [
-      { "pack": "300 Tablets", "price_usd": 45, "price_inr": 1890 },
-      { "pack": "500 Tablets", "price_usd": 64, "price_inr": 2688 }
-    ]
-  },
+  "id": "rabeprazole20",
+  "name": "Rabeprazole Sodium 20 mg",
+  "brand": "Dr. Reddy's",
+  "composition": "Rabeprazole Sodium 20 mg",
+  "category": "Gastrointestinal",
+  "use": "Treatment of gastroesophageal reflux disease (GERD) and acid-related disorders",
+  "thumbnail": "assets/images/products/rabeprazole.jpeg",
+  "images": [
+    "assets/images/products/rabeprazole.jpeg"
+  ],
+  "variants": [
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 19, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 798 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 29, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 1218 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 39, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 1638 }
+  ]
+},
   {
-    "name": "Rabeprazole 20 mg",
-    "brand": "Dr. Reddy’s",
-    "composition": "Rabeprazole Sodium 20 mg",
-    "category": "Infection & Antiparasitic Treatments",
-    "use": "Acid reflux, GERD",
-    "image": "assets/images/products/rabeprazole.jpeg",
-    "variants": [
-      { "pack": "100 Tablets", "price_usd": 19, "price_inr": 798 },
-      { "pack": "300 Tablets", "price_usd": 29, "price_inr": 1218 },
-      { "pack": "500 Tablets", "price_usd": 39, "price_inr": 1638 }
-    ]
-  },
+  "id": "pheniramine50",
+  "name": "Pheniramine Maleate 50 mg",
+  "brand": "Cipla",
+  "composition": "Pheniramine Maleate 50 mg",
+  "category": "Antihistamine / Allergy Care",
+  "use": "Relief of allergic conditions and associated itching",
+  "thumbnail": "assets/images/products/pheniramine.jpeg",
+  "images": [
+    "assets/images/products/pheniramine.jpeg"
+  ],
+  "variants": [
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 18, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 756 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 28, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 1176 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 38, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 1596 }
+  ]
+},
   {
-    "name": "Pheniramine 50 mg",
-    "brand": "Cipla",
-    "composition": "Pheniramine Maleate 50 mg",
-    "category": "Infection & Antiparasitic Treatments",
-    "use": "Allergy, itching relief",
-    "image": "assets/images/products/pheniramine.jpeg",
-    "variants": [
-      { "pack": "100 Tablets", "price_usd": 18, "price_inr": 756 },
-      { "pack": "300 Tablets", "price_usd": 28, "price_inr": 1176 },
-      { "pack": "500 Tablets", "price_usd": 38, "price_inr": 1596 }
-    ]
-  },
+  "id": "indomethacin50",
+  "name": "Indomethacin 50 mg",
+  "brand": "Cipla",
+  "composition": "Indomethacin 50 mg",
+  "category": "Pain Relief / Anti-inflammatory",
+  "use": "Management of pain and inflammation associated with inflammatory musculoskeletal conditions",
+  "thumbnail": "assets/images/products/indomethacin50.jpeg",
+  "images": [
+    "assets/images/products/indomethacin50.jpeg"
+  ],
+  "variants": [
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 85, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3570 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 99, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4158 }
+  ]
+},
   {
-    "name": "Indomethacin 50 mg",
-    "brand": "Cipla",
-    "composition": "Indomethacin 50 mg",
-    "category": "Infection & Antiparasitic Treatments",
-    "use": "Anti-inflammatory, pain relief",
-    "image": "assets/images/products/indomethacin50.jpeg",
-    "variants": [
-      { "pack": "300 Tablets", "price_usd": 85, "price_inr": 3570 },
-      { "pack": "500 Tablets", "price_usd": 99, "price_inr": 4158 }
-    ]
-  },
+  "id": "boldenoneundecylenate250",
+  "name": "Boldenone Undecylenate Injection 250 mg/ml",
+  "brand": "Boldebolin",
+  "composition": "Boldenone Undecylenate 250 mg/ml",
+  "category": "Anabolic Steroid / Veterinary",
+  "use": "Veterinary anabolic-androgenic steroid preparation",
+  "thumbnail": "assets/images/products/boldebolin.jpeg",
+  "images": [
+    "assets/images/products/boldebolin.jpeg"
+  ],
+  "variants": [
+    { "pack": "1 Vial (10 ml)", "quantity": 1, "price_usd": 35, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 1470 },
+    { "pack": "3 Vials (10 ml each)", "quantity": 3, "price_usd": 65, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 2730 }
+  ]
+},
   {
-    "name": "Boldebolin Injection",
-    "brand": "Alpha Pharma",
-    "composition": "Boldenone Undecylenate 250 mg/ml (10ml vial)",
-    "category": "Hormonal / Performance Enhancement",
-    "use": "Muscle recovery & strength (under medical supervision)",
-    "image": "assets/images/products/boldebolin.jpeg",
-    "variants": [
-      { "pack": "1 Vial", "price_usd": 35, "price_inr": 1470 },
-      { "pack": "3 Vials", "price_usd": 65, "price_inr": 2730 }
-    ]
-  },
+  "id": "levetiracetam500",
+  "name": "Levetiracetam 500 mg",
+  "brand": "Cipla",
+  "composition": "Levetiracetam 500 mg",
+  "category": "Neurology",
+  "use": "Treatment of certain seizure disorders and epilepsy",
+  "thumbnail": "assets/images/products/leveteracitam.jpeg",
+  "images": [
+    "assets/images/products/leveteracitam.jpeg"
+  ],
+  "variants": [
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 95, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 8075 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 149, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 12665 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 195, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 16575 }
+  ]
+},
   {
-    "name": "Leveteracitam 500 mg (Keppra Generic)",
-    "brand": "Cipla",
-    "composition": "Levetiracetam 500 mg",
-    "category": "Neurology",
-    "use": "Used to treat seizures and epilepsy in adults and children.",
-    "image": "assets/images/products/leveteracitam.jpeg",
-    "variants": [
-      { "pack": "100 Tablets", "price_usd": 95, "price_inr": 8075 },
-      { "pack": "300 Tablets", "price_usd": 149, "price_inr": 12665 },
-      { "pack": "500 Tablets", "price_usd": 195, "price_inr": 16575 }
-    ]
-  },
+  "id": "propylthiouracil50",
+  "name": "Propylthiouracil 50 mg",
+  "brand": "Sun Pharma",
+  "composition": "Propylthiouracil 50 mg",
+  "category": "Hormonal & Thyroid Care",
+  "use": "Treatment of hyperthyroidism in appropriate patients",
+  "thumbnail": "assets/images/products/propylthiouracil.jpeg",
+  "images": [
+    "assets/images/products/propylthiouracil.jpeg"
+  ],
+  "variants": [
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 95, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 8075 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 135, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 11475 }
+  ]
+},
   {
-    "name": "Propylthiouracil 50 mg",
-    "brand": "Sun Pharma",
-    "composition": "Propylthiouracil 50 mg",
-    "category": "Thyroid Treatment",
-    "use": "Used to treat hyperthyroidism and Graves’ disease.",
-    "image": "assets/images/products/propylthiouracil.jpeg",
-    "variants": [
-      { "pack": "100 Tablets", "price_usd": 95, "price_inr": 8075 },
-      { "pack": "300 Tablets", "price_usd": 135, "price_inr": 11475 }
-    ]
-  },
+  "id": "hydroxyzine10",
+  "name": "Hydroxyzine Hydrochloride 10 mg",
+  "brand": "Intas",
+  "composition": "Hydroxyzine Hydrochloride 10 mg",
+  "category": "Antihistamine / Allergy & Anxiety",
+  "use": "Relief of allergic itching and short-term management of anxiety symptoms",
+  "thumbnail": "assets/images/products/hydroxyzine10.jpeg",
+  "images": [
+    "assets/images/products/hydroxyzine10.jpeg"
+  ],
+  "variants": [
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 90, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 7650 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 160, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 13600 }
+  ]
+},
   {
-    "name": "Hydroxyzine 10 mg",
-    "brand": "Intas",
-    "composition": "Hydroxyzine Hydrochloride 10 mg",
-    "category": "Allergy / Anxiety",
-    "use": "Used to relieve itching, anxiety, and allergic reactions.",
-    "image": "assets/images/products/hydroxyzine10.jpeg",
-    "variants": [
-      { "pack": "100 Tablets", "price_usd": 90, "price_inr": 7650 },
-      { "pack": "300 Tablets", "price_usd": 160, "price_inr": 13600 }
-    ]
-  },
+  "id": "hydroxyzine25",
+  "name": "Hydroxyzine Hydrochloride 25 mg",
+  "brand": "Intas",
+  "composition": "Hydroxyzine Hydrochloride 25 mg",
+  "category": "Antihistamine / Allergy & Anxiety",
+  "use": "Relief of allergic itching and short-term management of anxiety symptoms",
+  "thumbnail": "assets/images/products/hydroxyzine25.jpeg",
+  "images": [
+    "assets/images/products/hydroxyzine25.jpeg"
+  ],
+  "variants": [
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 110, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 9350 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 199, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 16915 }
+  ]
+},
   {
-    "name": "Hydroxyzine 25 mg",
-    "brand": "Intas",
-    "composition": "Hydroxyzine Hydrochloride 25 mg",
-    "category": "Allergy / Anxiety",
-    "use": "Used for anxiety and to relieve itching caused by allergies.",
-    "image": "assets/images/products/hydroxyzine25.jpeg",
-    "variants": [
-      { "pack": "100 Tablets", "price_usd": 110, "price_inr": 9350 },
-      { "pack": "300 Tablets", "price_usd": 199, "price_inr": 16915 }
-    ]
-  },
+  "id": "hydroxychloroquine200",
+  "name": "Hydroxychloroquine Sulfate 200 mg",
+  "brand": "Ipca",
+  "composition": "Hydroxychloroquine Sulfate 200 mg",
+  "category": "Antimalarial / Autoimmune",
+  "use": "Treatment of malaria and selected autoimmune conditions including rheumatoid arthritis and lupus",
+  "thumbnail": "assets/images/products/hydroxychloroquine200.jpeg",
+  "images": [
+    "assets/images/products/hydroxychloroquine200.jpeg"
+  ],
+  "variants": [
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 115, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 9775 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 135, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 11475 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 159, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 13515 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 239, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 20315 }
+  ]
+},
   {
-    "name": "Hydroxychloroquine 200 mg",
-    "brand": "Ipca",
-    "composition": "Hydroxychloroquine Sulfate 200 mg",
-    "category": "Anti-Malarial / Autoimmune",
-    "use": "Used to treat malaria, lupus, and rheumatoid arthritis.",
-    "image": "assets/images/products/hydroxychloroquine200.jpeg",
-    "variants": [
-      { "pack": "100 Tablets", "price_usd": 115, "price_inr": 9775 },
-      { "pack": "300 Tablets", "price_usd": 135, "price_inr": 11475 },
-      { "pack": "500 Tablets", "price_usd": 159, "price_inr": 13515 },
-      { "pack": "1000 Tablets", "price_usd": 239, "price_inr": 20315 }
-    ]
-  },
+  "id": "hydroxychloroquine400",
+  "name": "Hydroxychloroquine Sulfate 400 mg",
+  "brand": "Ipca",
+  "composition": "Hydroxychloroquine Sulfate 400 mg",
+  "category": "Antimalarial / Autoimmune",
+  "use": "Treatment of selected autoimmune conditions and susceptible malaria infections",
+  "thumbnail": "assets/images/products/hydroxychloroquine400.jpeg",
+  "images": [
+    "assets/images/products/hydroxychloroquine400.jpeg"
+  ],
+  "variants": [
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 125, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 10625 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 145, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 12325 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 175, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 14875 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 255, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 21675 }
+  ]
+},
   {
-    "name": "Hydroxychloroquine 400 mg",
-    "brand": "Ipca",
-    "composition": "Hydroxychloroquine Sulfate 400 mg",
-    "category": "Anti-Malarial / Autoimmune",
-    "use": "Used to treat autoimmune diseases such as lupus and rheumatoid arthritis.",
-    "image": "assets/images/products/hydroxychloroquine400.jpeg",
-    "variants": [
-      { "pack": "100 Tablets", "price_usd": 125, "price_inr": 10625 },
-      { "pack": "300 Tablets", "price_usd": 145, "price_inr": 12325 },
-      { "pack": "500 Tablets", "price_usd": 175, "price_inr": 14875 },
-      { "pack": "1000 Tablets", "price_usd": 255, "price_inr": 21675 }
-    ]
-  },
+  "id": "tretinoin005",
+  "name": "Tretinoin Cream 0.05%",
+  "brand": "Ret Grow-A",
+  "composition": "Tretinoin 0.05% w/w",
+  "category": "Dermatology",
+  "use": "Treatment of acne vulgaris",
+  "thumbnail": "assets/images/products/tretinoin.jpeg",
+  "images": [
+    "assets/images/products/tretinoin.jpeg"
+  ],
+  "variants": [
+    { "pack": "1 Tube (20 g)", "quantity": 1, "price_usd": 39, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 2600 },
+    { "pack": "3 Tubes (20 g each)", "quantity": 3, "price_usd": 49, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3200 },
+    { "pack": "5 Tubes (20 g each)", "quantity": 5, "price_usd": 59, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4300 },
+    { "pack": "7 Tubes (20 g each)", "quantity": 7, "price_usd": 69, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5210 },
+    { "pack": "9 Tubes (20 g each)", "quantity": 9, "price_usd": 79, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 6500 }
+  ]
+},
   {
-    "name": "Tretinoin Cream 0.05%",
-    "brand": "Ret Grow-A",
-    "composition": "Tretinoin 0.05%",
-    "category": "Dermatology",
-    "use": "Used for acne treatment and reducing fine wrinkles.",
-    "image": "assets/images/products/tretinoin.jpeg",
-    "variants": [
-      { "pack": "1 Tube", "price_usd": 39, "price_inr": 2600 },
-      { "pack": "3 Tubes", "price_usd": 49, "price_inr": 3200 },
-      { "pack": "5 Tubes", "price_usd": 59, "price_inr": 4300 },
-      { "pack": "7 Tubes", "price_usd": 69, "price_inr": 5210 },
-      { "pack": "9 Tubes", "price_usd": 79, "price_inr": 6500 }
-    ]
-  },
+  "id": "naltrexone50",
+  "name": "Naltrexone Hydrochloride 50 mg",
+  "brand": "Intas",
+  "composition": "Naltrexone Hydrochloride 50 mg",
+  "category": "Addiction Treatment",
+  "use": "Management of alcohol dependence and prevention of opioid effects in opioid dependence",
+  "thumbnail": "assets/images/products/naltrexone50.jpeg",
+  "images": [
+    "assets/images/products/naltrexone50.jpeg"
+  ],
+  "variants": [
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 199, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 16915 }
+  ]
+},
   {
-    "name": "Naltrexone 50 mg",
-    "brand": "Intas",
-    "composition": "Naltrexone Hydrochloride 50 mg",
-    "category": "Addiction Treatment",
-    "use": "Used to manage alcohol and opioid dependence.",
-    "image": "assets/images/products/naltrexone50.jpeg",
-    "variants": [
-      { "pack": "100 Tablets", "price_usd": 199, "price_inr": 16915 }
-    ]
-  },
+  "id": "triclabendazole250",
+  "name": "Triclabendazole 250 mg",
+  "brand": "Egaten",
+  "composition": "Triclabendazole 250 mg",
+  "category": "Infection & Antiparasitic Treatments",
+  "use": "Treatment of fascioliasis caused by liver flukes",
+  "thumbnail": "assets/images/products/triclabendazole250.jpeg",
+  "images": [
+    "assets/images/products/triclabendazole250.jpeg"
+  ],
+  "variants": [
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 110, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 9350 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 189, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 16065 }
+  ]
+},
   {
-    "name": "Triclabendazole 250 mg (Novartis)",
-    "brand": "Novartis",
-    "composition": "Triclabendazole 250 mg",
-    "category": "Anthelmintic / Veterinary",
-    "use": "Used to treat liver fluke infections in animals and humans.",
-    "image": "assets/images/products/triclabendazole250.jpeg",
-    "variants": [
-      { "pack": "100 Tablets", "price_usd": 110, "price_inr": 9350 },
-      { "pack": "300 Tablets", "price_usd": 189, "price_inr": 16065 }
-    ]
-  },
+  "id": "sildenafil100",
+  "name": "Sildenafil Citrate 100 mg",
+  "brand": "Cenforce",
+  "composition": "Sildenafil Citrate equivalent to Sildenafil 100 mg",
+  "category": "Men’s Health",
+  "use": "Treatment of erectile dysfunction in adult men",
+  "thumbnail": "assets/images/products/cenforce100.jpeg",
+  "images": [
+    "assets/images/products/cenforce100.jpeg"
+  ],
+  "variants": [
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 85, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 7225 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 108, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 9180 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 130, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 11050 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 185, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 15725 }
+  ]
+},
   {
-    "name": "Cenforce 100 mg",
-    "brand": "Centurion Labs",
-    "composition": "Sildenafil Citrate 100 mg",
-    "category": "Erectile Dysfunction",
-    "use": "Used to treat erectile dysfunction in men.",
-    "image": "assets/images/products/cenforce100.jpeg",
-    "variants": [
-      { "pack": "100 Tablets", "price_usd": 85, "price_inr": 7225 },
-      { "pack": "300 Tablets", "price_usd": 108, "price_inr": 9180 },
-      { "pack": "500 Tablets", "price_usd": 130, "price_inr": 11050 },
-      { "pack": "1000 Tablets", "price_usd": 185, "price_inr": 15725 }
-    ]
-  },
+  "id": "rivaroxaban20",
+  "name": "Rivaroxaban 20 mg",
+  "brand": "Rivabax-20",
+  "composition": "Rivaroxaban 20 mg",
+  "category": "Anticoagulant",
+  "use": "Prevention and treatment of thromboembolic blood clots in appropriate patients",
+  "thumbnail": "assets/images/products/rivaroxaban.jpeg",
+  "images": [
+    "assets/images/products/rivaroxaban.jpeg"
+  ],
+  "variants": [
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 85, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 7225 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 99, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 8415 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 159, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 13515 }
+  ]
+},
   {
-    "name": "Rivaroxaban 20 mg (Rivabax-20)",
-    "brand": "Macleods",
-    "composition": "Rivaroxaban 20 mg",
-    "category": "Anticoagulant",
-    "use": "Used to prevent blood clots and treat deep vein thrombosis.",
-    "image": "assets/images/products/rivaroxaban.jpeg",
-    "variants": [
-      { "pack": "50 Tablets", "price_usd": 85, "price_inr": 7225 },
-      { "pack": "100 Tablets", "price_usd": 99, "price_inr": 8415 },
-      { "pack": "300 Tablets", "price_usd": 159, "price_inr": 13515 }
-    ]
-  },
+  "id": "mesterolone25",
+  "name": "Mesterolone 25 mg",
+  "brand": "Proviron",
+  "composition": "Mesterolone 25 mg",
+  "category": "Hormone Therapy",
+  "use": "Treatment of androgen deficiency, male hypogonadism and selected infertility conditions",
+  "thumbnail": "assets/images/products/mesterolone.jpeg",
+  "images": [
+    "assets/images/products/mesterolone.jpeg"
+  ],
+  "variants": [
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 139, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 11815 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 289, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 24565 }
+  ]
+},
   {
-    "name": "Mesterolone 25 mg (Mesteronum)",
-    "brand": "Bayer",
-    "composition": "Mesterolone 25 mg",
-    "category": "Hormone Therapy",
-    "use": "Used to treat male hypogonadism and fertility disorders.",
-    "image": "assets/images/products/mesterolone.jpeg",
-    "variants": [
-      { "pack": "100 Tablets", "price_usd": 139, "price_inr": 11815 },
-      { "pack": "300 Tablets", "price_usd": 289, "price_inr": 24565 }
-    ]
-  },
+  "id": "levocarnitine500",
+  "name": "Levocarnitine 500 mg",
+  "brand": "Carnimac",
+  "composition": "Levocarnitine 500 mg",
+  "category": "Nutritional / Metabolic",
+  "use": "Treatment of carnitine deficiency",
+  "thumbnail": "assets/images/products/lcarnitine.jpeg",
+  "images": [
+    "assets/images/products/lcarnitine.jpeg"
+  ],
+  "variants": [
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 135, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 11475 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 249, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 21165 }
+  ]
+},
   {
-    "name": "L-Carnitine 500 mg (Carnimac)",
-    "brand": "Macleods",
-    "composition": "L-Carnitine 500 mg",
-    "category": "Supplement",
-    "use": "Supports energy production and fat metabolism.",
-    "image": "assets/images/products/lcarnitine.jpeg",
-    "variants": [
-      { "pack": "100 Tablets", "price_usd": 135, "price_inr": 11475 },
-      { "pack": "300 Tablets", "price_usd": 249, "price_inr": 21165 }
-    ]
-  },
+  "id": "ketotifen1",
+  "name": "Ketotifen 1 mg",
+  "brand": "Asthafen",
+  "composition": "Ketotifen Fumarate equivalent to Ketotifen 1 mg",
+  "category": "Allergy / Respiratory",
+  "use": "Symptomatic treatment of allergic conditions including rhinitis and conjunctivitis",
+  "thumbnail": "assets/images/products/asthafen.jpeg",
+  "images": [
+    "assets/images/products/asthafen.jpeg"
+  ],
+  "variants": [
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 85, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 7225 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 119, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 10115 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 145, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 12325 }
+  ]
+},
   {
-    "name": "Asthafen 1 mg",
-    "brand": "Torrent",
-    "composition": "Ketotifen Fumarate 1 mg",
-    "category": "Allergy / Asthma",
-    "use": "Used for allergic rhinitis, asthma prevention, and chronic urticaria.",
-    "image": "assets/images/products/asthafen.jpeg",
-    "variants": [
-      { "pack": "100 Tablets", "price_usd": 85, "price_inr": 7225 },
-      { "pack": "300 Tablets", "price_usd": 119, "price_inr": 10115 },
-      { "pack": "500 Tablets", "price_usd": 145, "price_inr": 12325 }
-    ]
-  },
-  {
-  "name": "Cyproheptadine HCL",
+  "id": "cyproheptadine4",
+  "name": "Cyproheptadine Hydrochloride 4 mg",
   "brand": "Generic",
   "composition": "Cyproheptadine Hydrochloride 4 mg",
-  "category": "Allergy / Anxiety",
-  "use": "Antihistamine used for allergy relief, appetite stimulation, and management of certain migraine conditions.",
-  "image": "assets/images/products/cyproheptadine_hydrochloride_4mg.jpeg",
+  "category": "Antihistamine / Allergy Care",
+  "use": "Relief of allergic conditions including allergic rhinitis, urticaria and itching",
+  "thumbnail": "assets/images/products/cyproheptadine_hydrochloride_4mg.jpeg",
+  "images": [
+    "assets/images/products/cyproheptadine_hydrochloride_4mg.jpeg"
+  ],
   "variants": [
-    { "pack": "50 Tablets", "price_usd": 41, "price_inr": 3485 },
-    { "pack": "100 Tablets", "price_usd": 49, "price_inr": 4165 },
-    { "pack": "300 Tablets", "price_usd": 59, "price_inr": 5015 },
-    { "pack": "500 Tablets", "price_usd": 69, "price_inr": 5865 },
-    { "pack": "1000 Tablets", "price_usd": 79, "price_inr": 6715 },
-    { "pack": "2000 Tablets", "price_usd": 118, "price_inr": 10030 }
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 41, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3485 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 49, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4165 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 59, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5015 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 69, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5865 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 79, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 6715 },
+    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 118, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 10030 }
   ]
 },
 {
-  "name": "Adapalene 0.1%",
+  "id": "adapalene01",
+  "name": "Adapalene 0.1% Gel",
   "brand": "Generic",
   "composition": "Adapalene 0.1% w/w",
   "category": "Dermatology & Skin Care",
-  "use": "Topical retinoid used for treatment of acne vulgaris and improvement of skin texture.",
-  "image": "assets/images/products/adapalene_0_1_percent.jpeg",
+  "use": "Topical treatment of acne vulgaris",
+  "thumbnail": "assets/images/products/adapalene_0_1_percent.jpeg",
+  "images": [
+    "assets/images/products/adapalene_0_1_percent.jpeg"
+  ],
   "variants": [
-    { "pack": "1 Tube (15gm)", "price_usd": 45, "price_inr": 3825 },
-    { "pack": "3 Tubes (15gm)", "price_usd": 59, "price_inr": 5015 },
-    { "pack": "5 Tubes (15gm)", "price_usd": 79, "price_inr": 6715 },
-    { "pack": "7 Tubes (15gm)", "price_usd": 95, "price_inr": 8075 },
-    { "pack": "9 Tubes (15gm)", "price_usd": 109, "price_inr": 9265 }
+    { "pack": "1 Tube (15 g)", "quantity": 1, "price_usd": 45, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3825 },
+    { "pack": "3 Tubes (15 g each)", "quantity": 3, "price_usd": 59, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5015 },
+    { "pack": "5 Tubes (15 g each)", "quantity": 5, "price_usd": 79, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 6715 },
+    { "pack": "7 Tubes (15 g each)", "quantity": 7, "price_usd": 95, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 8075 },
+    { "pack": "9 Tubes (15 g each)", "quantity": 9, "price_usd": 109, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 9265 }
   ]
 },
 {
-  "name": "Adapalene 0.3%",
+  "id": "adapalene03",
+  "name": "Adapalene 0.3% Gel",
   "brand": "Generic",
   "composition": "Adapalene 0.3% w/w",
   "category": "Dermatology & Skin Care",
-  "use": "Higher-strength topical retinoid for moderate to severe acne management.",
-  "image": "assets/images/products/adapalene_0_3_percent.jpeg",
+  "use": "Topical treatment of acne vulgaris",
+  "thumbnail": "assets/images/products/adapalene_0_3_percent.jpeg",
+  "images": [
+    "assets/images/products/adapalene_0_3_percent.jpeg"
+  ],
   "variants": [
-    { "pack": "1 Tube (15gm)", "price_usd": 45, "price_inr": 3825 },
-    { "pack": "3 Tubes (15gm)", "price_usd": 59, "price_inr": 5015 },
-    { "pack": "5 Tubes (15gm)", "price_usd": 79, "price_inr": 6715 },
-    { "pack": "7 Tubes (15gm)", "price_usd": 95, "price_inr": 8075 },
-    { "pack": "9 Tubes (15gm)", "price_usd": 109, "price_inr": 9265 }
+    { "pack": "1 Tube (15 g)", "quantity": 1, "price_usd": 45, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3825 },
+    { "pack": "3 Tubes (15 g each)", "quantity": 3, "price_usd": 59, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5015 },
+    { "pack": "5 Tubes (15 g each)", "quantity": 5, "price_usd": 79, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 6715 },
+    { "pack": "7 Tubes (15 g each)", "quantity": 7, "price_usd": 95, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 8075 },
+    { "pack": "9 Tubes (15 g each)", "quantity": 9, "price_usd": 109, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 9265 }
   ]
 },
 {
-  "name": "Betamethasone 0.1%",
+  "id": "betamethasone01",
+  "name": "Betamethasone Valerate Cream 0.1%",
   "brand": "Generic",
-  "composition": "Betamethasone 0.1% w/w",
+  "composition": "Betamethasone Valerate 0.1% w/w",
   "category": "Dermatology & Skin Care",
-  "use": "Topical corticosteroid used to reduce inflammation, redness, itching, and skin irritation.",
-  "image": "assets/images/products/betamethasone_0_1_percent.jpeg",
+  "use": "Relief of inflammation and itching in corticosteroid-responsive skin conditions",
+  "thumbnail": "assets/images/products/betamethasone_0_1_percent.jpeg",
+  "images": [
+    "assets/images/products/betamethasone_0_1_percent.jpeg"
+  ],
   "variants": [
-    { "pack": "1 Tube (20gm)", "price_usd": 39, "price_inr": 3315 },
-    { "pack": "3 Tubes (20gm)", "price_usd": 59, "price_inr": 5015 },
-    { "pack": "5 Tubes (20gm)", "price_usd": 69, "price_inr": 5865 },
-    { "pack": "7 Tubes (20gm)", "price_usd": 79, "price_inr": 6715 },
-    { "pack": "9 Tubes (20gm)", "price_usd": 89, "price_inr": 7565 }
+    { "pack": "1 Tube (20 g)", "quantity": 1, "price_usd": 39, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3315 },
+    { "pack": "3 Tubes (20 g each)", "quantity": 3, "price_usd": 59, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5015 },
+    { "pack": "5 Tubes (20 g each)", "quantity": 5, "price_usd": 69, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5865 },
+    { "pack": "7 Tubes (20 g each)", "quantity": 7, "price_usd": 79, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 6715 },
+    { "pack": "9 Tubes (20 g each)", "quantity": 9, "price_usd": 89, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 7565 }
   ]
 },
 {
-  "name": "Testosterone Gel 1% Cernos gel 5g",
-  "brand": "Generic",
+  "id": "testosteronegel1",
+  "name": "Testosterone Gel 1%",
+  "brand": "Cernos",
   "composition": "Testosterone 1% w/w",
-  "category": "Hormonal / Performance Enhancement",
-  "use": "Topical testosterone replacement therapy used for low testosterone levels in adult males.",
-  "image": "assets/images/products/testosterone_1_percent_cernos.jpeg",
+  "category": "Hormone Therapy",
+  "use": "Testosterone replacement therapy for adult males with confirmed testosterone deficiency",
+  "thumbnail": "assets/images/products/testosterone_1_percent_cernos.jpeg",
+  "images": [
+    "assets/images/products/testosterone_1_percent_cernos.jpeg"
+  ],
   "variants": [
-    { "pack": "1 Packet (5gm)", "price_usd": 39, "price_inr": 3315 },
-    { "pack": "3 Packets (5gm)", "price_usd": 49, "price_inr": 4165 },
-    { "pack": "5 Packets (5gm)", "price_usd": 69, "price_inr": 5865 },
-    { "pack": "7 Packets (5gm)", "price_usd": 89, "price_inr": 7565 },
-    { "pack": "9 Packets (5gm)", "price_usd": 99, "price_inr": 8415 }
+    { "pack": "1 Packet (5 g)", "quantity": 1, "price_usd": 39, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3315 },
+    { "pack": "3 Packets (5 g each)", "quantity": 3, "price_usd": 49, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4165 },
+    { "pack": "5 Packets (5 g each)", "quantity": 5, "price_usd": 69, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5865 },
+    { "pack": "7 Packets (5 g each)", "quantity": 7, "price_usd": 89, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 7565 },
+    { "pack": "9 Packets (5 g each)", "quantity": 9, "price_usd": 99, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 8415 }
   ]
 },
 {
-  "name": "Pain O Soma",
-  "brand": "Generic",
+  "id": "carisoprodol500",
+  "name": "Carisoprodol 500 mg",
+  "brand": "Pain O Soma",
   "composition": "Carisoprodol 500 mg",
-  "category": "Neurology",
-  "use": "Muscle relaxant used for relief of acute musculoskeletal pain and discomfort.",
-  "image": "assets/images/products/carisoprodol_500mg.jpeg",
+  "category": "Muscle Relaxant / Pain Management",
+  "use": "Short-term relief of discomfort associated with acute painful musculoskeletal conditions",
+  "thumbnail": "assets/images/products/carisoprodol_500mg.jpeg",
+  "images": [
+    "assets/images/products/carisoprodol_500mg.jpeg"
+  ],
   "variants": [
-    { "pack": "50 Tablets", "price_usd": 39, "price_inr": 3315 },
-    { "pack": "100 Tablets", "price_usd": 49, "price_inr": 4165 },
-    { "pack": "300 Tablets", "price_usd": 69, "price_inr": 5865 },
-    { "pack": "500 Tablets", "price_usd": 79, "price_inr": 6715 },
-    { "pack": "1000 Tablets", "price_usd": 119, "price_inr": 10115 }
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 39, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3315 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 49, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4165 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 69, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5865 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 79, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 6715 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 119, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 10115 }
   ]
 },
 {
-  "name": "Mebendazole 200mg",
+  "id": "mebendazole200",
+  "name": "Mebendazole 200 mg",
   "brand": "Generic",
   "composition": "Mebendazole 200 mg",
   "category": "Infection & Antiparasitic Treatments",
-  "use": "Anthelmintic medication used for treatment of intestinal worm infestations.",
-  "image": "assets/images/products/mebendazole_200mg.jpeg",
+  "use": "Treatment of susceptible intestinal worm infections",
+  "thumbnail": "assets/images/products/mebendazole_200mg.jpeg",
+  "images": [
+    "assets/images/products/mebendazole_200mg.jpeg"
+  ],
   "variants": [
-    { "pack": "50 Tablets", "price_usd": 45, "price_inr": 3825 },
-    { "pack": "100 Tablets", "price_usd": 55, "price_inr": 4675 },
-    { "pack": "300 Tablets", "price_usd": 65, "price_inr": 5525 },
-    { "pack": "500 Tablets", "price_usd": 79, "price_inr": 6715 },
-    { "pack": "1000 Tablets", "price_usd": 133, "price_inr": 11305 },
-    { "pack": "2000 Tablets", "price_usd": 229, "price_inr": 19465 }
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 45, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3825 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 55, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4675 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 65, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5525 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 79, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 6715 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 133, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 11305 },
+    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 229, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 19465 }
   ]
 },
 {
-  "name": "Ret Grow A 0.1%",
-  "brand": "Generic",
+  "id": "tretinoin01",
+  "name": "Tretinoin Cream 0.1%",
+  "brand": "Ret Grow-A",
   "composition": "Tretinoin 0.1% w/w",
   "category": "Dermatology & Skin Care",
-  "use": "Topical retinoid used for acne treatment, skin renewal, and reduction of fine wrinkles.",
-  "image": "assets/images/products/tretinoin_0_1_percent_retgrow.jpeg",
+  "use": "Topical treatment of acne vulgaris",
+  "thumbnail": "assets/images/products/tretinoin_0_1_percent_retgrow.jpeg",
+  "images": [
+    "assets/images/products/tretinoin_0_1_percent_retgrow.jpeg"
+  ],
   "variants": [
-    { "pack": "1 Tube (20gm)", "price_usd": 39, "price_inr": 3315 },
-    { "pack": "3 Tubes (20gm)", "price_usd": 49, "price_inr": 4675 },
-    { "pack": "5 Tubes (20gm)", "price_usd": 59, "price_inr": 5865 },
-    { "pack": "7 Tubes (20gm)", "price_usd": 69, "price_inr": 6715 },
-    { "pack": "9 Tubes (20gm)", "price_usd": 79, "price_inr": 8075 }
+    { "pack": "1 Tube (20 g)", "quantity": 1, "price_usd": 39, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3315 },
+    { "pack": "3 Tubes (20 g each)", "quantity": 3, "price_usd": 49, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4675 },
+    { "pack": "5 Tubes (20 g each)", "quantity": 5, "price_usd": 59, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5865 },
+    { "pack": "7 Tubes (20 g each)", "quantity": 7, "price_usd": 69, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 6715 },
+    { "pack": "9 Tubes (20 g each)", "quantity": 9, "price_usd": 79, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 8075 }
   ]
 },
 {
+  "id": "hydrocortisone1",
   "name": "Hydrocortisone Cream 1%",
   "brand": "Generic",
   "composition": "Hydrocortisone 1% w/w",
   "category": "Dermatology & Skin Care",
-  "use": "Topical corticosteroid used for eczema, dermatitis, allergic rashes, and itching relief.",
-  "image": "assets/images/products/hydrocortisone_1_percent.jpeg",
+  "use": "Temporary relief of itching and inflammation associated with minor corticosteroid-responsive skin conditions",
+  "thumbnail": "assets/images/products/hydrocortisone_1_percent.jpeg",
+  "images": [
+    "assets/images/products/hydrocortisone_1_percent.jpeg"
+  ],
   "variants": [
-    { "pack": "1 Tube (15gm)", "price_usd": 39, "price_inr": 3315 },
-    { "pack": "3 Tubes (15gm)", "price_usd": 59, "price_inr": 5015 },
-    { "pack": "5 Tubes (15gm)", "price_usd": 69, "price_inr": 5865 },
-    { "pack": "7 Tubes (15gm)", "price_usd": 79, "price_inr": 6715 },
-    { "pack": "9 Tubes (15gm)", "price_usd": 89, "price_inr": 7565 }
+    { "pack": "1 Tube (15 g)", "quantity": 1, "price_usd": 39, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3315 },
+    { "pack": "3 Tubes (15 g each)", "quantity": 3, "price_usd": 59, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5015 },
+    { "pack": "5 Tubes (15 g each)", "quantity": 5, "price_usd": 69, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5865 },
+    { "pack": "7 Tubes (15 g each)", "quantity": 7, "price_usd": 79, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 6715 },
+    { "pack": "9 Tubes (15 g each)", "quantity": 9, "price_usd": 89, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 7565 }
   ]
 },
 {
-  "name": "Fenbendazole 1000mg",
+  "id": "fenbendazole1000",
+  "name": "Fenbendazole 1000 mg",
   "brand": "Generic",
   "composition": "Fenbendazole 1000 mg",
   "category": "Veterinary / Antiparasitic",
-  "use": "Broad-spectrum antiparasitic used for management of worm infestations and parasitic infections.",
-  "image": "assets/images/products/fenbendazole_1000mg.jpeg",
+  "use": "Veterinary treatment of susceptible gastrointestinal parasitic infections",
+  "thumbnail": "assets/images/products/fenbendazole_1000mg.jpeg",
+  "images": [
+    "assets/images/products/fenbendazole_1000mg.jpeg"
+  ],
   "variants": [
-    { "pack": "50 Tablets", "price_usd": 59, "price_inr": 5015 },
-    { "pack": "100 Tablets", "price_usd": 99, "price_inr": 8415 },
-    { "pack": "300 Tablets", "price_usd": 125, "price_inr": 10625 },
-    { "pack": "500 Tablets", "price_usd": 178, "price_inr": 15130 },
-    { "pack": "1000 Tablets", "price_usd": 349, "price_inr": 29665 }
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 59, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5015 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 99, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 8415 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 125, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 10625 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 178, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 15130 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 349, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 29665 }
   ]
 },
 {
-  "name": "Testosterone Cypionate 250mg/ml",
+  "id": "testosteronecypionate250",
+  "name": "Testosterone Cypionate Injection 250 mg/ml",
   "brand": "Generic",
   "composition": "Testosterone Cypionate 250 mg/ml",
-  "category": "Hormonal / Performance Enhancement",
-  "use": "Long-acting testosterone replacement therapy used for low testosterone levels and performance enhancement.",
-  "image": "assets/images/products/testosterone_cypionate_250mg_ml.jpeg",
+  "category": "Hormone Therapy",
+  "use": "Testosterone replacement therapy for adult males with confirmed testosterone deficiency",
+  "thumbnail": "assets/images/products/testosterone_cypionate_250mg_ml.jpeg",
+  "images": [
+    "assets/images/products/testosterone_cypionate_250mg_ml.jpeg"
+  ],
   "variants": [
-    { "pack": "5 Vials (10ml Each)", "price_usd": 139, "price_inr": 11815 },
-    { "pack": "7 Vials (10ml Each)", "price_usd": 193, "price_inr": 16405 },
-    { "pack": "9 Vials (10ml Each)", "price_usd": 245, "price_inr": 20825 }
+    { "pack": "5 Vials (10 ml each)", "quantity": 5, "price_usd": 139, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 11815 },
+    { "pack": "7 Vials (10 ml each)", "quantity": 7, "price_usd": 193, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 16405 },
+    { "pack": "9 Vials (10 ml each)", "quantity": 9, "price_usd": 245, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 20825 }
   ]
 },
 {
-  "name": "Sustamix 250mg/ml",
-  "brand": "Generic",
-  "composition": "Testosterone Blend 250 mg/ml",
-  "category": "Hormonal / Performance Enhancement",
-  "use": "Combination testosterone ester preparation used for testosterone replacement and performance enhancement.",
-  "image": "assets/images/products/testosterone_blend_250mg_ml.jpeg",
+  "id": "sustamix250",
+  "name": "Sustamix 250 mg/ml",
+  "brand": "Sustamix",
+  "composition": "Testosterone Propionate 30 mg + Testosterone Phenylpropionate 60 mg + Testosterone Isocaproate 60 mg + Testosterone Decanoate 100 mg per ml",
+  "category": "Hormone Therapy",
+  "use": "Testosterone replacement therapy for adult males with confirmed hypogonadism",
+  "thumbnail": "assets/images/products/testosterone_blend_250mg_ml.jpeg",
+  "images": [
+    "assets/images/products/testosterone_blend_250mg_ml.jpeg"
+  ],
   "variants": [
-    { "pack": "5 Boxes (10 x 1ml)", "price_usd": 125, "price_inr": 10625 },
-    { "pack": "7 Boxes (10 x 1ml)", "price_usd": 169, "price_inr": 14365 },
-    { "pack": "9 Boxes (10 x 1ml)", "price_usd": 219, "price_inr": 18615 }
+    { "pack": "5 Boxes (10 x 1 ml)", "quantity": 50, "price_usd": 125, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 10625 },
+    { "pack": "7 Boxes (10 x 1 ml)", "quantity": 70, "price_usd": 169, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 14365 },
+    { "pack": "9 Boxes (10 x 1 ml)", "quantity": 90, "price_usd": 219, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 18615 }
   ]
 },
 {
-  "name": "Tetrafol L-Methylfolate 7.5mg",
-  "brand": "Generic",
+  "id": "lmethylfolate75",
+  "name": "L-Methylfolate 7.5 mg",
+  "brand": "Tetrafol",
   "composition": "L-Methylfolate Calcium 7.5 mg",
-  "category": "Supplement",
-  "use": "Active folate supplement used to support neurological health, mood balance, and folate deficiency management.",
-  "image": "assets/images/products/l_methylfolate_calcium_7_5mg.jpeg",
+  "category": "Nutritional / Folate Therapy",
+  "use": "Management of folate deficiency and supplementation where active folate is required",
+  "thumbnail": "assets/images/products/l_methylfolate_calcium_7_5mg.jpeg",
+  "images": [
+    "assets/images/products/l_methylfolate_calcium_7_5mg.jpeg"
+  ],
   "variants": [
-    { "pack": "50 Tablets", "price_usd": 69, "price_inr": 5865 },
-    { "pack": "100 Tablets", "price_usd": 99, "price_inr": 8415 },
-    { "pack": "300 Tablets", "price_usd": 196, "price_inr": 16660 },
-    { "pack": "500 Tablets", "price_usd": 283, "price_inr": 24055 }
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 69, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5865 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 99, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 8415 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 196, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 16660 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 283, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 24055 }
   ]
 },
 {
-  "name": "Super Tadarise",
-  "brand": "Generic",
+  "id": "supertadarise2060",
+  "name": "Super Tadarise 20 mg / 60 mg",
+  "brand": "Super Tadarise",
   "composition": "Tadalafil 20 mg + Dapoxetine 60 mg",
   "category": "Men’s Health",
-  "use": "Used for erectile dysfunction and premature ejaculation in adult men.",
-  "image": "assets/images/products/tadalafil_20mg_dapoxetine_60mg.jpeg",
+  "use": "Treatment of erectile dysfunction with premature ejaculation in adult men when combination therapy is appropriate",
+  "thumbnail": "assets/images/products/tadalafil_20mg_dapoxetine_60mg.jpeg",
+  "images": [
+    "assets/images/products/tadalafil_20mg_dapoxetine_60mg.jpeg"
+  ],
   "variants": [
-    { "pack": "100 Tablets", "price_usd": 79, "price_inr": 6715 },
-    { "pack": "300 Tablets", "price_usd": 128, "price_inr": 10880 },
-    { "pack": "500 Tablets", "price_usd": 177, "price_inr": 15045 },
-    { "pack": "1000 Tablets", "price_usd": 325, "price_inr": 27625 },
-    { "pack": "2000 Tablets", "price_usd": 598, "price_inr": 50830 }
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 79, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 6715 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 128, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 10880 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 177, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 15045 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 325, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 27625 },
+    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 598, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 50830 }
   ]
 },
 {
-  "name": "Masteron 100mg/ml",
-  "brand": "Generic",
+  "id": "drostanolonepropionate100",
+  "name": "Drostanolone Propionate 100 mg/ml",
+  "brand": "Masteron",
   "composition": "Drostanolone Propionate 100 mg/ml",
-  "category": "Hormonal / Performance Enhancement",
-  "use": "Anabolic androgenic steroid used for physique enhancement and muscle definition.",
-  "image": "assets/images/products/drostanolone_propionate_100mg_ml.jpeg",
+  "category": "Anabolic-Androgenic Steroid",
+  "use": "Synthetic androgenic-anabolic steroid; medical and regulatory status varies by country",
+  "thumbnail": "assets/images/products/drostanolone_propionate_100mg_ml.jpeg",
+  "images": [
+    "assets/images/products/drostanolone_propionate_100mg_ml.jpeg"
+  ],
   "variants": [
-    { "pack": "1 Vial (10ml)", "price_usd": 52, "price_inr": 4420 },
-    { "pack": "3 Vials (10ml)", "price_usd": 156, "price_inr": 13260 },
-    { "pack": "5 Vials (10ml)", "price_usd": 254, "price_inr": 21590 },
-    { "pack": "7 Vials (10ml)", "price_usd": 353, "price_inr": 30005 },
-    { "pack": "9 Vials (10ml)", "price_usd": 451, "price_inr": 38335 }
+    { "pack": "1 Vial (10 ml)", "quantity": 1, "price_usd": 52, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4420 },
+    { "pack": "3 Vials (10 ml each)", "quantity": 3, "price_usd": 156, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 13260 },
+    { "pack": "5 Vials (10 ml each)", "quantity": 5, "price_usd": 254, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 21590 },
+    { "pack": "7 Vials (10 ml each)", "quantity": 7, "price_usd": 353, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 30005 },
+    { "pack": "9 Vials (10 ml each)", "quantity": 9, "price_usd": 451, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 38335 }
   ]
 },
 {
-  "name": "Primobolan 100mg/ml",
-  "brand": "Generic",
+  "id": "methenoloneenanthate100",
+  "name": "Methenolone Enanthate 100 mg/ml",
+  "brand": "Primobolan",
   "composition": "Methenolone Enanthate 100 mg/ml",
-  "category": "Hormonal / Performance Enhancement",
-  "use": "Anabolic steroid used for lean muscle development and performance enhancement.",
-  "image": "assets/images/products/methenolone_enanthate_100mg_ml.jpeg",
+  "category": "Anabolic-Androgenic Steroid",
+  "use": "Anabolic-androgenic steroid; medical and regulatory status varies by country",
+  "thumbnail": "assets/images/products/methenolone_enanthate_100mg_ml.jpeg",
+  "images": [
+    "assets/images/products/methenolone_enanthate_100mg_ml.jpeg"
+  ],
   "variants": [
-    { "pack": "1 Vial (10ml)", "price_usd": 89, "price_inr": 7565 },
-    { "pack": "3 Vials (10ml)", "price_usd": 270, "price_inr": 22950 },
-    { "pack": "5 Vials (10ml)", "price_usd": 444, "price_inr": 37740 },
-    { "pack": "7 Vials (10ml)", "price_usd": 619, "price_inr": 52615 },
-    { "pack": "9 Vials (10ml)", "price_usd": 793, "price_inr": 67405 }
+    { "pack": "1 Vial (10 ml)", "quantity": 1, "price_usd": 89, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 7565 },
+    { "pack": "3 Vials (10 ml each)", "quantity": 3, "price_usd": 270, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 22950 },
+    { "pack": "5 Vials (10 ml each)", "quantity": 5, "price_usd": 444, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 37740 },
+    { "pack": "7 Vials (10 ml each)", "quantity": 7, "price_usd": 619, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 52615 },
+    { "pack": "9 Vials (10 ml each)", "quantity": 9, "price_usd": 793, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 67405 }
   ]
 },
 {
-  "name": "Biotin 10mg",
+  "id": "biotin10",
+  "name": "Biotin 10 mg",
   "brand": "Generic",
   "composition": "Biotin 10 mg",
-  "category": "Supplement",
-  "use": "Supports healthy hair, skin, nails, and energy metabolism.",
-  "image": "assets/images/products/biotin_10mg.jpeg",
+  "category": "Vitamin / Nutritional Supplement",
+  "use": "Biotin supplementation and management of biotin deficiency",
+  "thumbnail": "assets/images/products/biotin_10mg.jpeg",
+  "images": [
+    "assets/images/products/biotin_10mg.jpeg"
+  ],
   "variants": [
-    { "pack": "50 Tablets", "price_usd": 48, "price_inr": 4080 },
-    { "pack": "100 Tablets", "price_usd": 60, "price_inr": 5100 },
-    { "pack": "300 Tablets", "price_usd": 79, "price_inr": 6715 },
-    { "pack": "500 Tablets", "price_usd": 98, "price_inr": 8330 },
-    { "pack": "1000 Tablets", "price_usd": 168, "price_inr": 14280 },
-    { "pack": "2000 Tablets", "price_usd": 293, "price_inr": 24905 }
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 48, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4080 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 60, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5100 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 79, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 6715 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 98, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 8330 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 168, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 14280 },
+    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 293, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 24905 }
   ]
 },
 {
-  "name": "Levobunolol Hydrochloride 0.5%",
+  "id": "levobunolol05",
+  "name": "Levobunolol Hydrochloride Ophthalmic Solution 0.5%",
   "brand": "Generic",
   "composition": "Levobunolol Hydrochloride 0.5% w/v",
-  "category": "Eye & Allergy Care",
-  "use": "Beta-blocker eye drop used to lower elevated intraocular pressure in glaucoma and ocular hypertension.",
-  "image": "assets/images/products/levobunolol_hydrochloride_0_5_percent.jpeg",
+  "category": "Ophthalmology",
+  "use": "Reduction of elevated intraocular pressure in glaucoma and ocular hypertension",
+  "thumbnail": "assets/images/products/levobunolol_hydrochloride_0_5_percent.jpeg",
+  "images": [
+    "assets/images/products/levobunolol_hydrochloride_0_5_percent.jpeg"
+  ],
   "variants": [
-    { "pack": "1 Bottle (5ml)", "price_usd": 43, "price_inr": 3655 },
-    { "pack": "3 Bottles (5ml)", "price_usd": 62, "price_inr": 5270 },
-    { "pack": "5 Bottles (5ml)", "price_usd": 83, "price_inr": 7055 },
-    { "pack": "7 Bottles (5ml)", "price_usd": 99, "price_inr": 8415 },
-    { "pack": "9 Bottles (5ml)", "price_usd": 109, "price_inr": 9265 }
+    { "pack": "1 Bottle (5 ml)", "quantity": 1, "price_usd": 43, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3655 },
+    { "pack": "3 Bottles (5 ml each)", "quantity": 3, "price_usd": 62, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5270 },
+    { "pack": "5 Bottles (5 ml each)", "quantity": 5, "price_usd": 83, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 7055 },
+    { "pack": "7 Bottles (5 ml each)", "quantity": 7, "price_usd": 99, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 8415 },
+    { "pack": "9 Bottles (5 ml each)", "quantity": 9, "price_usd": 109, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 9265 }
   ]
 },
 {
-  "name": "Tamoxifen 10mg",
+  "id": "tamoxifen10",
+  "name": "Tamoxifen 10 mg",
   "brand": "Generic",
-  "composition": "Tamoxifen Citrate 10 mg",
-  "category": "Hormone Therapy",
-  "use": "Selective estrogen receptor modulator used in hormone-responsive breast cancer and estrogen control.",
-  "image": "assets/images/products/tamoxifen_citrate_10mg.jpeg",
+  "composition": "Tamoxifen Citrate equivalent to Tamoxifen 10 mg",
+  "category": "Oncology / Hormonal Therapy",
+  "use": "Treatment and prevention of hormone-responsive breast cancer in appropriate patients",
+  "thumbnail": "assets/images/products/tamoxifen_citrate_10mg.jpeg",
+  "images": [
+    "assets/images/products/tamoxifen_citrate_10mg.jpeg"
+  ],
   "variants": [
-    { "pack": "50 Tablets", "price_usd": 43, "price_inr": 3655 },
-    { "pack": "100 Tablets", "price_usd": 53, "price_inr": 4505 },
-    { "pack": "300 Tablets", "price_usd": 62, "price_inr": 5270 },
-    { "pack": "500 Tablets", "price_usd": 73, "price_inr": 6205 },
-    { "pack": "1000 Tablets", "price_usd": 119, "price_inr": 10115 },
-    { "pack": "2000 Tablets", "price_usd": 199, "price_inr": 16915 }
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 43, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3655 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 53, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4505 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 62, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5270 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 73, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 6205 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 119, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 10115 },
+    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 199, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 16915 }
   ]
 },
 {
-  "name": "Azithromycin 500mg",
+  "id": "azithromycin500",
+  "name": "Azithromycin 500 mg",
   "brand": "Generic",
   "composition": "Azithromycin 500 mg",
-  "category": "Infection & Antiparasitic Treatments",
-  "use": "Macrolide antibiotic used for respiratory, skin, ear, and sexually transmitted bacterial infections.",
-  "image": "assets/images/products/azithromycin_500mg.jpeg",
+  "category": "Antibiotic / Anti-infective",
+  "use": "Treatment of susceptible bacterial respiratory, skin and selected sexually transmitted infections",
+  "thumbnail": "assets/images/products/azithromycin_500mg.jpeg",
+  "images": [
+    "assets/images/products/azithromycin_500mg.jpeg"
+  ],
   "variants": [
-    { "pack": "50 Tablets", "price_usd": 44, "price_inr": 3740 },
-    { "pack": "100 Tablets", "price_usd": 55, "price_inr": 4675 },
-    { "pack": "300 Tablets", "price_usd": 66, "price_inr": 5610 },
-    { "pack": "500 Tablets", "price_usd": 80, "price_inr": 6800 },
-    { "pack": "1000 Tablets", "price_usd": 133, "price_inr": 11305 },
-    { "pack": "2000 Tablets", "price_usd": 230, "price_inr": 19550 }
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 44, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3740 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 55, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4675 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 66, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5610 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 80, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 6800 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 133, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 11305 },
+    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 230, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 19550 }
   ]
 },
 {
-  "name": "Tamoxifen 20mg",
+  "id": "tamoxifen20",
+  "name": "Tamoxifen 20 mg",
   "brand": "Generic",
-  "composition": "Tamoxifen Citrate 20 mg",
-  "category": "Hormone Therapy",
-  "use": "Used in the treatment and prevention of hormone receptor-positive breast cancer and estrogen management.",
-  "image": "assets/images/products/tamoxifen_citrate_20mg.jpeg",
+  "composition": "Tamoxifen Citrate equivalent to Tamoxifen 20 mg",
+  "category": "Oncology / Hormonal Therapy",
+  "use": "Treatment and risk reduction of hormone-responsive breast cancer in appropriate patients",
+  "thumbnail": "assets/images/products/tamoxifen_citrate_20mg.jpeg",
+  "images": [
+    "assets/images/products/tamoxifen_citrate_20mg.jpeg"
+  ],
   "variants": [
-    { "pack": "50 Tablets", "price_usd": 44, "price_inr": 3740 },
-    { "pack": "100 Tablets", "price_usd": 56, "price_inr": 4760 },
-    { "pack": "300 Tablets", "price_usd": 69, "price_inr": 5865 },
-    { "pack": "500 Tablets", "price_usd": 86, "price_inr": 7310 },
-    { "pack": "1000 Tablets", "price_usd": 144, "price_inr": 12240 },
-    { "pack": "2000 Tablets", "price_usd": 252, "price_inr": 21420 }
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 44, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3740 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 56, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4760 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 69, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5865 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 86, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 7310 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 144, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 12240 },
+    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 252, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 21420 }
   ]
 },
 {
-  "name": "Cenforce 200mg",
-  "brand": "Generic",
-  "composition": "Sildenafil Citrate 200 mg",
+  "id": "sildenafil200",
+  "name": "Sildenafil Citrate 200 mg",
+  "brand": "Cenforce",
+  "composition": "Sildenafil Citrate equivalent to Sildenafil 200 mg",
   "category": "Men’s Health",
-  "use": "Used for the treatment of erectile dysfunction (ED) by improving blood flow to the penis.",
-  "image": "assets/images/products/sildenafil_citrate_200mg.jpeg",
+  "use": "High-strength sildenafil formulation; regulatory and prescribing status varies by country",
+  "thumbnail": "assets/images/products/sildenafil_citrate_200mg.jpeg",
+  "images": [
+    "assets/images/products/sildenafil_citrate_200mg.jpeg"
+  ],
   "variants": [
-    { "pack": "50 Tablets", "price_usd": 43, "price_inr": 3655 },
-    { "pack": "100 Tablets", "price_usd": 54, "price_inr": 4590 },
-    { "pack": "300 Tablets", "price_usd": 64, "price_inr": 5440 },
-    { "pack": "500 Tablets", "price_usd": 77, "price_inr": 6545 },
-    { "pack": "1000 Tablets", "price_usd": 126, "price_inr": 10710 },
-    { "pack": "2000 Tablets", "price_usd": 216, "price_inr": 18360 }
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 43, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3655 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 54, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4590 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 64, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5440 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 77, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 6545 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 126, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 10710 },
+    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 216, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 18360 }
   ]
 },
 {
-  "name": "Curcumin 600mg",
+  "id": "curcumin600",
+  "name": "Curcumin 600 mg",
   "brand": "Generic",
   "composition": "Curcumin 600 mg",
-  "category": "Supplement",
-  "use": "Natural antioxidant and anti-inflammatory supplement that supports joint, immune, and overall wellness.",
-  "image": "assets/images/products/curcumin_600mg.jpeg",
+  "category": "Herbal / Nutritional Supplement",
+  "use": "Curcumin supplementation for general nutritional and wellness support",
+  "thumbnail": "assets/images/products/curcumin_600mg.jpeg",
+  "images": [
+    "assets/images/products/curcumin_600mg.jpeg"
+  ],
   "variants": [
-    { "pack": "3 Bottles (60 Capsules Each)", "price_usd": 52, "price_inr": 4420 },
-    { "pack": "5 Bottles (60 Capsules Each)", "price_usd": 81, "price_inr": 6885 },
-    { "pack": "7 Bottles (60 Capsules Each)", "price_usd": 110, "price_inr": 9350 },
-    { "pack": "9 Bottles (60 Capsules Each)", "price_usd": 139, "price_inr": 11815 }
+    { "pack": "3 Bottles (60 Capsules each)", "quantity": 180, "price_usd": 52, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4420 },
+    { "pack": "5 Bottles (60 Capsules each)", "quantity": 300, "price_usd": 81, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 6885 },
+    { "pack": "7 Bottles (60 Capsules each)", "quantity": 420, "price_usd": 110, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 9350 },
+    { "pack": "9 Bottles (60 Capsules each)", "quantity": 540, "price_usd": 139, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 11815 }
   ]
 },
 {
-  "name": "Fenbendazole 150mg",
+  "id": "fenbendazole150",
+  "name": "Fenbendazole 150 mg",
   "brand": "Generic",
   "composition": "Fenbendazole 150 mg",
   "category": "Veterinary / Antiparasitic",
-  "use": "Broad-spectrum antiparasitic used for treatment of intestinal worms and parasitic infections.",
-  "image": "assets/images/products/fenbendazole_150mg.jpeg",
+  "use": "Veterinary treatment of susceptible gastrointestinal and other helminth infections",
+  "thumbnail": "assets/images/products/fenbendazole_150mg.jpeg",
+  "images": [
+    "assets/images/products/fenbendazole_150mg.jpeg"
+  ],
   "variants": [
-    { "pack": "50 Tablets", "price_usd": 45, "price_inr": 3825 },
-    { "pack": "100 Tablets", "price_usd": 59, "price_inr": 5015 },
-    { "pack": "300 Tablets", "price_usd": 79, "price_inr": 6715 },
-    { "pack": "500 Tablets", "price_usd": 99, "price_inr": 8415 },
-    { "pack": "1000 Tablets", "price_usd": 175, "price_inr": 14875 }
+    { "pack": "50 Boluses", "quantity": 50, "price_usd": 45, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3825 },
+    { "pack": "100 Boluses", "quantity": 100, "price_usd": 59, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5015 },
+    { "pack": "300 Boluses", "quantity": 300, "price_usd": 79, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 6715 },
+    { "pack": "500 Boluses", "quantity": 500, "price_usd": 99, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 8415 },
+    { "pack": "1000 Boluses", "quantity": 1000, "price_usd": 175, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 14875 }
   ]
 },
 {
