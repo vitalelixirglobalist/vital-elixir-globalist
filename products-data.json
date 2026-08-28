@@ -2587,782 +2587,985 @@
     "assets/images/products/fenbendazole_150mg.jpeg"
   ],
   "variants": [
-    { "pack": "50 Boluses", "quantity": 50, "price_usd": 45, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3825 },
-    { "pack": "100 Boluses", "quantity": 100, "price_usd": 59, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5015 },
-    { "pack": "300 Boluses", "quantity": 300, "price_usd": 79, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 6715 },
-    { "pack": "500 Boluses", "quantity": 500, "price_usd": 99, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 8415 },
-    { "pack": "1000 Boluses", "quantity": 1000, "price_usd": 175, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 14875 }
-  ]
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 45, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3825 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 59, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5015 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 79, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 6715 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 99, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 8415 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 175, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 10625 }
+   ]
 },
 {
+  "id": "mebendazole100",
   "name": "Mebendazole 100mg",
   "brand": "Generic",
   "composition": "Mebendazole 100 mg",
   "category": "Infection & Antiparasitic Treatments",
   "use": "Anthelmintic medication used to treat intestinal worm infections such as pinworms, hookworms, and roundworms.",
-  "image": "assets/images/products/mebendazole_100mg.jpeg",
+  "thumbnail": "assets/images/products/mebendazole_100mg.jpeg",
+  "images": [
+    "assets/images/products/mebendazole_100mg.jpeg"
+  ],
   "variants": [
-    { "pack": "50 Tablets", "price_usd": 45, "price_inr": 3825 },
-    { "pack": "100 Tablets", "price_usd": 49, "price_inr": 4165 },
-    { "pack": "300 Tablets", "price_usd": 69, "price_inr": 5865 },
-    { "pack": "500 Tablets", "price_usd": 79, "price_inr": 6715 },
-    { "pack": "1000 Tablets", "price_usd": 99, "price_inr": 8415 }
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 45, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3825 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 49, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4165 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 69, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5865 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 79, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 6715 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 99, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 8415 }
   ]
 },
 {
+  "id": "rosuvastatin10",
   "name": "Rosuvastatin 10mg",
   "brand": "Generic",
   "composition": "Rosuvastatin Calcium 10 mg",
   "category": "Diabetes & Metabolic Care",
   "use": "Used to lower cholesterol and triglyceride levels and reduce cardiovascular risk.",
-  "image": "assets/images/products/rosuvastatin_calcium_10mg.jpeg",
+  "thumbnail": "assets/images/products/rosuvastatin_calcium_10mg.jpeg",
+  "images": [
+    "assets/images/products/rosuvastatin_calcium_10mg.jpeg"
+  ],
   "variants": [
-    { "pack": "50 Tablets", "price_usd": 42, "price_inr": 3570 },
-    { "pack": "100 Tablets", "price_usd": 49, "price_inr": 4165 },
-    { "pack": "300 Tablets", "price_usd": 59, "price_inr": 5015 },
-    { "pack": "500 Tablets", "price_usd": 69, "price_inr": 5865 },
-    { "pack": "1000 Tablets", "price_usd": 109, "price_inr": 9265 }
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 42, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3570 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 49, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4165 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 59, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5015 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 69, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5865 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 109, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 9265 }
   ]
 },
 {
+  "id": "ivermectinoralpaste187",
   "name": "Ivermectin Oral Paste 6.08g",
   "brand": "Generic",
   "composition": "Ivermectin Oral Paste 1.87%",
   "category": "Veterinary / Antiparasitic",
   "use": "Antiparasitic treatment used for control and elimination of internal and external parasites.",
-  "image": "assets/images/products/ivermectin_oral_paste_1_87_percent.jpeg",
+  "thumbnail": "assets/images/products/ivermectin_oral_paste_1_87_percent.jpeg",
+  "images": [
+    "assets/images/products/ivermectin_oral_paste_1_87_percent.jpeg"
+  ],
   "variants": [
-    { "pack": "1 Syringe", "price_usd": 88, "price_inr": 7480 },
-    { "pack": "3 Syringes", "price_usd": 95, "price_inr": 8075 },
-    { "pack": "5 Syringes", "price_usd": 109, "price_inr": 9265 },
-    { "pack": "7 Syringes", "price_usd": 125, "price_inr": 10625 },
-    { "pack": "9 Syringes", "price_usd": 133, "price_inr": 11305 }
+    { "pack": "1 Syringe", "quantity": 1, "price_usd": 88, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 7480 },
+    { "pack": "3 Syringes", "quantity": 3, "price_usd": 95, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 8075 },
+    { "pack": "5 Syringes", "quantity": 5, "price_usd": 109, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 9265 },
+    { "pack": "7 Syringes", "quantity": 7, "price_usd": 125, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 10625 },
+    { "pack": "9 Syringes", "quantity": 9, "price_usd": 133, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 11305 }
   ]
 },
 {
+  "id": "metronidazole500",
   "name": "Metronidazole 500mg",
   "brand": "Generic",
   "composition": "Metronidazole 500 mg",
   "category": "Infection & Antiparasitic Treatments",
   "use": "Antibiotic and antiprotozoal medication used to treat bacterial and parasitic infections.",
-  "image": "assets/images/products/metronidazole_500mg.jpeg",
+  "thumbnail": "assets/images/products/metronidazole_500mg.jpeg",
+  "images": [
+    "assets/images/products/metronidazole_500mg.jpeg"
+  ],
   "variants": [
-    { "pack": "50 Tablets", "price_usd": 39, "price_inr": 3315 },
-    { "pack": "100 Tablets", "price_usd": 49, "price_inr": 4165 },
-    { "pack": "300 Tablets", "price_usd": 59, "price_inr": 5015 },
-    { "pack": "500 Tablets", "price_usd": 69, "price_inr": 5865 },
-    { "pack": "1000 Tablets", "price_usd": 99, "price_inr": 8415 },
-    { "pack": "2000 Tablets", "price_usd": 169, "price_inr": 14365 }
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 39, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3315 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 49, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4165 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 59, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5015 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 69, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5865 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 99, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 8415 },
+    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 169, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 14365 }
   ]
 },
   {
-    "name": "Ibuprofen 400mg",
-    "brand": "Generic",
-    "composition": "Ibuprofen 400 mg",
-    "category": "Infection & Antiparasitic Treatments",
-    "use": "Pain relief, inflammation reduction, fever management, and musculoskeletal discomfort treatment",
-    "image": "assets/images/products/ibuprofen_400mg.jpeg",
-    "variants": [
-      { "pack": "50 Tablets", "price_usd": 60, "price_inr": 5100 },
-      { "pack": "100 Tablets", "price_usd": 87, "price_inr": 7395 },
-      { "pack": "300 Tablets", "price_usd": 163, "price_inr": 13855 },
-      { "pack": "500 Tablets", "price_usd": 241, "price_inr": 20485 },
-      { "pack": "1000 Tablets", "price_usd": 455, "price_inr": 38675 },
-      { "pack": "2000 Tablets", "price_usd": 874, "price_inr": 74290 }
-    ]
-  },
+  "id": "ibuprofen400",
+  "name": "Ibuprofen 400mg",
+  "brand": "Generic",
+  "composition": "Ibuprofen 400 mg",
+  "category": "Infection & Antiparasitic Treatments",
+  "use": "Pain relief, inflammation reduction, fever management, and musculoskeletal discomfort treatment",
+  "thumbnail": "assets/images/products/ibuprofen_400mg.jpeg",
+  "images": [
+    "assets/images/products/ibuprofen_400mg.jpeg"
+  ],
+  "variants": [
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 60, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5100 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 87, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 7395 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 163, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 13855 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 241, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 20485 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 455, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 38675 },
+    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 874, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 74290 }
+  ]
+},
+{
+  "id": "doxycycline100",
+  "name": "Doxycycline 100mg",
+  "brand": "Generic",
+  "composition": "Doxycycline 100 mg",
+  "category": "Infection & Antiparasitic Treatments",
+  "use": "Treatment of bacterial infections, respiratory infections, acne, and certain sexually transmitted infections",
+  "thumbnail": "assets/images/products/doxycycline_100mg.jpeg",
+  "images": [
+    "assets/images/products/doxycycline_100mg.jpeg"
+  ],
+  "variants": [
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 72, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 6120 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 112, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 9520 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 238, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 20230 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 367, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 31195 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 707, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 60095 },
+    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 1378, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 117130 }
+  ]
+},
+{
+  "id": "vardenafil80",
+  "name": "Vardenafil 80mg",
+  "brand": "Generic",
+  "composition": "Vardenafil 80 mg",
+  "category": "Men’s Health",
+  "use": "High-strength vardenafil formulation marketed for erectile dysfunction; 80 mg exceeds the standard labeled maximum recommended dose.",
+  "thumbnail": "assets/images/products/vardenafil_80mg.jpeg",
+  "images": [
+    "assets/images/products/vardenafil_80mg.jpeg"
+  ],
+  "variants": [
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 59, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5015 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 89, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 7565 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 149, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 12665 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 199, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 16915 }
+  ]
+},
+{
+  "id": "ivermectin12",
+  "name": "Ivermectin 12mg",
+  "brand": "Generic",
+  "composition": "Ivermectin 12 mg",
+  "category": "Infection & Antiparasitic Treatments",
+  "use": "Anthelmintic medication used for susceptible parasitic infections; approved indications vary by country.",
+  "thumbnail": "assets/images/products/ivermectin_12mg.jpeg",
+  "images": [
+    "assets/images/products/ivermectin_12mg.jpeg"
+  ],
+  "variants": [
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 39, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3315 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 49, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4165 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 69, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5865 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 79, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 6715 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 99, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 8415 }
+  ]
+},
   {
-    "name": "Doxycycline 100mg",
-    "brand": "Generic",
-    "composition": "Doxycycline 100 mg",
-    "category": "Infection & Antiparasitic Treatments",
-    "use": "Treatment of bacterial infections, respiratory infections, acne, and certain sexually transmitted infections",
-    "image": "assets/images/products/doxycycline_100mg.jpeg",
-    "variants": [
-      { "pack": "50 Tablets", "price_usd": 72, "price_inr": 6120 },
-      { "pack": "100 Tablets", "price_usd": 112, "price_inr": 9520 },
-      { "pack": "300 Tablets", "price_usd": 238, "price_inr": 20230 },
-      { "pack": "500 Tablets", "price_usd": 367, "price_inr": 31195 },
-      { "pack": "1000 Tablets", "price_usd": 707, "price_inr": 60095 },
-      { "pack": "2000 Tablets", "price_usd": 1378, "price_inr": 117130 }
-    ]
-  },
+  "id": "semaglutide24",
+  "name": "NovelTreat 2.4mg",
+  "brand": "Noveltreat",
+  "composition": "Semaglutide 2.4 mg",
+  "category": "Diabetes & Metabolic Care",
+  "use": "GLP-1 receptor agonist used with reduced-calorie diet and increased physical activity for chronic weight management in appropriate adults.",
+  "thumbnail": "assets/images/products/semaglutide_2.4mg.jpeg",
+  "images": [
+    "assets/images/products/semaglutide_2.4mg.jpeg"
+  ],
+  "variants": [
+    { "pack": "1 Month (4 Doses)", "quantity": 4, "price_usd": 189, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 16065 },
+    { "pack": "2 Months (8 Doses)", "quantity": 8, "price_usd": 299, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 25415 }
+  ]
+},
+{
+  "id": "semaglutide24",
+  "name": "Wegovy 2.4mg",
+  "brand": "Wegovy",
+  "composition": "Semaglutide 2.4 mg",
+  "category": "Diabetes & Metabolic Care",
+  "use": "GLP-1 receptor agonist used for chronic weight reduction and maintenance and, in appropriate adults, cardiovascular-risk reduction and treatment of noncirrhotic MASH with moderate-to-advanced liver fibrosis.",
+  "thumbnail": "assets/images/products/semaglutide_2.4mg.jpeg",
+  "images": [
+    "assets/images/products/semaglutide_2.4mg.jpeg"
+  ],
+  "variants": [
+    { "pack": "1 Month (4 Doses)", "quantity": 4, "price_usd": 299, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 25415 },
+    { "pack": "2 Months (8 Doses)", "quantity": 8, "price_usd": 489, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 41565 }
+  ]
+},
+{
+  "id": "albendazole400",
+  "name": "Albendazole 400mg",
+  "brand": "Generic",
+  "composition": "Albendazole 400 mg",
+  "category": "Infection & Antiparasitic Treatments",
+  "use": "Broad-spectrum anthelmintic used for susceptible intestinal helminth infections and certain tissue and tapeworm infections; approved indications vary by country.",
+  "thumbnail": "assets/images/products/albendazole_400mg.jpeg",
+  "images": [
+    "assets/images/products/albendazole_400mg.jpeg"
+  ],
+  "variants": [
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 39, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3315 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 49, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4165 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 69, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5865 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 79, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 6715 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 99, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 8415 }
+  ]
+},
+{
+  "id": "indomethacin25",
+  "name": "Indomethacin 25mg",
+  "brand": "Generic",
+  "composition": "Indomethacin 25 mg",
+  "category": "Pain Relief / Anti-inflammatory",
+  "use": "NSAID used for moderate to severe rheumatoid arthritis, osteoarthritis, ankylosing spondylitis, acute gouty arthritis, and acute painful shoulder conditions.",
+  "thumbnail": "assets/images/products/indomethacin_25mg.jpeg",
+  "images": [
+    "assets/images/products/indomethacin_25mg.jpeg"
+  ],
+  "variants": [
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 39, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3315 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 49, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4165 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 59, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5015 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 69, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5865 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 99, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 8415 },
+    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 169, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 14365 }
+  ]
+},
   {
-    "name": "Vardenafil 80mg",
-    "brand": "Generic",
-    "composition": "Vardenafil 80 mg",
-    "category": "Men’s Health",
-    "use": "Management of erectile dysfunction and improvement of sexual performance",
-    "image": "assets/images/products/vardenafil_80mg.jpeg",
-    "variants": [
-      { "pack": "50 Tablets", "price_usd": 59, "price_inr": 5015 },
-      { "pack": "100 Tablets", "price_usd": 89, "price_inr": 7565 },
-      { "pack": "300 Tablets", "price_usd": 149, "price_inr": 12665 },
-      { "pack": "500 Tablets", "price_usd": 199, "price_inr": 16915 }
-    ]
-  },
+  "id": "pregabalin75",
+  "name": "Pregabalin 75mg",
+  "brand": "Generic",
+  "composition": "Pregabalin 75 mg",
+  "category": "Neurology",
+  "use": "Management of neuropathic pain, fibromyalgia, and adjunctive treatment of partial-onset seizures; approved indications vary by country.",
+  "thumbnail": "assets/images/products/pregabalin_75mg.jpeg",
+  "images": [
+    "assets/images/products/pregabalin_75mg.jpeg"
+  ],
+  "variants": [
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 45, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3825 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 55, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4675 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 69, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5865 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 79, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 6715 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 119, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 10115 },
+    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 189, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 16065 }
+  ]
+},
+{
+  "id": "pregabalin150",
+  "name": "Pregabalin 150mg",
+  "brand": "Generic",
+  "composition": "Pregabalin 150 mg",
+  "category": "Neurology",
+  "use": "Management of neuropathic pain, fibromyalgia, and adjunctive treatment of partial-onset seizures; approved indications vary by country.",
+  "thumbnail": "assets/images/products/pregabalin_150mg.jpeg",
+  "images": [
+    "assets/images/products/pregabalin_150mg.jpeg"
+  ],
+  "variants": [
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 45, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3825 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 59, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5015 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 79, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 6715 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 99, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 8415 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 169, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 14365 },
+    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 289, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 24565 }
+  ]
+},
+{
+  "id": "pregabalin300",
+  "name": "Pregabalin 300mg",
+  "brand": "Generic",
+  "composition": "Pregabalin 300 mg",
+  "category": "Neurology",
+  "use": "Management of neuropathic pain, fibromyalgia, and adjunctive treatment of partial-onset seizures; approved indications vary by country.",
+  "thumbnail": "assets/images/products/pregabalin_300mg.jpeg",
+  "images": [
+    "assets/images/products/pregabalin_300mg.jpeg"
+  ],
+  "variants": [
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 49, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4165 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 65, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5525 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 89, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 7565 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 119, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 10115 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 189, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 16065 }
+  ]
+},
+{
+  "id": "modafinil400",
+  "name": "Modafinil 400mg",
+  "brand": "Generic",
+  "composition": "Modafinil 400 mg",
+  "category": "Neurology",
+  "use": "Wakefulness-promoting medicine for excessive sleepiness associated with narcolepsy, obstructive sleep apnea, or shift work disorder; 400 mg exceeds the standard recommended 200 mg dose.",
+  "thumbnail": "assets/images/products/modafinil_400mg.jpeg",
+  "images": [
+    "assets/images/products/modafinil_400mg.jpeg"
+  ],
+  "variants": [
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 55, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4675 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 75, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 6375 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 119, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 10115 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 149, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 12665 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 279, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 23715 },
+    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 495, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 42075 }
+  ]
+},
   {
-    "name": "Ivermectin 12mg",
-    "brand": "Generic",
-    "composition": "Ivermectin 12 mg",
-    "category": "Infection & Antiparasitic Treatments",
-    "use": "Treatment of parasitic infections, scabies, strongyloidiasis, and other worm infestations",
-    "image": "assets/images/products/ivermectin_12mg.jpeg",
-    "variants": [
-      { "pack": "50 Tablets", "price_usd": 39, "price_inr": 3315 },
-      { "pack": "100 Tablets", "price_usd": 49, "price_inr": 4165 },
-      { "pack": "300 Tablets", "price_usd": 69, "price_inr": 5865 },
-      { "pack": "500 Tablets", "price_usd": 79, "price_inr": 6715 },
-      { "pack": "1000 Tablets", "price_usd": 99, "price_inr": 8415 }
-    ]
-  },
+  "id": "modafinil300",
+  "name": "Modafinil 300mg",
+  "brand": "Generic",
+  "composition": "Modafinil 300 mg",
+  "category": "Neurology",
+  "use": "Wakefulness-promoting medicine for excessive sleepiness associated with narcolepsy, obstructive sleep apnea, and shift work disorder; 300 mg is above the standard recommended 200 mg dose.",
+  "thumbnail": "assets/images/products/modafinil_300mg.jpeg",
+  "images": [
+    "assets/images/products/modafinil_300mg.jpeg"
+  ],
+  "variants": [
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 49, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4165 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 65, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5525 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 89, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 7565 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 119, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 10115 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 209, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 17765 },
+    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 369, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 31365 }
+  ]
+},
+{
+  "id": "modafinil200",
+  "name": "Modafinil 200mg",
+  "brand": "Generic",
+  "composition": "Modafinil 200 mg",
+  "category": "Neurology",
+  "use": "Wakefulness-promoting medicine used for excessive sleepiness associated with narcolepsy, obstructive sleep apnea, and shift work disorder.",
+  "thumbnail": "assets/images/products/modafinil_200mg.jpeg",
+  "images": [
+    "assets/images/products/modafinil_200mg.jpeg"
+  ],
+  "variants": [
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 45, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3825 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 55, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4675 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 69, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5865 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 79, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 6715 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 129, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 10965 },
+    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 209, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 17765 }
+  ]
+},
+{
+  "id": "modafinil100",
+  "name": "Modafinil 100mg",
+  "brand": "Generic",
+  "composition": "Modafinil 100 mg",
+  "category": "Neurology",
+  "use": "Wakefulness-promoting medicine used within individualized treatment regimens for excessive sleepiness associated with narcolepsy, obstructive sleep apnea, and shift work disorder.",
+  "thumbnail": "assets/images/products/modafinil_100mg.jpeg",
+  "images": [
+    "assets/images/products/modafinil_100mg.jpeg"
+  ],
+  "variants": [
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 45, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3825 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 55, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4675 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 69, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5865 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 79, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 6715 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 109, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 9265 },
+    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 179, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 15215 }
+  ]
+},
+{
+  "id": "armodafinil50",
+  "name": "Armodafinil 50mg",
+  "brand": "Generic",
+  "composition": "Armodafinil 50 mg",
+  "category": "Neurology",
+  "use": "Wakefulness-promoting medicine used within individualized treatment regimens for excessive sleepiness associated with narcolepsy, obstructive sleep apnea, and shift work disorder.",
+  "thumbnail": "assets/images/products/armodafinil_50mg.jpeg",
+  "images": [
+    "assets/images/products/armodafinil_50mg.jpeg"
+  ],
+  "variants": [
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 45, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3825 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 55, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4675 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 75, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 6375 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 89, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 7565 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 149, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 12665 },
+    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 269, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 22865 }
+  ]
+},
   {
-    "name": "NovelTreat 2.4mg",
-    "brand": "Generic",
-    "composition": "Semaglutide 2.4 mg",
-    "category": "Diabetes & Metabolic Care",
-    "use": "Weight management, appetite control, and metabolic health support",
-    "image": "assets/images/products/semaglutide_2.4mg.jpeg",
-    "variants": [
-      { "pack": "1 Month (4 Doses)", "price_usd": 189, "price_inr": 16065 },
-      { "pack": "2 Months (8 Doses)", "price_usd": 299, "price_inr": 25415 }
-    ]
-  },
+  "id": "modafinil200armodafinil50",
+  "name": "Modafinil + Armodafinil 250mg",
+  "brand": "Generic",
+  "composition": "Modafinil 200 mg + Armodafinil 50 mg",
+  "category": "Neurology",
+  "use": "Market-specific wakefulness-promoting combination containing modafinil and armodafinil; regulatory approval, clinical appropriateness, and permitted indications should be verified for the destination country.",
+  "thumbnail": "assets/images/products/modafinil_200mg_armodafinil_50mg.jpeg",
+  "images": [
+    "assets/images/products/modafinil_200mg_armodafinil_50mg.jpeg"
+  ],
+  "variants": [
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 55, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4675 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 79, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 6715 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 105, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 8925 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 139, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 11815 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 249, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 21165 },
+    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 449, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 38165 }
+  ]
+},
+{
+  "id": "armodafinil150",
+  "name": "Armodafinil 150mg",
+  "brand": "Generic",
+  "composition": "Armodafinil 150 mg",
+  "category": "Neurology",
+  "use": "Wakefulness-promoting medicine used for excessive sleepiness associated with narcolepsy, obstructive sleep apnea, and shift work disorder.",
+  "thumbnail": "assets/images/products/armodafinil_150mg.jpeg",
+  "images": [
+    "assets/images/products/armodafinil_150mg.jpeg"
+  ],
+  "variants": [
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 55, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4675 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 79, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 6715 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 105, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 8925 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 139, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 11815 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 249, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 21165 },
+    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 449, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 38165 }
+  ]
+},
+{
+  "id": "armodafinil250",
+  "name": "Armodafinil 250mg",
+  "brand": "Generic",
+  "composition": "Armodafinil 250 mg",
+  "category": "Neurology",
+  "use": "Wakefulness-promoting medicine used for excessive sleepiness associated with narcolepsy and obstructive sleep apnea; 250 mg is within the labeled dose range for these indications.",
+  "thumbnail": "assets/images/products/armodafinil_250mg.jpeg",
+  "images": [
+    "assets/images/products/armodafinil_250mg.jpeg"
+  ],
+  "variants": [
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 59, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5015 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 89, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 7565 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 139, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 11815 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 199, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 16915 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 369, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 31365 },
+    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 681, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 57885 }
+  ]
+},
+{
+  "id": "empagliflozin125metformin850",
+  "name": "Empagliflozin + Metformin 12.5mg/850mg",
+  "brand": "Generic",
+  "composition": "Empagliflozin 12.5 mg + Metformin 850 mg",
+  "category": "Diabetes & Metabolic Care",
+  "use": "Combination of an SGLT2 inhibitor and biguanide used for management of type 2 diabetes mellitus; the 12.5 mg/850 mg strength requires market-specific regulatory verification.",
+  "thumbnail": "assets/images/products/empagliflozin_12.5mg_metformin_850mg.jpeg",
+  "images": [
+    "assets/images/products/empagliflozin_12.5mg_metformin_850mg.jpeg"
+  ],
+  "variants": [
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 49, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4165 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 65, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5525 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 85, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 7225 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 109, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 9265 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 179, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 15215 },
+    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 309, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 26265 }
+  ]
+},
   {
-    "name": "Wegovy 2.4mg",
-    "brand": "Generic",
-    "composition": "Semaglutide 2.4 mg",
-    "category": "Diabetes & Metabolic Care",
-    "use": "Chronic weight management, appetite suppression, and obesity treatment support",
-    "image": "assets/images/products/semaglutide_2.4mg.jpeg",
-    "variants": [
-      { "pack": "1 Month (4 Doses)", "price_usd": 299, "price_inr": 25415 },
-      { "pack": "2 Months (8 Doses)", "price_usd": 489, "price_inr": 41565 }
-    ]
-  },
+  "id": "dapagliflozin10metformin1000",
+  "name": "Dapagliflozin + Metformin 10mg/1000mg",
+  "brand": "Generic",
+  "composition": "Dapagliflozin 10 mg + Metformin 1000 mg",
+  "category": "Diabetes & Metabolic Care",
+  "use": "Combination SGLT2 inhibitor and metformin therapy used to improve glycemic control in type 2 diabetes; dapagliflozin-containing therapy also has established cardiovascular, heart failure, and kidney-related indications in appropriate adults.",
+  "thumbnail": "assets/images/products/dapagliflozin_10mg_metformin_1000mg.jpeg",
+  "images": [
+    "assets/images/products/dapagliflozin_10mg_metformin_1000mg.jpeg"
+  ],
+  "variants": [
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 49, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4165 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 59, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5015 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 75, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 6375 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 95, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 8075 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 149, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 12665 },
+    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 269, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 22865 }
+  ]
+},
+{
+  "id": "dapagliflozin10",
+  "name": "Dapagliflozin 10mg",
+  "brand": "Generic",
+  "composition": "Dapagliflozin 10 mg",
+  "category": "Diabetes & Metabolic Care",
+  "use": "SGLT2 inhibitor used for type 2 diabetes and to reduce cardiovascular and kidney-related risks in appropriate patients with heart failure or chronic kidney disease.",
+  "thumbnail": "assets/images/products/dapagliflozin_10mg.jpeg",
+  "images": [
+    "assets/images/products/dapagliflozin_10mg.jpeg"
+  ],
+  "variants": [
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 49, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4165 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 59, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5015 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 79, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 6715 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 99, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 8415 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 149, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 12665 },
+    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 269, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 22865 }
+  ]
+},
+{
+  "id": "dapagliflozin5",
+  "name": "Dapagliflozin 5mg",
+  "brand": "Generic",
+  "composition": "Dapagliflozin 5 mg",
+  "category": "Diabetes & Metabolic Care",
+  "use": "SGLT2 inhibitor used as a starting dose to improve glycemic control in appropriate patients with type 2 diabetes mellitus.",
+  "thumbnail": "assets/images/products/dapagliflozin_5mg.jpeg",
+  "images": [
+    "assets/images/products/dapagliflozin_5mg.jpeg"
+  ],
+  "variants": [
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 45, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3825 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 55, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4675 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 75, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 6375 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 99, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 8415 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 135, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 11475 },
+    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 259, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 22015 }
+  ]
+},
+{
+  "id": "sildenafil150dapoxetine100",
+  "name": "Sildenafil 150mg + Dapoxetine 100mg",
+  "brand": "Generic",
+  "composition": "Sildenafil Citrate 150 mg + Dapoxetine 100 mg",
+  "category": "Men’s Health",
+  "use": "High-strength market-specific combination containing sildenafil and dapoxetine for erectile dysfunction and premature ejaculation; both component strengths exceed standard labeled or established maximum doses.",
+  "thumbnail": "assets/images/products/sildenafil_150mg_dapoxetine_100mg.jpeg",
+  "images": [
+    "assets/images/products/sildenafil_150mg_dapoxetine_100mg.jpeg"
+  ],
+  "variants": [
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 59, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5015 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 89, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 7565 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 139, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 11815 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 199, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 16915 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 369, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 31365 },
+    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 681, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 57885 }
+  ]
+},
   {
-    "name": "Albendazole 400mg",
-    "brand": "Generic",
-    "composition": "Albendazole 400 mg",
-    "category": "Infection & Antiparasitic Treatments",
-    "use": "Treatment of intestinal worm infections, tapeworms, and other parasitic infestations",
-    "image": "assets/images/products/albendazole_400mg.jpeg",
-    "variants": [
-      { "pack": "50 Tablets", "price_usd": 39, "price_inr": 3315 },
-      { "pack": "100 Tablets", "price_usd": 49, "price_inr": 4165 },
-      { "pack": "300 Tablets", "price_usd": 69, "price_inr": 5865 },
-      { "pack": "500 Tablets", "price_usd": 79, "price_inr": 6715 },
-      { "pack": "1000 Tablets", "price_usd": 99, "price_inr": 8415 }
-    ]
-  },
+  "id": "sildenafil100dapoxetine100",
+  "name": "Sildenafil 100mg + Dapoxetine 100mg",
+  "brand": "Generic",
+  "composition": "Sildenafil Citrate 100 mg + Dapoxetine 100 mg",
+  "category": "Men’s Health",
+  "use": "High-strength market-specific combination containing sildenafil for erectile dysfunction and dapoxetine for premature ejaculation; the dapoxetine 100 mg component exceeds the established maximum recommended dose.",
+  "thumbnail": "assets/images/products/sildenafil_100mg_dapoxetine_100mg.jpeg",
+  "images": [
+    "assets/images/products/sildenafil_100mg_dapoxetine_100mg.jpeg"
+  ],
+  "variants": [
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 55, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4675 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 69, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5865 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 119, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 10115 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 149, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 12665 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 269, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 22865 },
+    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 492, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 41820 }
+  ]
+},
+{
+  "id": "supertadarise2060",
+  "name": "Extra Super Tadarise 80mg",
+  "brand": "Generic",
+  "composition": "Tadalafil 20 mg + Dapoxetine 60 mg",
+  "category": "Men’s Health",
+  "use": "Combination containing tadalafil for erectile dysfunction and dapoxetine for premature ejaculation in adult men when combination therapy is appropriate.",
+  "thumbnail": "assets/images/products/tadalafil_20mg_dapoxetine_60mg.jpeg",
+  "images": [
+    "assets/images/products/tadalafil_20mg_dapoxetine_60mg.jpeg"
+  ],
+  "variants": [
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 57, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4845 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 79, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 6715 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 129, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 10965 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 179, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 15215 }
+  ]
+},
+{
+  "id": "tretinoin0025",
+  "name": "Tretinoin 0.025% Cream",
+  "brand": "Generic",
+  "composition": "Tretinoin 0.025%",
+  "category": "Dermatology & Skin Care",
+  "use": "Topical retinoid primarily used for treatment of acne vulgaris; some tretinoin formulations also have photoaging-related indications depending on the specific product and country.",
+  "thumbnail": "assets/images/products/tretinoin_0.025_percent.jpeg",
+  "images": [
+    "assets/images/products/tretinoin_0.025_percent.jpeg"
+  ],
+  "variants": [
+    { "pack": "1 Tube (20g)", "quantity": 1, "price_usd": 39, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3315 },
+    { "pack": "3 Tubes (20g)", "quantity": 3, "price_usd": 49, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4165 },
+    { "pack": "5 Tubes (20g)", "quantity": 5, "price_usd": 69, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5865 },
+    { "pack": "7 Tubes (20g)", "quantity": 7, "price_usd": 79, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 6715 },
+    { "pack": "9 Tubes (20g)", "quantity": 9, "price_usd": 89, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 7565 }
+  ]
+},
+{
+  "id": "metoprololsuccinate50",
+  "name": "Metoprolol Succinate SR 50mg",
+  "brand": "Generic",
+  "composition": "Metoprolol Succinate Sustained Release 50 mg",
+  "category": "Cardiovascular Care",
+  "use": "Beta-blocker used for hypertension, long-term treatment of angina pectoris, and heart failure to reduce cardiovascular mortality and heart-failure hospitalization.",
+  "thumbnail": "assets/images/products/metoprolol_succinate_sr_50mg.jpeg",
+  "images": [
+    "assets/images/products/metoprolol_succinate_sr_50mg.jpeg"
+  ],
+  "variants": [
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 45, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3825 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 59, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5015 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 79, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 6715 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 99, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 8415 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 175, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 14875 },
+    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 315, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 26775 }
+  ]
+},
   {
-    "name": "Indomethacin 25mg",
-    "brand": "Generic",
-    "composition": "Indomethacin 25 mg",
-    "category": "Neurology",
-    "use": "Pain and inflammation management in arthritis, gout, and musculoskeletal disorders",
-    "image": "assets/images/products/indomethacin_25mg.jpeg",
-    "variants": [
-      { "pack": "50 Tablets", "price_usd": 39, "price_inr": 3315 },
-      { "pack": "100 Tablets", "price_usd": 49, "price_inr": 4165 },
-      { "pack": "300 Tablets", "price_usd": 59, "price_inr": 5015 },
-      { "pack": "500 Tablets", "price_usd": 69, "price_inr": 5865 },
-      { "pack": "1000 Tablets", "price_usd": 99, "price_inr": 8415 },
-      { "pack": "2000 Tablets", "price_usd": 169, "price_inr": 14365 }
-    ]
-  },
+  "id": "ivermectin24",
+  "name": "Ivermectin 24mg",
+  "brand": "Generic",
+  "composition": "Ivermectin 24 mg",
+  "category": "Infection & Antiparasitic Treatments",
+  "use": "Treatment of parasitic infections, scabies, and intestinal worm infestations",
+  "thumbnail": "assets/images/products/ivermectin_24mg.jpeg",
+  "images": [
+    "assets/images/products/ivermectin_24mg.jpeg"
+  ],
+  "variants": [
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 45, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3825 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 59, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5015 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 79, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 6715 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 85, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 7225 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 149, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 12665 },
+    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 269, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 22865 }
+  ]
+},
+{
+  "id": "sildenafil100",
+  "name": "Sildenafil Citrate 100mg",
+  "brand": "Generic",
+  "composition": "Sildenafil Citrate 100 mg",
+  "category": "Men’s Health",
+  "use": "Treatment of erectile dysfunction and improvement of sexual performance",
+  "thumbnail": "assets/images/products/sildenafil_citrate_100mg.jpeg",
+  "images": [
+    "assets/images/products/sildenafil_citrate_100mg.jpeg"
+  ],
+  "variants": [
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 39, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3315 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 49, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4165 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 59, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5015 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 69, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5865 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 99, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 8415 },
+    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 149, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 12665 }
+  ]
+},
+{
+  "id": "salbutamol100inhaler",
+  "name": "Asthalin Inhaler 100mcg",
+  "brand": "Generic",
+  "composition": "Salbutamol 100 mcg per actuation",
+  "category": "Respiratory Care",
+  "use": "Relief of asthma symptoms, bronchospasm, and breathing difficulties",
+  "thumbnail": "assets/images/products/salbutamol_200mcg_inhaler.jpeg",
+  "images": [
+    "assets/images/products/salbutamol_200mcg_inhaler.jpeg"
+  ],
+  "variants": [
+    { "pack": "1 Unit", "quantity": 1, "price_usd": 85, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 7225 },
+    { "pack": "3 Units", "quantity": 3, "price_usd": 99, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 8415 },
+    { "pack": "5 Units", "quantity": 5, "price_usd": 115, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 9775 },
+    { "pack": "7 Units", "quantity": 7, "price_usd": 135, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 11475 },
+    { "pack": "9 Units", "quantity": 9, "price_usd": 149, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 12665 }
+  ]
+},
+{
+  "name": "Mastronex-E 200mg/ml",
+  "brand": "Generic",
+  "composition": "Drostanolone Enanthate 200 mg/ml",
+  "category": "Hormonal / Performance Enhancement",
+  "use": "Performance enhancement, physique conditioning, and anabolic support",
+  "thumbnail": "assets/images/products/drostanolone_enanthate_200mg_ml.jpeg",
+  "images": [
+    "assets/images/products/drostanolone_enanthate_200mg_ml.jpeg"
+  ],
+  "variants": [
+    { "pack": "3 Bottles (10ml)", "quantity": 3, "price_usd": 149, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 12665 },
+    { "pack": "5 Bottles (10ml)", "quantity": 5, "price_usd": 199, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 16915 }
+  ]
+},
   {
-    "name": "Pregabalin 75mg",
-    "brand": "Generic",
-    "composition": "Pregabalin 75 mg",
-    "category": "Neurology",
-    "use": "Management of neuropathic pain, fibromyalgia, anxiety disorders, and seizure control",
-    "image": "assets/images/products/pregabalin_75mg.jpeg",
-    "variants": [
-      { "pack": "50 Tablets", "price_usd": 45, "price_inr": 3825 },
-      { "pack": "100 Tablets", "price_usd": 55, "price_inr": 4675 },
-      { "pack": "300 Tablets", "price_usd": 69, "price_inr": 5865 },
-      { "pack": "500 Tablets", "price_usd": 79, "price_inr": 6715 },
-      { "pack": "1000 Tablets", "price_usd": 119, "price_inr": 10115 },
-      { "pack": "2000 Tablets", "price_usd": 189, "price_inr": 16065 }
-    ]
-  },
+  "id": "semaglutide3",
+  "name": "Rybelsus 3mg",
+  "brand": "Generic",
+  "composition": "Semaglutide 3 mg",
+  "category": "Diabetes & Metabolic Care",
+  "use": "Blood glucose management in type 2 diabetes and metabolic health support",
+  "thumbnail": "assets/images/products/semaglutide_3mg.jpeg",
+  "images": [
+    "assets/images/products/semaglutide_3mg.jpeg"
+  ],
+  "variants": [
+    { "pack": "20 Tablets", "quantity": 20, "price_usd": 99, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 8415 },
+    { "pack": "30 Tablets", "quantity": 30, "price_usd": 139, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 11815 },
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 219, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 18615 }
+  ]
+},
+{
+  "id": "semaglutide7",
+  "name": "Rybelsus 7mg",
+  "brand": "Generic",
+  "composition": "Semaglutide 7 mg",
+  "category": "Diabetes & Metabolic Care",
+  "use": "Management of type 2 diabetes and improvement of glycemic control",
+  "thumbnail": "assets/images/products/semaglutide_7mg.jpeg",
+  "images": [
+    "assets/images/products/semaglutide_7mg.jpeg"
+  ],
+  "variants": [
+    { "pack": "20 Tablets", "quantity": 20, "price_usd": 129, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 10965 },
+    { "pack": "30 Tablets", "quantity": 30, "price_usd": 159, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 13515 },
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 249, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 21165 }
+  ]
+},
+{
+  "id": "testosteroneenanthate250",
+  "name": "Testosterone Enanthate 250mg/ml",
+  "brand": "Generic",
+  "composition": "Testosterone Enanthate 250 mg/ml",
+  "category": "Hormonal / Performance Enhancement",
+  "use": "Testosterone replacement therapy, muscle development, and hormonal support",
+  "thumbnail": "assets/images/products/testosterone_enanthate_250mg_ml.jpeg",
+  "images": [
+    "assets/images/products/testosterone_enanthate_250mg_ml.jpeg"
+  ],
+  "variants": [
+    { "pack": "5 Bottles (10ml)", "quantity": 5, "price_usd": 125, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 10625 },
+    { "pack": "7 Bottles (10ml)", "quantity": 7, "price_usd": 169, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 14365 },
+    { "pack": "9 Bottles (10ml)", "quantity": 9, "price_usd": 219, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 18615 }
+  ]
+},
+{
+  "id": "tadalafil10",
+  "name": "Tadalafil 10mg",
+  "brand": "Generic",
+  "composition": "Tadalafil 10 mg",
+  "category": "Men’s Health",
+  "use": "Treatment of erectile dysfunction and improvement of sexual performance",
+  "thumbnail": "assets/images/products/tadalafil_10mg.jpeg",
+  "images": [
+    "assets/images/products/tadalafil_10mg.jpeg"
+  ],
+  "variants": [
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 35, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 2975 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 49, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4165 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 59, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5015 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 69, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5865 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 99, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 8415 }
+  ]
+},
   {
-    "name": "Pregabalin 150mg",
-    "brand": "Generic",
-    "composition": "Pregabalin 150 mg",
-    "category": "Neurology",
-    "use": "Management of neuropathic pain, fibromyalgia, anxiety disorders, and seizure control",
-    "image": "assets/images/products/pregabalin_150mg.jpeg",
-    "variants": [
-      { "pack": "50 Tablets", "price_usd": 45, "price_inr": 3825 },
-      { "pack": "100 Tablets", "price_usd": 59, "price_inr": 5015 },
-      { "pack": "300 Tablets", "price_usd": 79, "price_inr": 6715 },
-      { "pack": "500 Tablets", "price_usd": 99, "price_inr": 8415 },
-      { "pack": "1000 Tablets", "price_usd": 169, "price_inr": 14365 },
-      { "pack": "2000 Tablets", "price_usd": 289, "price_inr": 24565 }
-    ]
-  },
-  {
-    "name": "Pregabalin 300mg",
-    "brand": "Generic",
-    "composition": "Pregabalin 300 mg",
-    "category": "Neurology",
-    "use": "Management of neuropathic pain, fibromyalgia, anxiety disorders, and seizure control",
-    "image": "assets/images/products/pregabalin_300mg.jpeg",
-    "variants": [
-      { "pack": "50 Tablets", "price_usd": 49, "price_inr": 4165 },
-      { "pack": "100 Tablets", "price_usd": 65, "price_inr": 5525 },
-      { "pack": "300 Tablets", "price_usd": 89, "price_inr": 7565 },
-      { "pack": "500 Tablets", "price_usd": 119, "price_inr": 10115 },
-      { "pack": "1000 Tablets", "price_usd": 189, "price_inr": 16065 }
-    ]
-  },
-  {
-    "name": "Modafinil 400mg",
-    "brand": "Generic",
-    "composition": "Modafinil 400 mg",
-    "category": "Neurology",
-    "use": "Promotion of wakefulness, management of narcolepsy, shift work sleep disorder, and fatigue reduction",
-    "image": "assets/images/products/modafinil_400mg.jpeg",
-    "variants": [
-      { "pack": "50 Tablets", "price_usd": 55, "price_inr": 4675 },
-      { "pack": "100 Tablets", "price_usd": 75, "price_inr": 6375 },
-      { "pack": "300 Tablets", "price_usd": 119, "price_inr": 10115 },
-      { "pack": "500 Tablets", "price_usd": 149, "price_inr": 12665 },
-      { "pack": "1000 Tablets", "price_usd": 279, "price_inr": 23715 },
-      { "pack": "2000 Tablets", "price_usd": 495, "price_inr": 42075 }
-    ]
-  },
-  {
-    "name": "Modafinil 300mg",
-    "brand": "Generic",
-    "composition": "Modafinil 300 mg",
-    "category": "Neurology",
-    "use": "Promotion of wakefulness, management of narcolepsy, shift work sleep disorder, and fatigue reduction",
-    "image": "assets/images/products/modafinil_300mg.jpeg",
-    "variants": [
-      { "pack": "50 Tablets", "price_usd": 49, "price_inr": 4165 },
-      { "pack": "100 Tablets", "price_usd": 65, "price_inr": 5525 },
-      { "pack": "300 Tablets", "price_usd": 89, "price_inr": 7565 },
-      { "pack": "500 Tablets", "price_usd": 119, "price_inr": 10115 },
-      { "pack": "1000 Tablets", "price_usd": 209, "price_inr": 17765 },
-      { "pack": "2000 Tablets", "price_usd": 369, "price_inr": 31365 }
-    ]
-  },
-  {
-    "name": "Modafinil 200mg",
-    "brand": "Generic",
-    "composition": "Modafinil 200 mg",
-    "category": "Neurology",
-    "use": "Promotion of wakefulness, management of narcolepsy, shift work sleep disorder, and fatigue reduction",
-    "image": "assets/images/products/modafinil_200mg.jpeg",
-    "variants": [
-      { "pack": "50 Tablets", "price_usd": 45, "price_inr": 3825 },
-      { "pack": "100 Tablets", "price_usd": 55, "price_inr": 4675 },
-      { "pack": "300 Tablets", "price_usd": 69, "price_inr": 5865 },
-      { "pack": "500 Tablets", "price_usd": 79, "price_inr": 6715 },
-      { "pack": "1000 Tablets", "price_usd": 129, "price_inr": 10965 },
-      { "pack": "2000 Tablets", "price_usd": 209, "price_inr": 17765 }
-    ]
-  },
-  {
-    "name": "Modafinil 100mg",
-    "brand": "Generic",
-    "composition": "Modafinil 100 mg",
-    "category": "Neurology",
-    "use": "Promotion of wakefulness, management of narcolepsy, shift work sleep disorder, and fatigue reduction",
-    "image": "assets/images/products/modafinil_100mg.jpeg",
-    "variants": [
-      { "pack": "50 Tablets", "price_usd": 45, "price_inr": 3825 },
-      { "pack": "100 Tablets", "price_usd": 55, "price_inr": 4675 },
-      { "pack": "300 Tablets", "price_usd": 69, "price_inr": 5865 },
-      { "pack": "500 Tablets", "price_usd": 79, "price_inr": 6715 },
-      { "pack": "1000 Tablets", "price_usd": 109, "price_inr": 9265 },
-      { "pack": "2000 Tablets", "price_usd": 179, "price_inr": 15215 }
-    ]
-  },
-  {
-    "name": "Armodafinil 50mg",
-    "brand": "Generic",
-    "composition": "Armodafinil 50 mg",
-    "category": "Neurology",
-    "use": "Improvement of wakefulness in narcolepsy, obstructive sleep apnea, and shift work disorder",
-    "image": "assets/images/products/armodafinil_50mg.jpeg",
-    "variants": [
-      { "pack": "50 Tablets", "price_usd": 45, "price_inr": 3825 },
-      { "pack": "100 Tablets", "price_usd": 55, "price_inr": 4675 },
-      { "pack": "300 Tablets", "price_usd": 75, "price_inr": 6375 },
-      { "pack": "500 Tablets", "price_usd": 89, "price_inr": 7565 },
-      { "pack": "1000 Tablets", "price_usd": 149, "price_inr": 12665 },
-      { "pack": "2000 Tablets", "price_usd": 269, "price_inr": 22865 }
-    ]
-  },
-  {
-    "name": "Modafinil + Armodafinil 250mg",
-    "brand": "Generic",
-    "composition": "Modafinil 200 mg + Armodafinil 50 mg",
-    "category": "Neurology",
-    "use": "Enhanced wakefulness support, cognitive alertness, fatigue reduction, and sleep disorder management",
-    "image": "assets/images/products/modafinil_200mg_armodafinil_50mg.jpeg",
-    "variants": [
-      { "pack": "50 Tablets", "price_usd": 55, "price_inr": 4675 },
-      { "pack": "100 Tablets", "price_usd": 79, "price_inr": 6715 },
-      { "pack": "300 Tablets", "price_usd": 105, "price_inr": 8925 },
-      { "pack": "500 Tablets", "price_usd": 139, "price_inr": 11815 },
-      { "pack": "1000 Tablets", "price_usd": 249, "price_inr": 21165 },
-      { "pack": "2000 Tablets", "price_usd": 449, "price_inr": 38165 }
-    ]
-  },
-  {
-    "name": "Armodafinil 150mg",
-    "brand": "Generic",
-    "composition": "Armodafinil 150 mg",
-    "category": "Neurology",
-    "use": "Improves wakefulness in narcolepsy, obstructive sleep apnea, and shift work sleep disorder",
-    "image": "assets/images/products/armodafinil_150mg.jpeg",
-    "variants": [
-      { "pack": "50 Tablets", "price_usd": 55, "price_inr": 4675 },
-      { "pack": "100 Tablets", "price_usd": 79, "price_inr": 6715 },
-      { "pack": "300 Tablets", "price_usd": 105, "price_inr": 8925 },
-      { "pack": "500 Tablets", "price_usd": 139, "price_inr": 11815 },
-      { "pack": "1000 Tablets", "price_usd": 249, "price_inr": 21165 },
-      { "pack": "2000 Tablets", "price_usd": 449, "price_inr": 38165 }
-    ]
-  },
-  {
-    "name": "Armodafinil 250mg",
-    "brand": "Generic",
-    "composition": "Armodafinil 250 mg",
-    "category": "Neurology",
-    "use": "Promotes alertness and wakefulness for sleep disorders and excessive daytime sleepiness",
-    "image": "assets/images/products/armodafinil_250mg.jpeg",
-    "variants": [
-      { "pack": "50 Tablets", "price_usd": 59, "price_inr": 5015 },
-      { "pack": "100 Tablets", "price_usd": 89, "price_inr": 7565 },
-      { "pack": "300 Tablets", "price_usd": 139, "price_inr": 11815 },
-      { "pack": "500 Tablets", "price_usd": 199, "price_inr": 16915 },
-      { "pack": "1000 Tablets", "price_usd": 369, "price_inr": 31365 },
-      { "pack": "2000 Tablets", "price_usd": 681, "price_inr": 57885 }
-    ]
-  },
-  {
-    "name": "Empagliflozin + Metformin 12.5mg/850mg",
-    "brand": "Generic",
-    "composition": "Empagliflozin 12.5 mg + Metformin 850 mg",
-    "category": "Diabetes & Metabolic Care",
-    "use": "Management of type 2 diabetes mellitus and improved blood glucose control",
-    "image": "assets/images/products/empagliflozin_12.5mg_metformin_850mg.jpeg",
-    "variants": [
-      { "pack": "50 Tablets", "price_usd": 49, "price_inr": 4165 },
-      { "pack": "100 Tablets", "price_usd": 65, "price_inr": 5525 },
-      { "pack": "300 Tablets", "price_usd": 85, "price_inr": 7225 },
-      { "pack": "500 Tablets", "price_usd": 109, "price_inr": 9265 },
-      { "pack": "1000 Tablets", "price_usd": 179, "price_inr": 15215 },
-      { "pack": "2000 Tablets", "price_usd": 309, "price_inr": 26265 }
-    ]
-  },
-  {
-    "name": "Dapagliflozin + Metformin 10mg/1000mg",
-    "brand": "Generic",
-    "composition": "Dapagliflozin 10 mg + Metformin 1000 mg",
-    "category": "Diabetes & Metabolic Care",
-    "use": "Blood sugar control in type 2 diabetes and cardiovascular risk reduction",
-    "image": "assets/images/products/dapagliflozin_10mg_metformin_1000mg.jpeg",
-    "variants": [
-      { "pack": "50 Tablets", "price_usd": 49, "price_inr": 4165 },
-      { "pack": "100 Tablets", "price_usd": 59, "price_inr": 5015 },
-      { "pack": "300 Tablets", "price_usd": 75, "price_inr": 6375 },
-      { "pack": "500 Tablets", "price_usd": 95, "price_inr": 8075 },
-      { "pack": "1000 Tablets", "price_usd": 149, "price_inr": 12665 },
-      { "pack": "2000 Tablets", "price_usd": 269, "price_inr": 22865 }
-    ]
-  },
-  {
-    "name": "Dapagliflozin 10mg",
-    "brand": "Generic",
-    "composition": "Dapagliflozin 10 mg",
-    "category": "Diabetes & Metabolic Care",
-    "use": "Management of type 2 diabetes, heart failure, and chronic kidney disease",
-    "image": "assets/images/products/dapagliflozin_10mg.jpeg",
-    "variants": [
-      { "pack": "50 Tablets", "price_usd": 49, "price_inr": 4165 },
-      { "pack": "100 Tablets", "price_usd": 59, "price_inr": 5015 },
-      { "pack": "300 Tablets", "price_usd": 79, "price_inr": 6715 },
-      { "pack": "500 Tablets", "price_usd": 99, "price_inr": 8415 },
-      { "pack": "1000 Tablets", "price_usd": 149, "price_inr": 12665 },
-      { "pack": "2000 Tablets", "price_usd": 269, "price_inr": 22865 }
-    ]
-  },
-  {
-    "name": "Dapagliflozin 5mg",
-    "brand": "Generic",
-    "composition": "Dapagliflozin 5 mg",
-    "category": "Diabetes & Metabolic Care",
-    "use": "Management of type 2 diabetes and improvement of glycemic control",
-    "image": "assets/images/products/dapagliflozin_5mg.jpeg",
-    "variants": [
-      { "pack": "50 Tablets", "price_usd": 45, "price_inr": 3825 },
-      { "pack": "100 Tablets", "price_usd": 55, "price_inr": 4675 },
-      { "pack": "300 Tablets", "price_usd": 75, "price_inr": 6375 },
-      { "pack": "500 Tablets", "price_usd": 99, "price_inr": 8415 },
-      { "pack": "1000 Tablets", "price_usd": 135, "price_inr": 11475 },
-      { "pack": "2000 Tablets", "price_usd": 259, "price_inr": 22015 }
-    ]
-  },
-  {
-    "name": "Sildenafil 150mg + Dapoxetine 100mg",
-    "brand": "Generic",
-    "composition": "Sildenafil Citrate 150 mg + Dapoxetine 100 mg",
-    "category": "Men’s Health",
-    "use": "Treatment of erectile dysfunction and premature ejaculation",
-    "image": "assets/images/products/sildenafil_150mg_dapoxetine_100mg.jpeg",
-    "variants": [
-      { "pack": "50 Tablets", "price_usd": 59, "price_inr": 5015 },
-      { "pack": "100 Tablets", "price_usd": 89, "price_inr": 7565 },
-      { "pack": "300 Tablets", "price_usd": 139, "price_inr": 11815 },
-      { "pack": "500 Tablets", "price_usd": 199, "price_inr": 16915 },
-      { "pack": "1000 Tablets", "price_usd": 369, "price_inr": 31365 },
-      { "pack": "2000 Tablets", "price_usd": 681, "price_inr": 57885 }
-    ]
-  },
-  {
-    "name": "Sildenafil 100mg + Dapoxetine 100mg",
-    "brand": "Generic",
-    "composition": "Sildenafil Citrate 100 mg + Dapoxetine 100 mg",
-    "category": "Men’s Health",
-    "use": "Treatment of erectile dysfunction with premature ejaculation support",
-    "image": "assets/images/products/sildenafil_100mg_dapoxetine_100mg.jpeg",
-    "variants": [
-      { "pack": "50 Tablets", "price_usd": 55, "price_inr": 4675 },
-      { "pack": "100 Tablets", "price_usd": 69, "price_inr": 5865 },
-      { "pack": "300 Tablets", "price_usd": 119, "price_inr": 10115 },
-      { "pack": "500 Tablets", "price_usd": 149, "price_inr": 12665 },
-      { "pack": "1000 Tablets", "price_usd": 269, "price_inr": 22865 },
-      { "pack": "2000 Tablets", "price_usd": 492, "price_inr": 41820 }
-    ]
-  },
-  {
-    "name": "Extra Super Tadarise 80mg",
-    "brand": "Generic",
-    "composition": "Tadalafil 20 mg + Dapoxetine 60 mg",
-    "category": "Men’s Health",
-    "use": "Management of erectile dysfunction and premature ejaculation",
-    "image": "assets/images/products/tadalafil_20mg_dapoxetine_60mg.jpeg",
-    "variants": [
-      { "pack": "50 Tablets", "price_usd": 57, "price_inr": 4845 },
-      { "pack": "100 Tablets", "price_usd": 79, "price_inr": 6715 },
-      { "pack": "300 Tablets", "price_usd": 129, "price_inr": 10965 },
-      { "pack": "500 Tablets", "price_usd": 179, "price_inr": 15215 }
-    ]
-  },
-  {
-    "name": "Tretinoin 0.025% Cream",
-    "brand": "Generic",
-    "composition": "Tretinoin 0.025%",
-    "category": "Dermatology & Skin Care",
-    "use": "Treatment of acne, fine wrinkles, sun damage, and skin texture improvement",
-    "image": "assets/images/products/tretinoin_0.025_percent.jpeg",
-    "variants": [
-      { "pack": "1 Tube (20g)", "price_usd": 39, "price_inr": 3315 },
-      { "pack": "3 Tubes (20g)", "price_usd": 49, "price_inr": 4165 },
-      { "pack": "5 Tubes (20g)", "price_usd": 69, "price_inr": 5865 },
-      { "pack": "7 Tubes (20g)", "price_usd": 79, "price_inr": 6715 },
-      { "pack": "9 Tubes (20g)", "price_usd": 89, "price_inr": 7565 }
-    ]
-  },
-  {
-    "name": "Metoprolol Succinate SR 50mg",
-    "brand": "Generic",
-    "composition": "Metoprolol Succinate Sustained Release 50 mg",
-    "category": "Thyroid Treatment",
-    "use": "Management of hypertension, angina, heart failure, and cardiovascular protection",
-    "image": "assets/images/products/metoprolol_succinate_sr_50mg.jpeg",
-    "variants": [
-      { "pack": "50 Tablets", "price_usd": 45, "price_inr": 3825 },
-      { "pack": "100 Tablets", "price_usd": 59, "price_inr": 5015 },
-      { "pack": "300 Tablets", "price_usd": 79, "price_inr": 6715 },
-      { "pack": "500 Tablets", "price_usd": 99, "price_inr": 8415 },
-      { "pack": "1000 Tablets", "price_usd": 175, "price_inr": 14875 },
-      { "pack": "2000 Tablets", "price_usd": 315, "price_inr": 26775 }
-    ]
-  },
-  {
-    "name": "Ivermectin 24mg",
-    "brand": "Generic",
-    "composition": "Ivermectin 24 mg",
-    "category": "Infection & Antiparasitic Treatments",
-    "use": "Treatment of parasitic infections, scabies, and intestinal worm infestations",
-    "image": "assets/images/products/ivermectin_24mg.jpeg",
-    "variants": [
-      { "pack": "50 Tablets", "price_usd": 45, "price_inr": 3825 },
-      { "pack": "100 Tablets", "price_usd": 59, "price_inr": 5015 },
-      { "pack": "300 Tablets", "price_usd": 79, "price_inr": 6715 },
-      { "pack": "500 Tablets", "price_usd": 85, "price_inr": 7225 },
-      { "pack": "1000 Tablets", "price_usd": 149, "price_inr": 12665 },
-      { "pack": "2000 Tablets", "price_usd": 269, "price_inr": 22865 }
-    ]
-  },
-  {
-    "name": "Sildenafil Citrate 100mg",
-    "brand": "Generic",
-    "composition": "Sildenafil Citrate 100 mg",
-    "category": "Men’s Health",
-    "use": "Treatment of erectile dysfunction and improvement of sexual performance",
-    "image": "assets/images/products/sildenafil_citrate_100mg.jpeg",
-    "variants": [
-      { "pack": "50 Tablets", "price_usd": 39, "price_inr": 3315 },
-      { "pack": "100 Tablets", "price_usd": 49, "price_inr": 4165 },
-      { "pack": "300 Tablets", "price_usd": 59, "price_inr": 5015 },
-      { "pack": "500 Tablets", "price_usd": 69, "price_inr": 5865 },
-      { "pack": "1000 Tablets", "price_usd": 99, "price_inr": 8415 },
-      { "pack": "2000 Tablets", "price_usd": 149, "price_inr": 12665 }
-    ]
-  },
-  {
-    "name": "Asthalin Inhaler 200mcg",
-    "brand": "Generic",
-    "composition": "Salbutamol 200 mcg Inhaler",
-    "category": "Allergy / Anxiety",
-    "use": "Relief of asthma symptoms, bronchospasm, and breathing difficulties",
-    "image": "assets/images/products/salbutamol_200mcg_inhaler.jpeg",
-    "variants": [
-      { "pack": "1 Unit", "price_usd": 85, "price_inr": 7225 },
-      { "pack": "3 Units", "price_usd": 99, "price_inr": 8415 },
-      { "pack": "5 Units", "price_usd": 115, "price_inr": 9775 },
-      { "pack": "7 Units", "price_usd": 135, "price_inr": 11475 },
-      { "pack": "9 Units", "price_usd": 149, "price_inr": 12665 }
-    ]
-  },
-  {
-    "name": "Mastronex-E 200mg/ml",
-    "brand": "Generic",
-    "composition": "Drostanolone Enanthate 200 mg/ml",
-    "category": "Hormonal / Performance Enhancement",
-    "use": "Performance enhancement, physique conditioning, and anabolic support",
-    "image": "assets/images/products/drostanolone_enanthate_200mg_ml.jpeg",
-    "variants": [
-      { "pack": "3 Bottles (10ml)", "price_usd": 149, "price_inr": 12665 },
-      { "pack": "5 Bottles (10ml)", "price_usd": 199, "price_inr": 16915 }
-    ]
-  },
-  {
-    "name": "Rybelsus 3mg",
-    "brand": "Generic",
-    "composition": "Semaglutide 3 mg",
-    "category": "Diabetes & Metabolic Care",
-    "use": "Blood glucose management in type 2 diabetes and metabolic health support",
-    "image": "assets/images/products/semaglutide_3mg.jpeg",
-    "variants": [
-      { "pack": "20 Tablets", "price_usd": 99, "price_inr": 8415 },
-      { "pack": "30 Tablets", "price_usd": 139, "price_inr": 11815 },
-      { "pack": "50 Tablets", "price_usd": 219, "price_inr": 18615 }
-    ]
-  },
-  {
-    "name": "Rybelsus 7mg",
-    "brand": "Generic",
-    "composition": "Semaglutide 7 mg",
-    "category": "Diabetes & Metabolic Care",
-    "use": "Management of type 2 diabetes and improvement of glycemic control",
-    "image": "assets/images/products/semaglutide_7mg.jpeg",
-    "variants": [
-      { "pack": "20 Tablets", "price_usd": 129, "price_inr": 10965 },
-      { "pack": "30 Tablets", "price_usd": 159, "price_inr": 13515 },
-      { "pack": "50 Tablets", "price_usd": 249, "price_inr": 21165 }
-    ]
-  },
-  {
-    "name": "Testosterone Enanthate 250mg/ml",
-    "brand": "Generic",
-    "composition": "Testosterone Enanthate 250 mg/ml",
-    "category": "Hormonal / Performance Enhancement",
-    "use": "Testosterone replacement therapy, muscle development, and hormonal support",
-    "image": "assets/images/products/testosterone_enanthate_250mg_ml.jpeg",
-    "variants": [
-      { "pack": "5 Bottles (10ml)", "price_usd": 125, "price_inr": 10625 },
-      { "pack": "7 Bottles (10ml)", "price_usd": 169, "price_inr": 14365 },
-      { "pack": "9 Bottles (10ml)", "price_usd": 219, "price_inr": 18615 }
-    ]
-  },
-  {
-    "name": "Tadalafil 10mg",
-    "brand": "Generic",
-    "composition": "Tadalafil 10 mg",
-    "category": "Men’s Health",
-    "use": "Treatment of erectile dysfunction and improvement of sexual performance",
-    "image": "assets/images/products/tadalafil_10mg.jpeg",
-    "variants": [
-      { "pack": "50 Tablets", "price_usd": 35, "price_inr": 2975 },
-      { "pack": "100 Tablets", "price_usd": 49, "price_inr": 4165 },
-      { "pack": "300 Tablets", "price_usd": 59, "price_inr": 5015 },
-      { "pack": "500 Tablets", "price_usd": 69, "price_inr": 5865 },
-      { "pack": "1000 Tablets", "price_usd": 99, "price_inr": 8415 }
-    ]
-  },
-  {
-    "name": "Eplerenone 25mg",
-    "brand": "Generic",
-    "composition": "Eplerenone 25 mg",
-    "category": "Thyroid Treatment",
-    "use": "Management of heart failure, hypertension, and cardiovascular risk reduction",
-    "image": "assets/images/products/eplerenone_25mg.jpeg",
-    "variants": [
-      { "pack": "50 Tablets", "price_usd": 55, "price_inr": 4675 },
-      { "pack": "100 Tablets", "price_usd": 69, "price_inr": 5865 },
-      { "pack": "300 Tablets", "price_usd": 109, "price_inr": 9265 },
-      { "pack": "500 Tablets", "price_usd": 149, "price_inr": 12665 },
-      { "pack": "1000 Tablets", "price_usd": 275, "price_inr": 23375 },
-      { "pack": "2000 Tablets", "price_usd": 499, "price_inr": 42415 }
-    ]
-  },
-  {
+  "id": "eplerenone25",
+  "name": "Eplerenone 25mg",
+  "brand": "Generic",
+  "composition": "Eplerenone 25 mg",
+  "category": "Cardiovascular Care",
+  "use": "Management of heart failure, hypertension, and cardiovascular risk reduction",
+  "thumbnail": "assets/images/products/eplerenone_25mg.jpeg",
+  "images": [
+    "assets/images/products/eplerenone_25mg.jpeg"
+  ],
+  "variants": [
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 55, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4675 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 69, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5865 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 109, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 9265 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 149, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 12665 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 275, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 23375 },
+    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 499, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 42415 }
+  ]
+},
+{
+  "id": "azelaicacid20",
   "name": "Azelaic Acid Gel 20%",
   "brand": "Generic",
   "composition": "Azelaic Acid 20% w/w",
   "category": "🧴 Dermatology & Skin Care",
   "use": "Treatment of acne vulgaris, rosacea, post-inflammatory hyperpigmentation, and skin discoloration.",
-  "image": "assets/images/products/azelaic_acid_20_percent.jpeg",
+  "thumbnail": "assets/images/products/azelaic_acid_20_percent.jpeg",
+  "images": [
+    "assets/images/products/azelaic_acid_20_percent.jpeg"
+  ],
   "variants": [
-    { "pack": "1 Tube", "price_usd": 39, "price_inr": 3315 },
-    { "pack": "3 Tubes", "price_usd": 59, "price_inr": 5015 },
-    { "pack": "5 Tubes", "price_usd": 79, "price_inr": 6715 },
-    { "pack": "7 Tubes", "price_usd": 99, "price_inr": 8415 }
+    { "pack": "1 Tube", "quantity": 1, "price_usd": 39, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3315 },
+    { "pack": "3 Tubes", "quantity": 3, "price_usd": 59, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5015 },
+    { "pack": "5 Tubes", "quantity": 5, "price_usd": 79, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 6715 },
+    { "pack": "7 Tubes", "quantity": 7, "price_usd": 99, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 8415 }
   ]
 },
 {
+  "id": "isotretinoin5",
   "name": "Isotretinoin 5mg",
   "brand": "Generic",
   "composition": "Isotretinoin 5 mg",
   "category": "🧴 Dermatology & Skin Care",
   "use": "Treatment of severe nodular acne and acne resistant to conventional therapies.",
-  "image": "assets/images/products/isotretinoin_5mg.jpeg",
+  "thumbnail": "assets/images/products/isotretinoin_5mg.jpeg",
+  "images": [
+    "assets/images/products/isotretinoin_5mg.jpeg"
+  ],
   "variants": [
-    { "pack": "50 Tablets", "price_usd": 39, "price_inr": 3315 },
-    { "pack": "100 Tablets", "price_usd": 49, "price_inr": 4165 },
-    { "pack": "300 Tablets", "price_usd": 55, "price_inr": 4675 },
-    { "pack": "500 Tablets", "price_usd": 69, "price_inr": 5865 }
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 39, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3315 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 49, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4165 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 55, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4675 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 69, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5865 }
   ]
 },
 {
+  "id": "testosteronegel1",
   "name": "Testosterone Gel 1% Androfast 80g",
   "brand": "Generic",
   "composition": "Testosterone 1% Gel",
   "category": "💪 Hormonal / Performance Enhancement",
   "use": "Testosterone replacement therapy in males with low testosterone levels and hypogonadism.",
-  "image": "assets/images/products/testosterone_1_percent_gel_androfast.jpeg",
+  "thumbnail": "assets/images/products/testosterone_1_percent_gel_androfast.jpeg",
+  "images": [
+    "assets/images/products/testosterone_1_percent_gel_androfast.jpeg"
+  ],
   "variants": [
-    { "pack": "3 Bottles", "price_usd": 129, "price_inr": 10965 },
-    { "pack": "5 Bottles", "price_usd": 189, "price_inr": 16065 }
+    { "pack": "3 Bottles", "quantity": 3, "price_usd": 129, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 10965 },
+    { "pack": "5 Bottles", "quantity": 5, "price_usd": 189, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 16065 }
   ]
 },
 {
+  "id": "tadalafil20",
   "name": "Tadalafil 20mg",
   "brand": "Generic",
   "composition": "Tadalafil 20 mg",
   "category": "Men’s Health",
   "use": "Treatment of erectile dysfunction and improvement of male sexual performance.",
-  "image": "assets/images/products/tadalafil_20mg.jpeg",
+  "thumbnail": "assets/images/products/tadalafil_20mg.jpeg",
+  "images": [
+    "assets/images/products/tadalafil_20mg.jpeg"
+  ],
   "variants": [
-    { "pack": "50 Tablets", "price_usd": 39, "price_inr": 3315 },
-    { "pack": "100 Tablets", "price_usd": 49, "price_inr": 4165 },
-    { "pack": "300 Tablets", "price_usd": 59, "price_inr": 5015 },
-    { "pack": "500 Tablets", "price_usd": 69, "price_inr": 5865 },
-    { "pack": "1000 Tablets", "price_usd": 109, "price_inr": 9265 },
-    { "pack": "2000 Tablets", "price_usd": 169, "price_inr": 14365 }
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 39, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3315 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 49, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4165 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 59, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5015 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 69, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5865 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 109, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 9265 },
+    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 169, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 14365 }
   ]
 },
 {
+  "id": "supertadarise2060",
   "name": "Super Tadarise",
   "brand": "Generic",
   "composition": "Tadalafil 20 mg + Dapoxetine 60 mg",
   "category": "Men’s Health",
   "use": "Management of erectile dysfunction and premature ejaculation in adult males.",
-  "image": "assets/images/products/tadalafil_20mg_dapoxetine_60mg.jpeg",
+  "thumbnail": "assets/images/products/tadalafil_20mg_dapoxetine_60mg.jpeg",
+  "images": [
+    "assets/images/products/tadalafil_20mg_dapoxetine_60mg.jpeg"
+  ],
   "variants": [
-    { "pack": "50 Tablets", "price_usd": 55, "price_inr": 4675 },
-    { "pack": "100 Tablets", "price_usd": 69, "price_inr": 5865 },
-    { "pack": "300 Tablets", "price_usd": 109, "price_inr": 9265 },
-    { "pack": "500 Tablets", "price_usd": 149, "price_inr": 12665 },
-    { "pack": "1000 Tablets", "price_usd": 275, "price_inr": 23375 },
-    { "pack": "2000 Tablets", "price_usd": 499, "price_inr": 42415 }
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 55, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4675 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 69, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5865 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 109, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 9265 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 149, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 12665 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 275, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 23375 },
+    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 499, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 42415 }
   ]
 },
 {
+  "id": "isotretinoin20",
   "name": "Isotretinoin 20mg",
   "brand": "Generic",
   "composition": "Isotretinoin 20 mg",
   "category": "🧴 Dermatology & Skin Care",
   "use": "Treatment of severe acne, cystic acne, and acne unresponsive to standard treatments.",
-  "image": "assets/images/products/isotretinoin_20mg.jpeg",
+  "thumbnail": "assets/images/products/isotretinoin_20mg.jpeg",
+  "images": [
+    "assets/images/products/isotretinoin_20mg.jpeg"
+  ],
   "variants": [
-    { "pack": "50 Tablets", "price_usd": 39, "price_inr": 3315 },
-    { "pack": "100 Tablets", "price_usd": 55, "price_inr": 4675 },
-    { "pack": "300 Tablets", "price_usd": 69, "price_inr": 5865 },
-    { "pack": "500 Tablets", "price_usd": 79, "price_inr": 6715 },
-    { "pack": "1000 Tablets", "price_usd": 129, "price_inr": 10965 }
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 39, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3315 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 55, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4675 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 69, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5865 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 79, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 6715 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 129, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 10965 }
   ]
 },
 {
+  "id": "micronizedprogesterone100",
   "name": "Micronized Progesterone 100mg",
   "brand": "Generic",
   "composition": "Micronized Progesterone 100 mg",
   "category": "⚖️ Hormone Therapy",
-  "use": "Hormonal support, progesterone replacement, and women's health management.",
-  "image": "assets/images/products/micronized_progesterone_100mg.jpeg",
+  "use": "Progesterone replacement used for secondary amenorrhea and prevention of endometrial hyperplasia in appropriate postmenopausal women receiving estrogen therapy.",
+  "thumbnail": "assets/images/products/micronized_progesterone_100mg.jpeg",
+  "images": [
+    "assets/images/products/micronized_progesterone_100mg.jpeg"
+  ],
   "variants": [
-    { "pack": "50 Tablets", "price_usd": 45, "price_inr": 3825 },
-    { "pack": "100 Tablets", "price_usd": 59, "price_inr": 5015 },
-    { "pack": "300 Tablets", "price_usd": 75, "price_inr": 6375 },
-    { "pack": "500 Tablets", "price_usd": 89, "price_inr": 7565 },
-    { "pack": "1000 Tablets", "price_usd": 149, "price_inr": 12665 },
-    { "pack": "2000 Tablets", "price_usd": 269, "price_inr": 22865 }
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 45, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3825 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 59, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5015 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 75, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 6375 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 89, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 7565 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 149, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 12665 },
+    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 269, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 22865 }
   ]
 },
 {
+  "id": "gliclazide60mr",
   "name": "Gliclazide 60mg MR",
   "brand": "Generic",
   "composition": "Gliclazide Modified Release 60 mg",
   "category": "🩸 Diabetes & Metabolic Care",
   "use": "Management of type 2 diabetes mellitus and blood glucose control.",
-  "image": "assets/images/products/gliclazide_modified_release_60mg.jpeg",
+  "thumbnail": "assets/images/products/gliclazide_modified_release_60mg.jpeg",
+  "images": [
+    "assets/images/products/gliclazide_modified_release_60mg.jpeg"
+  ],
   "variants": [
-    { "pack": "50 Tablets", "price_usd": 49, "price_inr": 4165 },
-    { "pack": "100 Tablets", "price_usd": 69, "price_inr": 5865 },
-    { "pack": "300 Tablets", "price_usd": 109, "price_inr": 9265 },
-    { "pack": "500 Tablets", "price_usd": 139, "price_inr": 11815 },
-    { "pack": "1000 Tablets", "price_usd": 249, "price_inr": 21165 },
-    { "pack": "2000 Tablets", "price_usd": 459, "price_inr": 39015 }
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 49, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4165 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 69, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5865 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 109, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 9265 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 139, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 11815 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 249, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 21165 },
+    { "pack": "2000 Tablets", "quantity": 2000, "price_usd": 459, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 39015 }
   ]
 },
 {
+  "id": "ivermectin3",
   "name": "Ivermectin 3mg",
   "brand": "Generic",
   "composition": "Ivermectin 3 mg",
   "category": "🦠 Infection & Antiparasitic Treatments",
-  "use": "Treatment of parasitic infections including strongyloidiasis, onchocerciasis, and scabies.",
-  "image": "assets/images/products/ivermectin_3mg.jpeg",
+  "use": "Treatment of susceptible parasitic infections; approved indications vary by country.",
+  "thumbnail": "assets/images/products/ivermectin_3mg.jpeg",
+  "images": [
+    "assets/images/products/ivermectin_3mg.jpeg"
+  ],
   "variants": [
-    { "pack": "50 Tablets", "price_usd": 39, "price_inr": 3315 },
-    { "pack": "100 Tablets", "price_usd": 49, "price_inr": 4165 },
-    { "pack": "300 Tablets", "price_usd": 69, "price_inr": 5865 },
-    { "pack": "500 Tablets", "price_usd": 79, "price_inr": 6715 },
-    { "pack": "1000 Tablets", "price_usd": 99, "price_inr": 8415 }
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 39, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3315 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 49, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4165 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 69, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5865 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 79, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 6715 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 99, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 8415 }
   ]
 },
 {
+  "id": "isotretinoin10",
   "name": "Isotretinoin 10mg",
   "brand": "Generic",
   "composition": "Isotretinoin 10 mg",
   "category": "🧴 Dermatology & Skin Care",
-  "use": "Treatment of severe acne vulgaris and chronic acne unresponsive to conventional therapies.",
-  "image": "assets/images/products/isotretinoin_10mg.jpeg",
+  "use": "Treatment of severe recalcitrant nodular acne unresponsive to conventional therapies.",
+  "thumbnail": "assets/images/products/isotretinoin_10mg.jpeg",
+  "images": [
+    "assets/images/products/isotretinoin_10mg.jpeg"
+  ],
   "variants": [
-    { "pack": "50 Tablets", "price_usd": 39, "price_inr": 3315 },
-    { "pack": "100 Tablets", "price_usd": 55, "price_inr": 4675 },
-    { "pack": "300 Tablets", "price_usd": 69, "price_inr": 5865 },
-    { "pack": "500 Tablets", "price_usd": 79, "price_inr": 6715 },
-    { "pack": "1000 Tablets", "price_usd": 129, "price_inr": 10965 }
+    { "pack": "50 Tablets", "quantity": 50, "price_usd": 39, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 3315 },
+    { "pack": "100 Tablets", "quantity": 100, "price_usd": 55, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 4675 },
+    { "pack": "300 Tablets", "quantity": 300, "price_usd": 69, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 5865 },
+    { "pack": "500 Tablets", "quantity": 500, "price_usd": 79, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 6715 },
+    { "pack": "1000 Tablets", "quantity": 1000, "price_usd": 129, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 10965 }
   ]
 }
 ]
