@@ -104,6 +104,7 @@
   "composition": "Isotretinoin 30 mg",
   "category": "Dermatology",
   "use": "Severe acne treatment",
+  "thumbnail": "assets/images/products/isotretinoin30.jpeg",
   "image": "assets/images/products/isotretinoin30_accutane.jpeg",
   "variants": [
   { "pack": "50 Capsules", "quantity": 50, "price_usd": 49, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 0 },
@@ -1795,7 +1796,7 @@
   "composition": "Triclabendazole 250 mg",
   "category": "Infection & Antiparasitic Treatments",
   "use": "Treatment of liver fluke infections (fascioliasis)",
-  "thumbnail": "assets/images/products/triclabendazole.jpeg",
+  "thumbnail": "assets/images/products/triclabendazole250.jpeg",
   "images": [
     "assets/images/products/triclabendazole.jpeg"
   ],
