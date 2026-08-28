@@ -1861,7 +1861,7 @@
   "composition": "Pheniramine Maleate 50 mg",
   "category": "Antihistamine / Allergy Care",
   "use": "Relief of allergic conditions and associated itching",
-  "thumbnail": "assets/images/products/pheniramine.jpeg",
+  "thumbnail": "assets/images/products/pheniramine50.jpeg",
   "images": [
     "assets/images/products/pheniramine.jpeg"
   ],
@@ -1894,9 +1894,9 @@
   "composition": "Boldenone Undecylenate 250 mg/ml",
   "category": "Anabolic Steroid / Veterinary",
   "use": "Veterinary anabolic-androgenic steroid preparation",
-  "thumbnail": "assets/images/products/boldebolin.jpeg",
+  "thumbnail": "assets/images/products/boldebolin_250_injection.jpeg",
   "images": [
-    "assets/images/products/boldebolin.jpeg"
+    "assets/images/products/boldebolin_250_injection.jpeg"
   ],
   "variants": [
     { "pack": "1 Vial (10 ml)", "quantity": 1, "price_usd": 35, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 1470 },
@@ -2337,9 +2337,9 @@
   "composition": "Testosterone Cypionate 250 mg/ml",
   "category": "Hormone Therapy",
   "use": "Testosterone replacement therapy for adult males with confirmed testosterone deficiency",
-  "thumbnail": "assets/images/products/testosterone_cypionate_250mg_ml.jpeg",
+  "thumbnail": "assets/images/products/testosterone_cypionate_250_injection.jpeg",
   "images": [
-    "assets/images/products/testosterone_cypionate_250mg_ml.jpeg"
+    "assets/images/products/testosterone_cypionate_250_injection.jpeg"
   ],
   "variants": [
     { "pack": "5 Vials (10 ml each)", "quantity": 5, "price_usd": 139, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 11815 },
@@ -2359,9 +2359,9 @@
     "assets/images/products/testosterone_blend_250mg_ml.jpeg"
   ],
   "variants": [
-    { "pack": "5 Boxes (10 x 1 ml)", "quantity": 50, "price_usd": 125, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 10625 },
-    { "pack": "7 Boxes (10 x 1 ml)", "quantity": 70, "price_usd": 169, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 14365 },
-    { "pack": "9 Boxes (10 x 1 ml)", "quantity": 90, "price_usd": 219, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 18615 }
+    { "pack": "5 Boxes (10x1 ml)", "quantity": 50, "price_usd": 125, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 10625 },
+    { "pack": "7 Boxes (10x1 ml)", "quantity": 70, "price_usd": 169, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 14365 },
+    { "pack": "9 Boxes (10x1 ml)", "quantity": 90, "price_usd": 219, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 18615 }
   ]
 },
 {
@@ -2756,9 +2756,9 @@
   "composition": "Semaglutide 2.4 mg",
   "category": "Diabetes & Metabolic Care",
   "use": "GLP-1 receptor agonist used with reduced-calorie diet and increased physical activity for chronic weight management in appropriate adults.",
-  "thumbnail": "assets/images/products/semaglutide_2.4mg.jpeg",
+  "thumbnail": "assets/images/products/novelsemaglutide_2.4mg.jpeg",
   "images": [
-    "assets/images/products/semaglutide_2.4mg.jpeg"
+    "assets/images/products/novelsemaglutide_2.4mg.jpeg"
   ],
   "variants": [
     { "pack": "1 Month (4 Doses)", "quantity": 4, "price_usd": 189, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 16065 },
@@ -2772,9 +2772,9 @@
   "composition": "Semaglutide 2.4 mg",
   "category": "Diabetes & Metabolic Care",
   "use": "GLP-1 receptor agonist used for chronic weight reduction and maintenance and, in appropriate adults, cardiovascular-risk reduction and treatment of noncirrhotic MASH with moderate-to-advanced liver fibrosis.",
-  "thumbnail": "assets/images/products/semaglutide_2.4mg.jpeg",
+  "thumbnail": "assets/images/products/wegovysemaglutide_2.4mg.jpeg",
   "images": [
-    "assets/images/products/semaglutide_2.4mg.jpeg"
+    "assets/images/products/wegovysemaglutide_2.4mg.jpeg"
   ],
   "variants": [
     { "pack": "1 Month (4 Doses)", "quantity": 4, "price_usd": 299, "market_price_usd": 0, "price_gbp": 0, "market_price_gbp": 0, "price_aud": 0, "market_price_aud": 0, "price_inr": 25415 },
