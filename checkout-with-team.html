@@ -13,6 +13,7 @@
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="currency-utils.js"></script>
+  <script src="header.js" defer></script>
 
   <script>
     tailwind.config = {
@@ -615,10 +616,14 @@
       const header = await fetch('header.html');
 
       document.getElementById('header-placeholder').innerHTML =
-        await header.text();
+          await header.text();
 
-      if (window.initCurrencySelect) {
-        window.initCurrencySelect();
+      if(window.initHeader){
+          window.initHeader();
+      }
+
+      if(window.initCurrencySelect){
+          window.initCurrencySelect();
       }
 
       const menuBtn = document.getElementById('menu-btn');

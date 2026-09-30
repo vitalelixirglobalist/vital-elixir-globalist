@@ -6,8 +6,10 @@
   <title>Medication Details – Vital Elixir Globalist</title>
   <meta name="description" content="See complete medication details, pricing, pack sizes, and trusted export quality information." />
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="header.css">
   <script src="currency-utils.js"></script>
   <script src="pricing-engine.js"></script>
+  <script src="header.js" defer></script>
   <script>
     tailwind.config = {
       theme: {
@@ -297,6 +299,37 @@
 
   </main>
 
+    <div id="modalOverlay" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
+
+      <div class="bg-white rounded-2xl shadow-xl w-[90%] max-w-md p-6 text-center">
+
+          <h3
+                id="modalTitle"
+                class="text-xl font-bold text-slate-800 mb-3">
+                Login Required
+            </h3>
+
+          <p id="modalMessage" class="text-slate-600 mb-6">
+          </p>
+
+          <div class="flex justify-center gap-3">
+
+              <button id="modalOk"
+                  class="px-5 py-2 bg-brand text-white rounded-lg hover:bg-blue-700 transition">
+                  OK
+              </button>
+
+              <button id="modalProceed"
+                  class="hidden px-5 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
+                  Proceed to Cart
+              </button>
+
+          </div>
+
+      </div>
+
+  </div>
+
   <div id="actionToast" class="hidden fixed top-4 right-4 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-lg text-sm"></div>
 
   <div id="mobileActionBar" class="hidden fixed md:hidden bottom-0 inset-x-0 bg-white/95 border-t border-slate-200 p-4 flex gap-3 z-40">
@@ -512,6 +545,57 @@
       setTimeout(() => actionToast.classList.add('hidden'), 2800);
     }
 
+
+          // ==========================
+      // Professional Login Modal
+      // ==========================
+
+      const modalOverlay = document.getElementById("modalOverlay");
+      const modalMessage = document.getElementById("modalMessage");
+      const modalTitle = document.getElementById("modalTitle");
+      const modalOk = document.getElementById("modalOk");
+      const modalProceed = document.getElementById("modalProceed");
+
+      function showModal(message, showProceed = false, title = "Login Required") {
+              modalTitle.textContent = title;
+              modalMessage.innerHTML = message;
+              modalOverlay.classList.remove("hidden");
+              modalOverlay.classList.add("flex");
+              if (showProceed) {
+                  modalProceed.classList.remove("hidden");
+              } else {
+                  modalProceed.classList.add("hidden");
+              }
+          }
+
+      function hideModal() {
+
+          modalOverlay.classList.remove("flex");
+          modalOverlay.classList.add("hidden");
+
+      }
+
+      modalOverlay.addEventListener("click", (e) => {
+
+          if (e.target === modalOverlay) {
+              hideModal();
+          }
+
+      });
+
+      modalOk.addEventListener("click", () => {
+
+          hideModal();
+
+      });
+
+      modalProceed.addEventListener("click", () => {
+
+          hideModal();
+
+          window.location.href = "cart.html";
+
+      });
     function updatePrice() {
       if (!selectedProduct || !selectedProduct.variants.length) return;
       const variant =
@@ -1066,28 +1150,23 @@
   const variant =
     selectedProduct.variants[selectedVariantIndex] ||
     selectedProduct.variants[0];
-
   const cartItem = buildCartItem(selectedProduct, variant);
-
   const user = window.auth.currentUser;
-
-  // guest users
-  if (!user) {
-
-    const localCart =
-      JSON.parse(localStorage.getItem('cart')) || [];
-
-    localCart.push(cartItem);
-
-    localStorage.setItem(
-      'cart',
-      JSON.stringify(localCart)
-    );
-
-    showToast('Please login first.');
-
-    return;
-  }
+          if (!user) {
+          showModal(
+              "<h2 class='text-3xl font-bold mb-4'>Please log in to view your cart</h2>" +
+              "<p class='text-slate-600 text-lg'>You must be signed in to access your cart and proceed to checkout.</p>",
+              false
+          );
+          modalOk.textContent = "Login";
+          modalOk.onclick = () => {
+              hideModal();
+              window.location.href =
+                  "login.html?redirect=" +
+                  encodeURIComponent(window.location.pathname + window.location.search);
+          };
+          return;
+      }
 
   const productId =
     (
@@ -1116,12 +1195,16 @@
       addedAt: new Date().toISOString()
     }
 
-  );
+      );
 
-  showToast(
-    `${selectedProduct.name} (${variant.pack}) added to cart.`
-    );
-}
+      modalOk.textContent = "OK";
+
+      showModal(
+            `<strong>${selectedProduct.name}</strong><br>${variant.pack} added successfully.`,
+            true,
+            "Product Added Successfully"
+        );
+            }
 
     function consultDoctor() {
       if (!selectedProduct) return;
@@ -1176,11 +1259,17 @@
         });
     async function loadHeader() {
       const header = await fetch('header.html');
-      document.getElementById('header-placeholder').innerHTML = await header.text();
 
-      if (window.initCurrencySelect) {
-          window.initCurrencySelect();
-      }
+        document.getElementById('header-placeholder').innerHTML =
+            await header.text();
+
+        if(window.initHeader){
+            window.initHeader();
+        }
+
+        if(window.initCurrencySelect){
+            window.initCurrencySelect();
+        }
 
       // EXECUTE HEADER SCRIPTS
 

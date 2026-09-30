@@ -6,8 +6,10 @@
   <title>About Us – Vital Elixir Globalist</title>
   <meta name="description" content="Learn more about Vital Elixir Globalist – our mission, values and team." />
   <script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="header.css">
 <script src="currency-utils.js"></script>
+<script src="header.js" defer></script>
 <script>
   tailwind.config = {
     theme: {
@@ -123,9 +125,16 @@
     document.getElementById('year').textContent = new Date().getFullYear();
     async function loadHeader() {
       const header = await fetch('header.html');
-      document.getElementById('header-placeholder').innerHTML = await header.text();
-       if (window.initCurrencySelect) {
-        window.initCurrencySelect();
+
+      document.getElementById('header-placeholder').innerHTML =
+          await header.text();
+
+      if(window.initHeader){
+          window.initHeader();
+      }
+
+      if(window.initCurrencySelect){
+          window.initCurrencySelect();
       }
       const menuBtn = document.getElementById('menu-btn');
       const closeBtn = document.getElementById('close-menu');

@@ -6,8 +6,10 @@
   <title>Your Cart – Vital Elixir Globalist</title>
   <meta name="description" content="Review your selected medicines and proceed to checkout." />
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="header.css">
   <script src="currency-utils.js"></script>
   <script src="pricing-engine.js"></script>
+  <script src="header.js" defer></script>
   <script>
     tailwind.config = {
       theme: {
@@ -280,9 +282,16 @@ body .fab-icon img {
     // Load header and mobile menu
     async function loadHeader() {
       const header = await fetch('header.html');
-      document.getElementById('header-placeholder').innerHTML = await header.text();
-      if (window.initCurrencySelect) {
-        window.initCurrencySelect();
+
+      document.getElementById('header-placeholder').innerHTML =
+          await header.text();
+
+      if(window.initHeader){
+          window.initHeader();
+      }
+
+      if(window.initCurrencySelect){
+          window.initCurrencySelect();
       }
       const menuBtn = document.getElementById('menu-btn');
       const closeBtn = document.getElementById('close-menu');
