@@ -923,7 +923,7 @@
       }
       related.forEach((item) => {
         const card = document.createElement('a');
-        card.href = `product-details.html?product=${encodeURIComponent(item.name)}`;
+        card.href =  `product-details.html?id=${encodeURIComponent(item.id)}`;
         card.className = 'glass-card p-4 rounded-2xl border border-slate-200 hover:-translate-y-1 transition shadow-sm hover:shadow-lg bg-white';
         card.innerHTML = `
           <div class="flex items-center gap-3">
@@ -947,7 +947,7 @@
       if (!pairings.length) pairings = allProducts.filter((p) => p.name !== product.name);
       pairings.slice(0, 3).forEach((item) => {
         const card = document.createElement('a');
-        card.href = `product-details.html?product=${encodeURIComponent(item.name)}`;
+        card.href = `product-details.html?id=${encodeURIComponent(item.id)}`;
         card.className = 'p-4 rounded-2xl border border-emerald-100 bg-emerald-50/60 hover:bg-emerald-50 transition';
         card.innerHTML = `
           <div class="flex items-start gap-3">
@@ -1288,10 +1288,10 @@
       window.location.href = `doctor-consultation.html?product=${encodeURIComponent(selectedProduct.name)}`;
     }
 
-    function getQueryProduct() {
-      const params = new URLSearchParams(window.location.search);
-      return params.get('product') || params.get('name');
-    }
+    function getQueryProductId() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('id');
+}
 
     async function loadProductDetails() {
       try {
@@ -1302,8 +1302,16 @@
 
         allProducts = await productsRes.json();
         const productContent = await contentRes.json();
-        const productParam = decodeURIComponent(getQueryProduct() || '').trim();
-        const product = allProducts.find((p) => p.name.toLowerCase() === productParam.toLowerCase());
+        const productId =
+  decodeURIComponent(
+    getQueryProductId() || ''
+  ).trim();
+
+const product =
+  allProducts.find(
+    (p) =>
+      String(p.id || '').trim() === productId
+  );
 
         if (!product) {
           document.querySelector('main').innerHTML = '<div class="text-center py-20 text-slate-600 text-lg">Product not found.</div>';

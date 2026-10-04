@@ -276,8 +276,6 @@ body .fab-icon img {
     </div>
   </section>
 
-  <!-- Razorpay script -->
-  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
   <script>
     // Load header and mobile menu
@@ -353,7 +351,6 @@ body .fab-icon img {
     const cartItemsDiv = document.getElementById('cartItems');
     const cartSummaryDiv = document.getElementById('cartSummary');
     const cartSummaryMobileDiv = document.getElementById('cartSummaryMobile');  
-    const payButton = document.getElementById('payButton');
     const applyCouponBtn = document.getElementById('applyCoupon');
     const couponMessage = document.getElementById('couponMessage');
     const reminderMessage = document.getElementById('reminderMessage');
@@ -1434,42 +1431,93 @@ submitMedicationRequestBtn.addEventListener('click', async () => {
     };
 
     /* =========================================
-    PRICING SNAPSHOT
-    ========================================= */
+AUTHORITATIVE CHECKOUT QUOTE VERIFICATION
+========================================= */
 
-const cartPricing = calculateCartPricing(cart);
+if (!currentSignedQuote) {
 
-const processedCart = cartPricing.items.map((item) => ({
-  ...item,
-  quantity: item.pricing.quantity,
-  raw: item.raw,
-  pricing: item.pricing,
-  final_price_usd: item.pricing.final_price_usd,
-  final_price_inr: item.pricing.final_price_inr,
-  final_total_usd: item.pricing.final_total_usd,
-  final_total_inr: item.pricing.final_total_inr,
-  final_price_local: item.pricing.final_price_local,
-  final_total_local: item.pricing.final_total_local,
-  selected_currency: item.pricing.selected_currency
-}));
+  alert(
+    'Your quotation is not ready. Please refresh the cart and try again.'
+  );
+
+  return;
+}
+
+const verifiedQuote =
+  await window.vitalQuoteApi.verifyCheckoutQuote(
+    currentSignedQuote
+  );
+
+if (!verifiedQuote) {
+
+  throw new Error(
+    'Checkout quotation could not be verified.'
+  );
+
+}
+
+
+/* =========================================
+CUSTOMER-SAFE CART SNAPSHOT
+========================================= */
+
+const processedCart =
+  cart.map((item) => ({
+
+    managerKey:
+      String(item.managerKey || '').trim(),
+
+    productId:
+      String(item.productId || '').trim(),
+
+    name:
+      item.name || '',
+
+    brand:
+      item.brand || '',
+
+    composition:
+      item.composition || '',
+
+    pack:
+      item.pack || '',
+
+    selectedQuantity:
+      Number(item.selectedQuantity),
+
+    image:
+      item.image || ''
+
+  }));
+
+
+/* =========================================
+VERIFIED PRICING SNAPSHOT
+========================================= */
 
 const pricingSummary = {
-  medicationTotalUSD: cartPricing.medicationTotalUSD,
-  medicationTotalINR: cartPricing.medicationTotalINR,
-  shippingUSD: cartPricing.shippingUSD,
-  shippingINR: cartPricing.shippingINR,
-  grandTotalUSD: cartPricing.grandTotalUSD,
-  grandTotalINR: cartPricing.grandTotalINR,
-  medicationTotalLocal: cartPricing.medicationTotalLocal,
-  shippingLocal: cartPricing.shippingLocal,
-  grandTotalLocal: cartPricing.grandTotalLocal,
-  taxUSD: cartPricing.taxUSD,
-  taxINR: cartPricing.taxINR,
-  taxLocal: cartPricing.taxLocal,
-  discountUSD: cartPricing.discountUSD,
-  discountINR: cartPricing.discountINR,
-  discountLocal: cartPricing.discountLocal,
-  currency: cartPricing.currency
+
+  quoteId:
+    verifiedQuote.quoteId,
+
+  currency:
+    verifiedQuote.currency,
+
+  medicineTypeCount:
+    verifiedQuote.medicineTypeCount,
+
+  totalBoxes:
+    verifiedQuote.totalBoxes,
+
+  merchandiseUsd:
+    verifiedQuote.merchandiseUsd,
+
+  shippingUsd:
+    verifiedQuote.shippingUsd,
+
+  finalUsd:
+    verifiedQuote.finalUsd
+
 };
 
     /* =========================================
@@ -1481,22 +1529,26 @@ const pricingSummary = {
       collection(db, "medication_requests"),
 
       {
+  customer: customerData,
 
-        customer: customerData,
+  items: processedCart,
 
-        items: processedCart,
+  pricingSummary,
 
-        pricingSummary,
+  totals: pricingSummary,
 
-        totals: pricingSummary,
+  signedQuote:
+    verifiedQuote,
 
-        status: "new-request",
+  status:
+    "new-request",
 
-        requestDate: new Date().toISOString(),
+  requestDate:
+    new Date().toISOString(),
 
-        userId: currentUser?.uid || null
-
-      }
+  userId:
+    currentUser?.uid || null
+}
 
     );
 
@@ -1518,129 +1570,7 @@ const pricingSummary = {
   }
 
 });
-    // Payment integration
-    payButton.addEventListener('click', async () => {
-      if (!currentUser) {
-        loginOverlay.classList.remove('hidden');
-        return;
-      }
-      const cart = await fetchFirestoreCart(currentUser.uid);
-      if (cart.length === 0) {
-        alert('Your medication request list is empty. Please add medications before continuing.');
-        return;
-      }
-      const name = document.getElementById('customerName').value.trim();
-      const email = document.getElementById('customerEmail').value.trim();
-      const phone = document.getElementById('customerPhone').value.trim();
-      const country = document.getElementById('customerCountry').value.trim();
-      const address = document.getElementById('customerAddress').value.trim();
-      if (!name || !email) {
-        alert('Please provide your name and email.');
-        return;
-      }
-      const cartPricing = calculateCartPricing(cart);
-      const totalINR = cartPricing.grandTotalINR;
-      const amountPaise = Math.round(totalINR * 100);
-      const options = {
-        key: 'RAZORPAY_KEY_ID',
-        amount: amountPaise,
-        currency: 'INR',
-        name: 'Vital Elixir Globalist',
-        description: 'Medication Assistance Request',
-        handler: async function (response) {
-          const orderData = {
-            items: cartPricing.items,
-            pricingSummary: {
-              medicationTotalUSD: cartPricing.medicationTotalUSD,
-              medicationTotalINR: cartPricing.medicationTotalINR,
-              shippingUSD: cartPricing.shippingUSD,
-              shippingINR: cartPricing.shippingINR,
-              grandTotalUSD: cartPricing.grandTotalUSD,
-              grandTotalINR: cartPricing.grandTotalINR,
-              medicationTotalLocal: cartPricing.medicationTotalLocal,
-              shippingLocal: cartPricing.shippingLocal,
-              grandTotalLocal: cartPricing.grandTotalLocal,
-              taxUSD: cartPricing.taxUSD,
-              taxINR: cartPricing.taxINR,
-              taxLocal: cartPricing.taxLocal,
-              discountUSD: cartPricing.discountUSD,
-              discountINR: cartPricing.discountINR,
-              discountLocal: cartPricing.discountLocal,
-              currency: cartPricing.currency
-            },
-            date: new Date().toISOString(),
-            status: 'success',
-            orderId: response.razorpay_payment_id,
-            trackingId: '',
-            customer: {
-              name: name,
-              email: email,
-              phone: phone,
-              country: country,
-              address: address
-            }
-          };
-          try {
-            // SAVE INSIDE USER ACCOUNT
-await addDoc(
-  collection(
-    db,
-    'users',
-    currentUser.uid,
-    'orders'
-  ),
-  orderData
-);
-
-// SAVE INSIDE GLOBAL ORDERS
-await addDoc(
-  collection(
-    db,
-    'orders'
-  ),
-  {
-
-    ...orderData,
-
-    userId: currentUser.uid,
-
-    customerName: name,
-
-    customerEmail: email,
-
-    trackingId: '',
-
-    courier: '',
-
-    status: 'Pending'
-
-  }
-);
-          } finally {
-            for (const item of cart) {
-              await deleteDoc(doc(db, 'users', currentUser.uid, 'cart', getProductId(item)));
-            }
-          }
-          const mailBody = encodeURIComponent(`New medication request submitted by ${name} (Email: ${email}).\n\nRequested Medications:\n${cart.map(i => i.name + ' - ' + i.pack).join(', ')}\nEstimated Total INR: ${totalINR}\nReference ID: ${response.razorpay_payment_id}`);
-          window.open(`mailto:vitalelixirglobalist@gmail.com?subject=New Order&body=${mailBody}`);
-          window.location.href = 'thankyou.html';
-        },
-        prefill: {
-          name: name,
-          email: email,
-          contact: phone
-        },
-        notes: {
-          address: address,
-          country: country
-        },
-        theme: {
-          color: '#0284c7'
-        }
-      };
-      const rzp = new Razorpay(options);
-            rzp.open();
-    });
+    
   </script>
   <script type="module" src="/checkout-contact-context.js"></script>
   <!-- === SYSTEM CHECKOUT DATA (DO NOT STYLE / DO NOT REMOVE) === -->
@@ -1651,7 +1581,6 @@ await addDoc(
     <input type="text" id="customerPhone" />
     <input type="text" id="customerCountry" />
     <textarea id="customerAddress"></textarea>
-    <button type="button" id="payButton"></button>
   </form>
 </div>
 </body>

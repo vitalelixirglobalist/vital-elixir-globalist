@@ -616,22 +616,8 @@ from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
         const card = document.createElement('div');
 
         card.className =
-      'bg-white border rounded-xl p-3 md:p-4 shadow-sm hover:shadow-lg transition flex flex-col cursor-pointer';
-
-        card.addEventListener("click", (e) => {
-
-            // Don't open details when interacting with controls
-            if (
-                e.target.closest(".variantSelect") ||
-                e.target.closest(".add-to-cart-btn")
-            ) {
-                return;
-            }
-
-            window.location.href =
-                `product-details.html?product=${encodeURIComponent(p.name)}`;
-        });
-
+      'bg-white border rounded-xl p-3 md:p-4 shadow-sm hover:shadow-lg transition flex flex-col';
+        
         card.innerHTML = `
           <img src="${p.thumbnail}" alt="${p.name}" class="w-full h-40 object-contain mb-3 rounded" />
           <h2 class="font-semibold text-lg text-brand">${p.name}</h2>
