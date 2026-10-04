@@ -10,7 +10,6 @@
   <script src="currency-utils.js"></script>
   <script src="pricing-engine.js"></script>
   <script src="header.js" defer></script>
-  <script src="quote-api.js"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -500,61 +499,12 @@
     }
 
     function buildCartItem(product, variant) {
-
-  if (!product?.manager_key) {
-    throw new Error(
-      `Missing manager_key for product: ${product?.name || 'Unknown product'}`
-    );
-  }
-
-  const selectedQuantity = Number(variant?.quantity);
-
-  if (
-    !Number.isInteger(selectedQuantity) ||
-    selectedQuantity <= 0
-  ) {
-    throw new Error(
-      `Invalid variant quantity for ${product.name}`
-    );
-  }
-
-  // --------------------------------------------------
-  // PERMANENT SERVER IDENTITY
-  // --------------------------------------------------
-  // managerKey + selectedQuantity uniquely identifies
-  // the private VARIANTS row in the Product Manager.
-  // --------------------------------------------------
-
-  const baseItem = {
-
-    managerKey: product.manager_key,
-    productId: product.id,
-
+      // Product details uses the same engine snapshot that cart/request/email consume.
+      const baseItem = {
     name: product.name,
     brand: product.brand,
-    composition: product.composition,
-
     pack: variant.pack,
-
-    selectedQuantity: selectedQuantity,
-
-    // Legacy cart multiplier.
-    // Kept temporarily while the old cart is being migrated.
-    cartUnits: 1,
     quantity: 1,
-
-    image:
-      product.thumbnail ||
-      product.image ||
-      (Array.isArray(product.images)
-        ? product.images[0]
-        : ''),
-
-    // ------------------------------------------------
-    // LEGACY PRICE SNAPSHOT
-    // Temporary only.
-    // C.3 will stop trusting these values.
-    // ------------------------------------------------
 
     price_usd: variant.price_usd,
     market_price_usd: variant.market_price_usd,
@@ -566,54 +516,27 @@
     market_price_aud: variant.market_price_aud,
 
     price_inr: variant.price_inr,
+    shipping_usd: SHIPPING_USD,
+    image: product.image
+    };
+      const normalized = window.pricingEngine.normalizeCartItem(baseItem, 1);
 
-    shipping_usd: SHIPPING_USD
-  };
-
-  const normalized =
-    window.pricingEngine.normalizeCartItem(
-      baseItem,
-      1
-    );
-
-  return {
-
-    ...baseItem,
-
-    raw: normalized.raw,
-    pricing: normalized.pricing,
-
-    shipping_inr:
-      normalized.raw.shipping_inr,
-
-    final_price_usd:
-      normalized.pricing.final_price_usd,
-
-    final_price_inr:
-      normalized.pricing.final_price_inr,
-
-    final_total_usd:
-      normalized.pricing.final_total_usd,
-
-    final_total_inr:
-      normalized.pricing.final_total_inr,
-
-    final_price_local:
-      normalized.pricing.final_price_local,
-
-    final_total_local:
-      normalized.pricing.final_total_local,
-
-    selected_currency:
-      normalized.pricing.selected_currency,
-
-    total_price_usd:
-      normalized.pricing.final_total_usd,
-
-    total_price_inr:
-      normalized.pricing.final_total_inr
-  };
-}
+      return {
+        ...baseItem,
+        raw: normalized.raw,
+        pricing: normalized.pricing,
+        shipping_inr: normalized.raw.shipping_inr,
+        final_price_usd: normalized.pricing.final_price_usd,
+        final_price_inr: normalized.pricing.final_price_inr,
+        final_total_usd: normalized.pricing.final_total_usd,
+        final_total_inr: normalized.pricing.final_total_inr,
+        final_price_local: normalized.pricing.final_price_local,
+        final_total_local: normalized.pricing.final_total_local,
+        selected_currency: normalized.pricing.selected_currency,
+        total_price_usd: normalized.pricing.final_total_usd,
+        total_price_inr: normalized.pricing.final_total_inr
+      };
+    }
 
     function showToast(message) {
       if (!actionToast) return alert(message);
@@ -923,7 +846,7 @@
       }
       related.forEach((item) => {
         const card = document.createElement('a');
-        card.href =  `product-details.html?id=${encodeURIComponent(item.id)}`;
+        card.href = `product-details.html?product=${encodeURIComponent(item.name)}`;
         card.className = 'glass-card p-4 rounded-2xl border border-slate-200 hover:-translate-y-1 transition shadow-sm hover:shadow-lg bg-white';
         card.innerHTML = `
           <div class="flex items-center gap-3">
@@ -947,7 +870,7 @@
       if (!pairings.length) pairings = allProducts.filter((p) => p.name !== product.name);
       pairings.slice(0, 3).forEach((item) => {
         const card = document.createElement('a');
-        card.href = `product-details.html?id=${encodeURIComponent(item.id)}`;
+        card.href = `product-details.html?product=${encodeURIComponent(item.name)}`;
         card.className = 'p-4 rounded-2xl border border-emerald-100 bg-emerald-50/60 hover:bg-emerald-50 transition';
         card.innerHTML = `
           <div class="flex items-start gap-3">
@@ -1288,10 +1211,10 @@
       window.location.href = `doctor-consultation.html?product=${encodeURIComponent(selectedProduct.name)}`;
     }
 
-    function getQueryProductId() {
-  const params = new URLSearchParams(window.location.search);
-  return params.get('id');
-}
+    function getQueryProduct() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get('product') || params.get('name');
+    }
 
     async function loadProductDetails() {
       try {
@@ -1302,16 +1225,8 @@
 
         allProducts = await productsRes.json();
         const productContent = await contentRes.json();
-        const productId =
-  decodeURIComponent(
-    getQueryProductId() || ''
-  ).trim();
-
-const product =
-  allProducts.find(
-    (p) =>
-      String(p.id || '').trim() === productId
-  );
+        const productParam = decodeURIComponent(getQueryProduct() || '').trim();
+        const product = allProducts.find((p) => p.name.toLowerCase() === productParam.toLowerCase());
 
         if (!product) {
           document.querySelector('main').innerHTML = '<div class="text-center py-20 text-slate-600 text-lg">Product not found.</div>';
