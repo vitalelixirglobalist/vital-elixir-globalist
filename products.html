@@ -331,8 +331,148 @@ from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
     const searchBar = document.getElementById('searchBar');
     const categoryFilter = document.getElementById('categoryFilter');
 
-    function getSelectedCurrency() {
+        function getSelectedCurrency() {
       return window.pricingEngine.getDisplayedCurrency();
+    }
+
+    /*
+     * ============================================================
+     * PRIVATE SINGLE-VARIANT QUOTE
+     * ============================================================
+     *
+     * Used only for displaying the current selected variant
+     * on the Medicines page.
+     *
+     * The browser sends ONLY:
+     *
+     *   managerKey + selectedQuantity
+     *
+     * Medication cost, profit calculation and box information
+     * remain private on the server.
+     *
+     * IMPORTANT:
+     * This is a single-item quotation.
+     * The cart will calculate the final combined quotation again
+     * when multiple medicines are selected.
+     * ============================================================
+     */
+    async function requestSingleVariantQuote(product, variant) {
+
+      if (!window.vitalQuoteApi) {
+        throw new Error(
+          'Private quotation service is unavailable.'
+        );
+      }
+
+      const managerKey =
+        String(
+          product?.manager_key || ''
+        ).trim();
+
+      const selectedQuantity =
+        Number(
+          variant?.quantity
+        );
+
+      if (!/^P\d{4,}$/.test(managerKey)) {
+        throw new Error(
+          'Product is missing a valid Manager Key.'
+        );
+      }
+
+      if (
+        !Number.isInteger(selectedQuantity) ||
+        selectedQuantity <= 0 ||
+        selectedQuantity > 500
+      ) {
+        throw new Error(
+          'Product has an invalid selected quantity.'
+        );
+      }
+
+            return await window.vitalQuoteApi.requestQuote([
+        {
+          managerKey: managerKey,
+          selectedQuantity: selectedQuantity
+        }
+      ]);
+
+    }
+
+    /*
+     * Cache single-item quotations so changing back to a
+     * previously selected quantity does not call the server again.
+     */
+    const singleVariantQuoteCache = new Map();
+
+    async function getCachedSingleVariantQuote(product, variant) {
+
+      const cacheKey =
+        `${product.manager_key}:${Number(variant.quantity)}`;
+
+      if (singleVariantQuoteCache.has(cacheKey)) {
+        return singleVariantQuoteCache.get(cacheKey);
+      }
+
+      const quotePromise =
+        requestSingleVariantQuote(
+          product,
+          variant
+        );
+
+      singleVariantQuoteCache.set(
+        cacheKey,
+        quotePromise
+      );
+
+      try {
+
+        return await quotePromise;
+
+      } catch (error) {
+
+        singleVariantQuoteCache.delete(
+          cacheKey
+        );
+
+        throw error;
+
+      }
+
+    }
+
+    function formatPrivateUsdAsSelectedCurrency(amountUsd) {
+
+      return window.pricingEngine.formatLocalAmount(
+        Number(amountUsd || 0),
+        {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        }
+      );
+
+    }
+
+    function getPrivatePerUnitText(quote, variant) {
+
+      const quantity =
+        Number(variant?.quantity);
+
+      const merchandiseUsd =
+        Number(quote?.merchandiseUsd);
+
+      if (
+        !Number.isFinite(quantity) ||
+        quantity <= 0 ||
+        !Number.isFinite(merchandiseUsd)
+      ) {
+        return '-';
+      }
+
+      return formatPrivateUsdAsSelectedCurrency(
+        merchandiseUsd / quantity
+      );
+
     }
 
     function formatForeignCurrency(value) {
@@ -369,58 +509,79 @@ from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
       }
 
   }
+        /*
+     * Retail/reference price may remain public.
+     *
+     * IMPORTANT:
+     * This function NEVER supplies our selling price.
+     * "Buy With Us" now comes only from the private quote API.
+     */
     function getRegionalPriceData(variant){
-        const currency=getSelectedCurrency();
-        switch(currency){
-            case "USD":
-            return{
-                buyWithUs:variant.price_usd,
-                marketPrice:variant.market_price_usd,
-                isManual:true
+
+    const currency = getSelectedCurrency();
+
+    switch(currency){
+
+        case "USD":
+            return {
+                buyWithUs: variant.price_usd,
+                marketPrice: variant.market_price_usd
             };
-            case "GBP":
-                if(variant.price_gbp!==undefined){
-                    return{
-                    buyWithUs:variant.price_gbp,
-                    marketPrice:variant.market_price_gbp,
-                    isManual:true
+
+        case "GBP":
+            if(variant.price_gbp !== undefined){
+                return {
+                    buyWithUs: variant.price_gbp,
+                    marketPrice: variant.market_price_gbp
                 };
             }
             break;
 
         case "AUD":
-            if(variant.price_aud!==undefined){
-                return{
-                    buyWithUs:variant.price_aud,
-                    marketPrice:variant.market_price_aud,
-                    isManual:true
+            if(variant.price_aud !== undefined){
+                return {
+                    buyWithUs: variant.price_aud,
+                    marketPrice: variant.market_price_aud
                 };
             }
             break;
-
     }
 
-    const pricing=getVariantPricing(variant);
+    return {
+        buyWithUs:
+            window.pricingEngine.convertUsdToCurrency(
+                Number(variant.price_usd || 0),
+                currency
+            ),
 
-    return{
-        buyWithUs:pricing.final_price_local,
-        marketPrice:pricing.final_price_local,
-        isManual:false
+        marketPrice:
+            window.pricingEngine.convertUsdToCurrency(
+                Number(variant.market_price_usd || 0),
+                currency
+            )
     };
+}
+
+
+function getPerTablet(variant){
+
+    if(!variant.quantity){
+        return "-";
+    }
+
+    const regional =
+        getRegionalPriceData(variant);
+
+    return window.pricingEngine.formatCurrencyAmount(
+        regional.buyWithUs / Number(variant.quantity),
+        getSelectedCurrency(),
+        {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        }
+    );
 
 }
-      function getPerTablet(variant){
-        if(!variant.quantity) return "-";
-        const regional = getRegionalPriceData(variant);
-          return window.pricingEngine.formatLocalAmount(
-              regional.buyWithUs / variant.quantity,
-            {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-            }
-        );
-
-    }
 
       function buildQuantityDropdown(product){
 
@@ -625,11 +786,11 @@ from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
           <p class="text-sm text-gray-500 mb-2">${p.composition}</p>
           <p class="text-sm text-gray-600 mb-1"><strong>Use:</strong> ${p.use}</p>
           ${buildQuantityDropdown(p)}
-           <p class="mt-2 text-xs text-gray-500">Shipping: +${formatForeignCurrency(getVariantPricing({ price_usd: 0, price_inr: 0 }).final_shipping_usd)} (added per product)</p>
-          <div class="price-display mt-3 text-sm text-gray-700"></div>
+          <p class="mt-3 text-sm font-bold text-gray-800 underline">
+          Shipping starts from USD 35
+        </p>
           <button class="add-to-cart-btn mt-auto bg-brand text-white py-2 px-3 rounded-lg hover:bg-blue-700 transition mt-3">Add to Cart</button>
         `;
-        const priceDisplay = card.querySelector('.price-display');
         const addBtn = card.querySelector('.add-to-cart-btn');
         const qtyDropdown = card.querySelector(".qty-dropdown");
         const qtySelected = qtyDropdown.querySelector(".qty-selected-row");
@@ -638,39 +799,70 @@ from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
         let selectedVariantIndex = 0;
 
         function renderQty(index){
-            const variant = p.variants[index];
-            const regional = getRegionalPriceData(variant);
-            const header = card.querySelector("#marketPriceHeading");
-              if(header){
-                  header.textContent =
-                      getMarketPriceHeading();
 
-              }
-          qtySelected.innerHTML=`
-          <span>${variant.quantity}</span>
-          <span>${formatLocalCurrency(regional.buyWithUs)}</span>
-          <span>${getPerTablet(variant)}</span>
-          <span>${formatLocalCurrency(regional.marketPrice)}</span>
-          `;
+    const variant =
+        p.variants[index];
 
-        }
+    const regional =
+        getRegionalPriceData(variant);
+
+    const header =
+        card.querySelector("#marketPriceHeading");
+
+    if(header){
+        header.textContent =
+            getMarketPriceHeading();
+    }
+
+    qtySelected.innerHTML = `
+        <span>${variant.quantity}</span>
+
+        <span>
+            ${formatLocalCurrency(regional.buyWithUs)}
+        </span>
+
+        <span>
+            ${getPerTablet(variant)}
+        </span>
+
+        <span>
+            ${formatLocalCurrency(regional.marketPrice)}
+        </span>
+        `;
+
+          }
 
         qtyOptions.innerHTML="";
 
-        p.variants.forEach((variant,index)=>{
+               p.variants.forEach((variant,index)=>{
 
         const row=document.createElement("div");
 
         row.className="qty-row";
 
-        const regional = getRegionalPriceData(variant);
+        /*
+         * Do not expose/trust the old public selling price here.
+         * The private price is requested when this quantity
+         * is actually selected.
+         */
+              const regional =
+              getRegionalPriceData(variant);
 
-        row.innerHTML=`
-        <span>${variant.quantity}</span>
-        <span>${formatLocalCurrency(regional.buyWithUs)}</span>
-        <span>${getPerTablet(variant)}</span>
-        <span>${formatLocalCurrency(regional.marketPrice)}</span>
-        `;
+            row.innerHTML = `
+              <span>${variant.quantity}</span>
+
+              <span>
+                  ${formatLocalCurrency(regional.buyWithUs)}
+              </span>
+
+              <span>
+                  ${getPerTablet(variant)}
+              </span>
+
+              <span>
+                  ${formatLocalCurrency(regional.marketPrice)}
+              </span>
+          `;
         if(index===0)
         row.classList.add("active");
 
@@ -690,21 +882,12 @@ from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
 
         qtyDropdown.classList.remove("open");
 
-        const pricing=getVariantPricing(variant);
-
-        priceDisplay.innerHTML=`
-        <div class="mt-2 p-2 border border-blue-100 rounded-lg bg-blue-50 text-sm space-y-1">
-        <p>💊 <span class="font-medium text-brand">Medicine:</span> ${formatLocalCurrency(getRegionalPriceData(variant).buyWithUs)} | INR ${pricing.final_price_inr.toFixed(2)}</p>
-        <p>🚚 <span class="font-medium text-brand">Shipping:</span> ${formatForeignCurrency(pricing.final_shipping_usd)} | INR ${pricing.final_shipping_inr.toFixed(2)}</p>
-        <p class="font-semibold text-brand">Total: ${formatLocalCurrency(pricing.final_total_local)} | INR ${pricing.final_total_inr.toFixed(2)}</p>
-        </div>
-        `;
-
         };
 
         qtyOptions.appendChild(row);
 
         });
+
 
         renderQty(0);
 
@@ -752,9 +935,60 @@ from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
               return;
           }
           // Add to local cart (for quick display)
-         const selectedVariant = p.variants[variantIndex];
-          const cartItem = buildCartItem(p, selectedVariant);
-          const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                  const selectedVariant =
+           p.variants[variantIndex];
+
+         /*
+          * Confirm that this exact selection can be resolved
+          * by the private pricing server before adding it.
+          *
+          * We do NOT store this single-item quote as the final
+          * cart price. The cart will request a fresh combined
+          * quotation for all medicines.
+          */
+         try {
+
+           addBtn.disabled = true;
+           addBtn.textContent =
+             'Checking Price...';
+
+           await getCachedSingleVariantQuote(
+             p,
+             selectedVariant
+           );
+
+         } catch (error) {
+
+           console.error(
+             'Unable to validate product quotation:',
+             error
+           );
+
+           showModal(
+             'We could not calculate the current price for this selection. Please try again.',
+             false
+           );
+
+           return;
+
+         } finally {
+
+           addBtn.disabled = false;
+           addBtn.textContent =
+             'Add to Cart';
+
+         }
+
+          const cartItem =
+            buildCartItem(
+              p,
+              selectedVariant
+            );
+
+          const cart =
+            JSON.parse(
+              localStorage.getItem('cart')
+            ) || [];
           cart.push(cartItem);
           localStorage.setItem('cart', JSON.stringify(cart));
           // Save to Firestore under user cart subcollection
@@ -763,10 +997,13 @@ from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
 (
   p.name +
   '-' +
-  selectedVariant.pack
+  selectedVariant.pack +
+  '-' +
+  selectedVariant.quantity
 )
 .toLowerCase()
-.replace(/\s+/g, '-');
+.replace(/[^a-z0-9]+/g, '-')
+.replace(/(^-|-$)/g, '');
 
 await setDoc(
 
@@ -839,11 +1076,3 @@ await setDoc(
   <script type="module" src="firebase-config.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
