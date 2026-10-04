@@ -19,6 +19,7 @@
     };
   </script>
   <script src="dev-fix.js"></script>
+  <script src="quote-api.js"></script>
 <style>
     .qty-dropdown{
     position:relative;
@@ -489,44 +490,120 @@ from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
     }
 
     function buildCartItem(product, variant) {
-      // Store raw inputs and the normalized pricing snapshot produced by the engine.
-            const baseItem = {
-          name: product.name,
-          brand: product.brand,
-          pack: variant.pack,
-          quantity: 1,
 
-          price_usd: variant.price_usd,
-          market_price_usd: variant.market_price_usd,
+  if (!product?.manager_key) {
+    throw new Error(
+      `Missing manager_key for product: ${product?.name || 'Unknown product'}`
+    );
+  }
 
-          price_gbp: variant.price_gbp,
-          market_price_gbp: variant.market_price_gbp,
+  const selectedQuantity = Number(variant?.quantity);
 
-          price_aud: variant.price_aud,
-          market_price_aud: variant.market_price_aud,
+  if (
+    !Number.isInteger(selectedQuantity) ||
+    selectedQuantity <= 0
+  ) {
+    throw new Error(
+      `Invalid variant quantity for ${product.name}`
+    );
+  }
 
-          price_inr: variant.price_inr,
-          shipping_usd: SHIPPING_USD,
-          image: product.image
-      };
-      const normalized = window.pricingEngine.normalizeCartItem(baseItem, 1);
+  // --------------------------------------------------
+  // PERMANENT SERVER IDENTITY
+  // --------------------------------------------------
+  // managerKey + selectedQuantity uniquely identifies
+  // the private VARIANTS row in the Product Manager.
+  // --------------------------------------------------
 
-      return {
-        ...baseItem,
-        raw: normalized.raw,
-        pricing: normalized.pricing,
-        shipping_inr: normalized.raw.shipping_inr,
-        final_price_usd: normalized.pricing.final_price_usd,
-        final_price_inr: normalized.pricing.final_price_inr,
-        final_total_usd: normalized.pricing.final_total_usd,
-        final_total_inr: normalized.pricing.final_total_inr,
-        final_price_local: normalized.pricing.final_price_local,
-        final_total_local: normalized.pricing.final_total_local,
-        selected_currency: normalized.pricing.selected_currency,
-        total_price_usd: normalized.pricing.final_total_usd,
-        total_price_inr: normalized.pricing.final_total_inr
-      };
-    }
+  const baseItem = {
+
+    managerKey: product.manager_key,
+    productId: product.id,
+
+    name: product.name,
+    brand: product.brand,
+    composition: product.composition,
+
+    pack: variant.pack,
+
+    selectedQuantity: selectedQuantity,
+
+    // Legacy cart multiplier.
+    // Kept temporarily while the old cart is being migrated.
+    cartUnits: 1,
+    quantity: 1,
+
+    image:
+      product.thumbnail ||
+      product.image ||
+      (Array.isArray(product.images)
+        ? product.images[0]
+        : ''),
+
+    // ------------------------------------------------
+    // LEGACY PRICE SNAPSHOT
+    // Temporary only.
+    // C.3 will stop trusting these values.
+    // ------------------------------------------------
+
+    price_usd: variant.price_usd,
+    market_price_usd: variant.market_price_usd,
+
+    price_gbp: variant.price_gbp,
+    market_price_gbp: variant.market_price_gbp,
+
+    price_aud: variant.price_aud,
+    market_price_aud: variant.market_price_aud,
+
+    price_inr: variant.price_inr,
+
+    shipping_usd: SHIPPING_USD
+  };
+
+  const normalized =
+    window.pricingEngine.normalizeCartItem(
+      baseItem,
+      1
+    );
+
+  return {
+
+    ...baseItem,
+
+    raw: normalized.raw,
+    pricing: normalized.pricing,
+
+    shipping_inr:
+      normalized.raw.shipping_inr,
+
+    final_price_usd:
+      normalized.pricing.final_price_usd,
+
+    final_price_inr:
+      normalized.pricing.final_price_inr,
+
+    final_total_usd:
+      normalized.pricing.final_total_usd,
+
+    final_total_inr:
+      normalized.pricing.final_total_inr,
+
+    final_price_local:
+      normalized.pricing.final_price_local,
+
+    final_total_local:
+      normalized.pricing.final_total_local,
+
+    selected_currency:
+      normalized.pricing.selected_currency,
+
+    total_price_usd:
+      normalized.pricing.final_total_usd,
+
+    total_price_inr:
+      normalized.pricing.final_total_inr
+  };
+}
 
     async function loadProducts() {
       const res = await fetch('products-data.json');

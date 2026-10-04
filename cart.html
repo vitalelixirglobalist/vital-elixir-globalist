@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="header.css">
   <script src="currency-utils.js"></script>
   <script src="pricing-engine.js"></script>
+  <script src="quote-api.js"></script>
   <script src="header.js" defer></script>
   <script>
     tailwind.config = {
@@ -363,6 +364,14 @@ body .fab-icon img {
     let hasSyncedLocalCart = false;
     let discountRate = 0;
 
+    /*
+    * Latest authoritative signed quote returned
+    * by the private pricing server.
+    *
+    * Never manufacture or modify this object in the browser.
+    */
+    let currentSignedQuote = null;
+
     onAuthStateChanged(auth, async (user) => {
 
         currentUser = user;
@@ -435,6 +444,272 @@ body .fab-icon img {
 
     const getLocalCart = () => JSON.parse(localStorage.getItem('cart')) || [];
 
+    /*
+ * ============================================================
+ * C.3B — LEGACY CART IDENTITY RECOVERY
+ * ============================================================
+ *
+ * Older Firebase/local carts may have been saved before
+ * managerKey + selectedQuantity existed.
+ *
+ * We use products-data.json ONLY to recover public identity.
+ *
+ * We NEVER recover or calculate prices here.
+ * ============================================================
+ */
+
+let productCatalogueCache = null;
+
+
+const loadProductCatalogueForCart = async () => {
+
+  if (productCatalogueCache) {
+    return productCatalogueCache;
+  }
+
+  const response =
+    await fetch(
+      'products-data.json',
+      {
+        cache: 'no-store'
+      }
+    );
+
+  if (!response.ok) {
+    throw new Error(
+      'Unable to load product catalogue for cart recovery.'
+    );
+  }
+
+  const data =
+    await response.json();
+
+  if (!Array.isArray(data)) {
+    throw new Error(
+      'Product catalogue is invalid.'
+    );
+  }
+
+  productCatalogueCache =
+    data;
+
+  return productCatalogueCache;
+
+};
+
+
+const hasValidPrivateQuoteIdentity = (item) => {
+
+  const managerKey =
+    String(
+      item?.managerKey || ''
+    ).trim();
+
+  const selectedQuantity =
+    Number(
+      item?.selectedQuantity
+    );
+
+  return (
+    /^P\d{4,}$/.test(managerKey) &&
+    Number.isInteger(selectedQuantity) &&
+    selectedQuantity > 0 &&
+    selectedQuantity <= 500
+  );
+
+};
+
+
+const recoverLegacyCartItemIdentity = async (item) => {
+
+  /*
+   * Already migrated.
+   */
+  if (
+    hasValidPrivateQuoteIdentity(
+      item
+    )
+  ) {
+
+    return {
+      item,
+      recovered: false,
+      valid: true
+    };
+
+  }
+
+
+  const catalogue =
+    await loadProductCatalogueForCart();
+
+
+  const oldProductId =
+    String(
+      item?.productId ||
+      item?.id ||
+      ''
+    ).trim();
+
+
+  /*
+   * Product ID is our safest legacy matching field.
+   */
+  const product =
+    catalogue.find(
+      (candidate) =>
+        String(candidate?.id || '').trim() ===
+        oldProductId
+    );
+
+
+  if (
+    !product ||
+    !product.manager_key
+  ) {
+
+    return {
+      item,
+      recovered: false,
+      valid: false
+    };
+
+  }
+
+
+  const variants =
+    Array.isArray(product.variants)
+      ? product.variants
+      : [];
+
+
+  let matchedVariant = null;
+
+
+  /*
+   * FIRST CHOICE:
+   * Exact pack text.
+   *
+   * Old cart items normally retained the selected pack.
+   */
+  const oldPack =
+    String(
+      item?.pack || ''
+    ).trim();
+
+
+  if (oldPack) {
+
+    matchedVariant =
+      variants.find(
+        (variant) =>
+          String(variant?.pack || '').trim() ===
+          oldPack
+      ) || null;
+
+  }
+
+
+  /*
+   * SECOND CHOICE:
+   * Existing selectedQuantity if present.
+   *
+   * We only accept it if it maps to an actual catalogue variant.
+   */
+  if (
+    !matchedVariant &&
+    Number.isInteger(
+      Number(item?.selectedQuantity)
+    )
+  ) {
+
+    const candidateQuantity =
+      Number(
+        item.selectedQuantity
+      );
+
+
+    matchedVariant =
+      variants.find(
+        (variant) =>
+          Number(variant?.quantity) ===
+          candidateQuantity
+      ) || null;
+
+  }
+
+
+  /*
+   * IMPORTANT:
+   *
+   * We DO NOT infer selected quantity from the old cart
+   * multiplier `quantity`.
+   *
+   * quantity: 1 used to mean "one cart unit", not
+   * "one tablet".
+   *
+   * We also do not guess when no exact variant can be found.
+   */
+  if (
+    !matchedVariant ||
+    !Number.isInteger(
+      Number(matchedVariant.quantity)
+    )
+  ) {
+
+    return {
+      item,
+      recovered: false,
+      valid: false
+    };
+
+  }
+
+
+  const recoveredItem = {
+
+    ...item,
+
+    managerKey:
+      String(
+        product.manager_key
+      ).trim(),
+
+    productId:
+      String(
+        product.id
+      ).trim(),
+
+    selectedQuantity:
+      Number(
+        matchedVariant.quantity
+      ),
+
+    pack:
+      matchedVariant.pack ||
+      item.pack ||
+      ''
+
+  };
+
+
+  return {
+
+    item:
+      recoveredItem,
+
+    recovered:
+      true,
+
+    valid:
+      hasValidPrivateQuoteIdentity(
+        recoveredItem
+      )
+
+  };
+
+};
+
     const getProductId = (item) => {
       if (item.productId) return String(item.productId);
       if (item.id && typeof item.id === 'string') return item.id;
@@ -460,13 +735,127 @@ body .fab-icon img {
     };
 
     const fetchFirestoreCart = async (uid) => {
-      const snapshot = await getDocs(collection(db, 'users', uid, 'cart'));
-      const items = [];
-      for (const docSnap of snapshot.docs) {
-        items.push(await normalizeFirestoreItem(uid, docSnap));
+
+  const snapshot =
+    await getDocs(
+      collection(
+        db,
+        'users',
+        uid,
+        'cart'
+      )
+    );
+
+
+  const items = [];
+
+
+  for (
+    const docSnap of snapshot.docs
+  ) {
+
+    let item =
+      await normalizeFirestoreItem(
+        uid,
+        docSnap
+      );
+
+
+    try {
+
+      const recovery =
+        await recoverLegacyCartItemIdentity(
+          item
+        );
+
+
+      item =
+        recovery.item;
+
+
+      /*
+       * Successfully recovered an old cart item.
+       *
+       * Persist ONLY the recovered public identity fields
+       * back to the customer's cart.
+       */
+      if (
+        recovery.recovered &&
+        recovery.valid
+      ) {
+
+        const productId =
+          getProductId(
+            item
+          );
+
+
+        await setDoc(
+          doc(
+            db,
+            'users',
+            uid,
+            'cart',
+            productId
+          ),
+          {
+            managerKey:
+              item.managerKey,
+
+            productId:
+              item.productId,
+
+            selectedQuantity:
+              item.selectedQuantity,
+
+            pack:
+              item.pack
+          },
+          {
+            merge:
+              true
+          }
+        );
+
+
+        console.log(
+          'C.3B recovered legacy cart identity:',
+          productId,
+          item.managerKey,
+          item.selectedQuantity
+        );
+
       }
-      return items;
-    };
+
+
+      item._quoteIdentityValid =
+        recovery.valid;
+
+
+    } catch (error) {
+
+      console.warn(
+        'C.3B could not recover cart identity:',
+        error
+      );
+
+
+      item._quoteIdentityValid =
+        false;
+
+    }
+
+
+    items.push(
+      item
+    );
+
+  }
+
+
+  return items;
+
+};
 
     const syncLocalCartOnce = async (uid) => {
       if (hasSyncedLocalCart) return;
@@ -520,11 +909,88 @@ body .fab-icon img {
       cartItemsDiv.innerHTML = '';
       cartSummaryDiv.innerHTML = '';
       let cartItems = [];
-      if (currentUser) {
-        cartItems = await fetchFirestoreCart(currentUser.uid);
-      } else {
-        cartItems = getLocalCart();
-      }
+
+
+if (currentUser) {
+
+  cartItems =
+    await fetchFirestoreCart(
+      currentUser.uid
+    );
+
+} else {
+
+  const localCart =
+    getLocalCart();
+
+
+  const recoveredLocalCart =
+    [];
+
+
+  for (
+    const item of localCart
+  ) {
+
+    try {
+
+      const recovery =
+        await recoverLegacyCartItemIdentity(
+          item
+        );
+
+
+      recoveredLocalCart.push({
+
+        ...recovery.item,
+
+        _quoteIdentityValid:
+          recovery.valid
+
+      });
+
+    } catch (error) {
+
+      console.warn(
+        'C.3B local cart recovery failed:',
+        error
+      );
+
+
+      recoveredLocalCart.push({
+
+        ...item,
+
+        _quoteIdentityValid:
+          false
+
+      });
+
+    }
+
+  }
+
+
+  cartItems =
+    recoveredLocalCart;
+
+
+  /*
+   * Keep successfully recovered identity for future reloads.
+   */
+  localStorage.setItem(
+    'cart',
+    JSON.stringify(
+      cartItems.map(
+        ({
+          _quoteIdentityValid,
+          ...item
+        }) => item
+      )
+    )
+  );
+
+}
 
       if (cartItems.length === 0) {
         cartItemsDiv.innerHTML = '<div class="py-10 text-center text-slate-500">Your cart is empty.</div>';
@@ -532,16 +998,60 @@ body .fab-icon img {
         return;
       }
 
-      const cartPricing = calculateCartPricing(cartItems);
-      const pricedCartItems = cartPricing.items;
+      /*
+ * ============================================================
+ * AUTHORITATIVE PRIVATE CART QUOTE
+ * ============================================================
+ *
+ * Browser sends only:
+ *
+ * managerKey + selectedQuantity
+ *
+ * Apps Script resolves private costs, boxes, profit and
+ * shipping and returns one signed whole-cart quotation.
+ * ============================================================
+ */
 
-      pricedCartItems.forEach((item, index) => {
-        const quantity = item.pricing.quantity;
-        const packCount = getPackCount(item);
-        const strength = getStrength(item);
-        const pricing = item.pricing;
+/*
+ * Determine which cart rows are safe to send
+ * to the private quote API.
+ */
+const invalidCartItems =
+  cartItems.filter(
+    (item) =>
+      !hasValidPrivateQuoteIdentity(
+        item
+      )
+  );
 
-        const tabletDisplay = packCount ? `${packCount * quantity} tablets` : `${quantity} units`;
+  
+
+cartItems.forEach((item, index) => {
+        const selectedQuantity =
+  Number(
+    item.selectedQuantity
+  );
+
+
+const strength =
+  getStrength(
+    item
+  );
+
+const identityValid =
+  hasValidPrivateQuoteIdentity(
+    item
+  );
+
+
+const selectedQuantityDisplay =
+  identityValid
+    ? selectedQuantity
+    : 'Needs reselection';
+
+
+const quantityDisplay =
+  `${selectedQuantityDisplay} units`;
 
         const itemDiv = document.createElement('div');
         itemDiv.className = 'grid gap-4 py-6 md:grid-cols-12 items-center';
@@ -560,57 +1070,212 @@ body .fab-icon img {
             </div>
           </div>
           <div class="md:col-span-3">
-            <div class="flex items-center gap-2">
-              <button class="qtyBtn w-8 h-8 rounded-full border border-slate-200 hover:border-slate-400" data-index="${index}" data-direction="-">−</button>
-              <div class="text-sm font-semibold px-3">${quantity}</div>
-              <button class="qtyBtn w-8 h-8 rounded-full border border-slate-200 hover:border-slate-400" data-index="${index}" data-direction="+">+</button>
-            </div>
-            <p class="text-xs text-slate-500 mt-1">${tabletDisplay}</p>
+
+          <div class="text-sm font-semibold">
+            ${selectedQuantity}
           </div>
+
+          <p class="text-xs text-slate-500 mt-1">
+            Selected quantity
+          </p>
+
+        </div>
           <div class="md:col-span-4 text-sm text-right space-y-1">
-            <p class="text-slate-500">Price per unit: ${formatForeignCurrency(pricing.final_price_usd)} | INR ${pricing.final_price_inr.toFixed(2)}</p>
-            <p class="text-slate-500">Subtotal: ${formatForeignCurrency(pricing.final_medication_total_usd)} | INR ${pricing.final_medication_total_inr.toFixed(2)}</p>
-            <p class="font-semibold text-brand">Item total: ${formatForeignCurrency(pricing.final_medication_total_usd)} | INR ${pricing.final_medication_total_inr.toFixed(2)}</p>
-          </div>
+
+          <p class="text-slate-500">
+  ${item.pack || 'Selected pack'}
+</p>
+
+${
+  identityValid
+    ? `
+      <p class="font-semibold text-brand">
+        Included in combined quotation
+      </p>
+    `
+    : `
+      <p class="font-semibold text-red-600">
+        This saved medication needs to be selected again.
+      </p>
+    `
+}
+
+        </div>
         `;
         cartItemsDiv.appendChild(itemDiv);
       });
 
-   cartSummaryDiv.innerHTML = `
-  <div class="mb-4">
-    <h3 class="text-lg font-semibold">
-  Medication Request Summary
-</h3>
+      /*
+ * ============================================================
+ * REQUEST AUTHORITATIVE QUOTE ONLY AFTER CART ROWS EXIST
+ * ============================================================
+ *
+ * This guarantees Remove remains available even if pricing
+ * cannot be calculated.
+ * ============================================================
+ */
 
-<p class="text-xs text-slate-500">
-  Review your selected medications before submitting your request.
-</p>
+let signedQuote = null;
+
+
+if (
+  invalidCartItems.length > 0
+) {
+
+  currentSignedQuote =
+    null;
+
+
+  cartSummaryDiv.innerHTML = `
+
+    <div class="p-4 rounded-xl border border-amber-200 bg-amber-50">
+
+      <p class="text-sm font-semibold text-amber-800">
+        Some saved medications need to be selected again.
+      </p>
+
+      <p class="text-xs text-amber-700 mt-1">
+        Remove the highlighted saved medication and add it again from the Medicines page.
+      </p>
+
+    </div>
+
+  `;
+
+} else {
+
+  cartSummaryDiv.innerHTML = `
+
+    <div class="py-6 text-center">
+
+      <p class="text-sm text-slate-500">
+        Calculating your quotation...
+      </p>
+
+    </div>
+
+  `;
+
+
+  try {
+
+    signedQuote =
+      await window.vitalQuoteApi.requestQuote(
+        cartItems
+      );
+
+
+    currentSignedQuote =
+      signedQuote;
+
+
+  } catch (error) {
+
+    currentSignedQuote =
+      null;
+
+
+    console.error(
+      'Private quotation failed:',
+      error
+    );
+
+
+    cartSummaryDiv.innerHTML = `
+
+      <div class="p-4 rounded-xl border border-red-200 bg-red-50">
+
+        <p class="text-sm font-semibold text-red-700">
+          We could not calculate your quotation.
+        </p>
+
+        <p class="text-xs text-red-600 mt-1">
+          Your medications are still available below. You can remove an item and try again.
+        </p>
+
+      </div>
+
+    `;
+
+  }
+
+}
+if (signedQuote) {
+cartSummaryDiv.innerHTML = `
+
+  <div class="mb-4">
+
+    <h3 class="text-lg font-semibold">
+      Medication Request Summary
+    </h3>
+
+    <p class="text-xs text-slate-500">
+      Secure quotation calculated from your complete medication selection.
+    </p>
+
   </div>
 
+
   <div class="space-y-3">
-          <div class="flex items-center justify-between text-sm">
-            <span class="text-slate-600">Medication total</span>
-            <span class="font-medium">${formatForeignCurrency(cartPricing.medicationTotalUSD)} | INR ${cartPricing.medicationTotalINR.toFixed(2)}</span>
-          </div>
-          <div class="flex items-center justify-between text-sm">
-            <span class="text-slate-600">Shipping charges</span>
-            <span class="font-medium">${formatForeignCurrency(cartPricing.shippingUSD)} | INR ${cartPricing.shippingINR.toFixed(2)}</span>
-          </div>
-          <div class="flex items-center justify-between text-sm">
-            <span class="text-slate-600">Tax</span>
-            <span class="font-medium">${formatForeignCurrency(cartPricing.taxUSD)} | INR ${cartPricing.taxINR.toFixed(2)}</span>
-          </div>
-          <div class="flex items-center justify-between text-sm">
-            <span class="text-slate-600">Discount</span>
-            <span class="font-medium">- ${formatForeignCurrency(cartPricing.discountUSD)} | INR ${cartPricing.discountINR.toFixed(2)}</span>
-          </div>
-          <div class="border-t border-slate-200 pt-3 flex items-center justify-between">
-            <span class="text-base font-semibold"> Estimated Request Total </span>
-            <span class="text-lg font-bold text-brand">${formatForeignCurrency(cartPricing.grandTotalUSD)} | INR ${cartPricing.grandTotalINR.toFixed(2)}</span>
-          </div>
-          <p class="text-xs text-slate-500"> Final pricing and shipping options may vary based on destination country, availability, and international delivery requirements. </p>
-        </div>
-      `;
+
+    <div class="flex items-center justify-between text-sm">
+
+      <span class="text-slate-600">
+        Medication total
+      </span>
+
+      <span class="font-medium">
+        ${formatForeignCurrency(
+          signedQuote.merchandiseUsd
+        )}
+      </span>
+
+    </div>
+
+
+    <div class="flex items-center justify-between text-sm">
+
+      <span class="text-slate-600">
+        Shipping charges
+      </span>
+
+      <span class="font-medium">
+        ${formatForeignCurrency(
+          signedQuote.shippingUsd
+        )}
+      </span>
+
+    </div>
+
+
+    <div class="border-t border-slate-200 pt-3 flex items-center justify-between">
+
+      <span class="text-base font-semibold">
+        Quotation Total
+      </span>
+
+      <span class="text-lg font-bold text-brand">
+        ${formatForeignCurrency(
+          signedQuote.finalUsd
+        )}
+      </span>
+
+    </div>
+
+
+    <div class="pt-2">
+
+      <p class="text-xs text-slate-500">
+        Quote valid for approximately 15 minutes.
+      </p>
+
+    </div>
+
+  </div>
+
+`;
+}
+
 
       if (cartSummaryMobileDiv) {
       cartSummaryMobileDiv.innerHTML = cartSummaryDiv.innerHTML;
@@ -631,17 +1296,6 @@ body .fab-icon img {
         });
       });
 
-      document.querySelectorAll('.qtyBtn').forEach((btn) => {
-        btn.addEventListener('click', async (e) => {
-          const idx = parseInt(e.currentTarget.getAttribute('data-index'));
-          const direction = e.currentTarget.getAttribute('data-direction');
-          const currentItem = cartItems[idx];
-          const currentQty = Math.max(1, getQuantity(currentItem));
-          const nextQty = direction === '+' ? currentQty + 1 : Math.max(1, currentQty - 1);
-          await updateCartItemQuantity(currentItem, idx, nextQty);
-          renderCart();
-        });
-      });
 
       document.querySelectorAll('.saveLaterBtn, .checkoutLaterBtn').forEach((btn) => {
         btn.addEventListener('click', () => {
