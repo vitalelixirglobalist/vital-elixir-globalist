@@ -663,11 +663,11 @@ async function getCachedSingleVariantQuote(product, variant) {
         );
       }
 
-      const perUnit =
-        merchandiseUsd / quantity;
+      const packLabel =
+        String(variant.pack || `${quantity}`).trim();
 
       rateLines.push(
-        `${quantity} Tablets for $${formatShareUsd(merchandiseUsd)} USD (${perUnit.toFixed(2)} USD per pill)`
+        `${packLabel} for $${formatShareUsd(merchandiseUsd)} USD`
       );
     }
 
