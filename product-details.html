@@ -1108,25 +1108,10 @@
         <div>
 
         <h2 class="text-3xl font-bold text-slate-900 mb-5">
-        🔗 Related Searches & Medicines
+        🔗 People Also Search
         </h2>
 
-        <div class="flex flex-wrap gap-3">
-
-        ${c.people_also_search.map(item=>`
-
-        <button
-        class="people-search-item px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-brand text-sm font-medium hover:bg-blue-100 transition"
-        data-product="${item.product_id || ""}"
-        data-search="${item.text}">
-
-        🔗 ${item.text}
-
-        </button>
-
-        `).join("")}
-
-        </div>
+        <div class="flex flex-wrap gap-3" id="peopleAlsoSearchContainer"></div>
 
         </div>
 
@@ -1196,26 +1181,73 @@
         </div>
 
         `;
-              section.querySelectorAll(".people-search-item").forEach(btn => {
+        const peopleContainer =
+  document.getElementById("peopleAlsoSearchContainer");
 
-          btn.addEventListener("click", () => {
+if (peopleContainer) {
 
-              const productId = btn.dataset.product;
-              const search = btn.dataset.search;
+  const currentManagerKey =
+    String(product.manager_key || "").trim();
 
-              if (productId) {
+  const sameCategoryProducts =
+    allProducts.filter((item) =>
+      item &&
+      item.manager_key &&
+      String(item.manager_key).trim() !== currentManagerKey &&
+      item.category === product.category
+    );
 
-                  window.location.href = `product-details.html?id=${productId}`;
+  const otherProducts =
+    allProducts.filter((item) =>
+      item &&
+      item.manager_key &&
+      String(item.manager_key).trim() !== currentManagerKey &&
+      item.category !== product.category
+    );
 
-              } else {
+  function shuffleProducts(list) {
+    return [...list].sort(() => Math.random() - 0.5);
+  }
 
-                  window.location.href = `products.html?search=${encodeURIComponent(search)}`;
+  const selectedPeopleProducts = [
+    ...shuffleProducts(sameCategoryProducts).slice(0, 4),
+    ...shuffleProducts(otherProducts).slice(0, 2)
+  ].slice(0, 6);
 
-              }
+  peopleContainer.innerHTML =
+    selectedPeopleProducts.map((item) => `
 
-          });
+      <button
+        class="people-search-item px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-brand text-sm font-medium hover:bg-blue-100 transition"
+        data-manager-key="${item.manager_key}">
+
+        🔗 ${item.name}
+
+      </button>
+
+    `).join("");
+
+  peopleContainer
+    .querySelectorAll(".people-search-item")
+    .forEach((btn) => {
+
+      btn.addEventListener("click", () => {
+
+        const managerKey =
+          String(
+            btn.dataset.managerKey || ""
+          ).trim();
+
+        if (!managerKey) return;
+
+        window.location.href =
+          `product-details.html?mk=${encodeURIComponent(managerKey)}`;
 
       });
+
+    });
+
+}
 
         }
     async function addToCart() {
@@ -1331,7 +1363,7 @@ const product =
           mobileActionBar.classList.add('hidden');
           return;
         }
-        product.content = productContent[product.id] || null;
+        product.content = productContent[product.manager_key] || null;
         renderProduct(product);
         selectedVariantIndex = 0;
         renderRelated(product);
