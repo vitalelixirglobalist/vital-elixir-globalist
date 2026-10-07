@@ -864,20 +864,6 @@ card.addEventListener('keydown', (e) => {
 
 });
 
-card.addEventListener('touchend', (e) => {
-
-  if (
-    e.target.closest('.qty-dropdown') ||
-    e.target.closest('.add-to-cart-btn')
-  ) {
-    return;
-  }
-
-  e.preventDefault();
-
-  openProductDetails();
-
-}, { passive: false });
 
 
         function renderQty(index){
