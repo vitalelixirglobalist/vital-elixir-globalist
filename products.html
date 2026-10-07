@@ -777,8 +777,14 @@ function getPerTablet(variant){
         const card = document.createElement('div');
 
         card.className =
-      'bg-white border rounded-xl p-3 md:p-4 shadow-sm hover:shadow-lg transition flex flex-col';
-        
+      'bg-white border rounded-xl p-3 md:p-4 shadow-sm hover:shadow-lg transition flex flex-col cursor-pointer';
+
+        card.setAttribute('role', 'link');
+        card.setAttribute('tabindex', '0');
+        card.setAttribute(
+          'aria-label',
+          `View details for ${p.name}`
+        );
         card.innerHTML = `
           <img src="${p.thumbnail}" alt="${p.name}" class="w-full h-40 object-contain mb-3 rounded" />
           <h2 class="font-semibold text-lg text-brand">${p.name}</h2>
@@ -797,6 +803,68 @@ function getPerTablet(variant){
         const qtyOptions = qtyDropdown.querySelector(".qty-options");
 
         let selectedVariantIndex = 0;
+
+
+// --------------------------------------------------
+// OPEN PRODUCT DETAILS
+// Whole product card is clickable.
+// Interactive controls below stop propagation.
+// --------------------------------------------------
+
+function openProductDetails() {
+
+  const managerKey =
+    String(p.manager_key || '').trim();
+
+  if (!managerKey) {
+    console.error(
+      'Cannot open product details: missing Manager Key.',
+      p
+    );
+    return;
+  }
+
+  window.location.href =
+    `product-details.html?mk=${encodeURIComponent(managerKey)}`;
+}
+
+
+card.addEventListener('click', (e) => {
+
+  if (
+    e.target.closest('.qty-dropdown') ||
+    e.target.closest('.add-to-cart-btn')
+  ) {
+    return;
+  }
+
+  openProductDetails();
+
+});
+
+card.addEventListener('keydown', (e) => {
+
+  if (
+    e.target.closest('.qty-dropdown') ||
+    e.target.closest('.add-to-cart-btn')
+  ) {
+    return;
+  }
+
+  if (
+    e.key === 'Enter' ||
+    e.key === ' '
+  ) {
+
+    e.preventDefault();
+
+    openProductDetails();
+
+  }
+
+});
+
+
 
         function renderQty(index){
 
@@ -918,7 +986,10 @@ function getPerTablet(variant){
 
 
           
-        addBtn.addEventListener('click', async () => {
+        addBtn.addEventListener('click', async (e) => {
+
+          e.stopPropagation();
+
           const variantIndex = selectedVariantIndex;
           if (!currentUser) {
             // Not logged in

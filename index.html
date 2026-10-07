@@ -1041,7 +1041,12 @@
       // Clear before rendering
       previewGrid.innerHTML = '';
       preview.forEach((p) => {
-        const div = document.createElement('div');
+        const div = document.createElement('a');
+
+div.href =
+  `product-details.html?mk=${encodeURIComponent(
+    String(p.manager_key || '').trim()
+  )}`;
         div.className =
           'bg-white border rounded-xl p-4 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col items-center cursor-pointer';
        
@@ -1063,7 +1068,8 @@
           <h3 class="font-semibold text-brand">${p.name}</h3>
           <p class="text-sm text-gray-500">${p.brand || 'Generic'}</p>
         `;
-        previewGrid.appendChild(div);
+
+previewGrid.appendChild(div);
       });
       } catch (err) {
         console.error('Failed to load preview products', err);

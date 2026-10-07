@@ -236,9 +236,38 @@
             </label>
             <div class="flex flex-col gap-2 w-full min-w-0">
 
-          <div class="qty-title">
-              Select Qty
-          </div>
+          <div class="flex items-center justify-between gap-3 mb-2">
+  <span>Select Qty</span>
+
+  <button
+    id="shareRatesBtn"
+    type="button"
+    onclick="copyProductRates()"
+    class="w-8 h-8 shrink-0 flex items-center justify-center rounded-full border border-slate-200 bg-white text-brand hover:bg-blue-50 transition"
+    aria-label="Copy product rates"
+    title="Copy product rates"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <circle cx="18" cy="5" r="3"></circle>
+      <circle cx="6" cy="12" r="3"></circle>
+      <circle cx="18" cy="19" r="3"></circle>
+      <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+      <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+    </svg>
+  </button>
+</div>
+
+
           <div class="qty-dropdown">
               <div class="qty-selected">
                   <div class="qty-header">
@@ -343,7 +372,6 @@
   </footer>
 
   <script>
-    const SHIPPING_USD = 35;
     let allProducts = [];
     let selectedProduct = null;
     let selectedVariantIndex = 0;
@@ -375,6 +403,85 @@
 
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    // ============================================================
+// PRIVATE SINGLE-VARIANT QUOTE
+// Same pricing authority used by products.html
+// ============================================================
+
+const singleVariantQuoteCache = new Map();
+
+async function requestSingleVariantQuote(product, variant) {
+
+  if (!window.vitalQuoteApi) {
+    throw new Error(
+      'Private quotation service is unavailable.'
+    );
+  }
+
+  const managerKey =
+    String(product?.manager_key || '').trim();
+
+  const selectedQuantity =
+    Number(variant?.quantity);
+
+  if (!/^P\d{4,}$/.test(managerKey)) {
+    throw new Error(
+      'Product is missing a valid Manager Key.'
+    );
+  }
+
+  if (
+    !Number.isInteger(selectedQuantity) ||
+    selectedQuantity <= 0 ||
+    selectedQuantity > 500
+  ) {
+    throw new Error(
+      'Product has an invalid selected quantity.'
+    );
+  }
+
+  return await window.vitalQuoteApi.requestQuote([
+    {
+      managerKey: managerKey,
+      selectedQuantity: selectedQuantity
+    }
+  ]);
+}
+
+
+async function getCachedSingleVariantQuote(product, variant) {
+
+  const cacheKey =
+    `${product.manager_key}:${Number(variant.quantity)}`;
+
+  if (singleVariantQuoteCache.has(cacheKey)) {
+    return singleVariantQuoteCache.get(cacheKey);
+  }
+
+  const quotePromise =
+    requestSingleVariantQuote(
+      product,
+      variant
+    );
+
+  singleVariantQuoteCache.set(
+    cacheKey,
+    quotePromise
+  );
+
+  try {
+
+    return await quotePromise;
+
+  } catch (error) {
+
+    singleVariantQuoteCache.delete(
+      cacheKey
+    );
+
+    throw error;
+  }
+}
     function getSelectedCurrency() {
       return window.pricingEngine.getDisplayedCurrency();
     }
@@ -410,209 +517,216 @@
 
     function getRegionalPriceData(variant){
 
-    const currency=getSelectedCurrency();
+    const currency = getSelectedCurrency();
 
     switch(currency){
 
         case "USD":
-            return{
-                buyWithUs:variant.price_usd,
-                marketPrice:variant.market_price_usd,
-                isManual:true
+            return {
+                buyWithUs: variant.price_usd,
+                marketPrice: variant.market_price_usd
             };
 
         case "GBP":
-            if(variant.price_gbp!==undefined){
-                return{
-                    buyWithUs:variant.price_gbp,
-                    marketPrice:variant.market_price_gbp,
-                    isManual:true
+            if(variant.price_gbp !== undefined){
+                return {
+                    buyWithUs: variant.price_gbp,
+                    marketPrice: variant.market_price_gbp
                 };
             }
             break;
 
         case "AUD":
-            if(variant.price_aud!==undefined){
-                return{
-                    buyWithUs:variant.price_aud,
-                    marketPrice:variant.market_price_aud,
-                    isManual:true
+            if(variant.price_aud !== undefined){
+                return {
+                    buyWithUs: variant.price_aud,
+                    marketPrice: variant.market_price_aud
                 };
             }
             break;
-
     }
 
-    const pricing=window.pricingEngine.calculateItemPricing({
-        price_usd:variant.price_usd,
-        price_inr:variant.price_inr,
-        shipping_usd:SHIPPING_USD
-    },1);
+    return {
+        buyWithUs:
+            window.pricingEngine.convertUsdToCurrency(
+                Number(variant.price_usd || 0),
+                currency
+            ),
 
-    return{
-        buyWithUs:pricing.final_price_local,
-        marketPrice:pricing.final_price_local,
-        isManual:false
+        marketPrice:
+            window.pricingEngine.convertUsdToCurrency(
+                Number(variant.market_price_usd || 0),
+                currency
+            )
     };
-
 }
 
-    function getVariantPricing(variant){
-
-    const currency=getSelectedCurrency();
-
-    if(currency==="USD"){
-
-        return window.pricingEngine.calculateItemPricing({
-            price_usd:variant.price_usd,
-            price_inr:variant.price_inr,
-            shipping_usd:SHIPPING_USD
-        },1);
-
-    }
-
-    if(currency==="GBP" && variant.price_gbp!==undefined){
-
-        return window.pricingEngine.calculateItemPricing({
-            price_usd:variant.price_gbp,
-            price_inr:0,
-            shipping_usd:SHIPPING_USD
-        },1);
-
-    }
-
-    if(currency==="AUD" && variant.price_aud!==undefined){
-
-        return window.pricingEngine.calculateItemPricing({
-            price_usd:variant.price_aud,
-            price_inr:0,
-            shipping_usd:SHIPPING_USD
-        },1);
-
-    }
-
-        return window.pricingEngine.calculateItemPricing({
-            price_usd:variant.price_usd,
-            price_inr:variant.price_inr,
-            shipping_usd:SHIPPING_USD
-        },1);
-
-    }
+  
 
     function buildCartItem(product, variant) {
 
-  if (!product?.manager_key) {
+  const managerKey =
+    String(product?.manager_key || '').trim();
+
+  const selectedQuantity =
+    Number(variant?.quantity);
+
+  if (!/^P\d{4,}$/.test(managerKey)) {
     throw new Error(
-      `Missing manager_key for product: ${product?.name || 'Unknown product'}`
+      'Product is missing a valid Manager Key.'
     );
   }
 
-  const selectedQuantity = Number(variant?.quantity);
-
   if (
     !Number.isInteger(selectedQuantity) ||
-    selectedQuantity <= 0
+    selectedQuantity <= 0 ||
+    selectedQuantity > 500
   ) {
     throw new Error(
       `Invalid variant quantity for ${product.name}`
     );
   }
 
-  // --------------------------------------------------
-  // PERMANENT SERVER IDENTITY
-  // --------------------------------------------------
-  // managerKey + selectedQuantity uniquely identifies
-  // the private VARIANTS row in the Product Manager.
-  // --------------------------------------------------
+  return {
 
-  const baseItem = {
+    managerKey: managerKey,
 
-    managerKey: product.manager_key,
     productId: product.id,
 
+    selectedQuantity: selectedQuantity,
+
     name: product.name,
+
     brand: product.brand,
+
     composition: product.composition,
 
     pack: variant.pack,
 
-    selectedQuantity: selectedQuantity,
-
-    // Legacy cart multiplier.
-    // Kept temporarily while the old cart is being migrated.
-    cartUnits: 1,
-    quantity: 1,
-
     image:
       product.thumbnail ||
       product.image ||
-      (Array.isArray(product.images)
-        ? product.images[0]
-        : ''),
+      (
+        Array.isArray(product.images)
+          ? product.images[0]
+          : ''
+      )
 
-    // ------------------------------------------------
-    // LEGACY PRICE SNAPSHOT
-    // Temporary only.
-    // C.3 will stop trusting these values.
-    // ------------------------------------------------
-
-    price_usd: variant.price_usd,
-    market_price_usd: variant.market_price_usd,
-
-    price_gbp: variant.price_gbp,
-    market_price_gbp: variant.market_price_gbp,
-
-    price_aud: variant.price_aud,
-    market_price_aud: variant.market_price_aud,
-
-    price_inr: variant.price_inr,
-
-    shipping_usd: SHIPPING_USD
   };
+}
 
-  const normalized =
-    window.pricingEngine.normalizeCartItem(
-      baseItem,
-      1
+    async function copyProductRates() {
+
+  if (
+    !selectedProduct ||
+    !Array.isArray(selectedProduct.variants) ||
+    !selectedProduct.variants.length
+  ) {
+    return showToast(
+      'Product rates are unavailable.'
+    );
+  }
+
+  const shareButton =
+    document.getElementById('shareRatesBtn');
+
+  if (shareButton) {
+    shareButton.disabled = true;
+    shareButton.style.opacity = '0.6';
+  }
+
+  try {
+
+    const rateLines = [];
+
+    for (const variant of selectedProduct.variants) {
+
+      const quote =
+        await getCachedSingleVariantQuote(
+          selectedProduct,
+          variant
+        );
+
+      const quantity =
+        Number(variant.quantity);
+
+      const merchandiseUsd =
+        Number(quote?.merchandiseUsd);
+
+      if (
+        !Number.isFinite(merchandiseUsd) ||
+        !Number.isFinite(quantity) ||
+        quantity <= 0
+      ) {
+        throw new Error(
+          `Unable to calculate rate for ${variant.pack}.`
+        );
+      }
+
+      const packLabel =
+        String(variant.pack || `${quantity}`).trim();
+
+      rateLines.push(
+        `${packLabel} for $${formatShareUsd(merchandiseUsd)} USD`
+      );
+    }
+
+    const managerKey =
+      encodeURIComponent(
+        selectedProduct.manager_key
+      );
+
+    const productUrl =
+      `https://vitalelixirglobalist.com/product-details.html?mk=${managerKey}`;
+
+    const shareText =
+      `Cost for ${selectedProduct.name}\n\n` +
+      rateLines.join('\n') +
+      `\n\nShipping and Documentation charges 35 USD` +
+      `\n\nvisit web - ${productUrl}`;
+
+    await navigator.clipboard.writeText(
+      shareText
     );
 
-  return {
+    showToast(
+      'Product rates copied.'
+    );
 
-    ...baseItem,
+  } catch (error) {
 
-    raw: normalized.raw,
-    pricing: normalized.pricing,
+    console.error(
+      'Unable to copy product rates:',
+      error
+    );
 
-    shipping_inr:
-      normalized.raw.shipping_inr,
+    showToast(
+      error?.message ||
+      'Unable to copy product rates.'
+    );
 
-    final_price_usd:
-      normalized.pricing.final_price_usd,
+  } finally {
 
-    final_price_inr:
-      normalized.pricing.final_price_inr,
+    if (shareButton) {
+      shareButton.disabled = false;
+      shareButton.style.opacity = '';
+    }
+  }
+}
 
-    final_total_usd:
-      normalized.pricing.final_total_usd,
 
-    final_total_inr:
-      normalized.pricing.final_total_inr,
+function formatShareUsd(value) {
 
-    final_price_local:
-      normalized.pricing.final_price_local,
+  const number =
+    Number(value);
 
-    final_total_local:
-      normalized.pricing.final_total_local,
+  if (!Number.isFinite(number)) {
+    return '0';
+  }
 
-    selected_currency:
-      normalized.pricing.selected_currency,
-
-    total_price_usd:
-      normalized.pricing.final_total_usd,
-
-    total_price_inr:
-      normalized.pricing.final_total_inr
-  };
+  return Number.isInteger(number)
+    ? String(number)
+    : number.toFixed(2);
 }
 
     function showToast(message) {
@@ -673,22 +787,43 @@
           window.location.href = "cart.html";
 
       });
-    function updatePrice() {
-      if (!selectedProduct || !selectedProduct.variants.length) return;
-      const variant =
+    
+        function updatePrice() {
+
+    if (
+        !selectedProduct ||
+        !selectedProduct.variants.length
+    ) {
+        return;
+    }
+
+    const variant =
         selectedProduct.variants[selectedVariantIndex] ||
         selectedProduct.variants[0];
-      const pricing = getVariantPricing(variant);
 
-      priceBreakdown.innerHTML = `
+    priceBreakdown.innerHTML = `
         <div class="space-y-2">
-          <div class="flex items-center justify-between"><span class="font-semibold text-brand">Selected pack</span><span>${variant.pack}</span></div>
-          <div class="flex items-center justify-between"><span>Medicine</span><span>${formatLocalCurrency(pricing.final_price_local)}${pricing.final_price_inr ? ` | INR ${pricing.final_price_inr.toFixed(2)}` : ''}</span></div>
-          <div class="flex items-center justify-between"><span>Shipping</span><span>${formatLocalCurrency(pricing.final_shipping_local)}${pricing.final_shipping_inr ? ` | INR ${pricing.final_shipping_inr.toFixed(2)}` : ''}</span></div>
-          <div class="flex items-center justify-between font-bold text-brand text-lg"><span>Total</span><span>${formatLocalCurrency(pricing.final_total_local)}${pricing.final_total_inr ? ` | INR ${pricing.final_total_inr.toFixed(2)}` : ''}</span></div>
+
+            <div class="flex items-center justify-between">
+                <span class="font-semibold text-brand">
+                    Selected pack
+                </span>
+
+                <span>
+                    ${variant.pack}
+                </span>
+            </div>
+
+            <div class="pt-2 border-t border-blue-100">
+                <span class="font-bold text-gray-800 underline">
+                    Shipping starts from USD 35
+                </span>
+            </div>
+
         </div>
-      `;
-    }
+    `;
+}
+
           function getPerTablet(variant){
           if(!variant.quantity) return "-";
           const regional = getRegionalPriceData(variant);
@@ -923,7 +1058,7 @@
       }
       related.forEach((item) => {
         const card = document.createElement('a');
-        card.href =  `product-details.html?id=${encodeURIComponent(item.id)}`;
+        card.href = `product-details.html?mk=${encodeURIComponent(item.manager_key)}`;
         card.className = 'glass-card p-4 rounded-2xl border border-slate-200 hover:-translate-y-1 transition shadow-sm hover:shadow-lg bg-white';
         card.innerHTML = `
           <div class="flex items-center gap-3">
@@ -947,7 +1082,7 @@
       if (!pairings.length) pairings = allProducts.filter((p) => p.name !== product.name);
       pairings.slice(0, 3).forEach((item) => {
         const card = document.createElement('a');
-        card.href = `product-details.html?id=${encodeURIComponent(item.id)}`;
+        card.href = `product-details.html?mk=${encodeURIComponent(item.manager_key)}`;
         card.className = 'p-4 rounded-2xl border border-emerald-100 bg-emerald-50/60 hover:bg-emerald-50 transition';
         card.innerHTML = `
           <div class="flex items-start gap-3">
@@ -1108,25 +1243,10 @@
         <div>
 
         <h2 class="text-3xl font-bold text-slate-900 mb-5">
-        🔗 Related Searches & Medicines
+        🔗 People Also Search
         </h2>
 
-        <div class="flex flex-wrap gap-3">
-
-        ${c.people_also_search.map(item=>`
-
-        <button
-        class="people-search-item px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-brand text-sm font-medium hover:bg-blue-100 transition"
-        data-product="${item.product_id || ""}"
-        data-search="${item.text}">
-
-        🔗 ${item.text}
-
-        </button>
-
-        `).join("")}
-
-        </div>
+        <div class="flex flex-wrap gap-3" id="peopleAlsoSearchContainer"></div>
 
         </div>
 
@@ -1196,29 +1316,76 @@
         </div>
 
         `;
-              section.querySelectorAll(".people-search-item").forEach(btn => {
+        const peopleContainer =
+  document.getElementById("peopleAlsoSearchContainer");
 
-          btn.addEventListener("click", () => {
+if (peopleContainer) {
 
-              const productId = btn.dataset.product;
-              const search = btn.dataset.search;
+  const currentManagerKey =
+    String(product.manager_key || "").trim();
 
-              if (productId) {
+  const sameCategoryProducts =
+    allProducts.filter((item) =>
+      item &&
+      item.manager_key &&
+      String(item.manager_key).trim() !== currentManagerKey &&
+      item.category === product.category
+    );
 
-                  window.location.href = `product-details.html?id=${productId}`;
+  const otherProducts =
+    allProducts.filter((item) =>
+      item &&
+      item.manager_key &&
+      String(item.manager_key).trim() !== currentManagerKey &&
+      item.category !== product.category
+    );
 
-              } else {
+  function shuffleProducts(list) {
+    return [...list].sort(() => Math.random() - 0.5);
+  }
 
-                  window.location.href = `products.html?search=${encodeURIComponent(search)}`;
+  const selectedPeopleProducts = [
+    ...shuffleProducts(sameCategoryProducts).slice(0, 4),
+    ...shuffleProducts(otherProducts).slice(0, 2)
+  ].slice(0, 6);
 
-              }
+  peopleContainer.innerHTML =
+    selectedPeopleProducts.map((item) => `
 
-          });
+      <button
+        class="people-search-item px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-brand text-sm font-medium hover:bg-blue-100 transition"
+        data-manager-key="${item.manager_key}">
+
+        🔗 ${item.name}
+
+      </button>
+
+    `).join("");
+
+  peopleContainer
+    .querySelectorAll(".people-search-item")
+    .forEach((btn) => {
+
+      btn.addEventListener("click", () => {
+
+        const managerKey =
+          String(
+            btn.dataset.managerKey || ""
+          ).trim();
+
+        if (!managerKey) return;
+
+        window.location.href =
+          `product-details.html?mk=${encodeURIComponent(managerKey)}`;
 
       });
 
+    });
+
+}
+
         }
-    async function addToCart() {
+  async function addToCart() {
 
   if (!selectedProduct) {
     return showToast('No product selected.');
@@ -1227,70 +1394,110 @@
   const variant =
     selectedProduct.variants[selectedVariantIndex] ||
     selectedProduct.variants[0];
-  const cartItem = buildCartItem(selectedProduct, variant);
+
+  if (!variant) {
+    return showToast('Please select a quantity.');
+  }
+
   const user = window.auth.currentUser;
-          if (!user) {
-          showModal(
-              "<h2 class='text-3xl font-bold mb-4'>Please log in to view your cart</h2>" +
-              "<p class='text-slate-600 text-lg'>You must be signed in to access your cart and proceed to checkout.</p>",
-              false
-          );
-          modalOk.textContent = "Login";
-          modalOk.onclick = () => {
-              hideModal();
-              window.location.href =
-                  "login.html?redirect=" +
-                  encodeURIComponent(window.location.pathname + window.location.search);
-          };
-          return;
-      }
 
-  const productId =
-    (
-      selectedProduct.name +
-      '-' +
-      variant.pack
-    )
-    .toLowerCase()
-    .replace(/\s+/g, '-');
+  if (!user) {
 
-  await window.setDoc(
+    showModal(
+      "<h2 class='text-3xl font-bold mb-4'>Please log in to view your cart</h2>" +
+      "<p class='text-slate-600 text-lg'>You must be signed in to access your cart and proceed to checkout.</p>",
+      false
+    );
 
-    window.doc(
-      window.db,
-      'users',
-      user.uid,
-      'cart',
-      productId
-    ),
+    modalOk.textContent = "Login";
 
-    {
-      productId,
+    modalOk.onclick = () => {
 
-      ...cartItem,
+      hideModal();
 
-      addedAt: new Date().toISOString()
-    }
+      window.location.href =
+        "login.html?redirect=" +
+        encodeURIComponent(
+          window.location.pathname +
+          window.location.search
+        );
+    };
 
+    return;
+  }
+
+  try {
+
+    // --------------------------------------------------
+    // SERVER MUST RECOGNISE THIS PRODUCT + QUANTITY
+    // BEFORE IT CAN ENTER THE CART
+    // --------------------------------------------------
+
+    await getCachedSingleVariantQuote(
+      selectedProduct,
+      variant
+    );
+
+    const cartItem =
+      buildCartItem(
+        selectedProduct,
+        variant
       );
 
-      modalOk.textContent = "OK";
+    const cartDocumentId =
+      `${selectedProduct.manager_key}-${Number(variant.quantity)}`;
 
-      showModal(
-            `<strong>${selectedProduct.name}</strong><br>${variant.pack} added successfully.`,
-            true,
-            "Product Added Successfully"
-        );
-            }
+    await window.setDoc(
+
+      window.doc(
+        window.db,
+        'users',
+        user.uid,
+        'cart',
+        cartDocumentId
+      ),
+
+      {
+        ...cartItem,
+        addedAt: new Date().toISOString()
+      }
+
+    );
+
+    modalOk.textContent = "OK";
+
+    showModal(
+      `<strong>${selectedProduct.name}</strong><br>${variant.pack} added successfully.`,
+      true,
+      "Product Added Successfully"
+    );
+
+  } catch (error) {
+
+    console.error(
+      'Unable to add product to cart:',
+      error
+    );
+
+    showToast(
+      error?.message ||
+      'Unable to add this product to cart.'
+    );
+  }
+}
 
     function consultDoctor() {
       if (!selectedProduct) return;
       window.location.href = `doctor-consultation.html?product=${encodeURIComponent(selectedProduct.name)}`;
     }
 
-    function getQueryProductId() {
+    function getQueryProductIdentity() {
   const params = new URLSearchParams(window.location.search);
-  return params.get('id');
+
+  return {
+    managerKey: (params.get('mk') || '').trim(),
+    productId: (params.get('id') || '').trim()
+  };
 }
 
     async function loadProductDetails() {
@@ -1302,23 +1509,32 @@
 
         allProducts = await productsRes.json();
         const productContent = await contentRes.json();
-        const productId =
-  decodeURIComponent(
-    getQueryProductId() || ''
-  ).trim();
+        const identity = getQueryProductIdentity();
 
 const product =
-  allProducts.find(
-    (p) =>
-      String(p.id || '').trim() === productId
-  );
+  allProducts.find((p) => {
+
+    if (identity.managerKey) {
+      return (
+        String(p.manager_key || '').trim() ===
+        identity.managerKey
+      );
+    }
+
+    // Temporary backward compatibility for old ?id= links
+    return (
+      String(p.id || '').trim() ===
+      identity.productId
+    );
+
+  });
 
         if (!product) {
           document.querySelector('main').innerHTML = '<div class="text-center py-20 text-slate-600 text-lg">Product not found.</div>';
           mobileActionBar.classList.add('hidden');
           return;
         }
-        product.content = productContent[product.id] || null;
+        product.content = productContent[product.manager_key] || null;
         renderProduct(product);
         selectedVariantIndex = 0;
         renderRelated(product);
