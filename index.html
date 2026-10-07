@@ -1063,7 +1063,26 @@
           <h3 class="font-semibold text-brand">${p.name}</h3>
           <p class="text-sm text-gray-500">${p.brand || 'Generic'}</p>
         `;
-        previewGrid.appendChild(div);
+        // Open this exact Featured Product using its permanent Manager Key.
+div.addEventListener('click', () => {
+
+  const managerKey =
+    String(p.manager_key || '').trim();
+
+  if (!managerKey) {
+    console.error(
+      'Cannot open featured product: missing Manager Key.',
+      p
+    );
+    return;
+  }
+
+  window.location.href =
+    `product-details.html?mk=${encodeURIComponent(managerKey)}`;
+
+});
+
+previewGrid.appendChild(div);
       });
       } catch (err) {
         console.error('Failed to load preview products', err);

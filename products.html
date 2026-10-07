@@ -777,8 +777,8 @@ function getPerTablet(variant){
         const card = document.createElement('div');
 
         card.className =
-      'bg-white border rounded-xl p-3 md:p-4 shadow-sm hover:shadow-lg transition flex flex-col';
-        
+      'bg-white border rounded-xl p-3 md:p-4 shadow-sm hover:shadow-lg transition flex flex-col cursor-pointer';
+
         card.innerHTML = `
           <img src="${p.thumbnail}" alt="${p.name}" class="w-full h-40 object-contain mb-3 rounded" />
           <h2 class="font-semibold text-lg text-brand">${p.name}</h2>
@@ -797,6 +797,32 @@ function getPerTablet(variant){
         const qtyOptions = qtyDropdown.querySelector(".qty-options");
 
         let selectedVariantIndex = 0;
+
+
+// --------------------------------------------------
+// OPEN PRODUCT DETAILS
+// Whole product card is clickable.
+// Interactive controls below stop propagation.
+// --------------------------------------------------
+
+card.addEventListener('click', () => {
+
+  const managerKey =
+    String(p.manager_key || '').trim();
+
+  if (!managerKey) {
+    console.error(
+      'Cannot open product details: missing Manager Key.',
+      p
+    );
+    return;
+  }
+
+  window.location.href =
+    `product-details.html?mk=${encodeURIComponent(managerKey)}`;
+
+});
+
 
         function renderQty(index){
 
@@ -918,7 +944,10 @@ function getPerTablet(variant){
 
 
           
-        addBtn.addEventListener('click', async () => {
+        addBtn.addEventListener('click', async (e) => {
+
+          e.stopPropagation();
+
           const variantIndex = selectedVariantIndex;
           if (!currentUser) {
             // Not logged in
