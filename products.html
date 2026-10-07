@@ -805,7 +805,7 @@ function getPerTablet(variant){
 // Interactive controls below stop propagation.
 // --------------------------------------------------
 
-card.addEventListener('click', () => {
+function openProductDetails() {
 
   const managerKey =
     String(p.manager_key || '').trim();
@@ -820,8 +820,37 @@ card.addEventListener('click', () => {
 
   window.location.href =
     `product-details.html?mk=${encodeURIComponent(managerKey)}`;
+}
+
+
+card.addEventListener('click', (e) => {
+
+  if (
+    e.target.closest('.qty-dropdown') ||
+    e.target.closest('.add-to-cart-btn')
+  ) {
+    return;
+  }
+
+  openProductDetails();
 
 });
+
+
+card.addEventListener('touchend', (e) => {
+
+  if (
+    e.target.closest('.qty-dropdown') ||
+    e.target.closest('.add-to-cart-btn')
+  ) {
+    return;
+  }
+
+  e.preventDefault();
+
+  openProductDetails();
+
+}, { passive: false });
 
 
         function renderQty(index){

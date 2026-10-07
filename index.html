@@ -1041,7 +1041,12 @@
       // Clear before rendering
       previewGrid.innerHTML = '';
       preview.forEach((p) => {
-        const div = document.createElement('div');
+        const div = document.createElement('a');
+
+div.href =
+  `product-details.html?mk=${encodeURIComponent(
+    String(p.manager_key || '').trim()
+  )}`;
         div.className =
           'bg-white border rounded-xl p-4 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col items-center cursor-pointer';
        
@@ -1063,24 +1068,6 @@
           <h3 class="font-semibold text-brand">${p.name}</h3>
           <p class="text-sm text-gray-500">${p.brand || 'Generic'}</p>
         `;
-        // Open this exact Featured Product using its permanent Manager Key.
-div.addEventListener('click', () => {
-
-  const managerKey =
-    String(p.manager_key || '').trim();
-
-  if (!managerKey) {
-    console.error(
-      'Cannot open featured product: missing Manager Key.',
-      p
-    );
-    return;
-  }
-
-  window.location.href =
-    `product-details.html?mk=${encodeURIComponent(managerKey)}`;
-
-});
 
 previewGrid.appendChild(div);
       });
