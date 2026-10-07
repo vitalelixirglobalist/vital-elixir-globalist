@@ -372,7 +372,6 @@
   </footer>
 
   <script>
-    const SHIPPING_USD = 35;
     let allProducts = [];
     let selectedProduct = null;
     let selectedVariantIndex = 0;
@@ -518,94 +517,51 @@ async function getCachedSingleVariantQuote(product, variant) {
 
     function getRegionalPriceData(variant){
 
-    const currency=getSelectedCurrency();
+    const currency = getSelectedCurrency();
 
     switch(currency){
 
         case "USD":
-            return{
-                buyWithUs:variant.price_usd,
-                marketPrice:variant.market_price_usd,
-                isManual:true
+            return {
+                buyWithUs: variant.price_usd,
+                marketPrice: variant.market_price_usd
             };
 
         case "GBP":
-            if(variant.price_gbp!==undefined){
-                return{
-                    buyWithUs:variant.price_gbp,
-                    marketPrice:variant.market_price_gbp,
-                    isManual:true
+            if(variant.price_gbp !== undefined){
+                return {
+                    buyWithUs: variant.price_gbp,
+                    marketPrice: variant.market_price_gbp
                 };
             }
             break;
 
         case "AUD":
-            if(variant.price_aud!==undefined){
-                return{
-                    buyWithUs:variant.price_aud,
-                    marketPrice:variant.market_price_aud,
-                    isManual:true
+            if(variant.price_aud !== undefined){
+                return {
+                    buyWithUs: variant.price_aud,
+                    marketPrice: variant.market_price_aud
                 };
             }
             break;
-
     }
 
-    const pricing=window.pricingEngine.calculateItemPricing({
-        price_usd:variant.price_usd,
-        price_inr:variant.price_inr,
-        shipping_usd:SHIPPING_USD
-    },1);
+    return {
+        buyWithUs:
+            window.pricingEngine.convertUsdToCurrency(
+                Number(variant.price_usd || 0),
+                currency
+            ),
 
-    return{
-        buyWithUs:pricing.final_price_local,
-        marketPrice:pricing.final_price_local,
-        isManual:false
+        marketPrice:
+            window.pricingEngine.convertUsdToCurrency(
+                Number(variant.market_price_usd || 0),
+                currency
+            )
     };
-
 }
 
-    function getVariantPricing(variant){
-
-    const currency=getSelectedCurrency();
-
-    if(currency==="USD"){
-
-        return window.pricingEngine.calculateItemPricing({
-            price_usd:variant.price_usd,
-            price_inr:variant.price_inr,
-            shipping_usd:SHIPPING_USD
-        },1);
-
-    }
-
-    if(currency==="GBP" && variant.price_gbp!==undefined){
-
-        return window.pricingEngine.calculateItemPricing({
-            price_usd:variant.price_gbp,
-            price_inr:0,
-            shipping_usd:SHIPPING_USD
-        },1);
-
-    }
-
-    if(currency==="AUD" && variant.price_aud!==undefined){
-
-        return window.pricingEngine.calculateItemPricing({
-            price_usd:variant.price_aud,
-            price_inr:0,
-            shipping_usd:SHIPPING_USD
-        },1);
-
-    }
-
-        return window.pricingEngine.calculateItemPricing({
-            price_usd:variant.price_usd,
-            price_inr:variant.price_inr,
-            shipping_usd:SHIPPING_USD
-        },1);
-
-    }
+  
 
     function buildCartItem(product, variant) {
 
@@ -831,22 +787,43 @@ function formatShareUsd(value) {
           window.location.href = "cart.html";
 
       });
-    function updatePrice() {
-      if (!selectedProduct || !selectedProduct.variants.length) return;
-      const variant =
+    
+        function updatePrice() {
+
+    if (
+        !selectedProduct ||
+        !selectedProduct.variants.length
+    ) {
+        return;
+    }
+
+    const variant =
         selectedProduct.variants[selectedVariantIndex] ||
         selectedProduct.variants[0];
-      const pricing = getVariantPricing(variant);
 
-      priceBreakdown.innerHTML = `
+    priceBreakdown.innerHTML = `
         <div class="space-y-2">
-          <div class="flex items-center justify-between"><span class="font-semibold text-brand">Selected pack</span><span>${variant.pack}</span></div>
-          <div class="flex items-center justify-between"><span>Medicine</span><span>${formatLocalCurrency(pricing.final_price_local)}${pricing.final_price_inr ? ` | INR ${pricing.final_price_inr.toFixed(2)}` : ''}</span></div>
-          <div class="flex items-center justify-between"><span>Shipping</span><span>${formatLocalCurrency(pricing.final_shipping_local)}${pricing.final_shipping_inr ? ` | INR ${pricing.final_shipping_inr.toFixed(2)}` : ''}</span></div>
-          <div class="flex items-center justify-between font-bold text-brand text-lg"><span>Total</span><span>${formatLocalCurrency(pricing.final_total_local)}${pricing.final_total_inr ? ` | INR ${pricing.final_total_inr.toFixed(2)}` : ''}</span></div>
+
+            <div class="flex items-center justify-between">
+                <span class="font-semibold text-brand">
+                    Selected pack
+                </span>
+
+                <span>
+                    ${variant.pack}
+                </span>
+            </div>
+
+            <div class="pt-2 border-t border-blue-100">
+                <span class="font-bold text-gray-800 underline">
+                    Shipping starts from USD 35
+                </span>
+            </div>
+
         </div>
-      `;
-    }
+    `;
+}
+
           function getPerTablet(variant){
           if(!variant.quantity) return "-";
           const regional = getRegionalPriceData(variant);
