@@ -272,8 +272,10 @@
     "composition": "mebendazole 150mg",
     "category": "Dermatology",
     "use": "Severe acne treatment",
-    "thumbnail": "",
-    "images": [],
+    "thumbnail": "assets/images/products/mebendazole150.jpeg",
+    "images": [
+      "assets/images/products/mebendazole150a.jpeg"
+    ],
     "variants": [
       {
         "pack": "10 Capsules/Strip",
@@ -9675,6 +9677,52 @@
         "price_gbp": 63.48,
         "market_price_gbp": 1,
         "price_aud": 122.15,
+        "market_price_aud": 1,
+        "price_inr": 1
+      }
+    ]
+  },
+  {
+    "manager_key": "P0199",
+    "id": "sodiumchloride09",
+    "name": "sodiumchloride0.9% NS100ml",
+    "brand": "Qualicare",
+    "composition": "sodiumchloride0.9%",
+    "category": "Infection & Antiparasitic Treatments",
+    "use": "Short-term fluid management, medication delivery, and routine vascular maintenance",
+    "thumbnail": "assets/images/products/sodiumchloride09.jpeg",
+    "images": [],
+    "variants": [
+      {
+        "pack": "1 Bottle",
+        "quantity": 3,
+        "price_usd": 45.88,
+        "market_price_usd": 1,
+        "price_gbp": 36.25,
+        "market_price_gbp": 1,
+        "price_aud": 69.74,
+        "market_price_aud": 1,
+        "price_inr": 1
+      },
+      {
+        "pack": "1 Bottle",
+        "quantity": 5,
+        "price_usd": 46.31,
+        "market_price_usd": 1,
+        "price_gbp": 36.58,
+        "market_price_gbp": 1,
+        "price_aud": 70.39,
+        "market_price_aud": 1,
+        "price_inr": 1
+      },
+      {
+        "pack": "1 Bottle",
+        "quantity": 7,
+        "price_usd": 46.74,
+        "market_price_usd": 1,
+        "price_gbp": 36.92,
+        "market_price_gbp": 1,
+        "price_aud": 71.04,
         "market_price_aud": 1,
         "price_inr": 1
       }
