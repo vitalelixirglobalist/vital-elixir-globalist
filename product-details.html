@@ -788,8 +788,8 @@ function copyProductRates() {
         const quantityLabel =
           getShareQuantityLabel(variant);
 
-        
-const quantity = Number(variant.quantity);
+
+        const quantity = Number(variant.quantity);
         const unit = getShareUnit(variant);
         const perUnitLabel = unit
           ? (unit === 'Tablet' || unit === 'Capsule' ? 'pill' : unit.toLowerCase())
