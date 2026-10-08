@@ -360,7 +360,30 @@
 
   </div>
 
-  <div id="actionToast" class="hidden fixed top-4 right-4 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-lg text-sm"></div>
+  <div
+  id="actionToast"
+  role="status"
+  aria-live="polite"
+  class="hidden"
+  style="
+    position: fixed;
+    z-index: 2147483647;
+    top: 85px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #0f172a;
+    color: white;
+    padding: 14px 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.25);
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    width: max-content;
+    max-width: 90vw;
+    pointer-events: none;
+  ">
+</div>
 
   <div id="mobileActionBar" class="hidden fixed md:hidden bottom-0 inset-x-0 bg-white/95 border-t border-slate-200 p-4 flex gap-3 z-40">
     <button class="flex-1 px-4 py-3 bg-brand text-white rounded-xl" onclick="addToCart()">Add to Cart</button>
@@ -615,66 +638,178 @@ async function getCachedSingleVariantQuote(product, variant) {
   };
 }
 
-    async function copyProductRates() {
+
+/***************************************************************
+ * SHARE PRODUCT RATES
+ * Fast copying using published product prices
+ * No private quote API calls
+ ***************************************************************/
+
+
+// Identify the correct medication unit from the pack.
+function getShareUnit(variant) {
+  const pack = String(variant.pack || '').trim();
+
+  const rules = [
+    { regex: /\b(tablets?|tabs?)\b/i, unit: 'Tablet' },
+    { regex: /\b(capsules?|caps?)\b/i, unit: 'Capsule' },
+    { regex: /\b(tubes?)\b/i, unit: 'Tube' },
+    { regex: /\b(vials?)\b/i, unit: 'Vial' },
+    { regex: /\b(ampoules?|ampules?|ampo)\b/i, unit: 'Ampoule' },
+    { regex: /\b(sachets?)\b/i, unit: 'Sachet' },
+    { regex: /\b(kwikpens?|solostar\s*pens?|pens?)\b/i, unit: 'Pen' },
+    { regex: /\b(inhalers?)\b/i, unit: 'Inhaler' },
+    { regex: /\b(syringes?)\b/i, unit: 'Syringe' },
+    { regex: /\b(bottles?)\b/i, unit: 'Bottle' }
+  ];
+
+  for (const rule of rules) {
+    if (rule.regex.test(pack)) return rule.unit;
+  }
+
+  return null;
+}
+
+function getShareQuantityLabel(variant) {
+  const quantity = Number(variant.quantity);
+  const pack = String(variant.pack || '').trim();
+
+  if (!Number.isFinite(quantity) || quantity <= 0) {
+    throw new Error('Invalid product quantity.');
+  }
+
+  const unit = getShareUnit(variant);
+
+  if (unit) {
+    return `${quantity} ${quantity === 1 ? unit : unit + 's'}`;
+  }
+
+  // If the pack type is unknown, preserve its description.
+  return `${quantity} (${pack || 'quantity'})`;
+}
+
+/***************************************************************
+ * MOBILE COPY FALLBACK
+ * Shows selectable text if clipboard access is blocked
+ ***************************************************************/
+
+function showShareCopyFallback(text) {
+
+  const dialog = document.createElement('div');
+
+ dialog.className =
+  'fixed inset-0 bg-black/60 flex items-center ' +
+  'justify-center p-4';
+
+dialog.style.zIndex = '2147483646';
+
+  const panel = document.createElement('div');
+
+  panel.className =
+    'bg-white rounded-2xl p-5 w-full max-w-lg shadow-2xl';
+
+  const heading = document.createElement('h3');
+
+  heading.className = 'text-lg font-bold mb-2';
+  heading.textContent = 'Copy product rates';
+
+  const description = document.createElement('p');
+
+  description.className = 'text-sm text-slate-600 mb-3';
+  description.textContent =
+    'Automatic copying was blocked. Select the text below to copy it.';
+
+  const textarea = document.createElement('textarea');
+
+  textarea.value = text;
+  textarea.readOnly = true;
+  textarea.className =
+    'w-full h-64 border rounded-lg p-3 text-sm';
+
+  const closeButton = document.createElement('button');
+
+  closeButton.type = 'button';
+  closeButton.textContent = 'Close';
+  closeButton.className =
+    'mt-3 px-5 py-2 rounded-lg bg-slate-900 text-white';
+
+  closeButton.onclick = function() {
+    dialog.remove();
+  };
+
+  panel.append(
+    heading,
+    description,
+    textarea,
+    closeButton
+  );
+
+  dialog.appendChild(panel);
+  document.body.appendChild(dialog);
+
+  textarea.focus();
+  textarea.select();
+  textarea.setSelectionRange(0, text.length);
+}
+
+
+/***************************************************************
+ * MAIN SHARE BUTTON FUNCTION
+ ***************************************************************/
+
+function copyProductRates() {
 
   if (
     !selectedProduct ||
     !Array.isArray(selectedProduct.variants) ||
     !selectedProduct.variants.length
   ) {
-    return showToast(
-      'Product rates are unavailable.'
-    );
-  }
 
-  const shareButton =
-    document.getElementById('shareRatesBtn');
-
-  if (shareButton) {
-    shareButton.disabled = true;
-    shareButton.style.opacity = '0.6';
+    showToast('Product is still loading.');
+    return;
   }
 
   try {
 
-    const rateLines = [];
+    const rateLines = selectedProduct.variants.map(
+      function(variant) {
 
-    for (const variant of selectedProduct.variants) {
+        const price = Number(variant.price_usd);
 
-      const quote =
-        await getCachedSingleVariantQuote(
-          selectedProduct,
-          variant
-        );
+        if (
+          !Number.isFinite(price) ||
+          price <= 0
+        ) {
+          throw new Error(
+            'A product price is unavailable.'
+          );
+        }
 
-      const quantity =
-        Number(variant.quantity);
+        const quantityLabel =
+          getShareQuantityLabel(variant);
 
-      const merchandiseUsd =
-        Number(quote?.merchandiseUsd);
 
-      if (
-        !Number.isFinite(merchandiseUsd) ||
-        !Number.isFinite(quantity) ||
-        quantity <= 0
-      ) {
-        throw new Error(
-          `Unable to calculate rate for ${variant.pack}.`
+        const quantity = Number(variant.quantity);
+        const unit = getShareUnit(variant);
+        const perUnitLabel = unit
+          ? (unit === 'Tablet' || unit === 'Capsule' ? 'pill' : unit.toLowerCase())
+          : null;
+
+        const perUnitText = perUnitLabel
+          ? ` ($${(price / quantity).toFixed(2)} USD per ${perUnitLabel})`
+          : '';
+
+        return (
+          `${quantityLabel} for ` +
+          `$${formatShareUsd(price)} USD` +
+          perUnitText
         );
       }
+    );
 
-      const packLabel =
-        String(variant.pack || `${quantity}`).trim();
-
-      rateLines.push(
-        `${packLabel} for $${formatShareUsd(merchandiseUsd)} USD`
-      );
-    }
-
-    const managerKey =
-      encodeURIComponent(
-        selectedProduct.manager_key
-      );
+    const managerKey = encodeURIComponent(
+      selectedProduct.manager_key
+    );
 
     const productUrl =
       `https://vitalelixirglobalist.com/product-details.html?mk=${managerKey}`;
@@ -682,16 +817,79 @@ async function getCachedSingleVariantQuote(product, variant) {
     const shareText =
       `Cost for ${selectedProduct.name}\n\n` +
       rateLines.join('\n') +
-      `\n\nShipping and Documentation charges 35 USD` +
+      `\n\nShipping and Documentation charges start from 35 USD` +
       `\n\nvisit web - ${productUrl}`;
 
-    await navigator.clipboard.writeText(
-      shareText
-    );
 
-    showToast(
-      'Product rates copied.'
-    );
+    /***********************************************************
+     * COPY IMMEDIATELY ON CLICK
+     * Synchronous fallback supports more mobile browsers.
+     ***********************************************************/
+
+    const textArea = document.createElement('textarea');
+
+    textArea.value = shareText;
+    textArea.setAttribute('readonly', '');
+
+    textArea.style.position = 'fixed';
+    textArea.style.top = '0';
+    textArea.style.left = '0';
+    textArea.style.width = '1px';
+    textArea.style.height = '1px';
+    textArea.style.opacity = '0';
+
+    document.body.appendChild(textArea);
+
+    textArea.focus();
+    textArea.select();
+    textArea.setSelectionRange(0, shareText.length);
+
+    let copied = false;
+
+    try {
+      copied = document.execCommand('copy');
+    } finally {
+      document.body.removeChild(textArea);
+    }
+
+    if (copied) {
+
+      showToast('✓ Text copied successfully!');
+      return;
+    }
+
+
+    /***********************************************************
+     * MODERN CLIPBOARD API FALLBACK
+     ***********************************************************/
+
+    if (
+      navigator.clipboard &&
+      navigator.clipboard.writeText
+    ) {
+
+      navigator.clipboard.writeText(shareText)
+        .then(function() {
+
+          showToast('✓ Text copied successfully!');
+
+        })
+        .catch(function(error) {
+
+          console.error(
+            'Clipboard access blocked:',
+            error
+          );
+
+          showShareCopyFallback(shareText);
+
+        });
+
+    } else {
+
+      showShareCopyFallback(shareText);
+
+    }
 
   } catch (error) {
 
@@ -701,27 +899,28 @@ async function getCachedSingleVariantQuote(product, variant) {
     );
 
     showToast(
-      error?.message ||
-      'Unable to copy product rates.'
+      error.message || 'Unable to copy product rates.'
     );
 
-  } finally {
-
-    if (shareButton) {
-      shareButton.disabled = false;
-      shareButton.style.opacity = '';
-    }
   }
 }
 
 
+/***************************************************************
+ * NOTIFICATION POPUP
+ ***************************************************************/
+
+
+/***************************************************************
+ * FORMAT SHARE PRICE IN USD
+ ***************************************************************/
+
 function formatShareUsd(value) {
 
-  const number =
-    Number(value);
+  const number = Number(value);
 
   if (!Number.isFinite(number)) {
-    return '0';
+    throw new Error('Invalid USD price.');
   }
 
   return Number.isInteger(number)
@@ -729,13 +928,32 @@ function formatShareUsd(value) {
     : number.toFixed(2);
 }
 
-    function showToast(message) {
-      if (!actionToast) return alert(message);
-      actionToast.textContent = message;
-      actionToast.classList.remove('hidden');
-      setTimeout(() => actionToast.classList.add('hidden'), 2800);
-    }
 
+let actionToastTimer = null;
+
+function showToast(message) {
+
+  if (!actionToast) {
+    alert(message);
+    return;
+  }
+
+  if (actionToastTimer) {
+    clearTimeout(actionToastTimer);
+  }
+
+  actionToast.textContent = message;
+  actionToast.classList.remove('hidden');
+
+  actionToastTimer = setTimeout(function() {
+
+    actionToast.classList.add('hidden');
+    actionToastTimer = null;
+
+  }, 3500);
+}
+
+  
 
           // ==========================
       // Professional Login Modal
