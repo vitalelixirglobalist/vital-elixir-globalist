@@ -364,10 +364,25 @@
   id="actionToast"
   role="status"
   aria-live="polite"
-  class="hidden fixed z-[9999] top-5 left-1/2 -translate-x-1/2
-         bg-slate-900 text-white px-5 py-3 rounded-xl
-         shadow-2xl text-sm font-semibold text-center
-         w-max max-w-[90vw]">
+  class="hidden"
+  style="
+    position: fixed;
+    z-index: 2147483647;
+    top: 85px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #0f172a;
+    color: white;
+    padding: 14px 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.25);
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    width: max-content;
+    max-width: 90vw;
+    pointer-events: none;
+  ">
 </div>
 
   <div id="mobileActionBar" class="hidden fixed md:hidden bottom-0 inset-x-0 bg-white/95 border-t border-slate-200 p-4 flex gap-3 z-40">
@@ -680,9 +695,11 @@ function showShareCopyFallback(text) {
 
   const dialog = document.createElement('div');
 
-  dialog.className =
-    'fixed inset-0 z-[9999] bg-black/60 flex items-center ' +
-    'justify-center p-4';
+ dialog.className =
+  'fixed inset-0 bg-black/60 flex items-center ' +
+  'justify-center p-4';
+
+dialog.style.zIndex = '2147483646';
 
   const panel = document.createElement('div');
 
@@ -769,11 +786,22 @@ function copyProductRates() {
         const quantityLabel =
           getShareQuantityLabel(variant);
 
-        return (
-          `${quantityLabel} for ` +
-          `$${formatShareUsd(price)} USD`
-        );
+        
+const quantity = Number(variant.quantity);
+const pack = String(variant.pack || '');
 
+const isPill =
+  /\b(tablets?|tabs?|capsules?|caps?)\b/i.test(pack);
+
+const perPillText = isPill
+  ? ` ($${(price / quantity).toFixed(2)} USD per pill)`
+  : '';
+
+return (
+  `${quantityLabel} for ` +
+  `$${formatShareUsd(price)} USD` +
+  perPillText
+);
       }
     );
 
@@ -879,6 +907,25 @@ function copyProductRates() {
 /***************************************************************
  * NOTIFICATION POPUP
  ***************************************************************/
+
+
+/***************************************************************
+ * FORMAT SHARE PRICE IN USD
+ ***************************************************************/
+
+function formatShareUsd(value) {
+
+  const number = Number(value);
+
+  if (!Number.isFinite(number)) {
+    throw new Error('Invalid USD price.');
+  }
+
+  return Number.isInteger(number)
+    ? String(number)
+    : number.toFixed(2);
+}
+
 
 let actionToastTimer = null;
 
