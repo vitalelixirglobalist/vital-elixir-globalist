@@ -647,14 +647,8 @@ async function getCachedSingleVariantQuote(product, variant) {
 
 
 // Identify the correct medication unit from the pack.
-function getShareQuantityLabel(variant) {
-
-  const quantity = Number(variant.quantity);
+function getShareUnit(variant) {
   const pack = String(variant.pack || '').trim();
-
-  if (!Number.isFinite(quantity) || quantity <= 0) {
-    throw new Error('Invalid product quantity.');
-  }
 
   const rules = [
     { regex: /\b(tablets?|tabs?)\b/i, unit: 'Tablet' },
@@ -670,21 +664,29 @@ function getShareQuantityLabel(variant) {
   ];
 
   for (const rule of rules) {
+    if (rule.regex.test(pack)) return rule.unit;
+  }
 
-    if (rule.regex.test(pack)) {
+  return null;
+}
 
-      const unit = quantity === 1
-        ? rule.unit
-        : rule.unit + 's';
+function getShareQuantityLabel(variant) {
+  const quantity = Number(variant.quantity);
+  const pack = String(variant.pack || '').trim();
 
-      return `${quantity} ${unit}`;
-    }
+  if (!Number.isFinite(quantity) || quantity <= 0) {
+    throw new Error('Invalid product quantity.');
+  }
+
+  const unit = getShareUnit(variant);
+
+  if (unit) {
+    return `${quantity} ${quantity === 1 ? unit : unit + 's'}`;
   }
 
   // If the pack type is unknown, preserve its description.
   return `${quantity} (${pack || 'quantity'})`;
 }
-
 
 /***************************************************************
  * MOBILE COPY FALLBACK
@@ -788,20 +790,20 @@ function copyProductRates() {
 
         
 const quantity = Number(variant.quantity);
-const pack = String(variant.pack || '');
+        const unit = getShareUnit(variant);
+        const perUnitLabel = unit
+          ? (unit === 'Tablet' || unit === 'Capsule' ? 'pill' : unit.toLowerCase())
+          : null;
 
-const isPill =
-  /\b(tablets?|tabs?|capsules?|caps?)\b/i.test(pack);
+        const perUnitText = perUnitLabel
+          ? ` ($${(price / quantity).toFixed(2)} USD per ${perUnitLabel})`
+          : '';
 
-const perPillText = isPill
-  ? ` ($${(price / quantity).toFixed(2)} USD per pill)`
-  : '';
-
-return (
-  `${quantityLabel} for ` +
-  `$${formatShareUsd(price)} USD` +
-  perPillText
-);
+        return (
+          `${quantityLabel} for ` +
+          `$${formatShareUsd(price)} USD` +
+          perUnitText
+        );
       }
     );
 
