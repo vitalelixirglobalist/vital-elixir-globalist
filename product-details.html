@@ -360,7 +360,15 @@
 
   </div>
 
-  <div id="actionToast" class="hidden fixed top-4 right-4 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-lg text-sm"></div>
+  <div
+  id="actionToast"
+  role="status"
+  aria-live="polite"
+  class="hidden fixed z-[9999] top-5 left-1/2 -translate-x-1/2
+         bg-slate-900 text-white px-5 py-3 rounded-xl
+         shadow-2xl text-sm font-semibold text-center
+         w-max max-w-[90vw]">
+</div>
 
   <div id="mobileActionBar" class="hidden fixed md:hidden bottom-0 inset-x-0 bg-white/95 border-t border-slate-200 p-4 flex gap-3 z-40">
     <button class="flex-1 px-4 py-3 bg-brand text-white rounded-xl" onclick="addToCart()">Add to Cart</button>
@@ -615,66 +623,90 @@ async function getCachedSingleVariantQuote(product, variant) {
   };
 }
 
-    async function copyProductRates() {
-
-  if (
-    !selectedProduct ||
-    !Array.isArray(selectedProduct.variants) ||
-    !selectedProduct.variants.length
-  ) {
-    return showToast(
-      'Product rates are unavailable.'
-    );
-  }
+   async function copyProductRates() {
 
   const shareButton =
     document.getElementById('shareRatesBtn');
+
+  if (!selectedProduct?.variants?.length) {
+    showToast('Product is loading. Please try again.');
+    return;
+  }
+
+  if (shareButton?.disabled) return;
 
   if (shareButton) {
     shareButton.disabled = true;
     shareButton.style.opacity = '0.6';
   }
 
+  // Immediate visual feedback
+  showToast('Preparing product rates...');
+
   try {
 
-    const rateLines = [];
+    const variants = selectedProduct.variants;
 
-    for (const variant of selectedProduct.variants) {
-
-      const quote =
-        await getCachedSingleVariantQuote(
+    // Fetch quotations concurrently instead of one by one.
+    // The existing private quote service remains the authority.
+    const quotes = await Promise.all(
+      variants.map(variant =>
+        getCachedSingleVariantQuote(
           selectedProduct,
           variant
-        );
+        )
+      )
+    );
 
-      const quantity =
-        Number(variant.quantity);
+    const rateLines = variants.map((variant, index) => {
 
+      const quantity = Number(variant.quantity);
       const merchandiseUsd =
-        Number(quote?.merchandiseUsd);
+        Number(quotes[index]?.merchandiseUsd);
 
       if (
+        !Number.isInteger(quantity) ||
+        quantity <= 0 ||
         !Number.isFinite(merchandiseUsd) ||
-        !Number.isFinite(quantity) ||
-        quantity <= 0
+        merchandiseUsd <= 0
       ) {
         throw new Error(
-          `Unable to calculate rate for ${variant.pack}.`
+          'Unable to prepare all product rates.'
         );
       }
 
-      const packLabel =
-        String(variant.pack || `${quantity}`).trim();
+      const pack = String(variant.pack || '').trim();
 
-      rateLines.push(
-        `${packLabel} for $${formatShareUsd(merchandiseUsd)} USD`
-      );
-    }
+      // e.g. "10 Tablets/Strip" with quantity 100
+      // becomes "100 Tablets", not "10 Tablets/Strip".
+      const tabletOrCapsule =
+        /\b(tablets?|capsules?|tabs?|caps?)\b/i.exec(pack);
 
-    const managerKey =
-      encodeURIComponent(
-        selectedProduct.manager_key
+      let quantityLabel;
+
+      if (tabletOrCapsule) {
+        const unit = /caps/i.test(tabletOrCapsule[1])
+          ? 'Capsules'
+          : 'Tablets';
+
+        quantityLabel = `${quantity} ${unit}`;
+      } else {
+        // Other dosage forms retain their actual pack data.
+        quantityLabel = pack
+          ? `${quantity} Units (${pack})`
+          : `${quantity} Units`;
+      }
+
+      return (
+        `${quantityLabel} for ` +
+        `$${formatShareUsd(merchandiseUsd)} USD`
       );
+
+    });
+
+    const managerKey = encodeURIComponent(
+      selectedProduct.manager_key
+    );
 
     const productUrl =
       `https://vitalelixirglobalist.com/product-details.html?mk=${managerKey}`;
@@ -682,27 +714,19 @@ async function getCachedSingleVariantQuote(product, variant) {
     const shareText =
       `Cost for ${selectedProduct.name}\n\n` +
       rateLines.join('\n') +
-      `\n\nShipping and Documentation charges 35 USD` +
+      `\n\nShipping and Documentation charges start from 35 USD` +
       `\n\nvisit web - ${productUrl}`;
 
-    await navigator.clipboard.writeText(
-      shareText
-    );
+    await navigator.clipboard.writeText(shareText);
 
-    showToast(
-      'Product rates copied.'
-    );
+    showToast('✓ Text copied successfully!');
 
   } catch (error) {
 
-    console.error(
-      'Unable to copy product rates:',
-      error
-    );
+    console.error('Share rates failed:', error);
 
     showToast(
-      error?.message ||
-      'Unable to copy product rates.'
+      'Unable to copy rates. Please try again.'
     );
 
   } finally {
@@ -711,31 +735,31 @@ async function getCachedSingleVariantQuote(product, variant) {
       shareButton.disabled = false;
       shareButton.style.opacity = '';
     }
+
   }
 }
 
+    let actionToastTimer = null;
 
-function formatShareUsd(value) {
+function showToast(message) {
 
-  const number =
-    Number(value);
-
-  if (!Number.isFinite(number)) {
-    return '0';
+  if (!actionToast) {
+    alert(message);
+    return;
   }
 
-  return Number.isInteger(number)
-    ? String(number)
-    : number.toFixed(2);
+  if (actionToastTimer) {
+    clearTimeout(actionToastTimer);
+  }
+
+  actionToast.textContent = message;
+  actionToast.classList.remove('hidden');
+
+  actionToastTimer = setTimeout(() => {
+    actionToast.classList.add('hidden');
+    actionToastTimer = null;
+  }, 3500);
 }
-
-    function showToast(message) {
-      if (!actionToast) return alert(message);
-      actionToast.textContent = message;
-      actionToast.classList.remove('hidden');
-      setTimeout(() => actionToast.classList.add('hidden'), 2800);
-    }
-
 
           // ==========================
       // Professional Login Modal
