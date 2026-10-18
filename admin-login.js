@@ -53,7 +53,7 @@ form.addEventListener('submit', async (e) => {
 
     }
 
-    window.location.href = 'admin-dashboard.html';
+    window.location.href = '/admin-dashboard';
 
   } catch (error) {
 

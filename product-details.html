@@ -296,7 +296,7 @@
             <button id="consultBtn" class="px-5 py-3 border border-brand text-brand rounded-xl hover:bg-blue-50 transition">
               Consult Doctor for Dosage & Usage
             </button>
-            <a href="cart.html" class="px-5 py-3 bg-brand text-white rounded-xl hover:bg-blue-700 transition shadow-glow">
+            <a href="/cart" class="px-5 py-3 bg-brand text-white rounded-xl hover:bg-blue-700 transition shadow-glow">
               Proceed to Cart
           </a>
           </div>
@@ -812,7 +812,7 @@ function copyProductRates() {
     );
 
     const productUrl =
-      `https://vitalelixirglobalist.com/product-details.html?mk=${managerKey}`;
+      `https://vitalelixirglobalist.com/product-details?mk=${managerKey}`;
 
     const shareText =
       `Cost for ${selectedProduct.name}\n\n` +
@@ -1002,7 +1002,7 @@ function showToast(message) {
 
           hideModal();
 
-          window.location.href = "cart.html";
+          window.location.href = "/cart";
 
       });
     
@@ -1276,7 +1276,7 @@ function showToast(message) {
       }
       related.forEach((item) => {
         const card = document.createElement('a');
-        card.href = `product-details.html?mk=${encodeURIComponent(item.manager_key)}`;
+        card.href = `/product-details?mk=${encodeURIComponent(item.manager_key)}`;
         card.className = 'glass-card p-4 rounded-2xl border border-slate-200 hover:-translate-y-1 transition shadow-sm hover:shadow-lg bg-white';
         card.innerHTML = `
           <div class="flex items-center gap-3">
@@ -1300,7 +1300,7 @@ function showToast(message) {
       if (!pairings.length) pairings = allProducts.filter((p) => p.name !== product.name);
       pairings.slice(0, 3).forEach((item) => {
         const card = document.createElement('a');
-        card.href = `product-details.html?mk=${encodeURIComponent(item.manager_key)}`;
+        card.href = `/product-details?mk=${encodeURIComponent(item.manager_key)}`;
         card.className = 'p-4 rounded-2xl border border-emerald-100 bg-emerald-50/60 hover:bg-emerald-50 transition';
         card.innerHTML = `
           <div class="flex items-start gap-3">
@@ -1594,7 +1594,7 @@ if (peopleContainer) {
         if (!managerKey) return;
 
         window.location.href =
-          `product-details.html?mk=${encodeURIComponent(managerKey)}`;
+          `/product-details?mk=${encodeURIComponent(managerKey)}`;
 
       });
 
@@ -1634,7 +1634,7 @@ if (peopleContainer) {
       hideModal();
 
       window.location.href =
-        "login.html?redirect=" +
+        "/login?redirect=" +
         encodeURIComponent(
           window.location.pathname +
           window.location.search
@@ -1706,7 +1706,7 @@ if (peopleContainer) {
 
     function consultDoctor() {
       if (!selectedProduct) return;
-      window.location.href = `doctor-consultation.html?product=${encodeURIComponent(selectedProduct.name)}`;
+      window.location.href = `/doctor-consultation?product=${encodeURIComponent(selectedProduct.name)}`;
     }
 
     function getQueryProductIdentity() {
