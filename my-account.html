@@ -217,14 +217,14 @@ from 'https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js';
     );
 
       loginRedirectBtn.addEventListener('click', () => {
-        window.location.href = 'login.html?redirect=my-account.html';
+        window.location.href = '/login?redirect=/my-account';
       });
       if (logoutBtn) {
         logoutBtn.addEventListener('click', async () => {
           try {
             await signOut(auth);
             localStorage.removeItem('userEmail');
-            window.location.href = 'index.html';
+            window.location.href = '/';
           } catch (err) {
             console.error('Error signing out', err);
           }

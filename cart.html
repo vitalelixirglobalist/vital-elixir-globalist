@@ -118,7 +118,7 @@ body .fab-icon img {
               <h2 class="text-lg font-semibold">Cart Overview</h2>
               <p class="text-xs text-slate-500">All prices are shown per unit with itemized totals.</p>
             </div>
-            <a href="products.html"
+            <a href="/products"
               class="inline-flex items-center gap-2 text-sm font-medium text-brand hover:text-blue-700">
               Back to Products
             </a>
@@ -436,7 +436,7 @@ body .fab-icon img {
       });
 
     loginRedirect.addEventListener('click', () => {
-      window.location.href = 'login.html?redirect=cart.html';
+      window.location.href = '/login?redirect=/cart';
     });
 
     const getLocalCart = () => JSON.parse(localStorage.getItem('cart')) || [];
@@ -1557,7 +1557,7 @@ const pricingSummary = {
     ========================================= */
 
     window.location.href =
-      "checkout-with-team.html";
+      "/checkout-with-team";
 
   } catch (error) {
 

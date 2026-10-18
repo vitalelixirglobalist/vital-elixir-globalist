@@ -322,7 +322,7 @@ from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
     });
     modalProceed.addEventListener('click', () => {
       hideModal();
-      window.location.href = 'cart.html';
+      window.location.href = '/cart';
     });
 
        const SHIPPING_USD = 35;
@@ -825,7 +825,7 @@ function openProductDetails() {
   }
 
   window.location.href =
-    `product-details.html?mk=${encodeURIComponent(managerKey)}`;
+    `/product-details?mk=${encodeURIComponent(managerKey)}`;
 }
 
 
@@ -997,7 +997,7 @@ card.addEventListener('keydown', (e) => {
             // Redirect to login after closing modal
             modalOk.onclick = () => {
               hideModal();
-              window.location.href = 'login.html?redirect=products.html';
+              window.location.href = '/login?redirect=/products';
             };
             return;
               }

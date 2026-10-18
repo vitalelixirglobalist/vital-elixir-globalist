@@ -180,7 +180,7 @@ popup.innerHTML = `
 window.openCheckoutContactPopup = async function (buttonEl) {
   if (!cachedUser) {
     alert('Please log in to continue. Your cart details will be shared automatically.');
-    window.location.href = 'login.html?redirect=checkout.html';
+    window.location.href = '/login?redirect=/checkout';
     return;
   }
 

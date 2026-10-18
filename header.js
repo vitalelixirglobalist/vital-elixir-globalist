@@ -39,13 +39,18 @@ window.initHeader = function () {
     };
   }
 
-  document.querySelectorAll('a[href^="/"]').forEach(link => {
-    const fixed = link.getAttribute("href").replace(/^\//, "");
-
-    if (!fixed.endsWith(".html") && !fixed.includes("#")) {
-      link.setAttribute("href", fixed + ".html");
-    } else {
-      link.setAttribute("href", fixed);
-    }
-  });
+  // Navigation links retain their extensionless URLs.
 };
+
+// Display clean URLs for visitors following older .html bookmarks.
+// The original .html files remain available on the hosting server.
+(function cleanLegacyPageUrl() {
+  const path = window.location.pathname;
+  if (!/\.html$/i.test(path)) return;
+  const cleanPath = path.replace(/\/index\.html$/i, "/").replace(/\.html$/i, "");
+  window.history.replaceState(
+    window.history.state,
+    "",
+    cleanPath + window.location.search + window.location.hash
+  );
+})();

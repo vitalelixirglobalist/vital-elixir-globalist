@@ -36,7 +36,7 @@ onAuthStateChanged(auth, async (user) => {
 
   if (!user) {
 
-    window.location.href = 'admin-login.html';
+    window.location.href = '/admin-login';
     return;
 
   }
@@ -531,6 +531,6 @@ logoutBtn.addEventListener('click', async () => {
 
   await signOut(auth);
 
-  window.location.href = 'admin-login.html';
+  window.location.href = '/admin-login';
 
 });
