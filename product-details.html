@@ -771,10 +771,14 @@ function copyProductRates() {
 
   try {
 
+    // Use the currency currently displayed, including its regional prices.
+    const currency = getSelectedCurrency();
+    const formatShareAmount = (amount) => `${formatSharePrice(amount)} ${currency}`;
+
     const rateLines = selectedProduct.variants.map(
       function(variant) {
 
-        const price = Number(variant.price_usd);
+        const price = Number(getRegionalPriceData(variant).buyWithUs);
 
         if (
           !Number.isFinite(price) ||
@@ -796,12 +800,12 @@ function copyProductRates() {
           : null;
 
         const perUnitText = perUnitLabel
-          ? ` ($${(price / quantity).toFixed(2)} USD per ${perUnitLabel})`
+          ? ` (${formatShareAmount(price / quantity)} per ${perUnitLabel})`
           : '';
 
         return (
           `${quantityLabel} for ` +
-          `$${formatShareUsd(price)} USD` +
+          formatShareAmount(price) +
           perUnitText
         );
       }
@@ -817,7 +821,7 @@ function copyProductRates() {
     const shareText =
       `Cost for ${selectedProduct.name}\n\n` +
       rateLines.join('\n') +
-      `\n\nShipping and Documentation charges start from 35 USD` +
+      `\n\nShipping and Documentation charges start from ${formatShareAmount(window.pricingEngine.convertUsdToCurrency(35, currency))}` +
       `\n\nvisit web - ${productUrl}`;
 
 
@@ -912,15 +916,15 @@ function copyProductRates() {
 
 
 /***************************************************************
- * FORMAT SHARE PRICE IN USD
+ * FORMAT SHARE PRICE IN THE DISPLAYED CURRENCY
  ***************************************************************/
 
-function formatShareUsd(value) {
+function formatSharePrice(value) {
 
   const number = Number(value);
 
   if (!Number.isFinite(number)) {
-    throw new Error('Invalid USD price.');
+    throw new Error('Invalid product price.');
   }
 
   return Number.isInteger(number)
@@ -1045,8 +1049,9 @@ function showToast(message) {
           function getPerTablet(variant){
           if(!variant.quantity) return "-";
           const regional = getRegionalPriceData(variant);
-          return window.pricingEngine.formatLocalAmount(
+          return window.pricingEngine.formatCurrencyAmount(
               regional.buyWithUs / variant.quantity,
+              getSelectedCurrency(),
               {
                   minimumFractionDigits:2,
                   maximumFractionDigits:2
