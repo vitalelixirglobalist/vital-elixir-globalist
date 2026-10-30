@@ -16,12 +16,15 @@
   const defaultCurrency = 'USD';
 
   function getSelectedCurrency() {
-    return localStorage.getItem(CURRENCY_KEY) || defaultCurrency;
+    // Only keep the visitor's choice within this tab/session.
+    // A new visit starts in USD, even if an older browser saved AUD.
+    const savedCurrency = sessionStorage.getItem(CURRENCY_KEY);
+    return rates[savedCurrency] ? savedCurrency : defaultCurrency;
   }
 
   function setSelectedCurrency(currency) {
     if (!rates[currency]) return;
-    localStorage.setItem(CURRENCY_KEY, currency);
+    sessionStorage.setItem(CURRENCY_KEY, currency);
     document.dispatchEvent(new CustomEvent('currency:change', { detail: { currency } }));
   }
 
@@ -60,7 +63,7 @@
 
         if (nextCurrency === getSelectedCurrency()) return;
 
-        // Save selected currency permanently in browser
+        // Keep the visitor's choice for this tab without changing the USD default for new sessions
         setSelectedCurrency(nextCurrency);
 
         // Reload page so all prices update
