@@ -1008,6 +1008,7 @@ function showToast(message) {
       });
     
         function updatePrice() {
+    if(window.vitalPricingV2?.isReady(selectedProduct)) return;
 
     if (
         !selectedProduct ||
