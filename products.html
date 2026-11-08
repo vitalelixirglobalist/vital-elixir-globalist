@@ -20,6 +20,7 @@
   </script>
   <script src="dev-fix.js"></script>
   <script src="quote-api.js"></script>
+  <script src="pricing-v2.js"></script>
 <style>
     .qty-dropdown{
     position:relative;
@@ -791,13 +792,48 @@ function getPerTablet(variant){
           <p class="text-sm text-gray-600">${p.brand}</p>
           <p class="text-sm text-gray-500 mb-2">${p.composition}</p>
           <p class="text-sm text-gray-600 mb-1"><strong>Use:</strong> ${p.use}</p>
-          ${buildQuantityDropdown(p)}
+          ${window.vitalPricingV2?.isReady(p) ? '<div class="v2-qty-host"></div>' : buildQuantityDropdown(p)}
           <p class="mt-3 text-sm font-bold text-gray-800 underline">
           Shipping starts from USD 35
         </p>
           <button class="add-to-cart-btn mt-auto bg-brand text-white py-2 px-3 rounded-lg hover:bg-blue-700 transition mt-3">Add to Cart</button>
         `;
         const addBtn = card.querySelector('.add-to-cart-btn');
+        // Pricing V2: local JSON-based price and cart; no Google Sheet/API lookup.
+        if (window.vitalPricingV2?.isReady(p)) {
+          const host=card.querySelector('.v2-qty-host');
+          const selector=window.vitalPricingV2.mountSelector(host,p);
+          const openDetails=()=>{window.location.href='product-details.html?mk='+encodeURIComponent(p.manager_key);};
+          card.addEventListener('click',(e)=>{
+            if(e.target.closest('.v2-qty-host,.add-to-cart-btn'))return;
+            openDetails();
+          });
+          card.addEventListener('keydown',(e)=>{
+            if(e.target.closest('.v2-qty-host,.add-to-cart-btn'))return;
+            if(e.key==='Enter'||e.key===' '){e.preventDefault();openDetails();}
+          });
+          addBtn.addEventListener('click',async(e)=>{
+            e.stopPropagation();
+            if(!currentUser){
+              showModal('Please log in to add items to your cart.',false);
+              modalOk.onclick=()=>{hideModal();window.location.href='login.html?redirect=products.html';};
+              return;
+            }
+            try {
+              const n=selector.getSelection();
+              const item=window.vitalPricingV2.cartItem(p,n);
+              const saved=JSON.parse(localStorage.getItem('cart')||'[]');
+              localStorage.setItem('cart',JSON.stringify([...saved.filter(x=>x.managerKey!==p.manager_key),item]));
+              await setDoc(doc(db,'users',currentUser.uid,'cart',p.manager_key+'-v2'),
+                {...item,dateAdded:new Date().toISOString()});
+              showModal(p.name+' — '+n+' '+p.packaging.pack_unit+'(s) added to cart.',true);
+            } catch(error) {
+              showModal(error.message||'Unable to add this selection.',false);
+            }
+          });
+          productGrid.appendChild(card);
+          return;
+        }
         const qtyDropdown = card.querySelector(".qty-dropdown");
         const qtySelected = qtyDropdown.querySelector(".qty-selected-row");
         const qtyOptions = qtyDropdown.querySelector(".qty-options");
