@@ -1527,6 +1527,9 @@ const pricingSummary = {
   medicineTypeCount:
     verifiedQuote.medicineTypeCount,
 
+  lines:
+    verifiedQuote.pricingVersion===2 ? (verifiedQuote.lines || []) : [],
+
   totalBoxes:
     verifiedQuote.totalBoxes,
 
