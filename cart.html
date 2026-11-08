@@ -1161,7 +1161,7 @@ if (
   try {
 
     if(cartItems.every(item=>item.pricingMode==='v2')) {
-      signedQuote=window.vitalPricingV2.quote(cartItems,await loadProductCatalogueForCart());
+      signedQuote=await window.vitalQuoteApi.requestPublishedQuoteV2(cartItems,await loadProductCatalogueForCart());
     } else if (cartItems.some(item=>item.pricingMode==='v2')) {
       throw new Error('Your cart mixes old and new pricing. Please reselect the old medicines.');
     } else {
@@ -1457,7 +1457,7 @@ if (!currentSignedQuote) {
 
 const verifiedQuote =
   currentSignedQuote.pricingVersion===2
-    ? window.vitalPricingV2.quote(cart,await loadProductCatalogueForCart())
+    ? await window.vitalQuoteApi.requestPublishedQuoteV2(cart,await loadProductCatalogueForCart())
     : await window.vitalQuoteApi.verifyCheckoutQuote(currentSignedQuote);
 
 if (!verifiedQuote) {
