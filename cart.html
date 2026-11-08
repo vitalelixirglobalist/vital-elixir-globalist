@@ -709,7 +709,7 @@ const recoverLegacyCartItemIdentity = async (item) => {
 };
 
     const getProductId = (item) => {
-      if(item?.pricingMode==='v2' && /^P\\d{4,}$/.test(String(item.managerKey||'')))
+      if(item?.pricingMode==='v2' && /^P\d{4,}$/.test(String(item.managerKey||'')))
         return item.managerKey+'-v2';
       if (item.productId) return String(item.productId);
       if (item.id && typeof item.id === 'string') return item.id;
