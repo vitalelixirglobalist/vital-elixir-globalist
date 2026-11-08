@@ -11,6 +11,7 @@
   <script src="pricing-engine.js"></script>
   <script src="header.js" defer></script>
   <script src="quote-api.js"></script>
+  <script src="pricing-v2.js"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -1110,6 +1111,7 @@ function showToast(message) {
           selectedVariantIndex=0;
           updatePrice();
       }
+    let selectedV2Selector=null;
     function renderProduct(product) {
       selectedProduct = product;
       productImage.alt = product.name;
@@ -1120,7 +1122,23 @@ function showToast(message) {
       productCategory.textContent = product.category;
       productUse.textContent = product.use;
 
-      renderSelectors(product);
+      if(window.vitalPricingV2?.isReady(product)){
+        qtyDropdown.style.display='none';
+        let host=document.getElementById('vePricingV2Detail');
+        if(!host){
+          host=document.createElement('div');
+          host.id='vePricingV2Detail';
+          qtyDropdown.parentNode.insertBefore(host,qtyDropdown);
+        }
+        selectedV2Selector=window.vitalPricingV2.mountSelector(host,product);
+        priceBreakdown.textContent='Shipping starts at USD 35 and is based on total box equivalents in your cart.';
+      }else{
+        const host=document.getElementById('vePricingV2Detail');
+        if(host)host.remove();
+        qtyDropdown.style.display='';
+        selectedV2Selector=null;
+        renderSelectors(product);
+      }
       mobileActionBar.classList.remove('hidden');
     }
 
@@ -1604,9 +1622,26 @@ if (peopleContainer) {
 
         }
   async function addToCart() {
-
-  if (!selectedProduct) {
-    return showToast('No product selected.');
+  if (!selectedProduct) return showToast('No product selected.');
+  if(window.vitalPricingV2?.isReady(selectedProduct)){
+    const user=window.auth.currentUser;
+    if(!user){
+      showModal('Please log in to add items to your cart.',false);
+      modalOk.textContent='Login';
+      modalOk.onclick=()=>{hideModal();window.location.href='login.html?redirect='+encodeURIComponent(window.location.pathname+window.location.search);};
+      return;
+    }
+    try{
+      const n=selectedV2Selector.getSelection();
+      const item=window.vitalPricingV2.cartItem(selectedProduct,n);
+      await window.setDoc(window.doc(window.db,'users',user.uid,'cart',selectedProduct.manager_key+'-v2'),
+        {...item,addedAt:new Date().toISOString()});
+      const saved=JSON.parse(localStorage.getItem('cart')||'[]');
+      localStorage.setItem('cart',JSON.stringify([...saved.filter(x=>x.managerKey!==selectedProduct.manager_key),item]));
+      modalOk.textContent='OK';
+      showModal('<strong>'+selectedProduct.name+'</strong><br>'+n+' '+selectedProduct.packaging.pack_unit+'(s) added.',true,'Product Added Successfully');
+    }catch(e){showToast(e.message||'Unable to add this selection.');}
+    return;
   }
 
   const variant =
