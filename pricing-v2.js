@@ -56,7 +56,7 @@ function mountSelector(host,product,callback){
  host.addEventListener("keydown",e=>e.stopPropagation());
  const pkg=product.packaging,max=maxPacks(product),packUnit=packName(product);
  const info=node("p","text-xs text-slate-600 my-2");
- info.textContent=pkg.label+" · "+pkg.packs_per_box+" "+packUnit+"(s)/box · "+(pkg.units_per_pack*pkg.packs_per_box)+" units/box";
+ info.textContent=pkg.label+" · "+pkg.packs_per_box+" "+packUnit+"(s) per box · "+(pkg.units_per_pack*pkg.packs_per_box)+" units per box";
  const first=node("div","flex items-end justify-between gap-3 mt-3");
  const left=node("div","flex-1");
  left.append(node("p","text-xs text-slate-500","Price per "+packUnit),node("strong","text-lg text-brand",formatUsd(num(product.pricing_v2.price_per_pack_cents)/100)));
@@ -64,33 +64,46 @@ function mountSelector(host,product,callback){
  const lab=node("label","block text-xs text-slate-600 mb-1","Custom "+packUnit+"s");
  const input=node("input","w-full border rounded-lg p-2 text-sm");
  input.type="number";input.min="1";input.max=String(max);input.step="1";input.inputMode="numeric";
+ input.setAttribute("aria-label","Enter custom "+packUnit+" quantity");
  right.append(lab,input);first.append(left,right);
- const heading=node("p","text-sm font-semibold text-slate-700 mt-3","Select Qty");
- const presets=node("div","grid grid-cols-2 gap-2 mt-2");
+ const heading=node("label","block text-sm font-semibold text-slate-700 mt-3 mb-2","Select Qty");
+ const dropdown=node("select","w-full border rounded-lg bg-white px-3 py-3 text-sm");
+ dropdown.setAttribute("aria-label","Select predefined quantity or custom pack");
+ const choicesList=choices(product);
+ for(const n of choicesList){
+   const o=document.createElement("option");o.value=String(n);
+   o.textContent=(n*pkg.units_per_pack)+" units ("+n+" "+packUnit+(n===1?"":"s")+") — "+formatUsd(price(product,n));
+   dropdown.appendChild(o);
+ }
+ const customOption=document.createElement("option");
+ customOption.value="custom";customOption.textContent="Custom pack";dropdown.appendChild(customOption);
  const total=node("div","mt-3 p-2 rounded-lg bg-blue-50 text-sm font-semibold text-slate-800");
  const error=node("p","text-xs text-red-600 mt-1");error.setAttribute("role","alert");
- const selectButtons=[];
- let selected=choices(product)[0]||1;
- function draw(){
-   input.value=String(selected);
+ let selected=choicesList[0]||1;
+ function draw(mode){
    error.textContent="";
    total.textContent=selected+" "+packUnit+(selected===1?"":"s")+" ("+(selected*pkg.units_per_pack)+" units) = "+formatUsd(price(product,selected));
-   selectButtons.forEach(({e,n})=>{e.classList.toggle("bg-blue-100",n===selected);e.classList.toggle("border-blue-500",n===selected);});
+   if(mode==="custom")dropdown.value="custom";else dropdown.value=String(selected);
    if(callback)callback(selected);
  }
- choices(product).forEach(n=>{
-   const b=node("button","border rounded-lg p-2 text-xs text-left hover:bg-blue-50");
-   b.type="button";
-   const units=n*pkg.units_per_pack;
-   b.textContent=units+" units · "+formatUsd(price(product,n));
-   b.onclick=e=>{e.preventDefault();selected=n;draw();};presets.appendChild(b);selectButtons.push({e:b,n});
- });
+ input.value=String(selected);
+ dropdown.onchange=()=>{
+   if(dropdown.value==="custom"){input.focus();return;}
+   selected=Number(dropdown.value);input.value=String(selected);draw("preset");
+ };
  input.oninput=()=>{
    const candidate=num(input.value);
-   try{validatePackCount(product,candidate);selected=candidate;draw();}
-   catch(e){error.textContent=e.message;total.textContent="Select an allowed whole number of "+packUnit+"s.";if(callback)callback(null);}
+   try{
+     validatePackCount(product,candidate);
+     selected=candidate;draw("custom");
+   }catch(e){
+     dropdown.value="custom";
+     error.textContent=e.message;
+     total.textContent="Enter a valid quantity to calculate the medication price.";
+     if(callback)callback(null);
+   }
  };
- host.append(info,first,heading,presets,total,error);draw();
+ host.append(info,first,heading,dropdown,total,error);draw("preset");
  return {getSelection(){return validatePackCount(product,num(input.value));},getMax(){return max;}};
 }
 function cartItem(product,packCount){
