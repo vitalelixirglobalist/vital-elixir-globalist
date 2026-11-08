@@ -1016,12 +1016,15 @@ if (currentUser) {
  * Determine which cart rows are safe to send
  * to the private quote API.
  */
+// Legacy saved selections for V2-ready products need to be reselected.
+const currentCatalogue=await loadProductCatalogueForCart();
+const byManagerKey=new Map(currentCatalogue.map(p=>[p.manager_key,p]));
+const needsV2Reselection=item=>
+  item.pricingMode!=='v2' &&
+  window.vitalPricingV2?.isReady(byManagerKey.get(item.managerKey));
 const invalidCartItems =
-  cartItems.filter(
-    (item) =>
-      !hasValidPrivateQuoteIdentity(
-        item
-      )
+  cartItems.filter(item=>
+    !hasValidPrivateQuoteIdentity(item) || needsV2Reselection(item)
   );
 
   
@@ -1039,9 +1042,7 @@ const strength =
   );
 
 const identityValid =
-  hasValidPrivateQuoteIdentity(
-    item
-  );
+  hasValidPrivateQuoteIdentity(item) && !needsV2Reselection(item);
 
 
 const selectedQuantityDisplay =
@@ -1131,7 +1132,7 @@ if (
     <div class="p-4 rounded-xl border border-amber-200 bg-amber-50">
 
       <p class="text-sm font-semibold text-amber-800">
-        Some saved medications need to be selected again.
+        Some saved medications use an old quantity or pricing format and need to be selected again.
       </p>
 
       <p class="text-xs text-amber-700 mt-1">
