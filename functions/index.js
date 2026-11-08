@@ -12,19 +12,10 @@ const nodemailer = require("nodemailer");
 GMAIL TRANSPORT CONFIGURATION
 ========================================= */
 
-const transporter = nodemailer.createTransport({
-
-  service: "gmail",
-
-  auth: {
-
-    user: "vitalelixirglobalist@gmail.com",
-
-    pass: "wzfuscvgvhfffixg"
-
-  }
-
-});
+// Configure with: firebase functions:secrets:set GMAIL_APP_PASSWORD
+// This secret is never committed to GitHub.
+const { defineSecret } = require("firebase-functions/params");
+const gmailAppPassword = defineSecret("GMAIL_APP_PASSWORD");
 
 function readFinalPricing(item) {
   const pricing = item.pricing || {};
@@ -63,7 +54,7 @@ RUNS AUTOMATICALLY WHEN NEW REQUEST ADDED
 
 exports.sendMedicationRequestEmail = onDocumentCreated(
 
-  "medication_requests/{requestId}",
+  { document: "medication_requests/{requestId}", secrets: [gmailAppPassword] },
 
   async (event) => {
 
@@ -74,18 +65,22 @@ exports.sendMedicationRequestEmail = onDocumentCreated(
       const customer = data.customer || {};
       const items = data.items || [];
       const totals = readPricingSummary(data);
+      const v2Lines = new Map((totals.lines || []).map(line => [String(line.managerKey || ''), line]));
 
       let itemList = "";
 
       items.forEach((item, index) => {
         const pricing = readFinalPricing(item);
+        const v2 = totals.pricingVersion === 2;
+        const pricedLine = v2Lines.get(String(item.managerKey || ''));
+        const lineUsd = v2 ? (pricedLine ? pricedLine.medicationUsd : 'Pending team confirmation') : pricing.finalTotalUSD;
 
         itemList += `
 ${index + 1}. ${item.name || "Medicine"}
 
 Pack: ${item.pack || "N/A"}
 
-Quantity: ${item.quantity || 1}
+Quantity: ${item.pricingMode === 'v2' ? String(item.packCount || 0) + ' packs (' + String(item.selectedQuantity || 0) + ' units)' : (item.selectedQuantity || item.quantity || 1)}
 
 Price:
 USD ${pricing.finalPriceUSD}
@@ -112,6 +107,7 @@ INR ${pricing.finalTotalINR}
         text: `
 
 NEW MEDICATION REQUEST RECEIVED
+Pricing mode: ${totals.pricingVersion === 2 ? 'Published-catalogue estimate — team must confirm' : 'Legacy verified quote'}
 
 ====================================
 
@@ -143,10 +139,10 @@ ${itemList}
 TOTALS
 
 USD:
-${totals.grandTotalUSD || 0}
+${totals.finalUsd ?? totals.grandTotalUSD ?? 0}
 
 INR:
-${totals.grandTotalINR || 0}
+${totals.pricingVersion === 2 ? 'Team confirmation required' : (totals.grandTotalINR || 0)}
 
 ====================================
 
@@ -165,6 +161,10 @@ Vital Elixir Globalist website.
 
       };
 
+      const transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {user: "vitalelixirglobalist@gmail.com", pass: gmailAppPassword.value()}
+      });
       await transporter.sendMail(mailOptions);
 
       logger.info("Medication request email sent successfully.");
