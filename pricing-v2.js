@@ -49,62 +49,48 @@ function choices(product){
  if(!candidates.length)candidates=[1,q.packs_per_box,3*q.packs_per_box,5*q.packs_per_box].filter(x=>x<=m);
  return [...new Set(candidates)].sort((a,b)=>a-b);
 }
-function mountSelector(host,product,callback){
+function mountSelector(host,product,callback,selectHost){
  if(!valid(product))return null;
- host.replaceChildren();host.classList.add("ve-v2-selector");
+ host.replaceChildren();host.classList.add("bg-blue-50","border","border-blue-200","rounded-2xl","p-4","md:p-5","mb-4");
  host.addEventListener("click",e=>e.stopPropagation());
  host.addEventListener("keydown",e=>e.stopPropagation());
- const pkg=product.packaging,max=maxPacks(product),packUnit=packName(product);
- const info=node("p","text-xs text-slate-600 my-2");
- info.textContent=pkg.label+" · "+pkg.packs_per_box+" "+packUnit+"(s) per box · "+(pkg.units_per_pack*pkg.packs_per_box)+" units per box";
- const first=node("div","flex items-end justify-between gap-3 mt-3");
- const left=node("div","flex-1");
- left.append(node("p","text-xs text-slate-500","Price per "+packUnit),node("strong","text-lg text-brand",formatUsd(num(product.pricing_v2.price_per_pack_cents)/100)));
- const right=node("div","w-28");
- const lab=node("label","block text-xs text-slate-600 mb-1","Custom "+packUnit+"s");
- const input=node("input","w-full border rounded-lg p-2 text-sm");
- input.type="number";input.min="1";input.max=String(max);input.step="1";input.inputMode="numeric";
- input.setAttribute("aria-label","Enter custom "+packUnit+" quantity");
- right.append(lab,input);first.append(left,right);
- const heading=node("label","block text-sm font-semibold text-slate-700 mt-3 mb-2","Select Qty");
- const dropdown=node("select","w-full border rounded-lg bg-white px-3 py-3 text-sm");
- dropdown.setAttribute("aria-label","Select predefined quantity or custom pack");
- const choicesList=choices(product);
- for(const n of choicesList){
-   const o=document.createElement("option");o.value=String(n);
-   o.textContent=(n*pkg.units_per_pack)+" units ("+n+" "+packUnit+(n===1?"":"s")+") — "+formatUsd(price(product,n));
-   dropdown.appendChild(o);
- }
- const customOption=document.createElement("option");
- customOption.value="custom";customOption.textContent="Custom pack";dropdown.appendChild(customOption);
- const total=node("div","mt-3 p-2 rounded-lg bg-blue-50 text-sm font-semibold text-slate-800");
- const error=node("p","text-xs text-red-600 mt-1");error.setAttribute("role","alert");
- let selected=choicesList[0]||1;
- function draw(mode){
-   error.textContent="";
-   total.textContent=selected+" "+packUnit+(selected===1?"":"s")+" ("+(selected*pkg.units_per_pack)+" units) = "+formatUsd(price(product,selected));
-   if(mode==="custom")dropdown.value="custom";else dropdown.value=String(selected);
-   if(callback)callback(selected);
- }
- input.value=String(selected);
- dropdown.onchange=()=>{
-   if(dropdown.value==="custom"){input.focus();return;}
-   selected=Number(dropdown.value);input.value=String(selected);draw("preset");
- };
+ const pk=product.packaging,max=maxPacks(product),unit=packName(product),plural=unit+"s";
+ const summary=node("div","grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-5");
+ const left=node("div"),right=node("div");
+ left.append(node("p","text-xs font-semibold text-slate-500 mb-1","Cost"),node("p","text-xl font-bold text-brand",formatUsd(num(product.pricing_v2.price_per_pack_cents)/100)+" per "+unit));
+ right.append(node("p","text-xs font-semibold text-slate-500 mb-1","Pack"),node("p","text-sm md:text-base font-semibold text-slate-700",pk.label+" · "+(pk.units_per_pack*pk.packs_per_box)+" units per box"));
+ summary.append(left,right);
+ const entry=node("div","border-t border-blue-200 mt-3 pt-3 flex flex-col md:flex-row md:items-center md:justify-between gap-2");
+ const field=node("div","flex items-center justify-between md:justify-start gap-3");
+ const label=node("label","text-sm font-semibold text-slate-700","Enter the "+plural);
+ const input=node("input","w-28 border border-slate-300 bg-white rounded-lg px-3 py-2 text-base");
+ input.type="text";input.inputMode="numeric";input.pattern="[0-9]*";input.maxLength=5;input.autocomplete="off";input.placeholder="1–"+max;
+ input.id="ve-strips-"+product.manager_key;label.htmlFor=input.id;
+ input.setAttribute("aria-label","Enter whole number of "+plural+" (maximum "+max+")");
+ field.append(label,input);
+ const total=node("p","text-sm md:text-base font-bold text-brand");total.setAttribute("aria-live","polite");
+ entry.append(field,total);
+ const error=node("p","text-xs text-red-600 mt-2");error.setAttribute("role","alert");
+ host.append(summary,entry,error);
+ const select=node("select","w-full border border-slate-300 rounded-xl px-3 py-3 text-sm bg-white");
+ select.setAttribute("aria-label","Select predefined quantity or custom pack");
+ const presets=choices(product);
+ for(const n of presets){const o=document.createElement("option");o.value=String(n);o.textContent=n*pk.units_per_pack+" units — "+formatUsd(price(product,n));select.append(o)}
+ const custom=document.createElement("option");custom.value="custom";custom.textContent="Custom pack";select.append(custom);
+ if(selectHost){selectHost.replaceChildren();selectHost.append(select);}
+ else{host.append(node("p","text-sm font-semibold mt-3 mb-2","Select Qty"),select)}
+ let selected=presets[0]||1;
+ function render(mode){error.textContent="";total.textContent=selected+" "+(selected===1?unit:plural)+" = "+formatUsd(price(product,selected));select.value=mode==="custom"?"custom":String(selected);if(callback)callback(selected)}
+ select.onchange=()=>{if(select.value==="custom"){selected=null;input.value="";total.textContent="Enter your custom quantity.";input.focus();if(callback)callback(null);return}selected=Number(select.value);input.value="";render("preset")};
+ input.onkeydown=e=>{if([".",",","-","+","e","E"].includes(e.key))e.preventDefault()};
  input.oninput=()=>{
-   const candidate=num(input.value);
-   try{
-     validatePackCount(product,candidate);
-     selected=candidate;draw("custom");
-   }catch(e){
-     dropdown.value="custom";
-     error.textContent=e.message;
-     total.textContent="Enter a valid quantity to calculate the medication price.";
-     if(callback)callback(null);
-   }
+  const raw=input.value.trim();select.value="custom";
+  if(!/^[1-9][0-9]*$/.test(raw)){selected=null;error.textContent=raw?"Only whole numbers from 1 to "+max+" "+plural+" allowed.":"Enter a whole number.";total.textContent="";if(callback)callback(null);return}
+  try{validatePackCount(product,Number(raw));selected=Number(raw);render("custom")}
+  catch(e){selected=null;error.textContent=e.message;total.textContent="";if(callback)callback(null)}
  };
- host.append(info,first,heading,dropdown,total,error);draw("preset");
- return {getSelection(){return validatePackCount(product,num(input.value));},getMax(){return max;}};
+ render("preset");
+ return {getSelection(){return validatePackCount(product,selected);},getMax(){return max;}};
 }
 function cartItem(product,packCount){
  const n=validatePackCount(product,Number(packCount));
