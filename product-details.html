@@ -230,6 +230,7 @@
         <div class="fade-up lg:sticky lg:top-24" style="animation-delay:0.1s;">
 
         <div class="glass-card rounded-3xl p-6 shadow-glow space-y-5">
+         <div id="vePricingV2Detail" class="hidden"></div>
          <div class="grid lg:grid-cols-[0.8fr_1.2fr] md:grid-cols-[0.80fr_1.10fr] gap-5 items-start">
             <label class="flex flex-col gap-2 text-sm font-semibold text-slate-700">
               <span class="flex items-center gap-2"><span class="text-brand">💊</span>Dosage / strength</span>
@@ -269,6 +270,7 @@
 </div>
 
 
+          <div id="veV2QtyChoices" class="hidden"></div>
           <div class="qty-dropdown">
               <div class="qty-selected">
                   <div class="qty-header">
@@ -1125,17 +1127,19 @@ function showToast(message) {
 
       if(window.vitalPricingV2?.isReady(product)){
         qtyDropdown.style.display='none';
-        let host=document.getElementById('vePricingV2Detail');
-        if(!host){
-          host=document.createElement('div');
-          host.id='vePricingV2Detail';
-          qtyDropdown.parentNode.insertBefore(host,qtyDropdown);
-        }
-        selectedV2Selector=window.vitalPricingV2.mountSelector(host,product);
-        priceBreakdown.textContent='Shipping starts at USD 35 and is based on total box equivalents in your cart.';
+        const host=document.getElementById('vePricingV2Detail');
+        const presetHost=document.getElementById('veV2QtyChoices');
+        host.classList.remove('hidden');
+        presetHost.classList.remove('hidden');
+        selectedV2Selector=window.vitalPricingV2.mountSelector(host,product,null,presetHost);
+        priceBreakdown.innerHTML='<span class="font-bold underline text-slate-800">Shipping starts from USD 35</span>';
       }else{
         const host=document.getElementById('vePricingV2Detail');
-        if(host)host.remove();
+        const presetHost=document.getElementById('veV2QtyChoices');
+        host.classList.add('hidden');
+        host.replaceChildren();
+        presetHost.classList.add('hidden');
+        presetHost.replaceChildren();
         qtyDropdown.style.display='';
         selectedV2Selector=null;
         renderSelectors(product);
