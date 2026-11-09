@@ -9,7 +9,7 @@ const round2=x=>Math.round((x+Number.EPSILON)*100)/100;
 const valid=p=>Boolean(p && p.packaging && p.pricing_v2 &&
   Number.isInteger(num(p.pricing_v2.price_per_pack_cents)) &&
   num(p.pricing_v2.price_per_pack_cents)>0 &&
-  Number.isInteger(num(p.packaging.units_per_pack)) && num(p.packaging.units_per_pack)>0 &&
+  Number.isInteger(num(p.packaging.units_per_pack)) && num(p.packaging.units_per_pack)>0 && num(p.packaging.units_per_pack)<=500 &&
   Number.isInteger(num(p.packaging.packs_per_box)) && num(p.packaging.packs_per_box)>0);
 function maxPacks(p){
  if(!valid(p))return 0;
