@@ -43,3 +43,15 @@ The 20–40 boundary is the only unconfirmed threshold. Update both `pricing-v2.
 V2 uses public, locally calculated **estimates**, not a signed private server quote. These must be confirmed by the team before any payment or supply commitment. Existing Firestore permissions should be audited: the browser is not a trusted authority for final order pricing. Retain the old Apps Script service for future pricing decisions, but do not send V2 cart values to Google Sheets.
 
 The GitHub code is staged; existing new pricing data is not populated until the Sheet is configured and the updated Apps Script is installed/published.
+
+## Hotfix — 9 November 2026
+
+The COST MASTER rows P0001–P0004 now have approved input prices. Their `pricing_v2` fields and recalculated legacy display variant prices were published directly to `UI-of-web/products-data.json` using the connected GitHub tool, because the bound Apps Script's `GITHUB_TOKEN` currently produces HTTP 401 (Bad credentials).
+
+Approved prices: P0001 $17.50 per bottle; P0002 $3.99 per strip; P0003 $2.74 per strip; P0004 $6.31 per strip. All remaining products retain legacy pricing until approved.
+
+The new top Cost / Pack / Enter the strips panel appears above Dosage / strength and Select Qty in `product-details.html` for these V2-priced products, and appears immediately below Use on `products.html`. On mobile, the product-detail summary is inside the details column after the product-image column. The preset dropdown remains independent of the custom whole-strip input.
+
+**Apps Script still needs user installation and credential repair.** Use `Vital_Elixir_Pricing_V2_Apps_Script_FIXED.gs` from the privately supplied ZIP, replacing the existing bound script after backing it up. In Apps Script Project Settings → Script Properties, renew `GITHUB_TOKEN` with a GitHub fine-grained PAT for exactly this repo and Contents read/write. Never commit or share the token. The corrected script can read the public catalogue without a valid token for preview, but publishing still requires a working token and preserves SHA/fingerprint checks.
+
+**Test scope:** Static code syntax, unit price multiplication, fractional box shipping, preset selection, whole-number input validation and maximum 50 strips all passed in isolated tests. The actual hosted desktop/mobile pages and Firestore checkout have not been verified in a browser; use the branch preview deployment for those tests before promoting to main. Main branch has not been modified by this hotfix.
