@@ -805,11 +805,11 @@ function getPerTablet(variant){
           const selector=window.vitalPricingV2.mountSelector(host,p,null,card.querySelector('.v2-qty-choices'));
           const openDetails=()=>{window.location.href='product-details.html?mk='+encodeURIComponent(p.manager_key);};
           card.addEventListener('click',(e)=>{
-            if(e.target.closest('.v2-qty-host,.add-to-cart-btn'))return;
+            if(e.target.closest('.v2-qty-host,.v2-qty-choices,.add-to-cart-btn'))return;
             openDetails();
           });
           card.addEventListener('keydown',(e)=>{
-            if(e.target.closest('.v2-qty-host,.add-to-cart-btn'))return;
+            if(e.target.closest('.v2-qty-host,.v2-qty-choices,.add-to-cart-btn'))return;
             if(e.key==='Enter'||e.key===' '){e.preventDefault();openDetails();}
           });
           addBtn.addEventListener('click',async(e)=>{
