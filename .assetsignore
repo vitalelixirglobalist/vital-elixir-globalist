@@ -6,3 +6,36 @@
 .wrangler/**
 node_modules
 node_modules/**
+
+# Server-side Firebase Functions — NEVER upload to the public Worker.
+/functions
+/functions/**
+/tests
+/tests/**
+
+# Deployment, configuration and internal documentation are not website assets.
+/wrangler.jsonc
+/wrangler.toml
+/.assetsignore
+/.gitignore
+/.firebaserc
+/firebase.json
+/CNAME
+/PRICING_V2_ROLLOUT.md
+/*.md
+
+# Secret and credential formats must never be publicly accessible.
+/.env
+/.env.*
+/**/.env
+/**/.env.*
+/*.pem
+/*.key
+/**/id_rsa
+/**/id_ed25519
+/.dev.vars*
+/.dev.vars*
+/package.json
+/package-lock.json
+/.github
+/.github/**
