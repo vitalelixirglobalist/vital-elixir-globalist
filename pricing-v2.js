@@ -58,7 +58,9 @@ function mountSelector(host,product,callback,selectHost){
  const summary=node("div","grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-5");
  const left=node("div"),right=node("div");
  left.append(node("p","text-xs font-semibold text-slate-500 mb-1","Cost"),node("p","text-xl font-bold text-brand",formatUsd(num(product.pricing_v2.price_per_pack_cents)/100)+" per "+unit));
- right.append(node("p","text-xs font-semibold text-slate-500 mb-1","Pack"),node("p","text-sm md:text-base font-semibold text-slate-700",pk.label+" · "+(pk.units_per_pack*pk.packs_per_box)+" units per box"));
+ const contents=(pk.label.match(/(?:tablets?|capsules?|sachets?)/i)||["units"])[0].toLowerCase();
+ const boxDescription=unit==="strip" ? (pk.units_per_pack*pk.packs_per_box)+" "+contents+" per box" : pk.packs_per_box+" "+unit+(pk.packs_per_box===1?"":"s")+" per box";
+ right.append(node("p","text-xs font-semibold text-slate-500 mb-1","Pack"),node("p","text-sm md:text-base font-semibold text-slate-700",pk.label+" · "+boxDescription));
  summary.append(left,right);
  const entry=node("div","border-t border-blue-200 mt-3 pt-3 flex flex-col md:flex-row md:items-center md:justify-between gap-2");
  const field=node("div","flex items-center justify-between md:justify-start gap-3");
