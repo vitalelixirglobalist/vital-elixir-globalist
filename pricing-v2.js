@@ -76,6 +76,8 @@ function mountSelector(host,product,callback,selectHost){
  host.append(summary,entry,error);
  const select=node("select","w-full border border-slate-300 rounded-xl px-3 py-3 text-sm bg-white");
  select.setAttribute("aria-label","Select predefined quantity or custom pack");
+ select.addEventListener("click",e=>e.stopPropagation());
+ select.addEventListener("keydown",e=>e.stopPropagation());
  const presets=choices(product);
  for(const n of presets){const o=document.createElement("option");o.value=String(n);o.textContent=n*pk.units_per_pack+" units — "+formatUsd(price(product,n));select.append(o)}
  const custom=document.createElement("option");custom.value="custom";custom.textContent="Custom pack";select.append(custom);
