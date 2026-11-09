@@ -768,7 +768,7 @@ function getPerTablet(variant){
 }
 
     async function loadProducts() {
-      const res = await fetch('products-data.json');
+      const res = await fetch('products-data.json', {cache:'no-store'});
       allProducts = await res.json();
     applyInitialFilters();
     }
