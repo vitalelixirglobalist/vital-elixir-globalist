@@ -1190,7 +1190,7 @@ if (
       <div class="p-4 rounded-xl border border-red-200 bg-red-50">
 
         <p class="text-sm font-semibold text-red-700">
-          We could not calculate your quotation.
+          ${/Shipping quantity too big/i.test(String(error?.message||'')) ? 'Shipping quantity too big — break your order into parts.' : 'We could not calculate your quotation.'}
         </p>
 
         <p class="text-xs text-red-600 mt-1">
