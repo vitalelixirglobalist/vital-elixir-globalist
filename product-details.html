@@ -1766,7 +1766,7 @@ if (peopleContainer) {
     async function loadProductDetails() {
       try {
         const [productsRes, contentRes] = await Promise.all([
-            fetch('products-data.json'),
+            fetch('products-data.json', {cache:'no-store'}),
             fetch('product-content.json')
         ]);
 
