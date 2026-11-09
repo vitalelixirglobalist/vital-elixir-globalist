@@ -1126,6 +1126,11 @@ function showToast(message) {
       productUse.textContent = product.use;
 
       if(window.vitalPricingV2?.isReady(product)){
+        dosageSelect.replaceChildren();
+        const dose=document.createElement('option');
+        dose.value=product.composition;
+        dose.textContent=product.composition;
+        dosageSelect.appendChild(dose);
         qtyDropdown.style.display='none';
         const host=document.getElementById('vePricingV2Detail');
         const presetHost=document.getElementById('veV2QtyChoices');
