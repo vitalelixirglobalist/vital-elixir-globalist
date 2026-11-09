@@ -792,7 +792,7 @@ function getPerTablet(variant){
           <p class="text-sm text-gray-600">${p.brand}</p>
           <p class="text-sm text-gray-500 mb-2">${p.composition}</p>
           <p class="text-sm text-gray-600 mb-1"><strong>Use:</strong> ${p.use}</p>
-          ${window.vitalPricingV2?.isReady(p) ? '<div class="v2-qty-host"></div>' : buildQuantityDropdown(p)}
+          ${window.vitalPricingV2?.isReady(p) ? '<div class="v2-qty-host mt-3"></div><p class="mt-2 mb-2 text-sm font-semibold text-slate-700">Select Qty</p><div class="v2-qty-choices"></div>' : buildQuantityDropdown(p)}
           <p class="mt-3 text-sm font-bold text-gray-800 underline">
           Shipping starts from USD 35
         </p>
@@ -802,7 +802,7 @@ function getPerTablet(variant){
         // Pricing V2: local JSON-based price and cart; no Google Sheet/API lookup.
         if (window.vitalPricingV2?.isReady(p)) {
           const host=card.querySelector('.v2-qty-host');
-          const selector=window.vitalPricingV2.mountSelector(host,p);
+          const selector=window.vitalPricingV2.mountSelector(host,p,null,card.querySelector('.v2-qty-choices'));
           const openDetails=()=>{window.location.href='product-details.html?mk='+encodeURIComponent(p.manager_key);};
           card.addEventListener('click',(e)=>{
             if(e.target.closest('.v2-qty-host,.add-to-cart-btn'))return;
