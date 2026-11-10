@@ -3189,44 +3189,44 @@
       {
         "pack": "10 Tablets/Strip",
         "quantity": 50,
-        "price_usd": 45.89,
+        "price_usd": 10.1,
         "market_price_usd": 1,
-        "price_gbp": 36.25,
+        "price_gbp": 7.98,
         "market_price_gbp": 1,
-        "price_aud": 69.75,
+        "price_aud": 15.35,
         "market_price_aud": 1,
         "price_inr": 1
       },
       {
         "pack": "10 Tablets/Strip",
         "quantity": 100,
-        "price_usd": 50.89,
+        "price_usd": 20.2,
         "market_price_usd": 1,
-        "price_gbp": 40.2,
+        "price_gbp": 15.96,
         "market_price_gbp": 1,
-        "price_aud": 77.35,
+        "price_aud": 30.7,
         "market_price_aud": 1,
         "price_inr": 1
       },
       {
         "pack": "10 Tablets/Strip",
         "quantity": 300,
-        "price_usd": 55.89,
+        "price_usd": 60.6,
         "market_price_usd": 1,
-        "price_gbp": 44.15,
+        "price_gbp": 47.87,
         "market_price_gbp": 1,
-        "price_aud": 84.95,
+        "price_aud": 92.11,
         "market_price_aud": 1,
         "price_inr": 1
       },
       {
         "pack": "10 Tablets/Strip",
         "quantity": 500,
-        "price_usd": 60.89,
+        "price_usd": 101,
         "market_price_usd": 1,
-        "price_gbp": 48.1,
+        "price_gbp": 79.79,
         "market_price_gbp": 1,
-        "price_aud": 92.55,
+        "price_aud": 153.52,
         "market_price_aud": 1,
         "price_inr": 1
       }
@@ -3244,7 +3244,12 @@
       100,
       300,
       500
-    ]
+    ],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 202,
+      "price_per_pack_usd": 2.02
+    }
   },
   {
     "manager_key": "P0047",
@@ -3262,44 +3267,44 @@
       {
         "pack": "10 Tablets/Strip",
         "quantity": 50,
-        "price_usd": 46.73,
+        "price_usd": 13.1,
         "market_price_usd": 1,
-        "price_gbp": 36.92,
+        "price_gbp": 10.35,
         "market_price_gbp": 1,
-        "price_aud": 71.03,
+        "price_aud": 19.91,
         "market_price_aud": 1,
         "price_inr": 1
       },
       {
         "pack": "10 Tablets/Strip",
         "quantity": 100,
-        "price_usd": 51.73,
+        "price_usd": 26.2,
         "market_price_usd": 1,
-        "price_gbp": 40.87,
+        "price_gbp": 20.7,
         "market_price_gbp": 1,
-        "price_aud": 78.63,
+        "price_aud": 39.82,
         "market_price_aud": 1,
         "price_inr": 1
       },
       {
         "pack": "10 Tablets/Strip",
         "quantity": 300,
-        "price_usd": 60.12,
+        "price_usd": 78.6,
         "market_price_usd": 1,
-        "price_gbp": 47.49,
+        "price_gbp": 62.09,
         "market_price_gbp": 1,
-        "price_aud": 91.38,
+        "price_aud": 119.47,
         "market_price_aud": 1,
         "price_inr": 1
       },
       {
         "pack": "10 Tablets/Strip",
         "quantity": 500,
-        "price_usd": 68.45,
+        "price_usd": 131,
         "market_price_usd": 1,
-        "price_gbp": 54.08,
+        "price_gbp": 103.49,
         "market_price_gbp": 1,
-        "price_aud": 104.04,
+        "price_aud": 199.12,
         "market_price_aud": 1,
         "price_inr": 1
       }
@@ -3317,7 +3322,12 @@
       100,
       300,
       500
-    ]
+    ],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 262,
+      "price_per_pack_usd": 2.62
+    }
   },
   {
     "manager_key": "P0048",
@@ -3336,44 +3346,44 @@
       {
         "pack": "10 Capsules/Strip",
         "quantity": 50,
-        "price_usd": 47.92,
+        "price_usd": 19.35,
         "market_price_usd": 1,
-        "price_gbp": 37.86,
+        "price_gbp": 15.29,
         "market_price_gbp": 1,
-        "price_aud": 72.84,
+        "price_aud": 29.41,
         "market_price_aud": 1,
         "price_inr": 1
       },
       {
         "pack": "10 Capsules/Strip",
         "quantity": 100,
-        "price_usd": 52.92,
+        "price_usd": 38.7,
         "market_price_usd": 1,
-        "price_gbp": 41.81,
+        "price_gbp": 30.57,
         "market_price_gbp": 1,
-        "price_aud": 80.44,
+        "price_aud": 58.82,
         "market_price_aud": 1,
         "price_inr": 1
       },
       {
         "pack": "10 Capsules/Strip",
         "quantity": 300,
-        "price_usd": 69.64,
+        "price_usd": 116.1,
         "market_price_usd": 1,
-        "price_gbp": 55.02,
+        "price_gbp": 91.72,
         "market_price_gbp": 1,
-        "price_aud": 105.85,
+        "price_aud": 176.47,
         "market_price_aud": 1,
         "price_inr": 1
       },
       {
         "pack": "10 Capsules/Strip",
         "quantity": 500,
-        "price_usd": 88.69,
+        "price_usd": 193.5,
         "market_price_usd": 1,
-        "price_gbp": 70.07,
+        "price_gbp": 152.87,
         "market_price_gbp": 1,
-        "price_aud": 134.81,
+        "price_aud": 294.12,
         "market_price_aud": 1,
         "price_inr": 1
       }
@@ -3391,7 +3401,12 @@
       100,
       300,
       500
-    ]
+    ],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 387,
+      "price_per_pack_usd": 3.87
+    }
   },
   {
     "manager_key": "P0049",
@@ -3409,22 +3424,22 @@
       {
         "pack": "10 Tablets/Strip",
         "quantity": 50,
-        "price_usd": 148.15,
+        "price_usd": 136.9,
         "market_price_usd": 1,
-        "price_gbp": 117.04,
+        "price_gbp": 108.15,
         "market_price_gbp": 1,
-        "price_aud": 225.19,
+        "price_aud": 208.09,
         "market_price_aud": 1,
         "price_inr": 1
       },
       {
         "pack": "10 Tablets/Strip",
         "quantity": 100,
-        "price_usd": 252.26,
+        "price_usd": 273.8,
         "market_price_usd": 1,
-        "price_gbp": 199.29,
+        "price_gbp": 216.3,
         "market_price_gbp": 1,
-        "price_aud": 383.44,
+        "price_aud": 416.18,
         "market_price_aud": 1,
         "price_inr": 1
       }
@@ -3440,7 +3455,12 @@
     "display_quantities": [
       50,
       100
-    ]
+    ],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 2738,
+      "price_per_pack_usd": 27.38
+    }
   },
   {
     "manager_key": "P0050",
@@ -3458,11 +3478,11 @@
       {
         "pack": "10 Tablets/Strip",
         "quantity": 100,
-        "price_usd": 61.31,
+        "price_usd": 32.1,
         "market_price_usd": 1,
-        "price_gbp": 48.43,
+        "price_gbp": 25.36,
         "market_price_gbp": 1,
-        "price_aud": 93.19,
+        "price_aud": 48.79,
         "market_price_aud": 1,
         "price_inr": 1
       }
@@ -3477,7 +3497,12 @@
     },
     "display_quantities": [
       100
-    ]
+    ],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 321,
+      "price_per_pack_usd": 3.21
+    }
   },
   {
     "manager_key": "P0051",
@@ -3495,33 +3520,33 @@
       {
         "pack": "1 Tablet/Strip",
         "quantity": 1,
-        "price_usd": 80.95,
+        "price_usd": 23.81,
         "market_price_usd": 1,
-        "price_gbp": 63.95,
+        "price_gbp": 18.81,
         "market_price_gbp": 1,
-        "price_aud": 123.04,
+        "price_aud": 36.19,
         "market_price_aud": 1,
         "price_inr": 1
       },
       {
         "pack": "1 Tablet/Strip",
         "quantity": 2,
-        "price_usd": 122.62,
+        "price_usd": 47.62,
         "market_price_usd": 1,
-        "price_gbp": 96.87,
+        "price_gbp": 37.62,
         "market_price_gbp": 1,
-        "price_aud": 186.38,
+        "price_aud": 72.38,
         "market_price_aud": 1,
         "price_inr": 1
       },
       {
         "pack": "1 Tablet/Strip",
         "quantity": 3,
-        "price_usd": 160.71,
+        "price_usd": 71.43,
         "market_price_usd": 1,
-        "price_gbp": 126.96,
+        "price_gbp": 56.43,
         "market_price_gbp": 1,
-        "price_aud": 244.28,
+        "price_aud": 108.57,
         "market_price_aud": 1,
         "price_inr": 1
       }
@@ -3538,12 +3563,17 @@
       1,
       2,
       3
-    ]
+    ],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 2381,
+      "price_per_pack_usd": 23.81
+    }
   },
   {
     "manager_key": "P0052",
     "id": "clobetasolcream",
-    "name": "Clobetasol Propionate Cream",
+    "name": "Clobetasol Propionate Cream(30gm)",
     "brand": "Sun Pharma",
     "composition": "Clobetasol Propionate",
     "category": "Dermatology",
@@ -3556,33 +3586,33 @@
       {
         "pack": "1 Tube",
         "quantity": 3,
-        "price_usd": 46.13,
+        "price_usd": 11.79,
         "market_price_usd": 1,
-        "price_gbp": 36.44,
+        "price_gbp": 9.31,
         "market_price_gbp": 1,
-        "price_aud": 70.12,
+        "price_aud": 17.92,
         "market_price_aud": 1,
         "price_inr": 1
       },
       {
         "pack": "1 Tube",
         "quantity": 5,
-        "price_usd": 51.13,
+        "price_usd": 19.65,
         "market_price_usd": 1,
-        "price_gbp": 40.39,
+        "price_gbp": 15.52,
         "market_price_gbp": 1,
-        "price_aud": 77.72,
+        "price_aud": 29.87,
         "market_price_aud": 1,
         "price_inr": 1
       },
       {
         "pack": "1 Tube",
         "quantity": 9,
-        "price_usd": 56.13,
+        "price_usd": 35.37,
         "market_price_usd": 1,
-        "price_gbp": 44.34,
+        "price_gbp": 27.94,
         "market_price_gbp": 1,
-        "price_aud": 85.32,
+        "price_aud": 53.76,
         "market_price_aud": 1,
         "price_inr": 1
       }
@@ -3598,7 +3628,12 @@
     "display_quantities": [
       3,
       5
-    ]
+    ],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 393,
+      "price_per_pack_usd": 3.93
+    }
   },
   {
     "manager_key": "P0053",
@@ -3616,33 +3651,33 @@
       {
         "pack": "1 Tube",
         "quantity": 3,
-        "price_usd": 47.74,
+        "price_usd": 3.39,
         "market_price_usd": 1,
-        "price_gbp": 37.71,
+        "price_gbp": 2.68,
         "market_price_gbp": 1,
-        "price_aud": 72.56,
+        "price_aud": 5.15,
         "market_price_aud": 1,
         "price_inr": 1
       },
       {
         "pack": "1 Tube",
         "quantity": 5,
-        "price_usd": 52.74,
+        "price_usd": 5.65,
         "market_price_usd": 1,
-        "price_gbp": 41.66,
+        "price_gbp": 4.46,
         "market_price_gbp": 1,
-        "price_aud": 80.16,
+        "price_aud": 8.59,
         "market_price_aud": 1,
         "price_inr": 1
       },
       {
         "pack": "1 Tube",
         "quantity": 7,
-        "price_usd": 57.74,
+        "price_usd": 7.91,
         "market_price_usd": 1,
-        "price_gbp": 45.61,
+        "price_gbp": 6.25,
         "market_price_gbp": 1,
-        "price_aud": 87.76,
+        "price_aud": 12.02,
         "market_price_aud": 1,
         "price_inr": 1
       }
@@ -3658,7 +3693,12 @@
     "display_quantities": [
       3,
       5
-    ]
+    ],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 113,
+      "price_per_pack_usd": 1.13
+    }
   },
   {
     "manager_key": "P0054",
@@ -3676,22 +3716,22 @@
       {
         "pack": "1 Bottle",
         "quantity": 3,
-        "price_usd": 50.06,
+        "price_usd": 9.24,
         "market_price_usd": 1,
-        "price_gbp": 39.55,
+        "price_gbp": 7.3,
         "market_price_gbp": 1,
-        "price_aud": 76.09,
+        "price_aud": 14.04,
         "market_price_aud": 1,
         "price_inr": 1
       },
       {
         "pack": "1 Bottle",
         "quantity": 5,
-        "price_usd": 59.23,
+        "price_usd": 15.4,
         "market_price_usd": 1,
-        "price_gbp": 46.79,
+        "price_gbp": 12.17,
         "market_price_gbp": 1,
-        "price_aud": 90.03,
+        "price_aud": 23.41,
         "market_price_aud": 1,
         "price_inr": 1
       }
@@ -3707,7 +3747,12 @@
     "display_quantities": [
       3,
       5
-    ]
+    ],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 308,
+      "price_per_pack_usd": 3.08
+    }
   },
   {
     "manager_key": "P0055",
@@ -3726,22 +3771,22 @@
       {
         "pack": "10 Capsules/Strip",
         "quantity": 100,
-        "price_usd": 62.5,
+        "price_usd": 56.5,
         "market_price_usd": 1,
-        "price_gbp": 49.38,
+        "price_gbp": 44.64,
         "market_price_gbp": 1,
-        "price_aud": 95,
+        "price_aud": 85.88,
         "market_price_aud": 1,
         "price_inr": 1
       },
       {
         "pack": "10 Capsules/Strip",
         "quantity": 300,
-        "price_usd": 99.4,
+        "price_usd": 169.5,
         "market_price_usd": 1,
-        "price_gbp": 78.53,
+        "price_gbp": 133.91,
         "market_price_gbp": 1,
-        "price_aud": 151.09,
+        "price_aud": 257.64,
         "market_price_aud": 1,
         "price_inr": 1
       }
@@ -3757,7 +3802,12 @@
     "display_quantities": [
       100,
       300
-    ]
+    ],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 565,
+      "price_per_pack_usd": 5.65
+    }
   },
   {
     "manager_key": "P0056",
@@ -3776,11 +3826,11 @@
       {
         "pack": "10 Tablets/Strip",
         "quantity": 10,
-        "price_usd": 107.14,
+        "price_usd": 58.33,
         "market_price_usd": 1,
-        "price_gbp": 84.64,
+        "price_gbp": 46.08,
         "market_price_gbp": 1,
-        "price_aud": 162.85,
+        "price_aud": 88.66,
         "market_price_aud": 1,
         "price_inr": 1
       }
@@ -3795,7 +3845,12 @@
     },
     "display_quantities": [
       10
-    ]
+    ],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 5833,
+      "price_per_pack_usd": 58.33
+    }
   },
   {
     "manager_key": "P0057",
@@ -3813,22 +3868,22 @@
       {
         "pack": "10 Tablets/Strip",
         "quantity": 50,
-        "price_usd": 46.31,
+        "price_usd": 4.95,
         "market_price_usd": 1,
-        "price_gbp": 36.58,
+        "price_gbp": 3.91,
         "market_price_gbp": 1,
-        "price_aud": 70.39,
+        "price_aud": 7.52,
         "market_price_aud": 1,
         "price_inr": 1
       },
       {
         "pack": "10 Tablets/Strip",
         "quantity": 100,
-        "price_usd": 51.31,
+        "price_usd": 9.9,
         "market_price_usd": 1,
-        "price_gbp": 40.53,
+        "price_gbp": 7.82,
         "market_price_gbp": 1,
-        "price_aud": 77.99,
+        "price_aud": 15.05,
         "market_price_aud": 1,
         "price_inr": 1
       }
@@ -3844,7 +3899,12 @@
     "display_quantities": [
       50,
       100
-    ]
+    ],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 99,
+      "price_per_pack_usd": 0.99
+    }
   },
   {
     "manager_key": "P0058",
@@ -3863,22 +3923,22 @@
       {
         "pack": "10 Tablets/Strip",
         "quantity": 300,
-        "price_usd": 58.33,
+        "price_usd": 21.3,
         "market_price_usd": 1,
-        "price_gbp": 46.08,
+        "price_gbp": 16.83,
         "market_price_gbp": 1,
-        "price_aud": 88.66,
+        "price_aud": 32.38,
         "market_price_aud": 1,
         "price_inr": 1
       },
       {
         "pack": "10 Tablets/Strip",
         "quantity": 500,
-        "price_usd": 63.33,
+        "price_usd": 35.5,
         "market_price_usd": 1,
-        "price_gbp": 50.03,
+        "price_gbp": 28.05,
         "market_price_gbp": 1,
-        "price_aud": 96.26,
+        "price_aud": 53.96,
         "market_price_aud": 1,
         "price_inr": 1
       }
@@ -3894,7 +3954,12 @@
     "display_quantities": [
       300,
       500
-    ]
+    ],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 71,
+      "price_per_pack_usd": 0.71
+    }
   },
   {
     "manager_key": "P0059",
@@ -3910,33 +3975,33 @@
       {
         "pack": "10 Tablets/Strip",
         "quantity": 100,
-        "price_usd": 48.81,
+        "price_usd": 9.5,
         "market_price_usd": 1,
-        "price_gbp": 38.56,
+        "price_gbp": 7.51,
         "market_price_gbp": 1,
-        "price_aud": 74.19,
+        "price_aud": 14.44,
         "market_price_aud": 1,
         "price_inr": 1
       },
       {
         "pack": "10 Tablets/Strip",
         "quantity": 300,
-        "price_usd": 61.9,
+        "price_usd": 28.5,
         "market_price_usd": 1,
-        "price_gbp": 48.9,
+        "price_gbp": 22.52,
         "market_price_gbp": 1,
-        "price_aud": 94.09,
+        "price_aud": 43.32,
         "market_price_aud": 1,
         "price_inr": 1
       },
       {
         "pack": "10 Tablets/Strip",
         "quantity": 500,
-        "price_usd": 71.43,
+        "price_usd": 47.5,
         "market_price_usd": 1,
-        "price_gbp": 56.43,
+        "price_gbp": 37.53,
         "market_price_gbp": 1,
-        "price_aud": 108.57,
+        "price_aud": 72.2,
         "market_price_aud": 1,
         "price_inr": 1
       }
@@ -3953,7 +4018,12 @@
       100,
       300,
       500
-    ]
+    ],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 95,
+      "price_per_pack_usd": 0.95
+    }
   },
   {
     "manager_key": "P0060",
@@ -3971,22 +4041,22 @@
       {
         "pack": "120 Tablets/Bottle",
         "quantity": 120,
-        "price_usd": 45.65,
+        "price_usd": 5.36,
         "market_price_usd": 1,
-        "price_gbp": 36.06,
+        "price_gbp": 4.23,
         "market_price_gbp": 1,
-        "price_aud": 69.39,
+        "price_aud": 8.15,
         "market_price_aud": 1,
         "price_inr": 1
       },
       {
         "pack": "120 Tablets/Bottle",
         "quantity": 360,
-        "price_usd": 50.65,
+        "price_usd": 16.08,
         "market_price_usd": 1,
-        "price_gbp": 40.01,
+        "price_gbp": 12.7,
         "market_price_gbp": 1,
-        "price_aud": 76.99,
+        "price_aud": 24.44,
         "market_price_aud": 1,
         "price_inr": 1
       }
@@ -4002,7 +4072,12 @@
     "display_quantities": [
       120,
       360
-    ]
+    ],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 536,
+      "price_per_pack_usd": 5.36
+    }
   },
   {
     "manager_key": "P0061",
@@ -4020,22 +4095,22 @@
       {
         "pack": "10 Tablets/Strip",
         "quantity": 100,
-        "price_usd": 70.24,
+        "price_usd": 51.2,
         "market_price_usd": 1,
-        "price_gbp": 55.49,
+        "price_gbp": 40.45,
         "market_price_gbp": 1,
-        "price_aud": 106.76,
+        "price_aud": 77.82,
         "market_price_aud": 1,
         "price_inr": 1
       },
       {
         "pack": "10 Tablets/Strip",
         "quantity": 300,
-        "price_usd": 127.38,
+        "price_usd": 153.6,
         "market_price_usd": 1,
-        "price_gbp": 100.63,
+        "price_gbp": 121.34,
         "market_price_gbp": 1,
-        "price_aud": 193.62,
+        "price_aud": 233.47,
         "market_price_aud": 1,
         "price_inr": 1
       }
@@ -4051,7 +4126,12 @@
     "display_quantities": [
       100,
       300
-    ]
+    ],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 512,
+      "price_per_pack_usd": 5.12
+    }
   },
   {
     "manager_key": "P0062",
@@ -4069,22 +4149,22 @@
       {
         "pack": "10 Tablets/Strip",
         "quantity": 100,
-        "price_usd": 47.62,
+        "price_usd": 54.8,
         "market_price_usd": 1,
-        "price_gbp": 37.62,
+        "price_gbp": 43.29,
         "market_price_gbp": 1,
-        "price_aud": 72.38,
+        "price_aud": 83.3,
         "market_price_aud": 1,
         "price_inr": 1
       },
       {
         "pack": "10 Tablets/Strip",
         "quantity": 300,
-        "price_usd": 58.33,
+        "price_usd": 164.4,
         "market_price_usd": 1,
-        "price_gbp": 46.08,
+        "price_gbp": 129.88,
         "market_price_gbp": 1,
-        "price_aud": 88.66,
+        "price_aud": 249.89,
         "market_price_aud": 1,
         "price_inr": 1
       }
@@ -4100,7 +4180,12 @@
     "display_quantities": [
       100,
       300
-    ]
+    ],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 548,
+      "price_per_pack_usd": 5.48
+    }
   },
   {
     "manager_key": "P0063",
@@ -4118,22 +4203,22 @@
       {
         "pack": "1 SoloStar Pen",
         "quantity": 1,
-        "price_usd": 57.98,
+        "price_usd": 12.88,
         "market_price_usd": 1,
-        "price_gbp": 45.8,
+        "price_gbp": 10.18,
         "market_price_gbp": 1,
-        "price_aud": 88.13,
+        "price_aud": 19.58,
         "market_price_aud": 1,
         "price_inr": 1
       },
       {
         "pack": "1 SoloStar Pen",
         "quantity": 3,
-        "price_usd": 77.5,
+        "price_usd": 38.64,
         "market_price_usd": 1,
-        "price_gbp": 61.23,
+        "price_gbp": 30.53,
         "market_price_gbp": 1,
-        "price_aud": 117.8,
+        "price_aud": 58.73,
         "market_price_aud": 1,
         "price_inr": 1
       }
@@ -4149,7 +4234,12 @@
     "display_quantities": [
       1,
       3
-    ]
+    ],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 1288,
+      "price_per_pack_usd": 12.88
+    }
   },
   {
     "manager_key": "P0064",
@@ -4167,22 +4257,22 @@
       {
         "pack": "1 Tablet/Strip",
         "quantity": 10,
-        "price_usd": 47.62,
+        "price_usd": 22.6,
         "market_price_usd": 1,
-        "price_gbp": 37.62,
+        "price_gbp": 17.85,
         "market_price_gbp": 1,
-        "price_aud": 72.38,
+        "price_aud": 34.35,
         "market_price_aud": 1,
         "price_inr": 1
       },
       {
         "pack": "1 Tablet/Strip",
         "quantity": 20,
-        "price_usd": 52.62,
+        "price_usd": 45.2,
         "market_price_usd": 1,
-        "price_gbp": 41.57,
+        "price_gbp": 35.71,
         "market_price_gbp": 1,
-        "price_aud": 79.98,
+        "price_aud": 68.7,
         "market_price_aud": 1,
         "price_inr": 1
       }
@@ -4195,7 +4285,12 @@
       "max_units": 500,
       "max_boxes": 5
     },
-    "display_quantities": []
+    "display_quantities": [],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 226,
+      "price_per_pack_usd": 2.26
+    }
   },
   {
     "manager_key": "P0065",
@@ -4214,22 +4309,22 @@
       {
         "pack": "10 Tablets/Strip",
         "quantity": 50,
-        "price_usd": 51.19,
+        "price_usd": 25.6,
         "market_price_usd": 1,
-        "price_gbp": 40.44,
+        "price_gbp": 20.22,
         "market_price_gbp": 1,
-        "price_aud": 77.81,
+        "price_aud": 38.91,
         "market_price_aud": 1,
         "price_inr": 1
       },
       {
         "pack": "10 Tablets/Strip",
         "quantity": 100,
-        "price_usd": 63.1,
+        "price_usd": 51.2,
         "market_price_usd": 1,
-        "price_gbp": 49.85,
+        "price_gbp": 40.45,
         "market_price_gbp": 1,
-        "price_aud": 95.91,
+        "price_aud": 77.82,
         "market_price_aud": 1,
         "price_inr": 1
       }
@@ -4245,7 +4340,12 @@
     "display_quantities": [
       50,
       100
-    ]
+    ],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 512,
+      "price_per_pack_usd": 5.12
+    }
   },
   {
     "manager_key": "P0066",
@@ -4263,22 +4363,22 @@
       {
         "pack": "1 Tube",
         "quantity": 3,
-        "price_usd": 46.49,
+        "price_usd": 18.18,
         "market_price_usd": 1,
-        "price_gbp": 36.73,
+        "price_gbp": 14.36,
         "market_price_gbp": 1,
-        "price_aud": 70.66,
+        "price_aud": 27.63,
         "market_price_aud": 1,
         "price_inr": 1
       },
       {
         "pack": "1 Tube",
         "quantity": 5,
-        "price_usd": 51.49,
+        "price_usd": 30.3,
         "market_price_usd": 1,
-        "price_gbp": 40.68,
+        "price_gbp": 23.94,
         "market_price_gbp": 1,
-        "price_aud": 78.26,
+        "price_aud": 46.06,
         "market_price_aud": 1,
         "price_inr": 1
       }
@@ -4294,7 +4394,12 @@
     "display_quantities": [
       3,
       5
-    ]
+    ],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 606,
+      "price_per_pack_usd": 6.06
+    }
   },
   {
     "manager_key": "P0067",
@@ -4312,22 +4417,22 @@
       {
         "pack": "1 Bottle",
         "quantity": 3,
-        "price_usd": 46.67,
+        "price_usd": 15,
         "market_price_usd": 1,
-        "price_gbp": 36.87,
+        "price_gbp": 11.85,
         "market_price_gbp": 1,
-        "price_aud": 70.94,
+        "price_aud": 22.8,
         "market_price_aud": 1,
         "price_inr": 1
       },
       {
         "pack": "1 Bottle",
         "quantity": 5,
-        "price_usd": 51.67,
+        "price_usd": 25,
         "market_price_usd": 1,
-        "price_gbp": 40.82,
+        "price_gbp": 19.75,
         "market_price_gbp": 1,
-        "price_aud": 78.54,
+        "price_aud": 38,
         "market_price_aud": 1,
         "price_inr": 1
       }
@@ -4343,7 +4448,12 @@
     "display_quantities": [
       3,
       5
-    ]
+    ],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 500,
+      "price_per_pack_usd": 5
+    }
   },
   {
     "manager_key": "P0068",
@@ -4361,22 +4471,22 @@
       {
         "pack": "10 Tablets/Strip",
         "quantity": 100,
-        "price_usd": 57.74,
+        "price_usd": 23.8,
         "market_price_usd": 1,
-        "price_gbp": 45.61,
+        "price_gbp": 18.8,
         "market_price_gbp": 1,
-        "price_aud": 87.76,
+        "price_aud": 36.18,
         "market_price_aud": 1,
         "price_inr": 1
       },
       {
         "pack": "10 Tablets/Strip",
         "quantity": 300,
-        "price_usd": 76.79,
+        "price_usd": 71.4,
         "market_price_usd": 1,
-        "price_gbp": 60.66,
+        "price_gbp": 56.41,
         "market_price_gbp": 1,
-        "price_aud": 116.72,
+        "price_aud": 108.53,
         "market_price_aud": 1,
         "price_inr": 1
       }
@@ -4392,7 +4502,12 @@
     "display_quantities": [
       100,
       300
-    ]
+    ],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 238,
+      "price_per_pack_usd": 2.38
+    }
   },
   {
     "manager_key": "P0069",
@@ -4410,11 +4525,11 @@
       {
         "pack": "4 Tablet/Strip",
         "quantity": 4,
-        "price_usd": 51.19,
+        "price_usd": 8.33,
         "market_price_usd": 1,
-        "price_gbp": 40.44,
+        "price_gbp": 6.58,
         "market_price_gbp": 1,
-        "price_aud": 77.81,
+        "price_aud": 12.66,
         "market_price_aud": 1,
         "price_inr": 1
       }
@@ -4429,12 +4544,17 @@
     },
     "display_quantities": [
       4
-    ]
+    ],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 833,
+      "price_per_pack_usd": 8.33
+    }
   },
   {
     "manager_key": "P0070",
     "id": "budesonideformoterol2006",
-    "name": "Budesonide 200 mcg + Formoterol Fumarate Dihydrate 6 mcg",
+    "name": "Budesonide 200 mcg + Formoterol Fumarate Dihydrate 6 mcg ( 30 Transcaps)",
     "brand": "Generic",
     "composition": "Budesonide 200 mcg + Formoterol Fumarate Dihydrate 6 mcg",
     "category": "Respiratory",
@@ -4447,38 +4567,43 @@
       {
         "pack": "1 Inhaler",
         "quantity": 3,
-        "price_usd": 60.83,
+        "price_usd": 15,
         "market_price_usd": 1,
-        "price_gbp": 48.06,
+        "price_gbp": 11.85,
         "market_price_gbp": 1,
-        "price_aud": 92.46,
+        "price_aud": 22.8,
         "market_price_aud": 1,
         "price_inr": 1
       },
       {
         "pack": "1 Inhaler",
         "quantity": 5,
-        "price_usd": 69.64,
+        "price_usd": 25,
         "market_price_usd": 1,
-        "price_gbp": 55.02,
+        "price_gbp": 19.75,
         "market_price_gbp": 1,
-        "price_aud": 105.85,
+        "price_aud": 38,
         "market_price_aud": 1,
         "price_inr": 1
       }
     ],
     "packaging": {
-      "label": "1 Inhaler",
+      "label": "1 bottle 30 caps",
       "units_per_pack": 1,
       "packs_per_box": 1,
-      "pack_unit": "pack",
+      "pack_unit": "bottle",
       "max_units": 500,
       "max_boxes": 5
     },
     "display_quantities": [
       3,
       5
-    ]
+    ],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 500,
+      "price_per_pack_usd": 5
+    }
   },
   {
     "manager_key": "P0071",
@@ -4496,22 +4621,22 @@
       {
         "pack": "1 Tube",
         "quantity": 3,
-        "price_usd": 70,
+        "price_usd": 28.62,
         "market_price_usd": 1,
-        "price_gbp": 55.3,
+        "price_gbp": 22.61,
         "market_price_gbp": 1,
-        "price_aud": 106.4,
+        "price_aud": 43.5,
         "market_price_aud": 1,
         "price_inr": 1
       },
       {
         "pack": "1 Tube",
         "quantity": 5,
-        "price_usd": 89.29,
+        "price_usd": 47.7,
         "market_price_usd": 1,
-        "price_gbp": 70.54,
+        "price_gbp": 37.68,
         "market_price_gbp": 1,
-        "price_aud": 135.72,
+        "price_aud": 72.5,
         "market_price_aud": 1,
         "price_inr": 1
       }
@@ -4527,7 +4652,12 @@
     "display_quantities": [
       3,
       5
-    ]
+    ],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 954,
+      "price_per_pack_usd": 9.54
+    }
   },
   {
     "manager_key": "P0072",
@@ -4546,22 +4676,22 @@
       {
         "pack": "10 Capsules/Strip",
         "quantity": 100,
-        "price_usd": 60.12,
+        "price_usd": 53.9,
         "market_price_usd": 1,
-        "price_gbp": 47.49,
+        "price_gbp": 42.58,
         "market_price_gbp": 1,
-        "price_aud": 91.38,
+        "price_aud": 81.93,
         "market_price_aud": 1,
         "price_inr": 1
       },
       {
         "pack": "10 Capsules/Strip",
         "quantity": 300,
-        "price_usd": 88.69,
+        "price_usd": 161.7,
         "market_price_usd": 1,
-        "price_gbp": 70.07,
+        "price_gbp": 127.74,
         "market_price_gbp": 1,
-        "price_aud": 134.81,
+        "price_aud": 245.78,
         "market_price_aud": 1,
         "price_inr": 1
       }
@@ -4577,7 +4707,12 @@
     "display_quantities": [
       100,
       300
-    ]
+    ],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 539,
+      "price_per_pack_usd": 5.39
+    }
   },
   {
     "manager_key": "P0073",
@@ -4595,22 +4730,22 @@
       {
         "pack": "10 Capsules/Strip",
         "quantity": 100,
-        "price_usd": 95.83,
+        "price_usd": 61.3,
         "market_price_usd": 1,
-        "price_gbp": 75.71,
+        "price_gbp": 48.43,
         "market_price_gbp": 1,
-        "price_aud": 145.66,
+        "price_aud": 93.18,
         "market_price_aud": 1,
         "price_inr": 1
       },
       {
         "pack": "10 Capsules/Strip",
         "quantity": 300,
-        "price_usd": 197.62,
+        "price_usd": 183.9,
         "market_price_usd": 1,
-        "price_gbp": 156.12,
+        "price_gbp": 145.28,
         "market_price_gbp": 1,
-        "price_aud": 300.38,
+        "price_aud": 279.53,
         "market_price_aud": 1,
         "price_inr": 1
       }
@@ -4626,7 +4761,12 @@
     "display_quantities": [
       100,
       300
-    ]
+    ],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 613,
+      "price_per_pack_usd": 6.13
+    }
   },
   {
     "manager_key": "P0074",
@@ -4644,33 +4784,33 @@
       {
         "pack": "1 Bottle",
         "quantity": 3,
-        "price_usd": 47.2,
+        "price_usd": 4.47,
         "market_price_usd": 1,
-        "price_gbp": 37.29,
+        "price_gbp": 3.53,
         "market_price_gbp": 1,
-        "price_aud": 71.74,
+        "price_aud": 6.79,
         "market_price_aud": 1,
         "price_inr": 1
       },
       {
         "pack": "1 Bottle",
         "quantity": 5,
-        "price_usd": 52.2,
+        "price_usd": 7.45,
         "market_price_usd": 1,
-        "price_gbp": 41.24,
+        "price_gbp": 5.89,
         "market_price_gbp": 1,
-        "price_aud": 79.34,
+        "price_aud": 11.32,
         "market_price_aud": 1,
         "price_inr": 1
       },
       {
         "pack": "1 Bottle",
         "quantity": 7,
-        "price_usd": 57.2,
+        "price_usd": 10.43,
         "market_price_usd": 1,
-        "price_gbp": 45.19,
+        "price_gbp": 8.24,
         "market_price_gbp": 1,
-        "price_aud": 86.94,
+        "price_aud": 15.85,
         "market_price_aud": 1,
         "price_inr": 1
       }
@@ -4686,7 +4826,12 @@
     "display_quantities": [
       3,
       5
-    ]
+    ],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 149,
+      "price_per_pack_usd": 1.49
+    }
   },
   {
     "manager_key": "P0075",
@@ -4704,33 +4849,33 @@
       {
         "pack": "120tabs/Bottle",
         "quantity": 120,
-        "price_usd": 46.9,
+        "price_usd": 3.33,
         "market_price_usd": 1,
-        "price_gbp": 37.05,
+        "price_gbp": 2.63,
         "market_price_gbp": 1,
-        "price_aud": 71.29,
+        "price_aud": 5.06,
         "market_price_aud": 1,
         "price_inr": 1
       },
       {
         "pack": "120tabs/Bottle",
         "quantity": 240,
-        "price_usd": 51.9,
+        "price_usd": 6.66,
         "market_price_usd": 1,
-        "price_gbp": 41,
+        "price_gbp": 5.26,
         "market_price_gbp": 1,
-        "price_aud": 78.89,
+        "price_aud": 10.12,
         "market_price_aud": 1,
         "price_inr": 1
       },
       {
         "pack": "120tabs/Bottle",
         "quantity": 360,
-        "price_usd": 56.9,
+        "price_usd": 9.99,
         "market_price_usd": 1,
-        "price_gbp": 44.95,
+        "price_gbp": 7.89,
         "market_price_gbp": 1,
-        "price_aud": 86.49,
+        "price_aud": 15.18,
         "market_price_aud": 1,
         "price_inr": 1
       }
@@ -4747,7 +4892,12 @@
       120,
       240,
       360
-    ]
+    ],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 333,
+      "price_per_pack_usd": 3.33
+    }
   },
   {
     "manager_key": "P0076",
@@ -4765,22 +4915,22 @@
       {
         "pack": "1 Vial",
         "quantity": 1,
-        "price_usd": 45.54,
+        "price_usd": 1.67,
         "market_price_usd": 1,
-        "price_gbp": 35.98,
+        "price_gbp": 1.32,
         "market_price_gbp": 1,
-        "price_aud": 69.22,
+        "price_aud": 2.54,
         "market_price_aud": 1,
         "price_inr": 1
       },
       {
         "pack": "1 Vial",
         "quantity": 3,
-        "price_usd": 50.54,
+        "price_usd": 5.01,
         "market_price_usd": 1,
-        "price_gbp": 39.93,
+        "price_gbp": 3.96,
         "market_price_gbp": 1,
-        "price_aud": 76.82,
+        "price_aud": 7.62,
         "market_price_aud": 1,
         "price_inr": 1
       }
@@ -4796,7 +4946,12 @@
     "display_quantities": [
       1,
       3
-    ]
+    ],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 167,
+      "price_per_pack_usd": 1.67
+    }
   },
   {
     "manager_key": "P0077",
@@ -12509,5 +12664,33 @@
       3,
       5
     ]
+  },
+  {
+    "manager_key": "P0200",
+    "id": "Carprofen75",
+    "name": "Carprofen 75mg",
+    "brand": "Generic",
+    "composition": "Carprofen 75mg",
+    "category": "Veterinary Medicines",
+    "use": "Carprofen 75 mg is a prescription nonsteroidal anti-inflammatory drug (NSAID) used exclusively in dogs",
+    "thumbnail": "assets/images/products/Carprofen75.jpeg",
+    "images": [
+      "assets/images/products/Carprofen75.jpeg"
+    ],
+    "variants": [],
+    "packaging": {
+      "label": "6 Tablets/Strip",
+      "units_per_pack": 6,
+      "packs_per_box": 1,
+      "pack_unit": "strip",
+      "max_units": 500,
+      "max_boxes": 5
+    },
+    "display_quantities": [],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 457,
+      "price_per_pack_usd": 4.57
+    }
   }
 ]
