@@ -48,3 +48,14 @@ test('missing price and forged product key fail closed',()=>{
  assert.equal(v2.isReady(p),false);
  assert.throws(()=>v2.quote([{managerKey:'P9999',packCount:1,pricingMode:'v2'}],[strip()]),/not available/i);
 });
+
+test('a sold box counts as one physical shipping box regardless of stale packs-per-box metadata',()=>{
+ const p={...strip('P0023','Oral Jelly'),packaging:{
+   label:'7 Sachets/Box',units_per_pack:7,packs_per_box:7,pack_unit:'box'
+ }};
+ assert.equal(v2.maxPacks(p),5);
+ const q=v2.quote([{managerKey:'P0023',packCount:2,pricingMode:'v2'}],[p]);
+ assert.equal(q.totalBoxes,2);
+ assert.equal(q.shippingUsd,35);
+ assert.throws(()=>v2.price(p,6),/Maximum/);
+});
