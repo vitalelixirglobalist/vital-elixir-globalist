@@ -42,7 +42,7 @@ The 20–40 boundary is the only unconfirmed threshold. Update both `pricing-v2.
 ## Security and status
 V2 uses public, locally calculated **estimates**, not a signed private server quote. These must be confirmed by the team before any payment or supply commitment. Existing Firestore permissions should be audited: the browser is not a trusted authority for final order pricing. Retain the old Apps Script service for future pricing decisions, but do not send V2 cart values to Google Sheets.
 
-The GitHub code is staged; existing new pricing data is not populated until the Sheet is configured and the updated Apps Script is installed/published.
+The Pricing V2 code was initially staged before the catalogue was fully populated. The 9 November notes below are historical; consult the 17 November consolidation status for the latest catalogue state.
 
 ## Hotfix — 9 November 2026
 
@@ -55,3 +55,13 @@ The new top Cost / Pack / Enter the strips panel appears above Dosage / strength
 **Apps Script still needs user installation and credential repair.** Use `Vital_Elixir_Pricing_V2_Apps_Script_FIXED.gs` from the privately supplied ZIP, replacing the existing bound script after backing it up. In Apps Script Project Settings → Script Properties, renew `GITHUB_TOKEN` with a GitHub fine-grained PAT for exactly this repo and Contents read/write. Never commit or share the token. The corrected script can read the public catalogue without a valid token for preview, but publishing still requires a working token and preserves SHA/fingerprint checks.
 
 **Test scope:** Static code syntax, unit price multiplication, fractional box shipping, preset selection, whole-number input validation and maximum 50 strips all passed in isolated tests. The actual hosted desktop/mobile pages and Firestore checkout have not been verified in a browser; use the branch preview deployment for those tests before promoting to main. Main branch has not been modified by this hotfix.
+
+## Consolidation status — 17 November 2026
+
+- The Google Sheet-managed `UI-of-web` catalogue currently contains **200 products**. All 200 include a populated `pricing_v2` record and the published catalogue passes structural validation. The earlier four-product hotfix was a historical pilot, not the current total.
+- GitHub PR #13 merges this Sheet-managed branch into `main`, preserving independent main-branch changes. The proposed merge retains USD as the fresh-session default, retains the selected-currency legacy share behaviour, and adds selected-currency V2 preset/custom-pack sharing.
+- The published price fields were authored through the user's existing Sheet workflow; structural validation does **not** independently prove commercial price approval. Final orders and amounts still require company confirmation.
+- The shipping table above is unchanged. In particular, the 20–40-box bound remains the previously documented assumption, not a newly invented rule.
+- Existing catalogue metadata should be corrected **at the Sheet source**, not only in the generated JSON, to prevent the next automatic publish from undoing a correction: **P0023** and **P0079** describe `7 Sachets/Box` but have `pack_unit=box, packs_per_box=7`; **P0158** describes `1 Tablet/Strip` but has `units_per_pack=10`. Review against actual packaging before changing these values.
+- Firebase Functions email credentials still require separate environment setup: revoke the exposed historical Gmail app password, create a replacement, set it as the `GMAIL_APP_PASSWORD` Firebase Functions secret, and deploy the updated function. A GitHub/Cloudflare website deployment does **not** configure this Firebase secret.
+- Source-level pricing, currency-share and catalogue checks can be run independently of production. Live authenticated checkout, Firestore permissions and email delivery still require a real hosted end-to-end check.
