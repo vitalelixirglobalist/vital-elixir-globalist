@@ -759,40 +759,84 @@ dialog.style.zIndex = '2147483646';
 
 function copyProductRates() {
 
+  const isV2 = Boolean(
+    selectedProduct &&
+    window.vitalPricingV2?.isReady(selectedProduct)
+  );
+
   if (
     !selectedProduct ||
-    !Array.isArray(selectedProduct.variants) ||
-    !selectedProduct.variants.length
+    (!isV2 && (
+      !Array.isArray(selectedProduct.variants) ||
+      !selectedProduct.variants.length
+    ))
   ) {
-
     showToast('Product is still loading.');
     return;
   }
 
   try {
 
-    // Use the currency currently displayed, including its regional prices.
+    // Copy the same currency the visitor is looking at.
     const currency = getSelectedCurrency();
     const formatShareAmount = (amount) => `${formatSharePrice(amount)} ${currency}`;
 
-    const rateLines = selectedProduct.variants.map(
-      function(variant) {
+    let rateLines;
 
+    if (isV2) {
+
+      // V2 prices belong to whole physical packs, not old price tiers.
+      // Keep sharing the published quantity presets, plus the current
+      // custom quantity when it is not already one of those presets.
+      const packaging = selectedProduct.packaging;
+      const unitsPerPack = Number(packaging.units_per_pack);
+      const maxPacks = window.vitalPricingV2.maxPacks(selectedProduct);
+      const selectedPacks = selectedV2Selector.getSelection();
+
+      const presetPacks = (selectedProduct.display_quantities || [])
+        .map(units => Number(units) / unitsPerPack)
+        .filter(packs =>
+          Number.isInteger(packs) &&
+          packs > 0 &&
+          packs <= maxPacks
+        );
+
+      const packCounts = [...new Set([...presetPacks, selectedPacks])]
+        .sort((a, b) => a - b);
+
+      const packUnit = String(packaging.pack_unit || 'pack').trim().toLowerCase();
+      const unit = getShareUnit({ pack: packaging.label });
+      const perUnitLabel = unit
+        ? (unit === 'Tablet' || unit === 'Capsule' ? 'pill' : unit.toLowerCase())
+        : null;
+
+      rateLines = packCounts.map(packs => {
+        const units = packs * unitsPerPack;
+        const priceUsd = window.vitalPricingV2.price(selectedProduct, packs);
+        const price = window.pricingEngine.convertUsdToCurrency(priceUsd, currency);
+        const quantityLabel = getShareQuantityLabel({
+          quantity: units,
+          pack: packaging.label
+        });
+        const packLabel = `${packs} ${packs === 1 ? packUnit : packUnit + 's'}`;
+        const perUnitText = perUnitLabel
+          ? ` (${formatShareAmount(price / units)} per ${perUnitLabel})`
+          : '';
+
+        return `${quantityLabel} (${packLabel}) for ${formatShareAmount(price)}${perUnitText}`;
+      });
+
+    } else {
+
+      // Preserve the existing legacy sharing behaviour.
+      rateLines = selectedProduct.variants.map(function(variant) {
         const price = Number(getRegionalPriceData(variant).buyWithUs);
 
-        if (
-          !Number.isFinite(price) ||
-          price <= 0
-        ) {
-          throw new Error(
-            'A product price is unavailable.'
-          );
+        if (!Number.isFinite(price) || price <= 0) {
+          throw new Error('A product price is unavailable.');
         }
 
-        const quantityLabel =
-          getShareQuantityLabel(variant);
-
-
+        const quantityLabel = getShareQuantityLabel(variant);
         const quantity = Number(variant.quantity);
         const unit = getShareUnit(variant);
         const perUnitLabel = unit
@@ -803,13 +847,10 @@ function copyProductRates() {
           ? ` (${formatShareAmount(price / quantity)} per ${perUnitLabel})`
           : '';
 
-        return (
-          `${quantityLabel} for ` +
-          formatShareAmount(price) +
-          perUnitText
-        );
-      }
-    );
+        return `${quantityLabel} for ${formatShareAmount(price)}${perUnitText}`;
+      });
+
+    }
 
     const managerKey = encodeURIComponent(
       selectedProduct.manager_key
