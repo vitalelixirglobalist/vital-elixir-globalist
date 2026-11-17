@@ -11,10 +11,13 @@ const valid=p=>Boolean(p && p.packaging && p.pricing_v2 &&
   num(p.pricing_v2.price_per_pack_cents)>0 &&
   Number.isInteger(num(p.packaging.units_per_pack)) && num(p.packaging.units_per_pack)>0 && num(p.packaging.units_per_pack)<=500 &&
   Number.isInteger(num(p.packaging.packs_per_box)) && num(p.packaging.packs_per_box)>0);
+// A physical pack already sold as a box represents one shipping box.
+// Keep the published packs_per_box value for strips, bottles, tubes, etc.
+function physicalPacksPerBox(pk){return String(pk.pack_unit||"").trim().toLowerCase()==="box" ? 1 : num(pk.packs_per_box);}
 function maxPacks(p){
  if(!valid(p))return 0;
  const pk=p.packaging;
- return Math.max(0,Math.min(Math.floor(500/num(pk.units_per_pack)),5*num(pk.packs_per_box)));
+ return Math.max(0,Math.min(Math.floor(500/num(pk.units_per_pack)),5*physicalPacksPerBox(pk)));
 }
 function currency(){return root.currencyUtils?.getSelectedCurrency?.()||"USD";}
 function formatUsd(usd){const c=currency(); const rate=num(root.currencyUtils?.rates?.[c]||1);
@@ -27,7 +30,7 @@ function validatePackCount(product,count){
  if(!Number.isInteger(count)||count<1)throw Error("Enter a positive whole number of "+packName(product)+"s.");
  const max=maxPacks(product),pk=product.packaging;
  if(count>max)throw Error("Maximum quantity is 500 units or 5 boxes per medicine ("+max+" "+packName(product)+(max===1?"":"s")+").");
- if(count*pk.units_per_pack>500||count/pk.packs_per_box>5)throw Error("Maximum quantity is 500 units and 5 boxes.");
+ if(count*pk.units_per_pack>500||count/physicalPacksPerBox(pk)>5)throw Error("Maximum quantity is 500 units and 5 boxes.");
  return count;
 }
 function price(product,packCount){return validatePackCount(product,packCount)*num(product.pricing_v2.price_per_pack_cents)/CENTS;}
@@ -46,7 +49,7 @@ function choices(product){
  let candidates=(product.display_quantities||[])
    .map(x=>Number(x)/q.units_per_pack)
    .filter(x=>Number.isInteger(x)&&x>0&&x<=m);
- if(!candidates.length)candidates=[1,q.packs_per_box,3*q.packs_per_box,5*q.packs_per_box].filter(x=>x<=m);
+ if(!candidates.length)candidates=[1,physicalPacksPerBox(q),3*physicalPacksPerBox(q),5*physicalPacksPerBox(q)].filter(x=>x<=m);
  return [...new Set(candidates)].sort((a,b)=>a-b);
 }
 function mountSelector(host,product,callback,selectHost){
@@ -59,8 +62,8 @@ function mountSelector(host,product,callback,selectHost){
  const left=node("div"),right=node("div");
  left.append(node("p","text-xs font-semibold text-slate-500 mb-1","Cost"),node("p","text-xl font-bold text-brand",formatUsd(num(product.pricing_v2.price_per_pack_cents)/100)+" per "+unit));
  const contents=(pk.label.match(/(?:tablets?|capsules?|sachets?)/i)||["units"])[0].toLowerCase();
- const boxDescription=unit==="strip" ? (pk.units_per_pack*pk.packs_per_box)+" "+contents+" per box" : pk.packs_per_box+" "+unit+(pk.packs_per_box===1?"":"s")+" per box";
- right.append(node("p","text-xs font-semibold text-slate-500 mb-1","Pack"),node("p","text-sm md:text-base font-semibold text-slate-700",pk.label+" · "+boxDescription));
+ const boxDescription=unit==="box" ? "" : unit==="strip" ? (pk.units_per_pack*physicalPacksPerBox(pk))+" "+contents+" per box" : physicalPacksPerBox(pk)+" "+unit+(physicalPacksPerBox(pk)===1?"":"s")+" per box";
+ right.append(node("p","text-xs font-semibold text-slate-500 mb-1","Pack"),node("p","text-sm md:text-base font-semibold text-slate-700",pk.label+(boxDescription?" · "+boxDescription:"")));
  summary.append(left,right);
  const entry=node("div","border-t border-blue-200 mt-3 pt-3 flex flex-col md:flex-row md:items-center md:justify-between gap-2");
  const field=node("div","flex items-center justify-between md:justify-start gap-3");
@@ -117,7 +120,7 @@ function quote(items,catalogue){
  for(const [key,n] of counts){
    const p=byKey.get(key);
    validatePackCount(p,n);
-   const q=p.packaging,unitCount=n*q.units_per_pack,boxCount=n/q.packs_per_box;
+   const q=p.packaging,unitCount=n*q.units_per_pack,boxCount=n/physicalPacksPerBox(q);
    const comp=String(p.composition||key).trim().toLowerCase();
    const c=compositions.get(comp)||{units:0,boxes:0};
    c.units+=unitCount;c.boxes+=boxCount;compositions.set(comp,c);
