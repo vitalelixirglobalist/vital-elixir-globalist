@@ -1,0 +1,8 @@
+{
+  "name": "vital-elixir-globalist",
+  "compatibility_date": "2026-11-09",
+  "assets": {
+    "directory": "./",
+    "html_handling": "auto-trailing-slash"
+  }
+}

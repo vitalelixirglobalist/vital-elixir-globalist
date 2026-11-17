@@ -10,6 +10,7 @@
   <script src="currency-utils.js"></script>
   <script src="pricing-engine.js"></script>
   <script src="quote-api.js"></script>
+  <script src="pricing-v2.js"></script>
   <script src="header.js" defer></script>
   <script>
     tailwind.config = {
@@ -708,6 +709,8 @@ const recoverLegacyCartItemIdentity = async (item) => {
 };
 
     const getProductId = (item) => {
+      if(item?.pricingMode==='v2' && /^P\d{4,}$/.test(String(item.managerKey||'')))
+        return item.managerKey+'-v2';
       if (item.productId) return String(item.productId);
       if (item.id && typeof item.id === 'string') return item.id;
       const base = `${item.name || 'item'}-${item.brand || 'brand'}-${item.pack || 'pack'}`;
@@ -874,7 +877,7 @@ const recoverLegacyCartItemIdentity = async (item) => {
         if (existingIds.has(productId)) {
           continue;
         }
-        const normalized = window.pricingEngine.normalizeCartItem(item);
+        const normalized = item.pricingMode==='v2' ? item : window.pricingEngine.normalizeCartItem(item);
         await setDoc(doc(db, 'users', uid, 'cart', productId), { ...normalized, id: productId }, { merge: true });
       }
       localStorage.removeItem('cart');
@@ -1013,12 +1016,15 @@ if (currentUser) {
  * Determine which cart rows are safe to send
  * to the private quote API.
  */
+// Legacy saved selections for V2-ready products need to be reselected.
+const currentCatalogue=await loadProductCatalogueForCart();
+const byManagerKey=new Map(currentCatalogue.map(p=>[p.manager_key,p]));
+const needsV2Reselection=item=>
+  item.pricingMode!=='v2' &&
+  window.vitalPricingV2?.isReady(byManagerKey.get(item.managerKey));
 const invalidCartItems =
-  cartItems.filter(
-    (item) =>
-      !hasValidPrivateQuoteIdentity(
-        item
-      )
+  cartItems.filter(item=>
+    !hasValidPrivateQuoteIdentity(item) || needsV2Reselection(item)
   );
 
   
@@ -1036,9 +1042,7 @@ const strength =
   );
 
 const identityValid =
-  hasValidPrivateQuoteIdentity(
-    item
-  );
+  hasValidPrivateQuoteIdentity(item) && !needsV2Reselection(item);
 
 
 const selectedQuantityDisplay =
@@ -1069,7 +1073,7 @@ const quantityDisplay =
           <div class="md:col-span-3">
 
           <div class="text-sm font-semibold">
-            ${selectedQuantity}
+            ${item.pricingMode==='v2' ? item.packCount+' packs ('+selectedQuantity+' units)' : selectedQuantity}
           </div>
 
           <p class="text-xs text-slate-500 mt-1">
@@ -1128,7 +1132,7 @@ if (
     <div class="p-4 rounded-xl border border-amber-200 bg-amber-50">
 
       <p class="text-sm font-semibold text-amber-800">
-        Some saved medications need to be selected again.
+        Some saved medications use an old quantity or pricing format and need to be selected again.
       </p>
 
       <p class="text-xs text-amber-700 mt-1">
@@ -1156,10 +1160,13 @@ if (
 
   try {
 
-    signedQuote =
-      await window.vitalQuoteApi.requestQuote(
-        cartItems
-      );
+    if(cartItems.every(item=>item.pricingMode==='v2')) {
+      signedQuote=await window.vitalQuoteApi.requestPublishedQuoteV2(cartItems,await loadProductCatalogueForCart());
+    } else if (cartItems.some(item=>item.pricingMode==='v2')) {
+      throw new Error('Your cart mixes old and new pricing. Please reselect the old medicines.');
+    } else {
+      signedQuote=await window.vitalQuoteApi.requestQuote(cartItems);
+    }
 
 
     currentSignedQuote =
@@ -1183,7 +1190,7 @@ if (
       <div class="p-4 rounded-xl border border-red-200 bg-red-50">
 
         <p class="text-sm font-semibold text-red-700">
-          We could not calculate your quotation.
+          ${/Shipping quantity too big/i.test(String(error?.message||'')) ? 'Shipping quantity too big — break your order into parts.' : 'We could not calculate your quotation.'}
         </p>
 
         <p class="text-xs text-red-600 mt-1">
@@ -1207,7 +1214,7 @@ cartSummaryDiv.innerHTML = `
     </h3>
 
     <p class="text-xs text-slate-500">
-      Secure quotation calculated from your complete medication selection.
+      Medication and shipping estimate from published prices. Our team confirms the final quotation.
     </p>
 
   </div>
@@ -1263,7 +1270,7 @@ cartSummaryDiv.innerHTML = `
     <div class="pt-2">
 
       <p class="text-xs text-slate-500">
-        Quote valid for approximately 15 minutes.
+        Published catalogue estimate — final availability and pricing confirmed by our team.
       </p>
 
     </div>
@@ -1318,6 +1325,11 @@ cartSummaryDiv.innerHTML = `
     const promoCode =
       document.getElementById('promoCode')?.value?.trim() || '';
 
+    if(currentSignedQuote?.pricingVersion===2){
+      discountRate=0;
+      if(couponMessage)couponMessage.textContent='Promotions require team confirmation and are not included in this estimate.';
+      return;
+    }
     if (!loyaltyCode && !promoCode) {
 
       discountRate = 0;
@@ -1444,9 +1456,9 @@ if (!currentSignedQuote) {
 }
 
 const verifiedQuote =
-  await window.vitalQuoteApi.verifyCheckoutQuote(
-    currentSignedQuote
-  );
+  currentSignedQuote.pricingVersion===2
+    ? await window.vitalQuoteApi.requestPublishedQuoteV2(cart,await loadProductCatalogueForCart())
+    : await window.vitalQuoteApi.verifyCheckoutQuote(currentSignedQuote);
 
 if (!verifiedQuote) {
 
@@ -1485,6 +1497,12 @@ const processedCart =
     selectedQuantity:
       Number(item.selectedQuantity),
 
+    pricingMode:
+      item.pricingMode || 'legacy',
+
+    packCount:
+      item.pricingMode==='v2' ? Number(item.packCount) : null,
+
     image:
       item.image || ''
 
@@ -1498,13 +1516,19 @@ VERIFIED PRICING SNAPSHOT
 const pricingSummary = {
 
   quoteId:
-    verifiedQuote.quoteId,
+    verifiedQuote.quoteId || null,
+
+  pricingVersion:
+    verifiedQuote.pricingVersion || 1,
 
   currency:
     verifiedQuote.currency,
 
   medicineTypeCount:
     verifiedQuote.medicineTypeCount,
+
+  lines:
+    verifiedQuote.pricingVersion===2 ? (verifiedQuote.lines || []) : [],
 
   totalBoxes:
     verifiedQuote.totalBoxes,
@@ -1538,7 +1562,7 @@ const pricingSummary = {
   totals: pricingSummary,
 
   signedQuote:
-    verifiedQuote,
+    verifiedQuote.pricingVersion===2 ? null : verifiedQuote,
 
   status:
     "new-request",

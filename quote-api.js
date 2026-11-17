@@ -356,10 +356,20 @@
    * ----------------------------------------------------------
    */
 
+  // Pricing V2 uses only the already-published JSON. No Apps Script call.
+  // Returned figures are customer-visible estimates, NOT signed quotations.
+  async function requestPublishedQuoteV2(cart, catalogue) {
+    if(!window.vitalPricingV2) throw new Error('Published pricing engine not loaded.');
+    return window.vitalPricingV2.quote(cart, catalogue);
+  }
+
   window.vitalQuoteApi = {
 
     requestQuote:
       requestQuote,
+
+    requestPublishedQuoteV2:
+      requestPublishedQuoteV2,
 
     verifyCheckoutQuote:
       verifyCheckoutQuote,
