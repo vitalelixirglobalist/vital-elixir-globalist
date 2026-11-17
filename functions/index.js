@@ -73,9 +73,23 @@ exports.sendMedicationRequestEmail = onDocumentCreated(
         const pricing = readFinalPricing(item);
         const v2 = totals.pricingVersion === 2;
         const pricedLine = v2Lines.get(String(item.managerKey || ''));
-        const lineUsd = v2 ? (pricedLine ? pricedLine.medicationUsd : 'Pending team confirmation') : pricing.finalTotalUSD;
+        const lineUsd = v2
+        ? (pricedLine ? pricedLine.medicationUsd : 'Pending team confirmation')
+        : pricing.finalTotalUSD;
 
-        itemList += `
+      // V2 is an estimate calculated from published prices; legacy pricing
+      // fields would incorrectly show zeros in this email.
+      const priceDisplay = v2
+        ? 'USD ' + (item.packCount > 0 && pricedLine
+          ? (Number(pricedLine.medicationUsd) / Number(item.packCount)).toFixed(2)
+          : 'Pending team confirmation') + ' per pack (estimate)'
+        : 'USD ' + pricing.finalPriceUSD + '\nINR ' + pricing.finalPriceINR;
+
+      const itemTotalDisplay = v2
+        ? 'USD ' + lineUsd + ' (estimate; team confirmation required)'
+        : 'USD ' + pricing.finalTotalUSD + '\nINR ' + pricing.finalTotalINR;
+
+      itemList += `
 ${index + 1}. ${item.name || "Medicine"}
 
 Pack: ${item.pack || "N/A"}
@@ -83,12 +97,10 @@ Pack: ${item.pack || "N/A"}
 Quantity: ${item.pricingMode === 'v2' ? String(item.packCount || 0) + ' packs (' + String(item.selectedQuantity || 0) + ' units)' : (item.selectedQuantity || item.quantity || 1)}
 
 Price:
-USD ${pricing.finalPriceUSD}
-INR ${pricing.finalPriceINR}
+${priceDisplay}
 
 Item Total:
-USD ${pricing.finalTotalUSD}
-INR ${pricing.finalTotalINR}
+${itemTotalDisplay}
 
 -----------------------------------
 `;
