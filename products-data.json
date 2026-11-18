@@ -3969,8 +3969,10 @@
     "composition": "Pheniramine 50 mg",
     "category": "Antihistamine",
     "use": "Relief of symptoms associated with allergic conditions",
-    "thumbnail": "",
-    "images": [],
+    "thumbnail": "assets/images/products/tamoxifen20.jpeg",
+    "images": [
+      "assets/images/products/tamoxifen20.jpeg"
+    ],
     "variants": [
       {
         "pack": "10 Tablets/Strip",
@@ -13306,6 +13308,285 @@
       "currency": "USD",
       "price_per_pack_cents": 457,
       "price_per_pack_usd": 4.57
+    }
+  },
+  {
+    "manager_key": "P0201",
+    "id": "Semaglutide3mgRY",
+    "name": "Rybelsus\tSemaglutide3mg",
+    "brand": "Rybelsus",
+    "composition": "Semaglutide3mg",
+    "category": "🩸 Diabetes & Metabolic Care",
+    "use": "prescribed as the starting (initiation) dose for adults with type 2 diabetes, Secondarily mild weight loss",
+    "thumbnail": "assets/images/products/Semaglutide3mgRY.jpeg",
+    "images": [
+      "assets/images/products/Semaglutide3mgRY.jpeg"
+    ],
+    "variants": [],
+    "packaging": {
+      "label": "10 Tablets/Strip",
+      "units_per_pack": 1,
+      "packs_per_box": 1,
+      "pack_unit": "strip",
+      "max_units": 500,
+      "max_boxes": 5
+    },
+    "display_quantities": [
+      1,
+      3
+    ],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 3954,
+      "price_per_pack_usd": 39.54
+    }
+  },
+  {
+    "manager_key": "P0202",
+    "id": "Semaglutide7mgRY",
+    "name": "Rybelsus\tSemaglutide7mg",
+    "brand": "Rybelsus",
+    "composition": "Semaglutide7mg",
+    "category": "🩸 Diabetes & Metabolic Care",
+    "use": "prescribed as the starting dose for adults with type 2 diabetes, Secondarily mild weight loss",
+    "thumbnail": "assets/images/products/Semaglutide7mgRY.jpeg",
+    "images": [
+      "assets/images/products/Semaglutide7mgRY.jpeg"
+    ],
+    "variants": [],
+    "packaging": {
+      "label": "10 Tablets/Strip",
+      "units_per_pack": 1,
+      "packs_per_box": 1,
+      "pack_unit": "strip",
+      "max_units": 500,
+      "max_boxes": 5
+    },
+    "display_quantities": [
+      1,
+      3
+    ],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 4464,
+      "price_per_pack_usd": 44.64
+    }
+  },
+  {
+    "manager_key": "P0203",
+    "id": "Semaglutide14mgRY",
+    "name": "Rybelsus\tSemaglutide14mg",
+    "brand": "Rybelsus",
+    "composition": "Semaglutide14mg",
+    "category": "🩸 Diabetes & Metabolic Care",
+    "use": "prescribed as the starting dose for adults with type 2 diabetes, Secondarily mild weight loss",
+    "thumbnail": "assets/images/products/Semaglutide14mgRY.jpeg",
+    "images": [
+      "assets/images/products/Semaglutide14mgRY.jpeg"
+    ],
+    "variants": [],
+    "packaging": {
+      "label": "10 Tablets/Strip",
+      "units_per_pack": 1,
+      "packs_per_box": 1,
+      "pack_unit": "strip",
+      "max_units": 500,
+      "max_boxes": 5
+    },
+    "display_quantities": [
+      1,
+      3
+    ],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 4974,
+      "price_per_pack_usd": 49.74
+    }
+  },
+  {
+    "manager_key": "P0204",
+    "id": "Semaglutide3mgSY",
+    "name": "Symbollic\tSemaglutide3mg",
+    "brand": "Symbollic",
+    "composition": "Semaglutide3mg",
+    "category": "🩸 Diabetes & Metabolic Care",
+    "use": "prescribed as the starting (initiation) dose for adults with type 2 diabetes, Secondarily mild weight loss",
+    "thumbnail": "assets/images/products/Semaglutide3mgSY.jpeg",
+    "images": [
+      "assets/images/products/Semaglutide3mgSY.jpeg"
+    ],
+    "variants": [],
+    "packaging": {
+      "label": "10 Tablets/Strip",
+      "units_per_pack": 1,
+      "packs_per_box": 1,
+      "pack_unit": "strip",
+      "max_units": 500,
+      "max_boxes": 5
+    },
+    "display_quantities": [
+      1,
+      3
+    ],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 1476,
+      "price_per_pack_usd": 14.76
+    }
+  },
+  {
+    "manager_key": "P0205",
+    "id": "Semaglutide7mgSY",
+    "name": "Symbollic\tSemaglutide7mg",
+    "brand": "Symbollic",
+    "composition": "Semaglutide7mg",
+    "category": "🩸 Diabetes & Metabolic Care",
+    "use": "prescribed as the starting dose for adults with type 2 diabetes, Secondarily mild weight loss",
+    "thumbnail": "assets/images/products/Semaglutide7mgSY.jpeg",
+    "images": [
+      "assets/images/products/Semaglutide7mgSY.jpeg"
+    ],
+    "variants": [],
+    "packaging": {
+      "label": "10 Tablets/Strip",
+      "units_per_pack": 1,
+      "packs_per_box": 1,
+      "pack_unit": "strip",
+      "max_units": 500,
+      "max_boxes": 5
+    },
+    "display_quantities": [
+      1,
+      3
+    ],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 2071,
+      "price_per_pack_usd": 20.71
+    }
+  },
+  {
+    "manager_key": "P0206",
+    "id": "Semaglutide14mgSY",
+    "name": "Symbollic\tSemaglutide14mg",
+    "brand": "Symbollic",
+    "composition": "Semaglutide14mg",
+    "category": "🩸 Diabetes & Metabolic Care",
+    "use": "prescribed as the starting dose for adults with type 2 diabetes, Secondarily mild weight loss",
+    "thumbnail": "assets/images/products/Semaglutide14mgSY.jpeg",
+    "images": [
+      "assets/images/products/Semaglutide14mgSY.jpeg"
+    ],
+    "variants": [],
+    "packaging": {
+      "label": "10 Tablets/Strip",
+      "units_per_pack": 1,
+      "packs_per_box": 1,
+      "pack_unit": "strip",
+      "max_units": 500,
+      "max_boxes": 5
+    },
+    "display_quantities": [
+      1,
+      3
+    ],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 3679,
+      "price_per_pack_usd": 36.79
+    }
+  },
+  {
+    "manager_key": "P0207",
+    "id": "Semaglutide3mgOB",
+    "name": "Obeda (Short exp)\tSemaglutide3mg",
+    "brand": "Obeda",
+    "composition": "Semaglutide3mg",
+    "category": "🩸 Diabetes & Metabolic Care",
+    "use": "prescribed as the starting (initiation) dose for adults with type 2 diabetes, Secondarily mild weight loss",
+    "thumbnail": "assets/images/products/Semaglutide3mgOB.jpeg",
+    "images": [
+      "assets/images/products/Semaglutide3mgOB.jpeg"
+    ],
+    "variants": [],
+    "packaging": {
+      "label": "10 Tablets/Strip",
+      "units_per_pack": 1,
+      "packs_per_box": 1,
+      "pack_unit": "strip",
+      "max_units": 500,
+      "max_boxes": 5
+    },
+    "display_quantities": [
+      1,
+      3
+    ],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 1595,
+      "price_per_pack_usd": 15.95
+    }
+  },
+  {
+    "manager_key": "P0208",
+    "id": "Semaglutide7mgOB",
+    "name": "Obeda (Short exp)\tSemaglutide7mg",
+    "brand": "Obeda",
+    "composition": "Semaglutide7mg",
+    "category": "🩸 Diabetes & Metabolic Care",
+    "use": "prescribed as the starting dose for adults with type 2 diabetes, Secondarily mild weight loss",
+    "thumbnail": "assets/images/products/Semaglutide7mgOB.jpeg",
+    "images": [
+      "assets/images/products/Semaglutide7mgOB.jpeg"
+    ],
+    "variants": [],
+    "packaging": {
+      "label": "10 Tablets/Strip",
+      "units_per_pack": 1,
+      "packs_per_box": 1,
+      "pack_unit": "strip",
+      "max_units": 500,
+      "max_boxes": 5
+    },
+    "display_quantities": [
+      1,
+      3
+    ],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 1952,
+      "price_per_pack_usd": 19.52
+    }
+  },
+  {
+    "manager_key": "P0209",
+    "id": "Semaglutide14mgOB",
+    "name": "Obeda (Short exp)\tSemaglutide14mg",
+    "brand": "Obeda",
+    "composition": "Semaglutide14mg",
+    "category": "🩸 Diabetes & Metabolic Care",
+    "use": "prescribed as the starting dose for adults with type 2 diabetes, Secondarily mild weight loss",
+    "thumbnail": "assets/images/products/Semaglutide14mgOB.jpeg",
+    "images": [
+      "assets/images/products/Semaglutide14mgOB.jpeg"
+    ],
+    "variants": [],
+    "packaging": {
+      "label": "10 Tablets/Strip",
+      "units_per_pack": 1,
+      "packs_per_box": 1,
+      "pack_unit": "strip",
+      "max_units": 500,
+      "max_boxes": 5
+    },
+    "display_quantities": [
+      1,
+      3
+    ],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 3036,
+      "price_per_pack_usd": 30.36
     }
   }
 ]
