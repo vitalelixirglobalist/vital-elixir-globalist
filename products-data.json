@@ -13652,5 +13652,37 @@
       "price_per_pack_cents": 167,
       "price_per_pack_usd": 1.67
     }
+  },
+  {
+    "manager_key": "P0212",
+    "id": "AdrenalineAmp",
+    "name": "Adrenaline 1mg/ml (Amp)",
+    "brand": "Generic",
+    "composition": "Adrenaline 1mg/ml",
+    "category": "Cardiovascular Care",
+    "use": "to treat anaphylaxis (severe allergic reactions), cardiac arrest, and severe low blood pressure (shock)",
+    "thumbnail": "assets/images/products/AdrenalineAmp.jpeg",
+    "images": [
+      "assets/images/products/AdrenalineAmp.jpeg"
+    ],
+    "variants": [],
+    "packaging": {
+      "label": "1 Ampoule",
+      "units_per_pack": 1,
+      "packs_per_box": 10,
+      "pack_unit": "pack",
+      "max_units": 500,
+      "max_boxes": 5
+    },
+    "display_quantities": [
+      1,
+      3,
+      5
+    ],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 60,
+      "price_per_pack_usd": 0.6
+    }
   }
 ]
