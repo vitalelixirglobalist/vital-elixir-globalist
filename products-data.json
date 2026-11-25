@@ -13748,5 +13748,33 @@
       "price_per_pack_cents": 36,
       "price_per_pack_usd": 0.36
     }
+  },
+  {
+    "manager_key": "P0215",
+    "id": "Piracetam400mg",
+    "name": "Piracetam 400mg",
+    "brand": "Generic",
+    "composition": "Piracetam 400mg",
+    "category": "Men's Health",
+    "use": "used primarily for neurological and cognitive conditions such as memory decline, dementia, vertigo, and cortical myoclonus",
+    "thumbnail": "assets/images/products/Piracetam 400mg.jpeg",
+    "images": [
+      "assets/images/products/Piracetam400mg.jpeg"
+    ],
+    "variants": [],
+    "packaging": {
+      "label": "10 Tablets/Strip",
+      "units_per_pack": 1,
+      "packs_per_box": 10,
+      "pack_unit": "strip",
+      "max_units": 500,
+      "max_boxes": 5
+    },
+    "display_quantities": [],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 154,
+      "price_per_pack_usd": 1.54
+    }
   }
 ]
