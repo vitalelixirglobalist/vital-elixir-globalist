@@ -13684,5 +13684,69 @@
       "price_per_pack_cents": 60,
       "price_per_pack_usd": 0.6
     }
+  },
+  {
+    "manager_key": "P0213",
+    "id": "evaloncream",
+    "name": "EVALON CREAM",
+    "brand": "aspen",
+    "composition": "Estriol  Cream",
+    "category": "🧴 Dermatology & Skin Care",
+    "use": "to treat vaginal and urinary symptoms of vaginal atrophy caused by low estrogen levels, commonly after menopause",
+    "thumbnail": "assets/images/products/evaloncream.jpeg",
+    "images": [
+      "assets/images/products/evaloncream.jpeg"
+    ],
+    "variants": [],
+    "packaging": {
+      "label": "1 Tube",
+      "units_per_pack": 1,
+      "packs_per_box": 1,
+      "pack_unit": "tube",
+      "max_units": 500,
+      "max_boxes": 5
+    },
+    "display_quantities": [
+      1,
+      3,
+      5
+    ],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 804,
+      "price_per_pack_usd": 8.04
+    }
+  },
+  {
+    "manager_key": "P0214",
+    "id": "hctzide12.5mg",
+    "name": "Hydrochlorothiazide(HCTZ) 12.5MG",
+    "brand": "Healing Pharma",
+    "composition": "Hydrochlorothiazide(HCTZ) 12.5MG",
+    "category": "Respiratory Care",
+    "use": "used to treat high blood pressure (hypertension) and fluid retention (edema)",
+    "thumbnail": "assets/images/products/hctzide12.5mg.jpeg",
+    "images": [
+      "assets/images/products/hctzide12.5mg.jpeg"
+    ],
+    "variants": [],
+    "packaging": {
+      "label": "10 Tablets/Strip",
+      "units_per_pack": 1,
+      "packs_per_box": 10,
+      "pack_unit": "strip",
+      "max_units": 500,
+      "max_boxes": 5
+    },
+    "display_quantities": [
+      1,
+      5,
+      7
+    ],
+    "pricing_v2": {
+      "currency": "USD",
+      "price_per_pack_cents": 36,
+      "price_per_pack_usd": 0.36
+    }
   }
 ]
